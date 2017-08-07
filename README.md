@@ -37,6 +37,12 @@ This will generate the API v1 client files under `output/jcapiv1`
 
 Once you are satisfied with the generated API client, you can replace the existing files under the `jcapiv1` and `jcapiv2` folders with your generated files.
 
+There currently seems to be a bug with swagger-codegen where it fails to generate certain enum structs correctly (namely GraphType and GroupType). Make sure to run the following commands in order to replace these empty structs with just strings:
+```
+sed -e ':a' -e 'N' -e '$!ba' -e 's/struct {\n}/string/g' jcapiv2/group_type.go > tmp && mv tmp jcapiv2/group_type.go
+sed -e ':a' -e 'N' -e '$!ba' -e 's/struct {\n}/string/g' jcapiv2/graph_type.go > tmp && mv tmp jcapiv2/graph_type.go
+```
+
 #### Usage Examples
 
 ```

@@ -11,5 +11,4 @@
 package jcapiv2
 
 // The graph type.
-type GraphType struct {
-}
+type GraphType string
