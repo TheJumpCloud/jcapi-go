@@ -12,7 +12,7 @@ package jcapiv2
 
 type GraphObjectWithPaths struct {
 
-	Type_ GraphType `json:"type"`
+	Type_ string `json:"type"`
 
 	// Object ID of this graph object.
 	Id string `json:"id"`
