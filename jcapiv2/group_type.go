@@ -11,5 +11,4 @@
 package jcapiv2
 
 // The group type.
-type GroupType struct {
-}
+type GroupType string
