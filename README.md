@@ -1,68 +1,55 @@
 ## JCAPI-Go
-### Prerequisites ###
-#### Java 1.8 ####
-As of swagger-codegen 2.2.2, you must use JDK 1.8 or higher. On Debian/Ubuntu:
-```
-$ sudo add-apt-repository ppa:webupd8team/java
-$ sudo apt update; sudo apt-get install oracle-java8-installer
-```
-The easiest way to get java/swagger-codegen on MacOSX is below.  It
-will also setup your `JAVA_HOME` and `PATH` for you.
-```
-brew cask install java
-brew install swagger-codegen
-```
-If you had to install Java the hard way on your Mac, you should just have to add the appropriate `JAVA_HOME` to your path:
-```
-$ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-$ export PATH=${JAVA_HOME}/bin:$PATH
-```
-Check your version:
-```
-$ java -version
-java version "1.8.0_121"
-Java(TM) SE Runtime Environment (build 1.8.0_121-b13)
-Java HotSpot(TM) 64-Bit Server VM (build 25.121-b13, mixed mode)
-```
-#### Swagger-codegen ####
-A pre-built version of swagger-codegen is included in this repo.
-For more information, updates, or alternate installation methods, please see the github repo: https://github.com/swagger-api/swagger-codegen
 
-Check swagger-codegen:
-```
-$ java -jar swagger-codegen-cli.jar
+### Description ###
 
-OR
+This repository contains the Go client code for the JumpCloud API v1 and v2.
+It also provides the tools to generate the client code from the API yaml files, using swagger-codegen.
+It relies on the following docker file in order to run swagger-codegen inside a docker container:
+https://hub.docker.com/r/jimschubert/swagger-codegen-cli/
 
-$ swagger-codegen
-```
-This should get you something like the following output.
-```
-$ Available languages: [android, aspnet5, aspnetcore, async-scala, .... ]
-```
+We're currently using the version 2.2.2 of swagger-codegen.
 
-#### Generating the API Client
+Note that there is now an official swagger Docker file for the swagger-codegen-cli but it seems to only be supporting the latest version of swagger-codegen (2.3.0, which generates a completely different API interface from 2.2.2).
+This docker file can be found here: https://hub.docker.com/r/swaggerapi/swagger-codegen-cli/
+We might want to consider using this Docker file once it supports different versions of swagger-codegen.
 
-To generate the APIs, run the command below.  It assumes that you have followed the standard practice of laying out the dev env under `$HOME/workspace` and have cloned SI into the "workspace" root.  Alternately you can specify the SI path on the cmdline.
+### Generating the API Client
+
+Copy the API yaml files to the local `/input` directory.
+
+The API v1 yaml file can be found here: `https://github.com/TheJumpCloud/SI/blob/master/routes/webui/api/index.yaml`
+
+The API v2 yaml file can be found here: `https://github.com/TheJumpCloud/SI/blob/master/routes/webui/api/v2/index.yaml`
+
+To generate the API v1 client, run the command below (assuming your API v1 yaml file is `input/index1.yaml`):  
 
 ```
-$ make all
-
-OR
-
-$ make all SWAGGER_FILE_PATH=/Users/yourmom/mySIdirectory/routes/webui/api
+$ docker-compose run --rm swagger-codegen generate -i /swagger-api/yaml/index1.yaml -l go -c /config/config_v1.json -o /swagger-api/out/jcapiv1
 ```
+This will generate the API v1 client files under `output/jcapiv1`
 
-If you are developing the APIs, you can clean up by running `make clean`
+To generate the API v2 client, run the command below (assuming your API v2 yaml file is `input/index2.yaml`):  
+
+```
+$ docker-compose run --rm swagger-codegen generate -i /swagger-api/yaml/index2.yaml -l go -c /config/config_v2.json -o /swagger-api/out/jcapiv2
+```
+This will generate the API v1 client files under `output/jcapiv1`
+
+Once you are satisfied with the generated API client, you can replace the existing files under the `jcapiv1` and `jcapiv2` folders with your generated files.
 
 #### Usage Examples
 
 ```
 import (
-	"github.com/TheJumpCloud/jcapi-go/jcapiv1"
   "github.com/TheJumpCloud/jcapi-go/jcapiv2"
 )
 ...
-apiV1 = jcapiv1.NewDefaultApi()
-groupsApiV2 = jcapiv2.NewUserGroupsApi()
+// instantiate the API object:
+userGroupsAPI = jcapiv2.NewUserGroupsApi()
+
+// set up the API key:
+userGroupsAPI.Configuration.APIKey["x-api-key"] = YOUR_API_KEY
+
+// make an API call:
+userGroup, apiResponse, err := userGroupsAPI.GroupsUserGet(your_group_id, "application/json", "application/json")
 ```
