@@ -50,12 +50,13 @@ import (
   jcapiv2 "github.com/TheJumpCloud/jcapi-go/v2"
 )
 ...
-// instantiate the API object:
+// instantiate the API object for the group of endpoints you need to use
+// for instance for user groups API:
 userGroupsAPI = jcapiv2.NewUserGroupsApi()
 
 // set up the API key:
 userGroupsAPI.Configuration.APIKey["x-api-key"] = YOUR_API_KEY
 
-// make an API call:
+// make an API call to retrieve a specific user group by id:
 userGroup, apiResponse, err := userGroupsAPI.GroupsUserGet(your_group_id, "application/json", "application/json")
 ```
