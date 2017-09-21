@@ -1,7 +1,7 @@
 /* 
  * JumpCloud APIs
  *
- * V1 and V2 versions of JumpCloud's API. The next version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings. The most recent version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings.
+ * V1 & V2 versions of JumpCloud's API. The next version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings. The most recent version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -25,8 +25,14 @@ type PolicyTemplateWithDetails struct {
 	// The default display name for the Policy.
 	DisplayName string `json:"displayName,omitempty"`
 
-	OsFamily string `json:"osFamily,omitempty"`
+	OsMetaFamily string `json:"osMetaFamily,omitempty"`
 
 	// An unordered list of all the fields that can be configured for this Policy Template.
 	ConfigFields []PolicyTemplateConfigField `json:"configFields,omitempty"`
+
+	// Requirements before the policy can be activated.
+	Activation string `json:"activation,omitempty"`
+
+	// Specifics about the behavior of the policy.
+	Behavior string `json:"behavior,omitempty"`
 }

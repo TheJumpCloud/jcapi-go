@@ -1,7 +1,7 @@
 /* 
  * JumpCloud APIs
  *
- * V1 and V2 versions of JumpCloud's API. The next version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings. The most recent version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings.
+ * V1 & V2 versions of JumpCloud's API. The next version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings. The most recent version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -39,7 +39,7 @@ func NewSystemGroupsApiWithBasePath(basePath string) *SystemGroupsApi {
 
 /**
  * List the associations of a System Group
- * This endpoint returns the _direct_ associations of a System Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example System Groups and Users.    #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/associations?targets&#x3D;user &#x60;&#x60;&#x60;
+ * This endpoint returns the _direct_ associations of a System Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example System Groups and Users.   #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/associations?targets&#x3D;user &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the System Group.
  * @param targets 
@@ -117,7 +117,7 @@ func (a SystemGroupsApi) GraphSystemGroupAssociationsList(groupId string, target
 
 /**
  * Manage the associations of a System Group
- * This endpoint allows you to manage the _direct_ associations of a System Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example System Groups and Users.    #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/associations &#x60;&#x60;&#x60;
+ * This endpoint allows you to manage the _direct_ associations of a System Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example System Groups and Users.   #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/associations &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the System Group.
  * @param contentType 
@@ -125,7 +125,7 @@ func (a SystemGroupsApi) GraphSystemGroupAssociationsList(groupId string, target
  * @param body 
  * @return void
  */
-func (a SystemGroupsApi) GraphSystemGroupAssociationsPost(groupId string, contentType string, accept string, body GraphManagementReq) (*APIResponse, error) {
+func (a SystemGroupsApi) GraphSystemGroupAssociationsPost(groupId string, contentType string, accept string, body SystemGroupGraphManagementReq) (*APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Post")
 	// create path and map variables
@@ -262,7 +262,7 @@ func (a SystemGroupsApi) GraphSystemGroupMemberOf(groupId string, contentType st
 
 /**
  * List the members of a System Group
- * This endpoint returns the system members of a System Group.  #### Sample Request &#x60;&#x60;&#x60;  https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/members &#x60;&#x60;&#x60;
+ * This endpoint returns the system members of a System Group.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/members &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the System Group.
  * @param contentType 
@@ -336,7 +336,7 @@ func (a SystemGroupsApi) GraphSystemGroupMembersList(groupId string, contentType
 
 /**
  * Manage the members of a System Group
- * This endpoint allows you to manage the system members of a System Group.   #### Sample Request &#x60;&#x60;&#x60;  https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/members &#x60;&#x60;&#x60;
+ * This endpoint allows you to manage the system members of a System Group.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/members &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the System Group.
  * @param contentType 
@@ -407,7 +407,7 @@ func (a SystemGroupsApi) GraphSystemGroupMembersPost(groupId string, contentType
 
 /**
  * List the System Group&#39;s membership
- * This endpoint returns all Systems that are a member of this System Group.  #### Sample Request &#x60;&#x60;&#x60;  https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/membership &#x60;&#x60;&#x60;
+ * This endpoint returns all Systems that are a member of this System Group.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/membership &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the System Group.
  * @param contentType 
@@ -481,7 +481,7 @@ func (a SystemGroupsApi) GraphSystemGroupMembership(groupId string, contentType 
 
 /**
  * List the Policies associated with a System Group
- * This endpoint will return Policies associated with a System Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this System Group to the corresponding Policy; this array represents all grouping and/or associations that would have to be removed to deprovision the Policy from this System Group.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  This endpoint is not public yet as we haven&#39;t finished the code.
+ * This endpoint will return Policies associated with a System Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this System Group to the corresponding Policy; this array represents all grouping and/or associations that would have to be removed to deprovision the Policy from this System Group.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  This endpoint is not public yet as we haven&#39;t finished the code.
  *
  * @param groupId ObjectID of the System Group.
  * @param contentType 
@@ -555,7 +555,7 @@ func (a SystemGroupsApi) GraphSystemGroupTraversePolicy(groupId string, contentT
 
 /**
  * List the Users associated with a System Group
- * This endpoint will return Users associated with a System Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this System Group to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this System Group.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/users &#x60;&#x60;&#x60;
+ * This endpoint will return Users associated with a System Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this System Group to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this System Group.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/users &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the System Group.
  * @param contentType 
@@ -629,7 +629,7 @@ func (a SystemGroupsApi) GraphSystemGroupTraverseUser(groupId string, contentTyp
 
 /**
  * List the User Groups associated with a System Group
- * This endpoint will return User Groups associated with a System Group. Each element will contain the group&#39;s type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this System Group to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this System Group.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/usergroups &#x60;&#x60;&#x60;
+ * This endpoint will return User Groups associated with a System Group. Each element will contain the group&#39;s type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this System Group to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this System Group.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/usergroups &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the System Group.
  * @param contentType 
@@ -703,7 +703,7 @@ func (a SystemGroupsApi) GraphSystemGroupTraverseUserGroup(groupId string, conte
 
 /**
  * Delete a System Group
- * This endpoint allows you to delete a System Group.  #### Sample Request &#x60;&#x60;&#x60;  https://console.jumpcloud.com/api/v2/systemgroups/{id} &#x60;&#x60;&#x60;
+ * This endpoint allows you to delete a System Group.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{id} &#x60;&#x60;&#x60;
  *
  * @param id ObjectID of the System Group.
  * @param contentType 
@@ -771,7 +771,7 @@ func (a SystemGroupsApi) GroupsSystemDelete(id string, contentType string, accep
 
 /**
  * View an individual System Group details
- * This endpoint returns the details of a System Group.  #### Sample Request &#x60;&#x60;&#x60;  https://console.jumpcloud.com/api/v2/systemgroups/{id} &#x60;&#x60;&#x60;
+ * This endpoint returns the details of a System Group.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{id} &#x60;&#x60;&#x60;
  *
  * @param id ObjectID of the System Group.
  * @param contentType 
@@ -841,7 +841,7 @@ func (a SystemGroupsApi) GroupsSystemGet(id string, contentType string, accept s
 
 /**
  * List all System Groups
- * This endpoint returns all System Groups.  Available filter fields:   - &#x60;name&#x60;   - &#x60;disabled&#x60;   - &#x60;type&#x60;    #### Sample Request  &#x60;&#x60;&#x60;  https://console.jumpcloud.com/api/v2/systemgroups &#x60;&#x60;&#x60;
+ * This endpoint returns all System Groups.  Available filter fields:   - &#x60;name&#x60;   - &#x60;disabled&#x60;   - &#x60;type&#x60;  #### Sample Request  &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups &#x60;&#x60;&#x60;
  *
  * @param contentType 
  * @param accept 
@@ -919,7 +919,7 @@ func (a SystemGroupsApi) GroupsSystemList(contentType string, accept string, fie
 
 /**
  * Partial update a System Group
- * We have hidden PATCH on the systemgroups and usergroups for now; we don&#39;t have that implemented correctly yet, people should use PUT until we do a true PATCH operation.  #### Sample Request &#x60;&#x60;&#x60;  https://console.jumpcloud.com/api/v2/systemgroups/{id} &#x60;&#x60;&#x60;
+ * We have hidden PATCH on the systemgroups and usergroups for now; we don&#39;t have that implemented correctly yet, people should use PUT until we do a true PATCH operation.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{id} &#x60;&#x60;&#x60;
  *
  * @param id ObjectID of the System Group.
  * @param contentType 
@@ -992,7 +992,7 @@ func (a SystemGroupsApi) GroupsSystemPatch(id string, contentType string, accept
 
 /**
  * Create a new System Group
- * This endpoint allows you to create a new System Group.  #### Sample Request  &#x60;&#x60;&#x60;  https://console.jumpcloud.com/api/v2/systemgroups &#x60;&#x60;&#x60;
+ * This endpoint allows you to create a new System Group.  #### Sample Request  &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups &#x60;&#x60;&#x60;
  *
  * @param contentType 
  * @param accept 
@@ -1063,7 +1063,7 @@ func (a SystemGroupsApi) GroupsSystemPost(contentType string, accept string, bod
 
 /**
  * Update a System Group
- * This enpoint allows you to do a full update of the System Group.  #### Sample Request &#x60;&#x60;&#x60;  https://console.jumpcloud.com/api/v2/systemgroups/{id} &#x60;&#x60;&#x60;
+ * This enpoint allows you to do a full update of the System Group.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{id} &#x60;&#x60;&#x60;
  *
  * @param id ObjectID of the System Group.
  * @param contentType 

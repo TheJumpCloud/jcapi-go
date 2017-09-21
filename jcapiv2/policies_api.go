@@ -1,7 +1,7 @@
 /* 
  * JumpCloud APIs
  *
- * V1 and V2 versions of JumpCloud's API. The next version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings. The most recent version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings.
+ * V1 & V2 versions of JumpCloud's API. The next version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings. The most recent version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -188,7 +188,7 @@ func (a PoliciesApi) GraphPolicyAssociationsPost(policyId string, contentType st
 
 /**
  * List the Systems associated with a Policy
- * This endpoint will return Systems associated with a Policy. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this Policy to the corresponding System; this array represents all grouping and/or associations that would have to be removed to deprovision the System from this Policy.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/policies/{policy_id}/systems &#x60;&#x60;&#x60;
+ * This endpoint will return Systems associated with a Policy. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this Policy to the corresponding System; this array represents all grouping and/or associations that would have to be removed to deprovision the System from this Policy.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/policies/{policy_id}/systems &#x60;&#x60;&#x60;
  *
  * @param policyId ObjectID of the Command.
  * @param contentType 
@@ -262,7 +262,7 @@ func (a PoliciesApi) GraphPolicyTraverseSystem(policyId string, contentType stri
 
 /**
  * List the System Groups associated with a Policy
- * This endpoint will return System Groups associated with a Policy. Each element will contain the group&#39;s type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this Policy to the corresponding System Group; this array represents all grouping and/or associations that would have to be removed to deprovision the System Group from this Policy.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/policies/{policy_id}/systemsgroups &#x60;&#x60;&#x60;
+ * This endpoint will return System Groups associated with a Policy. Each element will contain the group&#39;s type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this Policy to the corresponding System Group; this array represents all grouping and/or associations that would have to be removed to deprovision the System Group from this Policy.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/policies/{policy_id}/systemsgroups &#x60;&#x60;&#x60;
  *
  * @param policyId ObjectID of the Command.
  * @param contentType 
@@ -768,9 +768,10 @@ func (a PoliciesApi) PolicyresultsGet(id string, contentType string, accept stri
  * @param limit The number of records to return at once.
  * @param skip The offset into the records to return.
  * @param sort The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending. 
+ * @param aggregate 
  * @return []PolicyResult
  */
-func (a PoliciesApi) PolicyresultsList(policyId string, contentType string, accept string, fields string, filter string, limit int32, skip int32, sort string) ([]PolicyResult, *APIResponse, error) {
+func (a PoliciesApi) PolicyresultsList(policyId string, contentType string, accept string, fields string, filter string, limit int32, skip int32, sort string, aggregate string) ([]PolicyResult, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -795,6 +796,7 @@ func (a PoliciesApi) PolicyresultsList(policyId string, contentType string, acce
 	localVarQueryParams.Add("limit", a.Configuration.APIClient.ParameterToString(limit, ""))
 	localVarQueryParams.Add("skip", a.Configuration.APIClient.ParameterToString(skip, ""))
 	localVarQueryParams.Add("sort", a.Configuration.APIClient.ParameterToString(sort, ""))
+	localVarQueryParams.Add("aggregate", a.Configuration.APIClient.ParameterToString(aggregate, ""))
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -846,9 +848,10 @@ func (a PoliciesApi) PolicyresultsList(policyId string, contentType string, acce
  * @param limit The number of records to return at once.
  * @param skip The offset into the records to return.
  * @param sort The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending. 
+ * @param aggregate 
  * @return []PolicyResult
  */
-func (a PoliciesApi) PolicyresultsList_1(contentType string, accept string, fields string, filter string, limit int32, skip int32, sort string) ([]PolicyResult, *APIResponse, error) {
+func (a PoliciesApi) PolicyresultsList_1(contentType string, accept string, fields string, filter string, limit int32, skip int32, sort string, aggregate string) ([]PolicyResult, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -872,6 +875,7 @@ func (a PoliciesApi) PolicyresultsList_1(contentType string, accept string, fiel
 	localVarQueryParams.Add("limit", a.Configuration.APIClient.ParameterToString(limit, ""))
 	localVarQueryParams.Add("skip", a.Configuration.APIClient.ParameterToString(skip, ""))
 	localVarQueryParams.Add("sort", a.Configuration.APIClient.ParameterToString(sort, ""))
+	localVarQueryParams.Add("aggregate", a.Configuration.APIClient.ParameterToString(aggregate, ""))
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

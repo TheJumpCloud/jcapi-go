@@ -1,24 +1,24 @@
-# \SystemgroupsApi
+# \SystemGroupsApi
 
 All URIs are relative to *https://console.jumpcloud.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GraphSystemGroupAssociationsList**](SystemgroupsApi.md#GraphSystemGroupAssociationsList) | **Get** /systemgroups/{group_id}/associations | List the associations of a System Group
-[**GraphSystemGroupAssociationsPost**](SystemgroupsApi.md#GraphSystemGroupAssociationsPost) | **Post** /systemgroups/{group_id}/associations | Manage the associations of a System Group
-[**GraphSystemGroupMemberOf**](SystemgroupsApi.md#GraphSystemGroupMemberOf) | **Get** /systemgroups/{group_id}/memberof | List the System Group&#39;s parents
-[**GraphSystemGroupMembersList**](SystemgroupsApi.md#GraphSystemGroupMembersList) | **Get** /systemgroups/{group_id}/members | List the members of a System Group
-[**GraphSystemGroupMembersPost**](SystemgroupsApi.md#GraphSystemGroupMembersPost) | **Post** /systemgroups/{group_id}/members | Manage the members of a System Group
-[**GraphSystemGroupMembership**](SystemgroupsApi.md#GraphSystemGroupMembership) | **Get** /systemgroups/{group_id}/membership | List the System Group&#39;s membership
-[**GraphSystemGroupTraversePolicy**](SystemgroupsApi.md#GraphSystemGroupTraversePolicy) | **Get** /systemgroups/{group_id}/policies | List the Policies associated with a System Group
-[**GraphSystemGroupTraverseUser**](SystemgroupsApi.md#GraphSystemGroupTraverseUser) | **Get** /systemgroups/{group_id}/users | List the Users associated with a System Group
-[**GraphSystemGroupTraverseUserGroup**](SystemgroupsApi.md#GraphSystemGroupTraverseUserGroup) | **Get** /systemgroups/{group_id}/usergroups | List the User Groups associated with a System Group
-[**GroupsSystemDelete**](SystemgroupsApi.md#GroupsSystemDelete) | **Delete** /systemgroups/{id} | Delete a System Group
-[**GroupsSystemGet**](SystemgroupsApi.md#GroupsSystemGet) | **Get** /systemgroups/{id} | View an individual System Group details
-[**GroupsSystemList**](SystemgroupsApi.md#GroupsSystemList) | **Get** /systemgroups | List all System Groups
-[**GroupsSystemPatch**](SystemgroupsApi.md#GroupsSystemPatch) | **Patch** /systemgroups/{id} | Partial update a System Group
-[**GroupsSystemPost**](SystemgroupsApi.md#GroupsSystemPost) | **Post** /systemgroups | Create a new System Group
-[**GroupsSystemPut**](SystemgroupsApi.md#GroupsSystemPut) | **Put** /systemgroups/{id} | Update a System Group
+[**GraphSystemGroupAssociationsList**](SystemGroupsApi.md#GraphSystemGroupAssociationsList) | **Get** /systemgroups/{group_id}/associations | List the associations of a System Group
+[**GraphSystemGroupAssociationsPost**](SystemGroupsApi.md#GraphSystemGroupAssociationsPost) | **Post** /systemgroups/{group_id}/associations | Manage the associations of a System Group
+[**GraphSystemGroupMemberOf**](SystemGroupsApi.md#GraphSystemGroupMemberOf) | **Get** /systemgroups/{group_id}/memberof | List the System Group&#39;s parents
+[**GraphSystemGroupMembersList**](SystemGroupsApi.md#GraphSystemGroupMembersList) | **Get** /systemgroups/{group_id}/members | List the members of a System Group
+[**GraphSystemGroupMembersPost**](SystemGroupsApi.md#GraphSystemGroupMembersPost) | **Post** /systemgroups/{group_id}/members | Manage the members of a System Group
+[**GraphSystemGroupMembership**](SystemGroupsApi.md#GraphSystemGroupMembership) | **Get** /systemgroups/{group_id}/membership | List the System Group&#39;s membership
+[**GraphSystemGroupTraversePolicy**](SystemGroupsApi.md#GraphSystemGroupTraversePolicy) | **Get** /systemgroups/{group_id}/policies | List the Policies associated with a System Group
+[**GraphSystemGroupTraverseUser**](SystemGroupsApi.md#GraphSystemGroupTraverseUser) | **Get** /systemgroups/{group_id}/users | List the Users associated with a System Group
+[**GraphSystemGroupTraverseUserGroup**](SystemGroupsApi.md#GraphSystemGroupTraverseUserGroup) | **Get** /systemgroups/{group_id}/usergroups | List the User Groups associated with a System Group
+[**GroupsSystemDelete**](SystemGroupsApi.md#GroupsSystemDelete) | **Delete** /systemgroups/{id} | Delete a System Group
+[**GroupsSystemGet**](SystemGroupsApi.md#GroupsSystemGet) | **Get** /systemgroups/{id} | View an individual System Group details
+[**GroupsSystemList**](SystemGroupsApi.md#GroupsSystemList) | **Get** /systemgroups | List all System Groups
+[**GroupsSystemPatch**](SystemGroupsApi.md#GroupsSystemPatch) | **Patch** /systemgroups/{id} | Partial update a System Group
+[**GroupsSystemPost**](SystemGroupsApi.md#GroupsSystemPost) | **Post** /systemgroups | Create a new System Group
+[**GroupsSystemPut**](SystemGroupsApi.md#GroupsSystemPut) | **Put** /systemgroups/{id} | Update a System Group
 
 
 # **GraphSystemGroupAssociationsList**
@@ -26,7 +26,7 @@ Method | HTTP request | Description
 
 List the associations of a System Group
 
-This endpoint returns the _direct_ associations of a System Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example System Groups and Users.    #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/associations?targets=user ```
+This endpoint returns the _direct_ associations of a System Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example System Groups and Users.   #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/associations?targets=user ```
 
 
 ### Parameters
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 Manage the associations of a System Group
 
-This endpoint allows you to manage the _direct_ associations of a System Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example System Groups and Users.    #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/associations ```
+This endpoint allows you to manage the _direct_ associations of a System Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example System Groups and Users.   #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/associations ```
 
 
 ### Parameters
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
  **groupId** | **string**| ObjectID of the System Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | [optional] 
+ **body** | [**SystemGroupGraphManagementReq**](SystemGroupGraphManagementReq.md)|  | [optional] 
 
 ### Return type
 
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 List the members of a System Group
 
-This endpoint returns the system members of a System Group.  #### Sample Request ```  https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/members ```
+This endpoint returns the system members of a System Group.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/members ```
 
 
 ### Parameters
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 Manage the members of a System Group
 
-This endpoint allows you to manage the system members of a System Group.   #### Sample Request ```  https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/members ```
+This endpoint allows you to manage the system members of a System Group.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/members ```
 
 
 ### Parameters
@@ -190,7 +190,7 @@ void (empty response body)
 
 List the System Group's membership
 
-This endpoint returns all Systems that are a member of this System Group.  #### Sample Request ```  https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/membership ```
+This endpoint returns all Systems that are a member of this System Group.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/membership ```
 
 
 ### Parameters
@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 
 List the Policies associated with a System Group
 
-This endpoint will return Policies associated with a System Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this System Group to the corresponding Policy; this array represents all grouping and/or associations that would have to be removed to deprovision the Policy from this System Group.   See `/members` and `/associations` endpoints to manage those collections.  This endpoint is not public yet as we haven't finished the code.
+This endpoint will return Policies associated with a System Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this System Group to the corresponding Policy; this array represents all grouping and/or associations that would have to be removed to deprovision the Policy from this System Group.  See `/members` and `/associations` endpoints to manage those collections.  This endpoint is not public yet as we haven't finished the code.
 
 
 ### Parameters
@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
 
 List the Users associated with a System Group
 
-This endpoint will return Users associated with a System Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this System Group to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this System Group.   See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/users ```
+This endpoint will return Users associated with a System Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this System Group to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this System Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/users ```
 
 
 ### Parameters
@@ -289,7 +289,7 @@ Name | Type | Description  | Notes
 
 List the User Groups associated with a System Group
 
-This endpoint will return User Groups associated with a System Group. Each element will contain the group's type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this System Group to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this System Group.   See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/usergroups ```
+This endpoint will return User Groups associated with a System Group. Each element will contain the group's type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this System Group to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this System Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/usergroups ```
 
 
 ### Parameters
@@ -322,7 +322,7 @@ Name | Type | Description  | Notes
 
 Delete a System Group
 
-This endpoint allows you to delete a System Group.  #### Sample Request ```  https://console.jumpcloud.com/api/v2/systemgroups/{id} ```
+This endpoint allows you to delete a System Group.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{id} ```
 
 
 ### Parameters
@@ -353,7 +353,7 @@ void (empty response body)
 
 View an individual System Group details
 
-This endpoint returns the details of a System Group.  #### Sample Request ```  https://console.jumpcloud.com/api/v2/systemgroups/{id} ```
+This endpoint returns the details of a System Group.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{id} ```
 
 
 ### Parameters
@@ -384,7 +384,7 @@ Name | Type | Description  | Notes
 
 List all System Groups
 
-This endpoint returns all System Groups.  Available filter fields:   - `name`   - `disabled`   - `type`    #### Sample Request  ```  https://console.jumpcloud.com/api/v2/systemgroups ```
+This endpoint returns all System Groups.  Available filter fields:   - `name`   - `disabled`   - `type`  #### Sample Request  ``` https://console.jumpcloud.com/api/v2/systemgroups ```
 
 
 ### Parameters
@@ -419,7 +419,7 @@ Name | Type | Description  | Notes
 
 Partial update a System Group
 
-We have hidden PATCH on the systemgroups and usergroups for now; we don't have that implemented correctly yet, people should use PUT until we do a true PATCH operation.  #### Sample Request ```  https://console.jumpcloud.com/api/v2/systemgroups/{id} ```
+We have hidden PATCH on the systemgroups and usergroups for now; we don't have that implemented correctly yet, people should use PUT until we do a true PATCH operation.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{id} ```
 
 
 ### Parameters
@@ -451,7 +451,7 @@ Name | Type | Description  | Notes
 
 Create a new System Group
 
-This endpoint allows you to create a new System Group.  #### Sample Request  ```  https://console.jumpcloud.com/api/v2/systemgroups ```
+This endpoint allows you to create a new System Group.  #### Sample Request  ``` https://console.jumpcloud.com/api/v2/systemgroups ```
 
 
 ### Parameters
@@ -482,7 +482,7 @@ Name | Type | Description  | Notes
 
 Update a System Group
 
-This enpoint allows you to do a full update of the System Group.  #### Sample Request ```  https://console.jumpcloud.com/api/v2/systemgroups/{id} ```
+This enpoint allows you to do a full update of the System Group.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{id} ```
 
 
 ### Parameters

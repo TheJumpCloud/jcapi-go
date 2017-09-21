@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 List All Groups
 
-This endpoint returns all Groups that exist in your organization.   #### Available filter fields:   - `name`   - `disabled`   - `type`   -     #### Sample Request  ```  https://console.jumpcloud.com/api/v2/groups ```
+This endpoint returns all Groups that exist in your organization.  #### Available filter fields:   - `name`   - `disabled`   - `type`  #### Sample Request  ``` https://console.jumpcloud.com/api/v2/groups ```
 
 
 ### Parameters

@@ -1,7 +1,7 @@
 /* 
  * JumpCloud APIs
  *
- * V1 and V2 versions of JumpCloud's API. The next version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings. The most recent version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings.
+ * V1 & V2 versions of JumpCloud's API. The next version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings. The most recent version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -15,7 +15,7 @@ type SystemGroup struct {
 	// ObjectId uniquely identifying a System Group.
 	Id string `json:"id,omitempty"`
 
-	// The type of the group; always 'system' for a User Group.
+	// The type of the group; always 'system' for a System Group.
 	Type_ string `json:"type,omitempty"`
 
 	// Display name of a System Group.

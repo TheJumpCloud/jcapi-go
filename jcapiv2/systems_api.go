@@ -1,7 +1,7 @@
 /* 
  * JumpCloud APIs
  *
- * V1 and V2 versions of JumpCloud's API. The next version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings. The most recent version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings.
+ * V1 & V2 versions of JumpCloud's API. The next version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings. The most recent version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -39,7 +39,7 @@ func NewSystemsApiWithBasePath(basePath string) *SystemsApi {
 
 /**
  * List the associations of a System
- * This endpoint returns the _direct_ associations of a System.  A direct association can be a non-homogenous relationship between 2 different objects. for example Systems and Users.    #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systems/{system_id}/associations?targets&#x3D;user &#x60;&#x60;&#x60;
+ * This endpoint returns the _direct_ associations of a System.  A direct association can be a non-homogenous relationship between 2 different objects. for example Systems and Users.   #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systems/{system_id}/associations?targets&#x3D;user &#x60;&#x60;&#x60;
  *
  * @param systemId ObjectID of the System.
  * @param targets 
@@ -117,7 +117,7 @@ func (a SystemsApi) GraphSystemAssociationsList(systemId string, targets []strin
 
 /**
  * Manage associations of a System
- * This endpoint allows you to manage the _direct_ associations of a System.  A direct association can be a non-homogenous relationship between 2 different objects. for example Systems and Users.    #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systems/{system_id}/associations &#x60;&#x60;&#x60;
+ * This endpoint allows you to manage the _direct_ associations of a System.  A direct association can be a non-homogenous relationship between 2 different objects. for example Systems and Users.   #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systems/{system_id}/associations &#x60;&#x60;&#x60;
  *
  * @param systemId ObjectID of the System.
  * @param contentType 
@@ -187,7 +187,7 @@ func (a SystemsApi) GraphSystemAssociationsPost(systemId string, contentType str
 }
 
 /**
- * List the System&#39;s parents
+ * List the parent Groups of a System
  * This endpoint returns all the System Groups a System is a member of.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systems/{system_id}/memberof &#x60;&#x60;&#x60;
  *
  * @param systemId ObjectID of the System.
@@ -262,7 +262,7 @@ func (a SystemsApi) GraphSystemMemberOf(systemId string, contentType string, acc
 
 /**
  * List the Policies associated with a System
- * This endpoint will return Policies associated with a System. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this System to the corresponding Policy; this array represents all grouping and/or associations that would have to be removed to deprovision the Policy from this System.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  This endpoint is not yet public as we have finish the code.
+ * This endpoint will return Policies associated with a System. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this System to the corresponding Policy; this array represents all grouping and/or associations that would have to be removed to deprovision the Policy from this System.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  This endpoint is not yet public as we have finish the code.
  *
  * @param systemId ObjectID of the System.
  * @param contentType 
@@ -336,7 +336,7 @@ func (a SystemsApi) GraphSystemTraversePolicy(systemId string, contentType strin
 
 /**
  * List the Users associated with a System
- * This endpoint will return Users associated with a System. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this System to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this System.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systems/{system_id}/users &#x60;&#x60;&#x60;
+ * This endpoint will return Users associated with a System. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this System to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this System.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systems/{system_id}/users &#x60;&#x60;&#x60;
  *
  * @param systemId ObjectID of the System.
  * @param contentType 

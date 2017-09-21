@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GraphSystemAssociationsList**](SystemsApi.md#GraphSystemAssociationsList) | **Get** /systems/{system_id}/associations | List the associations of a System
 [**GraphSystemAssociationsPost**](SystemsApi.md#GraphSystemAssociationsPost) | **Post** /systems/{system_id}/associations | Manage associations of a System
-[**GraphSystemMemberOf**](SystemsApi.md#GraphSystemMemberOf) | **Get** /systems/{system_id}/memberof | List the System&#39;s parents
+[**GraphSystemMemberOf**](SystemsApi.md#GraphSystemMemberOf) | **Get** /systems/{system_id}/memberof | List the parent Groups of a System
 [**GraphSystemTraversePolicy**](SystemsApi.md#GraphSystemTraversePolicy) | **Get** /systems/{system_id}/policies | List the Policies associated with a System
 [**GraphSystemTraverseUser**](SystemsApi.md#GraphSystemTraverseUser) | **Get** /systems/{system_id}/users | List the Users associated with a System
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 List the associations of a System
 
-This endpoint returns the _direct_ associations of a System.  A direct association can be a non-homogenous relationship between 2 different objects. for example Systems and Users.    #### Sample Request ``` https://console.jumpcloud.com/api/v2/systems/{system_id}/associations?targets=user ```
+This endpoint returns the _direct_ associations of a System.  A direct association can be a non-homogenous relationship between 2 different objects. for example Systems and Users.   #### Sample Request ``` https://console.jumpcloud.com/api/v2/systems/{system_id}/associations?targets=user ```
 
 
 ### Parameters
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 Manage associations of a System
 
-This endpoint allows you to manage the _direct_ associations of a System.  A direct association can be a non-homogenous relationship between 2 different objects. for example Systems and Users.    #### Sample Request ``` https://console.jumpcloud.com/api/v2/systems/{system_id}/associations ```
+This endpoint allows you to manage the _direct_ associations of a System.  A direct association can be a non-homogenous relationship between 2 different objects. for example Systems and Users.   #### Sample Request ``` https://console.jumpcloud.com/api/v2/systems/{system_id}/associations ```
 
 
 ### Parameters
@@ -80,7 +80,7 @@ void (empty response body)
 # **GraphSystemMemberOf**
 > []GraphObjectWithPaths GraphSystemMemberOf($systemId, $contentType, $accept, $limit, $skip)
 
-List the System's parents
+List the parent Groups of a System
 
 This endpoint returns all the System Groups a System is a member of.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systems/{system_id}/memberof ```
 
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
 
 List the Policies associated with a System
 
-This endpoint will return Policies associated with a System. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this System to the corresponding Policy; this array represents all grouping and/or associations that would have to be removed to deprovision the Policy from this System.   See `/members` and `/associations` endpoints to manage those collections.  This endpoint is not yet public as we have finish the code.
+This endpoint will return Policies associated with a System. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this System to the corresponding Policy; this array represents all grouping and/or associations that would have to be removed to deprovision the Policy from this System.  See `/members` and `/associations` endpoints to manage those collections.  This endpoint is not yet public as we have finish the code.
 
 
 ### Parameters
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 List the Users associated with a System
 
-This endpoint will return Users associated with a System. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this System to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this System.   See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systems/{system_id}/users ```
+This endpoint will return Users associated with a System. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this System to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this System.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systems/{system_id}/users ```
 
 
 ### Parameters

@@ -91,7 +91,7 @@ void (empty response body)
 
 List the Systems associated with a Policy
 
-This endpoint will return Systems associated with a Policy. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this Policy to the corresponding System; this array represents all grouping and/or associations that would have to be removed to deprovision the System from this Policy.   See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/policies/{policy_id}/systems ```
+This endpoint will return Systems associated with a Policy. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this Policy to the corresponding System; this array represents all grouping and/or associations that would have to be removed to deprovision the System from this Policy.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/policies/{policy_id}/systems ```
 
 
 ### Parameters
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 
 List the System Groups associated with a Policy
 
-This endpoint will return System Groups associated with a Policy. Each element will contain the group's type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this Policy to the corresponding System Group; this array represents all grouping and/or associations that would have to be removed to deprovision the System Group from this Policy.   See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/policies/{policy_id}/systemsgroups ```
+This endpoint will return System Groups associated with a Policy. Each element will contain the group's type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this Policy to the corresponding System Group; this array represents all grouping and/or associations that would have to be removed to deprovision the System Group from this Policy.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/policies/{policy_id}/systemsgroups ```
 
 
 ### Parameters
@@ -340,7 +340,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PolicyresultsList**
-> []PolicyResult PolicyresultsList($policyId, $contentType, $accept, $fields, $filter, $limit, $skip, $sort)
+> []PolicyResult PolicyresultsList($policyId, $contentType, $accept, $fields, $filter, $limit, $skip, $sort, $aggregate)
 
 Lists all the policy results of a given policy.
 
@@ -357,6 +357,7 @@ Name | Type | Description  | Notes
  **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
  **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
  **sort** | **string**| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | [optional] [default to ]
+ **aggregate** | **string**|  | [optional] [default to ]
 
 ### Return type
 
@@ -374,7 +375,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PolicyresultsList_0**
-> []PolicyResult PolicyresultsList_0($contentType, $accept, $fields, $filter, $limit, $skip, $sort)
+> []PolicyResult PolicyresultsList_0($contentType, $accept, $fields, $filter, $limit, $skip, $sort, $aggregate)
 
 Lists all the policy results for an organization.
 
@@ -390,6 +391,7 @@ Name | Type | Description  | Notes
  **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
  **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
  **sort** | **string**| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | [optional] [default to ]
+ **aggregate** | **string**|  | [optional] [default to ]
 
 ### Return type
 

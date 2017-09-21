@@ -10,13 +10,13 @@
 
 package jcapiv2
 
-type GraphObjectWithPaths struct {
+type SystemGroupGraphManagementReq struct {
 
-	Type_ GraphType `json:"type"`
+	// How to modify the graph connection.
+	Op string `json:"op"`
 
-	// Object ID of this graph object.
+	Type_ string `json:"type"`
+
+	// The ObjectID of graph object being added or removed as an association.
 	Id string `json:"id"`
-
-	// A path through the graph between two graph objects.
-	Paths [][]GraphConnection `json:"paths"`
 }

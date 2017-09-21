@@ -1,30 +1,30 @@
-# \UsergroupsApi
+# \UserGroupsApi
 
 All URIs are relative to *https://console.jumpcloud.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GraphUserGroupAssociationsList**](UsergroupsApi.md#GraphUserGroupAssociationsList) | **Get** /usergroups/{group_id}/associations | List the associations of a User Group.
-[**GraphUserGroupAssociationsPost**](UsergroupsApi.md#GraphUserGroupAssociationsPost) | **Post** /usergroups/{group_id}/associations | Manage the associations of a User Group
-[**GraphUserGroupMemberOf**](UsergroupsApi.md#GraphUserGroupMemberOf) | **Get** /usergroups/{group_id}/memberof | List the User Group&#39;s parents
-[**GraphUserGroupMembersList**](UsergroupsApi.md#GraphUserGroupMembersList) | **Get** /usergroups/{group_id}/members | List the members of a User Group
-[**GraphUserGroupMembersPost**](UsergroupsApi.md#GraphUserGroupMembersPost) | **Post** /usergroups/{group_id}/members | Manage the members of a User Group
-[**GraphUserGroupMembership**](UsergroupsApi.md#GraphUserGroupMembership) | **Get** /usergroups/{group_id}/membership | List the User Group&#39;s membership
-[**GraphUserGroupTraverseActiveDirectory**](UsergroupsApi.md#GraphUserGroupTraverseActiveDirectory) | **Get** /usergroups/{group_id}/activedirectories | List the Active Directories associated with a User Group
-[**GraphUserGroupTraverseApplication**](UsergroupsApi.md#GraphUserGroupTraverseApplication) | **Get** /usergroups/{group_id}/applications | List the Applications associated with a User Group
-[**GraphUserGroupTraverseDirectory**](UsergroupsApi.md#GraphUserGroupTraverseDirectory) | **Get** /usergroups/{group_id}/directories | List the Directories associated with a User Group
-[**GraphUserGroupTraverseGSuite**](UsergroupsApi.md#GraphUserGroupTraverseGSuite) | **Get** /usergroups/{group_id}/gsuites | List the G Suite instances associated with a User Group
-[**GraphUserGroupTraverseLdapServer**](UsergroupsApi.md#GraphUserGroupTraverseLdapServer) | **Get** /usergroups/{group_id}/ldapservers | List the LDAP Servers associated with a User Group
-[**GraphUserGroupTraverseOffice365**](UsergroupsApi.md#GraphUserGroupTraverseOffice365) | **Get** /usergroups/{group_id}/office365s | List the Office 365 instances associated with a User Group
-[**GraphUserGroupTraverseRadiusServer**](UsergroupsApi.md#GraphUserGroupTraverseRadiusServer) | **Get** /usergroups/{group_id}/radiusservers | List the RADIUS Servers associated with a User Group
-[**GraphUserGroupTraverseSystem**](UsergroupsApi.md#GraphUserGroupTraverseSystem) | **Get** /usergroups/{group_id}/systems | List the Systems associated with a User Group
-[**GraphUserGroupTraverseSystemGroup**](UsergroupsApi.md#GraphUserGroupTraverseSystemGroup) | **Get** /usergroups/{group_id}/systemgroups | List the System Groups associated with User Groups
-[**GroupsUserDelete**](UsergroupsApi.md#GroupsUserDelete) | **Delete** /usergroups/{id} | Delete a User Group
-[**GroupsUserGet**](UsergroupsApi.md#GroupsUserGet) | **Get** /usergroups/{id} | View an indvidual User Group details
-[**GroupsUserList**](UsergroupsApi.md#GroupsUserList) | **Get** /usergroups | List all User Groups
-[**GroupsUserPatch**](UsergroupsApi.md#GroupsUserPatch) | **Patch** /usergroups/{id} | Partial update a User Group
-[**GroupsUserPost**](UsergroupsApi.md#GroupsUserPost) | **Post** /usergroups | Create a new User Group
-[**GroupsUserPut**](UsergroupsApi.md#GroupsUserPut) | **Put** /usergroups/{id} | Update a User Group
+[**GraphUserGroupAssociationsList**](UserGroupsApi.md#GraphUserGroupAssociationsList) | **Get** /usergroups/{group_id}/associations | List the associations of a User Group.
+[**GraphUserGroupAssociationsPost**](UserGroupsApi.md#GraphUserGroupAssociationsPost) | **Post** /usergroups/{group_id}/associations | Manage the associations of a User Group
+[**GraphUserGroupMemberOf**](UserGroupsApi.md#GraphUserGroupMemberOf) | **Get** /usergroups/{group_id}/memberof | List the User Group&#39;s parents
+[**GraphUserGroupMembersList**](UserGroupsApi.md#GraphUserGroupMembersList) | **Get** /usergroups/{group_id}/members | List the members of a User Group
+[**GraphUserGroupMembersPost**](UserGroupsApi.md#GraphUserGroupMembersPost) | **Post** /usergroups/{group_id}/members | Manage the members of a User Group
+[**GraphUserGroupMembership**](UserGroupsApi.md#GraphUserGroupMembership) | **Get** /usergroups/{group_id}/membership | List the User Group&#39;s membership
+[**GraphUserGroupTraverseActiveDirectory**](UserGroupsApi.md#GraphUserGroupTraverseActiveDirectory) | **Get** /usergroups/{group_id}/activedirectories | List the Active Directories associated with a User Group
+[**GraphUserGroupTraverseApplication**](UserGroupsApi.md#GraphUserGroupTraverseApplication) | **Get** /usergroups/{group_id}/applications | List the Applications associated with a User Group
+[**GraphUserGroupTraverseDirectory**](UserGroupsApi.md#GraphUserGroupTraverseDirectory) | **Get** /usergroups/{group_id}/directories | List the Directories associated with a User Group
+[**GraphUserGroupTraverseGSuite**](UserGroupsApi.md#GraphUserGroupTraverseGSuite) | **Get** /usergroups/{group_id}/gsuites | List the G Suite instances associated with a User Group
+[**GraphUserGroupTraverseLdapServer**](UserGroupsApi.md#GraphUserGroupTraverseLdapServer) | **Get** /usergroups/{group_id}/ldapservers | List the LDAP Servers associated with a User Group
+[**GraphUserGroupTraverseOffice365**](UserGroupsApi.md#GraphUserGroupTraverseOffice365) | **Get** /usergroups/{group_id}/office365s | List the Office 365 instances associated with a User Group
+[**GraphUserGroupTraverseRadiusServer**](UserGroupsApi.md#GraphUserGroupTraverseRadiusServer) | **Get** /usergroups/{group_id}/radiusservers | List the RADIUS Servers associated with a User Group
+[**GraphUserGroupTraverseSystem**](UserGroupsApi.md#GraphUserGroupTraverseSystem) | **Get** /usergroups/{group_id}/systems | List the Systems associated with a User Group
+[**GraphUserGroupTraverseSystemGroup**](UserGroupsApi.md#GraphUserGroupTraverseSystemGroup) | **Get** /usergroups/{group_id}/systemgroups | List the System Groups associated with User Groups
+[**GroupsUserDelete**](UserGroupsApi.md#GroupsUserDelete) | **Delete** /usergroups/{id} | Delete a User Group
+[**GroupsUserGet**](UserGroupsApi.md#GroupsUserGet) | **Get** /usergroups/{id} | View an indvidual User Group details
+[**GroupsUserList**](UserGroupsApi.md#GroupsUserList) | **Get** /usergroups | List all User Groups
+[**GroupsUserPatch**](UserGroupsApi.md#GroupsUserPatch) | **Patch** /usergroups/{id} | Partial update a User Group
+[**GroupsUserPost**](UserGroupsApi.md#GroupsUserPost) | **Post** /usergroups | Create a new User Group
+[**GroupsUserPut**](UserGroupsApi.md#GroupsUserPut) | **Put** /usergroups/{id} | Update a User Group
 
 
 # **GraphUserGroupAssociationsList**
@@ -32,7 +32,7 @@ Method | HTTP request | Description
 
 List the associations of a User Group.
 
-This endpoint returns the _direct_ associations of this User Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example User Groups and Users.    #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/associations?targets=user ```
+This endpoint returns the _direct_ associations of this User Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example User Groups and Users.   #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/associations?targets=user ```
 
 
 ### Parameters
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 Manage the associations of a User Group
 
-This endpoint manages the _direct_ associations of this User Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example User Groups and Users.    #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/associations ```
+This endpoint manages the _direct_ associations of this User Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example User Groups and Users.   #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/associations ```
 
 
 ### Parameters
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
  **groupId** | **string**| ObjectID of the User Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | [optional] 
+ **body** | [**UserGroupGraphManagementReq**](UserGroupGraphManagementReq.md)|  | [optional] 
 
 ### Return type
 
@@ -98,7 +98,7 @@ void (empty response body)
 
 List the User Group's parents
 
-This endpoint returns all User Groups a User Group is a member of.  #### Sample Request ```  https://console.jumpcloud.com/api/v2/usergroups/{group_id}/membersof ```  Not public yet, as the code is not finished,
+This endpoint returns all User Groups a User Group is a member of.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/{group_id}/membersof ```  Not public yet, as the code is not finished,
 
 
 ### Parameters
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 
 List the members of a User Group
 
-This endpoint returns the user members of a User Group.  #### Sample Request ```  https://console.jumpcloud.com/api/v2/usergroups/{group_id}/members ```
+This endpoint returns the user members of a User Group.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/{group_id}/members ```
 
 
 ### Parameters
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 
 Manage the members of a User Group
 
-This endpoint allows you to manage the user members of a User Group.  #### Sample Request ```  https://console.jumpcloud.com/api/v2/usergroups/{group_id}/members ```
+This endpoint allows you to manage the user members of a User Group.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/{group_id}/members ```
 
 
 ### Parameters
@@ -196,7 +196,7 @@ void (empty response body)
 
 List the User Group's membership
 
-This endpoint returns all users members that are a member of this User Group.  #### Sample Request ```  https://console.jumpcloud.com/api/v2/usergroups/{group_id}/membership ```
+This endpoint returns all users members that are a member of this User Group.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/{group_id}/membership ```
 
 
 ### Parameters
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 
 List the Active Directories associated with a User Group
 
-This endpoint will return the Active Directories associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding Active Directory; this array represents all grouping and/or associations that would have to be removed to deprovision the Active Directory from this User Group.   See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/activedirectories ```
+This endpoint will return the Active Directories associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding Active Directory; this array represents all grouping and/or associations that would have to be removed to deprovision the Active Directory from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/activedirectories ```
 
 
 ### Parameters
@@ -262,7 +262,7 @@ Name | Type | Description  | Notes
 
 List the Applications associated with a User Group
 
-This endpoint will return Applications associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding Application; this array represents all grouping and/or associations that would have to be removed to deprovision the Application from this User Group.   See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/applications ```
+This endpoint will return Applications associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding Application; this array represents all grouping and/or associations that would have to be removed to deprovision the Application from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/applications ```
 
 
 ### Parameters
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 List the Directories associated with a User Group
 
-This endpoint will return Directories associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding Directory; this array represents all grouping and/or associations that would have to be removed to deprovision the Directories from this User Group.   See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/directories ```
+This endpoint will return Directories associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding Directory; this array represents all grouping and/or associations that would have to be removed to deprovision the Directories from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/directories ```
 
 
 ### Parameters
@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 
 List the G Suite instances associated with a User Group
 
-This endpoint will return the G Suite instances associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding G Suite instance; this array represents all grouping and/or associations that would have to be removed to deprovision the G Suite instance from this User Group.   See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/gsuites ```
+This endpoint will return the G Suite instances associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding G Suite instance; this array represents all grouping and/or associations that would have to be removed to deprovision the G Suite instance from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/gsuites ```
 
 
 ### Parameters
@@ -361,7 +361,7 @@ Name | Type | Description  | Notes
 
 List the LDAP Servers associated with a User Group
 
-This endpoint will return the LDAP Servers associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding LDAP Server; this array represents all grouping and/or associations that would have to be removed to deprovision the LDAP Server from this User Group.   See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/ldapservers ```
+This endpoint will return the LDAP Servers associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding LDAP Server; this array represents all grouping and/or associations that would have to be removed to deprovision the LDAP Server from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/ldapservers ```
 
 
 ### Parameters
@@ -394,7 +394,7 @@ Name | Type | Description  | Notes
 
 List the Office 365 instances associated with a User Group
 
-This endpoint will return the Office 365 instances associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding Office 365 instance; this array represents all grouping and/or associations that would have to be removed to deprovision the Office 365 instance from this User Group.   See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/office365s ```
+This endpoint will return the Office 365 instances associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding Office 365 instance; this array represents all grouping and/or associations that would have to be removed to deprovision the Office 365 instance from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/office365s ```
 
 
 ### Parameters
@@ -427,7 +427,7 @@ Name | Type | Description  | Notes
 
 List the RADIUS Servers associated with a User Group
 
-This endpoint will return a RADIUS Servers associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding RADIUS Server; this array represents all grouping and/or associations that would have to be removed to deprovision the RADIUS Server from this User Group.   See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/radiusservers ```
+This endpoint will return a RADIUS Servers associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding RADIUS Server; this array represents all grouping and/or associations that would have to be removed to deprovision the RADIUS Server from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/radiusservers ```
 
 
 ### Parameters
@@ -460,7 +460,7 @@ Name | Type | Description  | Notes
 
 List the Systems associated with a User Group
 
-This endpoint will return Systems associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding System; this array represents all grouping and/or associations that would have to be removed to deprovision the System from this User Group.   See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/systems ```
+This endpoint will return Systems associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding System; this array represents all grouping and/or associations that would have to be removed to deprovision the System from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/systems ```
 
 
 ### Parameters
@@ -493,7 +493,7 @@ Name | Type | Description  | Notes
 
 List the System Groups associated with User Groups
 
-This endpoint will return System Groups associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding System Group; this array represents all grouping and/or associations that would have to be removed to deprovision the System Group from this User Group.   See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/systemsgroups ```
+This endpoint will return System Groups associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding System Group; this array represents all grouping and/or associations that would have to be removed to deprovision the System Group from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/systemsgroups ```
 
 
 ### Parameters

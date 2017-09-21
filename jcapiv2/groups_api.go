@@ -1,7 +1,7 @@
 /* 
  * JumpCloud APIs
  *
- * V1 and V2 versions of JumpCloud's API. The next version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings. The most recent version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings.
+ * V1 & V2 versions of JumpCloud's API. The next version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings. The most recent version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -38,7 +38,7 @@ func NewGroupsApiWithBasePath(basePath string) *GroupsApi {
 
 /**
  * List All Groups
- * This endpoint returns all Groups that exist in your organization.   #### Available filter fields:   - &#x60;name&#x60;   - &#x60;disabled&#x60;   - &#x60;type&#x60;   -     #### Sample Request  &#x60;&#x60;&#x60;  https://console.jumpcloud.com/api/v2/groups &#x60;&#x60;&#x60;
+ * This endpoint returns all Groups that exist in your organization.  #### Available filter fields:   - &#x60;name&#x60;   - &#x60;disabled&#x60;   - &#x60;type&#x60;  #### Sample Request  &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/groups &#x60;&#x60;&#x60;
  *
  * @param contentType 
  * @param accept 

@@ -1,7 +1,7 @@
 /* 
  * JumpCloud APIs
  *
- * V1 and V2 versions of JumpCloud's API. The next version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings. The most recent version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings.
+ * V1 & V2 versions of JumpCloud's API. The next version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings. The most recent version of JumpCloud's API. This set of endpoints allows JumpCloud customers to manage objects, groupings and mappings.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -188,7 +188,7 @@ func (a GraphApi) GraphActiveDirectoryAssociationsPost(activedirectoryId string,
 
 /**
  * List the User Groups associated with an Active Directory instance
- * This endpoint will return User Groups associated with an Active Directory instance. Each element will contain the group&#39;s type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this Active Directory instance to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this Active Directory instance.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/activedirectories/{activedirectory_id}/usersgroups &#x60;&#x60;&#x60;
+ * This endpoint will return User Groups associated with an Active Directory instance. Each element will contain the group&#39;s type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this Active Directory instance to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this Active Directory instance.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/activedirectories/{activedirectory_id}/usersgroups &#x60;&#x60;&#x60;
  *
  * @param activedirectoryId ObjectID of the Active Directory instance.
  * @param contentType 
@@ -411,7 +411,7 @@ func (a GraphApi) GraphApplicationAssociationsPost(applicationId string, content
 
 /**
  * List the Users associated with an Application
- * This endpoint will return Users associated with an Application. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this Application to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this Application.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/applications/{application_id}/users &#x60;&#x60;&#x60;
+ * This endpoint will return Users associated with an Application. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this Application to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this Application.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/applications/{application_id}/users &#x60;&#x60;&#x60;
  *
  * @param applicationId ObjectID of the Application.
  * @param contentType 
@@ -485,7 +485,7 @@ func (a GraphApi) GraphApplicationTraverseUser(applicationId string, contentType
 
 /**
  * List the User Groups associated with an Application
- * This endpoint will return User Groups associated with an Application. Each element will contain the group&#39;s type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates  each path from this Application to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this Application.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/applications/{application_id}/usergroups &#x60;&#x60;&#x60;
+ * This endpoint will return User Groups associated with an Application. Each element will contain the group&#39;s type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates  each path from this Application to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this Application.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/applications/{application_id}/usergroups &#x60;&#x60;&#x60;
  *
  * @param applicationId ObjectID of the Application.
  * @param contentType 
@@ -708,7 +708,7 @@ func (a GraphApi) GraphCommandAssociationsPost(commandId string, contentType str
 
 /**
  * List the Systems associated with a Command
- * This endpoint will return Systems associated with a Command. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this Command to the corresponding System; this array represents all grouping and/or associations that would have to be removed to deprovision the System from this Command.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/commands/{command_id}/systems &#x60;&#x60;&#x60;
+ * This endpoint will return Systems associated with a Command. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this Command to the corresponding System; this array represents all grouping and/or associations that would have to be removed to deprovision the System from this Command.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/commands/{command_id}/systems &#x60;&#x60;&#x60;
  *
  * @param commandId ObjectID of the Command.
  * @param contentType 
@@ -782,7 +782,7 @@ func (a GraphApi) GraphCommandTraverseSystem(commandId string, contentType strin
 
 /**
  * List the System Groups associated with a Command
- * This endpoint will return System Groups associated with a Command. Each element will contain the group&#39;s type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this Command to the corresponding System Group; this array represents all grouping and/or associations that would have to be removed to deprovision the System Group from this Command.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/commands/{command_id}/systemsgroups &#x60;&#x60;&#x60;
+ * This endpoint will return System Groups associated with a Command. Each element will contain the group&#39;s type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this Command to the corresponding System Group; this array represents all grouping and/or associations that would have to be removed to deprovision the System Group from this Command.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/commands/{command_id}/systemsgroups &#x60;&#x60;&#x60;
  *
  * @param commandId ObjectID of the Command.
  * @param contentType 
@@ -999,7 +999,7 @@ func (a GraphApi) GraphGSuiteAssociationsPost(gsuiteId string, body GraphManagem
 
 /**
  * List the Users associated with a G Suite instance
- * This endpoint will return Users associated with a G Suite instance. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this G Suite instance to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this G Suite instance.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/users &#x60;&#x60;&#x60;
+ * This endpoint will return Users associated with a G Suite instance. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this G Suite instance to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this G Suite instance.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/users &#x60;&#x60;&#x60;
  *
  * @param gsuiteId ObjectID of the G Suite instance.
  * @param contentType 
@@ -1073,7 +1073,7 @@ func (a GraphApi) GraphGSuiteTraverseUser(gsuiteId string, contentType string, a
 
 /**
  * List the User Groups associated with a G Suite instance
- * This endpoint will return User Groups associated with a G Suite instance. Each element will contain the group&#39;s type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this G Suite instance to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this G Suite instance.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/usersgroups &#x60;&#x60;&#x60;
+ * This endpoint will return User Groups associated with a G Suite instance. Each element will contain the group&#39;s type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this G Suite instance to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this G Suite instance.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/usersgroups &#x60;&#x60;&#x60;
  *
  * @param gsuiteId ObjectID of the G Suite instance.
  * @param contentType 
@@ -1296,7 +1296,7 @@ func (a GraphApi) GraphLdapServerAssociationsPost(ldapserverId string, contentTy
 
 /**
  * List the Users associated with a LDAP Server
- * This endpoint will return Users associated with an LDAP server instance. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this LDAP server instance to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this LDAP server instance.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/ldapservers/{ldapserver_id}/users &#x60;&#x60;&#x60;
+ * This endpoint will return Users associated with an LDAP server instance. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this LDAP server instance to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this LDAP server instance.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/ldapservers/{ldapserver_id}/users &#x60;&#x60;&#x60;
  *
  * @param ldapserverId ObjectID of the LDAP Server.
  * @param contentType 
@@ -1370,7 +1370,7 @@ func (a GraphApi) GraphLdapServerTraverseUser(ldapserverId string, contentType s
 
 /**
  * List the User Groups associated with a LDAP Server
- * This endpoint will return User Groups associated with a LDAP server instance. Each element will contain the group&#39;s type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this LDAP server instance to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this LDAP server instance.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/ldapservers/{ldapserver_id}/usersgroups &#x60;&#x60;&#x60;
+ * This endpoint will return User Groups associated with a LDAP server instance. Each element will contain the group&#39;s type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this LDAP server instance to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this LDAP server instance.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/ldapservers/{ldapserver_id}/usersgroups &#x60;&#x60;&#x60;
  *
  * @param ldapserverId ObjectID of the LDAP Server.
  * @param contentType 
@@ -1593,7 +1593,7 @@ func (a GraphApi) GraphOffice365AssociationsPost(office365Id string, contentType
 
 /**
  * List the Users associated with an Office 365 instance
- * This endpoint will return Users associated with an Office 365 instance. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this Office 365 instance to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this Office 365 instance.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/office365s/{office365_id}/users &#x60;&#x60;&#x60;
+ * This endpoint will return Users associated with an Office 365 instance. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this Office 365 instance to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this Office 365 instance.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/office365s/{office365_id}/users &#x60;&#x60;&#x60;
  *
  * @param office365Id ObjectID of the Office 365 suite.
  * @param contentType 
@@ -1667,7 +1667,7 @@ func (a GraphApi) GraphOffice365TraverseUser(office365Id string, contentType str
 
 /**
  * List the User Groups associated with an Office 365 instance
- * This endpoint will return User Groups associated with an Office 365 instance. Each element will contain the group&#39;s type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this Office 365 instance to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this Office 365 instance.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/office365s/{office365_id}/usergroups &#x60;&#x60;&#x60;
+ * This endpoint will return User Groups associated with an Office 365 instance. Each element will contain the group&#39;s type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this Office 365 instance to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this Office 365 instance.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/office365s/{office365_id}/usergroups &#x60;&#x60;&#x60;
  *
  * @param office365Id ObjectID of the Office 365 suite.
  * @param contentType 
@@ -1890,7 +1890,7 @@ func (a GraphApi) GraphPolicyAssociationsPost(policyId string, contentType strin
 
 /**
  * List the Systems associated with a Policy
- * This endpoint will return Systems associated with a Policy. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this Policy to the corresponding System; this array represents all grouping and/or associations that would have to be removed to deprovision the System from this Policy.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/policies/{policy_id}/systems &#x60;&#x60;&#x60;
+ * This endpoint will return Systems associated with a Policy. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this Policy to the corresponding System; this array represents all grouping and/or associations that would have to be removed to deprovision the System from this Policy.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/policies/{policy_id}/systems &#x60;&#x60;&#x60;
  *
  * @param policyId ObjectID of the Command.
  * @param contentType 
@@ -1964,7 +1964,7 @@ func (a GraphApi) GraphPolicyTraverseSystem(policyId string, contentType string,
 
 /**
  * List the System Groups associated with a Policy
- * This endpoint will return System Groups associated with a Policy. Each element will contain the group&#39;s type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this Policy to the corresponding System Group; this array represents all grouping and/or associations that would have to be removed to deprovision the System Group from this Policy.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/policies/{policy_id}/systemsgroups &#x60;&#x60;&#x60;
+ * This endpoint will return System Groups associated with a Policy. Each element will contain the group&#39;s type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this Policy to the corresponding System Group; this array represents all grouping and/or associations that would have to be removed to deprovision the System Group from this Policy.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/policies/{policy_id}/systemsgroups &#x60;&#x60;&#x60;
  *
  * @param policyId ObjectID of the Command.
  * @param contentType 
@@ -2187,7 +2187,7 @@ func (a GraphApi) GraphRadiusServerAssociationsPost(radiusserverId string, conte
 
 /**
  * List the Users associated with a Radius Server
- * This endpoint will return Users associated with a RADIUS server instance. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this RADIUS server instance to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this RADIUS server instance.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.   #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/radiusservers/{radiusserver_id}/users
+ * This endpoint will return Users associated with a RADIUS server instance. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this RADIUS server instance to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this RADIUS server instance.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.   #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/radiusservers/{radiusserver_id}/users
  *
  * @param radiusserverId ObjectID of the Radius Server.
  * @param contentType 
@@ -2261,7 +2261,7 @@ func (a GraphApi) GraphRadiusServerTraverseUser(radiusserverId string, contentTy
 
 /**
  * List the User Groups associated with a Radius Server
- * This endpoint will return User Groups associated with a RADIUS server instance. Each element will contain the group&#39;s type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this RADIUS server instance to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this RADIUS server instance.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/radiusservers/{radiusserver_id}/usergroups
+ * This endpoint will return User Groups associated with a RADIUS server instance. Each element will contain the group&#39;s type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this RADIUS server instance to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this RADIUS server instance.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/radiusservers/{radiusserver_id}/usergroups
  *
  * @param radiusserverId ObjectID of the Radius Server.
  * @param contentType 
@@ -2335,7 +2335,7 @@ func (a GraphApi) GraphRadiusServerTraverseUserGroup(radiusserverId string, cont
 
 /**
  * List the associations of a System
- * This endpoint returns the _direct_ associations of a System.  A direct association can be a non-homogenous relationship between 2 different objects. for example Systems and Users.    #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systems/{system_id}/associations?targets&#x3D;user &#x60;&#x60;&#x60;
+ * This endpoint returns the _direct_ associations of a System.  A direct association can be a non-homogenous relationship between 2 different objects. for example Systems and Users.   #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systems/{system_id}/associations?targets&#x3D;user &#x60;&#x60;&#x60;
  *
  * @param systemId ObjectID of the System.
  * @param targets 
@@ -2413,7 +2413,7 @@ func (a GraphApi) GraphSystemAssociationsList(systemId string, targets []string,
 
 /**
  * Manage associations of a System
- * This endpoint allows you to manage the _direct_ associations of a System.  A direct association can be a non-homogenous relationship between 2 different objects. for example Systems and Users.    #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systems/{system_id}/associations &#x60;&#x60;&#x60;
+ * This endpoint allows you to manage the _direct_ associations of a System.  A direct association can be a non-homogenous relationship between 2 different objects. for example Systems and Users.   #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systems/{system_id}/associations &#x60;&#x60;&#x60;
  *
  * @param systemId ObjectID of the System.
  * @param contentType 
@@ -2484,7 +2484,7 @@ func (a GraphApi) GraphSystemAssociationsPost(systemId string, contentType strin
 
 /**
  * List the associations of a System Group
- * This endpoint returns the _direct_ associations of a System Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example System Groups and Users.    #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/associations?targets&#x3D;user &#x60;&#x60;&#x60;
+ * This endpoint returns the _direct_ associations of a System Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example System Groups and Users.   #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/associations?targets&#x3D;user &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the System Group.
  * @param targets 
@@ -2562,7 +2562,7 @@ func (a GraphApi) GraphSystemGroupAssociationsList(groupId string, targets []str
 
 /**
  * Manage the associations of a System Group
- * This endpoint allows you to manage the _direct_ associations of a System Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example System Groups and Users.    #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/associations &#x60;&#x60;&#x60;
+ * This endpoint allows you to manage the _direct_ associations of a System Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example System Groups and Users.   #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/associations &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the System Group.
  * @param contentType 
@@ -2570,7 +2570,7 @@ func (a GraphApi) GraphSystemGroupAssociationsList(groupId string, targets []str
  * @param body 
  * @return void
  */
-func (a GraphApi) GraphSystemGroupAssociationsPost(groupId string, contentType string, accept string, body GraphManagementReq) (*APIResponse, error) {
+func (a GraphApi) GraphSystemGroupAssociationsPost(groupId string, contentType string, accept string, body SystemGroupGraphManagementReq) (*APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Post")
 	// create path and map variables
@@ -2707,7 +2707,7 @@ func (a GraphApi) GraphSystemGroupMemberOf(groupId string, contentType string, a
 
 /**
  * List the members of a System Group
- * This endpoint returns the system members of a System Group.  #### Sample Request &#x60;&#x60;&#x60;  https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/members &#x60;&#x60;&#x60;
+ * This endpoint returns the system members of a System Group.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/members &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the System Group.
  * @param contentType 
@@ -2780,8 +2780,79 @@ func (a GraphApi) GraphSystemGroupMembersList(groupId string, contentType string
 }
 
 /**
+ * Manage the members of a System Group
+ * This endpoint allows you to manage the system members of a System Group.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/members &#x60;&#x60;&#x60;
+ *
+ * @param groupId ObjectID of the System Group.
+ * @param contentType 
+ * @param accept 
+ * @param body 
+ * @return void
+ */
+func (a GraphApi) GraphSystemGroupMembersPost(groupId string, contentType string, accept string, body SystemGroupMembersReq) (*APIResponse, error) {
+
+	var localVarHttpMethod = strings.ToUpper("Post")
+	// create path and map variables
+	localVarPath := a.Configuration.BasePath + "/systemgroups/{group_id}/members"
+	localVarPath = strings.Replace(localVarPath, "{"+"group_id"+"}", fmt.Sprintf("%v", groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := make(map[string]string)
+	var localVarPostBody interface{}
+	var localVarFileName string
+	var localVarFileBytes []byte
+	// authentication '(x-api-key)' required
+	// set key with prefix in header
+	localVarHeaderParams["x-api-key"] = a.Configuration.GetAPIKeyWithPrefix("x-api-key")
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
+	}
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// header params "Content-Type"
+	localVarHeaderParams["Content-Type"] = a.Configuration.APIClient.ParameterToString(contentType, "")
+	// header params "Accept"
+	localVarHeaderParams["Accept"] = a.Configuration.APIClient.ParameterToString(accept, "")
+	// body params
+	localVarPostBody = &body
+	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+
+	var localVarURL, _ = url.Parse(localVarPath)
+	localVarURL.RawQuery = localVarQueryParams.Encode()
+	var localVarAPIResponse = &APIResponse{Operation: "GraphSystemGroupMembersPost", Method: localVarHttpMethod, RequestURL: localVarURL.String()}
+	if localVarHttpResponse != nil {
+		localVarAPIResponse.Response = localVarHttpResponse.RawResponse
+		localVarAPIResponse.Payload = localVarHttpResponse.Body()
+	}
+
+	if err != nil {
+		return localVarAPIResponse, err
+	}
+	return localVarAPIResponse, err
+}
+
+/**
  * List the System Group&#39;s membership
- * This endpoint returns all Systems that are a member of this System Group.  #### Sample Request &#x60;&#x60;&#x60;  https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/membership &#x60;&#x60;&#x60;
+ * This endpoint returns all Systems that are a member of this System Group.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/membership &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the System Group.
  * @param contentType 
@@ -2855,7 +2926,7 @@ func (a GraphApi) GraphSystemGroupMembership(groupId string, contentType string,
 
 /**
  * List the Policies associated with a System Group
- * This endpoint will return Policies associated with a System Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this System Group to the corresponding Policy; this array represents all grouping and/or associations that would have to be removed to deprovision the Policy from this System Group.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  This endpoint is not public yet as we haven&#39;t finished the code.
+ * This endpoint will return Policies associated with a System Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this System Group to the corresponding Policy; this array represents all grouping and/or associations that would have to be removed to deprovision the Policy from this System Group.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  This endpoint is not public yet as we haven&#39;t finished the code.
  *
  * @param groupId ObjectID of the System Group.
  * @param contentType 
@@ -2929,7 +3000,7 @@ func (a GraphApi) GraphSystemGroupTraversePolicy(groupId string, contentType str
 
 /**
  * List the Users associated with a System Group
- * This endpoint will return Users associated with a System Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this System Group to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this System Group.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/users &#x60;&#x60;&#x60;
+ * This endpoint will return Users associated with a System Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this System Group to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this System Group.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/users &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the System Group.
  * @param contentType 
@@ -3003,7 +3074,7 @@ func (a GraphApi) GraphSystemGroupTraverseUser(groupId string, contentType strin
 
 /**
  * List the User Groups associated with a System Group
- * This endpoint will return User Groups associated with a System Group. Each element will contain the group&#39;s type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this System Group to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this System Group.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/usergroups &#x60;&#x60;&#x60;
+ * This endpoint will return User Groups associated with a System Group. Each element will contain the group&#39;s type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this System Group to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this System Group.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/usergroups &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the System Group.
  * @param contentType 
@@ -3076,7 +3147,7 @@ func (a GraphApi) GraphSystemGroupTraverseUserGroup(groupId string, contentType 
 }
 
 /**
- * List the System&#39;s parents
+ * List the parent Groups of a System
  * This endpoint returns all the System Groups a System is a member of.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systems/{system_id}/memberof &#x60;&#x60;&#x60;
  *
  * @param systemId ObjectID of the System.
@@ -3151,7 +3222,7 @@ func (a GraphApi) GraphSystemMemberOf(systemId string, contentType string, accep
 
 /**
  * List the Policies associated with a System
- * This endpoint will return Policies associated with a System. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this System to the corresponding Policy; this array represents all grouping and/or associations that would have to be removed to deprovision the Policy from this System.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  This endpoint is not yet public as we have finish the code.
+ * This endpoint will return Policies associated with a System. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this System to the corresponding Policy; this array represents all grouping and/or associations that would have to be removed to deprovision the Policy from this System.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  This endpoint is not yet public as we have finish the code.
  *
  * @param systemId ObjectID of the System.
  * @param contentType 
@@ -3225,7 +3296,7 @@ func (a GraphApi) GraphSystemTraversePolicy(systemId string, contentType string,
 
 /**
  * List the Users associated with a System
- * This endpoint will return Users associated with a System. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this System to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this System.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systems/{system_id}/users &#x60;&#x60;&#x60;
+ * This endpoint will return Users associated with a System. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this System to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this System.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systems/{system_id}/users &#x60;&#x60;&#x60;
  *
  * @param systemId ObjectID of the System.
  * @param contentType 
@@ -3299,7 +3370,7 @@ func (a GraphApi) GraphSystemTraverseUser(systemId string, contentType string, a
 
 /**
  * List the associations of a User
- * This endpoint returns the _direct_ associations of a User.  A direct association can be a non-homogenous relationship between 2 different objects. for example Users and Systems.    #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/users/{user_id}/associations?targets&#x3D;user_group &#x60;&#x60;&#x60;
+ * This endpoint returns the _direct_ associations of a User.  A direct association can be a non-homogenous relationship between 2 different objects. for example Users and Systems.   #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/users/{user_id}/associations?targets&#x3D;user_group &#x60;&#x60;&#x60;
  *
  * @param userId ObjectID of the User.
  * @param targets 
@@ -3377,7 +3448,7 @@ func (a GraphApi) GraphUserAssociationsList(userId string, targets []string, con
 
 /**
  * Manage the associations of a User
- * This endpoint allows you to manage the _direct_ associations of a User.  A direct association can be a non-homogenous relationship between 2 different objects. for example Users and Systems.    #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/users/{user_id}/associations &#x60;&#x60;&#x60;
+ * This endpoint allows you to manage the _direct_ associations of a User.  A direct association can be a non-homogenous relationship between 2 different objects. for example Users and Systems.   #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/users/{user_id}/associations &#x60;&#x60;&#x60;
  *
  * @param userId ObjectID of the User.
  * @param contentType 
@@ -3448,7 +3519,7 @@ func (a GraphApi) GraphUserAssociationsPost(userId string, contentType string, a
 
 /**
  * List the associations of a User Group.
- * This endpoint returns the _direct_ associations of this User Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example User Groups and Users.    #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/group_id}/associations?targets&#x3D;user &#x60;&#x60;&#x60;
+ * This endpoint returns the _direct_ associations of this User Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example User Groups and Users.   #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/group_id}/associations?targets&#x3D;user &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the User Group.
  * @param targets 
@@ -3526,7 +3597,7 @@ func (a GraphApi) GraphUserGroupAssociationsList(groupId string, targets []strin
 
 /**
  * Manage the associations of a User Group
- * This endpoint manages the _direct_ associations of this User Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example User Groups and Users.    #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/group_id}/associations &#x60;&#x60;&#x60;
+ * This endpoint manages the _direct_ associations of this User Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example User Groups and Users.   #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/group_id}/associations &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the User Group.
  * @param contentType 
@@ -3534,7 +3605,7 @@ func (a GraphApi) GraphUserGroupAssociationsList(groupId string, targets []strin
  * @param body 
  * @return void
  */
-func (a GraphApi) GraphUserGroupAssociationsPost(groupId string, contentType string, accept string, body GraphManagementReq) (*APIResponse, error) {
+func (a GraphApi) GraphUserGroupAssociationsPost(groupId string, contentType string, accept string, body UserGroupGraphManagementReq) (*APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Post")
 	// create path and map variables
@@ -3597,7 +3668,7 @@ func (a GraphApi) GraphUserGroupAssociationsPost(groupId string, contentType str
 
 /**
  * List the User Group&#39;s parents
- * This endpoint returns all User Groups a User Group is a member of.  #### Sample Request &#x60;&#x60;&#x60;  https://console.jumpcloud.com/api/v2/usergroups/{group_id}/membersof &#x60;&#x60;&#x60;  Not public yet, as the code is not finished,
+ * This endpoint returns all User Groups a User Group is a member of.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/{group_id}/membersof &#x60;&#x60;&#x60;  Not public yet, as the code is not finished,
  *
  * @param groupId ObjectID of the User Group.
  * @param contentType 
@@ -3671,7 +3742,7 @@ func (a GraphApi) GraphUserGroupMemberOf(groupId string, contentType string, acc
 
 /**
  * List the members of a User Group
- * This endpoint returns the user members of a User Group.  #### Sample Request &#x60;&#x60;&#x60;  https://console.jumpcloud.com/api/v2/usergroups/{group_id}/members &#x60;&#x60;&#x60;
+ * This endpoint returns the user members of a User Group.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/{group_id}/members &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the User Group.
  * @param contentType 
@@ -3745,7 +3816,7 @@ func (a GraphApi) GraphUserGroupMembersList(groupId string, contentType string, 
 
 /**
  * Manage the members of a User Group
- * This endpoint allows you to manage the user members of a User Group.  #### Sample Request &#x60;&#x60;&#x60;  https://console.jumpcloud.com/api/v2/usergroups/{group_id}/members &#x60;&#x60;&#x60;
+ * This endpoint allows you to manage the user members of a User Group.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/{group_id}/members &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the User Group.
  * @param contentType 
@@ -3816,7 +3887,7 @@ func (a GraphApi) GraphUserGroupMembersPost(groupId string, contentType string, 
 
 /**
  * List the User Group&#39;s membership
- * This endpoint returns all users members that are a member of this User Group.  #### Sample Request &#x60;&#x60;&#x60;  https://console.jumpcloud.com/api/v2/usergroups/{group_id}/membership &#x60;&#x60;&#x60;
+ * This endpoint returns all users members that are a member of this User Group.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/{group_id}/membership &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the User Group.
  * @param contentType 
@@ -3890,7 +3961,7 @@ func (a GraphApi) GraphUserGroupMembership(groupId string, contentType string, a
 
 /**
  * List the Active Directories associated with a User Group
- * This endpoint will return the Active Directories associated with a User Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User Group to the corresponding Active Directory; this array represents all grouping and/or associations that would have to be removed to deprovision the Active Directory from this User Group.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/group_id}/activedirectories &#x60;&#x60;&#x60;
+ * This endpoint will return the Active Directories associated with a User Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User Group to the corresponding Active Directory; this array represents all grouping and/or associations that would have to be removed to deprovision the Active Directory from this User Group.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/group_id}/activedirectories &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the User Group.
  * @param contentType 
@@ -3964,7 +4035,7 @@ func (a GraphApi) GraphUserGroupTraverseActiveDirectory(groupId string, contentT
 
 /**
  * List the Applications associated with a User Group
- * This endpoint will return Applications associated with a User Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User Group to the corresponding Application; this array represents all grouping and/or associations that would have to be removed to deprovision the Application from this User Group.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/group_id}/applications &#x60;&#x60;&#x60;
+ * This endpoint will return Applications associated with a User Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User Group to the corresponding Application; this array represents all grouping and/or associations that would have to be removed to deprovision the Application from this User Group.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/group_id}/applications &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the User Group.
  * @param contentType 
@@ -4038,7 +4109,7 @@ func (a GraphApi) GraphUserGroupTraverseApplication(groupId string, contentType 
 
 /**
  * List the Directories associated with a User Group
- * This endpoint will return Directories associated with a User Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User Group to the corresponding Directory; this array represents all grouping and/or associations that would have to be removed to deprovision the Directories from this User Group.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/group_id}/directories &#x60;&#x60;&#x60;
+ * This endpoint will return Directories associated with a User Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User Group to the corresponding Directory; this array represents all grouping and/or associations that would have to be removed to deprovision the Directories from this User Group.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/group_id}/directories &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the User Group.
  * @param contentType 
@@ -4112,7 +4183,7 @@ func (a GraphApi) GraphUserGroupTraverseDirectory(groupId string, contentType st
 
 /**
  * List the G Suite instances associated with a User Group
- * This endpoint will return the G Suite instances associated with a User Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User Group to the corresponding G Suite instance; this array represents all grouping and/or associations that would have to be removed to deprovision the G Suite instance from this User Group.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/group_id}/gsuites &#x60;&#x60;&#x60;
+ * This endpoint will return the G Suite instances associated with a User Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User Group to the corresponding G Suite instance; this array represents all grouping and/or associations that would have to be removed to deprovision the G Suite instance from this User Group.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/group_id}/gsuites &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the User Group.
  * @param contentType 
@@ -4186,7 +4257,7 @@ func (a GraphApi) GraphUserGroupTraverseGSuite(groupId string, contentType strin
 
 /**
  * List the LDAP Servers associated with a User Group
- * This endpoint will return the LDAP Servers associated with a User Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User Group to the corresponding LDAP Server; this array represents all grouping and/or associations that would have to be removed to deprovision the LDAP Server from this User Group.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/group_id}/ldapservers &#x60;&#x60;&#x60;
+ * This endpoint will return the LDAP Servers associated with a User Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User Group to the corresponding LDAP Server; this array represents all grouping and/or associations that would have to be removed to deprovision the LDAP Server from this User Group.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/group_id}/ldapservers &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the User Group.
  * @param contentType 
@@ -4260,7 +4331,7 @@ func (a GraphApi) GraphUserGroupTraverseLdapServer(groupId string, contentType s
 
 /**
  * List the Office 365 instances associated with a User Group
- * This endpoint will return the Office 365 instances associated with a User Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User Group to the corresponding Office 365 instance; this array represents all grouping and/or associations that would have to be removed to deprovision the Office 365 instance from this User Group.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/group_id}/office365s &#x60;&#x60;&#x60;
+ * This endpoint will return the Office 365 instances associated with a User Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User Group to the corresponding Office 365 instance; this array represents all grouping and/or associations that would have to be removed to deprovision the Office 365 instance from this User Group.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/group_id}/office365s &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the User Group.
  * @param contentType 
@@ -4334,7 +4405,7 @@ func (a GraphApi) GraphUserGroupTraverseOffice365(groupId string, contentType st
 
 /**
  * List the RADIUS Servers associated with a User Group
- * This endpoint will return a RADIUS Servers associated with a User Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User Group to the corresponding RADIUS Server; this array represents all grouping and/or associations that would have to be removed to deprovision the RADIUS Server from this User Group.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/group_id}/radiusservers &#x60;&#x60;&#x60;
+ * This endpoint will return a RADIUS Servers associated with a User Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User Group to the corresponding RADIUS Server; this array represents all grouping and/or associations that would have to be removed to deprovision the RADIUS Server from this User Group.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/group_id}/radiusservers &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the User Group.
  * @param contentType 
@@ -4408,7 +4479,7 @@ func (a GraphApi) GraphUserGroupTraverseRadiusServer(groupId string, contentType
 
 /**
  * List the Systems associated with a User Group
- * This endpoint will return Systems associated with a User Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User Group to the corresponding System; this array represents all grouping and/or associations that would have to be removed to deprovision the System from this User Group.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/group_id}/systems &#x60;&#x60;&#x60;
+ * This endpoint will return Systems associated with a User Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User Group to the corresponding System; this array represents all grouping and/or associations that would have to be removed to deprovision the System from this User Group.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/group_id}/systems &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the User Group.
  * @param contentType 
@@ -4482,7 +4553,7 @@ func (a GraphApi) GraphUserGroupTraverseSystem(groupId string, contentType strin
 
 /**
  * List the System Groups associated with User Groups
- * This endpoint will return System Groups associated with a User Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User Group to the corresponding System Group; this array represents all grouping and/or associations that would have to be removed to deprovision the System Group from this User Group.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/group_id}/systemsgroups &#x60;&#x60;&#x60;
+ * This endpoint will return System Groups associated with a User Group. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User Group to the corresponding System Group; this array represents all grouping and/or associations that would have to be removed to deprovision the System Group from this User Group.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/usergroups/group_id}/systemsgroups &#x60;&#x60;&#x60;
  *
  * @param groupId ObjectID of the User Group.
  * @param contentType 
@@ -4555,7 +4626,7 @@ func (a GraphApi) GraphUserGroupTraverseSystemGroup(groupId string, contentType 
 }
 
 /**
- * List the User Group&#39;s parents
+ * List the parent Groups of a User
  * This endpoint returns all the User Groups a User is a member of.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/users/{user_id}/memberof &#x60;&#x60;&#x60;
  *
  * @param userId ObjectID of the User.
@@ -4630,7 +4701,7 @@ func (a GraphApi) GraphUserMemberOf(userId string, contentType string, accept st
 
 /**
  * List the Applications associated with a User
- * This endpoint will return Applications associated with a User. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User to the corresponding Application; this array represents all grouping and/or associations that would have to be removed to deprovision the Application from this User.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/users/{user_id}/applications &#x60;&#x60;&#x60;
+ * This endpoint will return Applications associated with a User. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User to the corresponding Application; this array represents all grouping and/or associations that would have to be removed to deprovision the Application from this User.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/users/{user_id}/applications &#x60;&#x60;&#x60;
  *
  * @param userId ObjectID of the User.
  * @param contentType 
@@ -4704,7 +4775,7 @@ func (a GraphApi) GraphUserTraverseApplication(userId string, contentType string
 
 /**
  * List the Directories associated with a User
- * This endpoint will return Directories associated with a User. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User to the corresponding Directory; this array represents all grouping and/or associations that would have to be removed to deprovision the Directory from this User.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/users/{user_id}/directories &#x60;&#x60;&#x60;
+ * This endpoint will return Directories associated with a User. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User to the corresponding Directory; this array represents all grouping and/or associations that would have to be removed to deprovision the Directory from this User.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/users/{user_id}/directories &#x60;&#x60;&#x60;
  *
  * @param userId ObjectID of the User.
  * @param contentType 
@@ -4778,7 +4849,7 @@ func (a GraphApi) GraphUserTraverseDirectory(userId string, contentType string, 
 
 /**
  * List the G Suite instances associated with a User
- * This endpoint will return G Suite instances associated with a User. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User to the corresponding G Suite instance; this array represents all grouping and/or associations that would have to be removed to deprovision the G Suite instance from this User.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/users/{user_id}/gsuites &#x60;&#x60;&#x60;
+ * This endpoint will return G Suite instances associated with a User. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User to the corresponding G Suite instance; this array represents all grouping and/or associations that would have to be removed to deprovision the G Suite instance from this User.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/users/{user_id}/gsuites &#x60;&#x60;&#x60;
  *
  * @param userId ObjectID of the User.
  * @param contentType 
@@ -4852,7 +4923,7 @@ func (a GraphApi) GraphUserTraverseGSuite(userId string, contentType string, acc
 
 /**
  * List the LDAP servers associated with a User
- * This endpoint will return LDAP Servers associated with a User. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User to the corresponding LDAP Server; this array represents all grouping and/or associations that would have to be removed to deprovision the LDAP Server from this User.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/users/{user_id}/ldapservers &#x60;&#x60;&#x60;
+ * This endpoint will return LDAP Servers associated with a User. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User to the corresponding LDAP Server; this array represents all grouping and/or associations that would have to be removed to deprovision the LDAP Server from this User.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/users/{user_id}/ldapservers &#x60;&#x60;&#x60;
  *
  * @param userId ObjectID of the User.
  * @param contentType 
@@ -4926,7 +4997,7 @@ func (a GraphApi) GraphUserTraverseLdapServer(userId string, contentType string,
 
 /**
  * List the Office 365 instances associated with User
- * This endpoint will return Office 365 instances associated with a User. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User to the corresponding Office 365 instance; this array represents all grouping and/or associations that would have to be removed to deprovision the Office 365 instance from this User.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/users/{user_id}/office365s &#x60;&#x60;&#x60;
+ * This endpoint will return Office 365 instances associated with a User. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User to the corresponding Office 365 instance; this array represents all grouping and/or associations that would have to be removed to deprovision the Office 365 instance from this User.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/users/{user_id}/office365s &#x60;&#x60;&#x60;
  *
  * @param userId ObjectID of the User.
  * @param contentType 
@@ -5000,7 +5071,7 @@ func (a GraphApi) GraphUserTraverseOffice365(userId string, contentType string, 
 
 /**
  * List the RADIUS Servers associated with a User
- * This endpoint will return RADIUS Servers associated with a User. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User to the corresponding RADIUS Server; this array represents all grouping and/or associations that would have to be removed to deprovision the RADIUS Server from this User.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/users/{user_id}/radiusservers &#x60;&#x60;&#x60;
+ * This endpoint will return RADIUS Servers associated with a User. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User to the corresponding RADIUS Server; this array represents all grouping and/or associations that would have to be removed to deprovision the RADIUS Server from this User.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/users/{user_id}/radiusservers &#x60;&#x60;&#x60;
  *
  * @param userId ObjectID of the User.
  * @param contentType 
@@ -5074,7 +5145,7 @@ func (a GraphApi) GraphUserTraverseRadiusServer(userId string, contentType strin
 
 /**
  * List the Systems associated with a User
- * This endpoint will return Systems associated with a User. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User to the corresponding System; this array represents all grouping and/or associations that would have to be removed to deprovision the System from this User.   See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/users/{user_id}/systems &#x60;&#x60;&#x60;
+ * This endpoint will return Systems associated with a User. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this User to the corresponding System; this array represents all grouping and/or associations that would have to be removed to deprovision the System from this User.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/users/{user_id}/systems &#x60;&#x60;&#x60;
  *
  * @param userId ObjectID of the User.
  * @param contentType 
