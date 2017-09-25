@@ -24,14 +24,14 @@ The API v2 yaml file can be found here: `https://github.com/TheJumpCloud/SI/blob
 To generate the API v1 client, run the command below (assuming your API v1 yaml file is `input/index1.yaml`):  
 
 ```
-$ docker-compose run --rm swagger-codegen generate -i /swagger-api/yaml/index1.yaml -l go -c /config/config_v1.json -o /swagger-api/out/jcapiv1
+$ docker-compose run --rm swagger-codegen generate -i /swagger-api/yaml/index1.yaml -l go -c /config/config_v1.json -o /swagger-api/out/v1
 ```
 This will generate the API v1 client files under `output/jcapiv1`
 
 To generate the API v2 client, run the command below (assuming your API v2 yaml file is `input/index2.yaml`):  
 
 ```
-$ docker-compose run --rm swagger-codegen generate -i /swagger-api/yaml/index2.yaml -l go -c /config/config_v2.json -o /swagger-api/out/jcapiv2
+$ docker-compose run --rm swagger-codegen generate -i /swagger-api/yaml/index2.yaml -l go -c /config/config_v2.json -o /swagger-api/out/v2
 ```
 This will generate the API v1 client files under `output/jcapiv1`
 
@@ -39,23 +39,24 @@ Once you are satisfied with the generated API client, you can replace the existi
 
 There currently seems to be a bug with swagger-codegen where it fails to generate certain enum structs correctly (namely GraphType and GroupType). Make sure to run the following commands in order to replace these empty structs with just strings:
 ```
-sed -e ':a' -e 'N' -e '$!ba' -e 's/struct {\n}/string/g' jcapiv2/group_type.go > tmp && mv tmp jcapiv2/group_type.go
-sed -e ':a' -e 'N' -e '$!ba' -e 's/struct {\n}/string/g' jcapiv2/graph_type.go > tmp && mv tmp jcapiv2/graph_type.go
+sed -e ':a' -e 'N' -e '$!ba' -e 's/struct {\n}/string/g' v2/group_type.go > tmp && mv tmp v2/group_type.go
+sed -e ':a' -e 'N' -e '$!ba' -e 's/struct {\n}/string/g' v2/graph_type.go > tmp && mv tmp v2/graph_type.go
 ```
 
 #### Usage Examples
 
 ```
 import (
-  "github.com/TheJumpCloud/jcapi-go/jcapiv2"
+  jcapiv2 "github.com/TheJumpCloud/jcapi-go/v2"
 )
 ...
-// instantiate the API object:
+// instantiate the API object for the group of endpoints you need to use
+// for instance for user groups API:
 userGroupsAPI = jcapiv2.NewUserGroupsApi()
 
 // set up the API key:
 userGroupsAPI.Configuration.APIKey["x-api-key"] = YOUR_API_KEY
 
-// make an API call:
+// make an API call to retrieve a specific user group by id:
 userGroup, apiResponse, err := userGroupsAPI.GroupsUserGet(your_group_id, "application/json", "application/json")
 ```
