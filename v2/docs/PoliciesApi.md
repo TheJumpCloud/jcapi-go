@@ -14,8 +14,8 @@ Method | HTTP request | Description
 [**PoliciesPost**](PoliciesApi.md#PoliciesPost) | **Post** /policies | Create a new Policy
 [**PoliciesPut**](PoliciesApi.md#PoliciesPut) | **Put** /policies/{id} | Update an existing Policy
 [**PolicyresultsGet**](PoliciesApi.md#PolicyresultsGet) | **Get** /policyresults/{id} | Get a specific Policy Result.
-[**PolicyresultsList**](PoliciesApi.md#PolicyresultsList) | **Get** /policies/{policy_id}/policyresults | Lists all the policy results of a given policy.
-[**PolicyresultsList_0**](PoliciesApi.md#PolicyresultsList_0) | **Get** /policyresults | Lists all the policy results for an organization.
+[**PolicyresultsList**](PoliciesApi.md#PolicyresultsList) | **Get** /policyresults | Lists all the policy results for an organization.
+[**PolicyresultsList_0**](PoliciesApi.md#PolicyresultsList_0) | **Get** /policies/{policy_id}/policyresults | Lists all the policy results of a given policy.
 [**PolicytemplatesGet**](PoliciesApi.md#PolicytemplatesGet) | **Get** /policytemplates/{id} | Get a specific Policy Template
 [**PolicytemplatesList**](PoliciesApi.md#PolicytemplatesList) | **Get** /policytemplates | Lists all of the Policy Templates
 
@@ -340,16 +340,15 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PolicyresultsList**
-> []PolicyResult PolicyresultsList($policyId, $contentType, $accept, $fields, $filter, $limit, $skip, $sort, $aggregate)
+> []PolicyResult PolicyresultsList($contentType, $accept, $fields, $filter, $limit, $skip, $sort, $aggregate)
 
-Lists all the policy results of a given policy.
+Lists all the policy results for an organization.
 
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **policyId** | **string**|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **fields** | **string**| The comma separated fields included in the returned records. If omitted the default list of fields will be returned.  | [optional] [default to ]
@@ -375,15 +374,16 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PolicyresultsList_0**
-> []PolicyResult PolicyresultsList_0($contentType, $accept, $fields, $filter, $limit, $skip, $sort, $aggregate)
+> []PolicyResult PolicyresultsList_0($policyId, $contentType, $accept, $fields, $filter, $limit, $skip, $sort, $aggregate)
 
-Lists all the policy results for an organization.
+Lists all the policy results of a given policy.
 
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **policyId** | **string**|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **fields** | **string**| The comma separated fields included in the returned records. If omitted the default list of fields will be returned.  | [optional] [default to ]

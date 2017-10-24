@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **GraphSystemAssociationsList**
-> []GraphConnection GraphSystemAssociationsList($systemId, $targets, $contentType, $accept, $limit, $skip)
+> []GraphConnection GraphSystemAssociationsList($systemId, $targets, $contentType, $accept, $limit, $skip, $date, $authorization)
 
 List the associations of a System
 
@@ -29,6 +29,8 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
  **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **date** | **string**| Current date header for the System Context API | [optional] 
+ **authorization** | **string**| Authorization header for the System Context API | [optional] 
 
 ### Return type
 
@@ -46,7 +48,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemAssociationsPost**
-> GraphSystemAssociationsPost($systemId, $contentType, $accept, $body)
+> GraphSystemAssociationsPost($systemId, $contentType, $accept, $body, $date, $authorization)
 
 Manage associations of a System
 
@@ -61,6 +63,8 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | [optional] 
+ **date** | **string**| Current date header for the System Context API | [optional] 
+ **authorization** | **string**| Authorization header for the System Context API | [optional] 
 
 ### Return type
 
@@ -78,7 +82,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemMemberOf**
-> []GraphObjectWithPaths GraphSystemMemberOf($systemId, $contentType, $accept, $limit, $skip)
+> []GraphObjectWithPaths GraphSystemMemberOf($systemId, $contentType, $accept, $limit, $skip, $date, $authorization)
 
 List the parent Groups of a System
 
@@ -94,6 +98,8 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
  **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **date** | **string**| Current date header for the System Context API | [optional] 
+ **authorization** | **string**| Authorization header for the System Context API | [optional] 
 
 ### Return type
 
@@ -144,7 +150,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemTraverseUser**
-> []GraphObjectWithPaths GraphSystemTraverseUser($systemId, $contentType, $accept, $limit, $skip)
+> []GraphObjectWithPaths GraphSystemTraverseUser($systemId, $contentType, $accept, $limit, $skip, $date, $authorization)
 
 List the Users associated with a System
 
@@ -160,6 +166,8 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
  **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **date** | **string**| Current date header for the System Context API | [optional] 
+ **authorization** | **string**| Authorization header for the System Context API | [optional] 
 
 ### Return type
 

@@ -10,14 +10,9 @@
 
 package v2
 
-type SambaDomainOutput struct {
+type WorkdayRequest struct {
 
-	// Name of this domain
-	Name string `json:"name"`
+	ObjectId string `json:"objectId,omitempty"`
 
-	// Security identifier of this domain
-	Sid string `json:"sid"`
-
-	// Unique identifier of this domain
-	Id string `json:"id"`
+	Name string `json:"name,omitempty"`
 }

@@ -758,9 +758,8 @@ func (a PoliciesApi) PolicyresultsGet(id string, contentType string, accept stri
 }
 
 /**
- * Lists all the policy results of a given policy.
+ * Lists all the policy results for an organization.
  *
- * @param policyId 
  * @param contentType 
  * @param accept 
  * @param fields The comma separated fields included in the returned records. If omitted the default list of fields will be returned. 
@@ -771,12 +770,11 @@ func (a PoliciesApi) PolicyresultsGet(id string, contentType string, accept stri
  * @param aggregate 
  * @return []PolicyResult
  */
-func (a PoliciesApi) PolicyresultsList(policyId string, contentType string, accept string, fields string, filter string, limit int32, skip int32, sort string, aggregate string) ([]PolicyResult, *APIResponse, error) {
+func (a PoliciesApi) PolicyresultsList(contentType string, accept string, fields string, filter string, limit int32, skip int32, sort string, aggregate string) ([]PolicyResult, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
-	localVarPath := a.Configuration.BasePath + "/policies/{policy_id}/policyresults"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_id"+"}", fmt.Sprintf("%v", policyId), -1)
+	localVarPath := a.Configuration.BasePath + "/policyresults"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -839,8 +837,9 @@ func (a PoliciesApi) PolicyresultsList(policyId string, contentType string, acce
 }
 
 /**
- * Lists all the policy results for an organization.
+ * Lists all the policy results of a given policy.
  *
+ * @param policyId 
  * @param contentType 
  * @param accept 
  * @param fields The comma separated fields included in the returned records. If omitted the default list of fields will be returned. 
@@ -851,11 +850,12 @@ func (a PoliciesApi) PolicyresultsList(policyId string, contentType string, acce
  * @param aggregate 
  * @return []PolicyResult
  */
-func (a PoliciesApi) PolicyresultsList_1(contentType string, accept string, fields string, filter string, limit int32, skip int32, sort string, aggregate string) ([]PolicyResult, *APIResponse, error) {
+func (a PoliciesApi) PolicyresultsList_1(policyId string, contentType string, accept string, fields string, filter string, limit int32, skip int32, sort string, aggregate string) ([]PolicyResult, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
-	localVarPath := a.Configuration.BasePath + "/policyresults"
+	localVarPath := a.Configuration.BasePath + "/policies/{policy_id}/policyresults"
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_id"+"}", fmt.Sprintf("%v", policyId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

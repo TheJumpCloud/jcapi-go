@@ -132,8 +132,8 @@ Class | Method | HTTP request | Description
 *PoliciesApi* | [**PoliciesPost**](docs/PoliciesApi.md#policiespost) | **Post** /policies | Create a new Policy
 *PoliciesApi* | [**PoliciesPut**](docs/PoliciesApi.md#policiesput) | **Put** /policies/{id} | Update an existing Policy
 *PoliciesApi* | [**PolicyresultsGet**](docs/PoliciesApi.md#policyresultsget) | **Get** /policyresults/{id} | Get a specific Policy Result.
-*PoliciesApi* | [**PolicyresultsList**](docs/PoliciesApi.md#policyresultslist) | **Get** /policies/{policy_id}/policyresults | Lists all the policy results of a given policy.
-*PoliciesApi* | [**PolicyresultsList_0**](docs/PoliciesApi.md#policyresultslist_0) | **Get** /policyresults | Lists all the policy results for an organization.
+*PoliciesApi* | [**PolicyresultsList**](docs/PoliciesApi.md#policyresultslist) | **Get** /policyresults | Lists all the policy results for an organization.
+*PoliciesApi* | [**PolicyresultsList_0**](docs/PoliciesApi.md#policyresultslist_0) | **Get** /policies/{policy_id}/policyresults | Lists all the policy results of a given policy.
 *PoliciesApi* | [**PolicytemplatesGet**](docs/PoliciesApi.md#policytemplatesget) | **Get** /policytemplates/{id} | Get a specific Policy Template
 *PoliciesApi* | [**PolicytemplatesList**](docs/PoliciesApi.md#policytemplateslist) | **Get** /policytemplates | Lists all of the Policy Templates
 *PolicytemplatesApi* | [**PolicytemplatesGet**](docs/PolicytemplatesApi.md#policytemplatesget) | **Get** /policytemplates/{id} | Get a specific Policy Template
@@ -198,12 +198,20 @@ Class | Method | HTTP request | Description
 *UsersApi* | [**GraphUserTraverseOffice365**](docs/UsersApi.md#graphusertraverseoffice365) | **Get** /users/{user_id}/office365s | List the Office 365 instances associated with User
 *UsersApi* | [**GraphUserTraverseRadiusServer**](docs/UsersApi.md#graphusertraverseradiusserver) | **Get** /users/{user_id}/radiusservers | List the RADIUS Servers associated with a User
 *UsersApi* | [**GraphUserTraverseSystem**](docs/UsersApi.md#graphusertraversesystem) | **Get** /users/{user_id}/systems | List the Systems associated with a User
+*WorkdayApi* | [**WorkdaysDelete**](docs/WorkdayApi.md#workdaysdelete) | **Delete** /workdays/{id} | Delete Workday
+*WorkdayApi* | [**WorkdaysGet**](docs/WorkdayApi.md#workdaysget) | **Get** /workdays/{id} | Get Workday
+*WorkdayApi* | [**WorkdaysList**](docs/WorkdayApi.md#workdayslist) | **Get** /workdays | List Workdays
+*WorkdayApi* | [**WorkdaysPost**](docs/WorkdayApi.md#workdayspost) | **Post** /workdays | Create new Workday
+*WorkdayApi* | [**WorkdaysPut**](docs/WorkdayApi.md#workdaysput) | **Put** /workdays/{id} | Update Workday
+*WorkdayApi* | [**WorkdaysReport**](docs/WorkdayApi.md#workdaysreport) | **Get** /workdays/{id}/report | Get Workday Report Results
+*WorkdayApi* | [**WorkdaysSettings**](docs/WorkdayApi.md#workdayssettings) | **Get** /workdays/settings | Get Workday Settings
 
 
 ## Documentation For Models
 
  - [ActiveDirectoryInput](docs/ActiveDirectoryInput.md)
  - [ActiveDirectoryOutput](docs/ActiveDirectoryOutput.md)
+ - [Body](docs/Body.md)
  - [Directory](docs/Directory.md)
  - [GraphConnection](docs/GraphConnection.md)
  - [GraphManagementReq](docs/GraphManagementReq.md)
@@ -212,9 +220,11 @@ Class | Method | HTTP request | Description
  - [GraphType](docs/GraphType.md)
  - [Group](docs/Group.md)
  - [GroupType](docs/GroupType.md)
+ - [InlineResponse200](docs/InlineResponse200.md)
  - [LdapServerInput](docs/LdapServerInput.md)
  - [LdapServerOutput](docs/LdapServerOutput.md)
  - [ModelError](docs/ModelError.md)
+ - [OauthCodeInput](docs/OauthCodeInput.md)
  - [Policy](docs/Policy.md)
  - [PolicyRequest](docs/PolicyRequest.md)
  - [PolicyRequestTemplate](docs/PolicyRequestTemplate.md)
@@ -236,6 +246,12 @@ Class | Method | HTTP request | Description
  - [UserGroupDataAttributesPosixGroups](docs/UserGroupDataAttributesPosixGroups.md)
  - [UserGroupGraphManagementReq](docs/UserGroupGraphManagementReq.md)
  - [UserGroupMembersReq](docs/UserGroupMembersReq.md)
+ - [WorkdayInput](docs/WorkdayInput.md)
+ - [WorkdayOutput](docs/WorkdayOutput.md)
+ - [WorkdayReportResult](docs/WorkdayReportResult.md)
+ - [WorkdayReportRow](docs/WorkdayReportRow.md)
+ - [WorkdayRequest](docs/WorkdayRequest.md)
+ - [WorkdaysOauth](docs/WorkdaysOauth.md)
 
 
 ## Documentation For Authorization

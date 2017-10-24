@@ -1,10 +1,11 @@
-# SambaDomainInput
+# WorkdayInput
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | Name of this domain | [default to null]
-**Sid** | **string** | Security identifier of this domain | [default to null]
+**ReportUrl** | **string** |  | [optional] [default to null]
+**Name** | **string** |  | [optional] [default to null]
+**Oauth** | [**OauthCodeInput**](oauth-code-input.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

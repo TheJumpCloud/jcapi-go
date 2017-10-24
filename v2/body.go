@@ -10,14 +10,11 @@
 
 package v2
 
-type SambaDomainOutput struct {
+type Body struct {
 
-	// Name of this domain
 	Name string `json:"name"`
 
-	// Security identifier of this domain
-	Sid string `json:"sid"`
+	ReportUrl string `json:"reportUrl"`
 
-	// Unique identifier of this domain
-	Id string `json:"id"`
+	Oauth WorkdaysOauth `json:"oauth,omitempty"`
 }

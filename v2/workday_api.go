@@ -17,128 +17,42 @@ import (
 	"fmt"
 )
 
-type SystemsApi struct {
+type WorkdayApi struct {
 	Configuration *Configuration
 }
 
-func NewSystemsApi() *SystemsApi {
+func NewWorkdayApi() *WorkdayApi {
 	configuration := NewConfiguration()
-	return &SystemsApi{
+	return &WorkdayApi{
 		Configuration: configuration,
 	}
 }
 
-func NewSystemsApiWithBasePath(basePath string) *SystemsApi {
+func NewWorkdayApiWithBasePath(basePath string) *WorkdayApi {
 	configuration := NewConfiguration()
 	configuration.BasePath = basePath
 
-	return &SystemsApi{
+	return &WorkdayApi{
 		Configuration: configuration,
 	}
 }
 
 /**
- * List the associations of a System
- * This endpoint returns the _direct_ associations of a System.  A direct association can be a non-homogenous relationship between 2 different objects. for example Systems and Users.   #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systems/{system_id}/associations?targets&#x3D;user &#x60;&#x60;&#x60;
+ * Delete Workday
+ * This endpoint allows you to delete a workday
  *
- * @param systemId ObjectID of the System.
- * @param targets 
- * @param contentType 
- * @param accept 
- * @param limit The number of records to return at once.
- * @param skip The offset into the records to return.
- * @param date Current date header for the System Context API
- * @param authorization Authorization header for the System Context API
- * @return []GraphConnection
- */
-func (a SystemsApi) GraphSystemAssociationsList(systemId string, targets []string, contentType string, accept string, limit int32, skip int32, date string, authorization string) ([]GraphConnection, *APIResponse, error) {
-
-	var localVarHttpMethod = strings.ToUpper("Get")
-	// create path and map variables
-	localVarPath := a.Configuration.BasePath + "/systems/{system_id}/associations"
-	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := make(map[string]string)
-	var localVarPostBody interface{}
-	var localVarFileName string
-	var localVarFileBytes []byte
-	// authentication '(x-api-key)' required
-	// set key with prefix in header
-	localVarHeaderParams["x-api-key"] = a.Configuration.GetAPIKeyWithPrefix("x-api-key")
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	var targetsCollectionFormat = "csv"
-	localVarQueryParams.Add("targets", a.Configuration.APIClient.ParameterToString(targets, targetsCollectionFormat))
-
-	localVarQueryParams.Add("limit", a.Configuration.APIClient.ParameterToString(limit, ""))
-	localVarQueryParams.Add("skip", a.Configuration.APIClient.ParameterToString(skip, ""))
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-		}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
-	}
-	// header params "Content-Type"
-	localVarHeaderParams["Content-Type"] = a.Configuration.APIClient.ParameterToString(contentType, "")
-	// header params "Accept"
-	localVarHeaderParams["Accept"] = a.Configuration.APIClient.ParameterToString(accept, "")
-	// header params "Date"
-	localVarHeaderParams["Date"] = a.Configuration.APIClient.ParameterToString(date, "")
-	// header params "Authorization"
-	localVarHeaderParams["Authorization"] = a.Configuration.APIClient.ParameterToString(authorization, "")
-	var successPayload = new([]GraphConnection)
-	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
-
-	var localVarURL, _ = url.Parse(localVarPath)
-	localVarURL.RawQuery = localVarQueryParams.Encode()
-	var localVarAPIResponse = &APIResponse{Operation: "GraphSystemAssociationsList", Method: localVarHttpMethod, RequestURL: localVarURL.String()}
-	if localVarHttpResponse != nil {
-		localVarAPIResponse.Response = localVarHttpResponse.RawResponse
-		localVarAPIResponse.Payload = localVarHttpResponse.Body()
-	}
-
-	if err != nil {
-		return *successPayload, localVarAPIResponse, err
-	}
-	err = json.Unmarshal(localVarHttpResponse.Body(), &successPayload)
-	return *successPayload, localVarAPIResponse, err
-}
-
-/**
- * Manage associations of a System
- * This endpoint allows you to manage the _direct_ associations of a System.  A direct association can be a non-homogenous relationship between 2 different objects. for example Systems and Users.   #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systems/{system_id}/associations &#x60;&#x60;&#x60;
- *
- * @param systemId ObjectID of the System.
+ * @param id 
  * @param contentType 
  * @param accept 
  * @param body 
- * @param date Current date header for the System Context API
- * @param authorization Authorization header for the System Context API
  * @return void
  */
-func (a SystemsApi) GraphSystemAssociationsPost(systemId string, contentType string, accept string, body GraphManagementReq, date string, authorization string) (*APIResponse, error) {
+func (a WorkdayApi) WorkdaysDelete(id string, contentType string, accept string, body WorkdayRequest) (*APIResponse, error) {
 
-	var localVarHttpMethod = strings.ToUpper("Post")
+	var localVarHttpMethod = strings.ToUpper("Delete")
 	// create path and map variables
-	localVarPath := a.Configuration.BasePath + "/systems/{system_id}/associations"
-	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
+	localVarPath := a.Configuration.BasePath + "/workdays/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -176,17 +90,13 @@ func (a SystemsApi) GraphSystemAssociationsPost(systemId string, contentType str
 	localVarHeaderParams["Content-Type"] = a.Configuration.APIClient.ParameterToString(contentType, "")
 	// header params "Accept"
 	localVarHeaderParams["Accept"] = a.Configuration.APIClient.ParameterToString(accept, "")
-	// header params "Date"
-	localVarHeaderParams["Date"] = a.Configuration.APIClient.ParameterToString(date, "")
-	// header params "Authorization"
-	localVarHeaderParams["Authorization"] = a.Configuration.APIClient.ParameterToString(authorization, "")
 	// body params
 	localVarPostBody = &body
 	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 
 	var localVarURL, _ = url.Parse(localVarPath)
 	localVarURL.RawQuery = localVarQueryParams.Encode()
-	var localVarAPIResponse = &APIResponse{Operation: "GraphSystemAssociationsPost", Method: localVarHttpMethod, RequestURL: localVarURL.String()}
+	var localVarAPIResponse = &APIResponse{Operation: "WorkdaysDelete", Method: localVarHttpMethod, RequestURL: localVarURL.String()}
 	if localVarHttpResponse != nil {
 		localVarAPIResponse.Response = localVarHttpResponse.RawResponse
 		localVarAPIResponse.Payload = localVarHttpResponse.Body()
@@ -199,24 +109,19 @@ func (a SystemsApi) GraphSystemAssociationsPost(systemId string, contentType str
 }
 
 /**
- * List the parent Groups of a System
- * This endpoint returns all the System Groups a System is a member of.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systems/{system_id}/memberof &#x60;&#x60;&#x60;
+ * Get Workday
  *
- * @param systemId ObjectID of the System.
+ * @param id 
  * @param contentType 
  * @param accept 
- * @param limit The number of records to return at once.
- * @param skip The offset into the records to return.
- * @param date Current date header for the System Context API
- * @param authorization Authorization header for the System Context API
- * @return []GraphObjectWithPaths
+ * @return *WorkdayOutput
  */
-func (a SystemsApi) GraphSystemMemberOf(systemId string, contentType string, accept string, limit int32, skip int32, date string, authorization string) ([]GraphObjectWithPaths, *APIResponse, error) {
+func (a WorkdayApi) WorkdaysGet(id string, contentType string, accept string) (*WorkdayOutput, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
-	localVarPath := a.Configuration.BasePath + "/systems/{system_id}/memberof"
-	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
+	localVarPath := a.Configuration.BasePath + "/workdays/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -231,8 +136,6 @@ func (a SystemsApi) GraphSystemMemberOf(systemId string, contentType string, acc
 	for key := range a.Configuration.DefaultHeader {
 		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	localVarQueryParams.Add("limit", a.Configuration.APIClient.ParameterToString(limit, ""))
-	localVarQueryParams.Add("skip", a.Configuration.APIClient.ParameterToString(skip, ""))
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -256,16 +159,89 @@ func (a SystemsApi) GraphSystemMemberOf(systemId string, contentType string, acc
 	localVarHeaderParams["Content-Type"] = a.Configuration.APIClient.ParameterToString(contentType, "")
 	// header params "Accept"
 	localVarHeaderParams["Accept"] = a.Configuration.APIClient.ParameterToString(accept, "")
-	// header params "Date"
-	localVarHeaderParams["Date"] = a.Configuration.APIClient.ParameterToString(date, "")
-	// header params "Authorization"
-	localVarHeaderParams["Authorization"] = a.Configuration.APIClient.ParameterToString(authorization, "")
-	var successPayload = new([]GraphObjectWithPaths)
+	var successPayload = new(WorkdayOutput)
 	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 
 	var localVarURL, _ = url.Parse(localVarPath)
 	localVarURL.RawQuery = localVarQueryParams.Encode()
-	var localVarAPIResponse = &APIResponse{Operation: "GraphSystemMemberOf", Method: localVarHttpMethod, RequestURL: localVarURL.String()}
+	var localVarAPIResponse = &APIResponse{Operation: "WorkdaysGet", Method: localVarHttpMethod, RequestURL: localVarURL.String()}
+	if localVarHttpResponse != nil {
+		localVarAPIResponse.Response = localVarHttpResponse.RawResponse
+		localVarAPIResponse.Payload = localVarHttpResponse.Body()
+	}
+
+	if err != nil {
+		return successPayload, localVarAPIResponse, err
+	}
+	err = json.Unmarshal(localVarHttpResponse.Body(), &successPayload)
+	return successPayload, localVarAPIResponse, err
+}
+
+/**
+ * List Workdays
+ *
+ * @param contentType 
+ * @param accept 
+ * @param fields The comma separated fields included in the returned records. If omitted the default list of fields will be returned. 
+ * @param filter Supported operators are: eq, ne, gt, ge, lt, le, between, search
+ * @param limit The number of records to return at once.
+ * @param skip The offset into the records to return.
+ * @param sort The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending. 
+ * @return []WorkdayOutput
+ */
+func (a WorkdayApi) WorkdaysList(contentType string, accept string, fields string, filter string, limit int32, skip int32, sort string) ([]WorkdayOutput, *APIResponse, error) {
+
+	var localVarHttpMethod = strings.ToUpper("Get")
+	// create path and map variables
+	localVarPath := a.Configuration.BasePath + "/workdays"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := make(map[string]string)
+	var localVarPostBody interface{}
+	var localVarFileName string
+	var localVarFileBytes []byte
+	// authentication '(x-api-key)' required
+	// set key with prefix in header
+	localVarHeaderParams["x-api-key"] = a.Configuration.GetAPIKeyWithPrefix("x-api-key")
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	localVarQueryParams.Add("fields", a.Configuration.APIClient.ParameterToString(fields, ""))
+	localVarQueryParams.Add("filter", a.Configuration.APIClient.ParameterToString(filter, ""))
+	localVarQueryParams.Add("limit", a.Configuration.APIClient.ParameterToString(limit, ""))
+	localVarQueryParams.Add("skip", a.Configuration.APIClient.ParameterToString(skip, ""))
+	localVarQueryParams.Add("sort", a.Configuration.APIClient.ParameterToString(sort, ""))
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// header params "Content-Type"
+	localVarHeaderParams["Content-Type"] = a.Configuration.APIClient.ParameterToString(contentType, "")
+	// header params "Accept"
+	localVarHeaderParams["Accept"] = a.Configuration.APIClient.ParameterToString(accept, "")
+	var successPayload = new([]WorkdayOutput)
+	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+
+	var localVarURL, _ = url.Parse(localVarPath)
+	localVarURL.RawQuery = localVarQueryParams.Encode()
+	var localVarAPIResponse = &APIResponse{Operation: "WorkdaysList", Method: localVarHttpMethod, RequestURL: localVarURL.String()}
 	if localVarHttpResponse != nil {
 		localVarAPIResponse.Response = localVarHttpResponse.RawResponse
 		localVarAPIResponse.Payload = localVarHttpResponse.Body()
@@ -279,22 +255,19 @@ func (a SystemsApi) GraphSystemMemberOf(systemId string, contentType string, acc
 }
 
 /**
- * List the Policies associated with a System
- * This endpoint will return Policies associated with a System. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this System to the corresponding Policy; this array represents all grouping and/or associations that would have to be removed to deprovision the Policy from this System.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  This endpoint is not yet public as we have finish the code.
+ * Create new Workday
+ * This endpoint allows you to create a new workday object
  *
- * @param systemId ObjectID of the System.
  * @param contentType 
  * @param accept 
- * @param limit The number of records to return at once.
- * @param skip The offset into the records to return.
- * @return []GraphObjectWithPaths
+ * @param body 
+ * @return *WorkdayOutput
  */
-func (a SystemsApi) GraphSystemTraversePolicy(systemId string, contentType string, accept string, limit int32, skip int32) ([]GraphObjectWithPaths, *APIResponse, error) {
+func (a WorkdayApi) WorkdaysPost(contentType string, accept string, body Body) (*WorkdayOutput, *APIResponse, error) {
 
-	var localVarHttpMethod = strings.ToUpper("Get")
+	var localVarHttpMethod = strings.ToUpper("Post")
 	// create path and map variables
-	localVarPath := a.Configuration.BasePath + "/systems/{system_id}/policies"
-	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
+	localVarPath := a.Configuration.BasePath + "/workdays"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -309,8 +282,6 @@ func (a SystemsApi) GraphSystemTraversePolicy(systemId string, contentType strin
 	for key := range a.Configuration.DefaultHeader {
 		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	localVarQueryParams.Add("limit", a.Configuration.APIClient.ParameterToString(limit, ""))
-	localVarQueryParams.Add("skip", a.Configuration.APIClient.ParameterToString(skip, ""))
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -334,43 +305,42 @@ func (a SystemsApi) GraphSystemTraversePolicy(systemId string, contentType strin
 	localVarHeaderParams["Content-Type"] = a.Configuration.APIClient.ParameterToString(contentType, "")
 	// header params "Accept"
 	localVarHeaderParams["Accept"] = a.Configuration.APIClient.ParameterToString(accept, "")
-	var successPayload = new([]GraphObjectWithPaths)
+	// body params
+	localVarPostBody = &body
+	var successPayload = new(WorkdayOutput)
 	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 
 	var localVarURL, _ = url.Parse(localVarPath)
 	localVarURL.RawQuery = localVarQueryParams.Encode()
-	var localVarAPIResponse = &APIResponse{Operation: "GraphSystemTraversePolicy", Method: localVarHttpMethod, RequestURL: localVarURL.String()}
+	var localVarAPIResponse = &APIResponse{Operation: "WorkdaysPost", Method: localVarHttpMethod, RequestURL: localVarURL.String()}
 	if localVarHttpResponse != nil {
 		localVarAPIResponse.Response = localVarHttpResponse.RawResponse
 		localVarAPIResponse.Payload = localVarHttpResponse.Body()
 	}
 
 	if err != nil {
-		return *successPayload, localVarAPIResponse, err
+		return successPayload, localVarAPIResponse, err
 	}
 	err = json.Unmarshal(localVarHttpResponse.Body(), &successPayload)
-	return *successPayload, localVarAPIResponse, err
+	return successPayload, localVarAPIResponse, err
 }
 
 /**
- * List the Users associated with a System
- * This endpoint will return Users associated with a System. Each element will contain the type, id, attributes and paths.  The &#x60;attributes&#x60; object is a key/value hash of attributes specifically set for this group.  The &#x60;paths&#x60; array enumerates each path from this System to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this System.  See &#x60;/members&#x60; and &#x60;/associations&#x60; endpoints to manage those collections.  #### Sample Request &#x60;&#x60;&#x60; https://console.jumpcloud.com/api/v2/systems/{system_id}/users &#x60;&#x60;&#x60;
+ * Update Workday
+ * This endpoint allows you to update the name and report_url for a Workday Authentication Edit
  *
- * @param systemId ObjectID of the System.
+ * @param id 
  * @param contentType 
  * @param accept 
- * @param limit The number of records to return at once.
- * @param skip The offset into the records to return.
- * @param date Current date header for the System Context API
- * @param authorization Authorization header for the System Context API
- * @return []GraphObjectWithPaths
+ * @param body 
+ * @return *WorkdayOutput
  */
-func (a SystemsApi) GraphSystemTraverseUser(systemId string, contentType string, accept string, limit int32, skip int32, date string, authorization string) ([]GraphObjectWithPaths, *APIResponse, error) {
+func (a WorkdayApi) WorkdaysPut(id string, contentType string, accept string, body WorkdayInput) (*WorkdayOutput, *APIResponse, error) {
 
-	var localVarHttpMethod = strings.ToUpper("Get")
+	var localVarHttpMethod = strings.ToUpper("Put")
 	// create path and map variables
-	localVarPath := a.Configuration.BasePath + "/systems/{system_id}/users"
-	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
+	localVarPath := a.Configuration.BasePath + "/workdays/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -385,7 +355,84 @@ func (a SystemsApi) GraphSystemTraverseUser(systemId string, contentType string,
 	for key := range a.Configuration.DefaultHeader {
 		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	localVarQueryParams.Add("limit", a.Configuration.APIClient.ParameterToString(limit, ""))
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// header params "Content-Type"
+	localVarHeaderParams["Content-Type"] = a.Configuration.APIClient.ParameterToString(contentType, "")
+	// header params "Accept"
+	localVarHeaderParams["Accept"] = a.Configuration.APIClient.ParameterToString(accept, "")
+	// body params
+	localVarPostBody = &body
+	var successPayload = new(WorkdayOutput)
+	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+
+	var localVarURL, _ = url.Parse(localVarPath)
+	localVarURL.RawQuery = localVarQueryParams.Encode()
+	var localVarAPIResponse = &APIResponse{Operation: "WorkdaysPut", Method: localVarHttpMethod, RequestURL: localVarURL.String()}
+	if localVarHttpResponse != nil {
+		localVarAPIResponse.Response = localVarHttpResponse.RawResponse
+		localVarAPIResponse.Payload = localVarHttpResponse.Body()
+	}
+
+	if err != nil {
+		return successPayload, localVarAPIResponse, err
+	}
+	err = json.Unmarshal(localVarHttpResponse.Body(), &successPayload)
+	return successPayload, localVarAPIResponse, err
+}
+
+/**
+ * Get Workday Report Results
+ *
+ * @param id 
+ * @param contentType 
+ * @param accept 
+ * @param fields The comma separated fields included in the returned records. If omitted the default list of fields will be returned. 
+ * @param filter Supported operators are: eq, ne, gt, ge, lt, le, between, search
+ * @param sort The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending. 
+ * @param skip The offset into the records to return.
+ * @return *WorkdayReportResult
+ */
+func (a WorkdayApi) WorkdaysReport(id string, contentType string, accept string, fields string, filter string, sort string, skip int32) (*WorkdayReportResult, *APIResponse, error) {
+
+	var localVarHttpMethod = strings.ToUpper("Get")
+	// create path and map variables
+	localVarPath := a.Configuration.BasePath + "/workdays/{id}/report"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := make(map[string]string)
+	var localVarPostBody interface{}
+	var localVarFileName string
+	var localVarFileBytes []byte
+	// authentication '(x-api-key)' required
+	// set key with prefix in header
+	localVarHeaderParams["x-api-key"] = a.Configuration.GetAPIKeyWithPrefix("x-api-key")
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	localVarQueryParams.Add("fields", a.Configuration.APIClient.ParameterToString(fields, ""))
+	localVarQueryParams.Add("filter", a.Configuration.APIClient.ParameterToString(filter, ""))
+	localVarQueryParams.Add("sort", a.Configuration.APIClient.ParameterToString(sort, ""))
 	localVarQueryParams.Add("skip", a.Configuration.APIClient.ParameterToString(skip, ""))
 
 	// to determine the Content-Type header
@@ -410,25 +457,91 @@ func (a SystemsApi) GraphSystemTraverseUser(systemId string, contentType string,
 	localVarHeaderParams["Content-Type"] = a.Configuration.APIClient.ParameterToString(contentType, "")
 	// header params "Accept"
 	localVarHeaderParams["Accept"] = a.Configuration.APIClient.ParameterToString(accept, "")
-	// header params "Date"
-	localVarHeaderParams["Date"] = a.Configuration.APIClient.ParameterToString(date, "")
-	// header params "Authorization"
-	localVarHeaderParams["Authorization"] = a.Configuration.APIClient.ParameterToString(authorization, "")
-	var successPayload = new([]GraphObjectWithPaths)
+	var successPayload = new(WorkdayReportResult)
 	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 
 	var localVarURL, _ = url.Parse(localVarPath)
 	localVarURL.RawQuery = localVarQueryParams.Encode()
-	var localVarAPIResponse = &APIResponse{Operation: "GraphSystemTraverseUser", Method: localVarHttpMethod, RequestURL: localVarURL.String()}
+	var localVarAPIResponse = &APIResponse{Operation: "WorkdaysReport", Method: localVarHttpMethod, RequestURL: localVarURL.String()}
 	if localVarHttpResponse != nil {
 		localVarAPIResponse.Response = localVarHttpResponse.RawResponse
 		localVarAPIResponse.Payload = localVarHttpResponse.Body()
 	}
 
 	if err != nil {
-		return *successPayload, localVarAPIResponse, err
+		return successPayload, localVarAPIResponse, err
 	}
 	err = json.Unmarshal(localVarHttpResponse.Body(), &successPayload)
-	return *successPayload, localVarAPIResponse, err
+	return successPayload, localVarAPIResponse, err
+}
+
+/**
+ * Get Workday Settings
+ * This endpoint allows you to obtain all settings needed for creating a workday instance, namely the URL to initiate an OAuth negotiation
+ *
+ * @param contentType 
+ * @param accept 
+ * @param state 
+ * @return *InlineResponse200
+ */
+func (a WorkdayApi) WorkdaysSettings(contentType string, accept string, state string) (*InlineResponse200, *APIResponse, error) {
+
+	var localVarHttpMethod = strings.ToUpper("Get")
+	// create path and map variables
+	localVarPath := a.Configuration.BasePath + "/workdays/settings"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := make(map[string]string)
+	var localVarPostBody interface{}
+	var localVarFileName string
+	var localVarFileBytes []byte
+	// authentication '(x-api-key)' required
+	// set key with prefix in header
+	localVarHeaderParams["x-api-key"] = a.Configuration.GetAPIKeyWithPrefix("x-api-key")
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	localVarQueryParams.Add("state", a.Configuration.APIClient.ParameterToString(state, ""))
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// header params "Content-Type"
+	localVarHeaderParams["Content-Type"] = a.Configuration.APIClient.ParameterToString(contentType, "")
+	// header params "Accept"
+	localVarHeaderParams["Accept"] = a.Configuration.APIClient.ParameterToString(accept, "")
+	var successPayload = new(InlineResponse200)
+	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+
+	var localVarURL, _ = url.Parse(localVarPath)
+	localVarURL.RawQuery = localVarQueryParams.Encode()
+	var localVarAPIResponse = &APIResponse{Operation: "WorkdaysSettings", Method: localVarHttpMethod, RequestURL: localVarURL.String()}
+	if localVarHttpResponse != nil {
+		localVarAPIResponse.Response = localVarHttpResponse.RawResponse
+		localVarAPIResponse.Payload = localVarHttpResponse.Body()
+	}
+
+	if err != nil {
+		return successPayload, localVarAPIResponse, err
+	}
+	err = json.Unmarshal(localVarHttpResponse.Body(), &successPayload)
+	return successPayload, localVarAPIResponse, err
 }
 

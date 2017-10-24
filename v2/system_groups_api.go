@@ -342,9 +342,11 @@ func (a SystemGroupsApi) GraphSystemGroupMembersList(groupId string, contentType
  * @param contentType 
  * @param accept 
  * @param body 
+ * @param date Current date header for the System Context API
+ * @param authorization Authorization header for the System Context API
  * @return void
  */
-func (a SystemGroupsApi) GraphSystemGroupMembersPost(groupId string, contentType string, accept string, body SystemGroupMembersReq) (*APIResponse, error) {
+func (a SystemGroupsApi) GraphSystemGroupMembersPost(groupId string, contentType string, accept string, body SystemGroupMembersReq, date string, authorization string) (*APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Post")
 	// create path and map variables
@@ -387,6 +389,10 @@ func (a SystemGroupsApi) GraphSystemGroupMembersPost(groupId string, contentType
 	localVarHeaderParams["Content-Type"] = a.Configuration.APIClient.ParameterToString(contentType, "")
 	// header params "Accept"
 	localVarHeaderParams["Accept"] = a.Configuration.APIClient.ParameterToString(accept, "")
+	// header params "Date"
+	localVarHeaderParams["Date"] = a.Configuration.APIClient.ParameterToString(date, "")
+	// header params "Authorization"
+	localVarHeaderParams["Authorization"] = a.Configuration.APIClient.ParameterToString(authorization, "")
 	// body params
 	localVarPostBody = &body
 	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)

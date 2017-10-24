@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemGroupMembersPost**
-> GraphSystemGroupMembersPost($groupId, $contentType, $accept, $body)
+> GraphSystemGroupMembersPost($groupId, $contentType, $accept, $body, $date, $authorization)
 
 Manage the members of a System Group
 
@@ -169,6 +169,8 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **body** | [**SystemGroupMembersReq**](SystemGroupMembersReq.md)|  | [optional] 
+ **date** | **string**| Current date header for the System Context API | [optional] 
+ **authorization** | **string**| Authorization header for the System Context API | [optional] 
 
 ### Return type
 

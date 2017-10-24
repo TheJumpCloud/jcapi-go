@@ -10,14 +10,13 @@
 
 package v2
 
-type SambaDomainOutput struct {
+type WorkdayOutput struct {
 
-	// Name of this domain
+	Id string `json:"id"`
+
 	Name string `json:"name"`
 
-	// Security identifier of this domain
-	Sid string `json:"sid"`
+	ReportUrl string `json:"reportUrl"`
 
-	// Unique identifier of this domain
-	Id string `json:"id"`
+	LastImport string `json:"lastImport"`
 }

@@ -2343,9 +2343,11 @@ func (a GraphApi) GraphRadiusServerTraverseUserGroup(radiusserverId string, cont
  * @param accept 
  * @param limit The number of records to return at once.
  * @param skip The offset into the records to return.
+ * @param date Current date header for the System Context API
+ * @param authorization Authorization header for the System Context API
  * @return []GraphConnection
  */
-func (a GraphApi) GraphSystemAssociationsList(systemId string, targets []string, contentType string, accept string, limit int32, skip int32) ([]GraphConnection, *APIResponse, error) {
+func (a GraphApi) GraphSystemAssociationsList(systemId string, targets []string, contentType string, accept string, limit int32, skip int32, date string, authorization string) ([]GraphConnection, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -2393,6 +2395,10 @@ func (a GraphApi) GraphSystemAssociationsList(systemId string, targets []string,
 	localVarHeaderParams["Content-Type"] = a.Configuration.APIClient.ParameterToString(contentType, "")
 	// header params "Accept"
 	localVarHeaderParams["Accept"] = a.Configuration.APIClient.ParameterToString(accept, "")
+	// header params "Date"
+	localVarHeaderParams["Date"] = a.Configuration.APIClient.ParameterToString(date, "")
+	// header params "Authorization"
+	localVarHeaderParams["Authorization"] = a.Configuration.APIClient.ParameterToString(authorization, "")
 	var successPayload = new([]GraphConnection)
 	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 
@@ -2419,9 +2425,11 @@ func (a GraphApi) GraphSystemAssociationsList(systemId string, targets []string,
  * @param contentType 
  * @param accept 
  * @param body 
+ * @param date Current date header for the System Context API
+ * @param authorization Authorization header for the System Context API
  * @return void
  */
-func (a GraphApi) GraphSystemAssociationsPost(systemId string, contentType string, accept string, body GraphManagementReq) (*APIResponse, error) {
+func (a GraphApi) GraphSystemAssociationsPost(systemId string, contentType string, accept string, body GraphManagementReq, date string, authorization string) (*APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Post")
 	// create path and map variables
@@ -2464,6 +2472,10 @@ func (a GraphApi) GraphSystemAssociationsPost(systemId string, contentType strin
 	localVarHeaderParams["Content-Type"] = a.Configuration.APIClient.ParameterToString(contentType, "")
 	// header params "Accept"
 	localVarHeaderParams["Accept"] = a.Configuration.APIClient.ParameterToString(accept, "")
+	// header params "Date"
+	localVarHeaderParams["Date"] = a.Configuration.APIClient.ParameterToString(date, "")
+	// header params "Authorization"
+	localVarHeaderParams["Authorization"] = a.Configuration.APIClient.ParameterToString(authorization, "")
 	// body params
 	localVarPostBody = &body
 	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
@@ -2787,9 +2799,11 @@ func (a GraphApi) GraphSystemGroupMembersList(groupId string, contentType string
  * @param contentType 
  * @param accept 
  * @param body 
+ * @param date Current date header for the System Context API
+ * @param authorization Authorization header for the System Context API
  * @return void
  */
-func (a GraphApi) GraphSystemGroupMembersPost(groupId string, contentType string, accept string, body SystemGroupMembersReq) (*APIResponse, error) {
+func (a GraphApi) GraphSystemGroupMembersPost(groupId string, contentType string, accept string, body SystemGroupMembersReq, date string, authorization string) (*APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Post")
 	// create path and map variables
@@ -2832,6 +2846,10 @@ func (a GraphApi) GraphSystemGroupMembersPost(groupId string, contentType string
 	localVarHeaderParams["Content-Type"] = a.Configuration.APIClient.ParameterToString(contentType, "")
 	// header params "Accept"
 	localVarHeaderParams["Accept"] = a.Configuration.APIClient.ParameterToString(accept, "")
+	// header params "Date"
+	localVarHeaderParams["Date"] = a.Configuration.APIClient.ParameterToString(date, "")
+	// header params "Authorization"
+	localVarHeaderParams["Authorization"] = a.Configuration.APIClient.ParameterToString(authorization, "")
 	// body params
 	localVarPostBody = &body
 	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
@@ -3155,9 +3173,11 @@ func (a GraphApi) GraphSystemGroupTraverseUserGroup(groupId string, contentType 
  * @param accept 
  * @param limit The number of records to return at once.
  * @param skip The offset into the records to return.
+ * @param date Current date header for the System Context API
+ * @param authorization Authorization header for the System Context API
  * @return []GraphObjectWithPaths
  */
-func (a GraphApi) GraphSystemMemberOf(systemId string, contentType string, accept string, limit int32, skip int32) ([]GraphObjectWithPaths, *APIResponse, error) {
+func (a GraphApi) GraphSystemMemberOf(systemId string, contentType string, accept string, limit int32, skip int32, date string, authorization string) ([]GraphObjectWithPaths, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -3202,6 +3222,10 @@ func (a GraphApi) GraphSystemMemberOf(systemId string, contentType string, accep
 	localVarHeaderParams["Content-Type"] = a.Configuration.APIClient.ParameterToString(contentType, "")
 	// header params "Accept"
 	localVarHeaderParams["Accept"] = a.Configuration.APIClient.ParameterToString(accept, "")
+	// header params "Date"
+	localVarHeaderParams["Date"] = a.Configuration.APIClient.ParameterToString(date, "")
+	// header params "Authorization"
+	localVarHeaderParams["Authorization"] = a.Configuration.APIClient.ParameterToString(authorization, "")
 	var successPayload = new([]GraphObjectWithPaths)
 	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 
@@ -3303,9 +3327,11 @@ func (a GraphApi) GraphSystemTraversePolicy(systemId string, contentType string,
  * @param accept 
  * @param limit The number of records to return at once.
  * @param skip The offset into the records to return.
+ * @param date Current date header for the System Context API
+ * @param authorization Authorization header for the System Context API
  * @return []GraphObjectWithPaths
  */
-func (a GraphApi) GraphSystemTraverseUser(systemId string, contentType string, accept string, limit int32, skip int32) ([]GraphObjectWithPaths, *APIResponse, error) {
+func (a GraphApi) GraphSystemTraverseUser(systemId string, contentType string, accept string, limit int32, skip int32, date string, authorization string) ([]GraphObjectWithPaths, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -3350,6 +3376,10 @@ func (a GraphApi) GraphSystemTraverseUser(systemId string, contentType string, a
 	localVarHeaderParams["Content-Type"] = a.Configuration.APIClient.ParameterToString(contentType, "")
 	// header params "Accept"
 	localVarHeaderParams["Accept"] = a.Configuration.APIClient.ParameterToString(accept, "")
+	// header params "Date"
+	localVarHeaderParams["Date"] = a.Configuration.APIClient.ParameterToString(date, "")
+	// header params "Authorization"
+	localVarHeaderParams["Authorization"] = a.Configuration.APIClient.ParameterToString(authorization, "")
 	var successPayload = new([]GraphObjectWithPaths)
 	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 
