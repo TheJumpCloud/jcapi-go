@@ -12,7 +12,7 @@ package v2
 
 type GraphObjectWithPaths struct {
 
-	Type_ GraphType `json:"type"`
+	Type_ *GraphType `json:"type"`
 
 	// Object ID of this graph object.
 	Id string `json:"id"`

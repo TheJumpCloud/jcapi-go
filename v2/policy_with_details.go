@@ -16,7 +16,7 @@ type PolicyWithDetails struct {
 	// ObjectId uniquely indetifying a Policy.
 	Id string `json:"id,omitempty"`
 
-	Template PolicyTemplate `json:"template,omitempty"`
+	Template *PolicyTemplate `json:"template,omitempty"`
 
 	// The description for this specific Policy.
 	Name string `json:"name,omitempty"`

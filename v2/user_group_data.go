@@ -12,7 +12,7 @@ package v2
 
 type UserGroupData struct {
 
-	Attributes UserGroupDataAttributes `json:"attributes,omitempty"`
+	Attributes *UserGroupDataAttributes `json:"attributes,omitempty"`
 
 	// Display name of a User Group.
 	Name string `json:"name"`

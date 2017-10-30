@@ -14,25 +14,34 @@ Method | HTTP request | Description
 
 
 # **WorkdaysDelete**
-> WorkdaysDelete($id, $contentType, $accept, $body)
-
+> WorkdaysDelete(ctx, id, contentType, accept, optional)
 Delete Workday
 
 This endpoint allows you to delete a workday
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **id** | **string**|  | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**WorkdayRequest**](WorkdayRequest.md)|  | [optional] 
+ **body** | [**WorkdayRequest**](WorkdayRequest.md)|  | 
 
 ### Return type
 
-void (empty response body)
+ (empty response body)
 
 ### Authorization
 
@@ -46,18 +55,17 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **WorkdaysGet**
-> WorkdayOutput WorkdaysGet($id, $contentType, $accept)
-
+> WorkdayOutput WorkdaysGet(ctx, id, contentType, accept)
 Get Workday
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **string**|  | 
- **contentType** | **string**|  | [default to application/json]
- **accept** | **string**|  | [default to application/json]
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **id** | **string**|  | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
 
 ### Return type
 
@@ -75,22 +83,30 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **WorkdaysList**
-> []WorkdayOutput WorkdaysList($contentType, $accept, $fields, $filter, $limit, $skip, $sort)
-
+> []WorkdayOutput WorkdaysList(ctx, contentType, accept, optional)
 List Workdays
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **fields** | **string**| The comma separated fields included in the returned records. If omitted the default list of fields will be returned.  | [optional] [default to ]
- **filter** | **string**| Supported operators are: eq, ne, gt, ge, lt, le, between, search | [optional] [default to ]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
- **sort** | **string**| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | [optional] [default to ]
+ **fields** | **string**| The comma separated fields included in the returned records. If omitted the default list of fields will be returned.  | [default to ]
+ **filter** | **string**| Supported operators are: eq, ne, gt, ge, lt, le, between, search | [default to ]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **sort** | **string**| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | [default to ]
 
 ### Return type
 
@@ -108,20 +124,28 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **WorkdaysPost**
-> WorkdayOutput WorkdaysPost($contentType, $accept, $body)
-
+> WorkdayOutput WorkdaysPost(ctx, contentType, accept, optional)
 Create new Workday
 
 This endpoint allows you to create a new workday object
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**Body**](Body.md)|  | [optional] 
+ **body** | [**Body**](Body.md)|  | 
 
 ### Return type
 
@@ -139,21 +163,30 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **WorkdaysPut**
-> WorkdayOutput WorkdaysPut($id, $contentType, $accept, $body)
-
+> WorkdayOutput WorkdaysPut(ctx, id, contentType, accept, optional)
 Update Workday
 
 This endpoint allows you to update the name and report_url for a Workday Authentication Edit
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **id** | **string**|  | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**WorkdayInput**](WorkdayInput.md)|  | [optional] 
+ **body** | [**WorkdayInput**](WorkdayInput.md)|  | 
 
 ### Return type
 
@@ -171,22 +204,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **WorkdaysReport**
-> WorkdayReportResult WorkdaysReport($id, $contentType, $accept, $fields, $filter, $sort, $skip)
-
+> WorkdayReportResult WorkdaysReport(ctx, id, contentType, accept, optional)
 Get Workday Report Results
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **id** | **string**|  | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **fields** | **string**| The comma separated fields included in the returned records. If omitted the default list of fields will be returned.  | [optional] [default to ]
- **filter** | **string**| Supported operators are: eq, ne, gt, ge, lt, le, between, search | [optional] [default to ]
- **sort** | **string**| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | [optional] [default to ]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **fields** | **string**| The comma separated fields included in the returned records. If omitted the default list of fields will be returned.  | [default to ]
+ **filter** | **string**| Supported operators are: eq, ne, gt, ge, lt, le, between, search | [default to ]
+ **sort** | **string**| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | [default to ]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -204,20 +246,28 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **WorkdaysSettings**
-> InlineResponse200 WorkdaysSettings($contentType, $accept, $state)
-
+> InlineResponse200 WorkdaysSettings(ctx, contentType, accept, optional)
 Get Workday Settings
 
 This endpoint allows you to obtain all settings needed for creating a workday instance, namely the URL to initiate an OAuth negotiation
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **state** | **string**|  | [optional] 
+ **state** | **string**|  | 
 
 ### Return type
 

@@ -18,5 +18,5 @@ type PolicyRequest struct {
 
 	Values []PolicyValue `json:"values,omitempty"`
 
-	Template PolicyRequestTemplate `json:"template,omitempty"`
+	Template *PolicyRequestTemplate `json:"template,omitempty"`
 }

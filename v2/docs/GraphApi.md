@@ -77,14 +77,24 @@ Method | HTTP request | Description
 
 
 # **GraphActiveDirectoryAssociationsList**
-> []GraphConnection GraphActiveDirectoryAssociationsList($activedirectoryId, $targets, $contentType, $accept, $limit, $skip)
-
+> []GraphConnection GraphActiveDirectoryAssociationsList(ctx, activedirectoryId, targets, contentType, accept, optional)
 List the associations of an Active Directory instance
 
 This endpoint returns the direct associations of this Active Directory instance.  A direct association can be a non-homogenous relationship between 2 different objects. For example Active Directory and Users.   #### Sample Request ``` https://console.jumpcloud.com/api/v2/activedirectories/{activedirectory_id}/associations?targets=user ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **activedirectoryId** | **string**|  | 
+  **targets** | [**[]string**](string.md)|  | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -92,8 +102,8 @@ Name | Type | Description  | Notes
  **targets** | [**[]string**](string.md)|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -111,25 +121,34 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphActiveDirectoryAssociationsPost**
-> GraphActiveDirectoryAssociationsPost($activedirectoryId, $contentType, $accept, $body)
-
+> GraphActiveDirectoryAssociationsPost(ctx, activedirectoryId, contentType, accept, optional)
 Manage the associations of an Active Directory instance
 
 This endpoint allows you to manage the _direct_ associations of an Active Directory instance.  A direct association can be a non-homogenous relationship between 2 different objects. For example Active Directory and Users.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/activedirectories/{activedirectory_id}/associations ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **activedirectoryId** | **string**|  | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **activedirectoryId** | **string**|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | [optional] 
+ **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | 
 
 ### Return type
 
-void (empty response body)
+ (empty response body)
 
 ### Authorization
 
@@ -143,22 +162,31 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphActiveDirectoryTraverseUserGroup**
-> []GraphObjectWithPaths GraphActiveDirectoryTraverseUserGroup($activedirectoryId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphActiveDirectoryTraverseUserGroup(ctx, activedirectoryId, contentType, accept, optional)
 List the User Groups associated with an Active Directory instance
 
 This endpoint will return User Groups associated with an Active Directory instance. Each element will contain the group's type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this Active Directory instance to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this Active Directory instance.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/activedirectories/{activedirectory_id}/usersgroups ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **activedirectoryId** | **string**| ObjectID of the Active Directory instance. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **activedirectoryId** | **string**| ObjectID of the Active Directory instance. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -176,14 +204,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphApplicationAssociationsList**
-> []GraphConnection GraphApplicationAssociationsList($applicationId, $targets, $contentType, $accept, $limit, $skip)
-
+> []GraphConnection GraphApplicationAssociationsList(ctx, applicationId, targets, contentType, accept, optional)
 List the associations of an Application
 
 This endpoint will return the _direct_ associations of an Application. A direct association can be a non-homogenous relationship between 2 different objects. for example Applications and User Groups.   #### Sample Request ``` https://console.jumpcloud.com/api/v2/applications/{application_id}/associations?targets=user_group ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **applicationId** | **string**| ObjectID of the Application. | 
+  **targets** | [**[]string**](string.md)|  | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -191,8 +229,8 @@ Name | Type | Description  | Notes
  **targets** | [**[]string**](string.md)|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -210,25 +248,34 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphApplicationAssociationsPost**
-> GraphApplicationAssociationsPost($applicationId, $contentType, $accept, $body)
-
+> GraphApplicationAssociationsPost(ctx, applicationId, contentType, accept, optional)
 Manage the associations of an Application
 
 This endpoint allows you to manage the _direct_ associations of an Application. A direct association can be a non-homogenous relationship between 2 different objects. for example Application and User Groups.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/applications/{application_id}/associations ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **applicationId** | **string**| ObjectID of the Application. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **string**| ObjectID of the Application. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | [optional] 
+ **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | 
 
 ### Return type
 
-void (empty response body)
+ (empty response body)
 
 ### Authorization
 
@@ -242,22 +289,31 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphApplicationTraverseUser**
-> []GraphObjectWithPaths GraphApplicationTraverseUser($applicationId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphApplicationTraverseUser(ctx, applicationId, contentType, accept, optional)
 List the Users associated with an Application
 
 This endpoint will return Users associated with an Application. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this Application to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this Application.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/applications/{application_id}/users ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **applicationId** | **string**| ObjectID of the Application. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **string**| ObjectID of the Application. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -275,22 +331,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphApplicationTraverseUserGroup**
-> []GraphObjectWithPaths GraphApplicationTraverseUserGroup($applicationId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphApplicationTraverseUserGroup(ctx, applicationId, contentType, accept, optional)
 List the User Groups associated with an Application
 
 This endpoint will return User Groups associated with an Application. Each element will contain the group's type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates  each path from this Application to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this Application.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/applications/{application_id}/usergroups ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **applicationId** | **string**| ObjectID of the Application. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **string**| ObjectID of the Application. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -308,14 +373,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphCommandAssociationsList**
-> []GraphConnection GraphCommandAssociationsList($commandId, $targets, $contentType, $accept, $limit, $skip)
-
+> []GraphConnection GraphCommandAssociationsList(ctx, commandId, targets, contentType, accept, optional)
 List the associations of a Command
 
 This endpoint will return the _direct_ associations of this Command.  A direct association can be a non-homogenous relationship between 2 different objects. for example Commands and User Groups.   #### Sample Request ``` https://console.jumpcloud.com/api/v2/commands/{command_id}/associations?targets=user_group ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **commandId** | **string**| ObjectID of the Command. | 
+  **targets** | [**[]string**](string.md)|  | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -323,8 +398,8 @@ Name | Type | Description  | Notes
  **targets** | [**[]string**](string.md)|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -342,25 +417,34 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphCommandAssociationsPost**
-> GraphCommandAssociationsPost($commandId, $contentType, $accept, $body)
-
+> GraphCommandAssociationsPost(ctx, commandId, contentType, accept, optional)
 Manage the associations of a Command
 
 This endpoint will allow you to manage the _direct_ associations of this Command.  A direct association can be a non-homogenous relationship between 2 different objects. for example Commands and User Groups.   #### Sample Request ``` https://console.jumpcloud.com/api/v2/commands/{command_id}/associations
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **commandId** | **string**| ObjectID of the Command. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commandId** | **string**| ObjectID of the Command. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | [optional] 
+ **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | 
 
 ### Return type
 
-void (empty response body)
+ (empty response body)
 
 ### Authorization
 
@@ -374,22 +458,31 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphCommandTraverseSystem**
-> []GraphObjectWithPaths GraphCommandTraverseSystem($commandId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphCommandTraverseSystem(ctx, commandId, contentType, accept, optional)
 List the Systems associated with a Command
 
 This endpoint will return Systems associated with a Command. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this Command to the corresponding System; this array represents all grouping and/or associations that would have to be removed to deprovision the System from this Command.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/commands/{command_id}/systems ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **commandId** | **string**| ObjectID of the Command. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commandId** | **string**| ObjectID of the Command. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -407,22 +500,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphCommandTraverseSystemGroup**
-> []GraphObjectWithPaths GraphCommandTraverseSystemGroup($commandId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphCommandTraverseSystemGroup(ctx, commandId, contentType, accept, optional)
 List the System Groups associated with a Command
 
 This endpoint will return System Groups associated with a Command. Each element will contain the group's type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this Command to the corresponding System Group; this array represents all grouping and/or associations that would have to be removed to deprovision the System Group from this Command.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/commands/{command_id}/systemsgroups ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **commandId** | **string**| ObjectID of the Command. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commandId** | **string**| ObjectID of the Command. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -440,14 +542,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphGSuiteAssociationsList**
-> []GraphConnection GraphGSuiteAssociationsList($gsuiteId, $targets, $contentType, $accept, $limit, $skip)
-
+> []GraphConnection GraphGSuiteAssociationsList(ctx, gsuiteId, targets, contentType, accept, optional)
 List the associations of a G Suite instance
 
 This endpoint returns the _direct_ associations of this G Suite instance.  A direct association can be a non-homogenous relationship between 2 different objects. for example G Suite and Users.   #### Sample Request ``` https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/associations?targets=user ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **gsuiteId** | **string**| ObjectID of the G Suite instance. | 
+  **targets** | [**[]string**](string.md)|  | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -455,8 +567,8 @@ Name | Type | Description  | Notes
  **targets** | [**[]string**](string.md)|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -474,23 +586,30 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphGSuiteAssociationsPost**
-> GraphGSuiteAssociationsPost($gsuiteId, $body)
-
+> GraphGSuiteAssociationsPost(ctx, gsuiteId, optional)
 Manage the associations of a G Suite instance
 
 This endpoint returns the _direct_ associations of this G Suite instance.  A direct association can be a non-homogenous relationship between 2 different objects. for example G Suite and Users.   #### Sample Request ``` https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/associations ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **gsuiteId** | **string**| ObjectID of the G Suite instance. | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **gsuiteId** | **string**| ObjectID of the G Suite instance. | 
- **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | [optional] 
+ **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | 
 
 ### Return type
 
-void (empty response body)
+ (empty response body)
 
 ### Authorization
 
@@ -504,22 +623,31 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphGSuiteTraverseUser**
-> []GraphObjectWithPaths GraphGSuiteTraverseUser($gsuiteId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphGSuiteTraverseUser(ctx, gsuiteId, contentType, accept, optional)
 List the Users associated with a G Suite instance
 
 This endpoint will return Users associated with a G Suite instance. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this G Suite instance to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this G Suite instance.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/users ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **gsuiteId** | **string**| ObjectID of the G Suite instance. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **gsuiteId** | **string**| ObjectID of the G Suite instance. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -537,22 +665,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphGSuiteTraverseUserGroup**
-> []GraphObjectWithPaths GraphGSuiteTraverseUserGroup($gsuiteId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphGSuiteTraverseUserGroup(ctx, gsuiteId, contentType, accept, optional)
 List the User Groups associated with a G Suite instance
 
 This endpoint will return User Groups associated with a G Suite instance. Each element will contain the group's type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this G Suite instance to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this G Suite instance.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/usersgroups ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **gsuiteId** | **string**| ObjectID of the G Suite instance. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **gsuiteId** | **string**| ObjectID of the G Suite instance. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -570,14 +707,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphLdapServerAssociationsList**
-> []GraphConnection GraphLdapServerAssociationsList($ldapserverId, $targets, $contentType, $accept, $limit, $skip)
-
+> []GraphConnection GraphLdapServerAssociationsList(ctx, ldapserverId, targets, contentType, accept, optional)
 List the associations of a LDAP Server
 
 This endpoint returns the _direct_ associations of this LDAP Server.  A direct association can be a non-homogenous relationship between 2 different objects. for example LDAP and Users.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/ldapservers/{ldapserver_id}/associations?targets=user ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **ldapserverId** | **string**| ObjectID of the LDAP Server. | 
+  **targets** | [**[]string**](string.md)|  | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -585,8 +732,8 @@ Name | Type | Description  | Notes
  **targets** | [**[]string**](string.md)|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -604,25 +751,34 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphLdapServerAssociationsPost**
-> GraphLdapServerAssociationsPost($ldapserverId, $contentType, $accept, $body)
-
+> GraphLdapServerAssociationsPost(ctx, ldapserverId, contentType, accept, optional)
 Manage the associations of a LDAP Server
 
 This endpoint allows you to manage the _direct_ associations of a LDAP Server.  A direct association can be a non-homogenous relationship between 2 different objects. for example LDAP and Users.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/ldapservers/{ldapserver_id}/associations ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **ldapserverId** | **string**| ObjectID of the LDAP Server. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ldapserverId** | **string**| ObjectID of the LDAP Server. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | [optional] 
+ **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | 
 
 ### Return type
 
-void (empty response body)
+ (empty response body)
 
 ### Authorization
 
@@ -636,22 +792,31 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphLdapServerTraverseUser**
-> []GraphObjectWithPaths GraphLdapServerTraverseUser($ldapserverId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphLdapServerTraverseUser(ctx, ldapserverId, contentType, accept, optional)
 List the Users associated with a LDAP Server
 
 This endpoint will return Users associated with an LDAP server instance. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this LDAP server instance to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this LDAP server instance.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/ldapservers/{ldapserver_id}/users ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **ldapserverId** | **string**| ObjectID of the LDAP Server. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ldapserverId** | **string**| ObjectID of the LDAP Server. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -669,22 +834,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphLdapServerTraverseUserGroup**
-> []GraphObjectWithPaths GraphLdapServerTraverseUserGroup($ldapserverId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphLdapServerTraverseUserGroup(ctx, ldapserverId, contentType, accept, optional)
 List the User Groups associated with a LDAP Server
 
 This endpoint will return User Groups associated with a LDAP server instance. Each element will contain the group's type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this LDAP server instance to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this LDAP server instance.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/ldapservers/{ldapserver_id}/usersgroups ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **ldapserverId** | **string**| ObjectID of the LDAP Server. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ldapserverId** | **string**| ObjectID of the LDAP Server. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -702,14 +876,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphOffice365AssociationsList**
-> []GraphConnection GraphOffice365AssociationsList($office365Id, $targets, $contentType, $accept, $limit, $skip)
-
+> []GraphConnection GraphOffice365AssociationsList(ctx, office365Id, targets, contentType, accept, optional)
 List the associations of an Office 365 instance
 
 This endpoint returns _direct_ associations of an Office 365 instance.   A direct association can be a non-homogenous relationship between 2 different objects. for example Office 365 and Users.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/office365s/{office365_id}/associations?targets=user ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **office365Id** | **string**| ObjectID of the Office 365 instance. | 
+  **targets** | [**[]string**](string.md)|  | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -717,8 +901,8 @@ Name | Type | Description  | Notes
  **targets** | [**[]string**](string.md)|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -736,25 +920,34 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphOffice365AssociationsPost**
-> GraphOffice365AssociationsPost($office365Id, $contentType, $accept, $body)
-
+> GraphOffice365AssociationsPost(ctx, office365Id, contentType, accept, optional)
 Manage the associations of an Office 365 instance
 
 This endpoint allows you to manage the _direct_ associations of a Office 365 instance.  A direct association can be a non-homogenous relationship between 2 different objects. for example Office 365 and Users.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/office365s/{office365_id}/associations ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **office365Id** | **string**| ObjectID of the Office 365 instance. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **office365Id** | **string**| ObjectID of the Office 365 instance. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | [optional] 
+ **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | 
 
 ### Return type
 
-void (empty response body)
+ (empty response body)
 
 ### Authorization
 
@@ -768,22 +961,31 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphOffice365TraverseUser**
-> []GraphObjectWithPaths GraphOffice365TraverseUser($office365Id, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphOffice365TraverseUser(ctx, office365Id, contentType, accept, optional)
 List the Users associated with an Office 365 instance
 
 This endpoint will return Users associated with an Office 365 instance. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this Office 365 instance to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this Office 365 instance.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/office365s/{office365_id}/users ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **office365Id** | **string**| ObjectID of the Office 365 suite. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **office365Id** | **string**| ObjectID of the Office 365 suite. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -801,22 +1003,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphOffice365TraverseUserGroup**
-> []GraphObjectWithPaths GraphOffice365TraverseUserGroup($office365Id, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphOffice365TraverseUserGroup(ctx, office365Id, contentType, accept, optional)
 List the User Groups associated with an Office 365 instance
 
 This endpoint will return User Groups associated with an Office 365 instance. Each element will contain the group's type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this Office 365 instance to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this Office 365 instance.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/office365s/{office365_id}/usergroups ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **office365Id** | **string**| ObjectID of the Office 365 suite. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **office365Id** | **string**| ObjectID of the Office 365 suite. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -834,14 +1045,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphPolicyAssociationsList**
-> []GraphConnection GraphPolicyAssociationsList($policyId, $targets, $contentType, $accept, $limit, $skip)
-
+> []GraphConnection GraphPolicyAssociationsList(ctx, policyId, targets, contentType, accept, optional)
 List the associations of a Policy
 
 This endpoint returns the _direct_ associations of a Policy.  A direct association can be a non-homogenous relationship between 2 different objects. for example Policies and Systems.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/policies/{policy_id}/associations?targets=system ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **policyId** | **string**| ObjectID of the Policy. | 
+  **targets** | [**[]string**](string.md)|  | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -849,8 +1070,8 @@ Name | Type | Description  | Notes
  **targets** | [**[]string**](string.md)|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -868,25 +1089,34 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphPolicyAssociationsPost**
-> GraphPolicyAssociationsPost($policyId, $contentType, $accept, $body)
-
+> GraphPolicyAssociationsPost(ctx, policyId, contentType, accept, optional)
 Manage the associations of a Policy
 
 This endpoint allows you to manage the _direct_ associations of a Policy.  A direct association can be a non-homogenous relationship between 2 different objects. for example Policies and Systems.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/policies/{policy_id}/associations ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **policyId** | **string**| ObjectID of the Policy. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **policyId** | **string**| ObjectID of the Policy. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | [optional] 
+ **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | 
 
 ### Return type
 
-void (empty response body)
+ (empty response body)
 
 ### Authorization
 
@@ -900,22 +1130,31 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphPolicyTraverseSystem**
-> []GraphObjectWithPaths GraphPolicyTraverseSystem($policyId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphPolicyTraverseSystem(ctx, policyId, contentType, accept, optional)
 List the Systems associated with a Policy
 
 This endpoint will return Systems associated with a Policy. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this Policy to the corresponding System; this array represents all grouping and/or associations that would have to be removed to deprovision the System from this Policy.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/policies/{policy_id}/systems ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **policyId** | **string**| ObjectID of the Command. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **policyId** | **string**| ObjectID of the Command. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -933,22 +1172,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphPolicyTraverseSystemGroup**
-> []GraphObjectWithPaths GraphPolicyTraverseSystemGroup($policyId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphPolicyTraverseSystemGroup(ctx, policyId, contentType, accept, optional)
 List the System Groups associated with a Policy
 
 This endpoint will return System Groups associated with a Policy. Each element will contain the group's type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this Policy to the corresponding System Group; this array represents all grouping and/or associations that would have to be removed to deprovision the System Group from this Policy.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/policies/{policy_id}/systemsgroups ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **policyId** | **string**| ObjectID of the Command. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **policyId** | **string**| ObjectID of the Command. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -966,14 +1214,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphRadiusServerAssociationsList**
-> []GraphConnection GraphRadiusServerAssociationsList($radiusserverId, $targets, $contentType, $accept, $limit, $skip)
-
+> []GraphConnection GraphRadiusServerAssociationsList(ctx, radiusserverId, targets, contentType, accept, optional)
 List the associations of a Radius Server
 
 This endpoint returns the _direct_ associations of a Radius Server.  A direct association can be a non-homogenous relationship between 2 different objects. for example Radius Servers and Users.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/radiusservers/{radiusserver_id}/associations?targets=user ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **radiusserverId** | **string**| ObjectID of the Radius Server. | 
+  **targets** | [**[]string**](string.md)|  | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -981,8 +1239,8 @@ Name | Type | Description  | Notes
  **targets** | [**[]string**](string.md)|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -1000,25 +1258,34 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphRadiusServerAssociationsPost**
-> GraphRadiusServerAssociationsPost($radiusserverId, $contentType, $accept, $body)
-
+> GraphRadiusServerAssociationsPost(ctx, radiusserverId, contentType, accept, optional)
 Manage the associations of a Radius Server
 
 This endpoint allows you to manage the _direct_ associations of a Radius Server.  A direct association can be a non-homogenous relationship between 2 different objects. for example Radius Servers and Users.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/radiusservers/{radiusserver_id}/associations
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **radiusserverId** | **string**| ObjectID of the Radius Server. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **radiusserverId** | **string**| ObjectID of the Radius Server. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | [optional] 
+ **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | 
 
 ### Return type
 
-void (empty response body)
+ (empty response body)
 
 ### Authorization
 
@@ -1032,22 +1299,31 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphRadiusServerTraverseUser**
-> []GraphObjectWithPaths GraphRadiusServerTraverseUser($radiusserverId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphRadiusServerTraverseUser(ctx, radiusserverId, contentType, accept, optional)
 List the Users associated with a Radius Server
 
 This endpoint will return Users associated with a RADIUS server instance. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this RADIUS server instance to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this RADIUS server instance.  See `/members` and `/associations` endpoints to manage those collections.   #### Sample Request ``` https://console.jumpcloud.com/api/v2/radiusservers/{radiusserver_id}/users
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **radiusserverId** | **string**| ObjectID of the Radius Server. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **radiusserverId** | **string**| ObjectID of the Radius Server. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -1065,22 +1341,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphRadiusServerTraverseUserGroup**
-> []GraphObjectWithPaths GraphRadiusServerTraverseUserGroup($radiusserverId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphRadiusServerTraverseUserGroup(ctx, radiusserverId, contentType, accept, optional)
 List the User Groups associated with a Radius Server
 
 This endpoint will return User Groups associated with a RADIUS server instance. Each element will contain the group's type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this RADIUS server instance to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this RADIUS server instance.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/radiusservers/{radiusserver_id}/usergroups
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **radiusserverId** | **string**| ObjectID of the Radius Server. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **radiusserverId** | **string**| ObjectID of the Radius Server. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -1098,14 +1383,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemAssociationsList**
-> []GraphConnection GraphSystemAssociationsList($systemId, $targets, $contentType, $accept, $limit, $skip, $date, $authorization)
-
+> []GraphConnection GraphSystemAssociationsList(ctx, systemId, targets, contentType, accept, optional)
 List the associations of a System
 
 This endpoint returns the _direct_ associations of a System.  A direct association can be a non-homogenous relationship between 2 different objects. for example Systems and Users.   #### Sample Request ``` https://console.jumpcloud.com/api/v2/systems/{system_id}/associations?targets=user ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **systemId** | **string**| ObjectID of the System. | 
+  **targets** | [**[]string**](string.md)|  | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1113,10 +1408,10 @@ Name | Type | Description  | Notes
  **targets** | [**[]string**](string.md)|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
- **date** | **string**| Current date header for the System Context API | [optional] 
- **authorization** | **string**| Authorization header for the System Context API | [optional] 
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **date** | **string**| Current date header for the System Context API | 
+ **authorization** | **string**| Authorization header for the System Context API | 
 
 ### Return type
 
@@ -1134,27 +1429,36 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemAssociationsPost**
-> GraphSystemAssociationsPost($systemId, $contentType, $accept, $body, $date, $authorization)
-
+> GraphSystemAssociationsPost(ctx, systemId, contentType, accept, optional)
 Manage associations of a System
 
 This endpoint allows you to manage the _direct_ associations of a System.  A direct association can be a non-homogenous relationship between 2 different objects. for example Systems and Users.   #### Sample Request ``` https://console.jumpcloud.com/api/v2/systems/{system_id}/associations ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **systemId** | **string**| ObjectID of the System. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **systemId** | **string**| ObjectID of the System. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | [optional] 
- **date** | **string**| Current date header for the System Context API | [optional] 
- **authorization** | **string**| Authorization header for the System Context API | [optional] 
+ **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | 
+ **date** | **string**| Current date header for the System Context API | 
+ **authorization** | **string**| Authorization header for the System Context API | 
 
 ### Return type
 
-void (empty response body)
+ (empty response body)
 
 ### Authorization
 
@@ -1168,14 +1472,24 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemGroupAssociationsList**
-> []GraphConnection GraphSystemGroupAssociationsList($groupId, $targets, $contentType, $accept, $limit, $skip)
-
+> []GraphConnection GraphSystemGroupAssociationsList(ctx, groupId, targets, contentType, accept, optional)
 List the associations of a System Group
 
 This endpoint returns the _direct_ associations of a System Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example System Groups and Users.   #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/associations?targets=user ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the System Group. | 
+  **targets** | [**[]string**](string.md)|  | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1183,8 +1497,8 @@ Name | Type | Description  | Notes
  **targets** | [**[]string**](string.md)|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -1202,25 +1516,34 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemGroupAssociationsPost**
-> GraphSystemGroupAssociationsPost($groupId, $contentType, $accept, $body)
-
+> GraphSystemGroupAssociationsPost(ctx, groupId, contentType, accept, optional)
 Manage the associations of a System Group
 
 This endpoint allows you to manage the _direct_ associations of a System Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example System Groups and Users.   #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/associations ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the System Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the System Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**SystemGroupGraphManagementReq**](SystemGroupGraphManagementReq.md)|  | [optional] 
+ **body** | [**SystemGroupGraphManagementReq**](SystemGroupGraphManagementReq.md)|  | 
 
 ### Return type
 
-void (empty response body)
+ (empty response body)
 
 ### Authorization
 
@@ -1234,22 +1557,31 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemGroupMemberOf**
-> []GraphObjectWithPaths GraphSystemGroupMemberOf($groupId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphSystemGroupMemberOf(ctx, groupId, contentType, accept, optional)
 List the System Group's parents
 
 This endpoint returns all System Groups a System Group is a member of.  This endpoint is not yet public as we haven't completed the code yet.
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the System Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the System Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -1267,22 +1599,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemGroupMembersList**
-> []GraphConnection GraphSystemGroupMembersList($groupId, $contentType, $accept, $limit, $skip)
-
+> []GraphConnection GraphSystemGroupMembersList(ctx, groupId, contentType, accept, optional)
 List the members of a System Group
 
 This endpoint returns the system members of a System Group.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/members ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the System Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the System Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -1300,27 +1641,36 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemGroupMembersPost**
-> GraphSystemGroupMembersPost($groupId, $contentType, $accept, $body, $date, $authorization)
-
+> GraphSystemGroupMembersPost(ctx, groupId, contentType, accept, optional)
 Manage the members of a System Group
 
 This endpoint allows you to manage the system members of a System Group.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/members ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the System Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the System Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**SystemGroupMembersReq**](SystemGroupMembersReq.md)|  | [optional] 
- **date** | **string**| Current date header for the System Context API | [optional] 
- **authorization** | **string**| Authorization header for the System Context API | [optional] 
+ **body** | [**SystemGroupMembersReq**](SystemGroupMembersReq.md)|  | 
+ **date** | **string**| Current date header for the System Context API | 
+ **authorization** | **string**| Authorization header for the System Context API | 
 
 ### Return type
 
-void (empty response body)
+ (empty response body)
 
 ### Authorization
 
@@ -1334,22 +1684,31 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemGroupMembership**
-> []GraphObjectWithPaths GraphSystemGroupMembership($groupId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphSystemGroupMembership(ctx, groupId, contentType, accept, optional)
 List the System Group's membership
 
 This endpoint returns all Systems that are a member of this System Group.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/membership ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the System Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the System Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -1367,22 +1726,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemGroupTraversePolicy**
-> []GraphObjectWithPaths GraphSystemGroupTraversePolicy($groupId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphSystemGroupTraversePolicy(ctx, groupId, contentType, accept, optional)
 List the Policies associated with a System Group
 
 This endpoint will return Policies associated with a System Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this System Group to the corresponding Policy; this array represents all grouping and/or associations that would have to be removed to deprovision the Policy from this System Group.  See `/members` and `/associations` endpoints to manage those collections.  This endpoint is not public yet as we haven't finished the code.
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the System Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the System Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -1400,22 +1768,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemGroupTraverseUser**
-> []GraphObjectWithPaths GraphSystemGroupTraverseUser($groupId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphSystemGroupTraverseUser(ctx, groupId, contentType, accept, optional)
 List the Users associated with a System Group
 
 This endpoint will return Users associated with a System Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this System Group to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this System Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/users ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the System Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the System Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -1433,22 +1810,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemGroupTraverseUserGroup**
-> []GraphObjectWithPaths GraphSystemGroupTraverseUserGroup($groupId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphSystemGroupTraverseUserGroup(ctx, groupId, contentType, accept, optional)
 List the User Groups associated with a System Group
 
 This endpoint will return User Groups associated with a System Group. Each element will contain the group's type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this System Group to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this System Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/usergroups ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the System Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the System Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -1466,24 +1852,33 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemMemberOf**
-> []GraphObjectWithPaths GraphSystemMemberOf($systemId, $contentType, $accept, $limit, $skip, $date, $authorization)
-
+> []GraphObjectWithPaths GraphSystemMemberOf(ctx, systemId, contentType, accept, optional)
 List the parent Groups of a System
 
 This endpoint returns all the System Groups a System is a member of.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systems/{system_id}/memberof ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **systemId** | **string**| ObjectID of the System. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **systemId** | **string**| ObjectID of the System. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
- **date** | **string**| Current date header for the System Context API | [optional] 
- **authorization** | **string**| Authorization header for the System Context API | [optional] 
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **date** | **string**| Current date header for the System Context API | 
+ **authorization** | **string**| Authorization header for the System Context API | 
 
 ### Return type
 
@@ -1501,22 +1896,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemTraversePolicy**
-> []GraphObjectWithPaths GraphSystemTraversePolicy($systemId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphSystemTraversePolicy(ctx, systemId, contentType, accept, optional)
 List the Policies associated with a System
 
 This endpoint will return Policies associated with a System. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this System to the corresponding Policy; this array represents all grouping and/or associations that would have to be removed to deprovision the Policy from this System.  See `/members` and `/associations` endpoints to manage those collections.  This endpoint is not yet public as we have finish the code.
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **systemId** | **string**| ObjectID of the System. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **systemId** | **string**| ObjectID of the System. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -1534,24 +1938,33 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemTraverseUser**
-> []GraphObjectWithPaths GraphSystemTraverseUser($systemId, $contentType, $accept, $limit, $skip, $date, $authorization)
-
+> []GraphObjectWithPaths GraphSystemTraverseUser(ctx, systemId, contentType, accept, optional)
 List the Users associated with a System
 
 This endpoint will return Users associated with a System. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this System to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this System.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systems/{system_id}/users ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **systemId** | **string**| ObjectID of the System. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **systemId** | **string**| ObjectID of the System. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
- **date** | **string**| Current date header for the System Context API | [optional] 
- **authorization** | **string**| Authorization header for the System Context API | [optional] 
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **date** | **string**| Current date header for the System Context API | 
+ **authorization** | **string**| Authorization header for the System Context API | 
 
 ### Return type
 
@@ -1569,14 +1982,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphUserAssociationsList**
-> []GraphConnection GraphUserAssociationsList($userId, $targets, $contentType, $accept, $limit, $skip)
-
+> []GraphConnection GraphUserAssociationsList(ctx, userId, targets, contentType, accept, optional)
 List the associations of a User
 
 This endpoint returns the _direct_ associations of a User.  A direct association can be a non-homogenous relationship between 2 different objects. for example Users and Systems.   #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/associations?targets=user_group ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **userId** | **string**| ObjectID of the User. | 
+  **targets** | [**[]string**](string.md)|  | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1584,8 +2007,8 @@ Name | Type | Description  | Notes
  **targets** | [**[]string**](string.md)|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -1603,25 +2026,34 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphUserAssociationsPost**
-> GraphUserAssociationsPost($userId, $contentType, $accept, $body)
-
+> GraphUserAssociationsPost(ctx, userId, contentType, accept, optional)
 Manage the associations of a User
 
 This endpoint allows you to manage the _direct_ associations of a User.  A direct association can be a non-homogenous relationship between 2 different objects. for example Users and Systems.   #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/associations ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **userId** | **string**| ObjectID of the User. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **string**| ObjectID of the User. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | [optional] 
+ **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | 
 
 ### Return type
 
-void (empty response body)
+ (empty response body)
 
 ### Authorization
 
@@ -1635,14 +2067,24 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphUserGroupAssociationsList**
-> []GraphConnection GraphUserGroupAssociationsList($groupId, $targets, $contentType, $accept, $limit, $skip)
-
+> []GraphConnection GraphUserGroupAssociationsList(ctx, groupId, targets, contentType, accept, optional)
 List the associations of a User Group.
 
 This endpoint returns the _direct_ associations of this User Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example User Groups and Users.   #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/associations?targets=user ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the User Group. | 
+  **targets** | [**[]string**](string.md)|  | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1650,8 +2092,8 @@ Name | Type | Description  | Notes
  **targets** | [**[]string**](string.md)|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -1669,25 +2111,34 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphUserGroupAssociationsPost**
-> GraphUserGroupAssociationsPost($groupId, $contentType, $accept, $body)
-
+> GraphUserGroupAssociationsPost(ctx, groupId, contentType, accept, optional)
 Manage the associations of a User Group
 
 This endpoint manages the _direct_ associations of this User Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example User Groups and Users.   #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/associations ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the User Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the User Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**UserGroupGraphManagementReq**](UserGroupGraphManagementReq.md)|  | [optional] 
+ **body** | [**UserGroupGraphManagementReq**](UserGroupGraphManagementReq.md)|  | 
 
 ### Return type
 
-void (empty response body)
+ (empty response body)
 
 ### Authorization
 
@@ -1701,22 +2152,31 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphUserGroupMemberOf**
-> []GraphObjectWithPaths GraphUserGroupMemberOf($groupId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphUserGroupMemberOf(ctx, groupId, contentType, accept, optional)
 List the User Group's parents
 
 This endpoint returns all User Groups a User Group is a member of.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/{group_id}/membersof ```  Not public yet, as the code is not finished,
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the User Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the User Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -1734,22 +2194,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphUserGroupMembersList**
-> []GraphConnection GraphUserGroupMembersList($groupId, $contentType, $accept, $limit, $skip)
-
+> []GraphConnection GraphUserGroupMembersList(ctx, groupId, contentType, accept, optional)
 List the members of a User Group
 
 This endpoint returns the user members of a User Group.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/{group_id}/members ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the User Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the User Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -1767,25 +2236,34 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphUserGroupMembersPost**
-> GraphUserGroupMembersPost($groupId, $contentType, $accept, $body)
-
+> GraphUserGroupMembersPost(ctx, groupId, contentType, accept, optional)
 Manage the members of a User Group
 
 This endpoint allows you to manage the user members of a User Group.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/{group_id}/members ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the User Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the User Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**UserGroupMembersReq**](UserGroupMembersReq.md)|  | [optional] 
+ **body** | [**UserGroupMembersReq**](UserGroupMembersReq.md)|  | 
 
 ### Return type
 
-void (empty response body)
+ (empty response body)
 
 ### Authorization
 
@@ -1799,22 +2277,31 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphUserGroupMembership**
-> []GraphObjectWithPaths GraphUserGroupMembership($groupId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphUserGroupMembership(ctx, groupId, contentType, accept, optional)
 List the User Group's membership
 
 This endpoint returns all users members that are a member of this User Group.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/{group_id}/membership ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the User Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the User Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -1832,22 +2319,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphUserGroupTraverseActiveDirectory**
-> []GraphObjectWithPaths GraphUserGroupTraverseActiveDirectory($groupId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphUserGroupTraverseActiveDirectory(ctx, groupId, contentType, accept, optional)
 List the Active Directories associated with a User Group
 
 This endpoint will return the Active Directories associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding Active Directory; this array represents all grouping and/or associations that would have to be removed to deprovision the Active Directory from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/activedirectories ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the User Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the User Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -1865,22 +2361,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphUserGroupTraverseApplication**
-> []GraphObjectWithPaths GraphUserGroupTraverseApplication($groupId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphUserGroupTraverseApplication(ctx, groupId, contentType, accept, optional)
 List the Applications associated with a User Group
 
 This endpoint will return Applications associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding Application; this array represents all grouping and/or associations that would have to be removed to deprovision the Application from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/applications ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the User Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the User Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -1898,22 +2403,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphUserGroupTraverseDirectory**
-> []GraphObjectWithPaths GraphUserGroupTraverseDirectory($groupId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphUserGroupTraverseDirectory(ctx, groupId, contentType, accept, optional)
 List the Directories associated with a User Group
 
 This endpoint will return Directories associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding Directory; this array represents all grouping and/or associations that would have to be removed to deprovision the Directories from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/directories ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the User Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the User Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -1931,22 +2445,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphUserGroupTraverseGSuite**
-> []GraphObjectWithPaths GraphUserGroupTraverseGSuite($groupId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphUserGroupTraverseGSuite(ctx, groupId, contentType, accept, optional)
 List the G Suite instances associated with a User Group
 
 This endpoint will return the G Suite instances associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding G Suite instance; this array represents all grouping and/or associations that would have to be removed to deprovision the G Suite instance from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/gsuites ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the User Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the User Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -1964,22 +2487,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphUserGroupTraverseLdapServer**
-> []GraphObjectWithPaths GraphUserGroupTraverseLdapServer($groupId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphUserGroupTraverseLdapServer(ctx, groupId, contentType, accept, optional)
 List the LDAP Servers associated with a User Group
 
 This endpoint will return the LDAP Servers associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding LDAP Server; this array represents all grouping and/or associations that would have to be removed to deprovision the LDAP Server from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/ldapservers ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the User Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the User Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -1997,22 +2529,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphUserGroupTraverseOffice365**
-> []GraphObjectWithPaths GraphUserGroupTraverseOffice365($groupId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphUserGroupTraverseOffice365(ctx, groupId, contentType, accept, optional)
 List the Office 365 instances associated with a User Group
 
 This endpoint will return the Office 365 instances associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding Office 365 instance; this array represents all grouping and/or associations that would have to be removed to deprovision the Office 365 instance from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/office365s ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the User Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the User Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -2030,22 +2571,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphUserGroupTraverseRadiusServer**
-> []GraphObjectWithPaths GraphUserGroupTraverseRadiusServer($groupId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphUserGroupTraverseRadiusServer(ctx, groupId, contentType, accept, optional)
 List the RADIUS Servers associated with a User Group
 
 This endpoint will return a RADIUS Servers associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding RADIUS Server; this array represents all grouping and/or associations that would have to be removed to deprovision the RADIUS Server from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/radiusservers ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the User Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the User Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -2063,22 +2613,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphUserGroupTraverseSystem**
-> []GraphObjectWithPaths GraphUserGroupTraverseSystem($groupId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphUserGroupTraverseSystem(ctx, groupId, contentType, accept, optional)
 List the Systems associated with a User Group
 
 This endpoint will return Systems associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding System; this array represents all grouping and/or associations that would have to be removed to deprovision the System from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/systems ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the User Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the User Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -2096,22 +2655,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphUserGroupTraverseSystemGroup**
-> []GraphObjectWithPaths GraphUserGroupTraverseSystemGroup($groupId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphUserGroupTraverseSystemGroup(ctx, groupId, contentType, accept, optional)
 List the System Groups associated with User Groups
 
 This endpoint will return System Groups associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding System Group; this array represents all grouping and/or associations that would have to be removed to deprovision the System Group from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/systemsgroups ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the User Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the User Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -2129,22 +2697,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphUserMemberOf**
-> []GraphObjectWithPaths GraphUserMemberOf($userId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphUserMemberOf(ctx, userId, contentType, accept, optional)
 List the parent Groups of a User
 
 This endpoint returns all the User Groups a User is a member of.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/memberof ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **userId** | **string**| ObjectID of the User. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **string**| ObjectID of the User. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -2162,22 +2739,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphUserTraverseApplication**
-> []GraphObjectWithPaths GraphUserTraverseApplication($userId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphUserTraverseApplication(ctx, userId, contentType, accept, optional)
 List the Applications associated with a User
 
 This endpoint will return Applications associated with a User. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User to the corresponding Application; this array represents all grouping and/or associations that would have to be removed to deprovision the Application from this User.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/applications ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **userId** | **string**| ObjectID of the User. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **string**| ObjectID of the User. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -2195,22 +2781,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphUserTraverseDirectory**
-> []GraphObjectWithPaths GraphUserTraverseDirectory($userId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphUserTraverseDirectory(ctx, userId, contentType, accept, optional)
 List the Directories associated with a User
 
 This endpoint will return Directories associated with a User. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User to the corresponding Directory; this array represents all grouping and/or associations that would have to be removed to deprovision the Directory from this User.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/directories ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **userId** | **string**| ObjectID of the User. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **string**| ObjectID of the User. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -2228,22 +2823,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphUserTraverseGSuite**
-> []GraphObjectWithPaths GraphUserTraverseGSuite($userId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphUserTraverseGSuite(ctx, userId, contentType, accept, optional)
 List the G Suite instances associated with a User
 
 This endpoint will return G Suite instances associated with a User. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User to the corresponding G Suite instance; this array represents all grouping and/or associations that would have to be removed to deprovision the G Suite instance from this User.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/gsuites ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **userId** | **string**| ObjectID of the User. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **string**| ObjectID of the User. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -2261,22 +2865,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphUserTraverseLdapServer**
-> []GraphObjectWithPaths GraphUserTraverseLdapServer($userId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphUserTraverseLdapServer(ctx, userId, contentType, accept, optional)
 List the LDAP servers associated with a User
 
 This endpoint will return LDAP Servers associated with a User. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User to the corresponding LDAP Server; this array represents all grouping and/or associations that would have to be removed to deprovision the LDAP Server from this User.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/ldapservers ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **userId** | **string**| ObjectID of the User. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **string**| ObjectID of the User. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -2294,22 +2907,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphUserTraverseOffice365**
-> []GraphObjectWithPaths GraphUserTraverseOffice365($userId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphUserTraverseOffice365(ctx, userId, contentType, accept, optional)
 List the Office 365 instances associated with User
 
 This endpoint will return Office 365 instances associated with a User. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User to the corresponding Office 365 instance; this array represents all grouping and/or associations that would have to be removed to deprovision the Office 365 instance from this User.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/office365s ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **userId** | **string**| ObjectID of the User. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **string**| ObjectID of the User. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -2327,22 +2949,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphUserTraverseRadiusServer**
-> []GraphObjectWithPaths GraphUserTraverseRadiusServer($userId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphUserTraverseRadiusServer(ctx, userId, contentType, accept, optional)
 List the RADIUS Servers associated with a User
 
 This endpoint will return RADIUS Servers associated with a User. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User to the corresponding RADIUS Server; this array represents all grouping and/or associations that would have to be removed to deprovision the RADIUS Server from this User.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/radiusservers ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **userId** | **string**| ObjectID of the User. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **string**| ObjectID of the User. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -2360,22 +2991,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphUserTraverseSystem**
-> []GraphObjectWithPaths GraphUserTraverseSystem($userId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphUserTraverseSystem(ctx, userId, contentType, accept, optional)
 List the Systems associated with a User
 
 This endpoint will return Systems associated with a User. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User to the corresponding System; this array represents all grouping and/or associations that would have to be removed to deprovision the System from this User.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/systems ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **userId** | **string**| ObjectID of the User. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **string**| ObjectID of the User. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 

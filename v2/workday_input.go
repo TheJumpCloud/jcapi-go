@@ -16,5 +16,5 @@ type WorkdayInput struct {
 
 	Name string `json:"name,omitempty"`
 
-	Oauth OauthCodeInput `json:"oauth,omitempty"`
+	Oauth *OauthCodeInput `json:"oauth,omitempty"`
 }

@@ -9,6 +9,21 @@
  */
 
 package v2
-
-// The graph type.
+// GraphType : The graph type.
 type GraphType string
+
+// List of GraphType
+const (
+	ACTIVE_DIRECTORY GraphType = "active_directory"
+	APPLICATION GraphType = "application"
+	COMMAND GraphType = "command"
+	G_SUITE GraphType = "g_suite"
+	LDAP_SERVER GraphType = "ldap_server"
+	OFFICE_365 GraphType = "office_365"
+	POLICY GraphType = "policy"
+	RADIUS_SERVER GraphType = "radius_server"
+	SYSTEM GraphType = "system"
+	SYSTEM_GROUP GraphType = "system_group"
+	USER GraphType = "user"
+	USER_GROUP GraphType = "user_group"
+)

@@ -16,5 +16,5 @@ type Body struct {
 
 	ReportUrl string `json:"reportUrl"`
 
-	Oauth WorkdaysOauth `json:"oauth,omitempty"`
+	Oauth *WorkdaysOauth `json:"oauth,omitempty"`
 }
