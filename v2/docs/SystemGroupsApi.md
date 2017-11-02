@@ -22,14 +22,24 @@ Method | HTTP request | Description
 
 
 # **GraphSystemGroupAssociationsList**
-> []GraphConnection GraphSystemGroupAssociationsList($groupId, $targets, $contentType, $accept, $limit, $skip)
-
+> []GraphConnection GraphSystemGroupAssociationsList(ctx, groupId, targets, contentType, accept, optional)
 List the associations of a System Group
 
 This endpoint returns the _direct_ associations of a System Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example System Groups and Users.   #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/associations?targets=user ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the System Group. | 
+  **targets** | [**[]string**](string.md)|  | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -37,8 +47,8 @@ Name | Type | Description  | Notes
  **targets** | [**[]string**](string.md)|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -56,25 +66,34 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemGroupAssociationsPost**
-> GraphSystemGroupAssociationsPost($groupId, $contentType, $accept, $body)
-
+> GraphSystemGroupAssociationsPost(ctx, groupId, contentType, accept, optional)
 Manage the associations of a System Group
 
 This endpoint allows you to manage the _direct_ associations of a System Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example System Groups and Users.   #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/associations ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the System Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the System Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**SystemGroupGraphManagementReq**](SystemGroupGraphManagementReq.md)|  | [optional] 
+ **body** | [**SystemGroupGraphManagementReq**](SystemGroupGraphManagementReq.md)|  | 
 
 ### Return type
 
-void (empty response body)
+ (empty response body)
 
 ### Authorization
 
@@ -88,22 +107,31 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemGroupMemberOf**
-> []GraphObjectWithPaths GraphSystemGroupMemberOf($groupId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphSystemGroupMemberOf(ctx, groupId, contentType, accept, optional)
 List the System Group's parents
 
 This endpoint returns all System Groups a System Group is a member of.  This endpoint is not yet public as we haven't completed the code yet.
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the System Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the System Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -121,22 +149,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemGroupMembersList**
-> []GraphConnection GraphSystemGroupMembersList($groupId, $contentType, $accept, $limit, $skip)
-
+> []GraphConnection GraphSystemGroupMembersList(ctx, groupId, contentType, accept, optional)
 List the members of a System Group
 
 This endpoint returns the system members of a System Group.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/members ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the System Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the System Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -154,25 +191,36 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemGroupMembersPost**
-> GraphSystemGroupMembersPost($groupId, $contentType, $accept, $body)
-
+> GraphSystemGroupMembersPost(ctx, groupId, contentType, accept, optional)
 Manage the members of a System Group
 
 This endpoint allows you to manage the system members of a System Group.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/members ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the System Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the System Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**SystemGroupMembersReq**](SystemGroupMembersReq.md)|  | [optional] 
+ **body** | [**SystemGroupMembersReq**](SystemGroupMembersReq.md)|  | 
+ **date** | **string**| Current date header for the System Context API | 
+ **authorization** | **string**| Authorization header for the System Context API | 
 
 ### Return type
 
-void (empty response body)
+ (empty response body)
 
 ### Authorization
 
@@ -186,22 +234,31 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemGroupMembership**
-> []GraphObjectWithPaths GraphSystemGroupMembership($groupId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphSystemGroupMembership(ctx, groupId, contentType, accept, optional)
 List the System Group's membership
 
 This endpoint returns all Systems that are a member of this System Group.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/membership ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the System Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the System Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -219,22 +276,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemGroupTraversePolicy**
-> []GraphObjectWithPaths GraphSystemGroupTraversePolicy($groupId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphSystemGroupTraversePolicy(ctx, groupId, contentType, accept, optional)
 List the Policies associated with a System Group
 
 This endpoint will return Policies associated with a System Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this System Group to the corresponding Policy; this array represents all grouping and/or associations that would have to be removed to deprovision the Policy from this System Group.  See `/members` and `/associations` endpoints to manage those collections.  This endpoint is not public yet as we haven't finished the code.
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the System Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the System Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -252,22 +318,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemGroupTraverseUser**
-> []GraphObjectWithPaths GraphSystemGroupTraverseUser($groupId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphSystemGroupTraverseUser(ctx, groupId, contentType, accept, optional)
 List the Users associated with a System Group
 
 This endpoint will return Users associated with a System Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this System Group to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this System Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/users ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the System Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the System Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -285,22 +360,31 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphSystemGroupTraverseUserGroup**
-> []GraphObjectWithPaths GraphSystemGroupTraverseUserGroup($groupId, $contentType, $accept, $limit, $skip)
-
+> []GraphObjectWithPaths GraphSystemGroupTraverseUserGroup(ctx, groupId, contentType, accept, optional)
 List the User Groups associated with a System Group
 
 This endpoint will return User Groups associated with a System Group. Each element will contain the group's type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this System Group to the corresponding User Group; this array represents all grouping and/or associations that would have to be removed to deprovision the User Group from this System Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{group_id}/usergroups ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **groupId** | **string**| ObjectID of the System Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the System Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 
@@ -318,24 +402,23 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GroupsSystemDelete**
-> GroupsSystemDelete($id, $contentType, $accept)
-
+> GroupsSystemDelete(ctx, id, contentType, accept)
 Delete a System Group
 
 This endpoint allows you to delete a System Group.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{id} ```
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **string**| ObjectID of the System Group. | 
- **contentType** | **string**|  | [default to application/json]
- **accept** | **string**|  | [default to application/json]
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **id** | **string**| ObjectID of the System Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
 
 ### Return type
 
-void (empty response body)
+ (empty response body)
 
 ### Authorization
 
@@ -349,20 +432,19 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GroupsSystemGet**
-> SystemGroup GroupsSystemGet($id, $contentType, $accept)
-
+> SystemGroup GroupsSystemGet(ctx, id, contentType, accept)
 View an individual System Group details
 
 This endpoint returns the details of a System Group.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{id} ```
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **string**| ObjectID of the System Group. | 
- **contentType** | **string**|  | [default to application/json]
- **accept** | **string**|  | [default to application/json]
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **id** | **string**| ObjectID of the System Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
 
 ### Return type
 
@@ -380,24 +462,32 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GroupsSystemList**
-> []SystemGroup GroupsSystemList($contentType, $accept, $fields, $filter, $limit, $skip, $sort)
-
+> []SystemGroup GroupsSystemList(ctx, contentType, accept, optional)
 List all System Groups
 
 This endpoint returns all System Groups.  Available filter fields:   - `name`   - `disabled`   - `type`  #### Sample Request  ``` https://console.jumpcloud.com/api/v2/systemgroups ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **fields** | **string**| The comma separated fields included in the returned records. If omitted the default list of fields will be returned.  | [optional] [default to ]
- **filter** | **string**| Supported operators are: eq, ne, gt, ge, lt, le, between, search | [optional] [default to ]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
- **sort** | **string**| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | [optional] [default to ]
+ **fields** | **string**| The comma separated fields included in the returned records. If omitted the default list of fields will be returned.  | [default to ]
+ **filter** | **string**| Supported operators are: eq, ne, gt, ge, lt, le, between, search | [default to ]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **sort** | **string**| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | [default to ]
 
 ### Return type
 
@@ -415,21 +505,30 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GroupsSystemPatch**
-> SystemGroup GroupsSystemPatch($id, $contentType, $accept, $body)
-
+> SystemGroup GroupsSystemPatch(ctx, id, contentType, accept, optional)
 Partial update a System Group
 
 We have hidden PATCH on the systemgroups and usergroups for now; we don't have that implemented correctly yet, people should use PUT until we do a true PATCH operation.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{id} ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **id** | **string**| ObjectID of the System Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| ObjectID of the System Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**SystemGroupData**](SystemGroupData.md)|  | [optional] 
+ **body** | [**SystemGroupData**](SystemGroupData.md)|  | 
 
 ### Return type
 
@@ -447,20 +546,28 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GroupsSystemPost**
-> SystemGroup GroupsSystemPost($contentType, $accept, $body)
-
+> SystemGroup GroupsSystemPost(ctx, contentType, accept, optional)
 Create a new System Group
 
 This endpoint allows you to create a new System Group.  #### Sample Request  ``` https://console.jumpcloud.com/api/v2/systemgroups ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**SystemGroupData**](SystemGroupData.md)|  | [optional] 
+ **body** | [**SystemGroupData**](SystemGroupData.md)|  | 
 
 ### Return type
 
@@ -478,21 +585,30 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GroupsSystemPut**
-> SystemGroup GroupsSystemPut($id, $contentType, $accept, $body)
-
+> SystemGroup GroupsSystemPut(ctx, id, contentType, accept, optional)
 Update a System Group
 
 This enpoint allows you to do a full update of the System Group.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{id} ```
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **id** | **string**| ObjectID of the System Group. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| ObjectID of the System Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**SystemGroupData**](SystemGroupData.md)|  | [optional] 
+ **body** | [**SystemGroupData**](SystemGroupData.md)|  | 
 
 ### Return type
 

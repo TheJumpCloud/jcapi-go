@@ -12,21 +12,29 @@ Method | HTTP request | Description
 
 
 # **LdapserversSambaDomainsDelete**
-> string LdapserversSambaDomainsDelete($ldapserverId, $id, $contentType, $accept)
-
+> string LdapserversSambaDomainsDelete(ctx, ldapserverId, id, optional)
 Delete Samba Domain
 
 This endpoint allows you to delete a samba domain from an LDAP server.
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **ldapserverId** | **string**| Unique identifier o f the LDAP server. | 
+  **id** | **string**| Unique identifier of the samba domain. | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ldapserverId** | **string**| Unique identifier o f the LDAP server. | 
  **id** | **string**| Unique identifier of the samba domain. | 
- **contentType** | **string**|  | [optional] [default to application/json]
- **accept** | **string**|  | [optional] [default to application/json]
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
 
 ### Return type
 
@@ -44,21 +52,29 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **LdapserversSambaDomainsGet**
-> SambaDomainOutput LdapserversSambaDomainsGet($ldapserverId, $id, $contentType, $accept)
-
+> SambaDomainOutput LdapserversSambaDomainsGet(ctx, ldapserverId, id, optional)
 Get Samba Domain
 
 This endpoint returns a specific samba domain for an LDAP server.
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **ldapserverId** | **string**| Unique identifier o f the LDAP server. | 
+  **id** | **string**| Unique identifier of the samba domain. | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ldapserverId** | **string**| Unique identifier o f the LDAP server. | 
  **id** | **string**| Unique identifier of the samba domain. | 
- **contentType** | **string**|  | [optional] [default to application/json]
- **accept** | **string**|  | [optional] [default to application/json]
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
 
 ### Return type
 
@@ -76,25 +92,32 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **LdapserversSambaDomainsList**
-> []SambaDomainOutput LdapserversSambaDomainsList($ldapserverId, $contentType, $accept, $fields, $filter, $limit, $skip, $sort)
-
+> []SambaDomainOutput LdapserversSambaDomainsList(ctx, ldapserverId, optional)
 List Samba Domains
 
 This endpoint returns all samba domains for an LDAP server.
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **ldapserverId** | **string**| Unique identifier of the LDAP server. | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ldapserverId** | **string**| Unique identifier of the LDAP server. | 
- **contentType** | **string**|  | [optional] [default to application/json]
- **accept** | **string**|  | [optional] [default to application/json]
- **fields** | **string**| The comma separated fields included in the returned records. If omitted the default list of fields will be returned.  | [optional] [default to ]
- **filter** | **string**| Supported operators are: eq, ne, gt, ge, lt, le, between, search | [optional] [default to ]
- **limit** | **int32**| The number of records to return at once. | [optional] [default to 10]
- **skip** | **int32**| The offset into the records to return. | [optional] [default to 0]
- **sort** | **string**| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | [optional] [default to ]
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
+ **fields** | **string**| The comma separated fields included in the returned records. If omitted the default list of fields will be returned.  | [default to ]
+ **filter** | **string**| Supported operators are: eq, ne, gt, ge, lt, le, between, search | [default to ]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **sort** | **string**| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | [default to ]
 
 ### Return type
 
@@ -112,21 +135,28 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **LdapserversSambaDomainsPost**
-> SambaDomainOutput LdapserversSambaDomainsPost($ldapserverId, $body, $contentType, $accept)
-
+> SambaDomainOutput LdapserversSambaDomainsPost(ctx, ldapserverId, optional)
 Create Samba Domain
 
 This endpoint allows you to create a samba domain for an LDAP server.
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **ldapserverId** | **string**| Unique identifier of the LDAP server. | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ldapserverId** | **string**| Unique identifier of the LDAP server. | 
- **body** | [**SambaDomainInput**](SambaDomainInput.md)|  | [optional] 
- **contentType** | **string**|  | [optional] [default to application/json]
- **accept** | **string**|  | [optional] [default to application/json]
+ **body** | [**SambaDomainInput**](SambaDomainInput.md)|  | 
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
 
 ### Return type
 
@@ -144,22 +174,30 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **LdapserversSambaDomainsPut**
-> SambaDomainOutput LdapserversSambaDomainsPut($ldapserverId, $id, $body, $contentType, $accept)
-
+> SambaDomainOutput LdapserversSambaDomainsPut(ctx, ldapserverId, id, optional)
 Update Samba Domain
 
 This endpoint allows you to update the samba domain information for an LDAP server.
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **ldapserverId** | **string**| Unique identifier o f the LDAP server. | 
+  **id** | **string**| Unique identifier of the samba domain. | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ldapserverId** | **string**| Unique identifier o f the LDAP server. | 
  **id** | **string**| Unique identifier of the samba domain. | 
- **body** | [**SambaDomainInput**](SambaDomainInput.md)|  | [optional] 
- **contentType** | **string**|  | [optional] [default to application/json]
- **accept** | **string**|  | [optional] [default to application/json]
+ **body** | [**SambaDomainInput**](SambaDomainInput.md)|  | 
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
 
 ### Return type
 

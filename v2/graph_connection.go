@@ -13,7 +13,7 @@ package v2
 // Represents an edge between two graph objects. From can be omitted if it is clear from context.
 type GraphConnection struct {
 
-	From GraphObject `json:"from,omitempty"`
+	From *GraphObject `json:"from,omitempty"`
 
-	To GraphObject `json:"to"`
+	To *GraphObject `json:"to"`
 }

@@ -9,6 +9,5 @@
  */
 
 package v2
-
-// The graph type.
+// GraphType : The graph type.
 type GraphType string

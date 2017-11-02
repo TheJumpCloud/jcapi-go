@@ -9,6 +9,5 @@
  */
 
 package v2
-
-// The group type.
+// GroupType : The group type.
 type GroupType string
