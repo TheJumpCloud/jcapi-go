@@ -9,7 +9,7 @@ We're currently using the version 2.3.0 of swagger-codegen.
 
 Copy the API yaml files to the local `/input` directory.
 
-The API v2 yaml file can be found here: `https://github.com/TheJumpCloud/SI/blob/master/routes/webui/api/v2/index.yaml`
+The API v2 json/yaml spec can be found using the StopLight export link on our documentation page: `https://docs.jumpcloud.com/2.0`.
 
 To generate the API v2 client, run the command below (assuming your API v2 yaml file is `input/index2.yaml`):  
 
