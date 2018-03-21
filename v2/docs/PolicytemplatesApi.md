@@ -12,13 +12,13 @@ Method | HTTP request | Description
 > PolicyTemplateWithDetails PolicytemplatesGet(ctx, id, contentType, accept)
 Get a specific Policy Template
 
-This endpoint returns a specific policy template.
+This endpoint returns a specific policy template.  #### Sample Request ```  curl -X GET https://console.jumpcloud.com/api/v2/policies/{Policy_ID}\\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}' ```
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **id** | **string**| ObjectID of the Policy Template. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -42,13 +42,13 @@ Name | Type | Description  | Notes
 > []PolicyTemplate PolicytemplatesList(ctx, contentType, accept, optional)
 Lists all of the Policy Templates
 
-This endpoint returns all policy templates.
+This endpoint returns all policy templates.  #### Sample Request ``` curl -X GET https://console.jumpcloud.com/api/v2/policytemplates \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'   ```
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
@@ -60,11 +60,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **fields** | **string**| The comma separated fields included in the returned records. If omitted the default list of fields will be returned.  | [default to ]
- **filter** | **string**| Supported operators are: eq, ne, gt, ge, lt, le, between, search | [default to ]
+ **fields** | [**[]string**](string.md)| The comma separated fields included in the returned records. If omitted the default list of fields will be returned.  | 
+ **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
  **limit** | **int32**| The number of records to return at once. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
- **sort** | **string**| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | [default to ]
+ **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
 
 ### Return type
 

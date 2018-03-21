@@ -10,15 +10,15 @@ Method | HTTP request | Description
 [**GraphUserGroupMembersList**](UserGroupsApi.md#GraphUserGroupMembersList) | **Get** /usergroups/{group_id}/members | List the members of a User Group
 [**GraphUserGroupMembersPost**](UserGroupsApi.md#GraphUserGroupMembersPost) | **Post** /usergroups/{group_id}/members | Manage the members of a User Group
 [**GraphUserGroupMembership**](UserGroupsApi.md#GraphUserGroupMembership) | **Get** /usergroups/{group_id}/membership | List the User Group&#39;s membership
-[**GraphUserGroupTraverseActiveDirectory**](UserGroupsApi.md#GraphUserGroupTraverseActiveDirectory) | **Get** /usergroups/{group_id}/activedirectories | List the Active Directories associated with a User Group
-[**GraphUserGroupTraverseApplication**](UserGroupsApi.md#GraphUserGroupTraverseApplication) | **Get** /usergroups/{group_id}/applications | List the Applications associated with a User Group
-[**GraphUserGroupTraverseDirectory**](UserGroupsApi.md#GraphUserGroupTraverseDirectory) | **Get** /usergroups/{group_id}/directories | List the Directories associated with a User Group
-[**GraphUserGroupTraverseGSuite**](UserGroupsApi.md#GraphUserGroupTraverseGSuite) | **Get** /usergroups/{group_id}/gsuites | List the G Suite instances associated with a User Group
-[**GraphUserGroupTraverseLdapServer**](UserGroupsApi.md#GraphUserGroupTraverseLdapServer) | **Get** /usergroups/{group_id}/ldapservers | List the LDAP Servers associated with a User Group
-[**GraphUserGroupTraverseOffice365**](UserGroupsApi.md#GraphUserGroupTraverseOffice365) | **Get** /usergroups/{group_id}/office365s | List the Office 365 instances associated with a User Group
-[**GraphUserGroupTraverseRadiusServer**](UserGroupsApi.md#GraphUserGroupTraverseRadiusServer) | **Get** /usergroups/{group_id}/radiusservers | List the RADIUS Servers associated with a User Group
-[**GraphUserGroupTraverseSystem**](UserGroupsApi.md#GraphUserGroupTraverseSystem) | **Get** /usergroups/{group_id}/systems | List the Systems associated with a User Group
-[**GraphUserGroupTraverseSystemGroup**](UserGroupsApi.md#GraphUserGroupTraverseSystemGroup) | **Get** /usergroups/{group_id}/systemgroups | List the System Groups associated with User Groups
+[**GraphUserGroupTraverseActiveDirectory**](UserGroupsApi.md#GraphUserGroupTraverseActiveDirectory) | **Get** /usergroups/{group_id}/activedirectories | List the Active Directories bound to a User Group
+[**GraphUserGroupTraverseApplication**](UserGroupsApi.md#GraphUserGroupTraverseApplication) | **Get** /usergroups/{group_id}/applications | List the Applications bound to a User Group
+[**GraphUserGroupTraverseDirectory**](UserGroupsApi.md#GraphUserGroupTraverseDirectory) | **Get** /usergroups/{group_id}/directories | List the Directories bound to a User Group
+[**GraphUserGroupTraverseGSuite**](UserGroupsApi.md#GraphUserGroupTraverseGSuite) | **Get** /usergroups/{group_id}/gsuites | List the G Suite instances bound to a User Group
+[**GraphUserGroupTraverseLdapServer**](UserGroupsApi.md#GraphUserGroupTraverseLdapServer) | **Get** /usergroups/{group_id}/ldapservers | List the LDAP Servers bound to a User Group
+[**GraphUserGroupTraverseOffice365**](UserGroupsApi.md#GraphUserGroupTraverseOffice365) | **Get** /usergroups/{group_id}/office365s | List the Office 365 instances bound to a User Group
+[**GraphUserGroupTraverseRadiusServer**](UserGroupsApi.md#GraphUserGroupTraverseRadiusServer) | **Get** /usergroups/{group_id}/radiusservers | List the RADIUS Servers bound to a User Group
+[**GraphUserGroupTraverseSystem**](UserGroupsApi.md#GraphUserGroupTraverseSystem) | **Get** /usergroups/{group_id}/systems | List the Systems bound to a User Group
+[**GraphUserGroupTraverseSystemGroup**](UserGroupsApi.md#GraphUserGroupTraverseSystemGroup) | **Get** /usergroups/{group_id}/systemgroups | List the System Groups bound to User Groups
 [**GroupsUserDelete**](UserGroupsApi.md#GroupsUserDelete) | **Delete** /usergroups/{id} | Delete a User Group
 [**GroupsUserGet**](UserGroupsApi.md#GroupsUserGet) | **Get** /usergroups/{id} | View an indvidual User Group details
 [**GroupsUserList**](UserGroupsApi.md#GroupsUserList) | **Get** /usergroups | List all User Groups
@@ -28,7 +28,7 @@ Method | HTTP request | Description
 
 
 # **GraphUserGroupAssociationsList**
-> []GraphConnection GraphUserGroupAssociationsList(ctx, groupId, targets, contentType, accept, optional)
+> []GraphConnection GraphUserGroupAssociationsList(ctx, groupId, contentType, accept, targets, optional)
 List the associations of a User Group.
 
 This endpoint returns the _direct_ associations of this User Group.  A direct association can be a non-homogenous relationship between 2 different objects. for example User Groups and Users.   #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/associations?targets=user ```
@@ -37,11 +37,11 @@ This endpoint returns the _direct_ associations of this User Group.  A direct as
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **groupId** | **string**| ObjectID of the User Group. | 
-  **targets** | [**[]string**](string.md)|  | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
+  **targets** | [**[]string**](string.md)|  | 
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -50,9 +50,9 @@ Optional parameters are passed through a map[string]interface{}.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| ObjectID of the User Group. | 
- **targets** | [**[]string**](string.md)|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
+ **targets** | [**[]string**](string.md)|  | 
  **limit** | **int32**| The number of records to return at once. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
 
@@ -81,7 +81,7 @@ This endpoint manages the _direct_ associations of this User Group.  A direct as
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **groupId** | **string**| ObjectID of the User Group. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -122,7 +122,7 @@ This endpoint returns all User Groups a User Group is a member of.  #### Sample 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **groupId** | **string**| ObjectID of the User Group. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -136,8 +136,10 @@ Name | Type | Description  | Notes
  **groupId** | **string**| ObjectID of the User Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
+ **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
  **limit** | **int32**| The number of records to return at once. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
 
 ### Return type
 
@@ -164,7 +166,7 @@ This endpoint returns the user members of a User Group.  #### Sample Request ```
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **groupId** | **string**| ObjectID of the User Group. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -206,7 +208,7 @@ This endpoint allows you to manage the user members of a User Group.  #### Sampl
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **groupId** | **string**| ObjectID of the User Group. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -247,7 +249,7 @@ This endpoint returns all users members that are a member of this User Group.  #
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **groupId** | **string**| ObjectID of the User Group. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -261,8 +263,10 @@ Name | Type | Description  | Notes
  **groupId** | **string**| ObjectID of the User Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
+ **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
  **limit** | **int32**| The number of records to return at once. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
 
 ### Return type
 
@@ -281,15 +285,15 @@ Name | Type | Description  | Notes
 
 # **GraphUserGroupTraverseActiveDirectory**
 > []GraphObjectWithPaths GraphUserGroupTraverseActiveDirectory(ctx, groupId, contentType, accept, optional)
-List the Active Directories associated with a User Group
+List the Active Directories bound to a User Group
 
-This endpoint will return the Active Directories associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding Active Directory; this array represents all grouping and/or associations that would have to be removed to deprovision the Active Directory from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/activedirectories ```
+This endpoint will return all Active Directory Instances bound to a User Group, either directly or indirectly, essentially traversing the JumpCloud Graph for your Organization.   The `attributes` object is a key/value hash of compiled graph attributes for all paths followed.  The `paths` array enumerates each path from this User Group to the corresponding Active Directory; this array represents all grouping and/or associations that would have to be removed to deprovision the Active Directory from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/activedirectories ```
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **groupId** | **string**| ObjectID of the User Group. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -323,15 +327,15 @@ Name | Type | Description  | Notes
 
 # **GraphUserGroupTraverseApplication**
 > []GraphObjectWithPaths GraphUserGroupTraverseApplication(ctx, groupId, contentType, accept, optional)
-List the Applications associated with a User Group
+List the Applications bound to a User Group
 
-This endpoint will return Applications associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding Application; this array represents all grouping and/or associations that would have to be removed to deprovision the Application from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/applications ```
+This endpoint will return all Applications bound to a User Group, either directly or indirectly, essentially traversing the JumpCloud Graph for your Organization.  Each element will contain the type, id, attributes and paths  The `attributes` object is a key/value hash of compiled graph attributes for all paths followed.  The `paths` array enumerates each path from this User Group to the corresponding Application; this array represents all grouping and/or associations that would have to be removed to deprovision the Application from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/applications ```
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **groupId** | **string**| ObjectID of the User Group. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -365,15 +369,15 @@ Name | Type | Description  | Notes
 
 # **GraphUserGroupTraverseDirectory**
 > []GraphObjectWithPaths GraphUserGroupTraverseDirectory(ctx, groupId, contentType, accept, optional)
-List the Directories associated with a User Group
+List the Directories bound to a User Group
 
-This endpoint will return Directories associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding Directory; this array represents all grouping and/or associations that would have to be removed to deprovision the Directories from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/directories ```
+This endpoint will return all Directories bound to a User Group, either directly or indirectly, essentially traversing the JumpCloud Graph for your Organization.  Each element will contain the type, id, attributes and paths  The `attributes` object is a key/value hash of compiled graph attributes for all paths followed.  The `paths` array enumerates each path from this User Group to the corresponding Directory; this array represents all grouping and/or associations that would have to be removed to deprovision the Directories from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/directories ```
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **groupId** | **string**| ObjectID of the User Group. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -407,15 +411,15 @@ Name | Type | Description  | Notes
 
 # **GraphUserGroupTraverseGSuite**
 > []GraphObjectWithPaths GraphUserGroupTraverseGSuite(ctx, groupId, contentType, accept, optional)
-List the G Suite instances associated with a User Group
+List the G Suite instances bound to a User Group
 
-This endpoint will return the G Suite instances associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding G Suite instance; this array represents all grouping and/or associations that would have to be removed to deprovision the G Suite instance from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/gsuites ```
+This endpoint will return all Gsuite Instances bound to a User Group, either directly or indirectly, essentially traversing the JumpCloud Graph for your Organization.  Each element will contain the type, id, attributes and paths  The `attributes` object is a key/value hash of compiled graph attributes for all paths followed.  The `paths` array enumerates each path from this User Group to the corresponding G Suite instance; this array represents all grouping and/or associations that would have to be removed to deprovision the G Suite instance from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/gsuites ```
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **groupId** | **string**| ObjectID of the User Group. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -449,15 +453,15 @@ Name | Type | Description  | Notes
 
 # **GraphUserGroupTraverseLdapServer**
 > []GraphObjectWithPaths GraphUserGroupTraverseLdapServer(ctx, groupId, contentType, accept, optional)
-List the LDAP Servers associated with a User Group
+List the LDAP Servers bound to a User Group
 
-This endpoint will return the LDAP Servers associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding LDAP Server; this array represents all grouping and/or associations that would have to be removed to deprovision the LDAP Server from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/ldapservers ```
+This endpoint will return all LDAP Servers bound to a User Group, either directly or indirectly, essentially traversing the JumpCloud Graph for your Organization.  Each element will contain the type, id, attributes and paths  The `attributes` object is a key/value hash of compiled graph attributes for all paths followed.  The `paths` array enumerates each path from this User Group to the corresponding LDAP Server; this array represents all grouping and/or associations that would have to be removed to deprovision the LDAP Server from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/ldapservers ```
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **groupId** | **string**| ObjectID of the User Group. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -491,15 +495,15 @@ Name | Type | Description  | Notes
 
 # **GraphUserGroupTraverseOffice365**
 > []GraphObjectWithPaths GraphUserGroupTraverseOffice365(ctx, groupId, contentType, accept, optional)
-List the Office 365 instances associated with a User Group
+List the Office 365 instances bound to a User Group
 
-This endpoint will return the Office 365 instances associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding Office 365 instance; this array represents all grouping and/or associations that would have to be removed to deprovision the Office 365 instance from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/office365s ```
+This endpoint will return all Office 365 instances bound to a User Group, either directly or indirectly, essentially traversing the JumpCloud Graph for your Organization.  Each element will contain the type, id, attributes and paths  The `attributes` object is a key/value hash of compiled graph attributes for all paths followed.  The `paths` array enumerates each path from this User Group to the corresponding Office 365 instance; this array represents all grouping and/or associations that would have to be removed to deprovision the Office 365 instance from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/office365s ```
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **groupId** | **string**| ObjectID of the User Group. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -533,15 +537,15 @@ Name | Type | Description  | Notes
 
 # **GraphUserGroupTraverseRadiusServer**
 > []GraphObjectWithPaths GraphUserGroupTraverseRadiusServer(ctx, groupId, contentType, accept, optional)
-List the RADIUS Servers associated with a User Group
+List the RADIUS Servers bound to a User Group
 
-This endpoint will return a RADIUS Servers associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding RADIUS Server; this array represents all grouping and/or associations that would have to be removed to deprovision the RADIUS Server from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/radiusservers ```
+This endpoint will return all RADIUS servers bound to a User Group, either directly or indirectly, essentially traversing the JumpCloud Graph for your Organization.    Each element will contain the type, id, attributes and paths  The `attributes` object is a key/value hash of compiled graph attributes for all paths followed.  The `paths` array enumerates each path from this User Group to the corresponding RADIUS Server; this array represents all grouping and/or associations that would have to be removed to deprovision the RADIUS Server from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/radiusservers ```
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **groupId** | **string**| ObjectID of the User Group. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -575,15 +579,15 @@ Name | Type | Description  | Notes
 
 # **GraphUserGroupTraverseSystem**
 > []GraphObjectWithPaths GraphUserGroupTraverseSystem(ctx, groupId, contentType, accept, optional)
-List the Systems associated with a User Group
+List the Systems bound to a User Group
 
-This endpoint will return Systems associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding System; this array represents all grouping and/or associations that would have to be removed to deprovision the System from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/systems ```
+This endpoint will return all Systems bound to a User Group, either directly or indirectly, essentially traversing the JumpCloud Graph for your Organization.    Each element will contain the type, id, attributes and paths  The `attributes` object is a key/value hash of compiled graph attributes for all paths followed.  The `paths` array enumerates each path from this User Group to the corresponding System; this array represents all grouping and/or associations that would have to be removed to deprovision the System from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/systems ```
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **groupId** | **string**| ObjectID of the User Group. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -617,15 +621,15 @@ Name | Type | Description  | Notes
 
 # **GraphUserGroupTraverseSystemGroup**
 > []GraphObjectWithPaths GraphUserGroupTraverseSystemGroup(ctx, groupId, contentType, accept, optional)
-List the System Groups associated with User Groups
+List the System Groups bound to User Groups
 
-This endpoint will return System Groups associated with a User Group. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User Group to the corresponding System Group; this array represents all grouping and/or associations that would have to be removed to deprovision the System Group from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/systemsgroups ```
+This endpoint will return all System Groups bound to a User Group, either directly or indirectly, essentially traversing the JumpCloud Graph for your Organization.    Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of compiled graph attributes for all paths followed.  The `paths` array enumerates each path from this User Group to the corresponding System Group; this array represents all grouping and/or associations that would have to be removed to deprovision the System Group from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/group_id}/systemsgroups ```
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **groupId** | **string**| ObjectID of the User Group. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -667,7 +671,7 @@ This endpoint allows you to delete a User Group.  #### Sample Request ``` https:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **id** | **string**| ObjectID of the User Group. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -697,7 +701,7 @@ This endpoint allows you to view the details of a User Group.  #### Sample Reque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **id** | **string**| ObjectID of the User Group. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -727,7 +731,7 @@ This endpoint returns all User Groups.  Available filter fields:   - `name`   - 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
@@ -739,11 +743,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **fields** | **string**| The comma separated fields included in the returned records. If omitted the default list of fields will be returned.  | [default to ]
- **filter** | **string**| Supported operators are: eq, ne, gt, ge, lt, le, between, search | [default to ]
+ **fields** | [**[]string**](string.md)| The comma separated fields included in the returned records. If omitted the default list of fields will be returned.  | 
+ **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
  **limit** | **int32**| The number of records to return at once. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
- **sort** | **string**| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | [default to ]
+ **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
 
 ### Return type
 
@@ -770,7 +774,7 @@ We have hidden PATCH on the systemgroups and usergroups for now; we don't have t
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **id** | **string**| ObjectID of the User Group. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -784,7 +788,7 @@ Name | Type | Description  | Notes
  **id** | **string**| ObjectID of the User Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**UserGroupData**](UserGroupData.md)|  | 
+ **body** | [**UserGroupPost**](UserGroupPost.md)|  | 
 
 ### Return type
 
@@ -811,7 +815,7 @@ This endpoint allows you to create a new User Group.  #### Sample Request ``` ht
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
@@ -823,7 +827,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**UserGroupData**](UserGroupData.md)|  | 
+ **body** | [**UserGroupPost**](UserGroupPost.md)|  | 
 
 ### Return type
 
@@ -850,7 +854,7 @@ This enpoint allows you to do a full update of the User Group.  #### Sample Requ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **id** | **string**| ObjectID of the User Group. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -864,7 +868,7 @@ Name | Type | Description  | Notes
  **id** | **string**| ObjectID of the User Group. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**UserGroupData**](UserGroupData.md)|  | 
+ **body** | [**UserGroupPut**](UserGroupPut.md)|  | 
 
 ### Return type
 

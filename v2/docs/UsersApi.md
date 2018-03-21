@@ -7,17 +7,18 @@ Method | HTTP request | Description
 [**GraphUserAssociationsList**](UsersApi.md#GraphUserAssociationsList) | **Get** /users/{user_id}/associations | List the associations of a User
 [**GraphUserAssociationsPost**](UsersApi.md#GraphUserAssociationsPost) | **Post** /users/{user_id}/associations | Manage the associations of a User
 [**GraphUserMemberOf**](UsersApi.md#GraphUserMemberOf) | **Get** /users/{user_id}/memberof | List the parent Groups of a User
-[**GraphUserTraverseApplication**](UsersApi.md#GraphUserTraverseApplication) | **Get** /users/{user_id}/applications | List the Applications associated with a User
-[**GraphUserTraverseDirectory**](UsersApi.md#GraphUserTraverseDirectory) | **Get** /users/{user_id}/directories | List the Directories associated with a User
-[**GraphUserTraverseGSuite**](UsersApi.md#GraphUserTraverseGSuite) | **Get** /users/{user_id}/gsuites | List the G Suite instances associated with a User
-[**GraphUserTraverseLdapServer**](UsersApi.md#GraphUserTraverseLdapServer) | **Get** /users/{user_id}/ldapservers | List the LDAP servers associated with a User
-[**GraphUserTraverseOffice365**](UsersApi.md#GraphUserTraverseOffice365) | **Get** /users/{user_id}/office365s | List the Office 365 instances associated with User
-[**GraphUserTraverseRadiusServer**](UsersApi.md#GraphUserTraverseRadiusServer) | **Get** /users/{user_id}/radiusservers | List the RADIUS Servers associated with a User
-[**GraphUserTraverseSystem**](UsersApi.md#GraphUserTraverseSystem) | **Get** /users/{user_id}/systems | List the Systems associated with a User
+[**GraphUserTraverseApplication**](UsersApi.md#GraphUserTraverseApplication) | **Get** /users/{user_id}/applications | List the Applications bound to a User
+[**GraphUserTraverseDirectory**](UsersApi.md#GraphUserTraverseDirectory) | **Get** /users/{user_id}/directories | List the Directories bound to a User
+[**GraphUserTraverseGSuite**](UsersApi.md#GraphUserTraverseGSuite) | **Get** /users/{user_id}/gsuites | List the G Suite instances bound to a User
+[**GraphUserTraverseLdapServer**](UsersApi.md#GraphUserTraverseLdapServer) | **Get** /users/{user_id}/ldapservers | List the LDAP servers bound to a User
+[**GraphUserTraverseOffice365**](UsersApi.md#GraphUserTraverseOffice365) | **Get** /users/{user_id}/office365s | List the Office 365 instances bound to a User
+[**GraphUserTraverseRadiusServer**](UsersApi.md#GraphUserTraverseRadiusServer) | **Get** /users/{user_id}/radiusservers | List the RADIUS Servers bound to a User
+[**GraphUserTraverseSystem**](UsersApi.md#GraphUserTraverseSystem) | **Get** /users/{user_id}/systems | List the Systems bound to a User
+[**GraphUserTraverseSystemGroup**](UsersApi.md#GraphUserTraverseSystemGroup) | **Get** /users/{user_id}/systemgroups | List the System Groups bound to a User
 
 
 # **GraphUserAssociationsList**
-> []GraphConnection GraphUserAssociationsList(ctx, userId, targets, contentType, accept, optional)
+> []GraphConnection GraphUserAssociationsList(ctx, userId, contentType, accept, targets, optional)
 List the associations of a User
 
 This endpoint returns the _direct_ associations of a User.  A direct association can be a non-homogenous relationship between 2 different objects. for example Users and Systems.   #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/associations?targets=user_group ```
@@ -26,11 +27,11 @@ This endpoint returns the _direct_ associations of a User.  A direct association
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **userId** | **string**| ObjectID of the User. | 
-  **targets** | [**[]string**](string.md)|  | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
+  **targets** | [**[]string**](string.md)|  | 
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -39,9 +40,9 @@ Optional parameters are passed through a map[string]interface{}.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **string**| ObjectID of the User. | 
- **targets** | [**[]string**](string.md)|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
+ **targets** | [**[]string**](string.md)|  | 
  **limit** | **int32**| The number of records to return at once. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
 
@@ -70,7 +71,7 @@ This endpoint allows you to manage the _direct_ associations of a User.  A direc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **userId** | **string**| ObjectID of the User. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -84,7 +85,7 @@ Name | Type | Description  | Notes
  **userId** | **string**| ObjectID of the User. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | 
+ **body** | [**UserGraphManagementReq**](UserGraphManagementReq.md)|  | 
 
 ### Return type
 
@@ -111,7 +112,7 @@ This endpoint returns all the User Groups a User is a member of.  #### Sample Re
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **userId** | **string**| ObjectID of the User. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -125,8 +126,10 @@ Name | Type | Description  | Notes
  **userId** | **string**| ObjectID of the User. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
+ **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
  **limit** | **int32**| The number of records to return at once. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
 
 ### Return type
 
@@ -145,15 +148,15 @@ Name | Type | Description  | Notes
 
 # **GraphUserTraverseApplication**
 > []GraphObjectWithPaths GraphUserTraverseApplication(ctx, userId, contentType, accept, optional)
-List the Applications associated with a User
+List the Applications bound to a User
 
-This endpoint will return Applications associated with a User. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User to the corresponding Application; this array represents all grouping and/or associations that would have to be removed to deprovision the Application from this User.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/applications ```
+This endpoint will return all Applications bound to a User, either directly or indirectly, essentially traversing the JumpCloud Graph for your Organization.   Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of compiled graph attributes for all paths followed.  The `paths` array enumerates each path from this User to the corresponding Application; this array represents all grouping and/or associations that would have to be removed to deprovision the Application from this User.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/applications ```
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **userId** | **string**| ObjectID of the User. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -187,15 +190,15 @@ Name | Type | Description  | Notes
 
 # **GraphUserTraverseDirectory**
 > []GraphObjectWithPaths GraphUserTraverseDirectory(ctx, userId, contentType, accept, optional)
-List the Directories associated with a User
+List the Directories bound to a User
 
-This endpoint will return Directories associated with a User. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User to the corresponding Directory; this array represents all grouping and/or associations that would have to be removed to deprovision the Directory from this User.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/directories ```
+This endpoint will return all Directories bound to a User, either directly or indirectly, essentially traversing the JumpCloud Graph for your Organization.   Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of compiled graph attributes for all paths followed.  The `paths` array enumerates each path from this User to the corresponding Directory; this array represents all grouping and/or associations that would have to be removed to deprovision the Directory from this User.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/directories ```
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **userId** | **string**| ObjectID of the User. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -229,15 +232,15 @@ Name | Type | Description  | Notes
 
 # **GraphUserTraverseGSuite**
 > []GraphObjectWithPaths GraphUserTraverseGSuite(ctx, userId, contentType, accept, optional)
-List the G Suite instances associated with a User
+List the G Suite instances bound to a User
 
-This endpoint will return G Suite instances associated with a User. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User to the corresponding G Suite instance; this array represents all grouping and/or associations that would have to be removed to deprovision the G Suite instance from this User.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/gsuites ```
+This endpoint will return all G-Suite Instances bound to a User, either directly or indirectly, essentially traversing the JumpCloud Graph for your Organization.   Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of compiled graph attributes for all paths followed.  The `paths` array enumerates each path from this User to the corresponding G Suite instance; this array represents all grouping and/or associations that would have to be removed to deprovision the G Suite instance from this User.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/gsuites ```
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **userId** | **string**| ObjectID of the User. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -271,15 +274,15 @@ Name | Type | Description  | Notes
 
 # **GraphUserTraverseLdapServer**
 > []GraphObjectWithPaths GraphUserTraverseLdapServer(ctx, userId, contentType, accept, optional)
-List the LDAP servers associated with a User
+List the LDAP servers bound to a User
 
-This endpoint will return LDAP Servers associated with a User. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User to the corresponding LDAP Server; this array represents all grouping and/or associations that would have to be removed to deprovision the LDAP Server from this User.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/ldapservers ```
+This endpoint will return all LDAP Servers bound to a User, either directly or indirectly, essentially traversing the JumpCloud Graph for your Organization.   Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of compiled graph attributes for all paths followed.  The `paths` array enumerates each path from this User to the corresponding LDAP Server; this array represents all grouping and/or associations that would have to be removed to deprovision the LDAP Server from this User.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/ldapservers ```
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **userId** | **string**| ObjectID of the User. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -313,15 +316,15 @@ Name | Type | Description  | Notes
 
 # **GraphUserTraverseOffice365**
 > []GraphObjectWithPaths GraphUserTraverseOffice365(ctx, userId, contentType, accept, optional)
-List the Office 365 instances associated with User
+List the Office 365 instances bound to a User
 
-This endpoint will return Office 365 instances associated with a User. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User to the corresponding Office 365 instance; this array represents all grouping and/or associations that would have to be removed to deprovision the Office 365 instance from this User.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/office365s ```
+This endpoint will return all Office 365 Instances bound to a User, either directly or indirectly, essentially traversing the JumpCloud Graph for your Organization.   Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of compiled graph attributes for all paths followed.  The `paths` array enumerates each path from this User to the corresponding Office 365 instance; this array represents all grouping and/or associations that would have to be removed to deprovision the Office 365 instance from this User.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/office365s ```
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **userId** | **string**| ObjectID of the User. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -355,15 +358,15 @@ Name | Type | Description  | Notes
 
 # **GraphUserTraverseRadiusServer**
 > []GraphObjectWithPaths GraphUserTraverseRadiusServer(ctx, userId, contentType, accept, optional)
-List the RADIUS Servers associated with a User
+List the RADIUS Servers bound to a User
 
-This endpoint will return RADIUS Servers associated with a User. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User to the corresponding RADIUS Server; this array represents all grouping and/or associations that would have to be removed to deprovision the RADIUS Server from this User.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/radiusservers ```
+This endpoint will return all RADIUS Servers bound to a User, either directly or indirectly, essentially traversing the JumpCloud Graph for your Organization.    Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of compiled graph attributes for all paths followed.  The `paths` array enumerates each path from this User to the corresponding RADIUS Server; this array represents all grouping and/or associations that would have to be removed to deprovision the RADIUS Server from this User.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/radiusservers ```
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **userId** | **string**| ObjectID of the User. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
@@ -397,15 +400,57 @@ Name | Type | Description  | Notes
 
 # **GraphUserTraverseSystem**
 > []GraphObjectWithPaths GraphUserTraverseSystem(ctx, userId, contentType, accept, optional)
-List the Systems associated with a User
+List the Systems bound to a User
 
-This endpoint will return Systems associated with a User. Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of attributes specifically set for this group.  The `paths` array enumerates each path from this User to the corresponding System; this array represents all grouping and/or associations that would have to be removed to deprovision the System from this User.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/systems ```
+This endpoint will return all Systems bound to a User, either directly or indirectly, essentially traversing the JumpCloud Graph for your Organization.   Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of compiled graph attributes for all paths followed.  The `paths` array enumerates each path from this User to the corresponding System; this array represents all grouping and/or associations that would have to be removed to deprovision the System from this User.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/systems ```
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **userId** | **string**| ObjectID of the User. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **string**| ObjectID of the User. | 
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
+ **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
+
+### Return type
+
+[**[]GraphObjectWithPaths**](GraphObjectWithPaths.md)
+
+### Authorization
+
+[x-api-key](../README.md#x-api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GraphUserTraverseSystemGroup**
+> []GraphObjectWithPaths GraphUserTraverseSystemGroup(ctx, userId, contentType, accept, optional)
+List the System Groups bound to a User
+
+This endpoint will return all System Groups bound to a User, either directly or indirectly, essentially traversing the JumpCloud Graph for your Organization.   Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of compiled graph attributes for all paths followed.  The `paths` array enumerates each path from this User to the corresponding System Group; this array represents all grouping and/or associations that would have to be removed to deprovision the System Group from this User.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/users/{user_id}/systemgroups ```
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **userId** | **string**| ObjectID of the User. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
