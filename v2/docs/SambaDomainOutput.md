@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | Name of this domain | [default to null]
+**Name** | **string** | Name of this domain&#39;s WorkGroup | [default to null]
 **Sid** | **string** | Security identifier of this domain | [default to null]
 **Id** | **string** | Unique identifier of this domain | [default to null]
 

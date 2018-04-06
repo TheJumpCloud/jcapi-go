@@ -11,13 +11,13 @@ Method | HTTP request | Description
 > []Directory DirectoriesList(ctx, contentType, accept, optional)
 List All Directories
 
-This endpoint returns all active directories (LDAP, O365 Suite, G-Suite).  #### Sample Request ``` https://console.jumpcloud.com/api/v2/directories ```
+This endpoint returns all active directories (LDAP, O365 Suite, G-Suite).  #### Sample Request ```  curl -X GET https://console.jumpcloud.com/api/v2/directories \\   -H 'accept: application/json' \\   -H 'content-type: application/json' \\   -H 'x-api-key: {API_KEY}' ```
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
@@ -29,10 +29,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **fields** | **string**| The comma separated fields included in the returned records. If omitted the default list of fields will be returned.  | [default to ]
+ **fields** | [**[]string**](string.md)| The comma separated fields included in the returned records. If omitted the default list of fields will be returned.  | 
  **limit** | **int32**| The number of records to return at once. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
- **sort** | **string**| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | [default to ]
+ **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
 
 ### Return type
 
