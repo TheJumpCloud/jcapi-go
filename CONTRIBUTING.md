@@ -11,6 +11,8 @@ Copy the API yaml files to the local `/input` directory.
 
 The API v2 json/yaml spec can be found using the StopLight export link on our documentation page: `https://docs.jumpcloud.com/2.0`.
 
+Update the version number for each package in `config_v2.json`.
+
 To generate the API v2 client, run the command below (assuming your API v2 yaml file is `input/index2.yaml`):  
 
 ```
