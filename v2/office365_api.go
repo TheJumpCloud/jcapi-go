@@ -35,7 +35,7 @@ type Office365ApiService service
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
  @return []GraphConnection*/
 func (a *Office365ApiService) GraphOffice365AssociationsList(ctx context.Context, office365Id string, targets []string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphConnection,  *http.Response, error) {
@@ -213,7 +213,7 @@ func (a *Office365ApiService) GraphOffice365AssociationsPost(ctx context.Context
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
  @return []GraphObjectWithPaths*/
 func (a *Office365ApiService) GraphOffice365TraverseUser(ctx context.Context, office365Id string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphObjectWithPaths,  *http.Response, error) {
@@ -309,7 +309,7 @@ func (a *Office365ApiService) GraphOffice365TraverseUser(ctx context.Context, of
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
  @return []GraphObjectWithPaths*/
 func (a *Office365ApiService) GraphOffice365TraverseUserGroup(ctx context.Context, office365Id string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphObjectWithPaths,  *http.Response, error) {

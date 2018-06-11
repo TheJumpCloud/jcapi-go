@@ -35,7 +35,7 @@ type SystemGroupAssociationsApiService service
  @param accept 
  @param targets 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
  @return []GraphConnection*/
 func (a *SystemGroupAssociationsApiService) GraphSystemGroupAssociationsList(ctx context.Context, groupId string, contentType string, accept string, targets []string, localVarOptionals map[string]interface{}) ([]GraphConnection,  *http.Response, error) {
@@ -213,7 +213,7 @@ func (a *SystemGroupAssociationsApiService) GraphSystemGroupAssociationsPost(ctx
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
  @return []GraphObjectWithPaths*/
 func (a *SystemGroupAssociationsApiService) GraphSystemGroupTraverseCommand(ctx context.Context, groupId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphObjectWithPaths,  *http.Response, error) {
@@ -309,7 +309,7 @@ func (a *SystemGroupAssociationsApiService) GraphSystemGroupTraverseCommand(ctx 
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
  @return []GraphObjectWithPaths*/
 func (a *SystemGroupAssociationsApiService) GraphSystemGroupTraversePolicy(ctx context.Context, groupId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphObjectWithPaths,  *http.Response, error) {
@@ -405,7 +405,7 @@ func (a *SystemGroupAssociationsApiService) GraphSystemGroupTraversePolicy(ctx c
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
  @return []GraphObjectWithPaths*/
 func (a *SystemGroupAssociationsApiService) GraphSystemGroupTraverseUser(ctx context.Context, groupId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphObjectWithPaths,  *http.Response, error) {
@@ -501,7 +501,7 @@ func (a *SystemGroupAssociationsApiService) GraphSystemGroupTraverseUser(ctx con
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
  @return []GraphObjectWithPaths*/
 func (a *SystemGroupAssociationsApiService) GraphSystemGroupTraverseUserGroup(ctx context.Context, groupId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphObjectWithPaths,  *http.Response, error) {

@@ -191,7 +191,7 @@ func (a *ActiveDirectoryApiService) ActivedirectoriesGet(ctx context.Context, id
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "fields" ([]string) The comma separated fields included in the returned records. If omitted the default list of fields will be returned. 
      @param "filter" ([]string) Supported operators are: eq, ne, gt, ge, lt, le, between, search, in
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
      @param "sort" ([]string) The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending. 
  @return []ActiveDirectoryOutput*/
@@ -382,7 +382,7 @@ func (a *ActiveDirectoryApiService) ActivedirectoriesPost(ctx context.Context, c
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
  @return []GraphConnection*/
 func (a *ActiveDirectoryApiService) GraphActiveDirectoryAssociationsList(ctx context.Context, activedirectoryId string, targets []string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphConnection,  *http.Response, error) {
@@ -560,7 +560,7 @@ func (a *ActiveDirectoryApiService) GraphActiveDirectoryAssociationsPost(ctx con
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
  @return []GraphObjectWithPaths*/
 func (a *ActiveDirectoryApiService) GraphActiveDirectoryTraverseUserGroup(ctx context.Context, activedirectoryId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphObjectWithPaths,  *http.Response, error) {

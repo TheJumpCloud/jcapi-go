@@ -9,7 +9,15 @@
 
 package v2
 
-type WorkdayimportresultResult struct {
+type WorkdayWorkerImport struct {
 
-	Msg string `json:"msg,omitempty"`
+	Username string `json:"username,omitempty"`
+
+	Firstname string `json:"firstname,omitempty"`
+
+	Lastname string `json:"lastname,omitempty"`
+
+	Email string `json:"email,omitempty"`
+
+	Attributes []interface{} `json:"attributes,omitempty"`
 }

@@ -35,7 +35,7 @@ type SystemGroupMembersMembershipApiService service
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "filter" ([]string) Supported operators are: eq, ne, gt, ge, lt, le, between, search, in
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
      @param "sort" ([]string) The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending. 
  @return []GraphObjectWithPaths*/
@@ -138,7 +138,7 @@ func (a *SystemGroupMembersMembershipApiService) GraphSystemGroupMemberOf(ctx co
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
  @return []GraphConnection*/
 func (a *SystemGroupMembersMembershipApiService) GraphSystemGroupMembersList(ctx context.Context, groupId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphConnection,  *http.Response, error) {
@@ -329,7 +329,7 @@ func (a *SystemGroupMembersMembershipApiService) GraphSystemGroupMembersPost(ctx
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
      @param "sort" ([]string) The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending. 
      @param "filter" ([]string) Supported operators are: eq, ne, gt, ge, lt, le, between, search, in

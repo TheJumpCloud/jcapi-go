@@ -35,7 +35,7 @@ type SystemGroupsApiService service
  @param accept 
  @param targets 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
  @return []GraphConnection*/
 func (a *SystemGroupsApiService) GraphSystemGroupAssociationsList(ctx context.Context, groupId string, contentType string, accept string, targets []string, localVarOptionals map[string]interface{}) ([]GraphConnection,  *http.Response, error) {
@@ -214,7 +214,7 @@ func (a *SystemGroupsApiService) GraphSystemGroupAssociationsPost(ctx context.Co
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "filter" ([]string) Supported operators are: eq, ne, gt, ge, lt, le, between, search, in
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
      @param "sort" ([]string) The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending. 
  @return []GraphObjectWithPaths*/
@@ -317,7 +317,7 @@ func (a *SystemGroupsApiService) GraphSystemGroupMemberOf(ctx context.Context, g
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
  @return []GraphConnection*/
 func (a *SystemGroupsApiService) GraphSystemGroupMembersList(ctx context.Context, groupId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphConnection,  *http.Response, error) {
@@ -508,7 +508,7 @@ func (a *SystemGroupsApiService) GraphSystemGroupMembersPost(ctx context.Context
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
      @param "sort" ([]string) The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending. 
      @param "filter" ([]string) Supported operators are: eq, ne, gt, ge, lt, le, between, search, in
@@ -612,7 +612,7 @@ func (a *SystemGroupsApiService) GraphSystemGroupMembership(ctx context.Context,
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
  @return []GraphObjectWithPaths*/
 func (a *SystemGroupsApiService) GraphSystemGroupTraversePolicy(ctx context.Context, groupId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphObjectWithPaths,  *http.Response, error) {
@@ -708,7 +708,7 @@ func (a *SystemGroupsApiService) GraphSystemGroupTraversePolicy(ctx context.Cont
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
  @return []GraphObjectWithPaths*/
 func (a *SystemGroupsApiService) GraphSystemGroupTraverseUser(ctx context.Context, groupId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphObjectWithPaths,  *http.Response, error) {
@@ -804,7 +804,7 @@ func (a *SystemGroupsApiService) GraphSystemGroupTraverseUser(ctx context.Contex
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
  @return []GraphObjectWithPaths*/
 func (a *SystemGroupsApiService) GraphSystemGroupTraverseUserGroup(ctx context.Context, groupId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphObjectWithPaths,  *http.Response, error) {
@@ -1057,7 +1057,7 @@ func (a *SystemGroupsApiService) GroupsSystemGet(ctx context.Context, id string,
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "fields" ([]string) The comma separated fields included in the returned records. If omitted the default list of fields will be returned. 
      @param "filter" ([]string) Supported operators are: eq, ne, gt, ge, lt, le, between, search, in
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
      @param "sort" ([]string) The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending. 
  @return []SystemGroup*/

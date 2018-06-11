@@ -9,9 +9,7 @@
 
 package v2
 
-type Workdayimportresult struct {
+type InlineResponse204 struct {
 
-	Success bool `json:"success,omitempty"`
-
-	Result *WorkdayimportresultResult `json:"result,omitempty"`
+	Id string `json:"id,omitempty"`
 }
