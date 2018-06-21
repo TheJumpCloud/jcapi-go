@@ -35,7 +35,7 @@ type SystemsApiService service
  @param accept 
  @param targets 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
      @param "date" (string) Current date header for the System Context API
      @param "authorization" (string) Authorization header for the System Context API
@@ -140,7 +140,7 @@ func (a *SystemsApiService) GraphSystemAssociationsList(ctx context.Context, sys
 }
 
 /* SystemsApiService Manage associations of a System
- This endpoint allows you to manage the _direct_ associations of a System.  A direct association can be a non-homogenous relationship between 2 different objects. for example Systems and Users.   #### Sample Request &#x60;&#x60;&#x60; curl -X POST https://console.jumpcloud.com/api/v2/systems/{System_ID}/associations \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39; \\   -d &#39;{     \&quot;op\&quot;: \&quot;add\&quot;,     \&quot;type\&quot;: \&quot;user\&quot;,     \&quot;id\&quot;: \&quot;{User_ID}\&quot; }&#39;  &#x60;&#x60;&#x60;
+ This endpoint allows you to manage the _direct_ associations of a System.  A direct association can be a non-homogenous relationship between 2 different objects. for example Systems and Users.   #### Sample Request &#x60;&#x60;&#x60; curl -X POST https://console.jumpcloud.com/api/v2/systems/{System_ID}/associations \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39; \\   -d &#39;{    \&quot;attributes\&quot;: {       \&quot;sudo\&quot;: {          \&quot;enabled\&quot;: true,          \&quot;withoutPassword\&quot;: false       }    },      \&quot;op\&quot;: \&quot;add\&quot;,     \&quot;type\&quot;: \&quot;user\&quot;,     \&quot;id\&quot;: \&quot;UserID\&quot; }&#39;  &#x60;&#x60;&#x60;
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param systemId ObjectID of the System.
  @param contentType 
@@ -242,7 +242,7 @@ func (a *SystemsApiService) GraphSystemAssociationsPost(ctx context.Context, sys
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "filter" ([]string) Supported operators are: eq, ne, gt, ge, lt, le, between, search, in
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
      @param "date" (string) Current date header for the System Context API
      @param "authorization" (string) Authorization header for the System Context API
@@ -359,7 +359,7 @@ func (a *SystemsApiService) GraphSystemMemberOf(ctx context.Context, systemId st
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
  @return []GraphObjectWithPaths*/
 func (a *SystemsApiService) GraphSystemTraverseCommand(ctx context.Context, systemId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphObjectWithPaths,  *http.Response, error) {
@@ -455,7 +455,7 @@ func (a *SystemsApiService) GraphSystemTraverseCommand(ctx context.Context, syst
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
  @return []GraphObjectWithPaths*/
 func (a *SystemsApiService) GraphSystemTraversePolicy(ctx context.Context, systemId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphObjectWithPaths,  *http.Response, error) {
@@ -551,7 +551,7 @@ func (a *SystemsApiService) GraphSystemTraversePolicy(ctx context.Context, syste
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
      @param "date" (string) Current date header for the System Context API
      @param "authorization" (string) Authorization header for the System Context API
@@ -661,7 +661,7 @@ func (a *SystemsApiService) GraphSystemTraverseUser(ctx context.Context, systemI
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
      @param "date" (string) Current date header for the System Context API
      @param "authorization" (string) Authorization header for the System Context API

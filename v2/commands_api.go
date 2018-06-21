@@ -35,7 +35,7 @@ type CommandsApiService service
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
  @return []GraphConnection*/
 func (a *CommandsApiService) GraphCommandAssociationsList(ctx context.Context, commandId string, targets []string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphConnection,  *http.Response, error) {
@@ -133,13 +133,14 @@ func (a *CommandsApiService) GraphCommandAssociationsList(ctx context.Context, c
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "body" (GraphManagementReq) 
- @return */
-func (a *CommandsApiService) GraphCommandAssociationsPost(ctx context.Context, commandId string, contentType string, accept string, localVarOptionals map[string]interface{}) ( *http.Response, error) {
+ @return InlineResponse204*/
+func (a *CommandsApiService) GraphCommandAssociationsPost(ctx context.Context, commandId string, contentType string, accept string, localVarOptionals map[string]interface{}) (InlineResponse204,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localVarFileName string
 		localVarFileBytes []byte
+	 	successPayload  InlineResponse204
 	)
 
 	// create path and map variables
@@ -190,20 +191,25 @@ func (a *CommandsApiService) GraphCommandAssociationsPost(ctx context.Context, c
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return successPayload, nil, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return localVarHttpResponse, err
+		return successPayload, localVarHttpResponse, err
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
-	return localVarHttpResponse, err
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
 }
 
 /* CommandsApiService List the Systems bound to a Command
@@ -213,7 +219,7 @@ func (a *CommandsApiService) GraphCommandAssociationsPost(ctx context.Context, c
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
  @return []GraphObjectWithPaths*/
 func (a *CommandsApiService) GraphCommandTraverseSystem(ctx context.Context, commandId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphObjectWithPaths,  *http.Response, error) {
@@ -309,7 +315,7 @@ func (a *CommandsApiService) GraphCommandTraverseSystem(ctx context.Context, com
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
  @return []GraphObjectWithPaths*/
 func (a *CommandsApiService) GraphCommandTraverseSystemGroup(ctx context.Context, commandId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphObjectWithPaths,  *http.Response, error) {

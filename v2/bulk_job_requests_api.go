@@ -27,14 +27,14 @@ var (
 type BulkJobRequestsApiService service
 
 
-/* BulkJobRequestsApiService Get Job
- Under development
+/* BulkJobRequestsApiService Get Job (incomplete)
+ **This endpoint is not complete and should remain hidden as it&#39;s not functional yet.**
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param id 
  @param contentType 
  @param accept 
  @return JobDetails*/
-func (a *BulkJobRequestsApiService) JobGet(ctx context.Context, id string, contentType string, accept string) (JobDetails,  *http.Response, error) {
+func (a *BulkJobRequestsApiService) JobsGet(ctx context.Context, id string, contentType string, accept string) (JobDetails,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
@@ -109,16 +109,16 @@ func (a *BulkJobRequestsApiService) JobGet(ctx context.Context, id string, conte
 }
 
 /* BulkJobRequestsApiService List Job Results
- Under development
+ This endpoint will return the results of particular import job request.  ###Sample Request  &#x60;&#x60;&#x60; curl -X GET \\   https://console.jumpcloud.com/api/v2/jobs/{ImportJobID}/results \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;   &#x60;&#x60;&#x60;
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param id 
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
  @return []JobWorkresult*/
-func (a *BulkJobRequestsApiService) JobResults(ctx context.Context, id string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]JobWorkresult,  *http.Response, error) {
+func (a *BulkJobRequestsApiService) JobsResults(ctx context.Context, id string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]JobWorkresult,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}

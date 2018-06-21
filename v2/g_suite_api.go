@@ -35,7 +35,7 @@ type GSuiteApiService service
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
  @return []GraphConnection*/
 func (a *GSuiteApiService) GraphGSuiteAssociationsList(ctx context.Context, gsuiteId string, targets []string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphConnection,  *http.Response, error) {
@@ -209,7 +209,7 @@ func (a *GSuiteApiService) GraphGSuiteAssociationsPost(ctx context.Context, gsui
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
  @return []GraphObjectWithPaths*/
 func (a *GSuiteApiService) GraphGSuiteTraverseUser(ctx context.Context, gsuiteId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphObjectWithPaths,  *http.Response, error) {
@@ -305,7 +305,7 @@ func (a *GSuiteApiService) GraphGSuiteTraverseUser(ctx context.Context, gsuiteId
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) The number of records to return at once.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
  @return []GraphObjectWithPaths*/
 func (a *GSuiteApiService) GraphGSuiteTraverseUserGroup(ctx context.Context, gsuiteId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphObjectWithPaths,  *http.Response, error) {

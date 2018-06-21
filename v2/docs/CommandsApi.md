@@ -36,7 +36,7 @@ Name | Type | Description  | Notes
  **targets** | [**[]string**](string.md)|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GraphCommandAssociationsPost**
-> GraphCommandAssociationsPost(ctx, commandId, contentType, accept, optional)
+> InlineResponse204 GraphCommandAssociationsPost(ctx, commandId, contentType, accept, optional)
 Manage the associations of a Command
 
 This endpoint will allow you to manage the _direct_ associations of this Command.  A direct association can be a non-homogenous relationship between 2 different objects. for example Commands and User Groups.   #### Sample Request ```  curl -X POST https://console.jumpcloud.com/api/v2/commands/{Command_ID}/associations \\   -H 'accept: application/json' \\   -H 'content-type: application/json' \\   -H 'x-api-key: {API_KEY}' \\   -d '{     \"op\": \"add\",     \"type\": \"system_group\",     \"id\": \"Group_ID\" }' ```
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**InlineResponse204**](inline_response_204.md)
 
 ### Authorization
 
@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
  **commandId** | **string**| ObjectID of the Command. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
  **commandId** | **string**| ObjectID of the Command. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type

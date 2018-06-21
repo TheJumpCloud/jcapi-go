@@ -36,7 +36,7 @@ Name | Type | Description  | Notes
  **targets** | [**[]string**](string.md)|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
  **gsuiteId** | **string**| ObjectID of the G Suite instance. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
  **gsuiteId** | **string**| ObjectID of the G Suite instance. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. | [default to 10]
+ **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
