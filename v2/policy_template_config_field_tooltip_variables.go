@@ -9,7 +9,9 @@
 
 package v2
 
-type WorkdayimportresultResult struct {
+type PolicyTemplateConfigFieldTooltipVariables struct {
 
-	Msg string `json:"msg,omitempty"`
+	Icon string `json:"icon,omitempty"`
+
+	Message string `json:"message,omitempty"`
 }

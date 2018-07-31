@@ -11,9 +11,5 @@ package v2
 
 type JobWorkresult struct {
 
-	Status string `json:"status,omitempty"`
-
-	StatusMessage string `json:"statusMessage,omitempty"`
-
 	Meta *interface{} `json:"meta,omitempty"`
 }

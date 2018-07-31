@@ -62,7 +62,7 @@ func NewConfiguration() *Configuration {
 	cfg := &Configuration{
 		BasePath:      "https://console.jumpcloud.com/api/v2",
 		DefaultHeader: make(map[string]string),
-		UserAgent:     "Swagger-Codegen/1.2.1/go",
+		UserAgent:     "Swagger-Codegen/1.2.2/go",
 	}
 	return cfg
 }

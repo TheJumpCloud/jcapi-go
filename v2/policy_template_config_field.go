@@ -31,4 +31,6 @@ type PolicyTemplateConfigField struct {
 
 	// If this field is required for this field.
 	Required bool `json:"required,omitempty"`
+
+	Tooltip *PolicyTemplateConfigFieldTooltip `json:"tooltip,omitempty"`
 }

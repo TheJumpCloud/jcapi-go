@@ -9,9 +9,9 @@
 
 package v2
 
-type Workdayimportresult struct {
+type PolicyTemplateConfigFieldTooltip struct {
 
-	Success bool `json:"success,omitempty"`
+	Template string `json:"template,omitempty"`
 
-	Result *WorkdayimportresultResult `json:"result,omitempty"`
+	Variables *PolicyTemplateConfigFieldTooltipVariables `json:"variables,omitempty"`
 }
