@@ -156,8 +156,8 @@ paths:
       tags:
       - "Active Directory"
       summary: "List Active Directories"
-      description: "This endpoint allows you to list all your Active Directory Instances.\
-        \ \n\n#### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/activedirectories/\
+      description: "This endpoint allows you to list all your Active Directory Instances.\n\
+        \n#### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/activedirectories/\
         \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
       operationId: "activedirectories_list"
@@ -713,6 +713,117 @@ paths:
           enabled: false
           dynamic: false
           statusCode: 200
+  /bulk/users/{job_id}/results:
+    get:
+      tags:
+      - "Bulk Job Requests"
+      summary: "List Bulk Users Create Results"
+      description: "This endpoint will return the results of particular import job\
+        \ request.\n\n###Sample Request \n```\ncurl -X GET \\\n  https://console.jumpcloud.com/api/v2/bulk/users/{ImportJobID}/results\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
+      operationId: "bulk_usersCreateResults"
+      parameters:
+      - name: "job_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "JobId"
+      - name: "limit"
+        in: "query"
+        description: "The number of records to return at once. Limited to 100."
+        required: false
+        type: "integer"
+        default: 10
+        x-exportParamName: "Limit"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        x-exportParamName: "Skip"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/job-workresult"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        id: "bulk_usersCreateResults"
+        beforeScript: null
+        afterScript: null
+        public: false
+        mock:
+          enabled: false
+          dynamic: false
+          statusCode: 200
+  /bulk/users:
+    post:
+      tags:
+      - "Bulk Job Requests"
+      summary: "Bulk Users Create"
+      description: "The endpoint allows you to create a bulk job to asynchronously\
+        \ create users.\n\n#### Sample Request \n```\ncurl -X POST https://console.jumpcloud.com/api/v2/bulk/users\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '[\n\t{\n\t\t\"email\":\"{email}\"\
+        ,\n\t\t\"firstname\":\"{firstname}\",\n\t\t\"lastname\":\"{firstname}\",\n\
+        \t\t\"username\":\"{username}\",\n\t\t\"attributes\":[\n\t\t\t{\"name\":\"\
+        EmployeeID\",\"value\":\"0000\"},\n\t\t\t{\"name\":\"Custom\",\"value\":\"\
+        attribute\"}\n\t\t]\n\t}\n]\n```"
+      operationId: "bulk_usersCreate"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          type: "array"
+          items:
+            $ref: "#/definitions/bulk-user-create"
+        x-exportParamName: "Body"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        201:
+          description: ""
+          schema:
+            $ref: "#/definitions/job-id"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        id: "bulk_usersCreate"
+        beforeScript: null
+        afterScript: null
+        public: false
+        mock:
+          enabled: false
+          dynamic: false
+          statusCode: 200
   /jobs/{id}/results:
     get:
       tags:
@@ -1121,22 +1232,6 @@ paths:
         type: "integer"
         default: 10
         x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        x-exportParamName: "Skip"
-      - name: "sort"
-        in: "query"
-        description: "The comma separated fields used to sort the collection.\nDefault\
-          \ sort is ascending, prefix with `-` to sort descending.\n"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Sort"
       - name: "Content-Type"
         in: "header"
         required: true
@@ -1149,6 +1244,22 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "sort"
+        in: "query"
+        description: "The comma separated fields used to sort the collection.\nDefault\
+          \ sort is ascending, prefix with `-` to sort descending.\n"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Sort"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        x-exportParamName: "Skip"
       responses:
         200:
           description: "OK"
@@ -1838,6 +1949,18 @@ paths:
         type: "integer"
         default: 10
         x-exportParamName: "Limit"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
       - name: "skip"
         in: "query"
         description: "The offset into the records to return."
@@ -1854,18 +1977,6 @@ paths:
         items:
           type: "string"
         x-exportParamName: "Sort"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
       responses:
         200:
           description: ""
@@ -2468,22 +2579,10 @@ paths:
           enabled: false
           dynamic: false
           statusCode: 200
-  /policies/{policy_id}/policyresults:
-    get:
-      tags:
-      - "Policies"
-      summary: "Lists all the policy results of a policy."
-      description: "This endpoint returns all policies results for a specific policy.\
-        \ \n\n##### Sample Request\n\n```\n curl -X GET https://console.jumpcloud.com/api/v2/policies/{Policy_ID}/policyresults\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
       operationId: "policyresults_list"
       parameters:
-      - name: "policy_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "PolicyId"
       - name: "fields"
         in: "query"
         description: "The comma separated fields included in the returned records.\n\
@@ -2537,13 +2636,6 @@ paths:
         items:
           type: "string"
         x-exportParamName: "Sort"
-      - name: "aggregate"
-        in: "query"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Aggregate"
       responses:
         200:
           description: ""
@@ -2562,16 +2654,9 @@ paths:
           enabled: false
           dynamic: false
           statusCode: 200
-  /policyresults:
-    get:
-      tags:
-      - "Policies"
-      summary: "Lists all the policy results for an organization."
-      description: "This endpoint returns all policies results for an Organization.\
-        \ \n\n##### Sample Request\n\n```\n curl -X GET https://console.jumpcloud.com/api/v2/policyresults\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
-      operationId: "policyresults_list"
+      operationId: "policystatuses_list"
       parameters:
       - name: "fields"
         in: "query"
@@ -2626,13 +2711,6 @@ paths:
         items:
           type: "string"
         x-exportParamName: "Sort"
-      - name: "aggregate"
-        in: "query"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Aggregate"
       responses:
         200:
           description: ""
@@ -2643,7 +2721,7 @@ paths:
       security:
       - x-api-key: []
       x-stoplight:
-        id: "policyresults_list"
+        id: "policystatuses_list"
         beforeScript: null
         afterScript: null
         public: true
@@ -2740,22 +2818,6 @@ paths:
           enabled: false
           dynamic: false
           statusCode: 200
-  /policies/{policy_id}/policystatuses:
-    get:
-      tags:
-      - "Policies"
-      summary: "Lists the latest policy results of a policy."
-      description: "This endpoint returns the latest policies results for a specific\
-        \ policy. \n\n##### Sample Request\n\n```\n curl -X GET https://console.jumpcloud.com/api/v2/policies/{Policy_ID}/policystatuses\
-        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
-      operationId: "policystatuses_list"
-      parameters:
-      - name: "policy_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "PolicyId"
       - name: "fields"
         in: "query"
         description: "The comma separated fields included in the returned records.\n\
@@ -2815,50 +2877,31 @@ paths:
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/PolicyResult"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        id: "policystatuses_list"
         beforeScript: null
-        afterScript: null
+        afterScript: "function (ctx, request, response) {\n  // Your javascript code\
+          \ here.\n}"
         public: true
         mock:
           enabled: false
           dynamic: false
           statusCode: 200
-  /policies/{policy_id}/systems:
+  /policytemplates/{id}:
     get:
       tags:
-      - "Graph"
+      - "Policytemplates"
       - "Policies"
-      summary: "List the Systems bound to a Policy"
-      description: "This endpoint will return all Systems bound to a Policy, either\
-        \ directly or indirectly, essentially traversing the JumpCloud Graph for your\
-        \ Organization. \n\nEach element will contain the type, id, attributes and\
-        \ paths.\n\nThe `attributes` object is a key/value hash of compiled graph\
-        \ attributes for all paths followed.\n\nThe `paths` array enumerates each\
-        \ path from this Policy to the corresponding System; this array represents\
-        \ all grouping and/or associations that would have to be removed to deprovision\
-        \ the System from this Policy.\n\nSee `/members` and `/associations` endpoints\
-        \ to manage those collections.\n\n#### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/policies/{Policy_ID}/systems\
-        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+      summary: "Get a specific Policy Template"
+      description: "This endpoint returns a specific policy template.\n\n#### Sample\
+        \ Request\n```\n curl -X GET https://console.jumpcloud.com/api/v2/policies/{Policy_ID}\\\
+        \n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
-      operationId: "graph_policyTraverseSystem"
+      operationId: "policytemplates_get"
       parameters:
-      - name: "policy_id"
+      - name: "id"
         in: "path"
-        description: "ObjectID of the Command."
+        description: "ObjectID of the Policy Template."
         required: true
         type: "string"
-        x-exportParamName: "PolicyId"
-      - name: "limit"
-        in: "query"
-        description: "The number of records to return at once. Limited to 100."
-        required: false
-        type: "integer"
-        default: 10
-        x-exportParamName: "Limit"
       - name: "Content-Type"
         in: "header"
         required: true
@@ -2871,24 +2914,14 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        x-exportParamName: "Skip"
       responses:
         200:
           description: "OK"
           schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/GraphObjectWithPaths"
       security:
       - x-api-key: []
       x-stoplight:
-        id: "graph_policyTraverseSystem"
+        id: "policytemplates_get"
         beforeScript: null
         afterScript: null
         public: true
@@ -2896,39 +2929,22 @@ paths:
           enabled: false
           dynamic: false
           statusCode: 200
-  /policies/{policy_id}/systemgroups:
+  /policyresults/{id}:
     get:
       tags:
-      - "Graph"
       - "Policies"
-      summary: "List the System Groups bound to a Policy"
-      description: "This endpoint will return all Systems Groups bound to a Policy,\
-        \ either directly or indirectly, essentially traversing the JumpCloud Graph\
-        \ for your Organization.\n\nEach element will contain the group's type, id,\
-        \ attributes and paths.\n\nThe `attributes` object is a key/value hash of\
-        \ compiled graph attributes for all paths followed.\n\nThe `paths` array enumerates\
-        \ each path from this Policy to the corresponding System Group; this array\
-        \ represents all grouping and/or associations that would have to be removed\
-        \ to deprovision the System Group from this Policy.\n\nSee `/members` and\
-        \ `/associations` endpoints to manage those collections.\n\n#### Sample Request\n\
-        ```\ncurl -X GET  https://console.jumpcloud.com/api/v2/policies/{Policy_ID}/systemgroups\
+      summary: "Get a specific Policy Result."
+      description: "This endpoint will return the policy results for a specific policy.\n\
+        \n##### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/policyresults/{Policy_ID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
-      operationId: "graph_policyTraverseSystemGroup"
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
+      operationId: "policyresults_get"
       parameters:
-      - name: "policy_id"
+      - name: "id"
         in: "path"
-        description: "ObjectID of the Command."
+        description: "ObjectID of the Policy Result."
         required: true
         type: "string"
-        x-exportParamName: "PolicyId"
-      - name: "limit"
-        in: "query"
-        description: "The number of records to return at once. Limited to 100."
-        required: false
-        type: "integer"
-        default: 10
-        x-exportParamName: "Limit"
       - name: "Content-Type"
         in: "header"
         required: true
@@ -2941,24 +2957,14 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        x-exportParamName: "Skip"
       responses:
         200:
           description: "OK"
           schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/GraphObjectWithPaths"
       security:
       - x-api-key: []
       x-stoplight:
-        id: "graph_policyTraverseSystemGroup"
+        id: "policyresults_get"
         beforeScript: null
         afterScript: null
         public: true
@@ -3168,310 +3174,6 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
-      responses:
-        200:
-          description: "OK"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/PolicyTemplate"
-        500:
-          description: "Unexpected error."
-          schema:
-            $ref: "#/definitions/Error"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        id: "policytemplates_list"
-        beforeScript: null
-        afterScript: "function (ctx, request, response) {\n  // Your javascript code\
-          \ here.\n}"
-        public: true
-        mock:
-          enabled: false
-          dynamic: false
-          statusCode: 200
-  /policytemplates/{id}:
-    get:
-      tags:
-      - "Policytemplates"
-      - "Policies"
-      summary: "Get a specific Policy Template"
-      description: "This endpoint returns a specific policy template.\n\n#### Sample\
-        \ Request\n```\n curl -X GET https://console.jumpcloud.com/api/v2/policies/{Policy_ID}\\\
-        \n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
-      operationId: "policytemplates_get"
-      parameters:
-      - name: "id"
-        in: "path"
-        description: "ObjectID of the Policy Template."
-        required: true
-        type: "string"
-        x-exportParamName: "Id"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: "OK"
-          schema:
-            $ref: "#/definitions/PolicyTemplateWithDetails"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        id: "policytemplates_get"
-        beforeScript: null
-        afterScript: null
-        public: true
-        mock:
-          enabled: false
-          dynamic: false
-          statusCode: 200
-  /policyresults/{id}:
-    get:
-      tags:
-      - "Policies"
-      summary: "Get a specific Policy Result."
-      description: "This endpoint will return the policy results for a specific policy.\n\
-        \n##### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/policyresults/{Policy_ID}\
-        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
-      operationId: "policyresults_get"
-      parameters:
-      - name: "id"
-        in: "path"
-        description: "ObjectID of the Policy Result."
-        required: true
-        type: "string"
-        x-exportParamName: "Id"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: "OK"
-          schema:
-            $ref: "#/definitions/PolicyResult"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        id: "policyresults_get"
-        beforeScript: null
-        afterScript: null
-        public: true
-        mock:
-          enabled: false
-          dynamic: false
-          statusCode: 200
-  /radiusservers/{radiusserver_id}/associations:
-    get:
-      tags:
-      - "Graph"
-      - "RADIUS Servers"
-      summary: "List the associations of a RADIUS  Server"
-      description: "This endpoint returns the _direct_ associations of a Radius Server.\n\
-        \nA direct association can be a non-homogenous relationship between 2 different\
-        \ objects. for example Radius Servers and Users.\n\n#### Sample Request\n\
-        ```\ncurl -X GET https://console.jumpcloud.com/api/v2/radiusservers/{RADIUS_ID}/associations?targets=user_group\
-        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
-      operationId: "graph_radiusServerAssociationsList"
-      parameters:
-      - name: "radiusserver_id"
-        in: "path"
-        description: "ObjectID of the Radius Server."
-        required: true
-        type: "string"
-        x-exportParamName: "RadiusserverId"
-      - name: "targets"
-        in: "query"
-        description: ""
-        required: true
-        type: "array"
-        items:
-          type: "string"
-          enum:
-          - "active_directory"
-          - "application"
-          - "command"
-          - "g_suite"
-          - "ldap_server"
-          - "office_365"
-          - "policy"
-          - "radius_server"
-          - "system"
-          - "system_group"
-          - "user"
-          - "user_group"
-        x-exportParamName: "Targets"
-      - name: "limit"
-        in: "query"
-        description: "The number of records to return at once. Limited to 100."
-        required: false
-        type: "integer"
-        default: 10
-        x-exportParamName: "Limit"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        x-exportParamName: "Skip"
-      responses:
-        200:
-          description: "OK"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/GraphConnection"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        id: "graph_radiusServerAssociationsList"
-        beforeScript: null
-        afterScript: null
-        public: true
-        mock:
-          enabled: false
-          dynamic: false
-          statusCode: 200
-    post:
-      tags:
-      - "Graph"
-      - "RADIUS Servers"
-      summary: "Manage the associations of a RADIUS Server"
-      description: "This endpoint allows you to manage the _direct_ associations of\
-        \ a Radius Server.\n\nA direct association can be a non-homogenous relationship\
-        \ between 2 different objects. for example Radius Servers and Users.\n\n####\
-        \ Sample Request\n```\ncurl -X POST https://console.jumpcloud.com/api/v2/radiusservers/{RADIUS_ID}/associations\
-        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n\t\n\"type\":\"user\", \n\"\
-        id\":\"{USER_ID}\", \n\"op\":\"add\"\n\t\n}'\n```"
-      operationId: "graph_radiusServerAssociationsPost"
-      parameters:
-      - name: "radiusserver_id"
-        in: "path"
-        description: "ObjectID of the Radius Server."
-        required: true
-        type: "string"
-        x-exportParamName: "RadiusserverId"
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/GraphManagementReq"
-        x-exportParamName: "Body"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        204:
-          description: "OK"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        id: "graph_radiusServerAssociationsPost"
-        beforeScript: null
-        afterScript: null
-        public: true
-        mock:
-          enabled: false
-          dynamic: false
-          statusCode: 200
-    x-swagger-jumpcloud-auto-insert: true
-  /radiusservers/{radiusserver_id}/users:
-    get:
-      tags:
-      - "Graph"
-      - "RADIUS Servers"
-      summary: "List the Users bound to a RADIUS  Server"
-      description: "This endpoint will return all Users bound to a RADIUS Server,\
-        \ either directly or indirectly, essentially traversing the JumpCloud Graph\
-        \ for your Organization. \n\nEach element will contain the type, id, attributes\
-        \ and paths.\n\nThe `attributes` object is a key/value hash of compiled graph\
-        \ attributes for all paths followed.\n\nThe `paths` array enumerates each\
-        \ path from this RADIUS server instance to the corresponding User; this array\
-        \ represents all grouping and/or associations that would have to be removed\
-        \ to deprovision the User from this RADIUS server instance.\n\nSee `/members`\
-        \ and `/associations` endpoints to manage those collections.\n\n\n#### Sample\
-        \ Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/ldapservers/{LDAP_ID}/users\
-        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
-      operationId: "graph_radiusServerTraverseUser"
-      parameters:
-      - name: "radiusserver_id"
-        in: "path"
-        description: "ObjectID of the Radius Server."
-        required: true
-        type: "string"
-        x-exportParamName: "RadiusserverId"
-      - name: "limit"
-        in: "query"
-        description: "The number of records to return at once. Limited to 100."
-        required: false
-        type: "integer"
-        default: 10
-        x-exportParamName: "Limit"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        x-exportParamName: "Skip"
       responses:
         200:
           description: "OK"
@@ -8135,7 +7837,6 @@ paths:
       - "Workday Import"
       summary: "Workday Import"
       description: "The endpoint allows you to create a Workday Import request.\n\n\
-        #### Sample Request \n```\ncurl -X POST https://console.jumpcloud.com/api/v2/workdays}/{WorkdayID/import\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '[\n\t{\n\t\t\"email\":\"{email}\"\
         ,\n\t\t\"firstname\":\"{firstname}\",\n\t\t\"lastname\":\"{firstname}\",\n\
@@ -8155,7 +7856,6 @@ paths:
         schema:
           type: "array"
           items:
-            $ref: "#/definitions/workday-worker-import"
         x-exportParamName: "Body"
       - name: "Content-Type"
         in: "header"
@@ -8480,8 +8180,6 @@ definitions:
         - "windows"
       activation:
         type: "string"
-        description: "Requirements before the policy can be activated."
-      behavior:
         type: "string"
         description: "Specifics about the behavior of the policy."
     title: "PolicyTemplate"
@@ -8572,7 +8270,6 @@ definitions:
     - "op"
     - "type"
     properties:
-      op:
         type: "string"
         description: "How to modify the graph connection."
         enum:
@@ -8744,6 +8441,11 @@ definitions:
       configFields:
       - displayType: "checkbox"
         name: "name"
+        tooltip:
+          template: "template"
+          variables:
+            icon: "icon"
+            message: "message"
         readOnly: true
         id: "id"
         label: "label"
@@ -8751,6 +8453,11 @@ definitions:
         required: true
       - displayType: "checkbox"
         name: "name"
+        tooltip:
+          template: "template"
+          variables:
+            icon: "icon"
+            message: "message"
         readOnly: true
         id: "id"
         label: "label"
@@ -8796,10 +8503,17 @@ definitions:
       required:
         type: "boolean"
         description: "If this field is required for this field."
+      tooltip:
+        $ref: "#/definitions/PolicyTemplateConfigField_tooltip"
     title: "PolicyTemplateConfigField"
     example:
       displayType: "checkbox"
       name: "name"
+      tooltip:
+        template: "template"
+        variables:
+          icon: "icon"
+          message: "message"
       readOnly: true
       id: "id"
       label: "label"
@@ -8817,6 +8531,10 @@ definitions:
         description: "ObjectId uniquely indetifying a Policy."
       template:
         $ref: "#/definitions/PolicyTemplate"
+      configFields:
+        type: "array"
+        items:
+          $ref: "#/definitions/PolicyTemplateConfigField"
       name:
         type: "string"
         description: "The description for this specific Policy."
@@ -8840,6 +8558,31 @@ definitions:
       - configFieldID: "configFieldID"
       name: "name"
       id: "id"
+      configFields:
+      - displayType: "checkbox"
+        name: "name"
+        tooltip:
+          template: "template"
+          variables:
+            icon: "icon"
+            message: "message"
+        readOnly: true
+        id: "id"
+        label: "label"
+        position: 0.80082819046101150206595775671303272247314453125
+        required: true
+      - displayType: "checkbox"
+        name: "name"
+        tooltip:
+          template: "template"
+          variables:
+            icon: "icon"
+            message: "message"
+        readOnly: true
+        id: "id"
+        label: "label"
+        position: 0.80082819046101150206595775671303272247314453125
+        required: true
     x-stoplight:
       id: "PolicyWithDetails"
       name: "PolicyWithDetails"
@@ -9302,12 +9045,6 @@ definitions:
   job-workresult:
     type: "object"
     properties:
-      id:
-        type: "string"
-      status:
-        type: "string"
-      statusMsg:
-        type: "string"
       meta:
         type: "object"
         properties: {}
@@ -9323,10 +9060,6 @@ definitions:
       createdAt: "createdAt"
       statusMsg: "statusMsg"
       meta: "{}"
-      id: "id"
-      persistedFields: "{}"
-      status: "status"
-      updatedAt: "updatedAt"
     x-stoplight:
       id: "job-workresult"
       name: "Job WorkResult"
@@ -9369,8 +9102,6 @@ definitions:
       meta:
         type: "object"
         properties: {}
-      createdAt:
-        type: "string"
       updatedAt:
         type: "string"
       persistedFields:
@@ -9379,7 +9110,6 @@ definitions:
           type: "string"
     title: "Job Details"
     example:
-      createdAt: "createdAt"
       workUnitsCount: 0
       meta: "{}"
       adminId: "adminId"
@@ -9394,7 +9124,6 @@ definitions:
       id: "job-details"
       name: "Job Details"
       public: true
-  workday-worker-import:
     type: "object"
     properties:
       username:
@@ -9410,10 +9139,6 @@ definitions:
         items:
           type: "object"
           properties: {}
-    title: "Workday Worker Import"
-    x-stoplight:
-      id: "workday-worker-import"
-      name: "Workday Worker Import"
       public: true
   workday-fields:
     type: "object"
@@ -9458,6 +9183,26 @@ definitions:
         id: 0
       - name: "name"
         id: 0
+  PolicyTemplateConfigField_tooltip_variables:
+    properties:
+      icon:
+        type: "string"
+      message:
+        type: "string"
+    example:
+      icon: "icon"
+      message: "message"
+  PolicyTemplateConfigField_tooltip:
+    properties:
+      template:
+        type: "string"
+      variables:
+        $ref: "#/definitions/PolicyTemplateConfigField_tooltip_variables"
+    example:
+      template: "template"
+      variables:
+        icon: "icon"
+        message: "message"
   PolicyRequest_template:
     properties:
       id:
@@ -9723,6 +9468,8 @@ x-stoplight:
           type: "docTextSections"
         - _id: "system-context"
           type: "docTextSections"
+        - _id: "multi-tenant-organization-api-header"
+          type: "docTextSections"
         name: "Authentication & Authorization"
         description: ""
       - divider: false
@@ -9764,8 +9511,6 @@ x-stoplight:
           type: "endpoints"
       - divider: false
         items:
-        - _id: "jobs_results"
-          type: "endpoints"
         - _id: "jobs_get"
           type: "endpoints"
         name: "Bulk Job Requests"
@@ -10239,6 +9984,8 @@ x-stoplight:
           type: "schemas"
         - _id: "active-directory-input"
           type: "schemas"
+        - _id: "bulk-user-create"
+          type: "schemas"
         - _id: "Directory"
           type: "schemas"
         - _id: "Error"
@@ -10307,15 +10054,8 @@ x-stoplight:
           type: "schemas"
         - _id: "UserGroupPut"
           type: "schemas"
-        - _id: "UserGroupPost"
-          type: "schemas"
         - _id: "hitWKRiHhPaZpAx7q"
           type: "schemas"
-        - _id: "HaivXzJCYeryM9e35"
-          type: "schemas"
-        - _id: "workday-worker"
-          type: "schemas"
-        - _id: "workday-worker-import"
           type: "schemas"
         - _id: "workday-request"
           type: "schemas"
@@ -10323,9 +10063,8 @@ x-stoplight:
           type: "schemas"
         - _id: "workday-output"
           type: "schemas"
-        - _id: "workday-fields"
           type: "schemas"
-        - _id: "job-workresult"
+        - _id: "workday-worker"
           type: "schemas"
         - _id: "RY8pzvgBAsxtLMcXz"
           type: "schemas"
@@ -10342,27 +10081,27 @@ x-stoplight:
           type: "traits"
         - _id: "filter"
           type: "traits"
+        - _id: "graphSystemTargets"
+          type: "traits"
+        - _id: "graphSystemGroupTargets"
+          type: "traits"
+        - _id: "graphTargets"
+          type: "traits"
+        - _id: "graphUserGroupTargets"
+          type: "traits"
+        - _id: "graphUserTargets"
+          type: "traits"
         - _id: "limit"
+          type: "traits"
+        - _id: "listCount"
           type: "traits"
         - _id: "skip"
           type: "traits"
         - _id: "sort"
           type: "traits"
-        - _id: "graphTargets"
-          type: "traits"
         - _id: "requestHeaders"
           type: "traits"
         - _id: "systemContextAuth"
-          type: "traits"
-        - _id: "listCount"
-          type: "traits"
-        - _id: "graphSystemTargets"
-          type: "traits"
-        - _id: "graphSystemGroupTargets"
-          type: "traits"
-        - _id: "graphUserGroupTargets"
-          type: "traits"
-        - _id: "graphUserTargets"
           type: "traits"
         divider: false
       traits: []
@@ -10396,7 +10135,6 @@ x-stoplight:
         \ docs to understand the functionality still available in that API set.\n\n\
         #### API SDKS\n\nYou can find language specific SDKs that can help you kickstart\
         \ your Integration with JumpCloud in the following GitHub Repos: \n\n* [Python](https://github.com/TheJumpCloud/jcapi-python)\n\
-        * [Go](https://github.com/TheJumpCloud/jcapi-go)\n* [Ruby](https://github.com/TheJumpCloud/jcapi-ruby)"
       public: true
     authentication-and-authorization-overview:
       id: "authentication-and-authorization-overview"
@@ -10512,6 +10250,39 @@ x-stoplight:
         \ instance-shutdown defaults`. On RedHat/CentOS systems, run `chkconfig --add\
         \ instance-shutdown`\n\n\n### Third party\n\n#### Chef cookbooks\n\n[https://github.com/nshenry03/jumpcloud](https://github.com/nshenry03/jumpcloud)\n\
         \n[https://github.com/cjs226/jumpcloud](https://github.com/cjs226/jumpcloud)"
+      public: true
+    multi-tenant-organization-api-header:
+      id: "multi-tenant-organization-api-header"
+      name: "Multi Tenant Organization API Header"
+      content: "The Multi-Tenant Organzation API Header is available for JumpCloud\
+        \ Admins to use when making API requests from Organizations that have multiple\
+        \ managed organizations. \n\nThe `x-org-id` is a required header for all multi-tenant\
+        \ admins when making API requests to Jumpcloud as this header will define\
+        \ what organization you would like to make the request for. \n\nPlease note\
+        \ that Single Tenant Admins do not need to provide this header when making\
+        \ an API request.\n \n #### Header Value\n \n `x-org-id`\n\n#### API Response\
+        \ codes\n\n- `400` Malformed ID. \n- `401` ID not included for multi-tenant\
+        \ admin\n- `403` ID included on unsupported route.\n- `404` Organization ID\
+        \ Not Found.\n\n#### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/directories\
+        \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -H 'x-org-id: {ORG_ID}'\n\n```\n\n\
+        #### To obtain an indvidual Organization ID via the UI\n\nAs a prerequisite\
+        \ your Primary Organization will need to be setup for Multi-Tenancy which\
+        \ will give you access to the Multi-Tenant Organization Admin Portal.\n\n\
+        1. Log into JumpCloud [Admin Console](https://console.jumpcloud.com). If you\
+        \ are a multi-tenant Admin, you will automatically be routed to the Multi-Tenant\
+        \ Admin Portal.\n2. From the Multi-Tenant Portal's primary navigation bar,\
+        \ select the Organization you'd like to access.\n3. You will automatically\
+        \ be routed to that Organization's Admin Console.\n4. Go to Settings in the\
+        \ sub-tenant's primary navigation.\n5. You can obtain your Organization ID\
+        \ below your Organization's Contact Information on the Settings page.\n\n\
+        #### To obtain all Organization IDs via the API\n\n1. You can make an API\
+        \ request to this endpoint using the API key of your Primary Organization.\
+        \  `https://console.jumpcloud.com/api/organizations/` This will return all\
+        \ your managed organizations.\n\n#### Sample Request\n```\ncurl -X GET \\\n\
+        \  https://console.jumpcloud.com/api/organizations/ \\\n  -H 'Accept: application/json'\
+        \ \\\n  -H 'Content-Type: application/json' \\\n  -H 'x-api-key: {API_KEY}'\n\
+        \n```"
       public: true
   mock:
     dynamic: false

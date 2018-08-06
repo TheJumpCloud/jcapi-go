@@ -14,10 +14,6 @@ Method | HTTP request | Description
 [**PoliciesPost**](PoliciesApi.md#PoliciesPost) | **Post** /policies | Create a new Policy
 [**PoliciesPut**](PoliciesApi.md#PoliciesPut) | **Put** /policies/{id} | Update an existing Policy
 [**PolicyresultsGet**](PoliciesApi.md#PolicyresultsGet) | **Get** /policyresults/{id} | Get a specific Policy Result.
-[**PolicyresultsList**](PoliciesApi.md#PolicyresultsList) | **Get** /policies/{policy_id}/policyresults | Lists all the policy results of a policy.
-[**PolicyresultsList_0**](PoliciesApi.md#PolicyresultsList_0) | **Get** /policyresults | Lists all the policy results for an organization.
-[**PolicystatusesList**](PoliciesApi.md#PolicystatusesList) | **Get** /systems/{system_id}/policystatuses | List the policy statuses for a system
-[**PolicystatusesList_0**](PoliciesApi.md#PolicystatusesList_0) | **Get** /policies/{policy_id}/policystatuses | Lists the latest policy results of a policy.
 [**PolicytemplatesGet**](PoliciesApi.md#PolicytemplatesGet) | **Get** /policytemplates/{id} | Get a specific Policy Template
 [**PolicytemplatesList**](PoliciesApi.md#PolicytemplatesList) | **Get** /policytemplates | Lists all of the Policy Templates
 
@@ -401,7 +397,6 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PolicyresultsList**
-> []PolicyResult PolicyresultsList(ctx, policyId, contentType, accept, optional)
 Lists all the policy results of a policy.
 
 This endpoint returns all policies results for a specific policy.   ##### Sample Request  ```  curl -X GET https://console.jumpcloud.com/api/v2/policies/{Policy_ID}/policyresults \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'   ```
@@ -446,17 +441,16 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **PolicyresultsList_0**
-> []PolicyResult PolicyresultsList_0(ctx, contentType, accept, optional)
-Lists all the policy results for an organization.
-
-This endpoint returns all policies results for an Organization.   ##### Sample Request  ```  curl -X GET https://console.jumpcloud.com/api/v2/policyresults \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'   ```
+# **PolicystatusesList**
+> []PolicyResult PolicystatusesList(ctx, policyId, contentType, accept, optional)
+Lists the latest policy results of a policy.
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **policyId** | **string**|  | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
@@ -466,6 +460,7 @@ Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **policyId** | **string**|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **fields** | [**[]string**](string.md)| The comma separated fields included in the returned records. If omitted the default list of fields will be returned.  | 
@@ -473,7 +468,6 @@ Name | Type | Description  | Notes
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
- **aggregate** | [**[]string**](string.md)|  | 
 
 ### Return type
 

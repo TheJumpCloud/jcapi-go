@@ -9,17 +9,9 @@
 
 package v2
 
-type JobDetails struct {
+type PolicyTemplateConfigFieldTooltipVariables struct {
 
-	Id string `json:"id,omitempty"`
+	Icon string `json:"icon,omitempty"`
 
-	AdminId string `json:"adminId,omitempty"`
-  
-	Status string `json:"status,omitempty"`
-
-	Meta *interface{} `json:"meta,omitempty"`
-
-	UpdatedAt string `json:"updatedAt,omitempty"`
-
-	PersistedFields []string `json:"persistedFields,omitempty"`
+	Message string `json:"message,omitempty"`
 }

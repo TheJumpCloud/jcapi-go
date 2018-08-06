@@ -7,11 +7,6 @@ Method | HTTP request | Description
 [**JobsGet**](BulkJobRequestsApi.md#JobsGet) | **Get** /jobs/{id} | Get Job (incomplete)
 [**JobsResults**](BulkJobRequestsApi.md#JobsResults) | **Get** /jobs/{id}/results | List Job Results
 
-
-# **JobsGet**
-> JobDetails JobsGet(ctx, id, contentType, accept)
-Get Job (incomplete)
-
 **This endpoint is not complete and should remain hidden as it's not functional yet.**
 
 ### Required Parameters

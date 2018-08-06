@@ -9,17 +9,15 @@
 
 package v2
 
-type JobDetails struct {
+type BulkUserCreate struct {
 
-	Id string `json:"id,omitempty"`
+	Username string `json:"username,omitempty"`
 
-	AdminId string `json:"adminId,omitempty"`
-  
-	Status string `json:"status,omitempty"`
+	Firstname string `json:"firstname,omitempty"`
 
-	Meta *interface{} `json:"meta,omitempty"`
+	Lastname string `json:"lastname,omitempty"`
 
-	UpdatedAt string `json:"updatedAt,omitempty"`
+	Email string `json:"email,omitempty"`
 
-	PersistedFields []string `json:"persistedFields,omitempty"`
+	Attributes []interface{} `json:"attributes,omitempty"`
 }

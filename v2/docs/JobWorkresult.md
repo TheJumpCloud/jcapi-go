@@ -3,9 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | [optional] [default to null]
-**Status** | **string** |  | [optional] [default to null]
-**StatusMsg** | **string** |  | [optional] [default to null]
 **Meta** | [***interface{}**](interface{}.md) |  | [optional] [default to null]
 **CreatedAt** | **string** |  | [optional] [default to null]
 **UpdatedAt** | **string** |  | [optional] [default to null]

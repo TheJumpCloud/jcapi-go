@@ -17,6 +17,8 @@ type PolicyWithDetails struct {
 
 	Template *PolicyTemplate `json:"template,omitempty"`
 
+	ConfigFields []PolicyTemplateConfigField `json:"configFields,omitempty"`
+
 	// The description for this specific Policy.
 	Name string `json:"name,omitempty"`
 
