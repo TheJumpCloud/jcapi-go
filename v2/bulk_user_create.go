@@ -9,18 +9,15 @@
 
 package v2
 
-// An instance of a policty template.
-type PolicyWithDetails struct {
+type BulkUserCreate struct {
 
-	// ObjectId uniquely indetifying a Policy.
-	Id string `json:"id,omitempty"`
+	Username string `json:"username,omitempty"`
 
-	Template *PolicyTemplate `json:"template,omitempty"`
+	Firstname string `json:"firstname,omitempty"`
 
-	ConfigFields []PolicyTemplateConfigField `json:"configFields,omitempty"`
+	Lastname string `json:"lastname,omitempty"`
 
-	// The description for this specific Policy.
-	Name string `json:"name,omitempty"`
+	Email string `json:"email,omitempty"`
 
-	Values []PolicyValue `json:"values,omitempty"`
+	Attributes []interface{} `json:"attributes,omitempty"`
 }

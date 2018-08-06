@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **Name** | **string** |  | [optional] [default to null]
 **Status** | **string** |  | [optional] [default to null]
 **Meta** | [***interface{}**](interface{}.md) |  | [optional] [default to null]
-**CreatedAt** | **string** |  | [optional] [default to null]
 **UpdatedAt** | **string** |  | [optional] [default to null]
 **PersistedFields** | **[]string** |  | [optional] [default to null]
 

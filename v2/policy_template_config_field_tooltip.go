@@ -9,15 +9,9 @@
 
 package v2
 
-type WorkdayWorkerImport struct {
+type PolicyTemplateConfigFieldTooltip struct {
 
-	Username string `json:"username,omitempty"`
+	Template string `json:"template,omitempty"`
 
-	Firstname string `json:"firstname,omitempty"`
-
-	Lastname string `json:"lastname,omitempty"`
-
-	Email string `json:"email,omitempty"`
-
-	Attributes []interface{} `json:"attributes,omitempty"`
+	Variables *PolicyTemplateConfigFieldTooltipVariables `json:"variables,omitempty"`
 }

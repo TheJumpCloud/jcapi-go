@@ -23,8 +23,6 @@ type JobDetails struct {
 
 	Meta *interface{} `json:"meta,omitempty"`
 
-	CreatedAt string `json:"createdAt,omitempty"`
-
 	UpdatedAt string `json:"updatedAt,omitempty"`
 
 	PersistedFields []string `json:"persistedFields,omitempty"`
