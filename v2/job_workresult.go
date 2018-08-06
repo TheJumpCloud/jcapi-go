@@ -12,4 +12,10 @@ package v2
 type JobWorkresult struct {
 
 	Meta *interface{} `json:"meta,omitempty"`
+
+	CreatedAt string `json:"createdAt,omitempty"`
+
+	UpdatedAt string `json:"updatedAt,omitempty"`
+
+	PersistedFields *interface{} `json:"persistedFields,omitempty"`
 }

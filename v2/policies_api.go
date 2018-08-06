@@ -909,116 +909,6 @@ func (a *PoliciesApiService) PolicyresultsGet(ctx context.Context, id string, co
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PoliciesApiService Lists all the policy results for an organization.
- This endpoint returns all policies results for an Organization.   ##### Sample Request  &#x60;&#x60;&#x60;  curl -X GET https://console.jumpcloud.com/api/v2/policyresults \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;   &#x60;&#x60;&#x60;
- * @param ctx context.Context for authentication, logging, tracing, etc.
- @param contentType 
- @param accept 
- @param optional (nil or map[string]interface{}) with one or more of:
-     @param "aggregate" ([]string) 
-     @param "fields" ([]string) The comma separated fields included in the returned records. If omitted the default list of fields will be returned. 
-     @param "filter" ([]string) Supported operators are: eq, ne, gt, ge, lt, le, between, search, in
-     @param "limit" (int32) The number of records to return at once. Limited to 100.
-     @param "skip" (int32) The offset into the records to return.
-     @param "sort" ([]string) The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending. 
- @return []PolicyResult*/
-func (a *PoliciesApiService) PolicyresultsList(ctx context.Context, contentType string, accept string, localVarOptionals map[string]interface{}) ([]PolicyResult,  *http.Response, error) {
-	var (
-		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  []PolicyResult
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/policyresults"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
-		return successPayload, nil, err
-	}
-	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
-		return successPayload, nil, err
-	}
-
-	if localVarTempParam, localVarOk := localVarOptionals["aggregate"].([]string); localVarOk {
-		localVarQueryParams.Add("aggregate", parameterToString(localVarTempParam, "csv"))
-	}
-	if localVarTempParam, localVarOk := localVarOptionals["fields"].([]string); localVarOk {
-		localVarQueryParams.Add("fields", parameterToString(localVarTempParam, "csv"))
-	}
-	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
-		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
-	}
-	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
-		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
-	}
-	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
-		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
-	}
-	if localVarTempParam, localVarOk := localVarOptionals["sort"].([]string); localVarOk {
-		localVarQueryParams.Add("sort", parameterToString(localVarTempParam, "csv"))
-	}
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHttpContentType
-	}
-
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-		}
-
-	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
-	}
-	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
-	localVarHeaderParams["Accept"] = parameterToString(accept, "")
-	if ctx != nil {
-		// API Key Authentication
-		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
-			var key string
-			if auth.Prefix != "" {
-				key = auth.Prefix + " " + auth.Key
-			} else {
-				key = auth.Key
-			}
-			localVarHeaderParams["x-api-key"] = key
-		}
-	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return successPayload, nil, err
-	}
-
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
-	}
-	defer localVarHttpResponse.Body.Close()
-	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
-	}
-
-	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
-	}
-
-
-	return successPayload, localVarHttpResponse, err
-}
-
 /* PoliciesApiService Lists all the policy results of a policy.
  This endpoint returns all policies results for a specific policy.   ##### Sample Request  &#x60;&#x60;&#x60;  curl -X GET https://console.jumpcloud.com/api/v2/policies/{Policy_ID}/policyresults \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;   &#x60;&#x60;&#x60;
  * @param ctx context.Context for authentication, logging, tracing, etc.
@@ -1131,8 +1021,6 @@ func (a *PoliciesApiService) PolicyresultsList_1(ctx context.Context, policyId s
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PoliciesApiService Lists the latest policy results of a policy.
- This endpoint returns the latest policies results for a specific policy.   ##### Sample Request  &#x60;&#x60;&#x60;  curl -X GET https://console.jumpcloud.com/api/v2/policies/{Policy_ID}/policystatuses \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;   &#x60;&#x60;&#x60;
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param policyId 
  @param contentType 
@@ -1264,6 +1152,222 @@ func (a *PoliciesApiService) PolicystatusesList_2(ctx context.Context, systemId 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/systems/{system_id}/policystatuses"
 	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["fields"].([]string); localVarOk {
+		localVarQueryParams.Add("fields", parameterToString(localVarTempParam, "csv"))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
+		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
+		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["sort"].([]string); localVarOk {
+		localVarQueryParams.Add("sort", parameterToString(localVarTempParam, "csv"))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
+	localVarHeaderParams["Accept"] = parameterToString(accept, "")
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+			localVarHeaderParams["x-api-key"] = key
+		}
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* PoliciesApiService List the policy statuses for a system
+ This endpoint returns the policy results for a particular system.  ##### Sample Request  &#x60;&#x60;&#x60; curl -X GET https://console.jumpcloud.com/api/v2/systems/{System_ID}/policystatuses \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;  &#x60;&#x60;&#x60;
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param systemId ObjectID of the System.
+ @param contentType 
+ @param accept 
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "fields" ([]string) The comma separated fields included in the returned records. If omitted the default list of fields will be returned. 
+     @param "filter" ([]string) Supported operators are: eq, ne, gt, ge, lt, le, between, search, in
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
+     @param "skip" (int32) The offset into the records to return.
+     @param "sort" ([]string) The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending. 
+ @return []PolicyResult*/
+func (a *PoliciesApiService) PolicystatusesList(ctx context.Context, systemId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]PolicyResult,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localVarFileName string
+		localVarFileBytes []byte
+	 	successPayload  []PolicyResult
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/systems/{system_id}/policystatuses"
+	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["fields"].([]string); localVarOk {
+		localVarQueryParams.Add("fields", parameterToString(localVarTempParam, "csv"))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
+		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
+		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["sort"].([]string); localVarOk {
+		localVarQueryParams.Add("sort", parameterToString(localVarTempParam, "csv"))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
+	localVarHeaderParams["Accept"] = parameterToString(accept, "")
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+			localVarHeaderParams["x-api-key"] = key
+		}
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* PoliciesApiService Lists the latest policy results of a policy.
+ This endpoint returns the latest policies results for a specific policy.   ##### Sample Request  &#x60;&#x60;&#x60;  curl -X GET https://console.jumpcloud.com/api/v2/policies/{Policy_ID}/policystatuses \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;   &#x60;&#x60;&#x60;
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param policyId 
+ @param contentType 
+ @param accept 
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "fields" ([]string) The comma separated fields included in the returned records. If omitted the default list of fields will be returned. 
+     @param "filter" ([]string) Supported operators are: eq, ne, gt, ge, lt, le, between, search, in
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
+     @param "skip" (int32) The offset into the records to return.
+     @param "sort" ([]string) The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending. 
+ @return []PolicyResult*/
+func (a *PoliciesApiService) PolicystatusesList_2(ctx context.Context, policyId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]PolicyResult,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localVarFileName string
+		localVarFileBytes []byte
+	 	successPayload  []PolicyResult
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/policies/{policy_id}/policystatuses"
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_id"+"}", fmt.Sprintf("%v", policyId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
