@@ -9,18 +9,9 @@
 
 package v2
 
-// An instance of a policty template.
-type PolicyWithDetails struct {
+type PolicyTemplateConfigFieldTooltipVariables struct {
 
-	// ObjectId uniquely indetifying a Policy.
-	Id string `json:"id,omitempty"`
+	Icon string `json:"icon,omitempty"`
 
-	Template *PolicyTemplate `json:"template,omitempty"`
-
-	ConfigFields []PolicyTemplateConfigField `json:"configFields,omitempty"`
-
-	// The description for this specific Policy.
-	Name string `json:"name,omitempty"`
-
-	Values []PolicyValue `json:"values,omitempty"`
+	Message string `json:"message,omitempty"`
 }

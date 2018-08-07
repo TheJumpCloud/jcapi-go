@@ -32,6 +32,8 @@ Class | Method | HTTP request | Description
 *ApplicationsApi* | [**GraphApplicationAssociationsPost**](docs/ApplicationsApi.md#graphapplicationassociationspost) | **Post** /applications/{application_id}/associations | Manage the associations of an Application
 *ApplicationsApi* | [**GraphApplicationTraverseUser**](docs/ApplicationsApi.md#graphapplicationtraverseuser) | **Get** /applications/{application_id}/users | List the Users bound to an Application
 *ApplicationsApi* | [**GraphApplicationTraverseUserGroup**](docs/ApplicationsApi.md#graphapplicationtraverseusergroup) | **Get** /applications/{application_id}/usergroups | List the User Groups bound to an Application
+*BulkJobRequestsApi* | [**BulkUsersCreate**](docs/BulkJobRequestsApi.md#bulkuserscreate) | **Post** /bulk/users | Bulk Users Create
+*BulkJobRequestsApi* | [**BulkUsersCreateResults**](docs/BulkJobRequestsApi.md#bulkuserscreateresults) | **Get** /bulk/users/{job_id}/results | List Bulk Users Create Results
 *BulkJobRequestsApi* | [**JobsGet**](docs/BulkJobRequestsApi.md#jobsget) | **Get** /jobs/{id} | Get Job (incomplete)
 *BulkJobRequestsApi* | [**JobsResults**](docs/BulkJobRequestsApi.md#jobsresults) | **Get** /jobs/{id}/results | List Job Results
 *CommandsApi* | [**GraphCommandAssociationsList**](docs/CommandsApi.md#graphcommandassociationslist) | **Get** /commands/{command_id}/associations | List the associations of a Command
@@ -139,10 +141,10 @@ Class | Method | HTTP request | Description
 *PoliciesApi* | [**PoliciesPost**](docs/PoliciesApi.md#policiespost) | **Post** /policies | Create a new Policy
 *PoliciesApi* | [**PoliciesPut**](docs/PoliciesApi.md#policiesput) | **Put** /policies/{id} | Update an existing Policy
 *PoliciesApi* | [**PolicyresultsGet**](docs/PoliciesApi.md#policyresultsget) | **Get** /policyresults/{id} | Get a specific Policy Result.
-*PoliciesApi* | [**PolicyresultsList**](docs/PoliciesApi.md#policyresultslist) | **Get** /policies/{policy_id}/policyresults | Lists all the policy results of a policy.
-*PoliciesApi* | [**PolicyresultsList_0**](docs/PoliciesApi.md#policyresultslist_0) | **Get** /policyresults | Lists all the policy results for an organization.
-*PoliciesApi* | [**PolicystatusesList**](docs/PoliciesApi.md#policystatuseslist) | **Get** /systems/{system_id}/policystatuses | List the policy statuses for a system
-*PoliciesApi* | [**PolicystatusesList_0**](docs/PoliciesApi.md#policystatuseslist_0) | **Get** /policies/{policy_id}/policystatuses | Lists the latest policy results of a policy.
+*PoliciesApi* | [**PolicyresultsList**](docs/PoliciesApi.md#policyresultslist) | **Get** /policyresults | Lists all the policy results for an organization.
+*PoliciesApi* | [**PolicyresultsList_0**](docs/PoliciesApi.md#policyresultslist_0) | **Get** /policies/{policy_id}/policyresults | Lists all the policy results of a policy.
+*PoliciesApi* | [**PolicystatusesList**](docs/PoliciesApi.md#policystatuseslist) | **Get** /policies/{policy_id}/policystatuses | Lists the latest policy results of a policy.
+*PoliciesApi* | [**PolicystatusesList_0**](docs/PoliciesApi.md#policystatuseslist_0) | **Get** /systems/{system_id}/policystatuses | List the policy statuses for a system
 *PoliciesApi* | [**PolicytemplatesGet**](docs/PoliciesApi.md#policytemplatesget) | **Get** /policytemplates/{id} | Get a specific Policy Template
 *PoliciesApi* | [**PolicytemplatesList**](docs/PoliciesApi.md#policytemplateslist) | **Get** /policytemplates | Lists all of the Policy Templates
 *PolicytemplatesApi* | [**PolicytemplatesGet**](docs/PolicytemplatesApi.md#policytemplatesget) | **Get** /policytemplates/{id} | Get a specific Policy Template
@@ -256,6 +258,7 @@ Class | Method | HTTP request | Description
  - [AuthInputObject](docs/AuthInputObject.md)
  - [AuthinputBasic](docs/AuthinputBasic.md)
  - [AuthinputOauth](docs/AuthinputOauth.md)
+ - [BulkUserCreate](docs/BulkUserCreate.md)
  - [Directory](docs/Directory.md)
  - [GraphConnection](docs/GraphConnection.md)
  - [GraphManagementReq](docs/GraphManagementReq.md)
@@ -277,6 +280,8 @@ Class | Method | HTTP request | Description
  - [PolicyResult](docs/PolicyResult.md)
  - [PolicyTemplate](docs/PolicyTemplate.md)
  - [PolicyTemplateConfigField](docs/PolicyTemplateConfigField.md)
+ - [PolicyTemplateConfigFieldTooltip](docs/PolicyTemplateConfigFieldTooltip.md)
+ - [PolicyTemplateConfigFieldTooltipVariables](docs/PolicyTemplateConfigFieldTooltipVariables.md)
  - [PolicyTemplateWithDetails](docs/PolicyTemplateWithDetails.md)
  - [PolicyValue](docs/PolicyValue.md)
  - [PolicyWithDetails](docs/PolicyWithDetails.md)
@@ -302,7 +307,6 @@ Class | Method | HTTP request | Description
  - [WorkdayOutput](docs/WorkdayOutput.md)
  - [WorkdayRequest](docs/WorkdayRequest.md)
  - [WorkdayWorker](docs/WorkdayWorker.md)
- - [WorkdayWorkerImport](docs/WorkdayWorkerImport.md)
  - [WorkdayoutputAuth](docs/WorkdayoutputAuth.md)
  - [ActiveDirectoryOutput](docs/ActiveDirectoryOutput.md)
  - [LdapServerOutput](docs/LdapServerOutput.md)

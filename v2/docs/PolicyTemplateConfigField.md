@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Position** | **float32** | The default position to render this field. | [optional] [default to null]
 **ReadOnly** | **bool** | If an admin is allowed to modify this field. | [optional] [default to null]
 **Required** | **bool** | If this field is required for this field. | [optional] [default to null]
+**Tooltip** | [***PolicyTemplateConfigFieldTooltip**](PolicyTemplateConfigField_tooltip.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
