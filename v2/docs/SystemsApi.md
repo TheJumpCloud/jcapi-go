@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**GraphSystemTraversePolicy**](SystemsApi.md#GraphSystemTraversePolicy) | **Get** /systems/{system_id}/policies | List the Policies bound to a System
 [**GraphSystemTraverseUser**](SystemsApi.md#GraphSystemTraverseUser) | **Get** /systems/{system_id}/users | List the Users bound to a System
 [**GraphSystemTraverseUserGroup**](SystemsApi.md#GraphSystemTraverseUserGroup) | **Get** /systems/{system_id}/usergroups | List the User Groups bound to a System
+[**SystemsGetFDEKey**](SystemsApi.md#SystemsGetFDEKey) | **Get** /systems/{system_id}/fdekey | Get System FDE Key
 
 
 # **GraphSystemAssociationsList**
@@ -43,6 +44,7 @@ Name | Type | Description  | Notes
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **date** | **string**| Current date header for the System Context API | 
  **authorization** | **string**| Authorization header for the System Context API | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -86,6 +88,7 @@ Name | Type | Description  | Notes
  **body** | [**SystemGraphManagementReq**](SystemGraphManagementReq.md)|  | 
  **date** | **string**| Current date header for the System Context API | 
  **authorization** | **string**| Authorization header for the System Context API | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -132,6 +135,7 @@ Name | Type | Description  | Notes
  **date** | **string**| Current date header for the System Context API | 
  **authorization** | **string**| Authorization header for the System Context API | 
  **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -174,6 +178,7 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -216,6 +221,7 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -260,6 +266,7 @@ Name | Type | Description  | Notes
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **date** | **string**| Current date header for the System Context API | 
  **authorization** | **string**| Authorization header for the System Context API | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -304,10 +311,39 @@ Name | Type | Description  | Notes
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **date** | **string**| Current date header for the System Context API | 
  **authorization** | **string**| Authorization header for the System Context API | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
 [**[]GraphObjectWithPaths**](GraphObjectWithPaths.md)
+
+### Authorization
+
+[x-api-key](../README.md#x-api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SystemsGetFDEKey**
+> InlineResponse200 SystemsGetFDEKey(ctx, systemId)
+Get System FDE Key
+
+Public is OFF on purpose, this is not intended to be published  Retrieve the current (latest) fde key saved for this system.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **systemId** | **string**|  | 
+
+### Return type
+
+[**InlineResponse200**](inline_response_200.md)
 
 ### Authorization
 

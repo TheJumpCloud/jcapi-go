@@ -38,6 +38,7 @@ Name | Type | Description  | Notes
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -80,6 +81,7 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -123,6 +125,7 @@ Name | Type | Description  | Notes
  **body** | [**SystemGroupMembersReq**](SystemGroupMembersReq.md)|  | 
  **date** | **string**| Current date header for the System Context API | 
  **authorization** | **string**| Authorization header for the System Context API | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -167,6 +170,7 @@ Name | Type | Description  | Notes
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
  **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
