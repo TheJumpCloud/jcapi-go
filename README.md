@@ -2,11 +2,11 @@
 
 ### Description ###
 
-This repository contains the Go client code for the JumpCloud API v2. This code is automatically generated using swagger-codegen.
+This repository contains the Go client code for the JumpCloud API v1 & v2. This code is automatically generated using swagger-codegen.
 It also provides the tools to generate the client code from the API yaml files, using swagger-codegen.
 For detailed instructions on how to generate the code, see the [Contributing](CONTRIBUTING.md) section.
 
-For the API v1 Go Client, please refer to [JCAPI](https://github.com/TheJumpCloud/jcapi).
+Please note that our old API v1 Go Client is no deprecated. [JCAPI](https://github.com/TheJumpCloud/jcapi).
 
 
 ### Usage Examples
