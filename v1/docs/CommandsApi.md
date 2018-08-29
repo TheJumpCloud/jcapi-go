@@ -39,6 +39,7 @@ Name | Type | Description  | Notes
  **fields** | **string**| Use a space seperated string of field parameters to include the data in the response. If omitted the default list of fields will be returned.  | [default to ]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -56,7 +57,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CommandsDelete**
-> CommandsDelete(ctx, id, contentType, accept)
+> CommandsDelete(ctx, id, contentType, accept, optional)
 Delete a Command
 
 This endpoint deletes a specific command based on the Command ID.  #### Sample Request ``` curl -X DELETE https://console.jumpcloud.com/api/commands/{CommandID} \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'  ```
@@ -69,6 +70,17 @@ Name | Type | Description  | Notes
   **id** | **string**|  | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -110,6 +122,7 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **fields** | **string**| Use a space seperated string of field parameters to include the data in the response. If omitted the default list of fields will be returned.  | [default to ]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -152,6 +165,7 @@ Name | Type | Description  | Notes
  **fields** | **string**| Use a space seperated string of field parameters to include the data in the response. If omitted the default list of fields will be returned.  | [default to ]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **sort** | **string**| Use space separated sort parameters to sort the collection. Default sort is ascending. Prefix with &#x60;-&#x60; to sort descending.  | [default to ]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -191,6 +205,7 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **body** | [**Command**](Command.md)|  | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -232,6 +247,7 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **body** | [**Command**](Command.md)|  | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 

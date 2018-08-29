@@ -50,6 +50,7 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -91,6 +92,7 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -133,6 +135,7 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -175,6 +178,7 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -192,7 +196,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PoliciesDelete**
-> PoliciesDelete(ctx, id, contentType, accept)
+> PoliciesDelete(ctx, id, contentType, accept, optional)
 Deletes a Policy
 
 This endpoint allows you to delete a policy.  #### Sample Request  ``` curl -X DELETE https://console.jumpcloud.com/api/v2/policies/5a837ecd232e110d4291e6b9 \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'   ```
@@ -205,6 +209,17 @@ Name | Type | Description  | Notes
   **id** | **string**| ObjectID of the Policy object. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| ObjectID of the Policy object. | 
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -222,7 +237,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PoliciesGet**
-> PolicyWithDetails PoliciesGet(ctx, id, contentType, accept)
+> PolicyWithDetails PoliciesGet(ctx, id, contentType, accept, optional)
 Gets a specific Policy.
 
 This endpoint returns a specific policy.  ###### Sample Request  ```   curl -X GET https://console.jumpcloud.com/api/v2/policies/{PolicyID} \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'   ```
@@ -235,6 +250,17 @@ Name | Type | Description  | Notes
   **id** | **string**| ObjectID of the Policy object. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| ObjectID of the Policy object. | 
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -278,6 +304,7 @@ Name | Type | Description  | Notes
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -317,6 +344,7 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **body** | [**PolicyRequest**](PolicyRequest.md)|  | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -354,6 +382,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| ObjectID of the Policy object. | 
  **body** | [**PolicyRequest**](PolicyRequest.md)|  | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -371,7 +400,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PolicyresultsGet**
-> PolicyResult PolicyresultsGet(ctx, id, contentType, accept)
+> PolicyResult PolicyresultsGet(ctx, id, contentType, accept, optional)
 Get a specific Policy Result.
 
 This endpoint will return the policy results for a specific policy.  ##### Sample Request ``` curl -X GET https://console.jumpcloud.com/api/v2/policyresults/{Policy_ID} \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'   ```
@@ -384,6 +413,17 @@ Name | Type | Description  | Notes
   **id** | **string**| ObjectID of the Policy Result. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| ObjectID of the Policy Result. | 
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -428,6 +468,7 @@ Name | Type | Description  | Notes
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -474,6 +515,7 @@ Name | Type | Description  | Notes
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
  **aggregate** | [**[]string**](string.md)|  | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -519,6 +561,7 @@ Name | Type | Description  | Notes
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -564,6 +607,7 @@ Name | Type | Description  | Notes
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -581,7 +625,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PolicytemplatesGet**
-> PolicyTemplateWithDetails PolicytemplatesGet(ctx, id, contentType, accept)
+> PolicyTemplateWithDetails PolicytemplatesGet(ctx, id, contentType, accept, optional)
 Get a specific Policy Template
 
 This endpoint returns a specific policy template.  #### Sample Request ```  curl -X GET https://console.jumpcloud.com/api/v2/policies/{Policy_ID}\\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}' ```
@@ -594,6 +638,17 @@ Name | Type | Description  | Notes
   **id** | **string**| ObjectID of the Policy Template. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| ObjectID of the Policy Template. | 
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -637,6 +692,7 @@ Name | Type | Description  | Notes
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 

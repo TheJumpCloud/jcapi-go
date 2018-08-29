@@ -25,7 +25,6 @@ Name | Type | Description | Notes
 **AgentVersion** | **string** |  | [optional] [default to null]
 **ConnectionHistory** | [**[]interface{}**](interface{}.md) |  | [optional] [default to null]
 **SshRootEnabled** | **bool** |  | [optional] [default to null]
-**Id** | **string** |  | [optional] [default to null]
 **Tags** | **[]string** |  | [optional] [default to null]
 **Id** | **string** |  | [optional] [default to null]
 

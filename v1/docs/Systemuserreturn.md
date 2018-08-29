@@ -37,6 +37,14 @@ Name | Type | Description | Notes
 **Relationships** | [**[]interface{}**](interface{}.md) |  | [optional] [default to null]
 **BadLoginAttempts** | **int32** |  | [optional] [default to null]
 **PasswordNeverExpires** | **bool** |  | [optional] [default to null]
+**Middlename** | **string** |  | [optional] [default to null]
+**Displayname** | **string** |  | [optional] [default to null]
+**Description** | **string** |  | [optional] [default to null]
+**Location** | **string** |  | [optional] [default to null]
+**CostCenter** | **string** |  | [optional] [default to null]
+**EmployeeType** | **string** |  | [optional] [default to null]
+**Company** | **string** |  | [optional] [default to null]
+**EmployeeIdentifier** | **string** | Must be unique per user.  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

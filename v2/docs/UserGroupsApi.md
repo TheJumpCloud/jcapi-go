@@ -55,6 +55,7 @@ Name | Type | Description  | Notes
  **targets** | [**[]string**](string.md)|  | 
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -96,6 +97,7 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **body** | [**UserGroupGraphManagementReq**](UserGroupGraphManagementReq.md)|  | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -140,6 +142,7 @@ Name | Type | Description  | Notes
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -182,6 +185,7 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -223,6 +227,7 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **body** | [**UserGroupMembersReq**](UserGroupMembersReq.md)|  | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -267,6 +272,7 @@ Name | Type | Description  | Notes
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -309,6 +315,7 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -351,6 +358,7 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -393,6 +401,7 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -435,6 +444,7 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -477,6 +487,7 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -519,6 +530,7 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -561,6 +573,7 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -603,6 +616,7 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -645,6 +659,7 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -662,7 +677,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GroupsUserDelete**
-> GroupsUserDelete(ctx, id, contentType, accept)
+> GroupsUserDelete(ctx, id, contentType, accept, optional)
 Delete a User Group
 
 This endpoint allows you to delete a User Group.  #### Sample Request ``` curl -X DELETE https://console.jumpcloud.com/api/v2/usergroups/{GroupID} \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'  ```
@@ -675,6 +690,17 @@ Name | Type | Description  | Notes
   **id** | **string**| ObjectID of the User Group. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| ObjectID of the User Group. | 
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -692,7 +718,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GroupsUserGet**
-> UserGroup GroupsUserGet(ctx, id, contentType, accept)
+> UserGroup GroupsUserGet(ctx, id, contentType, accept, optional)
 View an indvidual User Group details
 
 This endpoint allows you to view the details of a User Group.  #### Sample Request ``` curl -X GET https://console.jumpcloud.com/api/v2/usergroups/{GroupID} \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}' ```
@@ -705,6 +731,17 @@ Name | Type | Description  | Notes
   **id** | **string**| ObjectID of the User Group. | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| ObjectID of the User Group. | 
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -748,6 +785,7 @@ Name | Type | Description  | Notes
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -789,6 +827,7 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **body** | [**UserGroupPost**](UserGroupPost.md)|  | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -828,6 +867,7 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **body** | [**UserGroupPost**](UserGroupPost.md)|  | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 
@@ -869,6 +909,7 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **body** | [**UserGroupPut**](UserGroupPut.md)|  | 
+ **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
 
 ### Return type
 

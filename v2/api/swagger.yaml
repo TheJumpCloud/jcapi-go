@@ -1,10 +1,8 @@
 ---
 swagger: "2.0"
 info:
-  description: "V1 & V2 versions of JumpCloud's API. The next version of JumpCloud's\
-    \ API. This set of endpoints allows JumpCloud customers to manage objects, groupings\
-    \ and mappings. The most recent version of JumpCloud's API. This set of endpoints\
-    \ allows JumpCloud customers to manage objects, groupings and mappings."
+  description: " JumpCloud's V2 API. This set of endpoints allows JumpCloud customers\
+    \ to manage objects, groupings and mappings and interact with the JumpCloud Graph."
   version: "2.0"
   title: "JumpCloud APIs"
 host: "console.jumpcloud.com"
@@ -82,6 +80,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -137,6 +142,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         204:
           description: ""
@@ -215,6 +227,13 @@ paths:
         items:
           type: "string"
         x-exportParamName: "Sort"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -262,6 +281,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         201:
           description: ""
@@ -307,6 +333,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -351,6 +384,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         204:
           description: ""
@@ -418,6 +458,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -503,6 +550,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -559,6 +613,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         204:
           description: "OK"
@@ -625,6 +686,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -695,6 +763,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -755,6 +830,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -808,6 +890,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         201:
           description: ""
@@ -866,6 +955,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -910,6 +1006,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -993,6 +1096,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -1049,6 +1159,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         204:
           description: "OK"
@@ -1117,6 +1234,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -1187,6 +1311,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -1260,6 +1391,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -1347,6 +1485,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -1436,6 +1581,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -1480,6 +1632,13 @@ paths:
         schema:
           $ref: "#/definitions/GraphManagementReq"
         x-exportParamName: "Body"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         204:
           description: "OK"
@@ -1547,6 +1706,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -1617,6 +1783,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -1702,6 +1875,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -1758,6 +1938,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         204:
           description: "OK"
@@ -1825,6 +2012,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -1895,6 +2089,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -1977,6 +2178,13 @@ paths:
         items:
           type: "string"
         x-exportParamName: "Sort"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -2024,6 +2232,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -2107,6 +2322,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -2163,6 +2385,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         204:
           description: "OK"
@@ -2230,6 +2459,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -2300,6 +2536,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -2382,6 +2625,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -2435,6 +2685,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         201:
           description: "Created"
@@ -2480,6 +2737,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -2521,6 +2785,13 @@ paths:
         schema:
           $ref: "#/definitions/PolicyRequest"
         x-exportParamName: "Body"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -2565,6 +2836,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         204:
           description: "No Content"
@@ -2650,6 +2928,13 @@ paths:
         items:
           type: "string"
         x-exportParamName: "Sort"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -2744,6 +3029,13 @@ paths:
         items:
           type: "string"
         x-exportParamName: "Aggregate"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -2831,6 +3123,13 @@ paths:
         items:
           type: "string"
         x-exportParamName: "Sort"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -2920,6 +3219,13 @@ paths:
         items:
           type: "string"
         x-exportParamName: "Sort"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -2989,6 +3295,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -3059,6 +3372,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -3144,6 +3464,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -3200,6 +3527,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         204:
           description: ""
@@ -3279,6 +3613,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -3332,6 +3673,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -3377,6 +3725,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -3460,6 +3815,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -3516,6 +3878,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         204:
           description: "OK"
@@ -3583,6 +3952,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -3653,6 +4029,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -3741,6 +4124,13 @@ paths:
         items:
           type: "string"
         x-exportParamName: "Sort"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -3798,6 +4188,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         201:
           description: ""
@@ -3849,6 +4246,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -3906,6 +4310,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -3956,6 +4367,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -4051,6 +4469,13 @@ paths:
           - "user"
           - "user_group"
         x-exportParamName: "Targets"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -4121,6 +4546,13 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Authorization"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         204:
           description: "OK"
@@ -4210,6 +4642,13 @@ paths:
         items:
           type: "string"
         x-exportParamName: "Sort"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -4280,6 +4719,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -4361,6 +4807,13 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Authorization"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -4430,6 +4883,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -4511,6 +4971,13 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Authorization"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -4525,6 +4992,55 @@ paths:
         beforeScript: null
         afterScript: null
         public: true
+        mock:
+          enabled: false
+          dynamic: false
+          statusCode: 200
+  /systems/{system_id}/fdekey:
+    get:
+      tags:
+      - "fde"
+      - "Systems"
+      summary: "Get System FDE Key"
+      description: "Public is OFF on purpose, this is not intended to be published\n\
+        \nRetrieve the current (latest) fde key saved for this system."
+      operationId: "systems_getFDEKey"
+      parameters:
+      - name: "system_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "SystemId"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/inline_response_200"
+          examples:
+            application/json:
+              key: "cupidatat consequat occaecat proident"
+        400:
+          description: ""
+          schema:
+            $ref: "#/definitions/inline_response_400"
+          examples:
+            application/json:
+              message: "Lorem magna irure ex incididunt"
+        404:
+          description: ""
+          schema:
+            $ref: "#/definitions/inline_response_400"
+        500:
+          description: ""
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        id: "systems_getFDEKey"
+        beforeScript: null
+        afterScript: null
+        public: false
         mock:
           enabled: false
           dynamic: false
@@ -4594,6 +5110,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -4651,6 +5174,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         201:
           description: "Created"
@@ -4696,6 +5226,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -4752,6 +5289,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -4801,6 +5345,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         204:
           description: "No Content"
@@ -4849,6 +5400,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -4915,6 +5473,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -4982,6 +5547,13 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Authorization"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         204:
           description: "OK"
@@ -5059,6 +5631,13 @@ paths:
         items:
           type: "string"
         x-exportParamName: "Sort"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -5140,6 +5719,13 @@ paths:
         items:
           type: "string"
         x-exportParamName: "Filter"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -5224,6 +5810,13 @@ paths:
           - "user"
           - "user_group"
         x-exportParamName: "Targets"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -5281,6 +5874,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         204:
           description: "OK"
@@ -5348,6 +5948,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -5419,6 +6026,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -5491,6 +6105,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -5561,6 +6182,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -5644,6 +6272,13 @@ paths:
           - "system"
           - "system_group"
         x-exportParamName: "Targets"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -5702,6 +6337,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         204:
           description: "OK"
@@ -5779,6 +6421,13 @@ paths:
         items:
           type: "string"
         x-exportParamName: "Sort"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -5848,6 +6497,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -5917,6 +6573,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -5987,6 +6650,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -6056,6 +6726,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -6126,6 +6803,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -6195,6 +6879,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -6265,6 +6956,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -6334,6 +7032,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -6417,6 +7122,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -6468,6 +7180,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         201:
           description: "Created"
@@ -6513,6 +7232,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -6564,6 +7290,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -6608,6 +7341,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         204:
           description: "No Content"
@@ -6656,6 +7396,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -6717,6 +7464,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -6772,6 +7526,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         204:
           description: "OK"
@@ -6849,6 +7610,13 @@ paths:
         items:
           type: "string"
         x-exportParamName: "Sort"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -6930,6 +7698,13 @@ paths:
         items:
           type: "string"
         x-exportParamName: "Sort"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -7014,6 +7789,13 @@ paths:
           - "system"
           - "system_group"
         x-exportParamName: "Targets"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -7071,6 +7853,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         204:
           description: "OK"
@@ -7138,6 +7927,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -7209,6 +8005,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -7279,6 +8082,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -7350,6 +8160,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -7421,6 +8238,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -7492,6 +8316,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -7563,6 +8394,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -7634,6 +8472,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -7705,6 +8550,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -7751,6 +8603,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -7803,6 +8662,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -7844,6 +8710,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         204:
           description: ""
@@ -7926,6 +8799,13 @@ paths:
         items:
           type: "string"
         x-exportParamName: "Filter"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -7980,6 +8860,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -8050,6 +8937,13 @@ paths:
         items:
           type: "string"
         x-exportParamName: "Sort"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -8119,6 +9013,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         204:
           description: ""
@@ -8160,6 +9061,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         204:
           description: ""
@@ -8222,6 +9130,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -8280,6 +9195,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         201:
           description: ""
@@ -8323,6 +9245,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -9568,6 +10497,16 @@ definitions:
         type: "string"
     example:
       id: "id"
+  inline_response_200:
+    required:
+    - "key"
+    properties:
+      key:
+        type: "string"
+  inline_response_400:
+    properties:
+      message:
+        type: "string"
   UserGroupPost_attributes_posixGroups:
     properties:
       id:
@@ -9861,6 +10800,14 @@ parameters:
       - "user"
       - "user_group"
     x-exportParamName: "Targets"
+  trait:multiTenantRequestHeaders:x-org-id:
+    name: "x-org-id"
+    in: "header"
+    description: ""
+    required: false
+    type: "string"
+    default: "<<your org id>>"
+    x-exportParamName: "XOrgId"
 x-stoplight:
   beforeScript: ""
   afterScript: ""
@@ -9871,6 +10818,8 @@ x-stoplight:
         items:
         - _id: "v2-api"
           type: "docTextSections"
+        - _id: "api-changelog"
+          type: "docTextSections"
         name: "API Overview"
       - divider: false
         items:
@@ -9878,7 +10827,7 @@ x-stoplight:
           type: "docTextSections"
         - _id: "system-context"
           type: "docTextSections"
-        - _id: "multi-tenant-organization-api-header"
+        - _id: "multi-tenant-organization-api-headers"
           type: "docTextSections"
         name: "Authentication & Authorization"
         description: ""
@@ -9888,9 +10837,9 @@ x-stoplight:
           type: "endpoints"
         - _id: "activedirectories_post"
           type: "endpoints"
-        - _id: "activedirectories_list"
-          type: "endpoints"
         - _id: "activedirectories_delete"
+          type: "endpoints"
+        - _id: "activedirectories_list"
           type: "endpoints"
         - _id: "graph_activeDirectoryTraverseUserGroup"
           type: "endpoints"
@@ -10097,9 +11046,9 @@ x-stoplight:
           type: "endpoints"
         - _id: "policies_put"
           type: "endpoints"
-        - _id: "policies_delete"
-          type: "endpoints"
         - _id: "policyresults_list"
+          type: "endpoints"
+        - _id: "policies_delete"
           type: "endpoints"
         - _id: "policystatuses_list"
           type: "endpoints"
@@ -10172,6 +11121,8 @@ x-stoplight:
         - _id: "graph_systemTraverseUserGroup"
           type: "endpoints"
         - _id: "policystatuses_list"
+          type: "endpoints"
+        - _id: "systems_getFDEKey"
           type: "endpoints"
       - divider: false
         description: "System Groups are designed to enhance JumpCloud's existing grouping\
@@ -10525,6 +11476,8 @@ x-stoplight:
           type: "traits"
         - _id: "systemContextAuth"
           type: "traits"
+        - _id: "multiTenantRequestHeaders"
+          type: "traits"
         divider: false
       traits: []
       tests: []
@@ -10535,27 +11488,27 @@ x-stoplight:
     v2-api:
       id: "v2-api"
       name: "V2 API"
-      content: "#### Directory Objects \n\nOur new API offers the ability to interact\
+      content: "### Directory Objects \n\nOur new API offers the ability to interact\
         \ with some of our core features; otherwise known as Directory Objects. The\
         \ Directory Objects are:\n\n* Commands\n* Policies\n* Applications\n* Systems\n\
         * Users\n* User Groups \n* System Groups\n* Radius Servers\n* Directories:\
         \ Office 365, LDAP,G-Suite, Active Directory \n\nThe Directory Object is an\
         \ important concept to understand in order to successfully use JumpCloud APIs.\
-        \ \n\n#### JumpCloud Graph\n\nWe've also introduced the concept of the JumpCloud\
+        \ \n\n### JumpCloud Graph\n\nWe've also introduced the concept of the JumpCloud\
         \ Graph along with  Directory Objects. The Graph is a powerful aspect of our\
         \ platform which will enable you to associate objects with each other, or\
         \ establish membership for certain objects to become members of other objects.\n\
         \nSpecific `GET` endpoints will allow you to traverse the JumpCloud Graph\
         \ to return all indirect and directly bound objects in your organization.\
-        \ \n\n\n##### JumpCloud Graph Model Example\n\nThe diagram below highlights\
+        \ \n\n\n### JumpCloud Graph Model Example\n\nThe diagram below highlights\
         \ our association and membership model as it relates to Directory Objects.\
         \ \n\n![alt text](https://s3.amazonaws.com/jumpcloud-kb/Knowledge+Base+Photos/API+Docs/jumpcloud_graph.png\
-        \ \"JumpCloud Graph Model Example\")\n\n\n#### API Considerations\n\nWe are\
+        \ \"JumpCloud Graph Model Example\")\n\n\n### API Considerations\n\nWe are\
         \ currently in the process of migrating our [API V1](https://docs.jumpcloud.com/1.0)\
         \  features to API V2. Depending on your type of integration you may be required\
         \ to use both V1 and V2 APIs.\n\nPlease refer to our [API V1](https://docs.jumpcloud.com/1.0)\
         \ docs to understand the functionality still available in that API set.\n\n\
-        #### API SDKS\n\nYou can find language specific SDKs that can help you kickstart\
+        ### API SDKS\n\nYou can find language specific SDKs that can help you kickstart\
         \ your Integration with JumpCloud in the following GitHub Repos: \n\n* [Python](https://github.com/TheJumpCloud/jcapi-python)\n\
         * [Go](https://github.com/TheJumpCloud/jcapi-go)\n* [Ruby](https://github.com/TheJumpCloud/jcapi-ruby)\n\
         * [Java](https://github.com/TheJumpCloud/jcapi-java)"
@@ -10675,19 +11628,20 @@ x-stoplight:
         \ instance-shutdown`\n\n\n### Third party\n\n#### Chef cookbooks\n\n[https://github.com/nshenry03/jumpcloud](https://github.com/nshenry03/jumpcloud)\n\
         \n[https://github.com/cjs226/jumpcloud](https://github.com/cjs226/jumpcloud)"
       public: true
-    multi-tenant-organization-api-header:
-      id: "multi-tenant-organization-api-header"
-      name: "Multi Tenant Organization API Header"
-      content: "The Multi-Tenant Organzation API Header is available for JumpCloud\
+    multi-tenant-organization-api-headers:
+      id: "multi-tenant-organization-api-headers"
+      name: "Multi Tenant Organization API Headers"
+      content: "The Multi-Tenant Organzation API Headers are available for JumpCloud\
         \ Admins to use when making API requests from Organizations that have multiple\
         \ managed organizations. \n\nThe `x-org-id` is a required header for all multi-tenant\
         \ admins when making API requests to Jumpcloud as this header will define\
         \ what organization you would like to make the request for. \n\nPlease note\
         \ that Single Tenant Admins do not need to provide this header when making\
         \ an API request.\n \n #### Header Value\n \n `x-org-id`\n\n#### API Response\
-        \ codes\n\n- `400` Malformed ID. \n- `401` ID not included for multi-tenant\
-        \ admin\n- `403` ID included on unsupported route.\n- `404` Organization ID\
-        \ Not Found.\n\n#### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/directories\
+        \ codes\n\n- `400` Malformed ID. \n- `400` x-org-id and Organization path\
+        \ ID do not match.\n- `401` ID not included for multi-tenant admin\n- `403`\
+        \ ID included on unsupported route.\n- `404` Organization ID Not Found.\n\n\
+        #### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/directories\
         \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -H 'x-org-id: {ORG_ID}'\n\n```\n\n\
         #### To obtain an indvidual Organization ID via the UI\n\nAs a prerequisite\
@@ -10707,6 +11661,14 @@ x-stoplight:
         \  https://console.jumpcloud.com/api/organizations/ \\\n  -H 'Accept: application/json'\
         \ \\\n  -H 'Content-Type: application/json' \\\n  -H 'x-api-key: {API_KEY}'\n\
         \n```"
+      public: true
+    api-changelog:
+      id: "api-changelog"
+      name: "API Changelog"
+      content: "A history of API changes introduced as of August 2018. \n\n### 08-01-2018\
+        \ \n\n`minor release`\n\n- [Multi-Tenant x-org-id](https://docs.jumpcloud.com/2.0/authentication-and-authorization/system-context)\
+        \  documentation and functionality.\n- PolicyTemplate Config Model corrections.\n\
+        \n- Removed workday import results & row functionality."
       public: true
   mock:
     dynamic: false

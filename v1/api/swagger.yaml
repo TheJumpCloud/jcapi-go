@@ -1,9 +1,8 @@
 ---
 swagger: "2.0"
 info:
-  description: "V1 & V2 versions of JumpCloud's API. The previous version of JumpCloud's\
-    \ API. This set of endpoints allows JumpCloud customers to manage commands, systems,\
-    \ & system users."
+  description: " JumpCloud's V1 API. This set of endpoints allows JumpCloud customers\
+    \ to manage commands, systems, & system users."
   version: "1.0"
   title: "JumpCloud APIs"
 host: "console.jumpcloud.com"
@@ -64,6 +63,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -114,6 +120,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -182,6 +195,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -230,6 +250,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -284,6 +311,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -337,6 +371,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -382,6 +423,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -448,6 +496,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -521,6 +576,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -575,6 +637,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -620,6 +689,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -643,6 +719,10 @@ paths:
       tags:
       - "Organizations"
       summary: "Get Organization Details"
+      description: "This endpoint returns Organization Details.\n\n#### Sample Request\
+        \ \n\n```\ncurl -X GET \\\n  https://console.jumpcloud.com/api/organizations\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
       operationId: "organization_list"
       parameters:
       - name: "fields"
@@ -686,6 +766,12 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Sort"
+      - name: "search"
+        in: "query"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "Search"
       responses:
         200:
           description: ""
@@ -697,7 +783,7 @@ paths:
         id: "organization_list"
         beforeScript: null
         afterScript: null
-        public: false
+        public: true
         mock:
           enabled: false
           dynamic: false
@@ -754,6 +840,13 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Sort"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -800,6 +893,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -846,6 +946,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -862,6 +969,88 @@ paths:
           enabled: false
           dynamic: false
           statusCode: 200
+  /search/organizations:
+    post:
+      tags:
+      - "Search"
+      summary: "Search Organizations"
+      description: "This endpoint will return Organization data based on your search\
+        \ parameters. This endpoint WILL NOT allow you to add a new Orginization.\n\
+        \nYou can use the supported parameters and pass those in the body of request.\
+        \ \n\nThe parameters must be passed as Content-Type application/json.\n\n\n\
+        #### Sample Request\n```\ncurl -X POST https://console.jumpcloud.com/api/search/organizations\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n  \"search\":{\n    \"fields\"\
+        \ : [\"settings.name\"],\n    \"searchTerm\": \"Second\"\n    },\n  \"fields\"\
+        : [\"_id\", \"displayName\", \"logoUrl\"],\n  \"limit\" : 0,\n  \"skip\" :\
+        \ 0\n}'\n```"
+      operationId: "search_orginzations_post"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/search"
+        x-exportParamName: "Body"
+      - name: "fields"
+        in: "query"
+        description: "Use a space seperated string of field parameters to include\
+          \ the data in the response. If omitted the default list of fields will be\
+          \ returned.\n"
+        required: false
+        type: "string"
+        x-exportParamName: "Fields"
+      - name: "limit"
+        in: "query"
+        description: "The number of records to return at once. Limited to 100."
+        required: false
+        type: "integer"
+        default: 10
+        x-exportParamName: "Limit"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        x-exportParamName: "Skip"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/systemslist"
+        401:
+          description: "Unauthorized"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        id: "search_orginzations_post"
+        beforeScript: null
+        afterScript: null
+        public: true
+        mock:
+          statusCode: 200
+          dynamic: false
+          enabled: false
   /search/systems:
     post:
       tags:
@@ -877,7 +1066,7 @@ paths:
         \ being an array of query expressions. \n\nThis allows you to filter records\
         \ using the logic of matching ALL or ANY records in the array of query expressions.\
         \ If the and or or are not included the default behavior is to match ALL query\
-        \ expressions.\n\n\n#### Sample Request\n\n```\ncurl -X POST https://console.jumpcloud.com/api/search/systemsusers\
+        \ expressions.\n\n\n#### Sample Request\n\n```\ncurl -X POST https://console.jumpcloud.com/api/search/systems\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n\"filter\" :\n    {\n     \
         \   \"or\" :\n            [\n                {\"hostname\" : { \"$regex\"\
@@ -906,6 +1095,13 @@ paths:
         type: "integer"
         default: 10
         x-exportParamName: "Limit"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       - name: "Content-Type"
         in: "header"
         required: true
@@ -929,7 +1125,7 @@ paths:
         200:
           description: "OK"
           schema:
-            $ref: "#/definitions/systemuserslist"
+            $ref: "#/definitions/systemslist"
         401:
           description: "Unauthorized"
       security:
@@ -1005,6 +1201,13 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -1075,6 +1278,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -1139,6 +1349,13 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Authorization"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -1203,6 +1420,13 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Authorization"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -1259,6 +1483,13 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Authorization"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -1336,6 +1567,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -1392,6 +1630,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -1456,6 +1701,25 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Filter"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -1504,6 +1768,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "User added successfully"
@@ -1560,6 +1831,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -1612,6 +1890,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -1657,6 +1942,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -1737,6 +2029,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -1794,6 +2093,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -1837,6 +2143,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "XApiKey"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
@@ -1851,6 +2164,167 @@ paths:
       - x-api-key: []
       x-stoplight:
         id: "systemusers_resetmfa"
+        beforeScript: null
+        afterScript: null
+        public: true
+        mock:
+          enabled: false
+          dynamic: false
+          statusCode: 200
+  /systemusers/{id}/sshkeys:
+    get:
+      tags:
+      - "Systemusers"
+      summary: "List a system user's public SSH keys"
+      description: "This endpoint will return a specific System User's public SSH\
+        \ key."
+      operationId: "sshkey_list"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/sshkeylist"
+        400:
+          description: ""
+          schema:
+            type: "object"
+            description: "Bad Request"
+            properties: {}
+      x-stoplight:
+        id: "sshkey_list"
+        beforeScript: null
+        afterScript: null
+        public: true
+        mock:
+          enabled: false
+          dynamic: false
+          statusCode: 200
+    post:
+      tags:
+      - "Systemusers"
+      summary: "Create a system user's Public SSH Key"
+      description: "This endpoint will create a specific System User's Public SSH\
+        \ Key."
+      operationId: "sshkey_post"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/sshkeypost"
+        x-exportParamName: "Body"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/sshkeylist"
+        400:
+          description: ""
+          schema:
+            type: "object"
+            description: "Bad Request"
+            properties: {}
+      x-stoplight:
+        id: "sshkey_post"
+        beforeScript: null
+        afterScript: null
+        public: true
+        mock:
+          enabled: false
+          dynamic: false
+          statusCode: 200
+  /systemusers/{id}/sshkeys/{id}:
+    delete:
+      tags:
+      - "Systemusers"
+      summary: "Delete a system user's Public SSH Keys"
+      description: "This endpoint will delete a specific System User's SSH Key."
+      operationId: "sshkey_delete"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        default: "<<your org id>>"
+        x-exportParamName: "XOrgId"
+      responses:
+        200:
+          description: ""
+        400:
+          description: ""
+          schema:
+            type: "object"
+            description: "Bad Request"
+            properties: {}
+      x-stoplight:
+        id: "sshkey_delete"
         beforeScript: null
         afterScript: null
         public: true
@@ -2399,6 +2873,29 @@ definitions:
         type: "boolean"
       _id:
         type: "string"
+      middlename:
+        type: "string"
+      displayname:
+        type: "string"
+      description:
+        type: "string"
+        maxLength: 1024
+      location:
+        type: "string"
+      costCenter:
+        type: "string"
+      employeeType:
+        type: "string"
+      company:
+        type: "string"
+      employeeIdentifier:
+        type: "string"
+        description: "Must be unique per user. "
+        maxLength: 256
+      jobTitle:
+        type: "string"
+      department:
+        type: "string"
     title: "SystemUser"
     x-stoplight:
       id: "systemuser"
@@ -2492,6 +2989,25 @@ definitions:
         minimum: 1
       password_never_expires:
         type: "boolean"
+      middlename:
+        type: "string"
+      displayname:
+        type: "string"
+      description:
+        type: "string"
+        maxLength: 1024
+      location:
+        type: "string"
+      costCenter:
+        type: "string"
+      employeeType:
+        type: "string"
+      company:
+        type: "string"
+      employeeIdentifier:
+        type: "string"
+        description: "Must be unique per user. "
+        maxLength: 256
     title: "SystemUserReturn"
     example:
       public_key: "public_key"
@@ -2505,6 +3021,7 @@ definitions:
       unix_guid: 0
       jobTitle: "jobTitle"
       samba_service_user: true
+      description: "description"
       allow_public_key: true
       phoneNumbers:
       - "phoneNumbers"
@@ -2516,6 +3033,7 @@ definitions:
       passwordless_sudo: true
       externally_managed: true
       ldap_binding_user: true
+      company: "company"
       sudo: true
       id: "id"
       department: "department"
@@ -2523,20 +3041,26 @@ definitions:
       enable_managed_uid: true
       password_expired: true
       created: "created"
+      costCenter: "costCenter"
+      middlename: "middlename"
       external_source_type: "external_source_type"
       tags:
       - "tags"
       - "tags"
       lastname: "lastname"
+      employeeIdentifier: "employeeIdentifier"
       ssh_keys:
       - "ssh_keys"
       - "ssh_keys"
+      employeeType: "employeeType"
       organization: "organization"
       password_never_expires: true
+      displayname: "displayname"
       enable_user_portal_multifactor: true
       attributes:
       - "{}"
       - "{}"
+      location: "location"
       external_dn: "external_dn"
       username: "username"
       activated: true
@@ -2620,6 +3144,25 @@ definitions:
         type: "string"
       password_never_expires:
         type: "boolean"
+      middlename:
+        type: "string"
+      displayname:
+        type: "string"
+      description:
+        type: "string"
+        maxLength: 1024
+      location:
+        type: "string"
+      costCenter:
+        type: "string"
+      employeeType:
+        type: "string"
+      company:
+        type: "string"
+      employeeIdentifier:
+        type: "string"
+        description: "Must be unique per user. "
+        maxLength: 256
     title: "SystemUserPost"
     x-stoplight:
       id: "systemuserputpost"
@@ -2815,6 +3358,7 @@ definitions:
         unix_guid: 0
         jobTitle: "jobTitle"
         samba_service_user: true
+        description: "description"
         allow_public_key: true
         phoneNumbers:
         - "phoneNumbers"
@@ -2826,6 +3370,7 @@ definitions:
         passwordless_sudo: true
         externally_managed: true
         ldap_binding_user: true
+        company: "company"
         sudo: true
         id: "id"
         department: "department"
@@ -2833,20 +3378,26 @@ definitions:
         enable_managed_uid: true
         password_expired: true
         created: "created"
+        costCenter: "costCenter"
+        middlename: "middlename"
         external_source_type: "external_source_type"
         tags:
         - "tags"
         - "tags"
         lastname: "lastname"
+        employeeIdentifier: "employeeIdentifier"
         ssh_keys:
         - "ssh_keys"
         - "ssh_keys"
+        employeeType: "employeeType"
         organization: "organization"
         password_never_expires: true
+        displayname: "displayname"
         enable_user_portal_multifactor: true
         attributes:
         - "{}"
         - "{}"
+        location: "location"
         external_dn: "external_dn"
         username: "username"
         activated: true
@@ -2861,6 +3412,7 @@ definitions:
         unix_guid: 0
         jobTitle: "jobTitle"
         samba_service_user: true
+        description: "description"
         allow_public_key: true
         phoneNumbers:
         - "phoneNumbers"
@@ -2872,6 +3424,7 @@ definitions:
         passwordless_sudo: true
         externally_managed: true
         ldap_binding_user: true
+        company: "company"
         sudo: true
         id: "id"
         department: "department"
@@ -2879,20 +3432,26 @@ definitions:
         enable_managed_uid: true
         password_expired: true
         created: "created"
+        costCenter: "costCenter"
+        middlename: "middlename"
         external_source_type: "external_source_type"
         tags:
         - "tags"
         - "tags"
         lastname: "lastname"
+        employeeIdentifier: "employeeIdentifier"
         ssh_keys:
         - "ssh_keys"
         - "ssh_keys"
+        employeeType: "employeeType"
         organization: "organization"
         password_never_expires: true
+        displayname: "displayname"
         enable_user_portal_multifactor: true
         attributes:
         - "{}"
         - "{}"
+        location: "location"
         external_dn: "external_dn"
         username: "username"
         activated: true
@@ -3503,8 +4062,6 @@ definitions:
           properties: {}
       sshRootEnabled:
         type: "boolean"
-      id:
-        type: "string"
       tags:
         type: "array"
         items:
@@ -3515,15 +4072,9 @@ definitions:
     example:
       remoteIP: "remoteIP"
       allowSshRootLogin: true
-      displayName: "displayName"
-      hostname: "hostname"
-      allowSshPasswordAuthentication: true
-      connectionHistory:
-      - "{}"
-      - "{}"
-      id: "id"
       os: "os"
       created: "created"
+      displayName: "displayName"
       allowMultiFactorAuthentication: true
       modifySSHDConfig: true
       active: true
@@ -3534,6 +4085,7 @@ definitions:
       - "tags"
       - "tags"
       allowPublicKeyAuthentication: true
+      hostname: "hostname"
       networkInterfaces:
       - internal: true
         address: "address"
@@ -3548,7 +4100,11 @@ definitions:
       - "sshdParams"
       - "sshdParams"
       organization: "organization"
+      allowSshPasswordAuthentication: true
       agentVersion: "agentVersion"
+      connectionHistory:
+      - "{}"
+      - "{}"
       arch: "arch"
       _id: "_id"
       systemTimezone: 6
@@ -3573,15 +4129,9 @@ definitions:
       results:
       - remoteIP: "remoteIP"
         allowSshRootLogin: true
-        displayName: "displayName"
-        hostname: "hostname"
-        allowSshPasswordAuthentication: true
-        connectionHistory:
-        - "{}"
-        - "{}"
-        id: "id"
         os: "os"
         created: "created"
+        displayName: "displayName"
         allowMultiFactorAuthentication: true
         modifySSHDConfig: true
         active: true
@@ -3592,6 +4142,7 @@ definitions:
         - "tags"
         - "tags"
         allowPublicKeyAuthentication: true
+        hostname: "hostname"
         networkInterfaces:
         - internal: true
           address: "address"
@@ -3606,21 +4157,19 @@ definitions:
         - "sshdParams"
         - "sshdParams"
         organization: "organization"
+        allowSshPasswordAuthentication: true
         agentVersion: "agentVersion"
+        connectionHistory:
+        - "{}"
+        - "{}"
         arch: "arch"
         _id: "_id"
         systemTimezone: 6
       - remoteIP: "remoteIP"
         allowSshRootLogin: true
-        displayName: "displayName"
-        hostname: "hostname"
-        allowSshPasswordAuthentication: true
-        connectionHistory:
-        - "{}"
-        - "{}"
-        id: "id"
         os: "os"
         created: "created"
+        displayName: "displayName"
         allowMultiFactorAuthentication: true
         modifySSHDConfig: true
         active: true
@@ -3631,6 +4180,7 @@ definitions:
         - "tags"
         - "tags"
         allowPublicKeyAuthentication: true
+        hostname: "hostname"
         networkInterfaces:
         - internal: true
           address: "address"
@@ -3645,7 +4195,11 @@ definitions:
         - "sshdParams"
         - "sshdParams"
         organization: "organization"
+        allowSshPasswordAuthentication: true
         agentVersion: "agentVersion"
+        connectionHistory:
+        - "{}"
+        - "{}"
         arch: "arch"
         _id: "_id"
         systemTimezone: 6
@@ -3787,6 +4341,25 @@ definitions:
         type: "string"
       password_never_expires:
         type: "boolean"
+      middlename:
+        type: "string"
+      displayname:
+        type: "string"
+      description:
+        type: "string"
+        maxLength: 1024
+      location:
+        type: "string"
+      costCenter:
+        type: "string"
+      employeeType:
+        type: "string"
+      company:
+        type: "string"
+      employeeIdentifier:
+        type: "string"
+        description: "Must be unique per user. "
+        maxLength: 256
     title: "SystemUserPut"
     x-stoplight:
       id: "systemuserput"
@@ -3835,6 +4408,48 @@ definitions:
     x-stoplight:
       id: "organizationslist"
       name: "OrganizationList"
+      public: true
+  sshkeylist:
+    type: "object"
+    properties:
+      create_date:
+        type: "string"
+        description: "The date the SSH key was created."
+      _id:
+        type: "string"
+        description: "The ID of the SSH key."
+      public_key:
+        type: "string"
+        description: "The Public SSH key."
+      name:
+        type: "string"
+        description: "The name of the SSH key."
+    title: "SSHKeyList"
+    example:
+      public_key: "public_key"
+      name: "name"
+      _id: "_id"
+      create_date: "create_date"
+    x-stoplight:
+      id: "sshkeylist"
+      name: "SSHKeyList"
+      public: true
+  sshkeypost:
+    type: "object"
+    required:
+    - "name"
+    - "public_key"
+    properties:
+      public_key:
+        type: "string"
+        description: "The Public SSH key."
+      name:
+        type: "string"
+        description: "The name of the SSH key."
+    title: "SSHKeyPost"
+    x-stoplight:
+      id: "sshkeypost"
+      name: "SSHKeyPost"
       public: true
   body:
     type: "object"
@@ -4255,6 +4870,21 @@ parameters:
     required: false
     type: "string"
     x-exportParamName: "Authorization"
+  trait:multiTenantRequestHeaders:x-org-id:
+    name: "x-org-id"
+    in: "header"
+    description: ""
+    required: false
+    type: "string"
+    default: "<<your org id>>"
+    x-exportParamName: "XOrgId"
+  trait:search:search:
+    name: "search"
+    in: "query"
+    description: ""
+    required: false
+    type: "string"
+    x-exportParamName: "Search"
 x-stoplight:
   beforeScript: ""
   afterScript: ""
@@ -4269,6 +4899,8 @@ x-stoplight:
         items:
         - _id: "v1-api"
           type: "docTextSections"
+        - _id: "api-change-log"
+          type: "docTextSections"
         name: "API Overview"
       - divider: false
         items:
@@ -4276,7 +4908,7 @@ x-stoplight:
           type: "docTextSections"
         - _id: "system-context"
           type: "docTextSections"
-        - _id: "multi-tenant-organization-api-header"
+        - _id: "multi-tenant-organization-api-headers"
           type: "docTextSections"
         name: "Authentication & Authorization"
         description: ""
@@ -4316,10 +4948,10 @@ x-stoplight:
           _id: "commands_get"
         - type: "endpoints"
           _id: "commands_post"
-        - _id: "command_file_get"
-          type: "endpoints"
         - type: "endpoints"
           _id: "commands_delete"
+        - _id: "command_file_get"
+          type: "endpoints"
         - type: "endpoints"
           _id: "commands_put"
         name: "Commands"
@@ -4358,6 +4990,8 @@ x-stoplight:
           type: "endpoints"
         name: "Radius Servers"
       - items:
+        - _id: "search_orginzations_post"
+          type: "endpoints"
         - _id: "search_systems_post"
           type: "endpoints"
         - _id: "search_systemusers_post"
@@ -4404,6 +5038,12 @@ x-stoplight:
         - type: "endpoints"
           _id: "systemusers_delete"
         - _id: "systemusers_resetmfa"
+          type: "endpoints"
+        - _id: "sshkey_list"
+          type: "endpoints"
+        - _id: "sshkey_post"
+          type: "endpoints"
+        - _id: "sshkey_delete"
           type: "endpoints"
         name: "Systemusers"
         description: "The System Users section of the JumpCloud API allows you to\
@@ -4467,6 +5107,10 @@ x-stoplight:
           _id: "search"
         - _id: "tagput"
           type: "schemas"
+        - _id: "sshkeylist"
+          type: "schemas"
+        - _id: "sshkeypost"
+          type: "schemas"
         - _id: "system"
           type: "schemas"
         - _id: "systemslist"
@@ -4513,9 +5157,13 @@ x-stoplight:
           type: "traits"
         - type: "traits"
           _id: "skip"
+        - _id: "search"
+          type: "traits"
         - type: "traits"
           _id: "sort"
         - _id: "systemContextAuth"
+          type: "traits"
+        - _id: "multiTenantRequestHeaders"
           type: "traits"
         description: "Traits describe common behaviors or structures in this API."
         name: "Traits"
@@ -4529,8 +5177,8 @@ x-stoplight:
         \ process of migrating our API V1 features to [API V2](https://docs.jumpcloud.com/2.0)\
         \ Depending on your type of integration you may be required to use both V1\
         \ and V2 APIs. \n\nPlease refer to our [API V2](https://docs.jumpcloud.com/2.0)\
-        \ docs to understand the functionality available in that API set. \n\n**API\
-        \ SDKS**\n\nYou can find language specific SDKs that can help you kickstart\
+        \ docs to understand the functionality available in that API set. \n\n###\
+        \ API SDKS\n\nYou can find language specific SDKs that can help you kickstart\
         \ your Integration with JumpCloud in the following GitHub Repos: \n\n* [Python](https://github.com/TheJumpCloud/jcapi-python)\n\
         * [Go](https://github.com/TheJumpCloud/jcapi)\n* [Ruby](https://github.com/TheJumpCloud/jcapi-ruby)\n\
         * [Java](https://github.com/TheJumpCloud/jcapi-java)"
@@ -4650,34 +5298,47 @@ x-stoplight:
         \ instance-shutdown`\n\n\n### Third party\n\n#### Chef cookbooks\n\n[https://github.com/nshenry03/jumpcloud](https://github.com/nshenry03/jumpcloud)\n\
         \n[https://github.com/cjs226/jumpcloud](https://github.com/cjs226/jumpcloud)"
       public: true
-    multi-tenant-organization-api-header:
-      id: "multi-tenant-organization-api-header"
-      name: "Multi Tenant Organization API Header"
-      content: "The Multi-Tenant Organzation API Header is available for JumpCloud\
-        \ Admins to use when making API requests from Organizations that have multiple\
-        \ managed organizations. \n\nThe `x-org-id` is a required header for all multi-tenant\
+    multi-tenant-organization-api-headers:
+      id: "multi-tenant-organization-api-headers"
+      name: "Multi Tenant Organization API Headers"
+      content: "Multi-Tenant Organzation API Headers are available for JumpCloud Admins\
+        \ to use when making API requests from Organizations that have multiple managed\
+        \ organizations. \n\nThe `x-org-id` is a required header for all multi-tenant\
         \ admins when making API requests to Jumpcloud as this header will define\
         \ what organization you would like to make the request for. \n\nPlease note\
         \ that Single Tenant Admins do not need to provide this header when making\
         \ an API request.\n \n #### Header Value\n \n `x-org-id`\n\n#### API Response\
-        \ codes\n\n- `400` Malformed ID. \n- `401` ID not included for multi-tenant\
-        \ admin\n- `404` Organization ID Not Found.\n\n#### Sample Request\n```\n\
-        curl -X GET https://console.jumpcloud.com/api/v2/directories \\\n  -H 'accept:\
-        \ application/json' \\\n  -H 'content-type: application/json' \\\n  -H 'x-api-key:\
-        \ {API_KEY}'\n  -H 'x-org-id: {ORG_ID}'\n\n```\n\n#### To obtain an indvidual\
-        \ Organization ID via the UI\n\nAs a prerequisite your Primary Organization\
-        \ will need to be setup for Multi-Tenancy which will give you access to the\
-        \ Multi-Tenant Organization Admin Portal.\n\n1. Log into JumpCloud Admin Console.\n\
-        3. Select the Organization you'd like to access.\n4. You will be automatically\
-        \ be routed to that Organizations Admin Console.\n4. Go to Settings in the\
-        \ primary navigation.\n5. You can retrieve your Organization ID below your\
-        \ Organization's Contact Information on the Settings page.\n\n#### To obtain\
-        \ all Organization IDs via the API\n\n1. You can make an API request to this\
-        \ endpoint using the API key of your Primary Organization.  `https://console.jumpcloud.com/api/organizations/`\
-        \ This will return all your managed organizations.\n\n#### Sample Request\n\
-        ```\ncurl -X GET \\\n  https://console.jumpcloud.com/api/organizations/ \\\
-        \n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n\n```"
+        \ codes\n\n- `400` Malformed ID.\n- `400` x-org-id and Organization path ID\
+        \ do not match.\n- `401` ID not included for multi-tenant admin\n- `403` ID\
+        \ included on unsupported route.\n- `404` Organization ID Not Found.\n\n####\
+        \ Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/directories\
+        \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -H 'x-org-id: {ORG_ID}'\n\n```\n\n\
+        #### To obtain an indvidual Organization ID via the UI\n\nAs a prerequisite\
+        \ your Primary Organization will need to be setup for Multi-Tenancy which\
+        \ will give you access to the Multi-Tenant Organization Admin Portal.\n\n\
+        1. Log into JumpCloud [Admin Console](https://console.jumpcloud.com). If you\
+        \ are a multi-tenant Admin, you will automatically be routed to the Multi-Tenant\
+        \ Admin Portal.\n2. From the Multi-Tenant Portal's primary navigation bar,\
+        \ select the Organization you'd like to access.\n3. You will automatically\
+        \ be routed to that Organization's Admin Console.\n4. Go to Settings in the\
+        \ sub-tenant's primary navigation.\n5. You can obtain your Organization ID\
+        \ below your Organization's Contact Information on the Settings page.\n\n\
+        #### To obtain all Organization IDs via the API\n\n1. You can make an API\
+        \ request to this endpoint using the API key of your Primary Organization.\
+        \  `https://console.jumpcloud.com/api/organizations/` This will return all\
+        \ your managed organizations.\n\n#### Sample Request\n```\ncurl -X GET \\\n\
+        \  https://console.jumpcloud.com/api/organizations/ \\\n  -H 'Accept: application/json'\
+        \ \\\n  -H 'Content-Type: application/json' \\\n  -H 'x-api-key: {API_KEY}'\n\
+        \n```"
+      public: true
+    api-change-log:
+      id: "api-change-log"
+      name: "API Changelog"
+      content: "### 08-01-2018\n\n`minor release`\n- [New Get Organization endpoint](https://docs.jumpcloud.com/1.0/organizations/get-organization-details)\n\
+        - [Multi-Tenant x-org-id](https://docs.jumpcloud.com/2.0/authentication-and-authorization/multi-tenant-organization-api-headers)\
+        \ documentation and functionality.\n- Corrections to Command Endpoint Documentation.\n\
+        - Remove ssh_keys from systemuserpost model."
       public: true
   mock:
     dynamic: false
