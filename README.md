@@ -32,7 +32,7 @@ func main() {
 	})
 
 	// make an API call to retrieve a specific user group by id:
-	userGroup, res, err := client.UserGroupsApi.GroupsUserGet(auth, userGroupId, contentType, accept)
+	userGroup, res, err := client.UserGroupsApi.GroupsUserGet(auth, userGroupId, contentType, accept, nil)
 
 	if err != nil {
 		fmt.Printf("Error retrieving user group %s: %s - response = %+v\n", userGroupId, err, res)
