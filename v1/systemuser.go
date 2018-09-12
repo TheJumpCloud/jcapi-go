@@ -19,7 +19,7 @@ type Systemuser struct {
 
 	PublicKey string `json:"public_key,omitempty"`
 
-	SshKeys []string `json:"ssh_keys,omitempty"`
+	SshKeys []Sshkeylist `json:"ssh_keys,omitempty"`
 
 	Sudo bool `json:"sudo,omitempty"`
 

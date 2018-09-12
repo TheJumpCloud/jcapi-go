@@ -4,16 +4,16 @@ All URIs are relative to *https://console.jumpcloud.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SearchOrginzationsPost**](SearchApi.md#SearchOrginzationsPost) | **Post** /search/organizations | Search Organizations
+[**SearchOrganizationsPost**](SearchApi.md#SearchOrganizationsPost) | **Post** /search/organizations | Search Organizations
 [**SearchSystemsPost**](SearchApi.md#SearchSystemsPost) | **Post** /search/systems | Search Systems
 [**SearchSystemusersPost**](SearchApi.md#SearchSystemusersPost) | **Post** /search/systemusers | Search System Users
 
 
-# **SearchOrginzationsPost**
-> Systemslist SearchOrginzationsPost(ctx, contentType, accept, optional)
+# **SearchOrganizationsPost**
+> Systemslist SearchOrganizationsPost(ctx, contentType, accept, optional)
 Search Organizations
 
-This endpoint will return Organization data based on your search parameters. This endpoint WILL NOT allow you to add a new Orginization.  You can use the supported parameters and pass those in the body of request.   The parameters must be passed as Content-Type application/json.   #### Sample Request ``` curl -X POST https://console.jumpcloud.com/api/search/organizations \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}' \\   -d '{   \"search\":{     \"fields\" : [\"settings.name\"],     \"searchTerm\": \"Second\"     },   \"fields\": [\"_id\", \"displayName\", \"logoUrl\"],   \"limit\" : 0,   \"skip\" : 0 }' ```
+This endpoint will return Organization data based on your search parameters. This endpoint WILL NOT allow you to add a new Organization.  You can use the supported parameters and pass those in the body of request.   The parameters must be passed as Content-Type application/json.   #### Sample Request ``` curl -X POST https://console.jumpcloud.com/api/search/organizations \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}' \\   -d '{   \"search\":{     \"fields\" : [\"settings.name\"],     \"searchTerm\": \"Second\"     },   \"fields\": [\"_id\", \"displayName\", \"logoUrl\"],   \"limit\" : 0,   \"skip\" : 0 }' ```
 
 ### Required Parameters
 

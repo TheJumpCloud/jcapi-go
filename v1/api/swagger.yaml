@@ -975,7 +975,7 @@ paths:
       - "Search"
       summary: "Search Organizations"
       description: "This endpoint will return Organization data based on your search\
-        \ parameters. This endpoint WILL NOT allow you to add a new Orginization.\n\
+        \ parameters. This endpoint WILL NOT allow you to add a new Organization.\n\
         \nYou can use the supported parameters and pass those in the body of request.\
         \ \n\nThe parameters must be passed as Content-Type application/json.\n\n\n\
         #### Sample Request\n```\ncurl -X POST https://console.jumpcloud.com/api/search/organizations\
@@ -984,7 +984,7 @@ paths:
         \ : [\"settings.name\"],\n    \"searchTerm\": \"Second\"\n    },\n  \"fields\"\
         : [\"_id\", \"displayName\", \"logoUrl\"],\n  \"limit\" : 0,\n  \"skip\" :\
         \ 0\n}'\n```"
-      operationId: "search_orginzations_post"
+      operationId: "search_organizations_post"
       parameters:
       - in: "body"
         name: "body"
@@ -1043,7 +1043,7 @@ paths:
       security:
       - x-api-key: []
       x-stoplight:
-        id: "search_orginzations_post"
+        id: "search_organizations_post"
         beforeScript: null
         afterScript: null
         public: true
@@ -2816,7 +2816,7 @@ definitions:
       ssh_keys:
         type: "array"
         items:
-          type: "string"
+          $ref: "#/definitions/sshkeylist"
       sudo:
         type: "boolean"
       enable_managed_uid:
@@ -2915,7 +2915,7 @@ definitions:
       ssh_keys:
         type: "array"
         items:
-          type: "string"
+          $ref: "#/definitions/sshkeylist"
       sudo:
         type: "boolean"
       enable_managed_uid:
@@ -2969,16 +2969,18 @@ definitions:
         type: "string"
       addresses:
         type: "array"
+        description: ""
         items:
-          type: "string"
+          $ref: "#/definitions/systemuserreturn_addresses"
       jobTitle:
         type: "string"
       department:
         type: "string"
       phoneNumbers:
         type: "array"
+        description: ""
         items:
-          type: "string"
+          $ref: "#/definitions/systemuserreturn_phoneNumbers"
       relationships:
         type: "array"
         items:
@@ -3013,8 +3015,24 @@ definitions:
       public_key: "public_key"
       firstname: "firstname"
       addresses:
-      - "addresses"
-      - "addresses"
+      - poBox: "poBox"
+        country: "country"
+        streetAddress: "streetAddress"
+        postalCode: "postalCode"
+        locality: "locality"
+        id: "id"
+        type: "type"
+        extendedAddress: "extendedAddress"
+        region: "region"
+      - poBox: "poBox"
+        country: "country"
+        streetAddress: "streetAddress"
+        postalCode: "postalCode"
+        locality: "locality"
+        id: "id"
+        type: "type"
+        extendedAddress: "extendedAddress"
+        region: "region"
       badLoginAttempts: 1
       account_locked: true
       totp_enabled: true
@@ -3024,8 +3042,12 @@ definitions:
       description: "description"
       allow_public_key: true
       phoneNumbers:
-      - "phoneNumbers"
-      - "phoneNumbers"
+      - number: "number"
+        id: "id"
+        type: "type"
+      - number: "number"
+        id: "id"
+        type: "type"
       relationships:
       - "{}"
       - "{}"
@@ -3050,8 +3072,14 @@ definitions:
       lastname: "lastname"
       employeeIdentifier: "employeeIdentifier"
       ssh_keys:
-      - "ssh_keys"
-      - "ssh_keys"
+      - public_key: "public_key"
+        name: "name"
+        _id: "_id"
+        create_date: "create_date"
+      - public_key: "public_key"
+        name: "name"
+        _id: "_id"
+        create_date: "create_date"
       employeeType: "employeeType"
       organization: "organization"
       password_never_expires: true
@@ -3125,16 +3153,18 @@ definitions:
         type: "boolean"
       addresses:
         type: "array"
+        description: ""
         items:
-          type: "string"
+          $ref: "#/definitions/systemuserputpost_addresses"
       jobTitle:
         type: "string"
       department:
         type: "string"
       phoneNumbers:
         type: "array"
+        description: ""
         items:
-          type: "string"
+          $ref: "#/definitions/systemuserputpost_phoneNumbers"
       relationships:
         type: "array"
         items:
@@ -3350,8 +3380,24 @@ definitions:
       - public_key: "public_key"
         firstname: "firstname"
         addresses:
-        - "addresses"
-        - "addresses"
+        - poBox: "poBox"
+          country: "country"
+          streetAddress: "streetAddress"
+          postalCode: "postalCode"
+          locality: "locality"
+          id: "id"
+          type: "type"
+          extendedAddress: "extendedAddress"
+          region: "region"
+        - poBox: "poBox"
+          country: "country"
+          streetAddress: "streetAddress"
+          postalCode: "postalCode"
+          locality: "locality"
+          id: "id"
+          type: "type"
+          extendedAddress: "extendedAddress"
+          region: "region"
         badLoginAttempts: 1
         account_locked: true
         totp_enabled: true
@@ -3361,8 +3407,12 @@ definitions:
         description: "description"
         allow_public_key: true
         phoneNumbers:
-        - "phoneNumbers"
-        - "phoneNumbers"
+        - number: "number"
+          id: "id"
+          type: "type"
+        - number: "number"
+          id: "id"
+          type: "type"
         relationships:
         - "{}"
         - "{}"
@@ -3387,8 +3437,14 @@ definitions:
         lastname: "lastname"
         employeeIdentifier: "employeeIdentifier"
         ssh_keys:
-        - "ssh_keys"
-        - "ssh_keys"
+        - public_key: "public_key"
+          name: "name"
+          _id: "_id"
+          create_date: "create_date"
+        - public_key: "public_key"
+          name: "name"
+          _id: "_id"
+          create_date: "create_date"
         employeeType: "employeeType"
         organization: "organization"
         password_never_expires: true
@@ -3404,8 +3460,24 @@ definitions:
       - public_key: "public_key"
         firstname: "firstname"
         addresses:
-        - "addresses"
-        - "addresses"
+        - poBox: "poBox"
+          country: "country"
+          streetAddress: "streetAddress"
+          postalCode: "postalCode"
+          locality: "locality"
+          id: "id"
+          type: "type"
+          extendedAddress: "extendedAddress"
+          region: "region"
+        - poBox: "poBox"
+          country: "country"
+          streetAddress: "streetAddress"
+          postalCode: "postalCode"
+          locality: "locality"
+          id: "id"
+          type: "type"
+          extendedAddress: "extendedAddress"
+          region: "region"
         badLoginAttempts: 1
         account_locked: true
         totp_enabled: true
@@ -3415,8 +3487,12 @@ definitions:
         description: "description"
         allow_public_key: true
         phoneNumbers:
-        - "phoneNumbers"
-        - "phoneNumbers"
+        - number: "number"
+          id: "id"
+          type: "type"
+        - number: "number"
+          id: "id"
+          type: "type"
         relationships:
         - "{}"
         - "{}"
@@ -3441,8 +3517,14 @@ definitions:
         lastname: "lastname"
         employeeIdentifier: "employeeIdentifier"
         ssh_keys:
-        - "ssh_keys"
-        - "ssh_keys"
+        - public_key: "public_key"
+          name: "name"
+          _id: "_id"
+          create_date: "create_date"
+        - public_key: "public_key"
+          name: "name"
+          _id: "_id"
+          create_date: "create_date"
         employeeType: "employeeType"
         organization: "organization"
         password_never_expires: true
@@ -4068,14 +4150,23 @@ definitions:
           type: "string"
       _id:
         type: "string"
+      fde:
+        $ref: "#/definitions/fde"
     title: "System"
     example:
       remoteIP: "remoteIP"
       allowSshRootLogin: true
+      displayName: "displayName"
+      hostname: "hostname"
+      allowSshPasswordAuthentication: true
+      connectionHistory:
+      - "{}"
+      - "{}"
       os: "os"
       created: "created"
-      displayName: "displayName"
       allowMultiFactorAuthentication: true
+      fde:
+        keyPresent: true
       modifySSHDConfig: true
       active: true
       sshRootEnabled: true
@@ -4085,7 +4176,6 @@ definitions:
       - "tags"
       - "tags"
       allowPublicKeyAuthentication: true
-      hostname: "hostname"
       networkInterfaces:
       - internal: true
         address: "address"
@@ -4100,11 +4190,7 @@ definitions:
       - "sshdParams"
       - "sshdParams"
       organization: "organization"
-      allowSshPasswordAuthentication: true
       agentVersion: "agentVersion"
-      connectionHistory:
-      - "{}"
-      - "{}"
       arch: "arch"
       _id: "_id"
       systemTimezone: 6
@@ -4129,10 +4215,17 @@ definitions:
       results:
       - remoteIP: "remoteIP"
         allowSshRootLogin: true
+        displayName: "displayName"
+        hostname: "hostname"
+        allowSshPasswordAuthentication: true
+        connectionHistory:
+        - "{}"
+        - "{}"
         os: "os"
         created: "created"
-        displayName: "displayName"
         allowMultiFactorAuthentication: true
+        fde:
+          keyPresent: true
         modifySSHDConfig: true
         active: true
         sshRootEnabled: true
@@ -4142,7 +4235,6 @@ definitions:
         - "tags"
         - "tags"
         allowPublicKeyAuthentication: true
-        hostname: "hostname"
         networkInterfaces:
         - internal: true
           address: "address"
@@ -4157,20 +4249,23 @@ definitions:
         - "sshdParams"
         - "sshdParams"
         organization: "organization"
-        allowSshPasswordAuthentication: true
         agentVersion: "agentVersion"
-        connectionHistory:
-        - "{}"
-        - "{}"
         arch: "arch"
         _id: "_id"
         systemTimezone: 6
       - remoteIP: "remoteIP"
         allowSshRootLogin: true
+        displayName: "displayName"
+        hostname: "hostname"
+        allowSshPasswordAuthentication: true
+        connectionHistory:
+        - "{}"
+        - "{}"
         os: "os"
         created: "created"
-        displayName: "displayName"
         allowMultiFactorAuthentication: true
+        fde:
+          keyPresent: true
         modifySSHDConfig: true
         active: true
         sshRootEnabled: true
@@ -4180,7 +4275,6 @@ definitions:
         - "tags"
         - "tags"
         allowPublicKeyAuthentication: true
-        hostname: "hostname"
         networkInterfaces:
         - internal: true
           address: "address"
@@ -4195,11 +4289,7 @@ definitions:
         - "sshdParams"
         - "sshdParams"
         organization: "organization"
-        allowSshPasswordAuthentication: true
         agentVersion: "agentVersion"
-        connectionHistory:
-        - "{}"
-        - "{}"
         arch: "arch"
         _id: "_id"
         systemTimezone: 6
@@ -4282,7 +4372,7 @@ definitions:
       ssh_keys:
         type: "array"
         items:
-          type: "string"
+          $ref: "#/definitions/sshkeypost"
       sudo:
         type: "boolean"
       enable_managed_uid:
@@ -4322,16 +4412,19 @@ definitions:
         type: "boolean"
       addresses:
         type: "array"
+        description: "type, poBox, extendedAddress, streetAddress, locality, region,\
+          \ postalCode, country"
         items:
-          type: "string"
+          $ref: "#/definitions/systemuserputpost_addresses"
       jobTitle:
         type: "string"
       department:
         type: "string"
       phoneNumbers:
         type: "array"
+        description: ""
         items:
-          type: "string"
+          $ref: "#/definitions/systemuserputpost_phoneNumbers"
       relationships:
         type: "array"
         items:
@@ -4451,6 +4544,18 @@ definitions:
       id: "sshkeypost"
       name: "SSHKeyPost"
       public: true
+  fde:
+    type: "object"
+    properties:
+      keyPresent:
+        type: "boolean"
+    title: "FDE"
+    example:
+      keyPresent: true
+    x-stoplight:
+      id: "fde"
+      name: "FDE"
+      public: true
   body:
     type: "object"
     required:
@@ -4501,6 +4606,72 @@ definitions:
         exitCode: 5
       id: "id"
       error: "error"
+  systemuserreturn_addresses:
+    properties:
+      id:
+        type: "string"
+      type:
+        type: "string"
+      poBox:
+        type: "string"
+      extendedAddress:
+        type: "string"
+      streetAddress:
+        type: "string"
+      locality:
+        type: "string"
+      region:
+        type: "string"
+      postalCode:
+        type: "string"
+      country:
+        type: "string"
+    example:
+      poBox: "poBox"
+      country: "country"
+      streetAddress: "streetAddress"
+      postalCode: "postalCode"
+      locality: "locality"
+      id: "id"
+      type: "type"
+      extendedAddress: "extendedAddress"
+      region: "region"
+  systemuserreturn_phoneNumbers:
+    properties:
+      id:
+        type: "string"
+      type:
+        type: "string"
+      number:
+        type: "string"
+    example:
+      number: "number"
+      id: "id"
+      type: "type"
+  systemuserputpost_addresses:
+    properties:
+      type:
+        type: "string"
+      poBox:
+        type: "string"
+      extendedAddress:
+        type: "string"
+      streetAddress:
+        type: "string"
+      locality:
+        type: "string"
+      region:
+        type: "string"
+      postalCode:
+        type: "string"
+      country:
+        type: "string"
+  systemuserputpost_phoneNumbers:
+    properties:
+      type:
+        type: "string"
+      number:
+        type: "string"
   commandslist_results:
     properties:
       name:
@@ -4990,7 +5161,7 @@ x-stoplight:
           type: "endpoints"
         name: "Radius Servers"
       - items:
-        - _id: "search_orginzations_post"
+        - _id: "search_organizations_post"
           type: "endpoints"
         - _id: "search_systems_post"
           type: "endpoints"
@@ -5142,6 +5313,8 @@ x-stoplight:
         - _id: "usersystembindingsput"
           type: "schemas"
         - _id: "usersystembinding"
+          type: "schemas"
+        - _id: "fde"
           type: "schemas"
         description: "Models make up the core input and ouput structures in this API.\
           \ They are used in endpoint request and response bodies."
@@ -5301,9 +5474,9 @@ x-stoplight:
     multi-tenant-organization-api-headers:
       id: "multi-tenant-organization-api-headers"
       name: "Multi Tenant Organization API Headers"
-      content: "Multi-Tenant Organzation API Headers are available for JumpCloud Admins\
-        \ to use when making API requests from Organizations that have multiple managed\
-        \ organizations. \n\nThe `x-org-id` is a required header for all multi-tenant\
+      content: "Multi-Tenant Organization API Headers are available for JumpCloud\
+        \ Admins to use when making API requests from Organizations that have multiple\
+        \ managed organizations. \n\nThe `x-org-id` is a required header for all multi-tenant\
         \ admins when making API requests to Jumpcloud as this header will define\
         \ what organization you would like to make the request for. \n\nPlease note\
         \ that Single Tenant Admins do not need to provide this header when making\
@@ -5314,7 +5487,7 @@ x-stoplight:
         \ Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/directories\
         \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -H 'x-org-id: {ORG_ID}'\n\n```\n\n\
-        #### To obtain an indvidual Organization ID via the UI\n\nAs a prerequisite\
+        #### To obtain an individual Organization ID via the UI\n\nAs a prerequisite\
         \ your Primary Organization will need to be setup for Multi-Tenancy which\
         \ will give you access to the Multi-Tenant Organization Admin Portal.\n\n\
         1. Log into JumpCloud [Admin Console](https://console.jumpcloud.com). If you\
