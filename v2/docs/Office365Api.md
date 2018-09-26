@@ -14,7 +14,7 @@ Method | HTTP request | Description
 > []GraphConnection GraphOffice365AssociationsList(ctx, office365Id, targets, contentType, accept, optional)
 List the associations of an Office 365 instance
 
-This endpoint returns _direct_ associations of an Office 365 instance.   A direct association can be a non-homogenous relationship between 2 different objects. for example Office 365 and Users.  #### Sample Request ``` curl -X GET 'https://console.jumpcloud.com/api/v2/office365s/{O365_ID}/associations?targets=user_group \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'  ```
+This endpoint returns _direct_ associations of an Office 365 instance.   A direct association can be a non-homogeneous relationship between 2 different objects, for example Office 365 and Users.  #### Sample Request ``` curl -X GET 'https://console.jumpcloud.com/api/v2/office365s/{O365_ID}/associations?targets=user_group \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'  ```
 
 ### Required Parameters
 
@@ -38,7 +38,7 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
- **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
+ **xOrgId** | **string**|  | [default to ]
 
 ### Return type
 
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 > GraphOffice365AssociationsPost(ctx, office365Id, contentType, accept, optional)
 Manage the associations of an Office 365 instance
 
-This endpoint allows you to manage the _direct_ associations of a Office 365 instance.  A direct association can be a non-homogenous relationship between 2 different objects. for example Office 365 and Users.  #### Sample Request ``` curl -X POST https://console.jumpcloud.com/api/v2/office365s/{O365_ID}/associations \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}' \\   -d '{     \"op\": \"add\",     \"type\": \"user_group\",     \"id\": \"{Group_ID}\" }' ```
+This endpoint allows you to manage the _direct_ associations of a Office 365 instance.  A direct association can be a non-homogeneous relationship between 2 different objects, for example Office 365 and Users.  #### Sample Request ``` curl -X POST https://console.jumpcloud.com/api/v2/office365s/{O365_ID}/associations \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}' \\   -d '{     \"op\": \"add\",     \"type\": \"user_group\",     \"id\": \"{Group_ID}\" }' ```
 
 ### Required Parameters
 
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | 
- **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
+ **xOrgId** | **string**|  | [default to ]
 
 ### Return type
 
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
- **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
+ **xOrgId** | **string**|  | [default to ]
 
 ### Return type
 
@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
- **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
+ **xOrgId** | **string**|  | [default to ]
 
 ### Return type
 

@@ -33,7 +33,7 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **body** | [**[]BulkUserCreate**](bulk-user-create.md)|  | 
- **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
+ **xOrgId** | **string**|  | [default to ]
 
 ### Return type
 
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
- **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
+ **xOrgId** | **string**|  | [default to ]
 
 ### Return type
 
@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
  **id** | **string**|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
+ **xOrgId** | **string**|  | [default to ]
 
 ### Return type
 
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
- **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
+ **xOrgId** | **string**|  | [default to ]
 
 ### Return type
 

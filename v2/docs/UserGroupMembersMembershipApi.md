@@ -14,7 +14,7 @@ Method | HTTP request | Description
 > []GraphObjectWithPaths GraphUserGroupMemberOf(ctx, groupId, contentType, accept, optional)
 List the User Group's parents
 
-This endpoint returns all User Groups a User Group is a member of.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/{group_id}/membersof ```  Not public yet, as the code is not finished,
+This endpoint returns all User Groups a User Group is a member of.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/{group_id}/memberof ```  Not public yet, as the code is not finished,
 
 ### Required Parameters
 
@@ -38,7 +38,7 @@ Name | Type | Description  | Notes
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
- **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
+ **xOrgId** | **string**|  | [default to ]
 
 ### Return type
 
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
- **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
+ **xOrgId** | **string**|  | [default to ]
 
 ### Return type
 
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **body** | [**UserGroupMembersReq**](UserGroupMembersReq.md)|  | 
- **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
+ **xOrgId** | **string**|  | [default to ]
 
 ### Return type
 
@@ -168,7 +168,7 @@ Name | Type | Description  | Notes
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
- **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
+ **xOrgId** | **string**|  | [default to ]
 
 ### Return type
 

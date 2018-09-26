@@ -16,7 +16,7 @@ Method | HTTP request | Description
 > []GraphConnection GraphLdapServerAssociationsList(ctx, ldapserverId, targets, contentType, accept, optional)
 List the associations of a LDAP Server
 
-This endpoint returns the _direct_ associations of this LDAP Server.  A direct association can be a non-homogenous relationship between 2 different objects. for example LDAP and Users.  #### Sample Request  ```  curl -X GET 'https://console.jumpcloud.com/api/v2/ldapservers/{LDAP_ID}/associations?targets=user_group \\   -H 'accept: application/json' \\   -H 'content-type: application/json' \\   -H 'x-api-key: {API_KEY}' ```
+This endpoint returns the _direct_ associations of this LDAP Server.  A direct association can be a non-homogeneous relationship between 2 different objects, for example LDAP and Users.  #### Sample Request  ```  curl -X GET 'https://console.jumpcloud.com/api/v2/ldapservers/{LDAP_ID}/associations?targets=user_group \\   -H 'accept: application/json' \\   -H 'content-type: application/json' \\   -H 'x-api-key: {API_KEY}' ```
 
 ### Required Parameters
 
@@ -40,7 +40,7 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
- **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
+ **xOrgId** | **string**|  | [default to ]
 
 ### Return type
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 > GraphLdapServerAssociationsPost(ctx, ldapserverId, contentType, accept, optional)
 Manage the associations of a LDAP Server
 
-This endpoint allows you to manage the _direct_ associations of a LDAP Server.  A direct association can be a non-homogenous relationship between 2 different objects. for example LDAP and Users.  #### Sample Request ``` curl -X POST https://console.jumpcloud.com/api/v2/ldapservers/{LDAP_ID}/associations \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}' \\   -d '{     \"op\": \"add\",     \"type\": \"user\",     \"id\": \"{User_ID}\" }' ```
+This endpoint allows you to manage the _direct_ associations of a LDAP Server.  A direct association can be a non-homogeneous relationship between 2 different objects, for example LDAP and Users.  #### Sample Request ``` curl -X POST https://console.jumpcloud.com/api/v2/ldapservers/{LDAP_ID}/associations \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}' \\   -d '{     \"op\": \"add\",     \"type\": \"user\",     \"id\": \"{User_ID}\" }' ```
 
 ### Required Parameters
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | 
- **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
+ **xOrgId** | **string**|  | [default to ]
 
 ### Return type
 
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
- **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
+ **xOrgId** | **string**|  | [default to ]
 
 ### Return type
 
@@ -168,7 +168,7 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
- **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
+ **xOrgId** | **string**|  | [default to ]
 
 ### Return type
 
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
  **id** | **string**| Unique identifier of the LDAP server. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
+ **xOrgId** | **string**|  | [default to ]
 
 ### Return type
 
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
- **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
+ **xOrgId** | **string**|  | [default to ]
 
 ### Return type
 

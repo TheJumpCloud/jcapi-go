@@ -9,10 +9,10 @@
 
 package v2
 
-// An instance of a policty template.
+// An instance of a policy template.
 type Policy struct {
 
-	// ObjectId uniquely indetifying a Policy.
+	// ObjectId uniquely identifying a Policy.
 	Id string `json:"id,omitempty"`
 
 	Template *PolicyTemplate `json:"template,omitempty"`

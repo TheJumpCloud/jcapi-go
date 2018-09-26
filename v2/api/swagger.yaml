@@ -21,9 +21,9 @@ paths:
       - "Active Directory"
       summary: "List the associations of an Active Directory instance"
       description: "This endpoint returns the direct associations of this Active Directory\
-        \ instance.\n\nA direct association can be a non-homogenous relationship between\
-        \ 2 different objects. For example Active Directory and Users.\n\n\n#### Sample\
-        \ Request\n```\ncurl -X GET 'https://console.jumpcloud.com/api/v2/activedirectories/{ActiveDirectory_ID}/associations?targets=user\
+        \ instance.\n\nA direct association can be a non-homogeneous relationship\
+        \ between 2 different objects, for example Active Directory and Users.\n\n\
+        \n#### Sample Request\n```\ncurl -X GET 'https://console.jumpcloud.com/api/v2/activedirectories/{ActiveDirectory_ID}/associations?targets=user\
         \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
       operationId: "graph_activeDirectoryAssociationsList"
@@ -85,7 +85,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -111,8 +110,8 @@ paths:
       - "Active Directory"
       summary: "Manage the associations of an Active Directory instance"
       description: "This endpoint allows you to manage the _direct_ associations of\
-        \ an Active Directory instance.\n\nA direct association can be a non-homogenous\
-        \ relationship between 2 different objects. For example Active Directory and\
+        \ an Active Directory instance.\n\nA direct association can be a non-homogeneous\
+        \ relationship between 2 different objects, for example Active Directory and\
         \ Users.\n\n#### Sample Request\n```\ncurl -X POST https://console.jumpcloud.com/api/v2/activedirectories/{AD_Instance_ID}/associations\
         \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n        \"op\": \"add\",\n\
@@ -147,7 +146,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         204:
@@ -232,7 +230,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -286,7 +283,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         201:
@@ -338,7 +334,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -389,7 +384,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         204:
@@ -463,7 +457,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -490,8 +483,8 @@ paths:
       - "Applications"
       summary: "List the associations of an Application"
       description: "This endpoint will return the _direct_ associations of an Application.\
-        \ A direct association can be a non-homogenous relationship between 2 different\
-        \ objects. for example Applications and User Groups.\n\n\n#### Sample Request\n\
+        \ A direct association can be a non-homogeneous relationship between 2 different\
+        \ objects, for example Applications and User Groups.\n\n\n#### Sample Request\n\
         ```\ncurl -X GET 'https://console.jumpcloud.com/api/v2/applications/{Application_ID}/associations?targets=user_group\
         \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
@@ -555,7 +548,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -581,8 +573,8 @@ paths:
       - "Applications"
       summary: "Manage the associations of an Application"
       description: "This endpoint allows you to manage the _direct_ associations of\
-        \ an Application. A direct association can be a non-homogenous relationship\
-        \ between 2 different objects. for example Application and User Groups.\n\n\
+        \ an Application. A direct association can be a non-homogeneous relationship\
+        \ between 2 different objects, for example Application and User Groups.\n\n\
         #### Sample Request\n```\ncurl -X POST 'https://console.jumpcloud.com/api/v2/applications/{Application_ID}/associations'\
         \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n    \"op\": \"add\",\n    \"\
@@ -618,7 +610,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         204:
@@ -691,7 +682,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -768,7 +758,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -835,7 +824,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -895,7 +883,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         201:
@@ -960,7 +947,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -1011,7 +997,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -1036,8 +1021,8 @@ paths:
       - "Commands"
       summary: "List the associations of a Command"
       description: "This endpoint will return the _direct_ associations of this Command.\n\
-        \nA direct association can be a non-homogenous relationship between 2 different\
-        \ objects. for example Commands and User Groups.\n\n\n#### Sample Request\n\
+        \nA direct association can be a non-homogeneous relationship between 2 different\
+        \ objects, for example Commands and User Groups.\n\n\n#### Sample Request\n\
         ```\ncurl -X GET https://console.jumpcloud.com/api/v2/commands/{Command_ID}/associations?targets=system_group\
         \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
@@ -1101,7 +1086,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -1127,8 +1111,8 @@ paths:
       - "Commands"
       summary: "Manage the associations of a Command"
       description: "This endpoint will allow you to manage the _direct_ associations\
-        \ of this Command.\n\nA direct association can be a non-homogenous relationship\
-        \ between 2 different objects. for example Commands and User Groups.\n\n\n\
+        \ of this Command.\n\nA direct association can be a non-homogeneous relationship\
+        \ between 2 different objects, for example Commands and User Groups.\n\n\n\
         #### Sample Request\n```\n curl -X POST https://console.jumpcloud.com/api/v2/commands/{Command_ID}/associations\
         \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n    \"op\": \"add\",\n    \"\
@@ -1164,7 +1148,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         204:
@@ -1239,7 +1222,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -1316,7 +1298,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -1396,7 +1377,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -1490,7 +1470,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -1521,9 +1500,9 @@ paths:
       - "G Suite"
       summary: "List the associations of a G Suite instance"
       description: "This endpoint returns the _direct_ associations of this G Suite\
-        \ instance.\n\nA direct association can be a non-homogenous relationship between\
-        \ 2 different objects. for example G Suite and Users.\n\n\n#### Sample Request\n\
-        ```\ncurl -X GET 'https://console.jumpcloud.com/api/v2/gsuites/{Gsuite_ID}/associations?targets=user_group\
+        \ instance.\n\nA direct association can be a non-homogeneous relationship\
+        \ between 2 different objects, for example G Suite and Users.\n\n\n#### Sample\
+        \ Request\n```\ncurl -X GET 'https://console.jumpcloud.com/api/v2/gsuites/{Gsuite_ID}/associations?targets=user_group\
         \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
       operationId: "graph_gSuiteAssociationsList"
@@ -1586,7 +1565,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -1612,9 +1590,9 @@ paths:
       - "G Suite"
       summary: "Manage the associations of a G Suite instance"
       description: "This endpoint returns the _direct_ associations of this G Suite\
-        \ instance.\n\nA direct association can be a non-homogenous relationship between\
-        \ 2 different objects. for example G Suite and Users.\n\n\n#### Sample Request\n\
-        ```\ncurl -X POST https://console.jumpcloud.com/api/v2/gsuites/{Gsuite_ID}/associations\
+        \ instance.\n\nA direct association can be a non-homogeneous relationship\
+        \ between 2 different objects, for example G Suite and Users.\n\n\n#### Sample\
+        \ Request\n```\ncurl -X POST https://console.jumpcloud.com/api/v2/gsuites/{Gsuite_ID}/associations\
         \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n    \"op\": \"add\",\n    \"\
         type\": \"user_group\",\n    \"id\": \"{Group_ID}\"\n}'\n```"
@@ -1637,7 +1615,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         204:
@@ -1711,7 +1688,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -1788,7 +1764,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -1815,8 +1790,8 @@ paths:
       - "LDAP Servers"
       summary: "List the associations of a LDAP Server"
       description: "This endpoint returns the _direct_ associations of this LDAP Server.\n\
-        \nA direct association can be a non-homogenous relationship between 2 different\
-        \ objects. for example LDAP and Users.\n\n#### Sample Request\n\n```\n curl\
+        \nA direct association can be a non-homogeneous relationship between 2 different\
+        \ objects, for example LDAP and Users.\n\n#### Sample Request\n\n```\n curl\
         \ -X GET 'https://console.jumpcloud.com/api/v2/ldapservers/{LDAP_ID}/associations?targets=user_group\
         \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
@@ -1880,7 +1855,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -1906,8 +1880,8 @@ paths:
       - "LDAP Servers"
       summary: "Manage the associations of a LDAP Server"
       description: "This endpoint allows you to manage the _direct_ associations of\
-        \ a LDAP Server.\n\nA direct association can be a non-homogenous relationship\
-        \ between 2 different objects. for example LDAP and Users.\n\n#### Sample\
+        \ a LDAP Server.\n\nA direct association can be a non-homogeneous relationship\
+        \ between 2 different objects, for example LDAP and Users.\n\n#### Sample\
         \ Request\n```\ncurl -X POST https://console.jumpcloud.com/api/v2/ldapservers/{LDAP_ID}/associations\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n    \"op\": \"add\",\n    \"\
@@ -1943,7 +1917,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         204:
@@ -2017,7 +1990,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -2094,7 +2066,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -2183,7 +2154,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -2237,7 +2207,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -2262,8 +2231,8 @@ paths:
       - "Office 365"
       summary: "List the associations of an Office 365 instance"
       description: "This endpoint returns _direct_ associations of an Office 365 instance.\n\
-        \n\nA direct association can be a non-homogenous relationship between 2 different\
-        \ objects. for example Office 365 and Users.\n\n#### Sample Request\n```\n\
+        \n\nA direct association can be a non-homogeneous relationship between 2 different\
+        \ objects, for example Office 365 and Users.\n\n#### Sample Request\n```\n\
         curl -X GET 'https://console.jumpcloud.com/api/v2/office365s/{O365_ID}/associations?targets=user_group\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n\n```"
@@ -2327,7 +2296,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -2353,9 +2321,9 @@ paths:
       - "Office 365"
       summary: "Manage the associations of an Office 365 instance"
       description: "This endpoint allows you to manage the _direct_ associations of\
-        \ a Office 365 instance.\n\nA direct association can be a non-homogenous relationship\
-        \ between 2 different objects. for example Office 365 and Users.\n\n#### Sample\
-        \ Request\n```\ncurl -X POST https://console.jumpcloud.com/api/v2/office365s/{O365_ID}/associations\
+        \ a Office 365 instance.\n\nA direct association can be a non-homogeneous\
+        \ relationship between 2 different objects, for example Office 365 and Users.\n\
+        \n#### Sample Request\n```\ncurl -X POST https://console.jumpcloud.com/api/v2/office365s/{O365_ID}/associations\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n    \"op\": \"add\",\n    \"\
         type\": \"user_group\",\n    \"id\": \"{Group_ID}\"\n}'\n```"
@@ -2390,7 +2358,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         204:
@@ -2464,7 +2431,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -2541,7 +2507,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -2630,7 +2595,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -2690,7 +2654,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         201:
@@ -2742,7 +2705,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -2790,7 +2752,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -2841,7 +2802,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         204:
@@ -2850,102 +2810,6 @@ paths:
       - x-api-key: []
       x-stoplight:
         id: "policies_delete"
-        beforeScript: null
-        afterScript: null
-        public: true
-        mock:
-          enabled: false
-          dynamic: false
-          statusCode: 200
-  /policyresults:
-    get:
-      tags:
-      - "Policies"
-      summary: "Lists all the policy results for an organization."
-      description: "This endpoint returns all policies results for an Organization.\
-        \ \n\n##### Sample Request\n\n```\n curl -X GET https://console.jumpcloud.com/api/v2/policyresults\
-        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
-      operationId: "policyresults_list"
-      parameters:
-      - name: "aggregate"
-        in: "query"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Aggregate"
-      - name: "fields"
-        in: "query"
-        description: "The comma separated fields included in the returned records.\n\
-          If omitted the default list of fields will be returned.\n"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Fields"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
-          \ in"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "limit"
-        in: "query"
-        description: "The number of records to return at once. Limited to 100."
-        required: false
-        type: "integer"
-        default: 10
-        x-exportParamName: "Limit"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        x-exportParamName: "Skip"
-      - name: "sort"
-        in: "query"
-        description: "The comma separated fields used to sort the collection.\nDefault\
-          \ sort is ascending, prefix with `-` to sort descending.\n"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Sort"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        default: "<<your org id>>"
-        x-exportParamName: "XOrgId"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/PolicyResult"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        id: "policyresults_list"
         beforeScript: null
         afterScript: null
         public: true
@@ -3034,7 +2898,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -3054,22 +2917,24 @@ paths:
           enabled: false
           dynamic: false
           statusCode: 200
-  /policies/{policy_id}/policystatuses:
+  /policyresults:
     get:
       tags:
       - "Policies"
-      summary: "Lists the latest policy results of a policy."
-      description: "This endpoint returns the latest policies results for a specific\
-        \ policy. \n\n##### Sample Request\n\n```\n curl -X GET https://console.jumpcloud.com/api/v2/policies/{Policy_ID}/policystatuses\
+      summary: "Lists all the policy results for an organization."
+      description: "This endpoint returns all policies results for an Organization.\
+        \ \n\n##### Sample Request\n\n```\n curl -X GET https://console.jumpcloud.com/api/v2/policyresults\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
-      operationId: "policystatuses_list"
+      operationId: "policyresults_list"
       parameters:
-      - name: "policy_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "PolicyId"
+      - name: "aggregate"
+        in: "query"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Aggregate"
       - name: "fields"
         in: "query"
         description: "The comma separated fields included in the returned records.\n\
@@ -3128,7 +2993,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -3140,7 +3004,7 @@ paths:
       security:
       - x-api-key: []
       x-stoplight:
-        id: "policystatuses_list"
+        id: "policyresults_list"
         beforeScript: null
         afterScript: null
         public: true
@@ -3224,11 +3088,103 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/PolicyResult"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        id: "policystatuses_list"
+        beforeScript: null
+        afterScript: null
+        public: true
+        mock:
+          enabled: false
+          dynamic: false
+          statusCode: 200
+  /policies/{policy_id}/policystatuses:
+    get:
+      tags:
+      - "Policies"
+      summary: "Lists the latest policy results of a policy."
+      description: "This endpoint returns the latest policies results for a specific\
+        \ policy. \n\n##### Sample Request\n\n```\n curl -X GET https://console.jumpcloud.com/api/v2/policies/{Policy_ID}/policystatuses\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
+      operationId: "policystatuses_list"
+      parameters:
+      - name: "policy_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "PolicyId"
+      - name: "fields"
+        in: "query"
+        description: "The comma separated fields included in the returned records.\n\
+          If omitted the default list of fields will be returned.\n"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Fields"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
+          \ in"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      - name: "limit"
+        in: "query"
+        description: "The number of records to return at once. Limited to 100."
+        required: false
+        type: "integer"
+        default: 10
+        x-exportParamName: "Limit"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        x-exportParamName: "Skip"
+      - name: "sort"
+        in: "query"
+        description: "The comma separated fields used to sort the collection.\nDefault\
+          \ sort is ascending, prefix with `-` to sort descending.\n"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Sort"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      responses:
+        200:
+          description: ""
           schema:
             type: "array"
             items:
@@ -3300,7 +3256,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -3377,7 +3332,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -3404,8 +3358,8 @@ paths:
       - "Policies"
       summary: "List the associations of a Policy"
       description: "This endpoint returns the _direct_ associations of a Policy.\n\
-        \nA direct association can be a non-homogenous relationship between 2 different\
-        \ objects. for example Policies and Systems.\n\n#### Sample Request\n```\n\
+        \nA direct association can be a non-homogeneous relationship between 2 different\
+        \ objects, for example Policies and Systems.\n\n#### Sample Request\n```\n\
         curl -X GET 'https://console.jumpcloud.com/api/v2/policies/{Policy_ID}/associations?targets=system_group\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
@@ -3469,7 +3423,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -3495,9 +3448,9 @@ paths:
       - "Policies"
       summary: "Manage the associations of a Policy"
       description: "This endpoint allows you to manage the _direct_ associations of\
-        \ a Policy.\n\nA direct association can be a non-homogenous relationship between\
-        \ 2 different objects. for example Policies and Systems.\n\n#### Sample Request\n\
-        ```\ncurl -X POST https://console.jumpcloud.com/api/v2/policies/{Policy_ID}/associations/\
+        \ a Policy.\n\nA direct association can be a non-homogeneous relationship\
+        \ between 2 different objects, for example Policies and Systems.\n\n#### Sample\
+        \ Request\n```\ncurl -X POST https://console.jumpcloud.com/api/v2/policies/{Policy_ID}/associations/\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n    \"op\": \"add\",\n    \"\
         type\": \"system_group\",\n    \"id\": \"{Group_ID}\"\n}'\n```"
@@ -3532,7 +3485,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         204:
@@ -3618,7 +3570,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -3678,7 +3629,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -3730,7 +3680,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -3755,8 +3704,8 @@ paths:
       - "RADIUS Servers"
       summary: "List the associations of a RADIUS  Server"
       description: "This endpoint returns the _direct_ associations of a Radius Server.\n\
-        \nA direct association can be a non-homogenous relationship between 2 different\
-        \ objects. for example Radius Servers and Users.\n\n#### Sample Request\n\
+        \nA direct association can be a non-homogeneous relationship between 2 different\
+        \ objects, for example Radius Servers and Users.\n\n#### Sample Request\n\
         ```\ncurl -X GET https://console.jumpcloud.com/api/v2/radiusservers/{RADIUS_ID}/associations?targets=user_group\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
@@ -3820,7 +3769,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -3846,8 +3794,8 @@ paths:
       - "RADIUS Servers"
       summary: "Manage the associations of a RADIUS Server"
       description: "This endpoint allows you to manage the _direct_ associations of\
-        \ a Radius Server.\n\nA direct association can be a non-homogenous relationship\
-        \ between 2 different objects. for example Radius Servers and Users.\n\n####\
+        \ a Radius Server.\n\nA direct association can be a non-homogeneous relationship\
+        \ between 2 different objects, for example Radius Servers and Users.\n\n####\
         \ Sample Request\n```\ncurl -X POST https://console.jumpcloud.com/api/v2/radiusservers/{RADIUS_ID}/associations\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n\t\n\"type\":\"user\", \n\"\
@@ -3883,7 +3831,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         204:
@@ -3957,7 +3904,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -4034,7 +3980,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -4129,7 +4074,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -4193,7 +4137,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         201:
@@ -4251,7 +4194,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -4315,7 +4257,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -4372,7 +4313,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -4399,8 +4339,8 @@ paths:
       - "Systems"
       summary: "List the associations of a System"
       description: "This endpoint returns the _direct_ associations of a System.\n\
-        \nA direct association can be a non-homogenous relationship between 2 different\
-        \ objects. for example Systems and Users.\n\n\n#### Sample Request\n```\n\
+        \nA direct association can be a non-homogeneous relationship between 2 different\
+        \ objects, for example Systems and Users.\n\n\n#### Sample Request\n```\n\
         curl -X GET https://console.jumpcloud.com/api/v2/systems/{System_ID}/associations?targets=user\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n\n```"
@@ -4474,7 +4414,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -4500,9 +4439,9 @@ paths:
       - "Systems"
       summary: "Manage associations of a System"
       description: "This endpoint allows you to manage the _direct_ associations of\
-        \ a System.\n\nA direct association can be a non-homogenous relationship between\
-        \ 2 different objects. for example Systems and Users.\n\n\n#### Sample Request\n\
-        ```\ncurl -X POST https://console.jumpcloud.com/api/v2/systems/{System_ID}/associations\
+        \ a System.\n\nA direct association can be a non-homogeneous relationship\
+        \ between 2 different objects, for example Systems and Users.\n\n\n#### Sample\
+        \ Request\n```\ncurl -X POST https://console.jumpcloud.com/api/v2/systems/{System_ID}/associations\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n   \"attributes\": {\n    \
         \  \"sudo\": {\n         \"enabled\": true,\n         \"withoutPassword\"\
@@ -4551,7 +4490,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         204:
@@ -4647,7 +4585,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -4724,7 +4661,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -4812,7 +4748,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -4888,7 +4823,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -4976,7 +4910,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -5002,8 +4935,8 @@ paths:
       - "fde"
       - "Systems"
       summary: "Get System FDE Key"
-      description: "Public is OFF on purpose, this is not intended to be published\n\
-        \nRetrieve the current (latest) fde key saved for this system."
+      description: "This endpoint will return the current (latest) fde key saved for\
+        \ a system."
       operationId: "systems_getFDEKey"
       parameters:
       - name: "system_id"
@@ -5040,7 +4973,7 @@ paths:
         id: "systems_getFDEKey"
         beforeScript: null
         afterScript: null
-        public: false
+        public: true
         mock:
           enabled: false
           dynamic: false
@@ -5115,7 +5048,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -5179,7 +5111,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         201:
@@ -5205,7 +5136,7 @@ paths:
       description: "This endpoint returns the details of a System Group.\n\n#### Sample\
         \ Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/systemgroups/{Group_ID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n\n```"
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
       operationId: "groups_system_get"
       parameters:
       - name: "id"
@@ -5231,7 +5162,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -5258,7 +5188,7 @@ paths:
       tags:
       - "System Groups"
       summary: "Update a System Group"
-      description: "This enpoint allows you to do a full update of the System Group.\n\
+      description: "This endpoint allows you to do a full update of the System Group.\n\
         \n#### Sample Request\n```\ncurl -X PUT https://console.jumpcloud.com/api/v2/systemgroups/{Group_ID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n \"name\": \"Name_Update\"\n\
@@ -5294,7 +5224,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -5350,7 +5279,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         204:
@@ -5405,7 +5333,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -5478,7 +5405,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -5507,8 +5433,8 @@ paths:
       description: "This endpoint allows you to manage the system members of a System\
         \ Group.\n\n#### Sample Request\n```\ncurl -X POST https://console.jumpcloud.com/api/v2/systemgroups/{Group_ID}/members\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY' \\\n  -d '{\n    \"op\": \"add\",\n    \"\
-        type\": \"system\",\n    \"id\": \"{System_ID\"\n}'\n```"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n    \"op\": \"add\",\n    \"\
+        type\": \"system\",\n    \"id\": \"{System_ID}\"\n}'\n```"
       operationId: "graph_systemGroupMembersPost"
       parameters:
       - name: "group_id"
@@ -5552,7 +5478,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         204:
@@ -5636,7 +5561,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -5724,7 +5648,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -5752,8 +5675,8 @@ paths:
       - "System Group Associations"
       summary: "List the associations of a System Group"
       description: "This endpoint returns the _direct_ associations of a System Group.\n\
-        \nA direct association can be a non-homogenous relationship between 2 different\
-        \ objects. for example System Groups and Users.\n\n\n#### Sample Request\n\
+        \nA direct association can be a non-homogeneous relationship between 2 different\
+        \ objects, for example System Groups and Users.\n\n\n#### Sample Request\n\
         ```\ncurl -X GET https://console.jumpcloud.com/api/v2/systemgroups/{GroupID}/associations?targets=user\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
@@ -5815,7 +5738,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -5842,8 +5764,8 @@ paths:
       - "System Group Associations"
       summary: "Manage the associations of a System Group"
       description: "This endpoint allows you to manage the _direct_ associations of\
-        \ a System Group.\n\nA direct association can be a non-homogenous relationship\
-        \ between 2 different objects. for example System Groups and Users.\n\n\n\
+        \ a System Group.\n\nA direct association can be a non-homogeneous relationship\
+        \ between 2 different objects, for example System Groups and Users.\n\n\n\
         #### Sample Request\n```\ncurl -X POST https://console.jumpcloud.com/api/v2/systemgroups/{GroupID}/associations\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n    \"op\": \"add\",\n    \"\
@@ -5879,7 +5801,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         204:
@@ -5953,7 +5874,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -6031,7 +5951,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -6110,7 +6029,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -6187,7 +6105,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -6214,8 +6131,8 @@ paths:
       - "Users"
       summary: "List the associations of a User"
       description: "This endpoint returns the _direct_ associations of a User.\n\n\
-        A direct association can be a non-homogenous relationship between 2 different\
-        \ objects. for example Users and Systems.\n\n\n#### Sample Request\n```\n\
+        A direct association can be a non-homogeneous relationship between 2 different\
+        \ objects, for example Users and Systems.\n\n\n#### Sample Request\n```\n\
         curl -X GET https://console.jumpcloud.com/api/v2/users/{UserID}/associations?targets=system_group\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n\n```"
@@ -6277,7 +6194,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -6303,8 +6219,8 @@ paths:
       - "Users"
       summary: "Manage the associations of a User"
       description: "This endpoint allows you to manage the _direct_ associations of\
-        \ a User.\n\nA direct association can be a non-homogenous relationship between\
-        \ 2 different objects. for example Users and Systems.\n\n\n#### Sample Request\n\
+        \ a User.\n\nA direct association can be a non-homogeneous relationship between\
+        \ 2 different objects, for example Users and Systems.\n\n\n#### Sample Request\n\
         ```\ncurl -X POST https://console.jumpcloud.com/api/v2/users/{UserID}/associations\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n   \"attributes\": {\n    \
@@ -6342,7 +6258,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         204:
@@ -6426,7 +6341,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -6502,7 +6416,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -6578,7 +6491,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -6655,7 +6567,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -6731,7 +6642,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -6808,7 +6718,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -6884,7 +6793,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -6961,7 +6869,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -7037,7 +6944,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -7127,7 +7033,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -7185,7 +7090,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         201:
@@ -7207,9 +7111,9 @@ paths:
     get:
       tags:
       - "User Groups"
-      summary: "View an indvidual User Group details"
-      description: "This endpoint allows you to view the details of a User Group.\n\
-        \n#### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/usergroups/{GroupID}\
+      summary: "View an individual User Group details"
+      description: "This endpoint returns the details of a User Group.\n\n#### Sample\
+        \ Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/usergroups/{GroupID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
       operationId: "groups_user_get"
@@ -7237,7 +7141,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -7259,7 +7162,7 @@ paths:
       tags:
       - "User Groups"
       summary: "Update a User Group"
-      description: "This enpoint allows you to do a full update of the User Group.\n\
+      description: "This endpoint allows you to do a full update of the User Group.\n\
         \n#### Sample Request\n```\ncurl -X PUT https://console.jumpcloud.com/api/v2/usergroups/{Group_ID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY' \\\n  -d '{ \n \"name\": \"group_update\"\
@@ -7295,7 +7198,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -7346,7 +7248,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         204:
@@ -7401,7 +7302,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -7469,7 +7369,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -7531,7 +7430,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         204:
@@ -7556,7 +7454,7 @@ paths:
       - "User Group Members & Membership"
       summary: "List the User Group's parents"
       description: "This endpoint returns all User Groups a User Group is a member\
-        \ of.\n\n#### Sample Request\n```\nhttps://console.jumpcloud.com/api/v2/usergroups/{group_id}/membersof\n\
+        \ of.\n\n#### Sample Request\n```\nhttps://console.jumpcloud.com/api/v2/usergroups/{group_id}/memberof\n\
         ```\n\nNot public yet, as the code is not finished,"
       operationId: "graph_userGroupMemberOf"
       parameters:
@@ -7615,7 +7513,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -7703,7 +7600,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -7731,8 +7627,8 @@ paths:
       - "User Group Associations"
       summary: "List the associations of a User Group."
       description: "This endpoint returns the _direct_ associations of this User Group.\n\
-        \nA direct association can be a non-homogenous relationship between 2 different\
-        \ objects. for example User Groups and Users.\n\n\n#### Sample Request\n```\n\
+        \nA direct association can be a non-homogeneous relationship between 2 different\
+        \ objects, for example User Groups and Users.\n\n\n#### Sample Request\n```\n\
         curl -X GET https://console.jumpcloud.com/api/v2/usergroups/{GroupID}/associations?targets=system\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
@@ -7794,7 +7690,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -7821,8 +7716,8 @@ paths:
       - "User Group Associations"
       summary: "Manage the associations of a User Group"
       description: "This endpoint manages the _direct_ associations of this User Group.\n\
-        \nA direct association can be a non-homogenous relationship between 2 different\
-        \ objects. for example User Groups and Users.\n\n\n#### Sample Request\n```\n\
+        \nA direct association can be a non-homogeneous relationship between 2 different\
+        \ objects, for example User Groups and Users.\n\n\n#### Sample Request\n```\n\
         curl -X POST https://console.jumpcloud.com/api/v2/usergroups/{GroupID}/associations\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n    \"op\": \"add\",\n    \"\
@@ -7858,7 +7753,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         204:
@@ -7932,7 +7826,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -8010,7 +7903,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -8087,7 +7979,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -8165,7 +8056,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -8243,7 +8133,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -8321,7 +8210,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -8348,7 +8236,7 @@ paths:
       - "User Groups"
       - "User Group Associations"
       summary: "List the G Suite instances bound to a User Group"
-      description: "This endpoint will return all Gsuite Instances bound to a User\
+      description: "This endpoint will return all G Suite Instances bound to a User\
         \ Group, either directly or indirectly, essentially traversing the JumpCloud\
         \ Graph for your Organization.\n\nEach element will contain the type, id,\
         \ attributes and paths\n\nThe `attributes` object is a key/value hash of compiled\
@@ -8399,7 +8287,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -8477,7 +8364,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -8555,7 +8441,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -8608,7 +8493,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -8667,7 +8551,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -8715,7 +8598,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         204:
@@ -8804,7 +8686,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -8865,7 +8746,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -8942,7 +8822,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -9018,7 +8897,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         204:
@@ -9066,7 +8944,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         204:
@@ -9135,7 +9012,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -9200,7 +9076,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         201:
@@ -9250,7 +9125,6 @@ paths:
         description: ""
         required: false
         type: "string"
-        default: "<<your org id>>"
         x-exportParamName: "XOrgId"
       responses:
         200:
@@ -9390,6 +9264,29 @@ definitions:
       id: "UserGroupMembersReq"
       name: "UserGroupMembersReq"
       public: true
+  UserGroup:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        description: "ObjectId uniquely identifying a User Group."
+      type:
+        type: "string"
+        description: "The type of the group."
+        enum:
+        - "user_group"
+      name:
+        type: "string"
+        description: "Display name of a User Group."
+    title: "UserGroup"
+    example:
+      name: "name"
+      id: "id"
+      type: "user_group"
+    x-stoplight:
+      id: "UserGroup"
+      name: "UserGroup"
+      public: true
   Directory:
     type: "object"
     required:
@@ -9420,29 +9317,6 @@ definitions:
       id: "Directory"
       name: "Directory"
       public: true
-  UserGroup:
-    type: "object"
-    properties:
-      id:
-        type: "string"
-        description: "ObjectId uniquely identifying a User Group."
-      type:
-        type: "string"
-        description: "The type of the group."
-        enum:
-        - "user_group"
-      name:
-        type: "string"
-        description: "Display name of a User Group."
-    title: "UserGroup"
-    example:
-      name: "name"
-      id: "id"
-      type: "user_group"
-    x-stoplight:
-      id: "UserGroup"
-      name: "UserGroup"
-      public: true
   Error:
     type: "object"
     properties:
@@ -9457,26 +9331,6 @@ definitions:
     x-stoplight:
       id: "Error"
       name: "Error"
-      public: true
-  GraphObject:
-    type: "object"
-    required:
-    - "id"
-    - "type"
-    properties:
-      type:
-        type: "string"
-        description: "The type of graph object."
-      id:
-        type: "string"
-        description: "The ObjectID of the graph object."
-    title: "GraphObject"
-    example:
-      id: "id"
-      type: "type"
-    x-stoplight:
-      id: "GraphObject"
-      name: "GraphObject"
       public: true
   SystemGroup:
     type: "object"
@@ -9500,6 +9354,26 @@ definitions:
     x-stoplight:
       id: "SystemGroup"
       name: "SystemGroup"
+      public: true
+  GraphObject:
+    type: "object"
+    required:
+    - "id"
+    - "type"
+    properties:
+      type:
+        type: "string"
+        description: "The type of graph object."
+      id:
+        type: "string"
+        description: "The ObjectID of the graph object."
+    title: "GraphObject"
+    example:
+      id: "id"
+      type: "type"
+    x-stoplight:
+      id: "GraphObject"
+      name: "GraphObject"
       public: true
   UserGroupPost:
     type: "object"
@@ -9588,6 +9462,55 @@ definitions:
       id: "GroupType"
       name: "GroupType"
       public: true
+  GraphManagementReq:
+    type: "object"
+    required:
+    - "id"
+    - "op"
+    - "type"
+    properties:
+      op:
+        type: "string"
+        description: "How to modify the graph connection."
+        enum:
+        - "add"
+        - "remove"
+        - "update"
+      type:
+        $ref: "#/definitions/GraphType"
+      id:
+        type: "string"
+        description: "The ObjectID of graph object being added or removed as an association."
+    title: "GraphManagementReq"
+    example:
+      op: "add"
+      id: "id"
+      type: {}
+    x-stoplight:
+      id: "GraphManagementReq"
+      name: "GraphManagementReq"
+      public: true
+  GraphType:
+    type: "string"
+    title: "GraphType"
+    description: "The graph type."
+    enum:
+    - "active_directory"
+    - "application"
+    - "command"
+    - "g_suite"
+    - "ldap_server"
+    - "office_365"
+    - "policy"
+    - "radius_server"
+    - "system"
+    - "system_group"
+    - "user"
+    - "user_group"
+    x-stoplight:
+      id: "GraphType"
+      name: "GraphType"
+      public: true
   PolicyTemplate:
     type: "object"
     properties:
@@ -9629,40 +9552,19 @@ definitions:
       id: "PolicyTemplate"
       name: "PolicyTemplate"
       public: true
-  GraphType:
-    type: "string"
-    title: "GraphType"
-    description: "The graph type."
-    enum:
-    - "active_directory"
-    - "application"
-    - "command"
-    - "g_suite"
-    - "ldap_server"
-    - "office_365"
-    - "policy"
-    - "radius_server"
-    - "system"
-    - "system_group"
-    - "user"
-    - "user_group"
-    x-stoplight:
-      id: "GraphType"
-      name: "GraphType"
-      public: true
   Policy:
     type: "object"
     properties:
       id:
         type: "string"
-        description: "ObjectId uniquely indetifying a Policy."
+        description: "ObjectId uniquely identifying a Policy."
       template:
         $ref: "#/definitions/PolicyTemplate"
       name:
         type: "string"
         description: "The description for this specific Policy."
     title: "Policy"
-    description: "An instance of a policty template."
+    description: "An instance of a policy template."
     example:
       template:
         displayName: "displayName"
@@ -9677,34 +9579,6 @@ definitions:
     x-stoplight:
       id: "Policy"
       name: "Policy"
-      public: true
-  GraphManagementReq:
-    type: "object"
-    required:
-    - "id"
-    - "op"
-    - "type"
-    properties:
-      op:
-        type: "string"
-        description: "How to modify the graph connection."
-        enum:
-        - "add"
-        - "remove"
-        - "update"
-      type:
-        $ref: "#/definitions/GraphType"
-      id:
-        type: "string"
-        description: "The ObjectID of graph object being added or removed as an association."
-    title: "GraphManagementReq"
-    example:
-      op: "add"
-      id: "id"
-      type: {}
-    x-stoplight:
-      id: "GraphManagementReq"
-      name: "GraphManagementReq"
       public: true
   samba-domain-input:
     type: "object"
@@ -9743,7 +9617,7 @@ definitions:
     properties:
       id:
         type: "string"
-        description: "ObjectId uniquely indetifying a Policy Template."
+        description: "ObjectId uniquely identifying a Policy Template."
       name:
         type: "string"
         description: "The unique name for the Policy Template."
@@ -9871,7 +9745,7 @@ definitions:
     properties:
       id:
         type: "string"
-        description: "ObjectId uniquely indetifying a Policy."
+        description: "ObjectId uniquely identifying a Policy."
       template:
         $ref: "#/definitions/PolicyTemplate"
       configFields:
@@ -9886,7 +9760,7 @@ definitions:
         items:
           $ref: "#/definitions/PolicyValue"
     title: "PolicyWithDetails"
-    description: "An instance of a policty template."
+    description: "An instance of a policy template."
     example:
       template:
         displayName: "displayName"
@@ -10006,7 +9880,7 @@ definitions:
       template:
         $ref: "#/definitions/PolicyRequest_template"
     title: "PolicyRequest"
-    description: "An instance of a policty template."
+    description: "An instance of a policy template."
     example:
       template:
         id: "id"
@@ -10806,7 +10680,6 @@ parameters:
     description: ""
     required: false
     type: "string"
-    default: "<<your org id>>"
     x-exportParamName: "XOrgId"
 x-stoplight:
   beforeScript: ""
@@ -11454,11 +11327,11 @@ x-stoplight:
           type: "traits"
         - _id: "filter"
           type: "traits"
-        - _id: "graphSystemTargets"
+        - _id: "graphTargets"
           type: "traits"
         - _id: "graphSystemGroupTargets"
           type: "traits"
-        - _id: "graphTargets"
+        - _id: "graphSystemTargets"
           type: "traits"
         - _id: "graphUserGroupTargets"
           type: "traits"
@@ -11468,15 +11341,15 @@ x-stoplight:
           type: "traits"
         - _id: "listCount"
           type: "traits"
+        - _id: "multiTenantRequestHeaders"
+          type: "traits"
+        - _id: "requestHeaders"
+          type: "traits"
         - _id: "skip"
           type: "traits"
         - _id: "sort"
           type: "traits"
-        - _id: "requestHeaders"
-          type: "traits"
         - _id: "systemContextAuth"
-          type: "traits"
-        - _id: "multiTenantRequestHeaders"
           type: "traits"
         divider: false
       traits: []
@@ -11488,37 +11361,37 @@ x-stoplight:
     v2-api:
       id: "v2-api"
       name: "V2 API"
-      content: "### Directory Objects \n\nOur new API offers the ability to interact\
+      content: "### Directory Objects\n\nOur new API offers the ability to interact\
         \ with some of our core features; otherwise known as Directory Objects. The\
         \ Directory Objects are:\n\n* Commands\n* Policies\n* Applications\n* Systems\n\
-        * Users\n* User Groups \n* System Groups\n* Radius Servers\n* Directories:\
-        \ Office 365, LDAP,G-Suite, Active Directory \n\nThe Directory Object is an\
-        \ important concept to understand in order to successfully use JumpCloud APIs.\
-        \ \n\n### JumpCloud Graph\n\nWe've also introduced the concept of the JumpCloud\
+        * Users\n* User Groups\n* System Groups\n* Radius Servers\n* Directories:\
+        \ Office 365, LDAP,G-Suite, Active Directory\n\nThe Directory Object is an\
+        \ important concept to understand in order to successfully use JumpCloud APIs.\n\
+        \n### JumpCloud Graph\n\nWe've also introduced the concept of the JumpCloud\
         \ Graph along with  Directory Objects. The Graph is a powerful aspect of our\
         \ platform which will enable you to associate objects with each other, or\
         \ establish membership for certain objects to become members of other objects.\n\
         \nSpecific `GET` endpoints will allow you to traverse the JumpCloud Graph\
-        \ to return all indirect and directly bound objects in your organization.\
-        \ \n\n\n### JumpCloud Graph Model Example\n\nThe diagram below highlights\
-        \ our association and membership model as it relates to Directory Objects.\
-        \ \n\n![alt text](https://s3.amazonaws.com/jumpcloud-kb/Knowledge+Base+Photos/API+Docs/jumpcloud_graph.png\
+        \ to return all indirect and directly bound objects in your organization.\n\
+        \n\n### JumpCloud Graph Model Example\n\nThe diagram below highlights our\
+        \ association and membership model as it relates to Directory Objects.\n\n\
+        ![alt text](https://s3.amazonaws.com/jumpcloud-kb/Knowledge+Base+Photos/API+Docs/jumpcloud_graph.png\
         \ \"JumpCloud Graph Model Example\")\n\n\n### API Considerations\n\nWe are\
         \ currently in the process of migrating our [API V1](https://docs.jumpcloud.com/1.0)\
         \  features to API V2. Depending on your type of integration you may be required\
         \ to use both V1 and V2 APIs.\n\nPlease refer to our [API V1](https://docs.jumpcloud.com/1.0)\
         \ docs to understand the functionality still available in that API set.\n\n\
         ### API SDKS\n\nYou can find language specific SDKs that can help you kickstart\
-        \ your Integration with JumpCloud in the following GitHub Repos: \n\n* [Python](https://github.com/TheJumpCloud/jcapi-python)\n\
-        * [Go](https://github.com/TheJumpCloud/jcapi-go)\n* [Ruby](https://github.com/TheJumpCloud/jcapi-ruby)\n\
-        * [Java](https://github.com/TheJumpCloud/jcapi-java)"
+        \ your Integration with JumpCloud in the following GitHub repositories:\n\n\
+        * [Python](https://github.com/TheJumpCloud/jcapi-python)\n* [Go](https://github.com/TheJumpCloud/jcapi-go)\n\
+        * [Ruby](https://github.com/TheJumpCloud/jcapi-ruby)\n* [Java](https://github.com/TheJumpCloud/jcapi-java)"
       public: true
     authentication-and-authorization-overview:
       id: "authentication-and-authorization-overview"
       name: "API Key"
       content: "#### Access your API Key\n\nTo locate your API Key:\n1. Log into the\
-        \ [JumpCloud Admin Console](https://console.jumpcloud.com/) \n2. Go to the\
-        \ username drop down located in the top-right of the Console. \n3. Retrieve\
+        \ [JumpCloud Admin Console](https://console.jumpcloud.com/)\n2. Go to the\
+        \ username drop down located in the top-right of the Console.\n3. Retrieve\
         \ your API key from API Settings.\n\n#### API Key Considerations\n\nThis API\
         \ key is associated to the currently logged in administrator. Other admins\
         \ will have different API keys.\n\nPlease keep this API key secret, as it\
@@ -11534,19 +11407,19 @@ x-stoplight:
     system-context:
       id: "system-context"
       name: "System Context"
-      content: "* [Introduction](#introduction)\n* [Supported Endpoints](#endpoints)\n\
-        * [Authentication](#authentication)\n* [Data structures](#data-structures)\n\
-        * [Examples](#additional-examples)\n* [Third party](#third-party)\n\n### Introduction\n\
-        \nJumpCloud System Context Authorization is an alternative way to authenticate\
-        \ with a subset of JumpCloud's REST APIs. Using this method a system can manage\
-        \ its information and resource associations, allowing modern auto provisioning\
-        \ environments to scale as needed.\n\n**Note: The following documentation\
-        \ applies to Linux Operating Systems only.**\n\n### Supported Endpoints \n\
-        \nJumpCloud System Context Authorizationcan be used in conjunction with Systems\
-        \ endpoints found in the V1 API and certain System Group endpoints found in\
-        \ the v2 API.\n\n- A system may fetch, alter, and delete metatdata about itself,\
-        \ including manipulating a system's Group and Systemuser associations, \n\
-        \  - `/api/systems/{system_id}` | [`GET`](https://docs.jumpcloud.com/1.0/systems/list-an-individual-system)\
+      content: "* [Introduction](#introduction)\n* [Supported endpoints](#supported-endpoints)\n\
+        * [Response codes](#response-codes)\n* [Authentication](#authentication)\n\
+        * [Additional examples](#additional-examples)\n* [Third party](#third-party)\n\
+        \n### Introduction\n\nJumpCloud System Context Authorization is an alternative\
+        \ way to authenticate with a subset of JumpCloud's REST APIs. Using this method\
+        \ a system can manage its information and resource associations, allowing\
+        \ modern auto provisioning environments to scale as needed.\n\n**Note: The\
+        \ following documentation applies to Linux Operating Systems only.**\n\n###\
+        \ Supported endpoints\n\nJumpCloud System Context Authorization can be used\
+        \ in conjunction with Systems endpoints found in the V1 API and certain System\
+        \ Group endpoints found in the v2 API.\n\n- A system may fetch, alter, and\
+        \ delete metadata about itself, including manipulating a system's Group and\
+        \ Systemuser associations,\n  - `/api/systems/{system_id}` | [`GET`](https://docs.jumpcloud.com/1.0/systems/list-an-individual-system)\
         \ [`PUT`](https://docs.jumpcloud.com/1.0/systems/update-a-system)\n- A system\
         \ may delete itself from your JumpCloud organization\n  - `/api/systems/{system_id}`\
         \ | [`DELETE`](https://docs.jumpcloud.com/1.0/systems/delete-a-system)\n-\
@@ -11559,12 +11432,12 @@ x-stoplight:
         - A system may alter it's System Group associations\n  - `/api/v2/systemgroups/{systemgroup_id}/members`\
         \ | [`POST`](https://docs.jumpcloud.com/2.0/system-groups/update-a-system-group)\n\
         \    - _NOTE_ If a system attempts to alter the system group membership of\
-        \ a different system the request will be rejected\n\n\n### Response Codes\n\
+        \ a different system the request will be rejected\n\n\n### Response codes\n\
         \nIf endpoints other than those described above are called using the System\
         \ Context API the server will return a `401` response.\n\n### Authentication\n\
         \nTo allow for secure access to our APIs, you must authenticate each API request.\n\
-        JumpCloud System Context Authorization uses [HTTP Signatures](http://tools.ietf.org/html/draft-cavage-http-signatures-00)\
-        \ to authenticate API requests. \nThe HTTP Signatures sent with each request\
+        JumpCloud System Context Authorization uses [HTTP Signatures](https://tools.ietf.org/html/draft-cavage-http-signatures-00)\
+        \ to authenticate API requests.\nThe HTTP Signatures sent with each request\
         \ are similar to the signatures used by the Amazon Web Services REST API.\n\
         To help with the request-signing process, we have provided an [example bash\
         \ script](https://github.com/TheJumpCloud/SystemContextAPI/blob/master/examples/shell/SigningExample.sh).\
@@ -11577,7 +11450,7 @@ x-stoplight:
         \nfi\n```\n\nThen the script retrieves the current date in the correct format.\n\
         \n```\nnow=`date -u \"+%a, %d %h %Y %H:%M:%S GMT\"`;\n```\n\nNext we build\
         \ a signing string to demonstrate the expected signature format. The signed\
-        \ string must consist of the [request-line](http://tools.ietf.org/html/rfc2616#page-35)\
+        \ string must consist of the [request-line](https://tools.ietf.org/html/rfc2616#page-35)\
         \ and the date header, separated by a newline character.\n\n```\nsignstr=\"\
         GET /api/systems/${systemKey} HTTP/1.1\\ndate: ${now}\"\n```\n\nThe next step\
         \ is to calculate and apply the signature. This is a two-step process:\n\n\
@@ -11611,11 +11484,11 @@ x-stoplight:
         \  \"_id\": \"525ee96f52e144993e000015\",\n  \"agentServer\": \"lappy386\"\
         ,\n  \"agentVersion\": \"0.9.42\",\n  \"arch\": \"x86_64\",\n  \"connectionKey\"\
         : \"127.0.0.1_51812\",\n  \"displayName\": \"ubuntu-1204\",\n  \"firstContact\"\
-        : \"2013-10-16T19:30:55.611Z\",\n  \"hostname\": \"ubuntu-1204\" \n  ...\n\
-        ```\n\n\n### Additional Examples\n\n#### Signing authentication example\n\n\
+        : \"2013-10-16T19:30:55.611Z\",\n  \"hostname\": \"ubuntu-1204\"\n  ...\n\
+        ```\n\n\n### Additional examples\n\n#### Signing authentication example\n\n\
         This example demonstrates how to make an authenticated request to fetch the\
         \ JumpCloud record for this system.\n\n[SigningExample.sh](https://github.com/TheJumpCloud/SystemContextAPI/blob/master/examples/shell/SigningExample.sh)\n\
-        \n\n#### Shutdown hook \n\nThis example demonstrates how to make authenticated\
+        \n\n#### Shutdown hook\n\nThis example demonstrates how to make authenticated\
         \ request on system shutdown.\nUsing an init.d script registered at run level\
         \ 0, you can call the System Context API as the system is shutting down.\n\
         \n[Instance-shutdown-initd](/examples/instance-shutdown-initd) is an example\
@@ -11633,18 +11506,18 @@ x-stoplight:
       name: "Multi Tenant Organization API Headers"
       content: "The Multi-Tenant Organzation API Headers are available for JumpCloud\
         \ Admins to use when making API requests from Organizations that have multiple\
-        \ managed organizations. \n\nThe `x-org-id` is a required header for all multi-tenant\
+        \ managed organizations.\n\nThe `x-org-id` is a required header for all multi-tenant\
         \ admins when making API requests to Jumpcloud as this header will define\
-        \ what organization you would like to make the request for. \n\nPlease note\
+        \ what organization you would like to make the request for.\n\nPlease note\
         \ that Single Tenant Admins do not need to provide this header when making\
-        \ an API request.\n \n #### Header Value\n \n `x-org-id`\n\n#### API Response\
-        \ codes\n\n- `400` Malformed ID. \n- `400` x-org-id and Organization path\
-        \ ID do not match.\n- `401` ID not included for multi-tenant admin\n- `403`\
-        \ ID included on unsupported route.\n- `404` Organization ID Not Found.\n\n\
-        #### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/directories\
+        \ an API request.\n\n#### Header Value\n\n`x-org-id`\n\n#### API Response\
+        \ codes\n\n- `400` Malformed ID.\n- `400` x-org-id and Organization path ID\
+        \ do not match.\n- `401` ID not included for multi-tenant admin\n- `403` ID\
+        \ included on unsupported route.\n- `404` Organization ID Not Found.\n\n####\
+        \ Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/directories\
         \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -H 'x-org-id: {ORG_ID}'\n\n```\n\n\
-        #### To obtain an indvidual Organization ID via the UI\n\nAs a prerequisite\
+        #### To obtain an individual Organization ID via the UI\n\nAs a prerequisite\
         \ your Primary Organization will need to be setup for Multi-Tenancy which\
         \ will give you access to the Multi-Tenant Organization Admin Portal.\n\n\
         1. Log into JumpCloud [Admin Console](https://console.jumpcloud.com). If you\
@@ -11665,10 +11538,12 @@ x-stoplight:
     api-changelog:
       id: "api-changelog"
       name: "API Changelog"
-      content: "A history of API changes introduced as of August 2018. \n\n### 08-01-2018\
-        \ \n\n`minor release`\n\n- [Multi-Tenant x-org-id](https://docs.jumpcloud.com/2.0/authentication-and-authorization/system-context)\
+      content: "A history of API changes introduced as of August 2018.\n\n### 08-01-2018\n\
+        \n`minor release`\n\n- [Multi-Tenant x-org-id](https://docs.jumpcloud.com/2.0/authentication-and-authorization/multi-tenant-organization-api-headers)\
         \  documentation and functionality.\n- PolicyTemplate Config Model corrections.\n\
-        \n- Removed workday import results & row functionality."
+        \n- Removed workday import results & row functionality.\n\n\n### 09-12-2018\n\
+        \n`minor release`\n\n- X-Org-Id Request Header\n- Misc Text Section updates\n\
+        - GET System FDE Key endpoint"
       public: true
   mock:
     dynamic: false
