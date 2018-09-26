@@ -19,7 +19,7 @@ type Systemuserput struct {
 
 	PublicKey string `json:"public_key,omitempty"`
 
-	SshKeys []string `json:"ssh_keys,omitempty"`
+	SshKeys []Sshkeypost `json:"ssh_keys,omitempty"`
 
 	Sudo bool `json:"sudo,omitempty"`
 
@@ -51,13 +51,15 @@ type Systemuserput struct {
 
 	SambaServiceUser bool `json:"samba_service_user,omitempty"`
 
-	Addresses []string `json:"addresses,omitempty"`
+	// type, poBox, extendedAddress, streetAddress, locality, region, postalCode, country
+	Addresses []SystemuserputpostAddresses `json:"addresses,omitempty"`
 
 	JobTitle string `json:"jobTitle,omitempty"`
 
 	Department string `json:"department,omitempty"`
 
-	PhoneNumbers []string `json:"phoneNumbers,omitempty"`
+	// 
+	PhoneNumbers []SystemuserputpostPhoneNumbers `json:"phoneNumbers,omitempty"`
 
 	Relationships []interface{} `json:"relationships,omitempty"`
 

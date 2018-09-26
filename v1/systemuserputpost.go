@@ -53,13 +53,15 @@ type Systemuserputpost struct {
 
 	SambaServiceUser bool `json:"samba_service_user,omitempty"`
 
-	Addresses []string `json:"addresses,omitempty"`
+	// 
+	Addresses []SystemuserputpostAddresses `json:"addresses,omitempty"`
 
 	JobTitle string `json:"jobTitle,omitempty"`
 
 	Department string `json:"department,omitempty"`
 
-	PhoneNumbers []string `json:"phoneNumbers,omitempty"`
+	// 
+	PhoneNumbers []SystemuserputpostPhoneNumbers `json:"phoneNumbers,omitempty"`
 
 	Relationships []interface{} `json:"relationships,omitempty"`
 

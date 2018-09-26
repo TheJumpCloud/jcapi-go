@@ -9,11 +9,11 @@
 
 package v1
 
-type Organizationslist struct {
+type SystemuserreturnPhoneNumbers struct {
 
-	// The total number of organizations. 
-	TotalCount int32 `json:"totalCount,omitempty"`
+	Id string `json:"id,omitempty"`
 
-	// The list of organizations.
-	Results []OrganizationslistResults `json:"results,omitempty"`
+	Type_ string `json:"type,omitempty"`
+
+	Number string `json:"number,omitempty"`
 }

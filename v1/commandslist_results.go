@@ -20,7 +20,7 @@ type CommandslistResults struct {
 	// The Command OS.
 	CommandType string `json:"commandType,omitempty"`
 
-	// How the Command is excecuted.
+	// How the Command is executed.
 	LaunchType string `json:"launchType,omitempty"`
 
 	// 

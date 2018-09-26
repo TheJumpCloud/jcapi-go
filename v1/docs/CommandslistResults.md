@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **Name** | **string** | The name of the Command. | [optional] [default to null]
 **Command** | **string** | The Command to execute. | [optional] [default to null]
 **CommandType** | **string** | The Command OS. | [optional] [default to null]
-**LaunchType** | **string** | How the Command is excecuted. | [optional] [default to null]
+**LaunchType** | **string** | How the Command is executed. | [optional] [default to null]
 **ListensTo** | **string** |  | [optional] [default to null]
 **Schedule** | **string** | A crontab that consists of: [ (seconds) (minutes) (hours) (days of month) (months) (weekdays) ] or [ immediate ]. If you send this as an empty string, it will run immediately.  | [optional] [default to null]
 **Trigger** | **string** | trigger to execute command. | [optional] [default to null]

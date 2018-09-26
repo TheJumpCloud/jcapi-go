@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Username** | **string** |  | [optional] [default to null]
 **AllowPublicKey** | **bool** |  | [optional] [default to null]
 **PublicKey** | **string** |  | [optional] [default to null]
-**SshKeys** | **[]string** |  | [optional] [default to null]
+**SshKeys** | [**[]Sshkeylist**](sshkeylist.md) |  | [optional] [default to null]
 **Sudo** | **bool** |  | [optional] [default to null]
 **EnableManagedUid** | **bool** |  | [optional] [default to null]
 **UnixUid** | **int32** |  | [optional] [default to null]

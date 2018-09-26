@@ -58,4 +58,6 @@ type System struct {
 	Tags []string `json:"tags,omitempty"`
 
 	Id string `json:"_id,omitempty"`
+
+	Fde *Fde `json:"fde,omitempty"`
 }

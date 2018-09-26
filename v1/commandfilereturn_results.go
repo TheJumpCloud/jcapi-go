@@ -14,7 +14,7 @@ type CommandfilereturnResults struct {
 	// The file name.
 	Name string `json:"name,omitempty"`
 
-	// the location where the file willl be stored.
+	// The location where the file will be stored.
 	Destination string `json:"destination,omitempty"`
 
 	// The ID of the file.
