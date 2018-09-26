@@ -9,11 +9,7 @@
 
 package v1
 
-type Organizationslist struct {
+type Fde struct {
 
-	// The total number of organizations. 
-	TotalCount int32 `json:"totalCount,omitempty"`
-
-	// The list of organizations.
-	Results []OrganizationslistResults `json:"results,omitempty"`
+	KeyPresent bool `json:"keyPresent,omitempty"`
 }

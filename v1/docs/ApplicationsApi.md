@@ -29,11 +29,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **fields** | **string**| The comma separated fileds included in the returned records. If omitted the default list of fields will be returned. | 
+ **fields** | **string**| The comma separated fields included in the returned records. If omitted the default list of fields will be returned. | 
  **limit** | **int32**| The number of records to return at once. | 
  **skip** | **int32**| The offset into the records to return. | 
  **sort** | **string**|  | [default to The comma separated fields used to sort the collection. Default sort is ascending, prefix with - to sort descending.]
- **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
+ **xOrgId** | **string**|  | [default to ]
 
 ### Return type
 
