@@ -61,7 +61,7 @@ type Systemuserreturn struct {
 
 	SambaServiceUser bool `json:"samba_service_user,omitempty"`
 
-	Id string `json:"id,omitempty"`
+	Id string `json:"_id,omitempty"`
 
 	Organization string `json:"organization,omitempty"`
 

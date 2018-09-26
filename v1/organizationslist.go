@@ -11,7 +11,7 @@ package v1
 
 type Organizationslist struct {
 
-	// The total of organizations. 
+	// The total number of organizations. 
 	TotalCount int32 `json:"totalCount,omitempty"`
 
 	// The list of organizations.

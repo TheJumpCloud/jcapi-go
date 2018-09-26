@@ -35,7 +35,7 @@ Name | Type | Description  | Notes
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | **string**| Use space separated sort parameters to sort the collection. Default sort is ascending. Prefix with &#x60;-&#x60; to sort descending.  | [default to ]
- **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
+ **xOrgId** | **string**|  | [default to ]
 
 ### Return type
 
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **body** | [**Radiusserverpost**](Radiusserverpost.md)|  | 
- **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
+ **xOrgId** | **string**|  | [default to ]
 
 ### Return type
 
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **body** | [**Body**](Body.md)|  | 
- **xOrgId** | **string**|  | [default to &lt;&lt;your org id&gt;&gt;]
+ **xOrgId** | **string**|  | [default to ]
 
 ### Return type
 

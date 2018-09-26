@@ -32,7 +32,7 @@ type ApplicationsApiService service
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "fields" (string) The comma separated fileds included in the returned records. If omitted the default list of fields will be returned.
+     @param "fields" (string) The comma separated fields included in the returned records. If omitted the default list of fields will be returned.
      @param "limit" (int32) The number of records to return at once.
      @param "skip" (int32) The offset into the records to return.
      @param "sort" (string) 
