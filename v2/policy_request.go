@@ -9,7 +9,7 @@
 
 package v2
 
-// An instance of a policty template.
+// An instance of a policy template.
 type PolicyRequest struct {
 
 	// The description for this specific Policy.

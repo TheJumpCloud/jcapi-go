@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | ObjectId uniquely indetifying a Policy Template. | [optional] [default to null]
+**Id** | **string** | ObjectId uniquely identifying a Policy Template. | [optional] [default to null]
 **Name** | **string** | The unique name for the Policy Template. | [optional] [default to null]
 **Description** | **string** | The default description for the Policy. | [optional] [default to null]
 **DisplayName** | **string** | The default display name for the Policy. | [optional] [default to null]

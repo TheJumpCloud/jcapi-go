@@ -12,7 +12,7 @@ package v2
 // The shallow information about a Policy Template.
 type PolicyTemplateWithDetails struct {
 
-	// ObjectId uniquely indetifying a Policy Template.
+	// ObjectId uniquely identifying a Policy Template.
 	Id string `json:"id,omitempty"`
 
 	// The unique name for the Policy Template.
