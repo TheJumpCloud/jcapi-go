@@ -1,92 +1,103 @@
 ## JCAPI-Go
 
-### Description ###
+### Description
 
-This repository contains the Go client code for the JumpCloud API v1 & v2. This code is automatically generated using swagger-codegen.
-It also provides the tools to generate the client code from the API yaml files, using swagger-codegen.
-For detailed instructions on how to generate the code, see the [Contributing](CONTRIBUTING.md) section.
+This repository contains the Go client code for the JumpCloud API v1 and v2.
+This code is automatically generated using Swagger Codegen. It also provides
+the tools to generate the client code from the API YAML files, using Swagger
+Codegen. For detailed instructions on how to generate the code, see the
+[Contributing](CONTRIBUTING.md) section.
 
-To access our old API v1 Go Client, please refer to [JCAPI](https://github.com/TheJumpCloud/jcapi). However this code repository is not up to date with current API functionality. 
+To access our old API v1 Go client, please refer to
+[JCAPI](https://github.com/TheJumpCloud/jcapi). However this code repository
+is not up to date with current API functionality.
 
-
-### Usage Examples
+### Usage examples
 
 ```golang
+package main
+
 import (
+	"context"
 	"fmt"
+
 	jcapiv2 "github.com/TheJumpCloud/jcapi-go/v2"
 )
 
 func main() {
+	apiKey := "YOUR_API_KEY"
+	userGroupID := "YOUR_GROUP_ID"
 
 	contentType := "application/json"
 	accept := "application/json"
-	userGroupId := "<YOUR_GROUP_ID>"
 
-	// instantiate the API client:
+	// Instantiate the API client
 	client := jcapiv2.NewAPIClient(jcapiv2.NewConfiguration())
 
-	// set up the API key via context:
+	// Set up the API key via context
 	auth := context.WithValue(context.TODO(), jcapiv2.ContextAPIKey, jcapiv2.APIKey{
-		Key: "<YOUR_API_KEY>",
+		Key: apiKey,
 	})
 
-	// make an API call to retrieve a specific user group by id:
-	userGroup, res, err := client.UserGroupsApi.GroupsUserGet(auth, userGroupId, contentType, accept, nil)
-
+	// Make an API call to retrieve a specific user group by ID
+	userGroup, res, err := client.UserGroupsApi.GroupsUserGet(auth, userGroupID, contentType, accept, nil)
 	if err != nil {
-		fmt.Printf("Error retrieving user group %s: %s - response = %+v\n", userGroupId, err, res)
+		fmt.Printf("Error retrieving user group %s: %s - response = %+v\n", userGroupID, err, res)
 	} else {
-		fmt.Printf("Details for User group %s: %+v\n", userGroupId, userGroup)
+		fmt.Printf("Details for User group %s: %+v\n", userGroupID, userGroup)
 	}
 }
+
 ```
 
 System Context Authorization example:
 
 ```golang
+package main
+
 import (
 	"context"
 	"fmt"
+
 	jcapiv2 "github.com/TheJumpCloud/jcapi-go/v2"
 )
 
 func main() {
-
-	// instantiate the API client:
-	client := jcapiv2.NewAPIClient(jcapiv2.NewConfiguration())
+	systemID := "YOUR_SYSTEM_ID"
+	systemDate := "YOUR_SYSTEM_DATE"
+	systemSignature := "YOUR_SYSTEM_SIGNATURE"
 
 	contentType := "application/json"
 	accept := "application/json"
 
-	systemId := "<YOUR_SYSTEM_ID>"
+	// Instantiate the API client
+	client := jcapiv2.NewAPIClient(jcapiv2.NewConfiguration())
 
-	// set headers for the System Context Authorization:
-	// for detailed instructions on how to generate these headers,
-	// refer to: https://docs.jumpcloud.com/2.0/authentication-and-authorization/system-context
-	sysContextAuth := `Signature keyId="system/<YOUR_SYSTEM_ID>",headers="request-line date",algorithm="rsa-sha256",signature="<YOUR_SYSTEM_SIGNATURE>"`
-	sysContextDate := "Thu, 19 Oct 2017 17:27:57 GMT" // the current date on the system
+	// Set headers for System Context Authorization. For detailed instructions on
+	// how to generate these headers, refer to:
+	// https://docs.jumpcloud.com/2.0/authentication-and-authorization/system-context
+	sysContextDate := systemDate // The current date on the system, e.g. "Tue, 10 Nov 2009 23:00:00 GMT"
+	sysContextAuth := fmt.Sprintf(`Signature keyId="system/%s",headers="request-line date",algorithm="rsa-sha256",signature="%s"`, systemID, systemSignature)
 
-	// add date and authorization to the list of optional parameters:
+	// Add date and authorization to the list of optional parameters
 	optParams := map[string]interface{}{
 		"date":          sysContextDate,
 		"authorization": sysContextAuth,
 	}
 
-	// list the system groups this system is a member of using the System Context Authorization parameters:
-	// since we authenticate via system context parameters, no need to set the API key in the context
-	groups, res, err := client.SystemsApi.GraphSystemMemberOf(context.TODO(), systemId, contentType, accept, optParams)
-
+	// List the system groups this system is a member of using the
+	// System Context Authorization parameters. Since we authenticate via the
+	// parameters, there is no need to set the API key in the context.
+	groups, res, err := client.SystemsApi.GraphSystemMemberOf(context.TODO(), systemID, contentType, accept, optParams)
 	if err != nil {
-		fmt.Printf("Error retrieving system groups for system %s: %s - response = %+v\n", systemId, err, res)
+		fmt.Printf("Error retrieving system groups for system %s: %s - response = %+v\n", systemID, err, res)
 		return
 	}
-	// print the system groups we just retrieved:
+
+	// Print the system groups we just retrieved
 	for _, group := range groups {
 		fmt.Printf("System group ID %s\n", group.Id)
 	}
-
-	return
 }
 
 ```
