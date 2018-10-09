@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **OsMetaFamily** | **string** |  | [optional] [default to null]
 **Activation** | **string** | Requirements before the policy can be activated. | [optional] [default to null]
 **Behavior** | **string** | Specifics about the behavior of the policy. | [optional] [default to null]
+**State** | **string** | String describing the release status of the policy template. | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

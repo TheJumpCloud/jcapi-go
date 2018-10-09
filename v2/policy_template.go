@@ -31,4 +31,7 @@ type PolicyTemplate struct {
 
 	// Specifics about the behavior of the policy.
 	Behavior string `json:"behavior,omitempty"`
+
+	// String describing the release status of the policy template.
+	State string `json:"state,omitempty"`
 }
