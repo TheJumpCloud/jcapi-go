@@ -63,9 +63,13 @@ import (
 )
 
 func main() {
+	// Set headers for System Context Authorization. For detailed instructions on
+	// how to generate these headers, refer to:
+	// https://docs.jumpcloud.com/2.0/authentication-and-authorization/system-context
 	systemID := "YOUR_SYSTEM_ID"
-	systemDate := "YOUR_SYSTEM_DATE"
+	systemDate := "YOUR_SYSTEM_DATE" // The current date on the system, e.g. "Tue, 10 Nov 2009 23:00:00 GMT"
 	systemSignature := "YOUR_SYSTEM_SIGNATURE"
+	systemContextAuth := fmt.Sprintf(`Signature keyId="system/%s",headers="request-line date",algorithm="rsa-sha256",signature="%s"`, systemID, systemSignature)
 
 	contentType := "application/json"
 	accept := "application/json"
@@ -73,16 +77,10 @@ func main() {
 	// Instantiate the API client
 	client := jcapiv2.NewAPIClient(jcapiv2.NewConfiguration())
 
-	// Set headers for System Context Authorization. For detailed instructions on
-	// how to generate these headers, refer to:
-	// https://docs.jumpcloud.com/2.0/authentication-and-authorization/system-context
-	sysContextDate := systemDate // The current date on the system, e.g. "Tue, 10 Nov 2009 23:00:00 GMT"
-	sysContextAuth := fmt.Sprintf(`Signature keyId="system/%s",headers="request-line date",algorithm="rsa-sha256",signature="%s"`, systemID, systemSignature)
-
 	// Add date and authorization to the list of optional parameters
 	optParams := map[string]interface{}{
-		"date":          sysContextDate,
-		"authorization": sysContextAuth,
+		"date":          systemDate,
+		"authorization": systemContextAuth,
 	}
 
 	// List the system groups this system is a member of using the
