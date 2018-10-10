@@ -12,7 +12,7 @@ To access our old API v1 Go client, please refer to
 [JCAPI](https://github.com/TheJumpCloud/jcapi). However this code repository
 is not up to date with current API functionality.
 
-### Usage examples
+### Usage Examples
 
 ```golang
 package main
