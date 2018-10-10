@@ -9387,7 +9387,6 @@ definitions:
         type: "boolean"
       addresses:
         type: "array"
-        description: ""
         items:
           $ref: "#/definitions/systemuserputpost_addresses"
       jobTitle:
@@ -9396,7 +9395,6 @@ definitions:
         type: "string"
       phoneNumbers:
         type: "array"
-        description: ""
         items:
           $ref: "#/definitions/systemuserputpost_phoneNumbers"
       relationships:

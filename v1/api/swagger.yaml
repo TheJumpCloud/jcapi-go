@@ -2774,7 +2774,6 @@ definitions:
         type: "boolean"
       addresses:
         type: "array"
-        description: ""
         items:
           $ref: "#/definitions/systemuserputpost_addresses"
       jobTitle:
@@ -2783,7 +2782,6 @@ definitions:
         type: "string"
       phoneNumbers:
         type: "array"
-        description: ""
         items:
           $ref: "#/definitions/systemuserputpost_phoneNumbers"
       relationships:
@@ -3079,7 +3077,6 @@ definitions:
         type: "string"
       addresses:
         type: "array"
-        description: ""
         items:
           $ref: "#/definitions/systemuserreturn_addresses"
       jobTitle:
@@ -3090,7 +3087,6 @@ definitions:
         maxLength: 1024
       phoneNumbers:
         type: "array"
-        description: ""
         items:
           $ref: "#/definitions/systemuserreturn_phoneNumbers"
       relationships:
@@ -4444,7 +4440,6 @@ definitions:
         maxLength: 1024
       phoneNumbers:
         type: "array"
-        description: ""
         items:
           $ref: "#/definitions/systemuserput_phoneNumbers"
       relationships:

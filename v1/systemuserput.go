@@ -58,7 +58,6 @@ type Systemuserput struct {
 
 	Department string `json:"department,omitempty"`
 
-	// 
 	PhoneNumbers []SystemuserputPhoneNumbers `json:"phoneNumbers,omitempty"`
 
 	Relationships []interface{} `json:"relationships,omitempty"`
