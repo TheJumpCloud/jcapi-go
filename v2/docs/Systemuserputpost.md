@@ -1,4 +1,4 @@
-# Systemuserput
+# Systemuserputpost
 
 ## Properties
 Name | Type | Description | Notes
@@ -7,13 +7,14 @@ Name | Type | Description | Notes
 **Username** | **string** |  | [default to null]
 **AllowPublicKey** | **bool** |  | [optional] [default to null]
 **PublicKey** | **string** |  | [optional] [default to null]
-**SshKeys** | [**[]Sshkeypost**](sshkeypost.md) |  | [optional] [default to null]
 **Sudo** | **bool** |  | [optional] [default to null]
 **EnableManagedUid** | **bool** |  | [optional] [default to null]
 **UnixUid** | **int32** |  | [optional] [default to null]
 **UnixGuid** | **int32** |  | [optional] [default to null]
+**Activated** | **bool** |  | [optional] [default to null]
 **Tags** | **[]string** |  | [optional] [default to null]
 **AccountLocked** | **bool** |  | [optional] [default to null]
+**PasswordlessSudo** | **bool** |  | [optional] [default to null]
 **ExternallyManaged** | **bool** |  | [optional] [default to null]
 **ExternalDn** | **string** |  | [optional] [default to null]
 **ExternalSourceType** | **string** |  | [optional] [default to null]
@@ -23,10 +24,10 @@ Name | Type | Description | Notes
 **EnableUserPortalMultifactor** | **bool** |  | [optional] [default to null]
 **Attributes** | [**[]interface{}**](interface{}.md) |  | [optional] [default to null]
 **SambaServiceUser** | **bool** |  | [optional] [default to null]
-**Addresses** | [**[]SystemuserputAddresses**](systemuserput_addresses.md) | type, poBox, extendedAddress, streetAddress, locality, region, postalCode, country | [optional] [default to null]
+**Addresses** | [**[]SystemuserputpostAddresses**](systemuserputpost_addresses.md) |  | [optional] [default to null]
 **JobTitle** | **string** |  | [optional] [default to null]
 **Department** | **string** |  | [optional] [default to null]
-**PhoneNumbers** | [**[]SystemuserputPhoneNumbers**](systemuserput_phoneNumbers.md) |  | [optional] [default to null]
+**PhoneNumbers** | [**[]SystemuserputpostPhoneNumbers**](systemuserputpost_phoneNumbers.md) |  | [optional] [default to null]
 **Relationships** | [**[]interface{}**](interface{}.md) |  | [optional] [default to null]
 **Password** | **string** |  | [optional] [default to null]
 **PasswordNeverExpires** | **bool** |  | [optional] [default to null]

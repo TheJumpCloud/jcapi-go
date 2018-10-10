@@ -6963,6 +6963,59 @@ paths:
           enabled: false
           dynamic: false
           statusCode: 200
+  /users/{user_id}/emails:
+    post:
+      tags:
+      - "Users"
+      summary: "Send User Emails"
+      description: "This endpoint allows you to send a specific email to a user without\
+        \ waiting for or triggering a workflow."
+      operationId: "user_sendEmails"
+      parameters:
+      - name: "user_id"
+        in: "path"
+        description: "ObjectID of the User."
+        required: true
+        type: "string"
+        x-exportParamName: "UserId"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/emailrequest"
+        x-exportParamName: "Body"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      responses:
+        204:
+          description: "OK"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        id: "user_sendEmails"
+        beforeScript: null
+        afterScript: null
+        public: false
+        mock:
+          enabled: false
+          dynamic: false
+          statusCode: 200
   /usergroups:
     get:
       tags:
@@ -9146,6 +9199,237 @@ securityDefinitions:
     name: "x-api-key"
     in: "header"
 definitions:
+  sshkeylist:
+    type: "object"
+    properties:
+      create_date:
+        type: "string"
+        description: "The date the SSH key was created."
+      _id:
+        type: "string"
+        description: "The ID of the SSH key."
+      public_key:
+        type: "string"
+        description: "The Public SSH key."
+      name:
+        type: "string"
+        description: "The name of the SSH key."
+    title: "SSHKeyList"
+    x-stoplight:
+      id: "sshkeylist"
+      name: "SSHKeyList"
+      public: true
+  systemuser:
+    type: "object"
+    properties:
+      email:
+        type: "string"
+        maxLength: 1024
+      username:
+        type: "string"
+        maxLength: 1024
+      allow_public_key:
+        type: "boolean"
+      public_key:
+        type: "string"
+      ssh_keys:
+        type: "array"
+        items:
+          $ref: "#/definitions/sshkeylist"
+      sudo:
+        type: "boolean"
+      enable_managed_uid:
+        type: "boolean"
+      unix_uid:
+        type: "integer"
+        minimum: 0
+      unix_guid:
+        type: "integer"
+        minimum: 0
+      activated:
+        type: "boolean"
+      tags:
+        type: "array"
+        items:
+          type: "string"
+      password_expired:
+        type: "boolean"
+      account_locked:
+        type: "boolean"
+      passwordless_sudo:
+        type: "boolean"
+      externally_managed:
+        type: "boolean"
+      external_dn:
+        type: "string"
+      external_source_type:
+        type: "string"
+      firstname:
+        type: "string"
+        maxLength: 1024
+      lastname:
+        type: "string"
+        maxLength: 1024
+      ldap_binding_user:
+        type: "boolean"
+      enable_user_portal_multifactor:
+        type: "boolean"
+      associatedTagCount:
+        type: "integer"
+        minimum: 0
+      totp_enabled:
+        type: "boolean"
+      password_expiration_date:
+        type: "string"
+      attributes:
+        type: "array"
+        items:
+          $ref: "#/definitions/systemuser_attributes"
+      created:
+        type: "string"
+      samba_service_user:
+        type: "boolean"
+      password_never_expires:
+        type: "boolean"
+      _id:
+        type: "string"
+      middlename:
+        type: "string"
+        maxLength: 1024
+      displayname:
+        type: "string"
+        maxLength: 1024
+      description:
+        type: "string"
+        maxLength: 1024
+      location:
+        type: "string"
+        maxLength: 1024
+      costCenter:
+        type: "string"
+        maxLength: 1024
+      employeeType:
+        type: "string"
+        maxLength: 1024
+      company:
+        type: "string"
+        maxLength: 1024
+      employeeIdentifier:
+        type: "string"
+        description: "Must be unique per user. "
+        maxLength: 256
+      jobTitle:
+        type: "string"
+        maxLength: 1024
+      department:
+        type: "string"
+        maxLength: 1024
+    title: "SystemUser"
+    x-stoplight:
+      id: "systemuser"
+      name: "SystemUser"
+      public: true
+  systemuserputpost:
+    type: "object"
+    required:
+    - "email"
+    - "username"
+    properties:
+      email:
+        type: "string"
+        maxLength: 1024
+      username:
+        type: "string"
+      allow_public_key:
+        type: "boolean"
+      public_key:
+        type: "string"
+      sudo:
+        type: "boolean"
+      enable_managed_uid:
+        type: "boolean"
+      unix_uid:
+        type: "integer"
+        minimum: 0
+      unix_guid:
+        type: "integer"
+        minimum: 0
+      activated:
+        type: "boolean"
+      tags:
+        type: "array"
+        items:
+          type: "string"
+      account_locked:
+        type: "boolean"
+      passwordless_sudo:
+        type: "boolean"
+      externally_managed:
+        type: "boolean"
+      external_dn:
+        type: "string"
+      external_source_type:
+        type: "string"
+      firstname:
+        type: "string"
+      lastname:
+        type: "string"
+      ldap_binding_user:
+        type: "boolean"
+      enable_user_portal_multifactor:
+        type: "boolean"
+      attributes:
+        type: "array"
+        items:
+          type: "object"
+          properties: {}
+      samba_service_user:
+        type: "boolean"
+      addresses:
+        type: "array"
+        items:
+          $ref: "#/definitions/systemuserputpost_addresses"
+      jobTitle:
+        type: "string"
+      department:
+        type: "string"
+      phoneNumbers:
+        type: "array"
+        items:
+          $ref: "#/definitions/systemuserputpost_phoneNumbers"
+      relationships:
+        type: "array"
+        items:
+          type: "object"
+          properties: {}
+      password:
+        type: "string"
+      password_never_expires:
+        type: "boolean"
+      middlename:
+        type: "string"
+      displayname:
+        type: "string"
+      description:
+        type: "string"
+        maxLength: 1024
+      location:
+        type: "string"
+      costCenter:
+        type: "string"
+      employeeType:
+        type: "string"
+      company:
+        type: "string"
+      employeeIdentifier:
+        type: "string"
+        description: "Must be unique per user. "
+        maxLength: 256
+    title: "SystemUserPost"
+    x-stoplight:
+      id: "systemuserputpost"
+      name: "SystemUserPost"
+      public: true
   GraphConnection:
     type: "object"
     required:
@@ -9538,6 +9822,10 @@ definitions:
       behavior:
         type: "string"
         description: "Specifics about the behavior of the policy."
+      state:
+        type: "string"
+        description: "String describing the release status of the policy template."
+        default: ""
     title: "PolicyTemplate"
     description: "The shallow information about a Policy Template."
     example:
@@ -9546,6 +9834,7 @@ definitions:
       name: "name"
       description: "description"
       id: "id"
+      state: "state"
       activation: "activation"
       behavior: "behavior"
     x-stoplight:
@@ -9572,6 +9861,7 @@ definitions:
         name: "name"
         description: "description"
         id: "id"
+        state: "state"
         activation: "activation"
         behavior: "behavior"
       name: "name"
@@ -9768,6 +10058,7 @@ definitions:
         name: "name"
         description: "description"
         id: "id"
+        state: "state"
         activation: "activation"
         behavior: "behavior"
       values:
@@ -10365,6 +10656,18 @@ definitions:
       id: "workday-fields"
       name: "Workday Fields"
       public: true
+  emailrequest:
+    type: "object"
+    properties:
+      emailType:
+        type: "string"
+    title: "EmailRequest"
+    example:
+      emailType: "culpa eiusmod commodo"
+    x-stoplight:
+      id: "emailrequest"
+      name: "EmailRequest"
+      public: true
   inline_response_204:
     properties:
       id:
@@ -10380,6 +10683,34 @@ definitions:
   inline_response_400:
     properties:
       message:
+        type: "string"
+  systemuser_attributes:
+    properties:
+      ?
+      : type: "string"
+  systemuserputpost_addresses:
+    properties:
+      type:
+        type: "string"
+      poBox:
+        type: "string"
+      extendedAddress:
+        type: "string"
+      streetAddress:
+        type: "string"
+      locality:
+        type: "string"
+      region:
+        type: "string"
+      postalCode:
+        type: "string"
+      country:
+        type: "string"
+  systemuserputpost_phoneNumbers:
+    properties:
+      type:
+        type: "string"
+      number:
         type: "string"
   UserGroupPost_attributes_posixGroups:
     properties:
@@ -11102,6 +11433,8 @@ x-stoplight:
           type: "endpoints"
         - _id: "graph_userTraverseSystemGroup"
           type: "endpoints"
+        - _id: "user_sendEmails"
+          type: "endpoints"
       - divider: false
         description: "User Groups are designed to enhance JumpCloud's existing grouping\
           \ functionality which relied heavily on flexible “tags” to allow you to\
@@ -11316,6 +11649,8 @@ x-stoplight:
           type: "schemas"
         - _id: "RaTvCDQQ3CezKdm3f"
           type: "schemas"
+        - _id: "emailrequest"
+          type: "schemas"
         divider: false
       - name: "Traits"
         description: "These Traits describe  the common behaviors or structures in\
@@ -11423,13 +11758,13 @@ x-stoplight:
         \ [`PUT`](https://docs.jumpcloud.com/1.0/systems/update-a-system)\n- A system\
         \ may delete itself from your JumpCloud organization\n  - `/api/systems/{system_id}`\
         \ | [`DELETE`](https://docs.jumpcloud.com/1.0/systems/delete-a-system)\n-\
-        \ A system may fetch it's direct resource associations under v2 (Groups)\n\
+        \ A system may fetch its direct resource associations under v2 (Groups)\n\
         \  - `/api/v2/systems/{system_id}/memberof` | [`GET`](https://docs.jumpcloud.com/2.0/systems/list-a-systems-group-membership)\n\
         \  - `/api/v2/systems/{system_id}/associations` | [`GET`](https://docs.jumpcloud.com/2.0/systems/list-associations-of-a-system)\n\
         \  - `/api/v2/systems/{system_id}/users` | [`GET`](https://docs.jumpcloud.com/2.0/systems/list-the-users-associated-with-a-system)\n\
-        - A system may alter it's direct resource associations under v2 (Groups)\n\
+        - A system may alter its direct resource associations under v2 (Groups)\n\
         \  - `/api/v2/systems/{system_id}/associations` | [`POST`](https://docs.jumpcloud.com/2.0/systems/manage-associations-of-a-system)\n\
-        - A system may alter it's System Group associations\n  - `/api/v2/systemgroups/{systemgroup_id}/members`\
+        - A system may alter its System Group associations\n  - `/api/v2/systemgroups/{systemgroup_id}/members`\
         \ | [`POST`](https://docs.jumpcloud.com/2.0/system-groups/update-a-system-group)\n\
         \    - _NOTE_ If a system attempts to alter the system group membership of\
         \ a different system the request will be rejected\n\n\n### Response codes\n\
@@ -11504,7 +11839,7 @@ x-stoplight:
     multi-tenant-organization-api-headers:
       id: "multi-tenant-organization-api-headers"
       name: "Multi Tenant Organization API Headers"
-      content: "The Multi-Tenant Organzation API Headers are available for JumpCloud\
+      content: "Multi-Tenant Organization API Headers are available for JumpCloud\
         \ Admins to use when making API requests from Organizations that have multiple\
         \ managed organizations.\n\nThe `x-org-id` is a required header for all multi-tenant\
         \ admins when making API requests to Jumpcloud as this header will define\

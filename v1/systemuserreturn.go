@@ -65,14 +65,12 @@ type Systemuserreturn struct {
 
 	Organization string `json:"organization,omitempty"`
 
-	// 
 	Addresses []SystemuserreturnAddresses `json:"addresses,omitempty"`
 
 	JobTitle string `json:"jobTitle,omitempty"`
 
 	Department string `json:"department,omitempty"`
 
-	// 
 	PhoneNumbers []SystemuserreturnPhoneNumbers `json:"phoneNumbers,omitempty"`
 
 	Relationships []interface{} `json:"relationships,omitempty"`

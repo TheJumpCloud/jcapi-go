@@ -59,7 +59,7 @@ type Systemuser struct {
 
 	PasswordExpirationDate string `json:"password_expiration_date,omitempty"`
 
-	Attributes []interface{} `json:"attributes,omitempty"`
+	Attributes []SystemuserAttributes `json:"attributes,omitempty"`
 
 	Created string `json:"created,omitempty"`
 

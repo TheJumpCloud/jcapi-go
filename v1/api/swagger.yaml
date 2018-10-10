@@ -2581,6 +2581,242 @@ securityDefinitions:
     name: "x-api-key"
     in: "header"
 definitions:
+  sshkeylist:
+    type: "object"
+    properties:
+      create_date:
+        type: "string"
+        description: "The date the SSH key was created."
+      _id:
+        type: "string"
+        description: "The ID of the SSH key."
+      public_key:
+        type: "string"
+        description: "The Public SSH key."
+      name:
+        type: "string"
+        description: "The name of the SSH key."
+    title: "SSHKeyList"
+    example:
+      public_key: "public_key"
+      name: "name"
+      _id: "_id"
+      create_date: "create_date"
+    x-stoplight:
+      id: "sshkeylist"
+      name: "SSHKeyList"
+      public: true
+  systemuser:
+    type: "object"
+    properties:
+      email:
+        type: "string"
+        maxLength: 1024
+      username:
+        type: "string"
+        maxLength: 1024
+      allow_public_key:
+        type: "boolean"
+      public_key:
+        type: "string"
+      ssh_keys:
+        type: "array"
+        items:
+          $ref: "#/definitions/sshkeylist"
+      sudo:
+        type: "boolean"
+      enable_managed_uid:
+        type: "boolean"
+      unix_uid:
+        type: "integer"
+        minimum: 0
+      unix_guid:
+        type: "integer"
+        minimum: 0
+      activated:
+        type: "boolean"
+      tags:
+        type: "array"
+        items:
+          type: "string"
+      password_expired:
+        type: "boolean"
+      account_locked:
+        type: "boolean"
+      passwordless_sudo:
+        type: "boolean"
+      externally_managed:
+        type: "boolean"
+      external_dn:
+        type: "string"
+      external_source_type:
+        type: "string"
+      firstname:
+        type: "string"
+        maxLength: 1024
+      lastname:
+        type: "string"
+        maxLength: 1024
+      ldap_binding_user:
+        type: "boolean"
+      enable_user_portal_multifactor:
+        type: "boolean"
+      associatedTagCount:
+        type: "integer"
+        minimum: 0
+      totp_enabled:
+        type: "boolean"
+      password_expiration_date:
+        type: "string"
+      attributes:
+        type: "array"
+        items:
+          $ref: "#/definitions/systemuser_attributes"
+      created:
+        type: "string"
+      samba_service_user:
+        type: "boolean"
+      password_never_expires:
+        type: "boolean"
+      _id:
+        type: "string"
+      middlename:
+        type: "string"
+        maxLength: 1024
+      displayname:
+        type: "string"
+        maxLength: 1024
+      description:
+        type: "string"
+        maxLength: 1024
+      location:
+        type: "string"
+        maxLength: 1024
+      costCenter:
+        type: "string"
+        maxLength: 1024
+      employeeType:
+        type: "string"
+        maxLength: 1024
+      company:
+        type: "string"
+        maxLength: 1024
+      employeeIdentifier:
+        type: "string"
+        description: "Must be unique per user. "
+        maxLength: 256
+      jobTitle:
+        type: "string"
+        maxLength: 1024
+      department:
+        type: "string"
+        maxLength: 1024
+    title: "SystemUser"
+    x-stoplight:
+      id: "systemuser"
+      name: "SystemUser"
+      public: true
+  systemuserputpost:
+    type: "object"
+    required:
+    - "email"
+    - "username"
+    properties:
+      email:
+        type: "string"
+        maxLength: 1024
+      username:
+        type: "string"
+      allow_public_key:
+        type: "boolean"
+      public_key:
+        type: "string"
+      sudo:
+        type: "boolean"
+      enable_managed_uid:
+        type: "boolean"
+      unix_uid:
+        type: "integer"
+        minimum: 0
+      unix_guid:
+        type: "integer"
+        minimum: 0
+      activated:
+        type: "boolean"
+      tags:
+        type: "array"
+        items:
+          type: "string"
+      account_locked:
+        type: "boolean"
+      passwordless_sudo:
+        type: "boolean"
+      externally_managed:
+        type: "boolean"
+      external_dn:
+        type: "string"
+      external_source_type:
+        type: "string"
+      firstname:
+        type: "string"
+      lastname:
+        type: "string"
+      ldap_binding_user:
+        type: "boolean"
+      enable_user_portal_multifactor:
+        type: "boolean"
+      attributes:
+        type: "array"
+        items:
+          type: "object"
+          properties: {}
+      samba_service_user:
+        type: "boolean"
+      addresses:
+        type: "array"
+        items:
+          $ref: "#/definitions/systemuserputpost_addresses"
+      jobTitle:
+        type: "string"
+      department:
+        type: "string"
+      phoneNumbers:
+        type: "array"
+        items:
+          $ref: "#/definitions/systemuserputpost_phoneNumbers"
+      relationships:
+        type: "array"
+        items:
+          type: "object"
+          properties: {}
+      password:
+        type: "string"
+      password_never_expires:
+        type: "boolean"
+      middlename:
+        type: "string"
+      displayname:
+        type: "string"
+      description:
+        type: "string"
+        maxLength: 1024
+      location:
+        type: "string"
+      costCenter:
+        type: "string"
+      employeeType:
+        type: "string"
+      company:
+        type: "string"
+      employeeIdentifier:
+        type: "string"
+        description: "Must be unique per user. "
+        maxLength: 256
+    title: "SystemUserPost"
+    x-stoplight:
+      id: "systemuserputpost"
+      name: "SystemUserPost"
+      public: true
   systemuserbindingsput:
     type: "object"
     required:
@@ -2769,112 +3005,15 @@ definitions:
       id: "search"
       name: "Search"
       public: true
-  systemuser:
-    type: "object"
-    properties:
-      email:
-        type: "string"
-      username:
-        type: "string"
-      allow_public_key:
-        type: "boolean"
-      public_key:
-        type: "string"
-      ssh_keys:
-        type: "array"
-        items:
-          $ref: "#/definitions/sshkeylist"
-      sudo:
-        type: "boolean"
-      enable_managed_uid:
-        type: "boolean"
-      unix_uid:
-        type: "integer"
-        minimum: 0
-      unix_guid:
-        type: "integer"
-        minimum: 0
-      activated:
-        type: "boolean"
-      tags:
-        type: "array"
-        items:
-          type: "string"
-      password_expired:
-        type: "boolean"
-      account_locked:
-        type: "boolean"
-      passwordless_sudo:
-        type: "boolean"
-      externally_managed:
-        type: "boolean"
-      external_dn:
-        type: "string"
-      external_source_type:
-        type: "string"
-      firstname:
-        type: "string"
-      lastname:
-        type: "string"
-      ldap_binding_user:
-        type: "boolean"
-      enable_user_portal_multifactor:
-        type: "boolean"
-      associatedTagCount:
-        type: "integer"
-        minimum: 0
-      totp_enabled:
-        type: "boolean"
-      password_expiration_date:
-        type: "string"
-      attributes:
-        type: "array"
-        items:
-          type: "object"
-          properties: {}
-      created:
-        type: "string"
-      samba_service_user:
-        type: "boolean"
-      password_never_expires:
-        type: "boolean"
-      _id:
-        type: "string"
-      middlename:
-        type: "string"
-      displayname:
-        type: "string"
-      description:
-        type: "string"
-        maxLength: 1024
-      location:
-        type: "string"
-      costCenter:
-        type: "string"
-      employeeType:
-        type: "string"
-      company:
-        type: "string"
-      employeeIdentifier:
-        type: "string"
-        description: "Must be unique per user. "
-        maxLength: 256
-      jobTitle:
-        type: "string"
-      department:
-        type: "string"
-    title: "SystemUser"
-    x-stoplight:
-      id: "systemuser"
-      name: "SystemUser"
-      public: true
   systemuserreturn:
     type: "object"
     properties:
       email:
         type: "string"
+        maxLength: 1024
       username:
         type: "string"
+        maxLength: 1024
       allow_public_key:
         type: "boolean"
       public_key:
@@ -2913,8 +3052,10 @@ definitions:
         type: "string"
       firstname:
         type: "string"
+        maxLength: 1024
       lastname:
         type: "string"
+        maxLength: 1024
       ldap_binding_user:
         type: "boolean"
       enable_user_portal_multifactor:
@@ -2936,16 +3077,16 @@ definitions:
         type: "string"
       addresses:
         type: "array"
-        description: ""
         items:
           $ref: "#/definitions/systemuserreturn_addresses"
       jobTitle:
         type: "string"
+        maxLength: 1024
       department:
         type: "string"
+        maxLength: 1024
       phoneNumbers:
         type: "array"
-        description: ""
         items:
           $ref: "#/definitions/systemuserreturn_phoneNumbers"
       relationships:
@@ -2960,19 +3101,25 @@ definitions:
         type: "boolean"
       middlename:
         type: "string"
+        maxLength: 1024
       displayname:
         type: "string"
+        maxLength: 1024
       description:
         type: "string"
         maxLength: 1024
       location:
         type: "string"
+        maxLength: 1024
       costCenter:
         type: "string"
+        maxLength: 1024
       employeeType:
         type: "string"
+        maxLength: 1024
       company:
         type: "string"
+        maxLength: 1024
       employeeIdentifier:
         type: "string"
         description: "Must be unique per user. "
@@ -3062,108 +3209,6 @@ definitions:
     x-stoplight:
       id: "systemuserreturn"
       name: "SystemUserReturn"
-      public: true
-  systemuserputpost:
-    type: "object"
-    required:
-    - "email"
-    - "username"
-    properties:
-      email:
-        type: "string"
-      username:
-        type: "string"
-      allow_public_key:
-        type: "boolean"
-      public_key:
-        type: "string"
-      sudo:
-        type: "boolean"
-      enable_managed_uid:
-        type: "boolean"
-      unix_uid:
-        type: "integer"
-        minimum: 0
-      unix_guid:
-        type: "integer"
-        minimum: 0
-      activated:
-        type: "boolean"
-      tags:
-        type: "array"
-        items:
-          type: "string"
-      account_locked:
-        type: "boolean"
-      passwordless_sudo:
-        type: "boolean"
-      externally_managed:
-        type: "boolean"
-      external_dn:
-        type: "string"
-      external_source_type:
-        type: "string"
-      firstname:
-        type: "string"
-      lastname:
-        type: "string"
-      ldap_binding_user:
-        type: "boolean"
-      enable_user_portal_multifactor:
-        type: "boolean"
-      attributes:
-        type: "array"
-        items:
-          type: "object"
-          properties: {}
-      samba_service_user:
-        type: "boolean"
-      addresses:
-        type: "array"
-        description: ""
-        items:
-          $ref: "#/definitions/systemuserputpost_addresses"
-      jobTitle:
-        type: "string"
-      department:
-        type: "string"
-      phoneNumbers:
-        type: "array"
-        description: ""
-        items:
-          $ref: "#/definitions/systemuserputpost_phoneNumbers"
-      relationships:
-        type: "array"
-        items:
-          type: "object"
-          properties: {}
-      password:
-        type: "string"
-      password_never_expires:
-        type: "boolean"
-      middlename:
-        type: "string"
-      displayname:
-        type: "string"
-      description:
-        type: "string"
-        maxLength: 1024
-      location:
-        type: "string"
-      costCenter:
-        type: "string"
-      employeeType:
-        type: "string"
-      company:
-        type: "string"
-      employeeIdentifier:
-        type: "string"
-        description: "Must be unique per user. "
-        maxLength: 256
-    title: "SystemUserPost"
-    x-stoplight:
-      id: "systemuserputpost"
-      name: "SystemUserPost"
       public: true
   commandslist:
     type: "object"
@@ -4330,8 +4375,10 @@ definitions:
     properties:
       email:
         type: "string"
+        maxLength: 1024
       username:
         type: "string"
+        maxLength: 1024
       allow_public_key:
         type: "boolean"
       public_key:
@@ -4364,8 +4411,10 @@ definitions:
         type: "string"
       firstname:
         type: "string"
+        maxLength: 1024
       lastname:
         type: "string"
+        maxLength: 1024
       ldap_binding_user:
         type: "boolean"
       enable_user_portal_multifactor:
@@ -4382,16 +4431,17 @@ definitions:
         description: "type, poBox, extendedAddress, streetAddress, locality, region,\
           \ postalCode, country"
         items:
-          $ref: "#/definitions/systemuserputpost_addresses"
+          $ref: "#/definitions/systemuserput_addresses"
       jobTitle:
         type: "string"
+        maxLength: 1024
       department:
         type: "string"
+        maxLength: 1024
       phoneNumbers:
         type: "array"
-        description: ""
         items:
-          $ref: "#/definitions/systemuserputpost_phoneNumbers"
+          $ref: "#/definitions/systemuserput_phoneNumbers"
       relationships:
         type: "array"
         items:
@@ -4403,19 +4453,25 @@ definitions:
         type: "boolean"
       middlename:
         type: "string"
+        maxLength: 1024
       displayname:
         type: "string"
+        maxLength: 1024
       description:
         type: "string"
         maxLength: 1024
       location:
         type: "string"
+        maxLength: 1024
       costCenter:
         type: "string"
+        maxLength: 1024
       employeeType:
         type: "string"
+        maxLength: 1024
       company:
         type: "string"
+        maxLength: 1024
       employeeIdentifier:
         type: "string"
         description: "Must be unique per user. "
@@ -4469,31 +4525,6 @@ definitions:
       id: "organizationslist"
       name: "OrganizationList"
       public: true
-  sshkeylist:
-    type: "object"
-    properties:
-      create_date:
-        type: "string"
-        description: "The date the SSH key was created."
-      _id:
-        type: "string"
-        description: "The ID of the SSH key."
-      public_key:
-        type: "string"
-        description: "The Public SSH key."
-      name:
-        type: "string"
-        description: "The name of the SSH key."
-    title: "SSHKeyList"
-    example:
-      public_key: "public_key"
-      name: "name"
-      _id: "_id"
-      create_date: "create_date"
-    x-stoplight:
-      id: "sshkeylist"
-      name: "SSHKeyList"
-      public: true
   sshkeypost:
     type: "object"
     required:
@@ -4546,6 +4577,34 @@ definitions:
     properties:
       message:
         type: "string"
+  systemuser_attributes:
+    properties:
+      ?
+      : type: "string"
+  systemuserputpost_addresses:
+    properties:
+      type:
+        type: "string"
+      poBox:
+        type: "string"
+      extendedAddress:
+        type: "string"
+      streetAddress:
+        type: "string"
+      locality:
+        type: "string"
+      region:
+        type: "string"
+      postalCode:
+        type: "string"
+      country:
+        type: "string"
+  systemuserputpost_phoneNumbers:
+    properties:
+      type:
+        type: "string"
+      number:
+        type: "string"
   commandresult_response_data:
     properties:
       output:
@@ -4579,20 +4638,28 @@ definitions:
         type: "string"
       type:
         type: "string"
+        maxLength: 1024
       poBox:
         type: "string"
+        maxLength: 1024
       extendedAddress:
         type: "string"
+        maxLength: 1024
       streetAddress:
         type: "string"
+        maxLength: 1024
       locality:
         type: "string"
+        maxLength: 1024
       region:
         type: "string"
+        maxLength: 1024
       postalCode:
         type: "string"
+        maxLength: 1024
       country:
         type: "string"
+        maxLength: 1024
     example:
       poBox: "poBox"
       country: "country"
@@ -4609,36 +4676,14 @@ definitions:
         type: "string"
       type:
         type: "string"
+        maxLength: 1024
       number:
         type: "string"
+        maxLength: 1024
     example:
       number: "number"
       id: "id"
       type: "type"
-  systemuserputpost_addresses:
-    properties:
-      type:
-        type: "string"
-      poBox:
-        type: "string"
-      extendedAddress:
-        type: "string"
-      streetAddress:
-        type: "string"
-      locality:
-        type: "string"
-      region:
-        type: "string"
-      postalCode:
-        type: "string"
-      country:
-        type: "string"
-  systemuserputpost_phoneNumbers:
-    properties:
-      type:
-        type: "string"
-      number:
-        type: "string"
   commandslist_results:
     properties:
       name:
@@ -4917,6 +4962,40 @@ definitions:
       address: "address"
       name: "name"
       family: "family"
+  systemuserput_addresses:
+    properties:
+      type:
+        type: "string"
+        maxLength: 1024
+      poBox:
+        type: "string"
+        maxLength: 1024
+      extendedAddress:
+        type: "string"
+        maxLength: 1024
+      streetAddress:
+        type: "string"
+        maxLength: 1024
+      locality:
+        type: "string"
+        maxLength: 1024
+      region:
+        type: "string"
+        maxLength: 1024
+      postalCode:
+        type: "string"
+        maxLength: 1024
+      country:
+        type: "string"
+        maxLength: 1024
+  systemuserput_phoneNumbers:
+    properties:
+      type:
+        type: "string"
+        maxLength: 1024
+      number:
+        type: "string"
+        maxLength: 1024
   commandfilereturn_results:
     properties:
       name:
@@ -5244,8 +5323,6 @@ x-stoplight:
           type: "schemas"
         - type: "schemas"
           _id: "search"
-        - _id: "sshkeylist"
-          type: "schemas"
         - _id: "sshkeypost"
           type: "schemas"
         - _id: "system"
@@ -5254,14 +5331,10 @@ x-stoplight:
           type: "schemas"
         - _id: "systemslist"
           type: "schemas"
-        - _id: "systemuser"
-          type: "schemas"
         - _id: "systemuserbinding"
           type: "schemas"
         - type: "schemas"
           _id: "systemuserbindingsput"
-        - _id: "systemuserputpost"
-          type: "schemas"
         - _id: "systemuserput"
           type: "schemas"
         - _id: "systemuserreturn"

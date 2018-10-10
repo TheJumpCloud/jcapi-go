@@ -52,14 +52,13 @@ type Systemuserput struct {
 	SambaServiceUser bool `json:"samba_service_user,omitempty"`
 
 	// type, poBox, extendedAddress, streetAddress, locality, region, postalCode, country
-	Addresses []SystemuserputpostAddresses `json:"addresses,omitempty"`
+	Addresses []SystemuserputAddresses `json:"addresses,omitempty"`
 
 	JobTitle string `json:"jobTitle,omitempty"`
 
 	Department string `json:"department,omitempty"`
 
-	// 
-	PhoneNumbers []SystemuserputpostPhoneNumbers `json:"phoneNumbers,omitempty"`
+	PhoneNumbers []SystemuserputPhoneNumbers `json:"phoneNumbers,omitempty"`
 
 	Relationships []interface{} `json:"relationships,omitempty"`
 

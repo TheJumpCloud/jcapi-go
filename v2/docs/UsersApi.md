@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**GraphUserTraverseRadiusServer**](UsersApi.md#GraphUserTraverseRadiusServer) | **Get** /users/{user_id}/radiusservers | List the RADIUS Servers bound to a User
 [**GraphUserTraverseSystem**](UsersApi.md#GraphUserTraverseSystem) | **Get** /users/{user_id}/systems | List the Systems bound to a User
 [**GraphUserTraverseSystemGroup**](UsersApi.md#GraphUserTraverseSystemGroup) | **Get** /users/{user_id}/systemgroups | List the System Groups bound to a User
+[**UserSendEmails**](UsersApi.md#UserSendEmails) | **Post** /users/{user_id}/emails | Send User Emails
 
 
 # **GraphUserAssociationsList**
@@ -481,6 +482,48 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]GraphObjectWithPaths**](GraphObjectWithPaths.md)
+
+### Authorization
+
+[x-api-key](../README.md#x-api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **UserSendEmails**
+> UserSendEmails(ctx, userId, contentType, accept, optional)
+Send User Emails
+
+This endpoint allows you to send a specific email to a user without waiting for or triggering a workflow.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **userId** | **string**| ObjectID of the User. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **string**| ObjectID of the User. | 
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
+ **body** | [**Emailrequest**](Emailrequest.md)|  | 
+ **xOrgId** | **string**|  | [default to ]
+
+### Return type
+
+ (empty response body)
 
 ### Authorization
 
