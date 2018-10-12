@@ -9,7 +9,7 @@
 
 package v2
 
-type InlineResponse200 struct {
+type Systemfdekey struct {
 
 	Key string `json:"key"`
 }

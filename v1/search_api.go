@@ -35,7 +35,6 @@ type SearchApiService service
      @param "body" (Search) 
      @param "fields" (string) Use a space seperated string of field parameters to include the data in the response. If omitted the default list of fields will be returned. 
      @param "limit" (int32) The number of records to return at once. Limited to 100.
-     @param "xOrgId" (string) 
      @param "skip" (int32) The offset into the records to return.
  @return Organizationslist*/
 func (a *SearchApiService) SearchOrganizationsPost(ctx context.Context, contentType string, accept string, localVarOptionals map[string]interface{}) (Organizationslist,  *http.Response, error) {
@@ -58,9 +57,6 @@ func (a *SearchApiService) SearchOrganizationsPost(ctx context.Context, contentT
 		return successPayload, nil, err
 	}
 	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
-		return successPayload, nil, err
-	}
-	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
 		return successPayload, nil, err
 	}
 	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
@@ -94,9 +90,6 @@ func (a *SearchApiService) SearchOrganizationsPost(ctx context.Context, contentT
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
-	}
-	if localVarTempParam, localVarOk := localVarOptionals["xOrgId"].(string); localVarOk {
-		localVarHeaderParams["x-org-id"] = parameterToString(localVarTempParam, "")
 	}
 	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
 	localVarHeaderParams["Accept"] = parameterToString(accept, "")

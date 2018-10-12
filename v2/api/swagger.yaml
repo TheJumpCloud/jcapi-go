@@ -1152,8 +1152,6 @@ paths:
       responses:
         204:
           description: "OK"
-          schema:
-            $ref: "#/definitions/inline_response_204"
       security:
       - x-api-key: []
       x-stoplight:
@@ -4944,29 +4942,40 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "SystemId"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
       responses:
         200:
           description: ""
           schema:
-            $ref: "#/definitions/inline_response_200"
+            $ref: "#/definitions/systemfdekey"
           examples:
             application/json:
               key: "cupidatat consequat occaecat proident"
         400:
           description: ""
           schema:
-            $ref: "#/definitions/inline_response_400"
-          examples:
-            application/json:
-              message: "Lorem magna irure ex incididunt"
+            $ref: "#/definitions/errorresponse"
+        401:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        403:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
         404:
           description: ""
           schema:
-            $ref: "#/definitions/inline_response_400"
+            $ref: "#/definitions/errorresponse"
         500:
           description: ""
           schema:
-            $ref: "#/definitions/inline_response_400"
+            $ref: "#/definitions/errorresponse"
       security:
       - x-api-key: []
       x-stoplight:
@@ -9219,6 +9228,16 @@ definitions:
       id: "sshkeylist"
       name: "SSHKeyList"
       public: true
+  errorresponse:
+    type: "object"
+    properties:
+      message:
+        type: "string"
+    title: "ErrorResponse"
+    x-stoplight:
+      id: "errorresponse"
+      name: "ErrorResponse"
+      public: true
   systemuser:
     type: "object"
     properties:
@@ -10668,22 +10687,18 @@ definitions:
       id: "emailrequest"
       name: "EmailRequest"
       public: true
-  inline_response_204:
-    properties:
-      id:
-        type: "string"
-    example:
-      id: "id"
-  inline_response_200:
+  systemfdekey:
+    type: "object"
     required:
     - "key"
     properties:
       key:
         type: "string"
-  inline_response_400:
-    properties:
-      message:
-        type: "string"
+    title: "SystemFDEKey"
+    x-stoplight:
+      id: "systemfdekey"
+      name: "SystemFDEKey"
+      public: true
   systemuser_attributes:
     properties:
       ?
@@ -11012,6 +11027,27 @@ parameters:
     required: false
     type: "string"
     x-exportParamName: "XOrgId"
+responses:
+  trait:standardErrors:400:
+    description: ""
+    schema:
+      $ref: "#/definitions/errorresponse"
+  trait:standardErrors:401:
+    description: ""
+    schema:
+      $ref: "#/definitions/errorresponse"
+  trait:standardErrors:403:
+    description: ""
+    schema:
+      $ref: "#/definitions/errorresponse"
+  trait:standardErrors:404:
+    description: ""
+    schema:
+      $ref: "#/definitions/errorresponse"
+  trait:standardErrors:500:
+    description: ""
+    schema:
+      $ref: "#/definitions/errorresponse"
 x-stoplight:
   beforeScript: ""
   afterScript: ""
@@ -11608,6 +11644,8 @@ x-stoplight:
         - _id: "samba-domain-input"
           type: "schemas"
         - _id: "samba-domain-output"
+          type: "schemas"
+        - _id: "systemfdekey"
           type: "schemas"
         - _id: "SystemGraphManagementReq"
           type: "schemas"

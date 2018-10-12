@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **SystemsGetFDEKey**
-> InlineResponse200 SystemsGetFDEKey(ctx, systemId)
+> Systemfdekey SystemsGetFDEKey(ctx, systemId, optional)
 Get System FDE Key
 
 This endpoint will return the current (latest) fde key saved for a system.
@@ -19,10 +19,19 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **systemId** | **string**|  | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **systemId** | **string**|  | 
+ **xOrgId** | **string**|  | [default to ]
 
 ### Return type
 
-[**InlineResponse200**](inline_response_200.md)
+[**Systemfdekey**](systemfdekey.md)
 
 ### Authorization
 
