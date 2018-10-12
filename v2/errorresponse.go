@@ -9,7 +9,7 @@
 
 package v2
 
-type InlineResponse400 struct {
+type Errorresponse struct {
 
 	Message string `json:"message,omitempty"`
 }

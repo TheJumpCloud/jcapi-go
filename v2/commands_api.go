@@ -141,14 +141,13 @@ func (a *CommandsApiService) GraphCommandAssociationsList(ctx context.Context, c
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "body" (GraphManagementReq) 
      @param "xOrgId" (string) 
- @return InlineResponse204*/
-func (a *CommandsApiService) GraphCommandAssociationsPost(ctx context.Context, commandId string, contentType string, accept string, localVarOptionals map[string]interface{}) (InlineResponse204,  *http.Response, error) {
+ @return */
+func (a *CommandsApiService) GraphCommandAssociationsPost(ctx context.Context, commandId string, contentType string, accept string, localVarOptionals map[string]interface{}) ( *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localVarFileName string
 		localVarFileBytes []byte
-	 	successPayload  InlineResponse204
 	)
 
 	// create path and map variables
@@ -160,7 +159,7 @@ func (a *CommandsApiService) GraphCommandAssociationsPost(ctx context.Context, c
 	localVarFormParams := url.Values{}
 
 	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
-		return successPayload, nil, err
+		return nil, err
 	}
 
 	// to determine the Content-Type header
@@ -205,25 +204,20 @@ func (a *CommandsApiService) GraphCommandAssociationsPost(ctx context.Context, c
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return successPayload, nil, err
+		return nil, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
+		return localVarHttpResponse, err
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
-	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
-	}
-
-
-	return successPayload, localVarHttpResponse, err
+	return localVarHttpResponse, err
 }
 
 /* CommandsApiService List the Systems bound to a Command

@@ -31,14 +31,16 @@ type FdeApiService service
  This endpoint will return the current (latest) fde key saved for a system.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param systemId 
- @return InlineResponse200*/
-func (a *FdeApiService) SystemsGetFDEKey(ctx context.Context, systemId string) (InlineResponse200,  *http.Response, error) {
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "xOrgId" (string) 
+ @return Systemfdekey*/
+func (a *FdeApiService) SystemsGetFDEKey(ctx context.Context, systemId string, localVarOptionals map[string]interface{}) (Systemfdekey,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localVarFileName string
 		localVarFileBytes []byte
-	 	successPayload  InlineResponse200
+	 	successPayload  Systemfdekey
 	)
 
 	// create path and map variables
@@ -49,6 +51,9 @@ func (a *FdeApiService) SystemsGetFDEKey(ctx context.Context, systemId string) (
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
+		return successPayload, nil, err
+	}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -68,6 +73,9 @@ func (a *FdeApiService) SystemsGetFDEKey(ctx context.Context, systemId string) (
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["xOrgId"].(string); localVarOk {
+		localVarHeaderParams["x-org-id"] = parameterToString(localVarTempParam, "")
 	}
 	if ctx != nil {
 		// API Key Authentication

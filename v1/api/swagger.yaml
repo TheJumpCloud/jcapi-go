@@ -993,12 +993,6 @@ paths:
         type: "integer"
         default: 10
         x-exportParamName: "Limit"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
       - name: "Content-Type"
         in: "header"
         required: true
@@ -2128,7 +2122,23 @@ paths:
         400:
           description: ""
           schema:
-            $ref: "#/definitions/inline_response_400"
+            $ref: "#/definitions/errorresponse"
+        401:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        403:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        404:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        500:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
       security:
       - x-api-key: []
       x-stoplight:
@@ -2183,6 +2193,8 @@ paths:
             type: "object"
             description: "Bad Request"
             properties: {}
+      security:
+      - x-api-key: []
       x-stoplight:
         id: "sshkey_list"
         beforeScript: null
@@ -2240,6 +2252,8 @@ paths:
             type: "object"
             description: "Bad Request"
             properties: {}
+      security:
+      - x-api-key: []
       x-stoplight:
         id: "sshkey_post"
         beforeScript: null
@@ -2289,6 +2303,8 @@ paths:
             type: "object"
             description: "Bad Request"
             properties: {}
+      security:
+      - x-api-key: []
       x-stoplight:
         id: "sshkey_delete"
         beforeScript: null
@@ -2605,6 +2621,16 @@ definitions:
     x-stoplight:
       id: "sshkeylist"
       name: "SSHKeyList"
+      public: true
+  errorresponse:
+    type: "object"
+    properties:
+      message:
+        type: "string"
+    title: "ErrorResponse"
+    x-stoplight:
+      id: "errorresponse"
+      name: "ErrorResponse"
       public: true
   systemuser:
     type: "object"
@@ -4573,10 +4599,6 @@ definitions:
       networkSourceIp: "0.0.0.0"
       tagsNames:
       - "tag1"
-  inline_response_400:
-    properties:
-      message:
-        type: "string"
   systemuser_attributes:
     properties:
       ?
@@ -5101,6 +5123,27 @@ parameters:
     required: false
     type: "string"
     x-exportParamName: "Search"
+responses:
+  trait:standardErrors:400:
+    description: ""
+    schema:
+      $ref: "#/definitions/errorresponse"
+  trait:standardErrors:401:
+    description: ""
+    schema:
+      $ref: "#/definitions/errorresponse"
+  trait:standardErrors:403:
+    description: ""
+    schema:
+      $ref: "#/definitions/errorresponse"
+  trait:standardErrors:404:
+    description: ""
+    schema:
+      $ref: "#/definitions/errorresponse"
+  trait:standardErrors:500:
+    description: ""
+    schema:
+      $ref: "#/definitions/errorresponse"
 x-stoplight:
   beforeScript: ""
   afterScript: ""
