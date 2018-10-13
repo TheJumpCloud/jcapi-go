@@ -11,7 +11,7 @@ package v1
 
 type OrganizationslistResults struct {
 
-	// the ID of the organization.
+	// The ID of the organization.
 	Id string `json:"_id,omitempty"`
 
 	// The name of the organization.

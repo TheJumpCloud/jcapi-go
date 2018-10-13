@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **AssociatedTagCount** | **int32** |  | [optional] [default to null]
 **TotpEnabled** | **bool** |  | [optional] [default to null]
 **PasswordExpirationDate** | **string** |  | [optional] [default to null]
-**Attributes** | [**[]SystemuserAttributes**](systemuser_attributes.md) |  | [optional] [default to null]
+**Attributes** | [**[]interface{}**](interface{}.md) |  | [optional] [default to null]
 **Created** | **string** |  | [optional] [default to null]
 **SambaServiceUser** | **bool** |  | [optional] [default to null]
 **PasswordNeverExpires** | **bool** |  | [optional] [default to null]

@@ -19,7 +19,7 @@ type Command struct {
 	// The Command OS
 	CommandType string `json:"commandType,omitempty"`
 
-	// an array of IDs of the Command Runner Users that can execute this command.
+	// An array of IDs of the Command Runner Users that can execute this command.
 	CommandRunners []string `json:"commandRunners,omitempty"`
 
 	// The ID of the system user to run the command as.

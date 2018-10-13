@@ -29,7 +29,7 @@ type CommandslistResults struct {
 	// A crontab that consists of: [ (seconds) (minutes) (hours) (days of month) (months) (weekdays) ] or [ immediate ]. If you send this as an empty string, it will run immediately. 
 	Schedule string `json:"schedule,omitempty"`
 
-	// trigger to execute command.
+	// Trigger to execute command.
 	Trigger string `json:"trigger,omitempty"`
 
 	// When the command will repeat.

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | [optional] [default to null]
 **Command** | **string** | The command to execute on the server. | [default to null]
 **CommandType** | **string** | The Command OS | [optional] [default to null]
-**CommandRunners** | **[]string** | an array of IDs of the Command Runner Users that can execute this command. | [optional] [default to null]
+**CommandRunners** | **[]string** | An array of IDs of the Command Runner Users that can execute this command. | [optional] [default to null]
 **User** | **string** | The ID of the system user to run the command as. | [default to null]
 **Sudo** | **bool** |  | [optional] [default to null]
 **Systems** | **[]string** | An array of system IDs to run the command on. Not available if you are using Groups. | [optional] [default to null]

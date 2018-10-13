@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | the ID of the organization. | [optional] [default to null]
+**Id** | **string** | The ID of the organization. | [optional] [default to null]
 **DisplayName** | **string** | The name of the organization. | [optional] [default to null]
 **LogoUrl** | **string** | The organization logo image URL.  | [optional] [default to null]
 
