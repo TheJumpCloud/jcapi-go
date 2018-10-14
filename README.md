@@ -12,9 +12,26 @@ To access our old API v1 Go client, please refer to
 [JCAPI](https://github.com/TheJumpCloud/jcapi). However this code repository
 is not up to date with current API functionality.
 
+### Authentication and Authorization
+
+All endpoints support authentication via API key: see the
+[Authentication & Authorization](https://docs.jumpcloud.com/2.0/authentication-and-authorization/authentication-and-authorization-overview)
+section in our API documentation.
+
+Some systems endpoints (in both API v1 and v2) also support
+[System Context Authorization](https://docs.jumpcloud.com/2.0/authentication-and-authorization/system-context)
+which allows an individual system to manage its information and resource
+associations.
+
 ### Usage Examples
 
-```golang
+For more detailed instructions, refer to each API version's respective README
+file ([README for API v1](v1/README.md) and [README for API v2](v2/README.md))
+and the generated documentation under each folder.
+
+#### API v2 Example
+
+```go
 package main
 
 import (
@@ -50,9 +67,9 @@ func main() {
 
 ```
 
-System Context Authorization example:
+#### System Context Authorization Example
 
-```golang
+```go
 package main
 
 import (
