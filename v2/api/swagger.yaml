@@ -9303,7 +9303,8 @@ definitions:
       attributes:
         type: "array"
         items:
-          $ref: "#/definitions/systemuser_attributes"
+          type: "object"
+          properties: {}
       created:
         type: "string"
       samba_service_user:
@@ -10699,10 +10700,6 @@ definitions:
       id: "systemfdekey"
       name: "SystemFDEKey"
       public: true
-  systemuser_attributes:
-    properties:
-      ?
-      : type: "string"
   systemuserputpost_addresses:
     properties:
       type:
@@ -11754,7 +11751,7 @@ x-stoplight:
         \  features to API V2. Depending on your type of integration you may be required\
         \ to use both V1 and V2 APIs.\n\nPlease refer to our [API V1](https://docs.jumpcloud.com/1.0)\
         \ docs to understand the functionality still available in that API set.\n\n\
-        ### API SDKS\n\nYou can find language specific SDKs that can help you kickstart\
+        ### API SDKs\n\nYou can find language specific SDKs that can help you kickstart\
         \ your Integration with JumpCloud in the following GitHub repositories:\n\n\
         * [Python](https://github.com/TheJumpCloud/jcapi-python)\n* [Go](https://github.com/TheJumpCloud/jcapi-go)\n\
         * [Ruby](https://github.com/TheJumpCloud/jcapi-ruby)\n* [Java](https://github.com/TheJumpCloud/jcapi-java)"
@@ -11762,7 +11759,7 @@ x-stoplight:
     authentication-and-authorization-overview:
       id: "authentication-and-authorization-overview"
       name: "API Key"
-      content: "#### Access your API Key\n\nTo locate your API Key:\n1. Log into the\
+      content: "#### Access Your API Key\n\nTo locate your API Key:\n1. Log into the\
         \ [JumpCloud Admin Console](https://console.jumpcloud.com/)\n2. Go to the\
         \ username drop down located in the top-right of the Console.\n3. Retrieve\
         \ your API key from API Settings.\n\n#### API Key Considerations\n\nThis API\
@@ -11770,7 +11767,7 @@ x-stoplight:
         \ will have different API keys.\n\nPlease keep this API key secret, as it\
         \ grants full access to any data accessible via your JumpCloud console account.\n\
         \nYou can also reset your API key in the same location in the JumpCloud Admin\
-        \ Console.\n\n\n##### Recycling or Reseting your API Key\n\nIn order to revoke\
+        \ Console.\n\n##### Recycling or Resetting Your API Key\n\nIn order to revoke\
         \ access with the current API key, simply reset your API key. This will render\
         \ all calls using the previous API key inaccessible.\n\nFor API V2 the API\
         \ key will be passed in as a header with the header name \"x-api-key\".\n\n\
@@ -11788,7 +11785,7 @@ x-stoplight:
         \ a system can manage its information and resource associations, allowing\
         \ modern auto provisioning environments to scale as needed.\n\n**Note: The\
         \ following documentation applies to Linux Operating Systems only.**\n\n###\
-        \ Supported endpoints\n\nJumpCloud System Context Authorization can be used\
+        \ Supported Endpoints\n\nJumpCloud System Context Authorization can be used\
         \ in conjunction with Systems endpoints found in the V1 API and certain System\
         \ Group endpoints found in the v2 API.\n\n- A system may fetch, alter, and\
         \ delete metadata about itself, including manipulating a system's Group and\
@@ -11805,7 +11802,7 @@ x-stoplight:
         - A system may alter its System Group associations\n  - `/api/v2/systemgroups/{systemgroup_id}/members`\
         \ | [`POST`](https://docs.jumpcloud.com/2.0/system-groups/update-a-system-group)\n\
         \    - _NOTE_ If a system attempts to alter the system group membership of\
-        \ a different system the request will be rejected\n\n\n### Response codes\n\
+        \ a different system the request will be rejected\n\n\n### Response Codes\n\
         \nIf endpoints other than those described above are called using the System\
         \ Context API the server will return a `401` response.\n\n### Authentication\n\
         \nTo allow for secure access to our APIs, you must authenticate each API request.\n\
@@ -11814,13 +11811,14 @@ x-stoplight:
         \ are similar to the signatures used by the Amazon Web Services REST API.\n\
         To help with the request-signing process, we have provided an [example bash\
         \ script](https://github.com/TheJumpCloud/SystemContextAPI/blob/master/examples/shell/SigningExample.sh).\
-        \ You must be root, or have permissions to access the contents of the `/opt/jc`\
-        \ directory to generate a signature.\n\n\nHere is a breakdown of the example\
-        \ script, with explanations.\n\nThe first thing the script does is extract\
-        \ the systemKey from the JSON formatted `/opt/jc/jcagent.conf` file.\n\n```\n\
-        #!/bin/bash\n\nconf=\"`cat /opt/jc/jcagent.conf`\"\nregex=\"systemKey\\\"\
-        :\\\"(\\w+)\\\"\"\n\nif [[ $conf =~ $regex ]] ; then\n  systemKey=\"${BASH_REMATCH[1]}\"\
-        \nfi\n```\n\nThen the script retrieves the current date in the correct format.\n\
+        \ This example API request simply requests the entire system record. You must\
+        \ be root, or have permissions to access the contents of the `/opt/jc` directory\
+        \ to generate a signature.\n\n\nHere is a breakdown of the example script,\
+        \ with explanations.\n\nThe first thing the script does is extract the systemKey\
+        \ from the JSON formatted `/opt/jc/jcagent.conf` file.\n\n```\n#!/bin/bash\n\
+        \nconf=\"`cat /opt/jc/jcagent.conf`\"\nregex=\"systemKey\\\":\\\"(\\w+)\\\"\
+        \"\n\nif [[ $conf =~ $regex ]] ; then\n  systemKey=\"${BASH_REMATCH[1]}\"\n\
+        fi\n```\n\nThen the script retrieves the current date in the correct format.\n\
         \n```\nnow=`date -u \"+%a, %d %h %Y %H:%M:%S GMT\"`;\n```\n\nNext we build\
         \ a signing string to demonstrate the expected signature format. The signed\
         \ string must consist of the [request-line](https://tools.ietf.org/html/rfc2616#page-35)\
@@ -11834,13 +11832,13 @@ x-stoplight:
         \ in:\n\n```\nsignature=`printf \"$signstr\" | openssl dgst -sha256 -sign\
         \ /opt/jc/client.key | openssl enc -e -a | tr -d '\\n'` ;\n```\n\nFinally,\
         \ we make sure the API call sending the signature has the same Authorization\
-        \ header and Date header values that were used in the signing string.\nThis\
-        \ example API request simply requests the entire system record.\n\n```\ncurl\
-        \ -iq \\\n  -H \"Accept: application/json\" \\\n  -H \"Content-Type: application/json\"\
-        \ \\\n  -H \"Date: ${now}\" \\\n  -H \"Authorization: Signature keyId=\\\"\
-        system/${systemKey}\\\",headers=\\\"request-line date\\\",algorithm=\\\"rsa-sha256\\\
-        \",signature=\\\"${signature}\\\"\" \\\n  --url https://console.jumpcloud.com/api/systems/${systemKey}\n\
-        ```\n\n#### Input data\n\nAll PUT and POST methods should use the HTTP Content-Type\
+        \ and Date header values, HTTP method, and URL that were used in the signing\
+        \ string.\n\n```\ncurl -iq \\\n  -H \"Accept: application/json\" \\\n  -H\
+        \ \"Content-Type: application/json\" \\\n  -H \"Date: ${now}\" \\\n  -H \"\
+        Authorization: Signature keyId=\\\"system/${systemKey}\\\",headers=\\\"request-line\
+        \ date\\\",algorithm=\\\"rsa-sha256\\\",signature=\\\"${signature}\\\"\" \\\
+        \n  --url https://console.jumpcloud.com/api/systems/${systemKey}\n```\n\n\
+        #### Input Data\n\nAll PUT and POST methods should use the HTTP Content-Type\
         \ header with a value of 'application/json'. PUT methods are used for updating\
         \ a record. POST methods are used to create a record.\n\nThe following example\
         \ demonstrates how to update the `displayName` of the system.\n\n```\nsignstr=\"\
@@ -11852,26 +11850,26 @@ x-stoplight:
         \ \"Authorization: Signature keyId=\\\"system/${systemKey}\\\",headers=\\\"\
         request-line date\\\",algorithm=\\\"rsa-sha256\\\",signature=\\\"${signature}\\\
         \"\" \\\n  --url https://console.jumpcloud.com/api/systems/${systemKey}\n\
-        ```\n\n\n#### Output data\n\nAll results will be formatted as JSON.\n\nHere\
+        ```\n\n\n#### Output Data\n\nAll results will be formatted as JSON.\n\nHere\
         \ is an abbreviated example of response output:\n\n```\n{\n  \"__v\": 0,\n\
         \  \"_id\": \"525ee96f52e144993e000015\",\n  \"agentServer\": \"lappy386\"\
         ,\n  \"agentVersion\": \"0.9.42\",\n  \"arch\": \"x86_64\",\n  \"connectionKey\"\
         : \"127.0.0.1_51812\",\n  \"displayName\": \"ubuntu-1204\",\n  \"firstContact\"\
         : \"2013-10-16T19:30:55.611Z\",\n  \"hostname\": \"ubuntu-1204\"\n  ...\n\
-        ```\n\n\n### Additional examples\n\n#### Signing authentication example\n\n\
+        ```\n\n\n### Additional Examples\n\n#### Signing Authentication Example\n\n\
         This example demonstrates how to make an authenticated request to fetch the\
         \ JumpCloud record for this system.\n\n[SigningExample.sh](https://github.com/TheJumpCloud/SystemContextAPI/blob/master/examples/shell/SigningExample.sh)\n\
-        \n\n#### Shutdown hook\n\nThis example demonstrates how to make authenticated\
+        \n\n#### Shutdown Hook\n\nThis example demonstrates how to make authenticated\
         \ request on system shutdown.\nUsing an init.d script registered at run level\
         \ 0, you can call the System Context API as the system is shutting down.\n\
-        \n[Instance-shutdown-initd](/examples/instance-shutdown-initd) is an example\
-        \ of an init.d script that only runs at system shutdown.\n\nAfter customizing\
-        \ the [instance-shutdown-initd](https://github.com/TheJumpCloud/SystemContextAPI/blob/master/examples/instance-shutdown-initd)\
+        \n[Instance-shutdown-initd](https://github.com/TheJumpCloud/SystemContextAPI/blob/master/examples/instance-shutdown-initd)\
+        \ is an example of an init.d script that only runs at system shutdown.\n\n\
+        After customizing the [instance-shutdown-initd](https://github.com/TheJumpCloud/SystemContextAPI/blob/master/examples/instance-shutdown-initd)\
         \ script, you should install it on the system(s) running the JumpCloud agent...\n\
         \n1. Copy the modified [instance-shutdown-initd](https://github.com/TheJumpCloud/SystemContextAPI/blob/master/examples/instance-shutdown-initd)\
         \ to `/etc/init.d/instance-shutdown`\n2. On Ubuntu systems, run `update-rc.d\
         \ instance-shutdown defaults`. On RedHat/CentOS systems, run `chkconfig --add\
-        \ instance-shutdown`\n\n\n### Third party\n\n#### Chef cookbooks\n\n[https://github.com/nshenry03/jumpcloud](https://github.com/nshenry03/jumpcloud)\n\
+        \ instance-shutdown`\n\n\n### Third Party\n\n#### Chef Cookbooks\n\n[https://github.com/nshenry03/jumpcloud](https://github.com/nshenry03/jumpcloud)\n\
         \n[https://github.com/cjs226/jumpcloud](https://github.com/cjs226/jumpcloud)"
       public: true
     multi-tenant-organization-api-headers:
@@ -11884,13 +11882,13 @@ x-stoplight:
         \ what organization you would like to make the request for.\n\nPlease note\
         \ that Single Tenant Admins do not need to provide this header when making\
         \ an API request.\n\n#### Header Value\n\n`x-org-id`\n\n#### API Response\
-        \ codes\n\n- `400` Malformed ID.\n- `400` x-org-id and Organization path ID\
+        \ Codes\n\n- `400` Malformed ID.\n- `400` x-org-id and Organization path ID\
         \ do not match.\n- `401` ID not included for multi-tenant admin\n- `403` ID\
         \ included on unsupported route.\n- `404` Organization ID Not Found.\n\n####\
         \ Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/directories\
         \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -H 'x-org-id: {ORG_ID}'\n\n```\n\n\
-        #### To obtain an individual Organization ID via the UI\n\nAs a prerequisite\
+        #### To Obtain an Individual Organization ID via the UI\n\nAs a prerequisite\
         \ your Primary Organization will need to be setup for Multi-Tenancy which\
         \ will give you access to the Multi-Tenant Organization Admin Portal.\n\n\
         1. Log into JumpCloud [Admin Console](https://console.jumpcloud.com). If you\
@@ -11900,7 +11898,7 @@ x-stoplight:
         \ be routed to that Organization's Admin Console.\n4. Go to Settings in the\
         \ sub-tenant's primary navigation.\n5. You can obtain your Organization ID\
         \ below your Organization's Contact Information on the Settings page.\n\n\
-        #### To obtain all Organization IDs via the API\n\n1. You can make an API\
+        #### To Obtain All Organization IDs via the API\n\n1. You can make an API\
         \ request to this endpoint using the API key of your Primary Organization.\
         \  `https://console.jumpcloud.com/api/organizations/` This will return all\
         \ your managed organizations.\n\n#### Sample Request\n```\ncurl -X GET \\\n\
