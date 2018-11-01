@@ -4183,6 +4183,8 @@ definitions:
           properties: {}
       sshRootEnabled:
         type: "boolean"
+      amazonInstanceID:
+        type: "string"
       tags:
         type: "array"
         items:
