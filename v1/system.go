@@ -10,7 +10,6 @@
 package v1
 
 type System struct {
-
 	Organization string `json:"organization,omitempty"`
 
 	Created string `json:"created,omitempty"`
@@ -60,4 +59,6 @@ type System struct {
 	Id string `json:"_id,omitempty"`
 
 	Fde *Fde `json:"fde,omitempty"`
+
+	AmazonInstanceID string `json:"amazonInstanceID"`
 }
