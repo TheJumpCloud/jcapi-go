@@ -89,4 +89,6 @@ type Systemuser struct {
 	JobTitle string `json:"jobTitle,omitempty"`
 
 	Department string `json:"department,omitempty"`
+
+	MfaData *SystemuserMfaData `json:"mfaData,omitempty"`
 }

@@ -83,4 +83,6 @@ type Systemuserputpost struct {
 
 	// Must be unique per user. 
 	EmployeeIdentifier string `json:"employeeIdentifier,omitempty"`
+
+	MfaData *SystemuserMfaData `json:"mfaData,omitempty"`
 }

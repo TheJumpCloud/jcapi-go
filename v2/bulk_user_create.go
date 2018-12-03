@@ -19,5 +19,6 @@ type BulkUserCreate struct {
 
 	Email string `json:"email,omitempty"`
 
+	// Map of all additional attributes. If a passed attribute is not a top level `systemuser` field it will be added to custom attributes.
 	Attributes []interface{} `json:"attributes,omitempty"`
 }

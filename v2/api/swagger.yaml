@@ -634,7 +634,7 @@ paths:
       summary: "List the Users bound to an Application"
       description: "This endpoint will return all Users bound to an Application, either\
         \ directly or indirectly, essentially traversing the JumpCloud Graph for your\
-        \ Organization. \n\nEach element will contain the type, id, attributes and\
+        \ Organization.\n\nEach element will contain the type, id, attributes and\
         \ paths.\n\nThe `attributes` object is a key/value hash of compiled graph\
         \ attributes for all paths followed.\n\nThe `paths` array enumerates each\
         \ path from this Application to the corresponding User; this array represents\
@@ -783,7 +783,7 @@ paths:
       - "Bulk Job Requests"
       summary: "List Bulk Users Create Results"
       description: "This endpoint will return the results of particular import job\
-        \ request.\n\n###Sample Request \n```\ncurl -X GET \\\n  https://console.jumpcloud.com/api/v2/bulk/users/{ImportJobID}/results\
+        \ request.\n\n###Sample Request\n```\ncurl -X GET \\\n  https://console.jumpcloud.com/api/v2/bulk/users/{ImportJobID}/results\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
       operationId: "bulk_usersCreateResults"
@@ -900,13 +900,72 @@ paths:
           enabled: false
           dynamic: false
           statusCode: 200
+    patch:
+      tags:
+      - "Bulk Job Requests"
+      summary: "Bulk Users Update"
+      description: "The endpoint allows you to create a bulk job to asynchronously\
+        \ update users.\n\n#### Sample Request \n```\ncurl -X PATCH https://console.jumpcloud.com/api/v2/bulk/users\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '[\n\t{\n\t  \"id\":\"5be9fb4ddb01290001e85109\"\
+        ,\n\t\t\"firstname\":\"{UPDATED_FIRSTNAME}\",\n\t\t\"department\":\"{UPDATED_DEPARTMENT}\"\
+        ,\n\t\t\"attributes\":[\n\t\t\t{\"name\":\"Custom\",\"value\":\"{ATTRIBUTE_VALUE}\"\
+        }\n\t\t]\n\t},\n\t{\n\t  \"id\":\"5be9fb4ddb01290001e85109\",\n\t\t\"firstname\"\
+        :\"{UPDATED_FIRSTNAME}\",\n\t\t\"costCenter\":\"{UPDATED_COST_CENTER}\",\n\
+        \t\t\"phoneNumbers\":[\n\t\t\t{\"type\":\"home\",\"number\":\"{HOME_PHONE_NUMBER}\"\
+        },\n\t\t\t{\"type\":\"work\",\"number\":\"{WORK_PHONE_NUMBER}\"}\n\t\t]\n\t\
+        }\n]\n```"
+      operationId: "bulk_usersUpdate"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          type: "array"
+          items:
+            $ref: "#/definitions/bulk-user-update"
+        x-exportParamName: "Body"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        201:
+          description: ""
+          schema:
+            $ref: "#/definitions/job-id"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        id: "bulk_usersUpdate"
+        beforeScript: null
+        afterScript: null
+        public: false
+        mock:
+          enabled: false
+          dynamic: false
+          statusCode: 200
   /jobs/{id}/results:
     get:
       tags:
       - "Bulk Job Requests"
       summary: "List Job Results"
       description: "This endpoint will return the results of particular import job\
-        \ request.\n\n###Sample Request \n```\ncurl -X GET \\\n  https://console.jumpcloud.com/api/v2/jobs/{ImportJobID}/results\
+        \ request.\n\n###Sample Request\n```\ncurl -X GET \\\n  https://console.jumpcloud.com/api/v2/jobs/{ImportJobID}/results\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
       operationId: "jobs_results"
@@ -1781,6 +1840,255 @@ paths:
           enabled: false
           dynamic: false
           statusCode: 200
+  /gsuites/{gsuite_id}/translationrules:
+    get:
+      tags:
+      - "G Suite"
+      summary: "List all the G Suite Translation Rules"
+      description: "This endpoint returns all graph translation rules for a specific\
+        \ G Suite instance. These rules specify how JumpCloud attributes translate\
+        \ to [G Suite Admin SDK](https://developers.google.com/admin-sdk/directory/)\
+        \ attributes.\n\n##### Sample Request\n\n```\n curl -X GET  https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/translationrules\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
+      operationId: "translationRules_gSuiteList"
+      parameters:
+      - name: "gsuite_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "GsuiteId"
+      - name: "fields"
+        in: "query"
+        description: "The comma separated fields included in the returned records.\n\
+          If omitted the default list of fields will be returned.\n"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Fields"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
+          \ in"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      - name: "limit"
+        in: "query"
+        description: "The number of records to return at once. Limited to 100."
+        required: false
+        type: "integer"
+        default: 10
+        x-exportParamName: "Limit"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        x-exportParamName: "Skip"
+      - name: "sort"
+        in: "query"
+        description: "The comma separated fields used to sort the collection.\nDefault\
+          \ sort is ascending, prefix with `-` to sort descending.\n"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Sort"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/g-suite-translation-rule"
+          examples:
+            application/json:
+            - id: "object_id_1"
+              source_type: "user"
+              field: "g_suite_work_addresses"
+        500:
+          description: ""
+          schema:
+            $ref: "#/definitions/inline_response_500"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        id: "translationRules_gSuiteList"
+        beforeScript: null
+        afterScript: null
+        public: false
+        mock:
+          enabled: false
+          dynamic: false
+          statusCode: 200
+    post:
+      tags:
+      - "G Suite"
+      summary: "Create a new G Suite Translation Rule"
+      description: "This endpoint allows you to create a translation rule for a specific\
+        \ G Suite instance. These rules specify how JumpCloud attributes translate\
+        \ to [G Suite Admin SDK](https://developers.google.com/admin-sdk/directory/)\
+        \ attributes.\n\n##### Sample Request \n```\ncurl -X POST https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/translationrules\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{ \n  {Translation Rule Parameters}\n\
+        }'\n\n```"
+      operationId: "translationRules_gSuitePost"
+      parameters:
+      - name: "gsuite_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "GsuiteId"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/g-suite-translation-rule-request"
+        x-exportParamName: "Body"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        201:
+          description: ""
+          schema:
+            $ref: "#/definitions/inline_response_201"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        id: "translationRules_gSuitePost"
+        beforeScript: null
+        afterScript: null
+        public: false
+        mock:
+          enabled: false
+          dynamic: false
+          statusCode: 200
+  /gsuites/{gsuite_id}/translationrules/{id}:
+    get:
+      tags:
+      - "G Suite"
+      summary: "Gets a specific g suite translation rule"
+      description: "This endpoint returns a specific translation rule for a specific\
+        \ G Suite instance. These rules specify how JumpCloud attributes translate\
+        \ to [G Suite Admin SDK](https://developers.google.com/admin-sdk/directory/)\
+        \ attributes.\n\n###### Sample Request\n\n```\n  curl -X GET https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/translationrules/{id}\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
+      operationId: "translationRules_gSuiteGet"
+      parameters:
+      - name: "gsuite_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "GsuiteId"
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/g-suite-translation-rule"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        id: "translationRules_gSuiteGet"
+        beforeScript: null
+        afterScript: null
+        public: false
+        mock:
+          enabled: false
+          dynamic: false
+          statusCode: 200
+    delete:
+      tags:
+      - "G Suite"
+      summary: "Deletes a G Suite translation rule"
+      description: "This endpoint allows you to delete a translation rule for a specific\
+        \ G Suite instance. These rules specify how JumpCloud attributes translate\
+        \ to [G Suite Admin SDK](https://developers.google.com/admin-sdk/directory/)\
+        \ attributes.\n\n#### Sample Request\n\n```\ncurl -X DELETE https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/translationrules/{id}\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
+      operationId: "translationRules_gSuiteDelete"
+      parameters:
+      - name: "gsuite_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "GsuiteId"
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        204:
+          description: ""
+      security:
+      - x-api-key: []
+      x-stoplight:
+        id: "translationRules_gSuiteDelete"
+        beforeScript: null
+        afterScript: null
+        public: false
+        mock:
+          enabled: false
+          dynamic: false
+          statusCode: 200
   /ldapservers/{ldapserver_id}/associations:
     get:
       tags:
@@ -2524,6 +2832,255 @@ paths:
           enabled: false
           dynamic: false
           statusCode: 200
+  /office365s/{office365_id}/translationrules:
+    get:
+      tags:
+      - "Office 365"
+      summary: "List all the Office 365 Translation Rules"
+      description: "This endpoint returns all translation rules for a specific Office\
+        \ 365 instance. These rules specify how JumpCloud attributes translate to\
+        \ [Microsoft Graph](https://developer.microsoft.com/en-us/graph) attributes.\n\
+        \n##### Sample Request\n\n```\n curl -X GET  https://console.jumpcloud.com/api/v2/office365s/{office365_id}/translationrules\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
+      operationId: "translationRules_office365List"
+      parameters:
+      - name: "office365_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "Office365Id"
+      - name: "fields"
+        in: "query"
+        description: "The comma separated fields included in the returned records.\n\
+          If omitted the default list of fields will be returned.\n"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Fields"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
+          \ in"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      - name: "limit"
+        in: "query"
+        description: "The number of records to return at once. Limited to 100."
+        required: false
+        type: "integer"
+        default: 10
+        x-exportParamName: "Limit"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        x-exportParamName: "Skip"
+      - name: "sort"
+        in: "query"
+        description: "The comma separated fields used to sort the collection.\nDefault\
+          \ sort is ascending, prefix with `-` to sort descending.\n"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Sort"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/office-365-translation-rule"
+          examples:
+            application/json:
+            - id: "object_id_1"
+              source_type: "user"
+              field: "office_365_state"
+        500:
+          description: ""
+          schema:
+            $ref: "#/definitions/inline_response_500"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        id: "translationRules_office365List"
+        beforeScript: null
+        afterScript: null
+        public: false
+        mock:
+          enabled: false
+          dynamic: false
+          statusCode: 200
+    post:
+      tags:
+      - "Office 365"
+      summary: "Create a new Office 365 Translation Rule"
+      description: "This endpoint allows you to create a translation rule for a specific\
+        \ Office 365 instance. These rules specify how JumpCloud attributes translate\
+        \ to [Microsoft Graph](https://developer.microsoft.com/en-us/graph) attributes.\n\
+        \n##### Sample Request \n```\ncurl -X POST https://console.jumpcloud.com/api/v2/office365s/{office365_id}/translationrules\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{ \n  {Translation Rule Parameters}\n\
+        }'\n\n```"
+      operationId: "translationRules_office365Post"
+      parameters:
+      - name: "office365_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "Office365Id"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/office-365-translation-rule-request"
+        x-exportParamName: "Body"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        201:
+          description: ""
+          schema:
+            $ref: "#/definitions/inline_response_201_1"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        id: "translationRules_office365Post"
+        beforeScript: null
+        afterScript: null
+        public: false
+        mock:
+          enabled: false
+          dynamic: false
+          statusCode: 200
+  /office365s/{office365_id}/translationrules/{id}:
+    get:
+      tags:
+      - "Office 365"
+      summary: "Gets a specific Office 365 translation rule"
+      description: "This endpoint returns a specific translation rule for a specific\
+        \ Office 365 instance. These rules specify how JumpCloud attributes translate\
+        \ to [Microsoft Graph](https://developer.microsoft.com/en-us/graph) attributes.\n\
+        \n###### Sample Request\n\n```\n  curl -X GET https://console.jumpcloud.com/api/v2/office365s/{office365_id}/translationrules/{id}\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
+      operationId: "translationRules_office365Get"
+      parameters:
+      - name: "office365_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "Office365Id"
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/office-365-translation-rule"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        id: "translationRules_office365Get"
+        beforeScript: null
+        afterScript: null
+        public: false
+        mock:
+          enabled: false
+          dynamic: false
+          statusCode: 200
+    delete:
+      tags:
+      - "Office 365"
+      summary: "Deletes a Office 365 translation rule"
+      description: "This endpoint allows you to delete a translation rule for a specific\
+        \ Office 365 instance. These rules specify how JumpCloud attributes translate\
+        \ to [Microsoft Graph](https://developer.microsoft.com/en-us/graph) attributes.\n\
+        \n#### Sample Request\n\n```\ncurl -X DELETE https://console.jumpcloud.com/api/v2/office365s/{office365_id}/translationrules/{id}\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
+      operationId: "translationRules_office365Delete"
+      parameters:
+      - name: "office365_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "Office365Id"
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        204:
+          description: ""
+      security:
+      - x-api-key: []
+      x-stoplight:
+        id: "translationRules_office365Delete"
+        beforeScript: null
+        afterScript: null
+        public: false
+        mock:
+          enabled: false
+          dynamic: false
+          statusCode: 200
   /policies:
     get:
       tags:
@@ -2622,11 +3179,10 @@ paths:
       summary: "Create a new Policy"
       description: "This endpoint allows you to create a policy. Given the amount\
         \ of configurable parameters required to create a Policy, we suggest you use\
-        \ the JumpCloud Admin Console to create new policies.\n\n##### Sample Request\
-        \ \n```\ncurl -X POST https://console.jumpcloud.com/api/v2/policies \\\n \
-        \ -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{ \n  {Policy_Parameters}\n}'\n\
-        \n```"
+        \ the JumpCloud Admin Console to create new policies.\n\n##### Sample Request\n\
+        ```\ncurl -X POST https://console.jumpcloud.com/api/v2/policies \\\n  -H 'Accept:\
+        \ application/json' \\\n  -H 'Content-Type: application/json' \\\n  -H 'x-api-key:\
+        \ {API_KEY}' \\\n  -d '{\n  {Policy_Parameters}\n}'\n\n```"
       operationId: "policies_post"
       parameters:
       - in: "body"
@@ -2820,8 +3376,8 @@ paths:
       tags:
       - "Policies"
       summary: "Lists all the policy results of a policy."
-      description: "This endpoint returns all policies results for a specific policy.\
-        \ \n\n##### Sample Request\n\n```\n curl -X GET https://console.jumpcloud.com/api/v2/policies/{Policy_ID}/policyresults\
+      description: "This endpoint returns all policies results for a specific policy.\n\
+        \n##### Sample Request\n\n```\n curl -X GET https://console.jumpcloud.com/api/v2/policies/{Policy_ID}/policyresults\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
       operationId: "policyresults_list"
@@ -2920,8 +3476,8 @@ paths:
       tags:
       - "Policies"
       summary: "Lists all the policy results for an organization."
-      description: "This endpoint returns all policies results for an Organization.\
-        \ \n\n##### Sample Request\n\n```\n curl -X GET https://console.jumpcloud.com/api/v2/policyresults\
+      description: "This endpoint returns all policies results for an Organization.\n\
+        \n##### Sample Request\n\n```\n curl -X GET https://console.jumpcloud.com/api/v2/policyresults\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
       operationId: "policyresults_list"
@@ -3003,6 +3559,99 @@ paths:
       - x-api-key: []
       x-stoplight:
         id: "policyresults_list"
+        beforeScript: null
+        afterScript: null
+        public: true
+        mock:
+          enabled: false
+          dynamic: false
+          statusCode: 200
+  /policies/{policy_id}/policystatuses:
+    get:
+      tags:
+      - "Policies"
+      summary: "Lists the latest policy results of a policy."
+      description: "This endpoint returns the latest policies results for a specific\
+        \ policy.\n\n##### Sample Request\n\n```\n curl -X GET https://console.jumpcloud.com/api/v2/policies/{Policy_ID}/policystatuses\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
+      operationId: "policystatuses_list"
+      parameters:
+      - name: "policy_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "PolicyId"
+      - name: "fields"
+        in: "query"
+        description: "The comma separated fields included in the returned records.\n\
+          If omitted the default list of fields will be returned.\n"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Fields"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
+          \ in"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      - name: "limit"
+        in: "query"
+        description: "The number of records to return at once. Limited to 100."
+        required: false
+        type: "integer"
+        default: 10
+        x-exportParamName: "Limit"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        x-exportParamName: "Skip"
+      - name: "sort"
+        in: "query"
+        description: "The comma separated fields used to sort the collection.\nDefault\
+          \ sort is ascending, prefix with `-` to sort descending.\n"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Sort"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/PolicyResult"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        id: "policystatuses_list"
         beforeScript: null
         afterScript: null
         public: true
@@ -3105,99 +3754,6 @@ paths:
           enabled: false
           dynamic: false
           statusCode: 200
-  /policies/{policy_id}/policystatuses:
-    get:
-      tags:
-      - "Policies"
-      summary: "Lists the latest policy results of a policy."
-      description: "This endpoint returns the latest policies results for a specific\
-        \ policy. \n\n##### Sample Request\n\n```\n curl -X GET https://console.jumpcloud.com/api/v2/policies/{Policy_ID}/policystatuses\
-        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
-      operationId: "policystatuses_list"
-      parameters:
-      - name: "policy_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "PolicyId"
-      - name: "fields"
-        in: "query"
-        description: "The comma separated fields included in the returned records.\n\
-          If omitted the default list of fields will be returned.\n"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Fields"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
-          \ in"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "limit"
-        in: "query"
-        description: "The number of records to return at once. Limited to 100."
-        required: false
-        type: "integer"
-        default: 10
-        x-exportParamName: "Limit"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        x-exportParamName: "Skip"
-      - name: "sort"
-        in: "query"
-        description: "The comma separated fields used to sort the collection.\nDefault\
-          \ sort is ascending, prefix with `-` to sort descending.\n"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Sort"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/PolicyResult"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        id: "policystatuses_list"
-        beforeScript: null
-        afterScript: null
-        public: true
-        mock:
-          enabled: false
-          dynamic: false
-          statusCode: 200
   /policies/{policy_id}/systems:
     get:
       tags:
@@ -3206,7 +3762,7 @@ paths:
       summary: "List the Systems bound to a Policy"
       description: "This endpoint will return all Systems bound to a Policy, either\
         \ directly or indirectly, essentially traversing the JumpCloud Graph for your\
-        \ Organization. \n\nEach element will contain the type, id, attributes and\
+        \ Organization.\n\nEach element will contain the type, id, attributes and\
         \ paths.\n\nThe `attributes` object is a key/value hash of compiled graph\
         \ attributes for all paths followed.\n\nThe `paths` array enumerates each\
         \ path from this Policy to the corresponding System; this array represents\
@@ -3853,7 +4409,7 @@ paths:
       summary: "List the Users bound to a RADIUS  Server"
       description: "This endpoint will return all Users bound to a RADIUS Server,\
         \ either directly or indirectly, essentially traversing the JumpCloud Graph\
-        \ for your Organization. \n\nEach element will contain the type, id, attributes\
+        \ for your Organization.\n\nEach element will contain the type, id, attributes\
         \ and paths.\n\nThe `attributes` object is a key/value hash of compiled graph\
         \ attributes for all paths followed.\n\nThe `paths` array enumerates each\
         \ path from this RADIUS server instance to the corresponding User; this array\
@@ -3929,7 +4485,7 @@ paths:
       summary: "List the User Groups bound to a RADIUS  Server"
       description: "This endpoint will return all Users Groups bound to a RADIUS Server,\
         \ either directly or indirectly, essentially traversing the JumpCloud Graph\
-        \ for your Organization. \n\nEach element will contain the group's type, id,\
+        \ for your Organization.\n\nEach element will contain the group's type, id,\
         \ attributes and paths.\n\nThe `attributes` object is a key/value hash of\
         \ compiled graph attributes for all paths followed.\n\nThe `paths` array enumerates\
         \ each path from this RADIUS server instance to the corresponding User Group;\
@@ -4102,8 +4658,8 @@ paths:
       description: "This endpoint allows you to create a samba domain for an LDAP\
         \ server.\n\n##### Sample Request\n```\ncurl -X POST https://console.jumpcloud.com/api/v2/ldapservers/{LDAP_ID}/sambadomains\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n\"sid\":\"{SID_ID}\", \n\"\
-        name\":\"{WORKGROUP_NAME}\" \n}'\n```"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n\"sid\":\"{SID_ID}\",\n\"name\"\
+        :\"{WORKGROUP_NAME}\"\n}'\n```"
       operationId: "ldapservers_sambaDomainsPost"
       parameters:
       - name: "ldapserver_id"
@@ -4216,8 +4772,8 @@ paths:
       description: "This endpoint allows you to update the samba domain information\
         \ for an LDAP server.\n\n##### Sample Request\n```\ncurl -X PUT https://console.jumpcloud.com/api/v2/ldapservers/{LDAP_ID}/sambadomains/{SAMBA_ID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n\"sid\":\"{SID_ID}\", \n\"\
-        name\":\"{WORKGROUP_NAME}\"\n}'\n\n```"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n\"sid\":\"{SID_ID}\",\n\"name\"\
+        :\"{WORKGROUP_NAME}\"\n}'\n\n```"
       operationId: "ldapservers_sambaDomainsPut"
       parameters:
       - name: "ldapserver_id"
@@ -4443,8 +4999,8 @@ paths:
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n   \"attributes\": {\n    \
         \  \"sudo\": {\n         \"enabled\": true,\n         \"withoutPassword\"\
-        : false\n      }\n   }, \n    \"op\": \"add\",\n    \"type\": \"user\",\n\
-        \    \"id\": \"UserID\"\n}'\n\n```"
+        : false\n      }\n   },\n    \"op\": \"add\",\n    \"type\": \"user\",\n \
+        \   \"id\": \"UserID\"\n}'\n\n```"
       operationId: "graph_systemAssociationsPost"
       parameters:
       - name: "system_id"
@@ -4610,7 +5166,7 @@ paths:
       summary: "List the Policies bound to a System"
       description: "This endpoint will return all Policies bound to a System, either\
         \ directly or indirectly, essentially traversing the JumpCloud Graph for your\
-        \ Organization. \n\nEach element will contain the type, id, attributes and\
+        \ Organization.\n\nEach element will contain the type, id, attributes and\
         \ paths.\n\nThe `attributes` object is a key/value hash of compiled graph\
         \ attributes for all paths followed.\n\nThe `paths` array enumerates each\
         \ path from this System to the corresponding Policy; this array represents\
@@ -4686,7 +5242,7 @@ paths:
       summary: "List the Users bound to a System"
       description: "This endpoint will return all Users bound to a System, either\
         \ directly or indirectly essentially traversing the JumpCloud Graph for your\
-        \ Organization. \n\nEach element will contain the type, id, attributes and\
+        \ Organization.\n\nEach element will contain the type, id, attributes and\
         \ paths.\n\nThe `attributes` object is a key/value hash of compiled graph\
         \ attributes for all paths followed.\n\nThe `paths` array enumerates each\
         \ path from this System to the corresponding User; this array represents all\
@@ -4710,6 +5266,12 @@ paths:
         type: "integer"
         default: 10
         x-exportParamName: "Limit"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
       - name: "Content-Type"
         in: "header"
         required: true
@@ -4741,12 +5303,15 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Authorization"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
+          \ in"
         required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
       responses:
         200:
           description: "OK"
@@ -4848,7 +5413,7 @@ paths:
       summary: "List the User Groups bound to a System"
       description: "This endpoint will return all User Groups bound to a System, either\
         \ directly or indirectly essentially traversing the JumpCloud Graph for your\
-        \ Organization. \n\nEach element will contain the type, id, attributes and\
+        \ Organization.\n\nEach element will contain the type, id, attributes and\
         \ paths.\n\nThe `attributes` object is a key/value hash of compiled graph\
         \ attributes for all paths followed.\n\nThe `paths` array enumerates each\
         \ path from this System to the corresponding User Group; this array represents\
@@ -6234,7 +6799,7 @@ paths:
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n   \"attributes\": {\n    \
         \  \"sudo\": {\n         \"enabled\": true,\n         \"withoutPassword\"\
-        : false\n      }\n   }, \n   \"op\": \"add\",\n   \"type\": \"system_group\"\
+        : false\n      }\n   },\n   \"op\": \"add\",\n   \"type\": \"system_group\"\
         ,\n   \"id\": \"{GroupID}\"\n}'"
       operationId: "graph_userAssociationsPost"
       parameters:
@@ -6377,7 +6942,7 @@ paths:
       summary: "List the Applications bound to a User"
       description: "This endpoint will return all Applications bound to a User, either\
         \ directly or indirectly, essentially traversing the JumpCloud Graph for your\
-        \ Organization. \n\nEach element will contain the type, id, attributes and\
+        \ Organization.\n\nEach element will contain the type, id, attributes and\
         \ paths.\n\nThe `attributes` object is a key/value hash of compiled graph\
         \ attributes for all paths followed.\n\nThe `paths` array enumerates each\
         \ path from this User to the corresponding Application; this array represents\
@@ -6452,7 +7017,7 @@ paths:
       summary: "List the Directories bound to a User"
       description: "This endpoint will return all Directories bound to a User, either\
         \ directly or indirectly, essentially traversing the JumpCloud Graph for your\
-        \ Organization. \n\nEach element will contain the type, id, attributes and\
+        \ Organization.\n\nEach element will contain the type, id, attributes and\
         \ paths.\n\nThe `attributes` object is a key/value hash of compiled graph\
         \ attributes for all paths followed.\n\nThe `paths` array enumerates each\
         \ path from this User to the corresponding Directory; this array represents\
@@ -6527,7 +7092,7 @@ paths:
       summary: "List the G Suite instances bound to a User"
       description: "This endpoint will return all G-Suite Instances bound to a User,\
         \ either directly or indirectly, essentially traversing the JumpCloud Graph\
-        \ for your Organization. \n\nEach element will contain the type, id, attributes\
+        \ for your Organization.\n\nEach element will contain the type, id, attributes\
         \ and paths.\n\nThe `attributes` object is a key/value hash of compiled graph\
         \ attributes for all paths followed.\n\nThe `paths` array enumerates each\
         \ path from this User to the corresponding G Suite instance; this array represents\
@@ -6603,7 +7168,7 @@ paths:
       summary: "List the LDAP servers bound to a User"
       description: "This endpoint will return all LDAP Servers bound to a User, either\
         \ directly or indirectly, essentially traversing the JumpCloud Graph for your\
-        \ Organization. \n\nEach element will contain the type, id, attributes and\
+        \ Organization.\n\nEach element will contain the type, id, attributes and\
         \ paths.\n\nThe `attributes` object is a key/value hash of compiled graph\
         \ attributes for all paths followed.\n\nThe `paths` array enumerates each\
         \ path from this User to the corresponding LDAP Server; this array represents\
@@ -6678,7 +7243,7 @@ paths:
       summary: "List the Office 365 instances bound to a User"
       description: "This endpoint will return all Office 365 Instances bound to a\
         \ User, either directly or indirectly, essentially traversing the JumpCloud\
-        \ Graph for your Organization. \n\nEach element will contain the type, id,\
+        \ Graph for your Organization.\n\nEach element will contain the type, id,\
         \ attributes and paths.\n\nThe `attributes` object is a key/value hash of\
         \ compiled graph attributes for all paths followed.\n\nThe `paths` array enumerates\
         \ each path from this User to the corresponding Office 365 instance; this\
@@ -6754,7 +7319,7 @@ paths:
       summary: "List the Systems bound to a User"
       description: "This endpoint will return all Systems bound to a User, either\
         \ directly or indirectly, essentially traversing the JumpCloud Graph for your\
-        \ Organization. \n\nEach element will contain the type, id, attributes and\
+        \ Organization.\n\nEach element will contain the type, id, attributes and\
         \ paths.\n\nThe `attributes` object is a key/value hash of compiled graph\
         \ attributes for all paths followed.\n\nThe `paths` array enumerates each\
         \ path from this User to the corresponding System; this array represents all\
@@ -6778,6 +7343,12 @@ paths:
         type: "integer"
         default: 10
         x-exportParamName: "Limit"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
       - name: "Content-Type"
         in: "header"
         required: true
@@ -6797,12 +7368,15 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
+          \ in"
         required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
       responses:
         200:
           description: "OK"
@@ -6829,7 +7403,7 @@ paths:
       summary: "List the RADIUS Servers bound to a User"
       description: "This endpoint will return all RADIUS Servers bound to a User,\
         \ either directly or indirectly, essentially traversing the JumpCloud Graph\
-        \ for your Organization.  \n\nEach element will contain the type, id, attributes\
+        \ for your Organization.\n\nEach element will contain the type, id, attributes\
         \ and paths.\n\nThe `attributes` object is a key/value hash of compiled graph\
         \ attributes for all paths followed.\n\nThe `paths` array enumerates each\
         \ path from this User to the corresponding RADIUS Server; this array represents\
@@ -6905,7 +7479,7 @@ paths:
       summary: "List the System Groups bound to a User"
       description: "This endpoint will return all System Groups bound to a User, either\
         \ directly or indirectly, essentially traversing the JumpCloud Graph for your\
-        \ Organization. \n\nEach element will contain the type, id, attributes and\
+        \ Organization.\n\nEach element will contain the type, id, attributes and\
         \ paths.\n\nThe `attributes` object is a key/value hash of compiled graph\
         \ attributes for all paths followed.\n\nThe `paths` array enumerates each\
         \ path from this User to the corresponding System Group; this array represents\
@@ -6979,7 +7553,7 @@ paths:
       summary: "Send User Emails"
       description: "This endpoint allows you to send a specific email to a user without\
         \ waiting for or triggering a workflow."
-      operationId: "user_sendEmails"
+      operationId: "users_sendEmails"
       parameters:
       - name: "user_id"
         in: "path"
@@ -7017,7 +7591,7 @@ paths:
       security:
       - x-api-key: []
       x-stoplight:
-        id: "user_sendEmails"
+        id: "users_sendEmails"
         beforeScript: null
         afterScript: null
         public: false
@@ -7227,8 +7801,8 @@ paths:
       description: "This endpoint allows you to do a full update of the User Group.\n\
         \n#### Sample Request\n```\ncurl -X PUT https://console.jumpcloud.com/api/v2/usergroups/{Group_ID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY' \\\n  -d '{ \n \"name\": \"group_update\"\
-        \n}'\n\n```"
+        \ \\\n  -H 'x-api-key: {API_KEY' \\\n  -d '{\n \"name\": \"group_update\"\n\
+        }'\n\n```"
       operationId: "groups_user_put"
       parameters:
       - name: "id"
@@ -7840,13 +8414,13 @@ paths:
       summary: "List the Active Directories bound to a User Group"
       description: "This endpoint will return all Active Directory Instances bound\
         \ to a User Group, either directly or indirectly, essentially traversing the\
-        \ JumpCloud Graph for your Organization. \n\nThe `attributes` object is a\
-        \ key/value hash of compiled graph attributes for all paths followed.\n\n\
-        The `paths` array enumerates each path from this User Group to the corresponding\
-        \ Active Directory; this array represents all grouping and/or associations\
-        \ that would have to be removed to deprovision the Active Directory from this\
-        \ User Group.\n\nSee `/members` and `/associations` endpoints to manage those\
-        \ collections.\n\n#### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/usergroups/{GroupID}/activedirectories\
+        \ JumpCloud Graph for your Organization.\n\nThe `attributes` object is a key/value\
+        \ hash of compiled graph attributes for all paths followed.\n\nThe `paths`\
+        \ array enumerates each path from this User Group to the corresponding Active\
+        \ Directory; this array represents all grouping and/or associations that would\
+        \ have to be removed to deprovision the Active Directory from this User Group.\n\
+        \nSee `/members` and `/associations` endpoints to manage those collections.\n\
+        \n#### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/usergroups/{GroupID}/activedirectories\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
       operationId: "graph_userGroupTraverseActiveDirectory"
@@ -7916,7 +8490,7 @@ paths:
       summary: "List the System Groups bound to User Groups"
       description: "This endpoint will return all System Groups bound to a User Group,\
         \ either directly or indirectly, essentially traversing the JumpCloud Graph\
-        \ for your Organization.  \n\nEach element will contain the type, id, attributes\
+        \ for your Organization.\n\nEach element will contain the type, id, attributes\
         \ and paths.\n\nThe `attributes` object is a key/value hash of compiled graph\
         \ attributes for all paths followed.\n\nThe `paths` array enumerates each\
         \ path from this User Group to the corresponding System Group; this array\
@@ -7993,7 +8567,7 @@ paths:
       summary: "List the Systems bound to a User Group"
       description: "This endpoint will return all Systems bound to a User Group, either\
         \ directly or indirectly, essentially traversing the JumpCloud Graph for your\
-        \ Organization.  \n\nEach element will contain the type, id, attributes and\
+        \ Organization.\n\nEach element will contain the type, id, attributes and\
         \ paths\n\nThe `attributes` object is a key/value hash of compiled graph attributes\
         \ for all paths followed.\n\nThe `paths` array enumerates each path from this\
         \ User Group to the corresponding System; this array represents all grouping\
@@ -8069,7 +8643,7 @@ paths:
       summary: "List the RADIUS Servers bound to a User Group"
       description: "This endpoint will return all RADIUS servers bound to a User Group,\
         \ either directly or indirectly, essentially traversing the JumpCloud Graph\
-        \ for your Organization.  \n\nEach element will contain the type, id, attributes\
+        \ for your Organization.\n\nEach element will contain the type, id, attributes\
         \ and paths\n\nThe `attributes` object is a key/value hash of compiled graph\
         \ attributes for all paths followed.\n\nThe `paths` array enumerates each\
         \ path from this User Group to the corresponding RADIUS Server; this array\
@@ -8777,12 +9351,12 @@ paths:
         \ credentials  will result in the request being rejected.\n\nCurrently `O-Auth`\
         \ isn't a supported authentication protocol for WorkDay, but will be in the\
         \ future.\n\nCurrently, only one instance is allowed and it must be `Workday\
-        \ Import`.\n\n#### Sample Request \n```\ncurl -X POST https://console.jumpcloud.com/api/v2/workdays/\
+        \ Import`.\n\n#### Sample Request\n```\ncurl -X POST https://console.jumpcloud.com/api/v2/workdays/\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n  \"name\": \"Workday2\", \n\
+        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n  \"name\": \"Workday2\",\n\
         \  \"reportUrl\":\"https://workday.com/ccx/service/customreport2/gms/user/reportname?format=json\"\
-        , \n  \"auth\": {\n    \"basic\": {\n      \"username\": \"someDeveloper\"\
-        , \n      \"password\": \"notTheRealPassword\"\n    }\n  }\n}'\n```"
+        ,\n  \"auth\": {\n    \"basic\": {\n      \"username\": \"someDeveloper\"\
+        ,\n      \"password\": \"notTheRealPassword\"\n    }\n  }\n}'\n```"
       operationId: "workdays_post"
       parameters:
       - in: "body"
@@ -8834,7 +9408,7 @@ paths:
       summary: "List Workday Workers"
       description: "This endpoint will return all of the data in your WorkDay Custom\
         \ Report that has been associated with your WorkDay Instance in JumpCloud.\n\
-        \n##### Sample Request \n\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/workdays/{WorkDayID}/workers\
+        \n##### Sample Request\n\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/workdays/{WorkDayID}/workers\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n\n\n```"
       operationId: "workdays_workers"
@@ -9162,7 +9736,7 @@ paths:
       summary: "Get Workday Settings (incomplete)"
       description: "This endpoint allows you to obtain all settings needed for creating\
         \ a workday instance, specifically the URL to initiate Basic Authentication\
-        \ with WorkDay. \n\n**This functionality is currently not enable for users.**"
+        \ with WorkDay.\n\n**This functionality is currently not enable for users.**"
       operationId: "workdays_settings"
       parameters:
       - name: "state"
@@ -9344,6 +9918,8 @@ definitions:
       department:
         type: "string"
         maxLength: 1024
+      mfaData:
+        $ref: "#/definitions/systemuser_mfaData"
     title: "SystemUser"
     x-stoplight:
       id: "systemuser"
@@ -9445,6 +10021,8 @@ definitions:
         type: "string"
         description: "Must be unique per user. "
         maxLength: 256
+      mfaData:
+        $ref: "#/definitions/systemuser_mfaData"
     title: "SystemUserPost"
     x-stoplight:
       id: "systemuserputpost"
@@ -9568,29 +10146,6 @@ definitions:
       id: "UserGroupMembersReq"
       name: "UserGroupMembersReq"
       public: true
-  UserGroup:
-    type: "object"
-    properties:
-      id:
-        type: "string"
-        description: "ObjectId uniquely identifying a User Group."
-      type:
-        type: "string"
-        description: "The type of the group."
-        enum:
-        - "user_group"
-      name:
-        type: "string"
-        description: "Display name of a User Group."
-    title: "UserGroup"
-    example:
-      name: "name"
-      id: "id"
-      type: "user_group"
-    x-stoplight:
-      id: "UserGroup"
-      name: "UserGroup"
-      public: true
   Directory:
     type: "object"
     required:
@@ -9621,6 +10176,29 @@ definitions:
       id: "Directory"
       name: "Directory"
       public: true
+  UserGroup:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        description: "ObjectId uniquely identifying a User Group."
+      type:
+        type: "string"
+        description: "The type of the group."
+        enum:
+        - "user_group"
+      name:
+        type: "string"
+        description: "Display name of a User Group."
+    title: "UserGroup"
+    example:
+      name: "name"
+      id: "id"
+      type: "user_group"
+    x-stoplight:
+      id: "UserGroup"
+      name: "UserGroup"
+      public: true
   Error:
     type: "object"
     properties:
@@ -9635,6 +10213,26 @@ definitions:
     x-stoplight:
       id: "Error"
       name: "Error"
+      public: true
+  GraphObject:
+    type: "object"
+    required:
+    - "id"
+    - "type"
+    properties:
+      type:
+        type: "string"
+        description: "The type of graph object."
+      id:
+        type: "string"
+        description: "The ObjectID of the graph object."
+    title: "GraphObject"
+    example:
+      id: "id"
+      type: "type"
+    x-stoplight:
+      id: "GraphObject"
+      name: "GraphObject"
       public: true
   SystemGroup:
     type: "object"
@@ -9658,26 +10256,6 @@ definitions:
     x-stoplight:
       id: "SystemGroup"
       name: "SystemGroup"
-      public: true
-  GraphObject:
-    type: "object"
-    required:
-    - "id"
-    - "type"
-    properties:
-      type:
-        type: "string"
-        description: "The type of graph object."
-      id:
-        type: "string"
-        description: "The ObjectID of the graph object."
-    title: "GraphObject"
-    example:
-      id: "id"
-      type: "type"
-    x-stoplight:
-      id: "GraphObject"
-      name: "GraphObject"
       public: true
   UserGroupPost:
     type: "object"
@@ -9766,55 +10344,6 @@ definitions:
       id: "GroupType"
       name: "GroupType"
       public: true
-  GraphManagementReq:
-    type: "object"
-    required:
-    - "id"
-    - "op"
-    - "type"
-    properties:
-      op:
-        type: "string"
-        description: "How to modify the graph connection."
-        enum:
-        - "add"
-        - "remove"
-        - "update"
-      type:
-        $ref: "#/definitions/GraphType"
-      id:
-        type: "string"
-        description: "The ObjectID of graph object being added or removed as an association."
-    title: "GraphManagementReq"
-    example:
-      op: "add"
-      id: "id"
-      type: {}
-    x-stoplight:
-      id: "GraphManagementReq"
-      name: "GraphManagementReq"
-      public: true
-  GraphType:
-    type: "string"
-    title: "GraphType"
-    description: "The graph type."
-    enum:
-    - "active_directory"
-    - "application"
-    - "command"
-    - "g_suite"
-    - "ldap_server"
-    - "office_365"
-    - "policy"
-    - "radius_server"
-    - "system"
-    - "system_group"
-    - "user"
-    - "user_group"
-    x-stoplight:
-      id: "GraphType"
-      name: "GraphType"
-      public: true
   PolicyTemplate:
     type: "object"
     properties:
@@ -9861,6 +10390,27 @@ definitions:
       id: "PolicyTemplate"
       name: "PolicyTemplate"
       public: true
+  GraphType:
+    type: "string"
+    title: "GraphType"
+    description: "The graph type."
+    enum:
+    - "active_directory"
+    - "application"
+    - "command"
+    - "g_suite"
+    - "ldap_server"
+    - "office_365"
+    - "policy"
+    - "radius_server"
+    - "system"
+    - "system_group"
+    - "user"
+    - "user_group"
+    x-stoplight:
+      id: "GraphType"
+      name: "GraphType"
+      public: true
   Policy:
     type: "object"
     properties:
@@ -9889,6 +10439,34 @@ definitions:
     x-stoplight:
       id: "Policy"
       name: "Policy"
+      public: true
+  GraphManagementReq:
+    type: "object"
+    required:
+    - "id"
+    - "op"
+    - "type"
+    properties:
+      op:
+        type: "string"
+        description: "How to modify the graph connection."
+        enum:
+        - "add"
+        - "remove"
+        - "update"
+      type:
+        $ref: "#/definitions/GraphType"
+      id:
+        type: "string"
+        description: "The ObjectID of graph object being added or removed as an association."
+    title: "GraphManagementReq"
+    example:
+      op: "add"
+      id: "id"
+      type: {}
+    x-stoplight:
+      id: "GraphManagementReq"
+      name: "GraphManagementReq"
       public: true
   samba-domain-input:
     type: "object"
@@ -10161,6 +10739,13 @@ definitions:
       stdOut:
         type: "string"
         description: "The STDOUT output from applying the policy."
+      state:
+        type: "string"
+        description: "Enumeration describing the state of the policy. Success, failed,\
+          \ or pending."
+      detail:
+        type: "string"
+        description: "Details pertaining to the policy result."
     title: "PolicyResult"
     example:
       systemID: "systemID"
@@ -10170,6 +10755,8 @@ definitions:
       success: true
       startedAt: "2000-01-23T04:56:07.000+00:00"
       id: "id"
+      state: "state"
+      detail: "detail"
       stdErr: "stdErr"
       exitStatus: 0
     x-stoplight:
@@ -10656,6 +11243,8 @@ definitions:
         type: "string"
       attributes:
         type: "array"
+        description: "Map of all additional attributes. If a passed attribute is not\
+          \ a top level `systemuser` field it will be added to custom attributes."
         items:
           type: "object"
           properties: {}
@@ -10681,9 +11270,11 @@ definitions:
     properties:
       emailType:
         type: "string"
+        enum:
+        - "activation"
     title: "EmailRequest"
     example:
-      emailType: "culpa eiusmod commodo"
+      emailType: "activation"
     x-stoplight:
       id: "emailrequest"
       name: "EmailRequest"
@@ -10700,6 +11291,192 @@ definitions:
       id: "systemfdekey"
       name: "SystemFDEKey"
       public: true
+  g-suite-builtin-translation:
+    type: "string"
+    title: "G Suite BuiltIn Translation"
+    description: "* `user_home_addresses` - Translate all JumpCloud user addresses\
+      \ of type `home` to G Suite Directory user addresses of type `home`\n* `user_work_addresses`\
+      \ - Translate all JumpCloud user addresses of type `work` to G Suite Directory\
+      \ user addresses of type `work`\n* `user_other_addresses` - Translate all JumpCloud\
+      \ user addresses of type `other` to G Suite Directory user addresses of type\
+      \ `other`\n* `user_home_phone_numbers` - Translate all JumpCloud user phoneNumbers\
+      \ of type `home` to G Suite Directory user phones of type `home`\n* `user_mobile_phone_numbers`\
+      \ - Translate all JumpCloud user phoneNumbers of type `mobile` to G Suite Directory\
+      \ user phones of type `mobile`\n* `user_other_phone_numbers` - Translate all\
+      \ JumpCloud user phoneNumbers of type `other` to G Suite Directory user phones\
+      \ of type `other`\n* `user_work_phone_numbers` - Translate all JumpCloud user\
+      \ phoneNumbers of type `work` to G Suite Directory user phones of type `work`\n\
+      * `user_work_fax_phone_numbers` - Translate all JumpCloud user phoneNumbers\
+      \ of type `work_fax` to G Suite Directory user phones of type `work_fax`\n*\
+      \ `user_work_mobile_phone_numbers` - Translate all JumpCloud user phoneNumbers\
+      \ of type `work_mobile` to G Suite Directory user phones of type `work_mobile`\n\
+      * `user_primary_organization_cost_center` - Translate JumpCloud user  `costCenter`\
+      \ to G Suite Directory user `costCenter` for `primary` organization \n* `user_primary_organization_department`\
+      \ - Translate JumpCloud user  `department` to G Suite Directory user `department`\
+      \ for `primary` organization \n* `user_primary_organization_description` - Translate\
+      \ JumpCloud user  `employeeType` to G Suite Directory user `description` for\
+      \ `primary` organization \n* `user_primary_organization_employee_id` - Translate\
+      \ JumpCloud user  `employeeIdentifier` to G Suite Directory user `externalIds`\
+      \ element of type `organization`\n* `user_primary_organization_title` - Translate\
+      \ JumpCloud user  `jobTitle` to G Suite Directory user `title` for `primary`\
+      \ organization\n"
+    enum:
+    - "user_home_addresses"
+    - "user_work_addresses"
+    - "user_other_addresses"
+    - "user_home_phone_numbers"
+    - "user_mobile_phone_numbers"
+    - "user_other_phone_numbers"
+    - "user_work_phone_numbers"
+    - "user_work_fax_phone_numbers"
+    - "user_work_mobile_phone_numbers"
+    - "user_primary_organization_cost_center"
+    - "user_primary_organization_department"
+    - "user_primary_organization_description"
+    - "user_primary_organization_employee_id"
+    - "user_primary_organization_title"
+    x-stoplight:
+      id: "g-suite-builtin-translation"
+      name: "G Suite BuiltIn Translation"
+      public: true
+  office-365-builtin-translation:
+    type: "string"
+    title: "Office 365 BuiltIn Translation"
+    description: "Built-in translations for Office 365 (Microsoft Graph) export:\n\
+      * `user_street_address` - Translate `streetAddress` field of JumpCloud user\
+      \ address of type `work` to `city` field of Microsoft Graph user\n* `user_city`\
+      \ - Translate `locality` field of JumpCloud user address of type `work` to `city`\
+      \ field of Microsoft Graph user\n* `user_state` - Translate `region` field of\
+      \ JumpCloud user address of type `work` to `state` field of Microsoft Graph\
+      \ `user` \n* `user_country` - Translate `country` field of JumpCloud user address\
+      \ of type `work` to `country` field of Microsoft Graph `user` \n* `user_postal_code`\
+      \ - Translate `postalCode` field of JumpCloud user address of type `work` to\
+      \ `postalCode` field of Microsoft Graph `user` \n* `user_business_phones` -\
+      \ Translate `number` field of first JumpCloud user `phoneNumber` of type `work`\
+      \ to `businessPhones` field of Microsoft Graph `user` \n* `user_mobile_phone`\
+      \ - Translate `number` field of first JumpCloud user `phoneNumber` of type `mobile`\
+      \ to `mobilePhone` field of Microsoft Graph `user` \n* `user_department` - Translate\
+      \ `department` field of JumpCloud user  to `department` field of Microsoft Graph\
+      \ `user` \n* `user_job_title` - Translate `jobTitle` field of JumpCloud user\
+      \  to `jobTitle` field of Microsoft Graph `user` \n* `user_location` - Translate\
+      \ `location` field of JumpCloud user  to `officeLocation` field of Microsoft\
+      \ Graph `user` "
+    enum:
+    - "user_street_address"
+    - "user_city"
+    - "user_state"
+    - "user_country"
+    - "user_postal_code"
+    - "user_business_phones"
+    - "user_mobile_phone"
+    - "user_department"
+    - "user_job_title"
+    - "user_office_location"
+    x-stoplight:
+      id: "office-365-builtin-translation"
+      name: "Office 365 BuiltIn Translation"
+      public: true
+  g-suite-translation-rule:
+    type: "object"
+    properties:
+      builtIn:
+        $ref: "#/definitions/g-suite-builtin-translation"
+      id:
+        type: "string"
+        description: "ObjectId uniquely identifying a Translation Rule."
+    title: "G Suite Translation Rule"
+    example:
+      builtIn: {}
+      id: "id"
+    x-stoplight:
+      id: "g-suite-translation-rule"
+      name: "G Suite Translation Rule"
+      public: true
+  office-365-translation-rule:
+    type: "object"
+    properties:
+      builtIn:
+        $ref: "#/definitions/office-365-builtin-translation"
+      id:
+        type: "string"
+        description: "ObjectId uniquely identifying a Translation Rule."
+    title: "Office 365 Translation Rule"
+    example:
+      builtIn: {}
+      id: "id"
+    x-stoplight:
+      id: "office-365-translation-rule"
+      name: "Office 365 Translation Rule"
+      public: true
+  g-suite-translation-rule-request:
+    type: "object"
+    properties:
+      builtIn:
+        $ref: "#/definitions/g-suite-builtin-translation"
+    title: "G Suite Translation Rule Request"
+    example:
+      builtIn: "user_home_addresses"
+    x-stoplight:
+      id: "g-suite-translation-rule-request"
+      name: "G Suite Translation Rule Request"
+      public: true
+  office-365-translation-rule-request:
+    type: "object"
+    properties:
+      builtIn:
+        $ref: "#/definitions/office-365-builtin-translation"
+    title: "Office 365 Translation Rule Request"
+    example:
+      builtIn: "user_department"
+    x-stoplight:
+      id: "office-365-translation-rule-request"
+      name: "Office 365 Translation Rule Request"
+      public: true
+  bulk-user-update:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        description: "Object ID of the systemuser being updated"
+      attributes:
+        type: "array"
+        description: "Map of attributes to be updated. If a passed attribute is not\
+          \ a top-level `systemuser` attributes, it will be added to custom attributes."
+        items:
+          type: "object"
+          properties: {}
+    title: "Bulk User Update"
+    x-stoplight:
+      id: "bulk-user-update"
+      name: "Bulk User Update"
+      public: true
+  inline_response_500:
+    properties:
+      ?
+      : $ref: "#/definitions/Error"
+  inline_response_201:
+    properties:
+      rule:
+        $ref: "#/definitions/g-suite-translation-rule"
+    example:
+      rule:
+        builtIn: {}
+        id: "id"
+  inline_response_201_1:
+    properties:
+      rule:
+        $ref: "#/definitions/office-365-translation-rule"
+    example:
+      rule:
+        builtIn: {}
+        id: "id"
+  systemuser_mfaData:
+    properties:
+      exclusion:
+        type: "boolean"
+      exclusionUntil:
+        type: "string"
+        format: "date-time"
   systemuserputpost_addresses:
     properties:
       type:
@@ -11051,6 +11828,9 @@ x-stoplight:
   version:
     groups:
       docs:
+      - divider: true
+        items: []
+        name: "Office 365"
       - divider: false
         items:
         - _id: "v2-api"
@@ -11078,9 +11858,9 @@ x-stoplight:
           type: "endpoints"
         - _id: "activedirectories_list"
           type: "endpoints"
-        - _id: "graph_activeDirectoryTraverseUserGroup"
-          type: "endpoints"
         - _id: "activedirectories_get"
+          type: "endpoints"
+        - _id: "graph_activeDirectoryTraverseUserGroup"
           type: "endpoints"
         - _id: "graph_activeDirectoryAssociationsList"
           type: "endpoints"
@@ -11110,6 +11890,8 @@ x-stoplight:
         - _id: "bulk_usersCreateResults"
           type: "endpoints"
         - _id: "bulk_usersCreate"
+          type: "endpoints"
+        - _id: "bulk_usersUpdate"
           type: "endpoints"
         - _id: "jobs_results"
           type: "endpoints"
@@ -11227,6 +12009,14 @@ x-stoplight:
           type: "endpoints"
         - _id: "graph_gSuiteTraverseUserGroup"
           type: "endpoints"
+        - _id: "translationRules_gSuiteList"
+          type: "endpoints"
+        - _id: "translationRules_gSuitePost"
+          type: "endpoints"
+        - _id: "translationRules_gSuiteGet"
+          type: "endpoints"
+        - _id: "translationRules_gSuiteDelete"
+          type: "endpoints"
       - divider: false
         description: "You can associate your groups of users to LDAP.   Please see\
           \ [this page](https://support.jumpcloud.com/customer/en/portal/topics/926832-ldap-as-a-service)\
@@ -11264,6 +12054,14 @@ x-stoplight:
         - _id: "graph_office365TraverseUser"
           type: "endpoints"
         - _id: "graph_office365TraverseUserGroup"
+          type: "endpoints"
+        - _id: "translationRules_office365List"
+          type: "endpoints"
+        - _id: "translationRules_office365Post"
+          type: "endpoints"
+        - _id: "translationRules_office365Get"
+          type: "endpoints"
+        - _id: "translationRules_office365Delete"
           type: "endpoints"
       - divider: false
         description: "Jumpcloud provides a library of policy templates for Windows,\
@@ -11466,7 +12264,7 @@ x-stoplight:
           type: "endpoints"
         - _id: "graph_userTraverseSystemGroup"
           type: "endpoints"
-        - _id: "user_sendEmails"
+        - _id: "users_sendEmails"
           type: "endpoints"
       - divider: false
         description: "User Groups are designed to enhance JumpCloud's existing grouping\
@@ -11592,6 +12390,8 @@ x-stoplight:
           type: "schemas"
         - _id: "bulk-user-create"
           type: "schemas"
+        - _id: "bulk-user-update"
+          type: "schemas"
         - _id: "Directory"
           type: "schemas"
         - _id: "Error"
@@ -11685,6 +12485,18 @@ x-stoplight:
         - _id: "RaTvCDQQ3CezKdm3f"
           type: "schemas"
         - _id: "emailrequest"
+          type: "schemas"
+        - _id: "g-suite-builtin-translation"
+          type: "schemas"
+        - _id: "office-365-builtin-translation"
+          type: "schemas"
+        - _id: "g-suite-translation-rule"
+          type: "schemas"
+        - _id: "office-365-translation-rule"
+          type: "schemas"
+        - _id: "g-suite-translation-rule-request"
+          type: "schemas"
+        - _id: "office-365-translation-rule-request"
           type: "schemas"
         divider: false
       - name: "Traits"

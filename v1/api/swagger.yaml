@@ -2088,13 +2088,16 @@ paths:
       - "Systemusers"
       summary: "Reset a system user's MFA token"
       description: "This endpoint allows you to reset the MFA TOTP token for a specified\
-        \ system user. This will result in a user being required to complete the setup\
-        \ of their MFA TOTP token via an email notification sent from Jumpcloud. Please\
-        \ be aware, that until MFA setup is complete, a user may be locked out of\
-        \ systems or applications. \n\nPlease refer to our [Knowledge Base Article](https://support.jumpcloud.com/customer/en/portal/articles/2443975-how-to-enable-multifactor-authentication-for-the-jumpcloud-user-portal)\
+        \ system user and put them in an MFA enrollment period. This will result in\
+        \ the user being prompted to setup MFA when logging into userportal. Please\
+        \ be aware that if the user does not complete MFA setup before the `exclusionUntil`\
+        \ date, they will be locked out of any resources that require MFA.\n\nPlease\
+        \ refer to our [Knowledge Base Article](https://support.jumpcloud.com/customer/en/portal/articles/2959138-using-multifactor-authentication-with-jumpcloud)\
         \ on setting up MFA for more information. \n\n#### Sample Request \n```\n\
         curl -X POST \\\n  https://console.jumpcloud.com/api/systemusers/{UserID}/resetmfa\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n\n```"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -d '{\"exclusion\": true, \"exclusionUntil\": \"{date-time}\"}'\n\
+        \  \n\n```"
       operationId: "systemusers_resetmfa"
       parameters:
       - name: "id"
@@ -2102,6 +2105,12 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "Id"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/mfadata"
+        x-exportParamName: "Body"
       - name: "x-api-key"
         in: "header"
         required: true
@@ -2738,6 +2747,8 @@ definitions:
       department:
         type: "string"
         maxLength: 1024
+      mfaData:
+        $ref: "#/definitions/systemuser_mfaData"
     title: "SystemUser"
     x-stoplight:
       id: "systemuser"
@@ -2839,6 +2850,8 @@ definitions:
         type: "string"
         description: "Must be unique per user. "
         maxLength: 256
+      mfaData:
+        $ref: "#/definitions/systemuser_mfaData"
     title: "SystemUserPost"
     x-stoplight:
       id: "systemuserputpost"
@@ -3151,6 +3164,8 @@ definitions:
         type: "string"
         description: "Must be unique per user. "
         maxLength: 256
+      mfaData:
+        $ref: "#/definitions/mfadata"
     title: "SystemUserReturn"
     example:
       public_key: "public_key"
@@ -3231,6 +3246,9 @@ definitions:
       location: "location"
       external_dn: "external_dn"
       _id: "_id"
+      mfaData:
+        exclusion: true
+        exclusionUntil: "2000-01-23T04:56:07.000+00:00"
       username: "username"
       activated: true
     x-stoplight:
@@ -3494,6 +3512,9 @@ definitions:
         location: "location"
         external_dn: "external_dn"
         _id: "_id"
+        mfaData:
+          exclusion: true
+          exclusionUntil: "2000-01-23T04:56:07.000+00:00"
         username: "username"
         activated: true
       - public_key: "public_key"
@@ -3574,6 +3595,9 @@ definitions:
         location: "location"
         external_dn: "external_dn"
         _id: "_id"
+        mfaData:
+          exclusion: true
+          exclusionUntil: "2000-01-23T04:56:07.000+00:00"
         username: "username"
         activated: true
     x-stoplight:
@@ -4503,6 +4527,8 @@ definitions:
         type: "string"
         description: "Must be unique per user. "
         maxLength: 256
+      mfaData:
+        $ref: "#/definitions/mfadata"
     title: "SystemUserPut"
     x-stoplight:
       id: "systemuserput"
@@ -4581,6 +4607,22 @@ definitions:
       id: "fde"
       name: "FDE"
       public: true
+  mfadata:
+    type: "object"
+    properties:
+      exclusion:
+        type: "boolean"
+      exclusionUntil:
+        type: "string"
+        format: "date-time"
+    title: "MFAData"
+    example:
+      exclusion: true
+      exclusionUntil: "2000-01-23T04:56:07.000+00:00"
+    x-stoplight:
+      id: "mfadata"
+      name: "MFAData"
+      public: true
   body:
     type: "object"
     required:
@@ -4600,6 +4642,13 @@ definitions:
       networkSourceIp: "0.0.0.0"
       tagsNames:
       - "tag1"
+  systemuser_mfaData:
+    properties:
+      exclusion:
+        type: "boolean"
+      exclusionUntil:
+        type: "string"
+        format: "date-time"
   systemuserputpost_addresses:
     properties:
       type:
@@ -5394,6 +5443,8 @@ x-stoplight:
         - _id: "usersystembinding"
           type: "schemas"
         - _id: "usersystembindingsput"
+          type: "schemas"
+        - _id: "mfadata"
           type: "schemas"
         description: "Models make up the core input and output structures in this\
           \ API. They are used in endpoint request and response bodies."

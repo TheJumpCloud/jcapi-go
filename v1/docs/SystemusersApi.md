@@ -354,7 +354,7 @@ Name | Type | Description  | Notes
 > string SystemusersResetmfa(ctx, id, xApiKey, optional)
 Reset a system user's MFA token
 
-This endpoint allows you to reset the MFA TOTP token for a specified system user. This will result in a user being required to complete the setup of their MFA TOTP token via an email notification sent from Jumpcloud. Please be aware, that until MFA setup is complete, a user may be locked out of systems or applications.   Please refer to our [Knowledge Base Article](https://support.jumpcloud.com/customer/en/portal/articles/2443975-how-to-enable-multifactor-authentication-for-the-jumpcloud-user-portal) on setting up MFA for more information.   #### Sample Request  ``` curl -X POST \\   https://console.jumpcloud.com/api/systemusers/{UserID}/resetmfa \\   -H 'x-api-key: {API_KEY}'  ```
+This endpoint allows you to reset the MFA TOTP token for a specified system user and put them in an MFA enrollment period. This will result in the user being prompted to setup MFA when logging into userportal. Please be aware that if the user does not complete MFA setup before the `exclusionUntil` date, they will be locked out of any resources that require MFA.  Please refer to our [Knowledge Base Article](https://support.jumpcloud.com/customer/en/portal/articles/2959138-using-multifactor-authentication-with-jumpcloud) on setting up MFA for more information.   #### Sample Request  ``` curl -X POST \\   https://console.jumpcloud.com/api/systemusers/{UserID}/resetmfa \\   -H 'x-api-key: {API_KEY}' \\   -H 'Content-Type: application/json' \\   -d '{\"exclusion\": true, \"exclusionUntil\": \"{date-time}\"}'     ```
 
 ### Required Parameters
 
@@ -372,6 +372,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
  **xApiKey** | **string**|  | 
+ **body** | [**Mfadata**](Mfadata.md)|  | 
  **xOrgId** | **string**|  | [default to ]
 
 ### Return type
