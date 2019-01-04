@@ -37,7 +37,7 @@ type System struct {
 
 	Active bool `json:"active,omitempty"`
 
-	SshdParams []string `json:"sshdParams,omitempty"`
+	SshdParams *SystemSshdParams `json:"sshdParams,omitempty"`
 
 	AllowSshPasswordAuthentication bool `json:"allowSshPasswordAuthentication,omitempty"`
 

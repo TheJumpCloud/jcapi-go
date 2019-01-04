@@ -2907,10 +2907,10 @@ definitions:
         items:
           type: "string"
       requestTime:
-        type: "integer"
+        type: "string"
         description: "The time that the command was sent."
       responseTime:
-        type: "integer"
+        type: "string"
         description: "The time that the command was completed."
       response:
         $ref: "#/definitions/commandresult_response"
@@ -2920,14 +2920,14 @@ definitions:
     title: "CommandResult"
     example:
       systemId: "systemId"
-      responseTime: 1
+      responseTime: "responseTime"
       command: "command"
-      requestTime: 6
+      requestTime: "requestTime"
       system: "system"
       response:
         data:
           output: "output"
-          exitCode: 5
+          exitCode: 6
         id: "id"
         error: "error"
       organization: "organization"
@@ -3287,14 +3287,14 @@ definitions:
       totalCount: 0
       results:
       - systemId: "systemId"
-        responseTime: 1
+        responseTime: "responseTime"
         command: "command"
-        requestTime: 6
+        requestTime: "requestTime"
         system: "system"
         response:
           data:
             output: "output"
-            exitCode: 5
+            exitCode: 6
           id: "id"
           error: "error"
         organization: "organization"
@@ -3308,14 +3308,14 @@ definitions:
         user: "user"
         workflowId: "workflowId"
       - systemId: "systemId"
-        responseTime: 1
+        responseTime: "responseTime"
         command: "command"
-        requestTime: 6
+        requestTime: "requestTime"
         system: "system"
         response:
           data:
             output: "output"
-            exitCode: 5
+            exitCode: 6
           id: "id"
           error: "error"
         organization: "organization"
@@ -4169,9 +4169,7 @@ definitions:
       active:
         type: "boolean"
       sshdParams:
-        type: "array"
-        items:
-          type: "string"
+        $ref: "#/definitions/system_sshdParams"
       allowSshPasswordAuthentication:
         type: "boolean"
       allowSshRootLogin:
@@ -4235,8 +4233,8 @@ definitions:
         family: "family"
       templateName: "templateName"
       sshdParams:
-      - "sshdParams"
-      - "sshdParams"
+        name: "name"
+        value: "value"
       organization: "organization"
       agentVersion: "agentVersion"
       arch: "arch"
@@ -4295,8 +4293,8 @@ definitions:
           family: "family"
         templateName: "templateName"
         sshdParams:
-        - "sshdParams"
-        - "sshdParams"
+          name: "name"
+          value: "value"
         organization: "organization"
         agentVersion: "agentVersion"
         arch: "arch"
@@ -4336,8 +4334,8 @@ definitions:
           family: "family"
         templateName: "templateName"
         sshdParams:
-        - "sshdParams"
-        - "sshdParams"
+          name: "name"
+          value: "value"
         organization: "organization"
         agentVersion: "agentVersion"
         arch: "arch"
@@ -4656,7 +4654,7 @@ definitions:
         description: "The stderr output from the command that ran."
     example:
       output: "output"
-      exitCode: 5
+      exitCode: 6
   commandresult_response:
     properties:
       id:
@@ -4670,7 +4668,7 @@ definitions:
     example:
       data:
         output: "output"
-        exitCode: 5
+        exitCode: 6
       id: "id"
       error: "error"
   systemuserreturn_addresses:
@@ -5003,6 +5001,15 @@ definitions:
       address: "address"
       name: "name"
       family: "family"
+  system_sshdParams:
+    properties:
+      name:
+        type: "string"
+      value:
+        type: "string"
+    example:
+      name: "name"
+      value: "value"
   systemuserput_addresses:
     properties:
       type:

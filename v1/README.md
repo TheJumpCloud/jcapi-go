@@ -98,6 +98,7 @@ Class | Method | HTTP request | Description
  - [Sshkeypost](docs/Sshkeypost.md)
  - [System](docs/System.md)
  - [SystemNetworkInterfaces](docs/SystemNetworkInterfaces.md)
+ - [SystemSshdParams](docs/SystemSshdParams.md)
  - [Systemput](docs/Systemput.md)
  - [SystemputAgentBoundMessages](docs/SystemputAgentBoundMessages.md)
  - [Systemslist](docs/Systemslist.md)

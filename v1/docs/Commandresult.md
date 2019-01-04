@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **User** | **string** | The user the command ran as. | [optional] [default to null]
 **Sudo** | **bool** | If the user had sudo rights | [optional] [default to null]
 **Files** | **[]string** | An array of file ids that were included in the command | [optional] [default to null]
-**RequestTime** | **int32** | The time that the command was sent. | [optional] [default to null]
-**ResponseTime** | **int32** | The time that the command was completed. | [optional] [default to null]
+**RequestTime** | **string** | The time that the command was sent. | [optional] [default to null]
+**ResponseTime** | **string** | The time that the command was completed. | [optional] [default to null]
 **Response** | [***CommandresultResponse**](commandresult_response.md) |  | [optional] [default to null]
 **Id** | **string** | The ID of the command. | [optional] [default to null]
 

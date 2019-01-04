@@ -40,10 +40,10 @@ type Commandresult struct {
 	Files []string `json:"files,omitempty"`
 
 	// The time that the command was sent.
-	RequestTime int32 `json:"requestTime,omitempty"`
+	RequestTime string `json:"requestTime,omitempty"`
 
 	// The time that the command was completed.
-	ResponseTime int32 `json:"responseTime,omitempty"`
+	ResponseTime string `json:"responseTime,omitempty"`
 
 	Response *CommandresultResponse `json:"response,omitempty"`
 
