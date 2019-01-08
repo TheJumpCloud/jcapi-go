@@ -1923,10 +1923,6 @@ paths:
             - id: "object_id_1"
               source_type: "user"
               field: "g_suite_work_addresses"
-        500:
-          description: ""
-          schema:
-            $ref: "#/definitions/inline_response_500"
       security:
       - x-api-key: []
       x-stoplight:
@@ -2915,10 +2911,6 @@ paths:
             - id: "object_id_1"
               source_type: "user"
               field: "office_365_state"
-        500:
-          description: ""
-          schema:
-            $ref: "#/definitions/inline_response_500"
       security:
       - x-api-key: []
       x-stoplight:
@@ -11447,10 +11439,6 @@ definitions:
       id: "bulk-user-update"
       name: "Bulk User Update"
       public: true
-  inline_response_500:
-    properties:
-      ?
-      : $ref: "#/definitions/Error"
   inline_response_201:
     properties:
       rule:

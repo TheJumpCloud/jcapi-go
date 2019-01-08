@@ -37,7 +37,7 @@ type System struct {
 
 	Active bool `json:"active,omitempty"`
 
-	SshdParams *SystemSshdParams `json:"sshdParams,omitempty"`
+	SshdParams []SystemSshdParams `json:"sshdParams,omitempty"`
 
 	AllowSshPasswordAuthentication bool `json:"allowSshPasswordAuthentication,omitempty"`
 
@@ -60,4 +60,6 @@ type System struct {
 	Id string `json:"_id,omitempty"`
 
 	Fde *Fde `json:"fde,omitempty"`
+
+	AmazonInstanceID string `json:"amazonInstanceID,omitempty"`
 }

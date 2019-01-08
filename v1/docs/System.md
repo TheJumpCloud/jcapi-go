@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **TemplateName** | **string** |  | [optional] [default to null]
 **RemoteIP** | **string** |  | [optional] [default to null]
 **Active** | **bool** |  | [optional] [default to null]
-**SshdParams** | [***SystemSshdParams**](system_sshdParams.md) |  | [optional] [default to null]
+**SshdParams** | [**[]SystemSshdParams**](system_sshdParams.md) |  | [optional] [default to null]
 **AllowSshPasswordAuthentication** | **bool** |  | [optional] [default to null]
 **AllowSshRootLogin** | **bool** |  | [optional] [default to null]
 **AllowMultiFactorAuthentication** | **bool** |  | [optional] [default to null]
@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **Tags** | **[]string** |  | [optional] [default to null]
 **Id** | **string** |  | [optional] [default to null]
 **Fde** | [***Fde**](fde.md) |  | [optional] [default to null]
+**AmazonInstanceID** | **string** |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

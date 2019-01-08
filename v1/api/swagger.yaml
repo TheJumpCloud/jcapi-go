@@ -4169,7 +4169,9 @@ definitions:
       active:
         type: "boolean"
       sshdParams:
-        $ref: "#/definitions/system_sshdParams"
+        type: "array"
+        items:
+          $ref: "#/definitions/system_sshdParams"
       allowSshPasswordAuthentication:
         type: "boolean"
       allowSshRootLogin:
@@ -4197,12 +4199,15 @@ definitions:
         type: "string"
       fde:
         $ref: "#/definitions/fde"
+      amazonInstanceID:
+        type: "string"
     title: "System"
     example:
       remoteIP: "remoteIP"
       allowSshRootLogin: true
       displayName: "displayName"
       hostname: "hostname"
+      amazonInstanceID: "amazonInstanceID"
       allowSshPasswordAuthentication: true
       connectionHistory:
       - "{}"
@@ -4233,7 +4238,9 @@ definitions:
         family: "family"
       templateName: "templateName"
       sshdParams:
-        name: "name"
+      - name: "name"
+        value: "value"
+      - name: "name"
         value: "value"
       organization: "organization"
       agentVersion: "agentVersion"
@@ -4263,6 +4270,7 @@ definitions:
         allowSshRootLogin: true
         displayName: "displayName"
         hostname: "hostname"
+        amazonInstanceID: "amazonInstanceID"
         allowSshPasswordAuthentication: true
         connectionHistory:
         - "{}"
@@ -4293,7 +4301,9 @@ definitions:
           family: "family"
         templateName: "templateName"
         sshdParams:
-          name: "name"
+        - name: "name"
+          value: "value"
+        - name: "name"
           value: "value"
         organization: "organization"
         agentVersion: "agentVersion"
@@ -4304,6 +4314,7 @@ definitions:
         allowSshRootLogin: true
         displayName: "displayName"
         hostname: "hostname"
+        amazonInstanceID: "amazonInstanceID"
         allowSshPasswordAuthentication: true
         connectionHistory:
         - "{}"
@@ -4334,7 +4345,9 @@ definitions:
           family: "family"
         templateName: "templateName"
         sshdParams:
-          name: "name"
+        - name: "name"
+          value: "value"
+        - name: "name"
           value: "value"
         organization: "organization"
         agentVersion: "agentVersion"
