@@ -41,4 +41,10 @@ type PolicyResult struct {
 
 	// The STDOUT output from applying the policy.
 	StdOut string `json:"stdOut,omitempty"`
+
+	// Enumeration describing the state of the policy. Success, failed, or pending.
+	State string `json:"state,omitempty"`
+
+	// Details pertaining to the policy result.
+	Detail string `json:"detail,omitempty"`
 }

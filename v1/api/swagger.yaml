@@ -22,7 +22,7 @@ paths:
       description: "The endpoint returns all your SSO / SAML Applications.\n\n####\
         \ Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/applications\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \n\n```"
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n\n```"
       operationId: "applications_list"
       parameters:
       - name: "fields"
@@ -279,7 +279,7 @@ paths:
       description: "This endpoint returns a specific command based on the command\
         \ ID.\n\n#### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/commands/{CommandID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \n```"
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
       operationId: "commands_get"
       parameters:
       - name: "id"
@@ -447,7 +447,7 @@ paths:
       description: "This endpoint returns the uploaded file(s) associated with a specific\
         \ command.\n\n#### Sample Request\n\n```\ncurl -X GET https://console.jumpcloud.com/api/files/command/{commandID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \n  ```"
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
       operationId: "command_file_get"
       parameters:
       - name: "id"
@@ -600,7 +600,7 @@ paths:
       description: "This endpoint returns a specific command result.\n\n#### Sample\
         \ Request\n```\ncurl -X GET https://console.jumpcloud.com/api/commandresults/{CommandID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \n  ```"
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
       operationId: "command_results_get"
       parameters:
       - name: "id"
@@ -659,7 +659,7 @@ paths:
       description: "This endpoint deletes a specific command result.\n\n#### Sample\
         \ Request\n```\ncurl -X GET https://console.jumpcloud.com/api/commandresults/{CommandID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \n  ````"
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ````"
       operationId: "command_results_delete"
       parameters:
       - name: "id"
@@ -708,9 +708,9 @@ paths:
       tags:
       - "Organizations"
       summary: "Get Organization Details"
-      description: "This endpoint returns Organization Details.\n\n#### Sample Request\
-        \ \n\n```\ncurl -X GET \\\n  https://console.jumpcloud.com/api/organizations\
-        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+      description: "This endpoint returns Organization Details.\n\n#### Sample Request\n\
+        \n```\ncurl -X GET \\\n  https://console.jumpcloud.com/api/organizations \\\
+        \n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
       operationId: "organization_list"
       parameters:
@@ -909,7 +909,7 @@ paths:
       - "Radius Servers"
       summary: "Update Radius Servers"
       description: "This endpoint allows you to update RADIUS servers in your organization.\n\
-        \n#### \n```\ncurl -X PUT https://console.jumpcloud.com/api/radiusservers/{ServerID}\
+        \n####\n```\ncurl -X PUT https://console.jumpcloud.com/api/radiusservers/{ServerID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n    \"name\": \"{name_update}\"\
         ,\n    \"networkSourceIp\": \"{0.0.0.0}\"\n}'\n```"
@@ -962,9 +962,9 @@ paths:
       summary: "Search Organizations"
       description: "This endpoint will return Organization data based on your search\
         \ parameters. This endpoint WILL NOT allow you to add a new Organization.\n\
-        \nYou can use the supported parameters and pass those in the body of request.\
-        \ \n\nThe parameters must be passed as Content-Type application/json.\n\n\n\
-        #### Sample Request\n```\ncurl -X POST https://console.jumpcloud.com/api/search/organizations\
+        \nYou can use the supported parameters and pass those in the body of request.\n\
+        \nThe parameters must be passed as Content-Type application/json.\n\n\n####\
+        \ Sample Request\n```\ncurl -X POST https://console.jumpcloud.com/api/search/organizations\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n  \"search\":{\n    \"fields\"\
         \ : [\"settings.name\"],\n    \"searchTerm\": \"Second\"\n    },\n  \"fields\"\
@@ -1039,18 +1039,18 @@ paths:
         \ of the 'filter' parameter. This WILL NOT allow you to add a new system.\n\
         \nTo support advanced filtering you can use the `filter` parameter that can\
         \ only be passed in the body of POST /api/search/* routes. The `filter` parameter\
-        \ must be passed as Content-Type application/json supports advanced filtering\
-        \ using the MongoDB JSON query syntax. \n\nThe `filter` parameter is an object\
-        \ with a single property, either and or or with the value of the property\
-        \ being an array of query expressions. \n\nThis allows you to filter records\
-        \ using the logic of matching ALL or ANY records in the array of query expressions.\
-        \ If the and or or are not included the default behavior is to match ALL query\
-        \ expressions.\n\n\n#### Sample Request\n\n```\ncurl -X POST https://console.jumpcloud.com/api/search/systems\
-        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n\"filter\" :\n    {\n     \
-        \   \"or\" :\n            [\n                {\"hostname\" : { \"$regex\"\
-        \ : \"^www\" }},\n                {\"hostname\" : {\"$regex\" : \"^db\"}}\n\
-        \            ]\n    },\n\"fields\" : \"os hostname displayName\"\n}'\n```"
+        \ must be passed as Content-Type application/json.\n\nThe `filter` parameter\
+        \ is an object with a single property, either `and` or `or` with the value\
+        \ of the property being an array of query expressions.\n\nThis allows you\
+        \ to filter records using the logic of matching ALL or ANY records in the\
+        \ array of query expressions. If the `and` or `or` are not included the default\
+        \ behavior is to match ALL query expressions.\n\n\n#### Sample Request\n\n\
+        ```\ncurl -X POST https://console.jumpcloud.com/api/search/systems \\\n  -H\
+        \ 'Accept: application/json' \\\n  -H 'Content-Type: application/json' \\\n\
+        \  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n\"filter\" :\n    {\n        \"\
+        or\" :\n            [\n                {\"hostname\" : \"my-hostname\"},\n\
+        \                {\"hostname\" : \"other-hostname\"}\n            ]\n    },\n\
+        \"fields\" : \"os hostname displayName\"\n}'\n```"
       operationId: "search_systems_post"
       parameters:
       - in: "body"
@@ -1126,17 +1126,16 @@ paths:
         \ of the 'filter' parameter. This WILL NOT allow you to add a new system user.\n\
         \nTo support advanced filtering you can use the `filter` parameter that can\
         \ only be passed in the body of POST /api/search/* routes. The `filter` parameter\
-        \ must be passed as Content-Type application/json supports advanced filtering\
-        \ using the MongoDB JSON query syntax. \n\nThe `filter` parameter is an object\
-        \ with a single property, either and or or with the value of the property\
-        \ being an array of query expressions. \n\nThis allows you to filter records\
-        \ using the logic of matching ALL or ANY records in the array of query expressions.\
-        \ If the and or or are not included the default behavior is to match ALL query\
-        \ expressions.\n\n#### Sample Request\n\n```\ncurl -X POST https://console.jumpcloud.com/api/search/systemusers\
-        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n\"filter\" : [{\"email\" :\
-        \ { \"$regex\" : \"gmail.com$\"}}],\n\"fields\" : \"email username sudo\"\n\
-        }'\n```"
+        \ must be passed as Content-Type application/json.\n\nThe `filter` parameter\
+        \ is an object with a single property, either `and` or `or` with the value\
+        \ of the property being an array of query expressions.\n\nThis allows you\
+        \ to filter records using the logic of matching ALL or ANY records in the\
+        \ array of query expressions. If the `and` or `or` are not included the default\
+        \ behavior is to match ALL query expressions.\n\n#### Sample Request\n\n```\n\
+        curl -X POST https://console.jumpcloud.com/api/search/systemusers \\\n  -H\
+        \ 'Accept: application/json' \\\n  -H 'Content-Type: application/json' \\\n\
+        \  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n\"filter\" : [{\"email\" : \"example@jumpcloud.com\"\
+        }],\n\"fields\" : \"email username sudo\"\n}'\n```"
       operationId: "search_systemusers_post"
       parameters:
       - in: "body"
@@ -1210,8 +1209,8 @@ paths:
       summary: "List All Systems"
       description: "This endpoint returns all Systems.\n\n#### Sample Requests\n```\n\
         curl -X GET https://console.jumpcloud.com/api/systems \\\n  -H 'Accept: application/json'\
-        \ \\\n  -H 'Content-Type: application/json' \\\n  -H 'x-api-key: {API_KEY}'\
-        \ \n\n```"
+        \ \\\n  -H 'Content-Type: application/json' \\\n  -H 'x-api-key: {API_KEY}'\n\
+        \n```"
       operationId: "systems_list"
       parameters:
       - name: "fields"
@@ -1285,7 +1284,7 @@ paths:
       description: "This endpoint returns an individual system.\n\n#### Sample Request\n\
         ```\ncurl -X GET https://console.jumpcloud.com/api/systems/{SystemID} \\\n\
         \  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \n  ```"
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
       operationId: "systems_get"
       parameters:
       - name: "id"
@@ -1635,7 +1634,7 @@ paths:
       description: "This endpoint returns all systemusers.\n\n#### Sample Request\n\
         \n```\ncurl -X GET https://console.jumpcloud.com/api/systemusers \\\n  -H\
         \ 'Accept: application/json' \\\n  -H 'Content-Type: application/json' \\\n\
-        \  -H 'x-api-key: {API_KEY}' \n```"
+        \  -H 'x-api-key: {API_KEY}'\n```"
       operationId: "systemusers_list"
       parameters:
       - name: "limit"
@@ -1889,7 +1888,7 @@ paths:
       description: "This endpoint allows you to delete a particular system user.\n\
         \n#### Sample Request\n```\ncurl -X DELETE https://console.jumpcloud.com/api/systemusers/{UserID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \n```"
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
       operationId: "systemusers_delete"
       parameters:
       - name: "id"
@@ -1939,7 +1938,7 @@ paths:
       - "Systemusers"
       summary: "List system user binding"
       description: "Hidden as Tags is deprecated\n\nAdds or removes a system binding\
-        \ for a user. \n\nThis endpoint is only used for users still using JumpCloud\
+        \ for a user.\n\nThis endpoint is only used for users still using JumpCloud\
         \ Tags. If you are using JumpCloud Groups please refer to the documentation\
         \ found [here](https://docs.jumpcloud.com/2.0/systems/manage-associations-of-a-system).\n\
         \n\nList system bindings for a specific system user in a system and user binding\
@@ -2025,7 +2024,7 @@ paths:
       - "Systemusers"
       summary: "Update a system user binding"
       description: "Hidden as Tags is deprecated\n\nAdds or removes a system binding\
-        \ for a user. \n\nThis endpoint is only used for users still using JumpCloud\
+        \ for a user.\n\nThis endpoint is only used for users still using JumpCloud\
         \ Tags. If you are using JumpCloud Groups please refer to the documentation\
         \ found [here](https://docs.jumpcloud.com/2.0/systems/manage-associations-of-a-system).\n\
         \n### Example\n\n#### Add (or remove) system to system user\n\n```\ncurl \\\
@@ -2088,13 +2087,16 @@ paths:
       - "Systemusers"
       summary: "Reset a system user's MFA token"
       description: "This endpoint allows you to reset the MFA TOTP token for a specified\
-        \ system user. This will result in a user being required to complete the setup\
-        \ of their MFA TOTP token via an email notification sent from Jumpcloud. Please\
-        \ be aware, that until MFA setup is complete, a user may be locked out of\
-        \ systems or applications. \n\nPlease refer to our [Knowledge Base Article](https://support.jumpcloud.com/customer/en/portal/articles/2443975-how-to-enable-multifactor-authentication-for-the-jumpcloud-user-portal)\
-        \ on setting up MFA for more information. \n\n#### Sample Request \n```\n\
-        curl -X POST \\\n  https://console.jumpcloud.com/api/systemusers/{UserID}/resetmfa\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n\n```"
+        \ system user and put them in an MFA enrollment period. This will result in\
+        \ the user being prompted to setup MFA when logging into userportal. Please\
+        \ be aware that if the user does not complete MFA setup before the `exclusionUntil`\
+        \ date, they will be locked out of any resources that require MFA.\n\nPlease\
+        \ refer to our [Knowledge Base Article](https://support.jumpcloud.com/customer/en/portal/articles/2959138-using-multifactor-authentication-with-jumpcloud)\
+        \ on setting up MFA for more information.\n\n#### Sample Request\n```\ncurl\
+        \ -X POST \\\n  https://console.jumpcloud.com/api/systemusers/{UserID}/resetmfa\
+        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -d '{\"exclusion\": true, \"exclusionUntil\": \"{date-time}\"}'\n\n\
+        \n```"
       operationId: "systemusers_resetmfa"
       parameters:
       - name: "id"
@@ -2102,6 +2104,12 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "Id"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/body_1"
+        x-exportParamName: "Body"
       - name: "x-api-key"
         in: "header"
         required: true
@@ -2655,10 +2663,10 @@ definitions:
         type: "boolean"
       unix_uid:
         type: "integer"
-        minimum: 0
+        minimum: 1
       unix_guid:
         type: "integer"
-        minimum: 0
+        minimum: 1
       activated:
         type: "boolean"
       tags:
@@ -2764,10 +2772,10 @@ definitions:
         type: "boolean"
       unix_uid:
         type: "integer"
-        minimum: 0
+        minimum: 1
       unix_guid:
         type: "integer"
-        minimum: 0
+        minimum: 1
       activated:
         type: "boolean"
       tags:
@@ -2899,10 +2907,10 @@ definitions:
         items:
           type: "string"
       requestTime:
-        type: "integer"
+        type: "string"
         description: "The time that the command was sent."
       responseTime:
-        type: "integer"
+        type: "string"
         description: "The time that the command was completed."
       response:
         $ref: "#/definitions/commandresult_response"
@@ -2912,14 +2920,14 @@ definitions:
     title: "CommandResult"
     example:
       systemId: "systemId"
-      responseTime: 1
+      responseTime: "responseTime"
       command: "command"
-      requestTime: 6
+      requestTime: "requestTime"
       system: "system"
       response:
         data:
           output: "output"
-          exitCode: 5
+          exitCode: 6
         id: "id"
         error: "error"
       organization: "organization"
@@ -3055,10 +3063,10 @@ definitions:
         type: "boolean"
       unix_uid:
         type: "integer"
-        minimum: 0
+        minimum: 1
       unix_guid:
         type: "integer"
-        minimum: 0
+        minimum: 1
       activated:
         type: "boolean"
       tags:
@@ -3177,7 +3185,7 @@ definitions:
       badLoginAttempts: 0
       account_locked: true
       totp_enabled: true
-      unix_guid: 0
+      unix_guid: 1
       jobTitle: "jobTitle"
       samba_service_user: true
       description: "description"
@@ -3192,7 +3200,7 @@ definitions:
       relationships:
       - "{}"
       - "{}"
-      unix_uid: 0
+      unix_uid: 1
       passwordless_sudo: true
       externally_managed: true
       ldap_binding_user: true
@@ -3279,14 +3287,14 @@ definitions:
       totalCount: 0
       results:
       - systemId: "systemId"
-        responseTime: 1
+        responseTime: "responseTime"
         command: "command"
-        requestTime: 6
+        requestTime: "requestTime"
         system: "system"
         response:
           data:
             output: "output"
-            exitCode: 5
+            exitCode: 6
           id: "id"
           error: "error"
         organization: "organization"
@@ -3300,14 +3308,14 @@ definitions:
         user: "user"
         workflowId: "workflowId"
       - systemId: "systemId"
-        responseTime: 1
+        responseTime: "responseTime"
         command: "command"
-        requestTime: 6
+        requestTime: "requestTime"
         system: "system"
         response:
           data:
             output: "output"
-            exitCode: 5
+            exitCode: 6
           id: "id"
           error: "error"
         organization: "organization"
@@ -3440,7 +3448,7 @@ definitions:
         badLoginAttempts: 0
         account_locked: true
         totp_enabled: true
-        unix_guid: 0
+        unix_guid: 1
         jobTitle: "jobTitle"
         samba_service_user: true
         description: "description"
@@ -3455,7 +3463,7 @@ definitions:
         relationships:
         - "{}"
         - "{}"
-        unix_uid: 0
+        unix_uid: 1
         passwordless_sudo: true
         externally_managed: true
         ldap_binding_user: true
@@ -3520,7 +3528,7 @@ definitions:
         badLoginAttempts: 0
         account_locked: true
         totp_enabled: true
-        unix_guid: 0
+        unix_guid: 1
         jobTitle: "jobTitle"
         samba_service_user: true
         description: "description"
@@ -3535,7 +3543,7 @@ definitions:
         relationships:
         - "{}"
         - "{}"
-        unix_uid: 0
+        unix_uid: 1
         passwordless_sudo: true
         externally_managed: true
         ldap_binding_user: true
@@ -4163,7 +4171,7 @@ definitions:
       sshdParams:
         type: "array"
         items:
-          type: "string"
+          $ref: "#/definitions/system_sshdParams"
       allowSshPasswordAuthentication:
         type: "boolean"
       allowSshRootLogin:
@@ -4191,12 +4199,15 @@ definitions:
         type: "string"
       fde:
         $ref: "#/definitions/fde"
+      amazonInstanceID:
+        type: "string"
     title: "System"
     example:
       remoteIP: "remoteIP"
       allowSshRootLogin: true
       displayName: "displayName"
       hostname: "hostname"
+      amazonInstanceID: "amazonInstanceID"
       allowSshPasswordAuthentication: true
       connectionHistory:
       - "{}"
@@ -4205,6 +4216,7 @@ definitions:
       created: "created"
       allowMultiFactorAuthentication: true
       fde:
+        active: true
         keyPresent: true
       modifySSHDConfig: true
       active: true
@@ -4226,8 +4238,10 @@ definitions:
         family: "family"
       templateName: "templateName"
       sshdParams:
-      - "sshdParams"
-      - "sshdParams"
+      - name: "name"
+        value: "value"
+      - name: "name"
+        value: "value"
       organization: "organization"
       agentVersion: "agentVersion"
       arch: "arch"
@@ -4256,6 +4270,7 @@ definitions:
         allowSshRootLogin: true
         displayName: "displayName"
         hostname: "hostname"
+        amazonInstanceID: "amazonInstanceID"
         allowSshPasswordAuthentication: true
         connectionHistory:
         - "{}"
@@ -4264,6 +4279,7 @@ definitions:
         created: "created"
         allowMultiFactorAuthentication: true
         fde:
+          active: true
           keyPresent: true
         modifySSHDConfig: true
         active: true
@@ -4285,8 +4301,10 @@ definitions:
           family: "family"
         templateName: "templateName"
         sshdParams:
-        - "sshdParams"
-        - "sshdParams"
+        - name: "name"
+          value: "value"
+        - name: "name"
+          value: "value"
         organization: "organization"
         agentVersion: "agentVersion"
         arch: "arch"
@@ -4296,6 +4314,7 @@ definitions:
         allowSshRootLogin: true
         displayName: "displayName"
         hostname: "hostname"
+        amazonInstanceID: "amazonInstanceID"
         allowSshPasswordAuthentication: true
         connectionHistory:
         - "{}"
@@ -4304,6 +4323,7 @@ definitions:
         created: "created"
         allowMultiFactorAuthentication: true
         fde:
+          active: true
           keyPresent: true
         modifySSHDConfig: true
         active: true
@@ -4325,8 +4345,10 @@ definitions:
           family: "family"
         templateName: "templateName"
         sshdParams:
-        - "sshdParams"
-        - "sshdParams"
+        - name: "name"
+          value: "value"
+        - name: "name"
+          value: "value"
         organization: "organization"
         agentVersion: "agentVersion"
         arch: "arch"
@@ -4420,10 +4442,10 @@ definitions:
         type: "boolean"
       unix_uid:
         type: "integer"
-        minimum: 0
+        minimum: 1
       unix_guid:
         type: "integer"
-        minimum: 0
+        minimum: 1
       tags:
         type: "array"
         items:
@@ -4574,8 +4596,11 @@ definitions:
     properties:
       keyPresent:
         type: "boolean"
+      active:
+        type: "boolean"
     title: "FDE"
     example:
+      active: true
       keyPresent: true
     x-stoplight:
       id: "fde"
@@ -4600,6 +4625,14 @@ definitions:
       networkSourceIp: "0.0.0.0"
       tagsNames:
       - "tag1"
+  body_1:
+    type: "object"
+    properties:
+      exclusion:
+        type: "boolean"
+      exclusionUntil:
+        type: "string"
+        format: "date-time"
   systemuserputpost_addresses:
     properties:
       type:
@@ -4634,7 +4667,7 @@ definitions:
         description: "The stderr output from the command that ran."
     example:
       output: "output"
-      exitCode: 5
+      exitCode: 6
   commandresult_response:
     properties:
       id:
@@ -4648,7 +4681,7 @@ definitions:
     example:
       data:
         output: "output"
-        exitCode: 5
+        exitCode: 6
       id: "id"
       error: "error"
   systemuserreturn_addresses:
@@ -4981,6 +5014,15 @@ definitions:
       address: "address"
       name: "name"
       family: "family"
+  system_sshdParams:
+    properties:
+      name:
+        type: "string"
+      value:
+        type: "string"
+    example:
+      name: "name"
+      value: "value"
   systemuserput_addresses:
     properties:
       type:
