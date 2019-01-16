@@ -1,12 +1,14 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"go/ast"
+	"go/format"
 	"go/parser"
 	"go/token"
+	"log"
 	"os"
-	"reflect"
 )
 
 // The refAll tool writes a go source file to stdout that contains a reference to every public function,
@@ -36,7 +38,7 @@ func main() {
 
 	for pkgName, pkg := range pkgs {
 		fmt.Println("package", pkgName)
-		pr := newPackageRefs(pkgName)
+		pr := newPackageRefs(pkgName, fset)
 		ast.PackageExports(pkg)
 		for fileName, file := range pkg.Files {
 			fmt.Println("  fileName", fileName)
@@ -54,6 +56,9 @@ func main() {
 						case *ast.ValueSpec:
 							fmt.Printf("      ValueSpec: %+v\n", specVal)
 							pr.addValueSpec(specVal)
+							for _, v := range specVal.Values {
+								fmt.Printf("        Value: %+v\n", v)
+							}
 						case *ast.TypeSpec:
 							fmt.Printf("      TypeSpec: %+v\n", specVal)
 							pr.addTypeSpec(specVal)
@@ -81,14 +86,16 @@ func main() {
 
 type packageRefs struct {
 	pkgName    string
+	fset       *token.FileSet
 	funcDecls  []*ast.FuncDecl
 	typeSpecs  []*ast.TypeSpec
 	valueSpecs []*ast.ValueSpec
 }
 
-func newPackageRefs(pkgName string) *packageRefs {
+func newPackageRefs(pkgName string, fset *token.FileSet) *packageRefs {
 	pr := new(packageRefs)
 	pr.pkgName = pkgName
+	pr.fset = fset
 
 	return pr
 }
@@ -119,20 +126,18 @@ func (pr *packageRefs) write() {
 	for _, typeSpec := range pr.typeSpecs {
 		structType, ok := typeSpec.Type.(*ast.StructType)
 		if ok {
-			fmt.Printf("var _  %s.%s\n", pr.pkgName, typeSpec.Name)
-			fmt.Printf("\n// Fields for %s\n", typeSpec.Name)
+			fmt.Printf("\nvar _  %s.%s\n", pr.pkgName, typeSpec.Name)
+			fmt.Printf("// Fields for %s\n", typeSpec.Name)
 			for _, field := range structType.Fields.List {
-				fmt.Printf("// typeof field type %s\n", reflect.TypeOf(field.Type))
-				switch len(field.Names) {
-				case 0:
+				if len(field.Names) == 0 {
 					// (I think) no Names means this is an embedded anonymous field, the type name is
 					// the implicit field name. https://golang.org/pkg/go/ast/#Field
-					fmt.Printf("var _ *%s = new(%s.%s).%s // XXX Case 0\n", field.Type, pr.pkgName, typeSpec.Name, field.Type)
-				case 1:
-					// Normal field with a name
-					fmt.Printf("var _ *%s = new(%s.%s).%s\n", field.Type, pr.pkgName, typeSpec.Name, field.Names[0])
-				default:
-					fmt.Fprintf(os.Stderr, "Skipping %+v (multiple names)", field)
+					fmt.Printf("var _ %s = new(%s.%s).%s // XXX Case 0\n", nodeString(field.Type, pr.fset), pr.pkgName, typeSpec.Name, field.Type)
+				} else {
+					for _, name := range field.Names {
+						// Normal named field
+						fmt.Printf("var _ %s = new(%s.%s).%s\n", nodeString(field.Type, pr.fset), pr.pkgName, typeSpec.Name, name)
+					}
 				}
 			}
 		}
@@ -140,9 +145,25 @@ func (pr *packageRefs) write() {
 
 	fmt.Printf("\n// Values\n")
 	for _, valueSpec := range pr.valueSpecs {
-		fmt.Printf("var _ %s = %s.%s\n", valueSpec.Type, valueSpec.Names[0])
-		if len(valueSpec.Names) != 1 {
-			panic(fmt.Sprintf("I only understand fields with one Name: %+v %d", valueSpec, len(valueSpec.Names)))
+		for _, name := range valueSpec.Names {
+			// BUG(bb): We skip values with inferred type. They don't appear in the SDK code that changes and
+			// I don't know how to find their type. Probably look at https://github.com/golang/example/tree/master/gotypes
+			// for clues.
+			if valueSpec.Type == nil {
+				log.Printf("Skipping value %s with no Type\n", name)
+			} else {
+				fmt.Printf("var _ %s = %s.%s\n", valueSpec.Type, pr.pkgName, name)
+			}
 		}
 	}
+}
+
+// nodeString formats a syntax tree in the style of gofmt.
+func nodeString(n ast.Node, fset *token.FileSet) string {
+	var buf bytes.Buffer
+	err := format.Node(&buf, fset, n)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return buf.String()
 }
