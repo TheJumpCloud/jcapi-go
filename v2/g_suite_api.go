@@ -698,14 +698,14 @@ func (a *GSuiteApiService) TranslationRulesGSuiteList(ctx context.Context, gsuit
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "body" (GSuiteTranslationRuleRequest) 
- @return InlineResponse201*/
-func (a *GSuiteApiService) TranslationRulesGSuitePost(ctx context.Context, gsuiteId string, contentType string, accept string, localVarOptionals map[string]interface{}) (InlineResponse201,  *http.Response, error) {
+ @return GSuiteTranslationRule*/
+func (a *GSuiteApiService) TranslationRulesGSuitePost(ctx context.Context, gsuiteId string, contentType string, accept string, localVarOptionals map[string]interface{}) (GSuiteTranslationRule,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localVarFileName string
 		localVarFileBytes []byte
-	 	successPayload  InlineResponse201
+	 	successPayload  GSuiteTranslationRule
 	)
 
 	// create path and map variables

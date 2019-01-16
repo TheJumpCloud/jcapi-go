@@ -783,7 +783,7 @@ paths:
       - "Bulk Job Requests"
       summary: "List Bulk Users Results"
       description: "This endpoint will return the results of particular user import\
-        \ or update job request.\n\n###Sample Request\n```\ncurl -X GET \\\n  https://console.jumpcloud.com/api/v2/bulk/users/{ImportJobID}/results\
+        \ or update job request.\n\n#### Sample Request\n```\ncurl -X GET \\\n  https://console.jumpcloud.com/api/v2/bulk/users/{ImportJobID}/results\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
       operationId: "bulk_usersCreateResults"
@@ -838,7 +838,7 @@ paths:
         id: "bulk_usersCreateResults"
         beforeScript: null
         afterScript: null
-        public: false
+        public: true
         mock:
           enabled: false
           dynamic: false
@@ -849,13 +849,14 @@ paths:
       - "Bulk Job Requests"
       summary: "Bulk Users Create"
       description: "The endpoint allows you to create a bulk job to asynchronously\
-        \ create users.\n\n#### Sample Request \n```\ncurl -X POST https://console.jumpcloud.com/api/v2/bulk/users\
-        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '[\n\t{\n\t\t\"email\":\"{email}\"\
-        ,\n\t\t\"firstname\":\"{firstname}\",\n\t\t\"lastname\":\"{firstname}\",\n\
-        \t\t\"username\":\"{username}\",\n\t\t\"attributes\":[\n\t\t\t{\"name\":\"\
-        EmployeeID\",\"value\":\"0000\"},\n\t\t\t{\"name\":\"Custom\",\"value\":\"\
-        attribute\"}\n\t\t]\n\t}\n]\n```"
+        \ create users. See [Create a System User](https://docs.jumpcloud.com/1.0/systemusers/create-a-system-user)\
+        \ for full list of attributes.\n\n#### Sample Request \n```\ncurl -X POST\
+        \ https://console.jumpcloud.com/api/v2/bulk/users \\\n  -H 'Accept: application/json'\
+        \ \\\n  -H 'Content-Type: application/json' \\\n  -H 'x-api-key: {API_KEY}'\
+        \ \\\n  -d '[\n\t{\n\t\t\"email\":\"{email}\",\n\t\t\"firstname\":\"{firstname}\"\
+        ,\n\t\t\"lastname\":\"{firstname}\",\n\t\t\"username\":\"{username}\",\n\t\
+        \t\"attributes\":[\n\t\t\t{\"name\":\"EmployeeID\",\"value\":\"0000\"},\n\t\
+        \t\t{\"name\":\"Custom\",\"value\":\"attribute\"}\n\t\t]\n\t}\n]\n```"
       operationId: "bulk_usersCreate"
       parameters:
       - in: "body"
@@ -895,7 +896,7 @@ paths:
         id: "bulk_usersCreate"
         beforeScript: null
         afterScript: null
-        public: false
+        public: true
         mock:
           enabled: false
           dynamic: false
@@ -905,11 +906,13 @@ paths:
       - "Bulk Job Requests"
       summary: "Bulk Users Update"
       description: "The endpoint allows you to create a bulk job to asynchronously\
-        \ update users.\n\n#### Sample Request \n```\ncurl -X PATCH https://console.jumpcloud.com/api/v2/bulk/users\
-        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '[\n\t{\n\t  \"id\":\"5be9fb4ddb01290001e85109\"\
-        ,\n\t\t\"firstname\":\"{UPDATED_FIRSTNAME}\",\n\t\t\"department\":\"{UPDATED_DEPARTMENT}\"\
-        ,\n\t\t\"attributes\":[\n\t\t\t{\"name\":\"Custom\",\"value\":\"{ATTRIBUTE_VALUE}\"\
+        \ update users. See [Update a System User](https://docs.jumpcloud.com/1.0/systemusers/update-a-system-user)\
+        \ for full list of attributes.\n\n#### Sample Request \n```\ncurl -X PATCH\
+        \ https://console.jumpcloud.com/api/v2/bulk/users \\\n  -H 'Accept: application/json'\
+        \ \\\n  -H 'Content-Type: application/json' \\\n  -H 'x-api-key: {API_KEY}'\
+        \ \\\n  -d '[\n\t{\n\t  \"id\":\"5be9fb4ddb01290001e85109\",\n\t\t\"firstname\"\
+        :\"{UPDATED_FIRSTNAME}\",\n\t\t\"department\":\"{UPDATED_DEPARTMENT}\",\n\t\
+        \t\"attributes\":[\n\t\t\t{\"name\":\"Custom\",\"value\":\"{ATTRIBUTE_VALUE}\"\
         }\n\t\t]\n\t},\n\t{\n\t  \"id\":\"5be9fb4ddb01290001e85109\",\n\t\t\"firstname\"\
         :\"{UPDATED_FIRSTNAME}\",\n\t\t\"costCenter\":\"{UPDATED_COST_CENTER}\",\n\
         \t\t\"phoneNumbers\":[\n\t\t\t{\"type\":\"home\",\"number\":\"{HOME_PHONE_NUMBER}\"\
@@ -954,7 +957,7 @@ paths:
         id: "bulk_usersUpdate"
         beforeScript: null
         afterScript: null
-        public: false
+        public: true
         mock:
           enabled: false
           dynamic: false
@@ -965,7 +968,7 @@ paths:
       - "Bulk Job Requests"
       summary: "List Job Results"
       description: "This endpoint will return the results of particular import job\
-        \ request.\n\n###Sample Request\n```\ncurl -X GET \\\n  https://console.jumpcloud.com/api/v2/jobs/{ImportJobID}/results\
+        \ request.\n\n#### Sample Request\n```\ncurl -X GET \\\n  https://console.jumpcloud.com/api/v2/jobs/{ImportJobID}/results\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
       operationId: "jobs_results"
@@ -1020,7 +1023,7 @@ paths:
         id: "jobs_results"
         beforeScript: null
         afterScript: null
-        public: true
+        public: false
         mock:
           enabled: false
           dynamic: false
@@ -1974,7 +1977,7 @@ paths:
         201:
           description: ""
           schema:
-            $ref: "#/definitions/inline_response_201"
+            $ref: "#/definitions/GSuiteTranslationRule"
       security:
       - x-api-key: []
       x-stoplight:
@@ -2962,7 +2965,7 @@ paths:
         201:
           description: ""
           schema:
-            $ref: "#/definitions/inline_response_201_1"
+            $ref: "#/definitions/Office365TranslationRule"
       security:
       - x-api-key: []
       x-stoplight:
@@ -11426,6 +11429,14 @@ definitions:
       id:
         type: "string"
         description: "Object ID of the systemuser being updated"
+      username:
+        type: "string"
+      firstname:
+        type: "string"
+      lastname:
+        type: "string"
+      email:
+        type: "string"
       attributes:
         type: "array"
         description: "Map of additional attributes."
@@ -11439,22 +11450,6 @@ definitions:
       id: "bulk-user-update"
       name: "Bulk User Update"
       public: true
-  inline_response_201:
-    properties:
-      rule:
-        $ref: "#/definitions/GSuiteTranslationRule"
-    example:
-      rule:
-        builtIn: {}
-        id: "id"
-  inline_response_201_1:
-    properties:
-      rule:
-        $ref: "#/definitions/Office365TranslationRule"
-    example:
-      rule:
-        builtIn: {}
-        id: "id"
   systemuserputpost_addresses:
     properties:
       type:

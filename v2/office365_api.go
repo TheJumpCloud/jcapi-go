@@ -702,14 +702,14 @@ func (a *Office365ApiService) TranslationRulesOffice365List(ctx context.Context,
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "body" (Office365TranslationRuleRequest) 
- @return InlineResponse2011*/
-func (a *Office365ApiService) TranslationRulesOffice365Post(ctx context.Context, office365Id string, contentType string, accept string, localVarOptionals map[string]interface{}) (InlineResponse2011,  *http.Response, error) {
+ @return Office365TranslationRule*/
+func (a *Office365ApiService) TranslationRulesOffice365Post(ctx context.Context, office365Id string, contentType string, accept string, localVarOptionals map[string]interface{}) (Office365TranslationRule,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localVarFileName string
 		localVarFileBytes []byte
-	 	successPayload  InlineResponse2011
+	 	successPayload  Office365TranslationRule
 	)
 
 	// create path and map variables

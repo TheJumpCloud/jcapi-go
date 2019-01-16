@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TranslationRulesGSuitePost**
-> InlineResponse201 TranslationRulesGSuitePost(ctx, gsuiteId, contentType, accept, optional)
+> GSuiteTranslationRule TranslationRulesGSuitePost(ctx, gsuiteId, contentType, accept, optional)
 Create a new G Suite Translation Rule
 
 This endpoint allows you to create a translation rule for a specific G Suite instance. These rules specify how JumpCloud attributes translate to [G Suite Admin SDK](https://developers.google.com/admin-sdk/directory/) attributes.  ##### Sample Request ``` curl -X POST https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/translationrules \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}' \\   -d '{   {Translation Rule Parameters} }'  ```
@@ -318,7 +318,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse201**](inline_response_201.md)
+[**GSuiteTranslationRule**](GSuiteTranslationRule.md)
 
 ### Authorization
 

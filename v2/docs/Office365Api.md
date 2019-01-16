@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TranslationRulesOffice365Post**
-> InlineResponse2011 TranslationRulesOffice365Post(ctx, office365Id, contentType, accept, optional)
+> Office365TranslationRule TranslationRulesOffice365Post(ctx, office365Id, contentType, accept, optional)
 Create a new Office 365 Translation Rule
 
 This endpoint allows you to create a translation rule for a specific Office 365 instance. These rules specify how JumpCloud attributes translate to [Microsoft Graph](https://developer.microsoft.com/en-us/graph) attributes.  ##### Sample Request ``` curl -X POST https://console.jumpcloud.com/api/v2/office365s/{office365_id}/translationrules \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}' \\   -d '{   {Translation Rule Parameters} }'  ```
@@ -322,7 +322,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2011**](inline_response_201_1.md)
+[**Office365TranslationRule**](Office365TranslationRule.md)
 
 ### Authorization
 
