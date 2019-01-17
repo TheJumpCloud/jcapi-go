@@ -4,11 +4,13 @@ import (
 	"bytes"
 	"fmt"
 	"go/ast"
-	"go/format"
 	"go/parser"
+	"go/printer"
 	"go/token"
 	"log"
 	"os"
+	"regexp"
+	"strings"
 )
 
 // The refAll tool writes a go source file to stdout that contains a reference to every public function,
@@ -26,57 +28,32 @@ import (
 // SDK - instead of plain references, we would generate SDK calls.
 
 func main() {
-	// debug := flag.Bool("debug", false, "Print debug information to stderr")
 	dirPath := os.Args[1]
 	fset := token.NewFileSet()
 
 	pkgs, err := parser.ParseDir(fset, dirPath, nil, 0)
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 		return
 	}
 
 	for pkgName, pkg := range pkgs {
-		fmt.Println("package", pkgName)
 		pr := newPackageRefs(pkgName, fset)
 		ast.PackageExports(pkg)
-		for fileName, file := range pkg.Files {
-			fmt.Println("  fileName", fileName)
+		for _, file := range pkg.Files {
 			for _, decl := range file.Decls {
 				switch declVal := decl.(type) {
 				case *ast.FuncDecl:
-					fmt.Printf("    FuncDecl: %+v\n", declVal)
 					pr.addFuncDecl(declVal)
 				case *ast.GenDecl:
-					fmt.Printf("    GenDecl: %+v\n", declVal)
 					for _, spec := range declVal.Specs {
 						switch specVal := spec.(type) {
-						case *ast.ImportSpec:
-							fmt.Printf("      ImportSpec: %+v\n", specVal)
 						case *ast.ValueSpec:
-							fmt.Printf("      ValueSpec: %+v\n", specVal)
 							pr.addValueSpec(specVal)
-							for _, v := range specVal.Values {
-								fmt.Printf("        Value: %+v\n", v)
-							}
 						case *ast.TypeSpec:
-							fmt.Printf("      TypeSpec: %+v\n", specVal)
 							pr.addTypeSpec(specVal)
-							switch typeVal := specVal.Type.(type) {
-							case *ast.StructType:
-								fmt.Printf("        Struct: %+v\n", typeVal)
-								for _, field := range typeVal.Fields.List {
-									fmt.Printf("          Field: %+v\n", field)
-								}
-							default:
-								fmt.Printf("        default: %+v\n", typeVal)
-							}
-						default:
-							fmt.Printf("      default: %+v\n", specVal)
 						}
 					}
-				default:
-					fmt.Printf("   default: %+v\n", declVal)
 				}
 			}
 		}
@@ -114,56 +91,93 @@ func (pr *packageRefs) addTypeSpec(typeSpec *ast.TypeSpec) {
 
 func (pr *packageRefs) write() {
 	fmt.Printf("package main\n\n")
-	fmt.Printf("import %s\n", pr.pkgName)
+	fmt.Printf("import \"%s\"\n", pr.pkgName)
+	fmt.Printf("\nfunc main() {\n")
 
 	// TODO sort remaining arrays
-	fmt.Printf("\n// Functions\n")
+	fmt.Printf("\n    // Functions\n")
 	for _, funcDecl := range pr.funcDecls {
-		fmt.Printf("_ = %s.%s\n", pr.pkgName, funcDecl.Name)
+		if funcDecl.Recv == nil {
+			fmt.Printf("    _ = %s.%s\n", pr.pkgName, funcDecl.Name)
+		} else {
+			// For methods, create a bound reference for each receiver type
+			for _, field := range funcDecl.Recv.List {
+				typeAsName := baseTypeName(nodeString(field.Type, pr.fset, ""))
+				if ast.IsExported(typeAsName) {
+					fmt.Printf("    _ = new(%s.%s).%s\n", pr.pkgName, baseTypeName(typeAsName), funcDecl.Name)
+				}
+			}
+		}
 	}
 
-	fmt.Printf("\n// Structs\n")
+	fmt.Printf("\n    // Structs\n")
 	for _, typeSpec := range pr.typeSpecs {
 		structType, ok := typeSpec.Type.(*ast.StructType)
 		if ok {
-			fmt.Printf("\nvar _  %s.%s\n", pr.pkgName, typeSpec.Name)
-			fmt.Printf("// Fields for %s\n", typeSpec.Name)
+			fmt.Printf("\n    var _  %s.%s\n", pr.pkgName, typeSpec.Name)
+			fmt.Printf("    // Fields for %s\n", typeSpec.Name)
 			for _, field := range structType.Fields.List {
 				if len(field.Names) == 0 {
-					// (I think) no Names means this is an embedded anonymous field, the type name is
+					// (I think) no Names means this is an embedded anonymous field, the base type name is
 					// the implicit field name. https://golang.org/pkg/go/ast/#Field
-					fmt.Printf("var _ %s = new(%s.%s).%s // XXX Case 0\n", nodeString(field.Type, pr.fset), pr.pkgName, typeSpec.Name, field.Type)
+					typeAsName := nodeString(field.Type, pr.fset, pr.pkgName)
+					fmt.Printf("    var _ %s = new(%s.%s).%s // XXX Case 0\n", typeAsName, pr.pkgName, typeSpec.Name, baseTypeName(typeAsName))
 				} else {
 					for _, name := range field.Names {
 						// Normal named field
-						fmt.Printf("var _ %s = new(%s.%s).%s\n", nodeString(field.Type, pr.fset), pr.pkgName, typeSpec.Name, name)
+						fmt.Printf("    var _ %s = new(%s.%s).%s\n", nodeString(field.Type, pr.fset, pr.pkgName), pr.pkgName, typeSpec.Name, name)
 					}
 				}
 			}
 		}
 	}
 
-	fmt.Printf("\n// Values\n")
+	fmt.Printf("\n    // Values\n")
 	for _, valueSpec := range pr.valueSpecs {
 		for _, name := range valueSpec.Names {
 			// BUG(bb): We skip values with inferred type. They don't appear in the SDK code that changes and
-			// I don't know how to find their type. Probably look at https://github.com/golang/example/tree/master/gotypes
+			// I don't know how to find their type. Look at https://github.com/golang/example/tree/master/gotypes
 			// for clues.
 			if valueSpec.Type == nil {
 				log.Printf("Skipping value %s with no Type\n", name)
 			} else {
-				fmt.Printf("var _ %s = %s.%s\n", valueSpec.Type, pr.pkgName, name)
+				fmt.Printf("    var _ %s.%s = %s.%s\n", pr.pkgName, valueSpec.Type, pr.pkgName, name)
 			}
 		}
 	}
+
+	fmt.Printf("\n    fmt.Println(\"Package %s\")\n", pr.pkgName)
+	fmt.Printf("}\n")
 }
 
-// nodeString formats a syntax tree in the style of gofmt.
-func nodeString(n ast.Node, fset *token.FileSet) string {
+// nodeString prints a syntax tree node
+func nodeString(n ast.Node, fset *token.FileSet, pkgName string) string {
 	var buf bytes.Buffer
-	err := format.Node(&buf, fset, n)
+	err := printer.Fprint(&buf, fset, n)
 	if err != nil {
 		log.Fatal(err)
 	}
-	return buf.String()
+	// Hack(bb): format.Node does not include the package name in exported package names, insert it
+	s := buf.String()
+	if pkgName != "" && !strings.Contains(s, ".") {
+		base := baseTypeName(s)
+		if ast.IsExported(base) {
+			s = strings.Replace(s, base, pkgName+"."+base, 1)
+		}
+	}
+	return s
+}
+
+var reBaseTypeName *regexp.Regexp
+
+// baseTypeName returns the type name with *, selector parents, etc removed
+func baseTypeName(t string) string {
+	if reBaseTypeName == nil {
+		var err error
+		reBaseTypeName, err = regexp.Compile("[a-zA-Z0-9_]+$")
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+	return reBaseTypeName.FindString(t)
 }
