@@ -21,6 +21,9 @@ import (
 // version increment, added lines indicate a MINOR version increment, and no difference indicates
 // a PATCH version increment.
 //
+// Usage example:
+// $ go run tools/ref_all.go -imports "fmt,net/http,time" -pkgBase github.com/TheJumpCloud/jcapi-go v1 > ref_v1_1_35_0.go
+//
 // This tool could probably be generalized to work on any golang package source that implements
 // a semantically-versioned interface: it currently only generates references to interface
 // elements that appear in swagger codegen SDKs but it could handle the entire go language.
