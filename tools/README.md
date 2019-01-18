@@ -7,6 +7,8 @@ The `ref_all` tools creates a go source file that references all elements of an 
 be used to compare versions of the SDK. More specifically, newly-generated SDKs can be compared to the existing
 master version to determine which [Semantic Versioning](https://semver.org) component to increment.
 
+In addition, the generated go file can be compiled to validate the correctness of the gernerated SDK.
+
 Here is an example session:
 
 ```
