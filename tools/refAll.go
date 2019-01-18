@@ -2,14 +2,15 @@ package main
 
 import (
 	"bytes"
+	"flag"
 	"fmt"
 	"go/ast"
 	"go/parser"
 	"go/printer"
 	"go/token"
 	"log"
-	"os"
 	"regexp"
+	"sort"
 	"strings"
 )
 
@@ -27,8 +28,22 @@ import (
 // This tool could also potentially be modified to generate a full test client to exercise the
 // SDK - instead of plain references, we would generate SDK calls.
 
+type config struct {
+	pkgBase    string
+	importPkgs []string
+}
+
+var cfg config
+
 func main() {
-	dirPath := os.Args[1]
+	// TODO(bb) both of these cmd-line args could probably be gleaned from the ast
+	flag.StringVar(&cfg.pkgBase, "pkgBase", "", "Base path for packages being referenced (e.g. \"github.com/TheJumpCloud/jcapi-go/v2\")")
+	imports := flag.String("imports", "", "Comma-separated list of packages to import")
+	flag.Parse()
+	if *imports != "" {
+		cfg.importPkgs = strings.Split(*imports, ",")
+	}
+	dirPath := flag.Arg(0)
 	fset := token.NewFileSet()
 
 	pkgs, err := parser.ParseDir(fset, dirPath, nil, 0)
@@ -90,12 +105,33 @@ func (pr *packageRefs) addTypeSpec(typeSpec *ast.TypeSpec) {
 }
 
 func (pr *packageRefs) write() {
-	fmt.Printf("package main\n\n")
-	fmt.Printf("import \"%s\"\n", pr.pkgName)
-	fmt.Printf("\nfunc main() {\n")
+	pr.writeHeader()
+	pr.writeFunctions()
+	pr.writeStructs()
+	pr.writeValues()
+	pr.writeFooter()
+}
 
-	// TODO sort remaining arrays
+func (pr *packageRefs) writeHeader() {
+	fmt.Printf("package main\n\n")
+	fmt.Printf("import (\n")
+	if cfg.pkgBase != "" {
+		fmt.Printf("    %s \"%s/%s\"\n", pr.pkgName, cfg.pkgBase, pr.pkgName)
+	} else {
+		fmt.Printf("    \"%s\"\n", pr.pkgName)
+	}
+	for _, imp := range cfg.importPkgs {
+		fmt.Printf("    \"%s\"\n", imp)
+	}
+	fmt.Printf(")\n\n")
+	fmt.Printf("func main() {\n")
+}
+
+func (pr *packageRefs) writeFunctions() {
 	fmt.Printf("\n    // Functions\n")
+	sort.Slice(pr.funcDecls, func(i, j int) bool {
+		return strings.Compare(pr.funcDecls[i].Name.Name, pr.funcDecls[j].Name.Name) < 0
+	})
 	for _, funcDecl := range pr.funcDecls {
 		if funcDecl.Recv == nil {
 			fmt.Printf("    _ = %s.%s\n", pr.pkgName, funcDecl.Name)
@@ -109,8 +145,13 @@ func (pr *packageRefs) write() {
 			}
 		}
 	}
+}
 
+func (pr *packageRefs) writeStructs() {
 	fmt.Printf("\n    // Structs\n")
+	sort.Slice(pr.typeSpecs, func(i, j int) bool {
+		return strings.Compare(pr.typeSpecs[i].Name.Name, pr.typeSpecs[j].Name.Name) < 0
+	})
 	for _, typeSpec := range pr.typeSpecs {
 		structType, ok := typeSpec.Type.(*ast.StructType)
 		if ok {
@@ -121,7 +162,7 @@ func (pr *packageRefs) write() {
 					// (I think) no Names means this is an embedded anonymous field, the base type name is
 					// the implicit field name. https://golang.org/pkg/go/ast/#Field
 					typeAsName := nodeString(field.Type, pr.fset, pr.pkgName)
-					fmt.Printf("    var _ %s = new(%s.%s).%s // XXX Case 0\n", typeAsName, pr.pkgName, typeSpec.Name, baseTypeName(typeAsName))
+					fmt.Printf("    var _ %s = new(%s.%s).%s\n", typeAsName, pr.pkgName, typeSpec.Name, baseTypeName(typeAsName))
 				} else {
 					for _, name := range field.Names {
 						// Normal named field
@@ -131,8 +172,15 @@ func (pr *packageRefs) write() {
 			}
 		}
 	}
+}
 
+func (pr *packageRefs) writeValues() {
 	fmt.Printf("\n    // Values\n")
+	sort.Slice(pr.valueSpecs, func(i, j int) bool {
+		vi := pr.valueSpecs[i]
+		vj := pr.valueSpecs[j]
+		return len(vi.Names) == 0 || len(vj.Names) == 0 || strings.Compare(pr.valueSpecs[i].Names[0].Name, pr.valueSpecs[j].Names[0].Name) < 0
+	})
 	for _, valueSpec := range pr.valueSpecs {
 		for _, name := range valueSpec.Names {
 			// BUG(bb): We skip values with inferred type. They don't appear in the SDK code that changes and
@@ -145,7 +193,9 @@ func (pr *packageRefs) write() {
 			}
 		}
 	}
+}
 
+func (pr *packageRefs) writeFooter() {
 	fmt.Printf("\n    fmt.Println(\"Package %s\")\n", pr.pkgName)
 	fmt.Printf("}\n")
 }
