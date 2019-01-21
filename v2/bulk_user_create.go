@@ -9,6 +9,7 @@
 
 package v2
 
+// See [V1 system user creation](https://docs.jumpcloud.com/1.0/systemusers/create-a-system-user) for full list of attributes.
 type BulkUserCreate struct {
 
 	Username string `json:"username,omitempty"`
@@ -19,5 +20,6 @@ type BulkUserCreate struct {
 
 	Email string `json:"email,omitempty"`
 
+	// Map of additional attributes.
 	Attributes []interface{} `json:"attributes,omitempty"`
 }

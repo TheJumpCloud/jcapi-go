@@ -12,4 +12,6 @@ package v1
 type Fde struct {
 
 	KeyPresent bool `json:"keyPresent,omitempty"`
+
+	Active bool `json:"active,omitempty"`
 }

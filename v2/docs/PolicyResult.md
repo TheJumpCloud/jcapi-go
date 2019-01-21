@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **ExitStatus** | **int32** | The 32-bit unsigned exit status from the applying the policy. | [optional] [default to null]
 **StdErr** | **string** | The STDERR output from applying the policy. | [optional] [default to null]
 **StdOut** | **string** | The STDOUT output from applying the policy. | [optional] [default to null]
+**State** | **string** | Enumeration describing the state of the policy. Success, failed, or pending. | [optional] [default to null]
+**Detail** | **string** | Details pertaining to the policy result. | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
