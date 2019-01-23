@@ -23,13 +23,6 @@ Some systems endpoints (in both API v1 and v2) also support
 which allows an individual system to manage its information and resource
 associations.
 
-### Versioning
-
-[Semantic Versioning](https://semver.org) is used for the generated client packages.
-[go-export-parser](https://github.com/TheJumpCloud/go-export-parser) is useful for summarizing changes between
-versions and determining which version component (MAJOR, MINOR, or PATCH) is to be incremented for a new
-release.
-
 ### Usage Examples
 
 For more detailed instructions, refer to each API version's respective README
