@@ -6,3 +6,8 @@ services:
       - ./input:/swagger-api/yaml # volume for input yaml files
       - ./output:/swagger-api/out # volume for generated files
       - .:/config # volume for config files
+  tools:
+    build: .
+    volumes:
+      - .:/go/src/github.com/TheJumpCloud/jcapi-go
+
