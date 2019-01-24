@@ -56,12 +56,14 @@ sed '/type GroupType string/q' v2/group_type.go > tmp && mv tmp v2/group_type.go
 #### Go Export Parser
 
 `tools/go-export-parser` can be used to validate a new version and determine the semantic version
-component to increment for a new release. The tools generates a go source file that references all
+component to increment for a new release. The tool generates a go source file that references all
 exported elements of the API. This source file can be compared to the one for the previous version
 to determine which semantic versioning component (major, minor, or patch) to increment.
 
 In addition, the generated go file can be compiled to validate the correctness of the generated SDK to 
 some extent.
+
+The tool is a linux executable. (It runs in docker on other OSs).
 
 Here is an example session:
 
@@ -115,3 +117,27 @@ $
 In general, changed or deleted lines imply a MAJOR component increment, added lines imply a MINOR component
 increment, no change implies a PATCH component increment. The above example indicates a new MAJOR version
 because the type of `SshdParams`, `RequestTime`, and `ResponseTime` changed.
+
+##### Notes
+
+The go-export-parser tool requires all of jcapi-go's dependent packages to be installed.
+
+If you get failures like:
+
+```
+$ tools/go-export-parser github.com/TheJumpCloud/jcapi-go/v1 > ref_v1_2_0_1.go
+/go/src/github.com/TheJumpCloud/jcapi-go/v1/api_client.go:20:5: could not import golang.org/x/oauth2 (cannot find package "golang.org/x/oauth2" in any of:
+        /usr/local/go/src/golang.org/x/oauth2 (from $GOROOT)
+        /go/src/golang.org/x/oauth2 (from $GOPATH))
+/go/src/github.com/TheJumpCloud/jcapi-go/v1/api_client.go:21:5: could not import golang.org/x/net/context (cannot find package "golang.org/x/net/context" in any of:
+        /usr/local/go/src/golang.org/x/net/context (from $GOROOT)
+        /go/src/golang.org/x/net/context (from $GOPATH))
+2019/01/24 20:57:21 Couldn't load package path %!d(string=github.com/TheJumpCloud/jcapi-go/v1): err: couldn't load packages due to errors: github.com/TheJumpCloud/jcapi-go/v1
+```
+
+Install the dependencies with `go get`:
+```
+$ go get golang.org/x/oauth2
+$ tools/go-export-parser github.com/TheJumpCloud/jcapi-go/v1 > ref_v1_2_0_1.go
+$
+```
