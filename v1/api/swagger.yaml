@@ -22,7 +22,7 @@ paths:
       description: "The endpoint returns all your SSO / SAML Applications.\n\n####\
         \ Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/applications\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n\n```"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \n\n```"
       operationId: "applications_list"
       parameters:
       - name: "fields"
@@ -51,6 +51,12 @@ paths:
         default: "The comma separated fields used to sort the collection. Default\
           \ sort is ascending, prefix with - to sort descending."
         x-exportParamName: "Sort"
+      - name: "filter"
+        in: "query"
+        description: "A filter to apply to the query."
+        required: false
+        type: "string"
+        x-exportParamName: "Filter"
       - name: "Content-Type"
         in: "header"
         required: true
@@ -181,6 +187,12 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Sort"
+      - name: "filter"
+        in: "query"
+        description: "A filter to apply to the query."
+        required: false
+        type: "string"
+        x-exportParamName: "Filter"
       - name: "Content-Type"
         in: "header"
         required: true
@@ -279,7 +291,7 @@ paths:
       description: "This endpoint returns a specific command based on the command\
         \ ID.\n\n#### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/commands/{CommandID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \n```"
       operationId: "commands_get"
       parameters:
       - name: "id"
@@ -295,6 +307,12 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Fields"
+      - name: "filter"
+        in: "query"
+        description: "A filter to apply to the query."
+        required: false
+        type: "string"
+        x-exportParamName: "Filter"
       - name: "Content-Type"
         in: "header"
         required: true
@@ -447,7 +465,7 @@ paths:
       description: "This endpoint returns the uploaded file(s) associated with a specific\
         \ command.\n\n#### Sample Request\n\n```\ncurl -X GET https://console.jumpcloud.com/api/files/command/{commandID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \n  ```"
       operationId: "command_file_get"
       parameters:
       - name: "id"
@@ -556,6 +574,12 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Sort"
+      - name: "filter"
+        in: "query"
+        description: "A filter to apply to the query."
+        required: false
+        type: "string"
+        x-exportParamName: "Filter"
       - name: "Content-Type"
         in: "header"
         required: true
@@ -598,9 +622,9 @@ paths:
       - "Command Results"
       summary: "List an individual Command result"
       description: "This endpoint returns a specific command result.\n\n#### Sample\
-        \ Request\n```\ncurl -X GET https://console.jumpcloud.com/api/commandresults/{CommandID}\
+        \ Request\n```\ncurl -X GET https://console.jumpcloud.com/api/commandresults/{CommandResultID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \n  ```"
       operationId: "command_results_get"
       parameters:
       - name: "id"
@@ -616,6 +640,12 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Fields"
+      - name: "filter"
+        in: "query"
+        description: "A filter to apply to the query."
+        required: false
+        type: "string"
+        x-exportParamName: "Filter"
       - name: "Content-Type"
         in: "header"
         required: true
@@ -659,7 +689,7 @@ paths:
       description: "This endpoint deletes a specific command result.\n\n#### Sample\
         \ Request\n```\ncurl -X GET https://console.jumpcloud.com/api/commandresults/{CommandID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ````"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \n  ````"
       operationId: "command_results_delete"
       parameters:
       - name: "id"
@@ -708,9 +738,9 @@ paths:
       tags:
       - "Organizations"
       summary: "Get Organization Details"
-      description: "This endpoint returns Organization Details.\n\n#### Sample Request\n\
-        \n```\ncurl -X GET \\\n  https://console.jumpcloud.com/api/organizations \\\
-        \n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+      description: "This endpoint returns Organization Details.\n\n#### Sample Request\
+        \ \n\n```\ncurl -X GET \\\n  https://console.jumpcloud.com/api/organizations\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
       operationId: "organization_list"
       parameters:
@@ -722,6 +752,12 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Fields"
+      - name: "filter"
+        in: "query"
+        description: "A filter to apply to the query."
+        required: false
+        type: "string"
+        x-exportParamName: "Filter"
       - name: "limit"
         in: "query"
         description: "The number of records to return at once. Limited to 100."
@@ -757,7 +793,8 @@ paths:
         x-exportParamName: "Sort"
       - name: "search"
         in: "query"
-        description: ""
+        description: "A nested object containing a string `searchTerm` and a list\
+          \ of `fields` to search on."
         required: false
         type: "string"
         x-exportParamName: "Search"
@@ -796,6 +833,12 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Fields"
+      - name: "filter"
+        in: "query"
+        description: "A filter to apply to the query."
+        required: false
+        type: "string"
+        x-exportParamName: "Filter"
       - name: "limit"
         in: "query"
         description: "The number of records to return at once. Limited to 100."
@@ -909,7 +952,7 @@ paths:
       - "Radius Servers"
       summary: "Update Radius Servers"
       description: "This endpoint allows you to update RADIUS servers in your organization.\n\
-        \n####\n```\ncurl -X PUT https://console.jumpcloud.com/api/radiusservers/{ServerID}\
+        \n#### \n```\ncurl -X PUT https://console.jumpcloud.com/api/radiusservers/{ServerID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n    \"name\": \"{name_update}\"\
         ,\n    \"networkSourceIp\": \"{0.0.0.0}\"\n}'\n```"
@@ -962,9 +1005,9 @@ paths:
       summary: "Search Organizations"
       description: "This endpoint will return Organization data based on your search\
         \ parameters. This endpoint WILL NOT allow you to add a new Organization.\n\
-        \nYou can use the supported parameters and pass those in the body of request.\n\
-        \nThe parameters must be passed as Content-Type application/json.\n\n\n####\
-        \ Sample Request\n```\ncurl -X POST https://console.jumpcloud.com/api/search/organizations\
+        \nYou can use the supported parameters and pass those in the body of request.\
+        \ \n\nThe parameters must be passed as Content-Type application/json.\n\n\n\
+        #### Sample Request\n```\ncurl -X POST https://console.jumpcloud.com/api/search/organizations\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n  \"search\":{\n    \"fields\"\
         \ : [\"settings.name\"],\n    \"searchTerm\": \"Second\"\n    },\n  \"fields\"\
@@ -986,6 +1029,12 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Fields"
+      - name: "filter"
+        in: "query"
+        description: "A filter to apply to the query."
+        required: false
+        type: "string"
+        x-exportParamName: "Filter"
       - name: "limit"
         in: "query"
         description: "The number of records to return at once. Limited to 100."
@@ -1036,21 +1085,36 @@ paths:
       - "Search"
       summary: "Search Systems"
       description: "Return Systems in multi-record format allowing for the passing\
-        \ of the 'filter' parameter. This WILL NOT allow you to add a new system.\n\
-        \nTo support advanced filtering you can use the `filter` parameter that can\
-        \ only be passed in the body of POST /api/search/* routes. The `filter` parameter\
-        \ must be passed as Content-Type application/json.\n\nThe `filter` parameter\
-        \ is an object with a single property, either `and` or `or` with the value\
-        \ of the property being an array of query expressions.\n\nThis allows you\
-        \ to filter records using the logic of matching ALL or ANY records in the\
-        \ array of query expressions. If the `and` or `or` are not included the default\
-        \ behavior is to match ALL query expressions.\n\n\n#### Sample Request\n\n\
-        ```\ncurl -X POST https://console.jumpcloud.com/api/search/systems \\\n  -H\
-        \ 'Accept: application/json' \\\n  -H 'Content-Type: application/json' \\\n\
-        \  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n\"filter\" :\n    {\n        \"\
-        or\" :\n            [\n                {\"hostname\" : \"my-hostname\"},\n\
-        \                {\"hostname\" : \"other-hostname\"}\n            ]\n    },\n\
-        \"fields\" : \"os hostname displayName\"\n}'\n```"
+        \ of the `filter` and `searchFilter` parameters. This WILL NOT allow you to\
+        \ add a new system.\n\nTo support advanced filtering you can use the `filter`\
+        \ and `searchFilter` parameters that can only be passed in the body of POST\
+        \ /api/search/* routes. The `filter` and `searchFilter` parameters must be\
+        \ passed as Content-Type application/json.\n\nThe `filter` parameter is an\
+        \ object with a single property, either `and` or `or` with the value of the\
+        \ property being an array of query expressions. \n\nThis allows you to filter\
+        \ records using the logic of matching ALL or ANY records in the array of query\
+        \ expressions. If the `and` or `or` are not included the default behavior\
+        \ is to match ALL query expressions.\n\nThe `searchFilter` parameter allows\
+        \ text searching on supported fields by specifying a `searchTerm` and a list\
+        \ of `fields` to query on. If any `field` has a partial text match on the`searchTerm`\
+        \ the record will be returned.\n\n\n#### Sample Request\n\nExact search for\
+        \ a list of hostnames\n```\ncurl -X POST https://console.jumpcloud.com/api/search/systems\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n  \"filter\": {\n    \"or\"\
+        : [\n      {\"hostname\" : \"my-hostname\"},\n      {\"hostname\" : \"other-hostname\"\
+        }\n    ]\n  },\n  \"fields\" : \"os hostname displayName\"\n}'\n```\n\nText\
+        \ search for a hostname or display name\n```\ncurl -X POST https://console.jumpcloud.com/api/search/systems\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n  \"searchFilter\": {\n   \
+        \ \"searchTerm\": \"my-host\",\n    \"fields\": [\"hostname\", \"displayName\"\
+        ]\n  },\n  \"fields\": \"os hostname displayName\"\n}'\n```\n\nCombining `filter`\
+        \ and `searchFilter` to search for names that match a given OS\n```\ncurl\
+        \ -X POST https://console.jumpcloud.com/api/search/systems \\\n  -H 'Accept:\
+        \ application/json' \\\n  -H 'Content-Type: application/json' \\\n  -H 'x-api-key:\
+        \ {API_KEY}' \\\n  -d '{\n  \"searchFilter\": {\n    \"searchTerm\": \"my-host\"\
+        ,\n    \"fields\": [\"hostname\", \"displayName\"]\n  },\n  \"filter\": {\n\
+        \    \"or\": [\n      {\"os\" : \"Ubuntu\"},\n      {\"os\" : \"Mac OS X\"\
+        }\n    ]\n  },\n  \"fields\": \"os hostname displayName\"\n}'\n```"
       operationId: "search_systems_post"
       parameters:
       - in: "body"
@@ -1099,6 +1163,12 @@ paths:
         type: "integer"
         default: 0
         x-exportParamName: "Skip"
+      - name: "filter"
+        in: "query"
+        description: "A filter to apply to the query."
+        required: false
+        type: "string"
+        x-exportParamName: "Filter"
       responses:
         200:
           description: "OK"
@@ -1123,19 +1193,37 @@ paths:
       - "Search"
       summary: "Search System Users"
       description: "Return System Users in multi-record format allowing for the passing\
-        \ of the 'filter' parameter. This WILL NOT allow you to add a new system user.\n\
-        \nTo support advanced filtering you can use the `filter` parameter that can\
-        \ only be passed in the body of POST /api/search/* routes. The `filter` parameter\
+        \ of the `filter` and `searchFilter` parameters. This WILL NOT allow you to\
+        \ add a new system user.\n\nTo support advanced filtering you can use the\
+        \ `filter` and `searchFilter` parameters that can only be passed in the body\
+        \ of POST /api/search/* routes. The `filter` and `searchFilter` parameters\
         \ must be passed as Content-Type application/json.\n\nThe `filter` parameter\
         \ is an object with a single property, either `and` or `or` with the value\
-        \ of the property being an array of query expressions.\n\nThis allows you\
+        \ of the property being an array of query expressions. \n\nThis allows you\
         \ to filter records using the logic of matching ALL or ANY records in the\
         \ array of query expressions. If the `and` or `or` are not included the default\
-        \ behavior is to match ALL query expressions.\n\n#### Sample Request\n\n```\n\
-        curl -X POST https://console.jumpcloud.com/api/search/systemusers \\\n  -H\
-        \ 'Accept: application/json' \\\n  -H 'Content-Type: application/json' \\\n\
-        \  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n\"filter\" : [{\"email\" : \"example@jumpcloud.com\"\
-        }],\n\"fields\" : \"email username sudo\"\n}'\n```"
+        \ behavior is to match ALL query expressions.\n\nThe `searchFilter` parameter\
+        \ allows text searching on supported fields by specifying a `searchTerm` and\
+        \ a list of `fields` to query on. If any `field` has a partial text match\
+        \ on the`searchTerm` the record will be returned.\n\n\n#### Sample Request\n\
+        \nExact search for a list of system users in a department\n```\ncurl -X POST\
+        \ https://console.jumpcloud.com/api/search/systemusers \\\n  -H 'Accept: application/json'\
+        \ \\\n  -H 'Content-Type: application/json' \\\n  -H 'x-api-key: {API_KEY}'\
+        \ \\\n  -d '{\n  \"filter\" : [{\"department\" : \"IT\"}],\n  \"fields\" :\
+        \ \"email username sudo\"\n}'\n```\n\nText search for system users with and\
+        \ email on a domain\n```\ncurl -X POST https://console.jumpcloud.com/api/search/systemusers\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n  \"searchFilter\" : {\n  \
+        \  \"searchTerm\": \"@jumpcloud.com\",\n    \"fields\": [\"email\"]\n  },\n\
+        \  \"fields\" : \"email username sudo\"\n}'\n```\n\nCombining `filter` and\
+        \ `searchFilter` to text search for system users with and email on a domain\
+        \ who are in a list of departments\n```\ncurl -X POST https://console.jumpcloud.com/api/search/systemusers\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n  \"searchFilter\": {\n   \
+        \ \"searchTerm\": \"@jumpcloud.com\",\n    \"fields\": [\"email\"]\n  },\n\
+        \  \"filter\": {\n    \"or\": [\n      {\"department\" : \"IT\"},\n      {\"\
+        department\" : \"Sales\"}\n    ]\n  },\n  \"fields\" : \"email username sudo\"\
+        \n}'\n```"
       operationId: "search_systemusers_post"
       parameters:
       - in: "body"
@@ -1152,6 +1240,12 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Fields"
+      - name: "filter"
+        in: "query"
+        description: "A filter to apply to the query."
+        required: false
+        type: "string"
+        x-exportParamName: "Filter"
       - name: "limit"
         in: "query"
         description: "The number of records to return at once. Limited to 100."
@@ -1209,8 +1303,8 @@ paths:
       summary: "List All Systems"
       description: "This endpoint returns all Systems.\n\n#### Sample Requests\n```\n\
         curl -X GET https://console.jumpcloud.com/api/systems \\\n  -H 'Accept: application/json'\
-        \ \\\n  -H 'Content-Type: application/json' \\\n  -H 'x-api-key: {API_KEY}'\n\
-        \n```"
+        \ \\\n  -H 'Content-Type: application/json' \\\n  -H 'x-api-key: {API_KEY}'\
+        \ \n\n```"
       operationId: "systems_list"
       parameters:
       - name: "fields"
@@ -1228,6 +1322,31 @@ paths:
         type: "integer"
         default: 10
         x-exportParamName: "Limit"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "search"
+        in: "query"
+        description: "A nested object containing a string `searchTerm` and a list\
+          \ of `fields` to search on."
+        required: false
+        type: "string"
+        x-exportParamName: "Search"
       - name: "skip"
         in: "query"
         description: "The offset into the records to return."
@@ -1242,24 +1361,12 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Sort"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
+      - name: "filter"
+        in: "query"
+        description: "A filter to apply to the query."
         required: false
         type: "string"
-        x-exportParamName: "XOrgId"
+        x-exportParamName: "Filter"
       responses:
         200:
           description: ""
@@ -1284,7 +1391,7 @@ paths:
       description: "This endpoint returns an individual system.\n\n#### Sample Request\n\
         ```\ncurl -X GET https://console.jumpcloud.com/api/systems/{SystemID} \\\n\
         \  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \n  ```"
       operationId: "systems_get"
       parameters:
       - name: "id"
@@ -1300,6 +1407,12 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Fields"
+      - name: "filter"
+        in: "query"
+        description: "A filter to apply to the query."
+        required: false
+        type: "string"
+        x-exportParamName: "Filter"
       - name: "Content-Type"
         in: "header"
         required: true
@@ -1527,6 +1640,12 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Sort"
+      - name: "filter"
+        in: "query"
+        description: "A filter to apply to the query."
+        required: false
+        type: "string"
+        x-exportParamName: "Filter"
       - name: "Content-Type"
         in: "header"
         required: true
@@ -1634,7 +1753,7 @@ paths:
       description: "This endpoint returns all systemusers.\n\n#### Sample Request\n\
         \n```\ncurl -X GET https://console.jumpcloud.com/api/systemusers \\\n  -H\
         \ 'Accept: application/json' \\\n  -H 'Content-Type: application/json' \\\n\
-        \  -H 'x-api-key: {API_KEY}'\n```"
+        \  -H 'x-api-key: {API_KEY}' \n```"
       operationId: "systemusers_list"
       parameters:
       - name: "limit"
@@ -1665,12 +1784,12 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Fields"
-      - name: "filter"
-        in: "query"
+      - name: "x-org-id"
+        in: "header"
         description: ""
         required: false
         type: "string"
-        x-exportParamName: "Filter"
+        x-exportParamName: "XOrgId"
       - name: "Content-Type"
         in: "header"
         required: true
@@ -1683,12 +1802,19 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
+      - name: "search"
+        in: "query"
+        description: "A nested object containing a string `searchTerm` and a list\
+          \ of `fields` to search on."
         required: false
         type: "string"
-        x-exportParamName: "XOrgId"
+        x-exportParamName: "Search"
+      - name: "filter"
+        in: "query"
+        description: "A filter to apply to the query."
+        required: false
+        type: "string"
+        x-exportParamName: "Filter"
       responses:
         200:
           description: "OK"
@@ -1787,6 +1913,12 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Fields"
+      - name: "filter"
+        in: "query"
+        description: "A filter to apply to the query."
+        required: false
+        type: "string"
+        x-exportParamName: "Filter"
       - name: "Content-Type"
         in: "header"
         required: true
@@ -1888,7 +2020,7 @@ paths:
       description: "This endpoint allows you to delete a particular system user.\n\
         \n#### Sample Request\n```\ncurl -X DELETE https://console.jumpcloud.com/api/systemusers/{UserID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \n```"
       operationId: "systemusers_delete"
       parameters:
       - name: "id"
@@ -1938,7 +2070,7 @@ paths:
       - "Systemusers"
       summary: "List system user binding"
       description: "Hidden as Tags is deprecated\n\nAdds or removes a system binding\
-        \ for a user.\n\nThis endpoint is only used for users still using JumpCloud\
+        \ for a user. \n\nThis endpoint is only used for users still using JumpCloud\
         \ Tags. If you are using JumpCloud Groups please refer to the documentation\
         \ found [here](https://docs.jumpcloud.com/2.0/systems/manage-associations-of-a-system).\n\
         \n\nList system bindings for a specific system user in a system and user binding\
@@ -1982,6 +2114,12 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Sort"
+      - name: "filter"
+        in: "query"
+        description: "A filter to apply to the query."
+        required: false
+        type: "string"
+        x-exportParamName: "Filter"
       - name: "Content-Type"
         in: "header"
         required: true
@@ -2024,7 +2162,7 @@ paths:
       - "Systemusers"
       summary: "Update a system user binding"
       description: "Hidden as Tags is deprecated\n\nAdds or removes a system binding\
-        \ for a user.\n\nThis endpoint is only used for users still using JumpCloud\
+        \ for a user. \n\nThis endpoint is only used for users still using JumpCloud\
         \ Tags. If you are using JumpCloud Groups please refer to the documentation\
         \ found [here](https://docs.jumpcloud.com/2.0/systems/manage-associations-of-a-system).\n\
         \n### Example\n\n#### Add (or remove) system to system user\n\n```\ncurl \\\
@@ -2092,11 +2230,11 @@ paths:
         \ be aware that if the user does not complete MFA setup before the `exclusionUntil`\
         \ date, they will be locked out of any resources that require MFA.\n\nPlease\
         \ refer to our [Knowledge Base Article](https://support.jumpcloud.com/customer/en/portal/articles/2959138-using-multifactor-authentication-with-jumpcloud)\
-        \ on setting up MFA for more information.\n\n#### Sample Request\n```\ncurl\
-        \ -X POST \\\n  https://console.jumpcloud.com/api/systemusers/{UserID}/resetmfa\
+        \ on setting up MFA for more information. \n\n#### Sample Request \n```\n\
+        curl -X POST \\\n  https://console.jumpcloud.com/api/systemusers/{UserID}/resetmfa\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -d '{\"exclusion\": true, \"exclusionUntil\": \"{date-time}\"}'\n\n\
-        \n```"
+        \ \\\n  -d '{\"exclusion\": true, \"exclusionUntil\": \"{date-time}\"}'\n\
+        \  \n\n```"
       operationId: "systemusers_resetmfa"
       parameters:
       - name: "id"
@@ -2322,6 +2460,59 @@ paths:
           enabled: false
           dynamic: false
           statusCode: 200
+  /systemusers/{id}/unlock:
+    post:
+      tags:
+      - "Systemusers"
+      summary: "Unlock a system user"
+      description: "This endpoint allows you to unlock a user's account."
+      operationId: "systemusers_unlock"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      responses:
+        200:
+          description: ""
+        400:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        401:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        403:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        404:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        500:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        id: "systemusers_unlock"
+        beforeScript: null
+        afterScript: null
+        public: true
+        mock:
+          enabled: false
+          dynamic: false
+          statusCode: 200
   /tags:
     get:
       tags:
@@ -2359,6 +2550,12 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Sort"
+      - name: "filter"
+        in: "query"
+        description: "A filter to apply to the query."
+        required: false
+        type: "string"
+        x-exportParamName: "Filter"
       - name: "Content-Type"
         in: "header"
         required: true
@@ -2483,6 +2680,12 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Sort"
+      - name: "filter"
+        in: "query"
+        description: "A filter to apply to the query."
+        required: false
+        type: "string"
+        x-exportParamName: "Filter"
       - name: "Content-Type"
         in: "header"
         required: true
@@ -2640,6 +2843,25 @@ definitions:
       id: "errorresponse"
       name: "ErrorResponse"
       public: true
+  mfa:
+    type: "object"
+    properties:
+      exclusion:
+        type: "boolean"
+      exclusionUntil:
+        type: "string"
+        format: "date-time"
+      configured:
+        type: "boolean"
+    title: "mfa"
+    example:
+      configured: true
+      exclusion: true
+      exclusionUntil: "2000-01-23T04:56:07.000+00:00"
+    x-stoplight:
+      id: "mfa"
+      name: "mfa"
+      public: true
   systemuser:
     type: "object"
     properties:
@@ -2746,6 +2968,8 @@ definitions:
       department:
         type: "string"
         maxLength: 1024
+      mfa:
+        $ref: "#/definitions/mfa"
     title: "SystemUser"
     x-stoplight:
       id: "systemuser"
@@ -2847,6 +3071,8 @@ definitions:
         type: "string"
         description: "Must be unique per user. "
         maxLength: 256
+      mfa:
+        $ref: "#/definitions/mfa"
     title: "SystemUserPost"
     x-stoplight:
       id: "systemuserputpost"
@@ -3159,6 +3385,8 @@ definitions:
         type: "string"
         description: "Must be unique per user. "
         maxLength: 256
+      mfa:
+        $ref: "#/definitions/mfa"
     title: "SystemUserReturn"
     example:
       public_key: "public_key"
@@ -3213,6 +3441,10 @@ definitions:
       created: "created"
       costCenter: "costCenter"
       middlename: "middlename"
+      mfa:
+        configured: true
+        exclusion: true
+        exclusionUntil: "2000-01-23T04:56:07.000+00:00"
       external_source_type: "external_source_type"
       tags:
       - "tags"
@@ -3476,6 +3708,10 @@ definitions:
         created: "created"
         costCenter: "costCenter"
         middlename: "middlename"
+        mfa:
+          configured: true
+          exclusion: true
+          exclusionUntil: "2000-01-23T04:56:07.000+00:00"
         external_source_type: "external_source_type"
         tags:
         - "tags"
@@ -3556,6 +3792,10 @@ definitions:
         created: "created"
         costCenter: "costCenter"
         middlename: "middlename"
+        mfa:
+          configured: true
+          exclusion: true
+          exclusionUntil: "2000-01-23T04:56:07.000+00:00"
         external_source_type: "external_source_type"
         tags:
         - "tags"
@@ -4525,6 +4765,8 @@ definitions:
         type: "string"
         description: "Must be unique per user. "
         maxLength: 256
+      mfa:
+        $ref: "#/definitions/mfa"
     title: "SystemUserPut"
     x-stoplight:
       id: "systemuserput"
@@ -5104,6 +5346,13 @@ parameters:
     required: false
     type: "string"
     x-exportParamName: "Fields"
+  trait:filter:filter:
+    name: "filter"
+    in: "query"
+    description: "A filter to apply to the query."
+    required: false
+    type: "string"
+    x-exportParamName: "Filter"
   trait:skip:skip:
     name: "skip"
     in: "query"
@@ -5158,7 +5407,8 @@ parameters:
   trait:search:search:
     name: "search"
     in: "query"
-    description: ""
+    description: "A nested object containing a string `searchTerm` and a list of `fields`\
+      \ to search on."
     required: false
     type: "string"
     x-exportParamName: "Search"
@@ -5342,6 +5592,8 @@ x-stoplight:
         - _id: "sshkey_post"
           type: "endpoints"
         - _id: "sshkey_delete"
+          type: "endpoints"
+        - _id: "systemusers_unlock"
           type: "endpoints"
         name: "Systemusers"
         description: "The System Users section of the JumpCloud API allows you to\

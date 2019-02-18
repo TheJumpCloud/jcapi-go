@@ -1,23 +1,22 @@
-# \OrganizationsApi
+# \ProvidersApi
 
-All URIs are relative to *https://console.jumpcloud.com/api*
+All URIs are relative to *https://console.jumpcloud.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**OrganizationList**](OrganizationsApi.md#OrganizationList) | **Get** /organizations | Get Organization Details
+[**ProvidersListAdministrators**](ProvidersApi.md#ProvidersListAdministrators) | **Get** /providers/{provider_id}/administrators | providersadministrators
 
 
-# **OrganizationList**
-> Organizationslist OrganizationList(ctx, contentType, accept, optional)
-Get Organization Details
-
-This endpoint returns Organization Details.  #### Sample Request   ``` curl -X GET \\   https://console.jumpcloud.com/api/organizations \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'   ```
+# **ProvidersListAdministrators**
+> InlineResponse200 ProvidersListAdministrators(ctx, providerId, contentType, accept, optional)
+providersadministrators
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **providerId** | **string**|  | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
@@ -27,18 +26,18 @@ Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **providerId** | **string**|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **fields** | **string**| Use a space seperated string of field parameters to include the data in the response. If omitted the default list of fields will be returned.  | [default to ]
- **filter** | **string**| A filter to apply to the query. | 
+ **fields** | [**[]string**](string.md)| The comma separated fields included in the returned records. If omitted the default list of fields will be returned.  | 
+ **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
- **sort** | **string**| Use space separated sort parameters to sort the collection. Default sort is ascending. Prefix with &#x60;-&#x60; to sort descending.  | [default to ]
- **search** | **string**| A nested object containing a string &#x60;searchTerm&#x60; and a list of &#x60;fields&#x60; to search on. | 
+ **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
 
 ### Return type
 
-[**Organizationslist**](organizationslist.md)
+[**InlineResponse200**](inline_response_200.md)
 
 ### Authorization
 
@@ -47,7 +46,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 > System SystemsGet(ctx, id, contentType, accept, optional)
 List an individual system
 
-This endpoint returns an individual system.  #### Sample Request ``` curl -X GET https://console.jumpcloud.com/api/systems/{SystemID} \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'   ```
+This endpoint returns an individual system.  #### Sample Request ``` curl -X GET https://console.jumpcloud.com/api/systems/{SystemID} \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'    ```
 
 ### Required Parameters
 
@@ -80,6 +80,7 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **fields** | **string**| Use a space seperated string of field parameters to include the data in the response. If omitted the default list of fields will be returned.  | [default to ]
+ **filter** | **string**| A filter to apply to the query. | 
  **date** | **string**| Current date header for the System Context API | 
  **authorization** | **string**| Authorization header for the System Context API | 
  **xOrgId** | **string**|  | [default to ]
@@ -103,7 +104,7 @@ Name | Type | Description  | Notes
 > Systemslist SystemsList(ctx, contentType, accept, optional)
 List All Systems
 
-This endpoint returns all Systems.  #### Sample Requests ``` curl -X GET https://console.jumpcloud.com/api/systems \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'  ```
+This endpoint returns all Systems.  #### Sample Requests ``` curl -X GET https://console.jumpcloud.com/api/systems \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'   ```
 
 ### Required Parameters
 
@@ -123,9 +124,11 @@ Name | Type | Description  | Notes
  **accept** | **string**|  | [default to application/json]
  **fields** | **string**| Use a space seperated string of field parameters to include the data in the response. If omitted the default list of fields will be returned.  | [default to ]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
+ **xOrgId** | **string**|  | [default to ]
+ **search** | **string**| A nested object containing a string &#x60;searchTerm&#x60; and a list of &#x60;fields&#x60; to search on. | 
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | **string**| Use space separated sort parameters to sort the collection. Default sort is ascending. Prefix with &#x60;-&#x60; to sort descending.  | [default to ]
- **xOrgId** | **string**|  | [default to ]
+ **filter** | **string**| A filter to apply to the query. | 
 
 ### Return type
 
@@ -214,6 +217,7 @@ Name | Type | Description  | Notes
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | **string**| Use space separated sort parameters to sort the collection. Default sort is ascending. Prefix with &#x60;-&#x60; to sort descending.  | [default to ]
+ **filter** | **string**| A filter to apply to the query. | 
  **xOrgId** | **string**|  | [default to ]
 
 ### Return type

@@ -27,7 +27,7 @@ type ApplicationsApiService service
 
 
 /* ApplicationsApiService Applications
- The endpoint returns all your SSO / SAML Applications.  #### Sample Request &#x60;&#x60;&#x60; curl -X GET https://console.jumpcloud.com/api/applications \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;  &#x60;&#x60;&#x60;
+ The endpoint returns all your SSO / SAML Applications.  #### Sample Request &#x60;&#x60;&#x60; curl -X GET https://console.jumpcloud.com/api/applications \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;   &#x60;&#x60;&#x60;
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param contentType 
  @param accept 
@@ -36,6 +36,7 @@ type ApplicationsApiService service
      @param "limit" (int32) The number of records to return at once.
      @param "skip" (int32) The offset into the records to return.
      @param "sort" (string) 
+     @param "filter" (string) A filter to apply to the query.
      @param "xOrgId" (string) 
  @return Applicationslist*/
 func (a *ApplicationsApiService) ApplicationsList(ctx context.Context, contentType string, accept string, localVarOptionals map[string]interface{}) (Applicationslist,  *http.Response, error) {
@@ -66,6 +67,9 @@ func (a *ApplicationsApiService) ApplicationsList(ctx context.Context, contentTy
 	if err := typeCheckParameter(localVarOptionals["sort"], "string", "sort"); err != nil {
 		return successPayload, nil, err
 	}
+	if err := typeCheckParameter(localVarOptionals["filter"], "string", "filter"); err != nil {
+		return successPayload, nil, err
+	}
 	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
 		return successPayload, nil, err
 	}
@@ -81,6 +85,9 @@ func (a *ApplicationsApiService) ApplicationsList(ctx context.Context, contentTy
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["sort"].(string); localVarOk {
 		localVarQueryParams.Add("sort", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].(string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

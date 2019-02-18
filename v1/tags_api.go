@@ -119,6 +119,7 @@ func (a *TagsApiService) TagsDelete(ctx context.Context, name string, contentTyp
      @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
      @param "sort" (string) Use space separated sort parameters to sort the collection. Default sort is ascending. Prefix with &#x60;-&#x60; to sort descending. 
+     @param "filter" (string) A filter to apply to the query.
  @return Tag*/
 func (a *TagsApiService) TagsGet(ctx context.Context, name string, contentType string, accept string, localVarOptionals map[string]interface{}) (Tag,  *http.Response, error) {
 	var (
@@ -149,6 +150,9 @@ func (a *TagsApiService) TagsGet(ctx context.Context, name string, contentType s
 	if err := typeCheckParameter(localVarOptionals["sort"], "string", "sort"); err != nil {
 		return successPayload, nil, err
 	}
+	if err := typeCheckParameter(localVarOptionals["filter"], "string", "filter"); err != nil {
+		return successPayload, nil, err
+	}
 
 	if localVarTempParam, localVarOk := localVarOptionals["fields"].(string); localVarOk {
 		localVarQueryParams.Add("fields", parameterToString(localVarTempParam, ""))
@@ -161,6 +165,9 @@ func (a *TagsApiService) TagsGet(ctx context.Context, name string, contentType s
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["sort"].(string); localVarOk {
 		localVarQueryParams.Add("sort", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].(string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -228,6 +235,7 @@ func (a *TagsApiService) TagsGet(ctx context.Context, name string, contentType s
      @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
      @param "sort" (string) Use space separated sort parameters to sort the collection. Default sort is ascending. Prefix with &#x60;-&#x60; to sort descending. 
+     @param "filter" (string) A filter to apply to the query.
  @return Tagslist*/
 func (a *TagsApiService) TagsList(ctx context.Context, contentType string, accept string, localVarOptionals map[string]interface{}) (Tagslist,  *http.Response, error) {
 	var (
@@ -257,6 +265,9 @@ func (a *TagsApiService) TagsList(ctx context.Context, contentType string, accep
 	if err := typeCheckParameter(localVarOptionals["sort"], "string", "sort"); err != nil {
 		return successPayload, nil, err
 	}
+	if err := typeCheckParameter(localVarOptionals["filter"], "string", "filter"); err != nil {
+		return successPayload, nil, err
+	}
 
 	if localVarTempParam, localVarOk := localVarOptionals["fields"].(string); localVarOk {
 		localVarQueryParams.Add("fields", parameterToString(localVarTempParam, ""))
@@ -269,6 +280,9 @@ func (a *TagsApiService) TagsList(ctx context.Context, contentType string, accep
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["sort"].(string); localVarOk {
 		localVarQueryParams.Add("sort", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].(string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
