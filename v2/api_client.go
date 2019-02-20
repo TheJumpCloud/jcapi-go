@@ -56,7 +56,6 @@ type APIClient struct {
 	Office365Api	*Office365ApiService
 	PoliciesApi	*PoliciesApiService
 	PolicytemplatesApi	*PolicytemplatesApiService
-	ProvidersApi	*ProvidersApiService
 	RADIUSServersApi	*RADIUSServersApiService
 	SambaDomainsApi	*SambaDomainsApiService
 	SystemGroupAssociationsApi	*SystemGroupAssociationsApiService
@@ -99,7 +98,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.Office365Api = (*Office365ApiService)(&c.common)
 	c.PoliciesApi = (*PoliciesApiService)(&c.common)
 	c.PolicytemplatesApi = (*PolicytemplatesApiService)(&c.common)
-	c.ProvidersApi = (*ProvidersApiService)(&c.common)
 	c.RADIUSServersApi = (*RADIUSServersApiService)(&c.common)
 	c.SambaDomainsApi = (*SambaDomainsApiService)(&c.common)
 	c.SystemGroupAssociationsApi = (*SystemGroupAssociationsApiService)(&c.common)

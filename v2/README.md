@@ -159,7 +159,6 @@ Class | Method | HTTP request | Description
 *PoliciesApi* | [**PolicytemplatesList**](docs/PoliciesApi.md#policytemplateslist) | **Get** /policytemplates | Lists all of the Policy Templates
 *PolicytemplatesApi* | [**PolicytemplatesGet**](docs/PolicytemplatesApi.md#policytemplatesget) | **Get** /policytemplates/{id} | Get a specific Policy Template
 *PolicytemplatesApi* | [**PolicytemplatesList**](docs/PolicytemplatesApi.md#policytemplateslist) | **Get** /policytemplates | Lists all of the Policy Templates
-*ProvidersApi* | [**ProvidersListAdministrators**](docs/ProvidersApi.md#providerslistadministrators) | **Get** /providers/{provider_id}/administrators | providersadministrators
 *RADIUSServersApi* | [**GraphRadiusServerAssociationsList**](docs/RADIUSServersApi.md#graphradiusserverassociationslist) | **Get** /radiusservers/{radiusserver_id}/associations | List the associations of a RADIUS  Server
 *RADIUSServersApi* | [**GraphRadiusServerAssociationsPost**](docs/RADIUSServersApi.md#graphradiusserverassociationspost) | **Post** /radiusservers/{radiusserver_id}/associations | Manage the associations of a RADIUS Server
 *RADIUSServersApi* | [**GraphRadiusServerTraverseUser**](docs/RADIUSServersApi.md#graphradiusservertraverseuser) | **Get** /radiusservers/{radiusserver_id}/users | List the Users bound to a RADIUS  Server
@@ -287,8 +286,6 @@ Class | Method | HTTP request | Description
  - [GraphType](docs/GraphType.md)
  - [Group](docs/Group.md)
  - [GroupType](docs/GroupType.md)
- - [InlineResponse200](docs/InlineResponse200.md)
- - [InlineResponse401](docs/InlineResponse401.md)
  - [JobDetails](docs/JobDetails.md)
  - [JobId](docs/JobId.md)
  - [JobWorkresult](docs/JobWorkresult.md)
@@ -310,8 +307,6 @@ Class | Method | HTTP request | Description
  - [PolicyTemplateWithDetails](docs/PolicyTemplateWithDetails.md)
  - [PolicyValue](docs/PolicyValue.md)
  - [PolicyWithDetails](docs/PolicyWithDetails.md)
- - [Provider](docs/Provider.md)
- - [ProviderContact](docs/ProviderContact.md)
  - [SambaDomainInput](docs/SambaDomainInput.md)
  - [Sshkeylist](docs/Sshkeylist.md)
  - [SystemGraphManagementReq](docs/SystemGraphManagementReq.md)

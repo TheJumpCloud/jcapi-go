@@ -619,8 +619,7 @@ paths:
       x-stoplight:
         id: "graph_applicationAssociationsPost"
         beforeScript: null
-        afterScript: "function (ctx, request, response) {\n  // Your javascript code\
-          \ here.\n}"
+        afterScript: null
         public: true
         mock:
           enabled: false
@@ -4247,117 +4246,6 @@ paths:
           enabled: false
           dynamic: false
           statusCode: 200
-  /providers/{provider_id}/administrators:
-    get:
-      tags:
-      - "Providers"
-      summary: "providersadministrators"
-      operationId: "providers_listAdministrators"
-      parameters:
-      - name: "provider_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "ProviderId"
-      - name: "fields"
-        in: "query"
-        description: "The comma separated fields included in the returned records.\n\
-          If omitted the default list of fields will be returned.\n"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Fields"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
-          \ in"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "limit"
-        in: "query"
-        description: "The number of records to return at once. Limited to 100."
-        required: false
-        type: "integer"
-        default: 10
-        x-exportParamName: "Limit"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        x-exportParamName: "Skip"
-      - name: "sort"
-        in: "query"
-        description: "The comma separated fields used to sort the collection.\nDefault\
-          \ sort is ascending, prefix with `-` to sort descending.\n"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Sort"
-      responses:
-        200:
-          description: ""
-          schema:
-            $ref: "#/definitions/inline_response_200"
-          examples:
-            application/json:
-              totalCount: 2
-              results:
-              - registered: true
-                enableMultiFactor: false
-                _id: "5c3536e9e0a6840001872782"
-                email: "joe@example.com"
-                firstname: ""
-                lastname: ""
-              - registered: true
-                enableMultiFactor: false
-                _id: "5c35370ae0a6840001872784"
-                email: "mildred@example.com"
-                firstname: ""
-                lastname: ""
-        401:
-          description: ""
-          schema:
-            $ref: "#/definitions/inline_response_401"
-          examples:
-            application/json:
-              message: "Unauthorized"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        id: "providers_listAdministrators"
-        beforeScript: null
-        afterScript: null
-        public: false
-        mock:
-          enabled: false
-          dynamic: false
-          statusCode: 200
-    x-swagger-authorization:
-    - "user"
-    - "providerTenancy"
-    - "noOrgHeaderSelection"
-    x-swagger-grouping-strategies: []
-    x-swagger-user-roles:
-    - "administrator"
   /radiusservers/{radiusserver_id}/associations:
     get:
       tags:
@@ -11471,19 +11359,18 @@ definitions:
       \ - Translate `locality` field of JumpCloud user address of type `work` to `city`\
       \ field of Microsoft Graph user\n* `user_state` - Translate `region` field of\
       \ JumpCloud user address of type `work` to `state` field of Microsoft Graph\
-      \ `user` \n* `user_country` - Translate `country` field of JumpCloud user address\
-      \ of type `work` to `country` field of Microsoft Graph `user` \n* `user_postal_code`\
+      \ `user`\n* `user_country` - Translate `country` field of JumpCloud user address\
+      \ of type `work` to `country` field of Microsoft Graph `user`\n* `user_postal_code`\
       \ - Translate `postalCode` field of JumpCloud user address of type `work` to\
-      \ `postalCode` field of Microsoft Graph `user` \n* `user_business_phones` -\
-      \ Translate `number` field of first JumpCloud user `phoneNumber` of type `work`\
-      \ to `businessPhones` field of Microsoft Graph `user` \n* `user_mobile_phone`\
-      \ - Translate `number` field of first JumpCloud user `phoneNumber` of type `mobile`\
-      \ to `mobilePhone` field of Microsoft Graph `user` \n* `user_department` - Translate\
-      \ `department` field of JumpCloud user to `department` field of Microsoft Graph\
-      \ `user` \n* `user_job_title` - Translate `jobTitle` field of JumpCloud user\
-      \ to `jobTitle` field of Microsoft Graph `user` \n* `user_office_location` -\
-      \ Translate `location` field of JumpCloud user to `officeLocation` field of\
-      \ Microsoft Graph `user` "
+      \ `postalCode` field of Microsoft Graph `user`\n* `user_business_phones` - Translate\
+      \ `number` field of first JumpCloud user `phoneNumber` of type `work` to `businessPhones`\
+      \ field of Microsoft Graph `user`\n* `user_mobile_phone` - Translate `number`\
+      \ field of first JumpCloud user `phoneNumber` of type `mobile` to `mobilePhone`\
+      \ field of Microsoft Graph `user`\n* `user_department` - Translate `department`\
+      \ field of JumpCloud user to `department` field of Microsoft Graph `user`\n\
+      * `user_job_title` - Translate `jobTitle` field of JumpCloud user to `jobTitle`\
+      \ field of Microsoft Graph `user`\n* `user_office_location` - Translate `location`\
+      \ field of JumpCloud user to `officeLocation` field of Microsoft Graph `user`"
     enum:
     - "user_street_address"
     - "user_city"
@@ -11582,23 +11469,6 @@ definitions:
       id: "bulk-user-update"
       name: "Bulk User Update"
       public: true
-  Provider:
-    type: "object"
-    properties:
-      name:
-        type: "string"
-      contact:
-        $ref: "#/definitions/Provider_contact"
-    title: "Provider"
-    example:
-      name: "Joe Bloughs MSP"
-      contact:
-        name: "Joe Blough"
-        email: "joe.blough@example.com"
-    x-stoplight:
-      id: "Provider"
-      name: "Provider"
-      public: true
   Administrator:
     type: "object"
     properties:
@@ -11626,18 +11496,6 @@ definitions:
       id: "Administrator"
       name: "Administrator"
       public: true
-  inline_response_200:
-    properties:
-      totalCount:
-        type: "integer"
-      results:
-        type: "array"
-        items:
-          $ref: "#/definitions/Administrator"
-  inline_response_401:
-    properties:
-      message:
-        type: "string"
   systemuserputpost_addresses:
     properties:
       type:
@@ -11765,12 +11623,6 @@ definitions:
     description: "The group object's attributes."
     example:
       sambaEnabled: true
-  Provider_contact:
-    properties:
-      name:
-        type: "string"
-      email:
-        type: "string"
 parameters:
   trait:skip:skip:
     name: "skip"
@@ -12268,11 +12120,6 @@ x-stoplight:
         - _id: "policyresults_get"
           type: "endpoints"
       - divider: false
-        items:
-        - _id: "providers_listAdministrators"
-          type: "endpoints"
-        name: "Providers"
-      - divider: false
         description: "You can associate your groups of users to Radius Servers.  \
           \ Please see [this page](https://support.jumpcloud.com/customer/en/portal/topics/926833-radius-as-a-service)\
           \ for more information on Radius."
@@ -12371,8 +12218,8 @@ x-stoplight:
           \ to allow management of the group members. This includes listing, adding\
           \ and removing Directory Objects and Groups of Directory Objects to and\
           \ from the Group. These endpoints allow you to control the members and membership\
-          \ of System Objects.\n\nMembers are the direct objects of an object group.\
-          \ \n\nMembership is defined as the direct and indirect members of an object\
+          \ of System Objects.\n\nMembers are the direct objects of an object group.\n\
+          \nMembership is defined as the direct and indirect members of an object\
           \ group."
       - divider: false
         items:
@@ -12484,8 +12331,8 @@ x-stoplight:
           \ to allow management of the group members. This includes listing, adding\
           \ and removing Directory Objects and Groups of Directory Objects to and\
           \ from the Group. These endpoints allow you to control the members and membership\
-          \ of User Objects.\n\nMembers are the direct objects of an object group.\
-          \ \n\nMembership is defined as the direct and indirect members of an object\
+          \ of User Objects.\n\nMembers are the direct objects of an object group.\n\
+          \nMembership is defined as the direct and indirect members of an object\
           \ group."
       - divider: false
         items:
@@ -12608,8 +12455,6 @@ x-stoplight:
         - _id: "PolicyValue"
           type: "schemas"
         - _id: "PolicyWithDetails"
-          type: "schemas"
-        - _id: "Provider"
           type: "schemas"
         - _id: "samba-domain-input"
           type: "schemas"
