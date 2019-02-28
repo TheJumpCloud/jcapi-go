@@ -33,6 +33,7 @@ Name | Type | Description  | Notes
  **limit** | **int32**| The number of records to return at once. | 
  **skip** | **int32**| The offset into the records to return. | 
  **sort** | **string**|  | [default to The comma separated fields used to sort the collection. Default sort is ascending, prefix with - to sort descending.]
+ **filter** | **string**| A filter to apply to the query. | 
  **xOrgId** | **string**|  | [default to ]
 
 ### Return type

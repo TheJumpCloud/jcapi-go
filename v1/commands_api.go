@@ -228,6 +228,7 @@ func (a *CommandsApiService) CommandsDelete(ctx context.Context, id string, cont
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "fields" (string) Use a space seperated string of field parameters to include the data in the response. If omitted the default list of fields will be returned. 
+     @param "filter" (string) A filter to apply to the query.
      @param "xOrgId" (string) 
  @return Command*/
 func (a *CommandsApiService) CommandsGet(ctx context.Context, id string, contentType string, accept string, localVarOptionals map[string]interface{}) (Command,  *http.Response, error) {
@@ -250,12 +251,18 @@ func (a *CommandsApiService) CommandsGet(ctx context.Context, id string, content
 	if err := typeCheckParameter(localVarOptionals["fields"], "string", "fields"); err != nil {
 		return successPayload, nil, err
 	}
+	if err := typeCheckParameter(localVarOptionals["filter"], "string", "filter"); err != nil {
+		return successPayload, nil, err
+	}
 	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
 		return successPayload, nil, err
 	}
 
 	if localVarTempParam, localVarOk := localVarOptionals["fields"].(string); localVarOk {
 		localVarQueryParams.Add("fields", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].(string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -326,6 +333,7 @@ func (a *CommandsApiService) CommandsGet(ctx context.Context, id string, content
      @param "fields" (string) Use a space seperated string of field parameters to include the data in the response. If omitted the default list of fields will be returned. 
      @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "sort" (string) Use space separated sort parameters to sort the collection. Default sort is ascending. Prefix with &#x60;-&#x60; to sort descending. 
+     @param "filter" (string) A filter to apply to the query.
      @param "xOrgId" (string) 
  @return Commandslist*/
 func (a *CommandsApiService) CommandsList(ctx context.Context, contentType string, accept string, localVarOptionals map[string]interface{}) (Commandslist,  *http.Response, error) {
@@ -356,6 +364,9 @@ func (a *CommandsApiService) CommandsList(ctx context.Context, contentType strin
 	if err := typeCheckParameter(localVarOptionals["sort"], "string", "sort"); err != nil {
 		return successPayload, nil, err
 	}
+	if err := typeCheckParameter(localVarOptionals["filter"], "string", "filter"); err != nil {
+		return successPayload, nil, err
+	}
 	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
 		return successPayload, nil, err
 	}
@@ -371,6 +382,9 @@ func (a *CommandsApiService) CommandsList(ctx context.Context, contentType strin
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["sort"].(string); localVarOk {
 		localVarQueryParams.Add("sort", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].(string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

@@ -1218,10 +1218,10 @@ func (a *PoliciesApiService) PolicyresultsList_1(ctx context.Context, contentTyp
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PoliciesApiService Lists the latest policy results of a policy.
- This endpoint returns the latest policies results for a specific policy.  ##### Sample Request  &#x60;&#x60;&#x60;  curl -X GET https://console.jumpcloud.com/api/v2/policies/{Policy_ID}/policystatuses \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;   &#x60;&#x60;&#x60;
+/* PoliciesApiService List the policy statuses for a system
+ This endpoint returns the policy results for a particular system.  ##### Sample Request  &#x60;&#x60;&#x60; curl -X GET https://console.jumpcloud.com/api/v2/systems/{System_ID}/policystatuses \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;  &#x60;&#x60;&#x60;
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param policyId 
+ @param systemId ObjectID of the System.
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
@@ -1232,7 +1232,7 @@ func (a *PoliciesApiService) PolicyresultsList_1(ctx context.Context, contentTyp
      @param "sort" ([]string) The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending. 
      @param "xOrgId" (string) 
  @return []PolicyResult*/
-func (a *PoliciesApiService) PolicystatusesList(ctx context.Context, policyId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]PolicyResult,  *http.Response, error) {
+func (a *PoliciesApiService) PolicystatusesList(ctx context.Context, systemId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]PolicyResult,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
@@ -1242,8 +1242,8 @@ func (a *PoliciesApiService) PolicystatusesList(ctx context.Context, policyId st
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/policies/{policy_id}/policystatuses"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_id"+"}", fmt.Sprintf("%v", policyId), -1)
+	localVarPath := a.client.cfg.BasePath + "/systems/{system_id}/policystatuses"
+	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1333,10 +1333,10 @@ func (a *PoliciesApiService) PolicystatusesList(ctx context.Context, policyId st
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PoliciesApiService List the policy statuses for a system
- This endpoint returns the policy results for a particular system.  ##### Sample Request  &#x60;&#x60;&#x60; curl -X GET https://console.jumpcloud.com/api/v2/systems/{System_ID}/policystatuses \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;  &#x60;&#x60;&#x60;
+/* PoliciesApiService Lists the latest policy results of a policy.
+ This endpoint returns the latest policies results for a specific policy.  ##### Sample Request  &#x60;&#x60;&#x60;  curl -X GET https://console.jumpcloud.com/api/v2/policies/{Policy_ID}/policystatuses \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;   &#x60;&#x60;&#x60;
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param systemId ObjectID of the System.
+ @param policyId 
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
@@ -1347,7 +1347,7 @@ func (a *PoliciesApiService) PolicystatusesList(ctx context.Context, policyId st
      @param "sort" ([]string) The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending. 
      @param "xOrgId" (string) 
  @return []PolicyResult*/
-func (a *PoliciesApiService) PolicystatusesList_2(ctx context.Context, systemId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]PolicyResult,  *http.Response, error) {
+func (a *PoliciesApiService) PolicystatusesList_2(ctx context.Context, policyId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]PolicyResult,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
@@ -1357,8 +1357,8 @@ func (a *PoliciesApiService) PolicystatusesList_2(ctx context.Context, systemId 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/systems/{system_id}/policystatuses"
-	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
+	localVarPath := a.client.cfg.BasePath + "/policies/{policy_id}/policystatuses"
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_id"+"}", fmt.Sprintf("%v", policyId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

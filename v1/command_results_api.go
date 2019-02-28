@@ -117,13 +117,14 @@ func (a *CommandResultsApiService) CommandResultsDelete(ctx context.Context, id 
 }
 
 /* CommandResultsApiService List an individual Command result
- This endpoint returns a specific command result.  #### Sample Request &#x60;&#x60;&#x60; curl -X GET https://console.jumpcloud.com/api/commandresults/{CommandID} \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;   &#x60;&#x60;&#x60;
+ This endpoint returns a specific command result.  #### Sample Request &#x60;&#x60;&#x60; curl -X GET https://console.jumpcloud.com/api/commandresults/{CommandResultID} \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;   &#x60;&#x60;&#x60;
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param id 
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "fields" (string) Use a space seperated string of field parameters to include the data in the response. If omitted the default list of fields will be returned. 
+     @param "filter" (string) A filter to apply to the query.
      @param "xOrgId" (string) 
  @return Commandresult*/
 func (a *CommandResultsApiService) CommandResultsGet(ctx context.Context, id string, contentType string, accept string, localVarOptionals map[string]interface{}) (Commandresult,  *http.Response, error) {
@@ -146,12 +147,18 @@ func (a *CommandResultsApiService) CommandResultsGet(ctx context.Context, id str
 	if err := typeCheckParameter(localVarOptionals["fields"], "string", "fields"); err != nil {
 		return successPayload, nil, err
 	}
+	if err := typeCheckParameter(localVarOptionals["filter"], "string", "filter"); err != nil {
+		return successPayload, nil, err
+	}
 	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
 		return successPayload, nil, err
 	}
 
 	if localVarTempParam, localVarOk := localVarOptionals["fields"].(string); localVarOk {
 		localVarQueryParams.Add("fields", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].(string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -222,6 +229,7 @@ func (a *CommandResultsApiService) CommandResultsGet(ctx context.Context, id str
      @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
      @param "sort" (string) Use space separated sort parameters to sort the collection. Default sort is ascending. Prefix with &#x60;-&#x60; to sort descending. 
+     @param "filter" (string) A filter to apply to the query.
      @param "xOrgId" (string) 
  @return Commandresultslist*/
 func (a *CommandResultsApiService) CommandResultsList(ctx context.Context, contentType string, accept string, localVarOptionals map[string]interface{}) (Commandresultslist,  *http.Response, error) {
@@ -252,6 +260,9 @@ func (a *CommandResultsApiService) CommandResultsList(ctx context.Context, conte
 	if err := typeCheckParameter(localVarOptionals["sort"], "string", "sort"); err != nil {
 		return successPayload, nil, err
 	}
+	if err := typeCheckParameter(localVarOptionals["filter"], "string", "filter"); err != nil {
+		return successPayload, nil, err
+	}
 	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
 		return successPayload, nil, err
 	}
@@ -267,6 +278,9 @@ func (a *CommandResultsApiService) CommandResultsList(ctx context.Context, conte
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["sort"].(string); localVarOk {
 		localVarQueryParams.Add("sort", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].(string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

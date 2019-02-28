@@ -30,10 +30,11 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **fields** | **string**| Use a space seperated string of field parameters to include the data in the response. If omitted the default list of fields will be returned.  | [default to ]
+ **filter** | **string**| A filter to apply to the query. | 
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | **string**| Use space separated sort parameters to sort the collection. Default sort is ascending. Prefix with &#x60;-&#x60; to sort descending.  | [default to ]
- **search** | **string**|  | 
+ **search** | **string**| A nested object containing a string &#x60;searchTerm&#x60; and a list of &#x60;fields&#x60; to search on. | 
 
 ### Return type
 

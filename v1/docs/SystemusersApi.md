@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**SystemusersResetmfa**](SystemusersApi.md#SystemusersResetmfa) | **Post** /systemusers/{id}/resetmfa | Reset a system user&#39;s MFA token
 [**SystemusersSystemsBindingList**](SystemusersApi.md#SystemusersSystemsBindingList) | **Get** /systemusers/{id}/systems | List system user binding
 [**SystemusersSystemsBindingPut**](SystemusersApi.md#SystemusersSystemsBindingPut) | **Put** /systemusers/{id}/systems | Update a system user binding
+[**SystemusersUnlock**](SystemusersApi.md#SystemusersUnlock) | **Post** /systemusers/{id}/unlock | Unlock a system user
 
 
 # **SshkeyDelete**
@@ -207,6 +208,7 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **fields** | **string**| Use a space seperated string of field parameters to include the data in the response. If omitted the default list of fields will be returned.  | [default to ]
+ **filter** | **string**| A filter to apply to the query. | 
  **xOrgId** | **string**|  | [default to ]
 
 ### Return type
@@ -250,8 +252,9 @@ Name | Type | Description  | Notes
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | **string**| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | [default to ]
  **fields** | **string**| The comma separated fields included in the returned records. If omitted the default list of fields will be returned.  | [default to ]
- **filter** | **string**|  | [default to ]
  **xOrgId** | **string**|  | [default to ]
+ **search** | **string**| A nested object containing a string &#x60;searchTerm&#x60; and a list of &#x60;fields&#x60; to search on. | 
+ **filter** | **string**| A filter to apply to the query. | 
 
 ### Return type
 
@@ -418,6 +421,7 @@ Name | Type | Description  | Notes
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | **string**| Use space separated sort parameters to sort the collection. Default sort is ascending. Prefix with &#x60;-&#x60; to sort descending.  | [default to ]
+ **filter** | **string**| A filter to apply to the query. | 
  **xOrgId** | **string**|  | [default to ]
 
 ### Return type
@@ -465,6 +469,43 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Usersystembinding**](usersystembinding.md)
+
+### Authorization
+
+[x-api-key](../README.md#x-api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json; charset=utf-8
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SystemusersUnlock**
+> SystemusersUnlock(ctx, id, optional)
+Unlock a system user
+
+This endpoint allows you to unlock a user's account.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **id** | **string**|  | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+ **xOrgId** | **string**|  | [default to ]
+
+### Return type
+
+ (empty response body)
 
 ### Authorization
 

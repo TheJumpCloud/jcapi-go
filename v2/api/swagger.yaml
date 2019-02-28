@@ -3561,99 +3561,6 @@ paths:
           enabled: false
           dynamic: false
           statusCode: 200
-  /policies/{policy_id}/policystatuses:
-    get:
-      tags:
-      - "Policies"
-      summary: "Lists the latest policy results of a policy."
-      description: "This endpoint returns the latest policies results for a specific\
-        \ policy.\n\n##### Sample Request\n\n```\n curl -X GET https://console.jumpcloud.com/api/v2/policies/{Policy_ID}/policystatuses\
-        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
-      operationId: "policystatuses_list"
-      parameters:
-      - name: "policy_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "PolicyId"
-      - name: "fields"
-        in: "query"
-        description: "The comma separated fields included in the returned records.\n\
-          If omitted the default list of fields will be returned.\n"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Fields"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
-          \ in"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "limit"
-        in: "query"
-        description: "The number of records to return at once. Limited to 100."
-        required: false
-        type: "integer"
-        default: 10
-        x-exportParamName: "Limit"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        x-exportParamName: "Skip"
-      - name: "sort"
-        in: "query"
-        description: "The comma separated fields used to sort the collection.\nDefault\
-          \ sort is ascending, prefix with `-` to sort descending.\n"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Sort"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/PolicyResult"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        id: "policystatuses_list"
-        beforeScript: null
-        afterScript: null
-        public: true
-        mock:
-          enabled: false
-          dynamic: false
-          statusCode: 200
   /systems/{system_id}/policystatuses:
     get:
       tags:
@@ -3734,6 +3641,99 @@ paths:
       responses:
         200:
           description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/PolicyResult"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        id: "policystatuses_list"
+        beforeScript: null
+        afterScript: null
+        public: true
+        mock:
+          enabled: false
+          dynamic: false
+          statusCode: 200
+  /policies/{policy_id}/policystatuses:
+    get:
+      tags:
+      - "Policies"
+      summary: "Lists the latest policy results of a policy."
+      description: "This endpoint returns the latest policies results for a specific\
+        \ policy.\n\n##### Sample Request\n\n```\n curl -X GET https://console.jumpcloud.com/api/v2/policies/{Policy_ID}/policystatuses\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
+      operationId: "policystatuses_list"
+      parameters:
+      - name: "policy_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "PolicyId"
+      - name: "fields"
+        in: "query"
+        description: "The comma separated fields included in the returned records.\n\
+          If omitted the default list of fields will be returned.\n"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Fields"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
+          \ in"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      - name: "limit"
+        in: "query"
+        description: "The number of records to return at once. Limited to 100."
+        required: false
+        type: "integer"
+        default: 10
+        x-exportParamName: "Limit"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        x-exportParamName: "Skip"
+      - name: "sort"
+        in: "query"
+        description: "The comma separated fields used to sort the collection.\nDefault\
+          \ sort is ascending, prefix with `-` to sort descending.\n"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Sort"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      responses:
+        200:
+          description: ""
           schema:
             type: "array"
             items:
@@ -9807,6 +9807,21 @@ definitions:
       id: "errorresponse"
       name: "ErrorResponse"
       public: true
+  mfa:
+    type: "object"
+    properties:
+      exclusion:
+        type: "boolean"
+      exclusionUntil:
+        type: "string"
+        format: "date-time"
+      configured:
+        type: "boolean"
+    title: "mfa"
+    x-stoplight:
+      id: "mfa"
+      name: "mfa"
+      public: true
   systemuser:
     type: "object"
     properties:
@@ -9913,6 +9928,8 @@ definitions:
       department:
         type: "string"
         maxLength: 1024
+      mfa:
+        $ref: "#/definitions/mfa"
     title: "SystemUser"
     x-stoplight:
       id: "systemuser"
@@ -10014,63 +10031,12 @@ definitions:
         type: "string"
         description: "Must be unique per user. "
         maxLength: 256
+      mfa:
+        $ref: "#/definitions/mfa"
     title: "SystemUserPost"
     x-stoplight:
       id: "systemuserputpost"
       name: "SystemUserPost"
-      public: true
-  GraphConnection:
-    type: "object"
-    required:
-    - "to"
-    properties:
-      from:
-        $ref: "#/definitions/GraphObject"
-      to:
-        $ref: "#/definitions/GraphObject"
-    title: "GraphConnection"
-    description: "Represents an edge between two graph objects. From can be omitted\
-      \ if it is clear from context."
-    example:
-      from:
-        id: "id"
-        type: "type"
-      to:
-        id: "id"
-        type: "type"
-    x-stoplight:
-      id: "GraphConnection"
-      name: "GraphConnection"
-      public: true
-  SystemGroupMembersReq:
-    type: "object"
-    required:
-    - "id"
-    - "op"
-    - "type"
-    properties:
-      op:
-        type: "string"
-        description: "How to modify the membership connection."
-        enum:
-        - "add"
-        - "remove"
-      type:
-        type: "string"
-        description: "The member type."
-        enum:
-        - "system"
-      id:
-        type: "string"
-        description: "The ObjectID of member being added or removed."
-    title: "SystemGroupMembersReq"
-    example:
-      op: "add"
-      id: "id"
-      type: "system"
-    x-stoplight:
-      id: "SystemGroupMembersReq"
-      name: "SystemGroupMembersReq"
       public: true
   Group:
     type: "object"
@@ -10091,21 +10057,6 @@ definitions:
     x-stoplight:
       id: "Group"
       name: "Group"
-      public: true
-  SystemGroupData:
-    type: "object"
-    required:
-    - "name"
-    properties:
-      name:
-        type: "string"
-        description: "Display name of a System Group."
-    title: "SystemGroupData"
-    example:
-      name: "name"
-    x-stoplight:
-      id: "SystemGroupData"
-      name: "SystemGroupData"
       public: true
   UserGroupMembersReq:
     type: "object"
@@ -10167,6 +10118,59 @@ definitions:
       id: "Directory"
       name: "Directory"
       public: true
+  GraphConnection:
+    type: "object"
+    required:
+    - "to"
+    properties:
+      from:
+        $ref: "#/definitions/GraphObject"
+      to:
+        $ref: "#/definitions/GraphObject"
+    title: "GraphConnection"
+    description: "Represents an edge between two graph objects. From can be omitted\
+      \ if it is clear from context."
+    example:
+      from:
+        id: "id"
+        type: "type"
+      to:
+        id: "id"
+        type: "type"
+    x-stoplight:
+      id: "GraphConnection"
+      name: "GraphConnection"
+      public: true
+  SystemGroupMembersReq:
+    type: "object"
+    required:
+    - "id"
+    - "op"
+    - "type"
+    properties:
+      op:
+        type: "string"
+        description: "How to modify the membership connection."
+        enum:
+        - "add"
+        - "remove"
+      type:
+        type: "string"
+        description: "The member type."
+        enum:
+        - "system"
+      id:
+        type: "string"
+        description: "The ObjectID of member being added or removed."
+    title: "SystemGroupMembersReq"
+    example:
+      op: "add"
+      id: "id"
+      type: "system"
+    x-stoplight:
+      id: "SystemGroupMembersReq"
+      name: "SystemGroupMembersReq"
+      public: true
   UserGroup:
     type: "object"
     properties:
@@ -10190,40 +10194,20 @@ definitions:
       id: "UserGroup"
       name: "UserGroup"
       public: true
-  Error:
-    type: "object"
-    properties:
-      code:
-        type: "integer"
-        format: "int32"
-      message:
-        type: "string"
-      fields:
-        type: "string"
-    title: "Error"
-    x-stoplight:
-      id: "Error"
-      name: "Error"
-      public: true
-  GraphObject:
+  SystemGroupData:
     type: "object"
     required:
-    - "id"
-    - "type"
+    - "name"
     properties:
-      type:
+      name:
         type: "string"
-        description: "The type of graph object."
-      id:
-        type: "string"
-        description: "The ObjectID of the graph object."
-    title: "GraphObject"
+        description: "Display name of a System Group."
+    title: "SystemGroupData"
     example:
-      id: "id"
-      type: "type"
+      name: "name"
     x-stoplight:
-      id: "GraphObject"
-      name: "GraphObject"
+      id: "SystemGroupData"
+      name: "SystemGroupData"
       public: true
   SystemGroup:
     type: "object"
@@ -10248,29 +10232,82 @@ definitions:
       id: "SystemGroup"
       name: "SystemGroup"
       public: true
-  UserGroupPost:
+  GroupType:
+    type: "string"
+    title: "GroupType"
+    description: "The group type."
+    enum:
+    - "system_group"
+    - "user_group"
+    x-stoplight:
+      id: "GroupType"
+      name: "GroupType"
+      public: true
+  GraphObject:
     type: "object"
     required:
-    - "name"
+    - "id"
+    - "type"
     properties:
-      attributes:
-        $ref: "#/definitions/UserGroupPost_attributes"
+      type:
+        type: "string"
+        description: "The type of graph object."
+      id:
+        type: "string"
+        description: "The ObjectID of the graph object."
+    title: "GraphObject"
+    example:
+      id: "id"
+      type: "type"
+    x-stoplight:
+      id: "GraphObject"
+      name: "GraphObject"
+      public: true
+  PolicyTemplate:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        description: "ObjectId uniquely identifying a Policy Template."
       name:
         type: "string"
-        description: "Display name of a User Group."
-    title: "UserGroupPost"
+        description: "The unique name for the Policy Template."
+      description:
+        type: "string"
+        description: "The default description for the Policy."
+      displayName:
+        type: "string"
+        description: "The default display name for the Policy."
+      osMetaFamily:
+        type: "string"
+        enum:
+        - "linux"
+        - "darwin"
+        - "windows"
+      activation:
+        type: "string"
+        description: "Requirements before the policy can be activated."
+      behavior:
+        type: "string"
+        description: "Specifics about the behavior of the policy."
+      state:
+        type: "string"
+        description: "String describing the release status of the policy template."
+        default: ""
+    title: "PolicyTemplate"
+    description: "The shallow information about a Policy Template."
     example:
+      displayName: "displayName"
+      osMetaFamily: "linux"
       name: "name"
-      attributes:
-        sambaEnabled: true
-        posixGroups:
-        - name: "name"
-          id: 0
-        - name: "name"
-          id: 0
+      description: "description"
+      id: "id"
+      state: "state"
+      activation: "activation"
+      behavior: "behavior"
     x-stoplight:
-      id: "UserGroupPost"
-      name: "UserGroupPost"
+      id: "PolicyTemplate"
+      name: "PolicyTemplate"
       public: true
   GraphObjectWithPaths:
     type: "object"
@@ -10324,62 +10361,48 @@ definitions:
       id: "GraphObjectWithPaths"
       name: "GraphObjectWithPaths"
       public: true
-  GroupType:
-    type: "string"
-    title: "GroupType"
-    description: "The group type."
-    enum:
-    - "system_group"
-    - "user_group"
-    x-stoplight:
-      id: "GroupType"
-      name: "GroupType"
-      public: true
-  PolicyTemplate:
+  Error:
     type: "object"
     properties:
+      code:
+        type: "integer"
+        format: "int32"
+      message:
+        type: "string"
+      fields:
+        type: "string"
+    title: "Error"
+    x-stoplight:
+      id: "Error"
+      name: "Error"
+      public: true
+  GraphManagementReq:
+    type: "object"
+    required:
+    - "id"
+    - "op"
+    - "type"
+    properties:
+      op:
+        type: "string"
+        description: "How to modify the graph connection."
+        enum:
+        - "add"
+        - "remove"
+        - "update"
+      type:
+        $ref: "#/definitions/GraphType"
       id:
         type: "string"
-        description: "ObjectId uniquely identifying a Policy Template."
-      name:
-        type: "string"
-        description: "The unique name for the Policy Template."
-      description:
-        type: "string"
-        description: "The default description for the Policy."
-      displayName:
-        type: "string"
-        description: "The default display name for the Policy."
-      osMetaFamily:
-        type: "string"
-        enum:
-        - "linux"
-        - "darwin"
-        - "windows"
-      activation:
-        type: "string"
-        description: "Requirements before the policy can be activated."
-      behavior:
-        type: "string"
-        description: "Specifics about the behavior of the policy."
-      state:
-        type: "string"
-        description: "String describing the release status of the policy template."
-        default: ""
-    title: "PolicyTemplate"
-    description: "The shallow information about a Policy Template."
+        description: "The ObjectID of graph object being added or removed as an association."
+    title: "GraphManagementReq"
     example:
-      displayName: "displayName"
-      osMetaFamily: "linux"
-      name: "name"
-      description: "description"
+      op: "add"
       id: "id"
-      state: "state"
-      activation: "activation"
-      behavior: "behavior"
+      type: {}
     x-stoplight:
-      id: "PolicyTemplate"
-      name: "PolicyTemplate"
+      id: "GraphManagementReq"
+      name: "GraphManagementReq"
       public: true
   GraphType:
     type: "string"
@@ -10401,6 +10424,30 @@ definitions:
     x-stoplight:
       id: "GraphType"
       name: "GraphType"
+      public: true
+  UserGroupPost:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      attributes:
+        $ref: "#/definitions/UserGroupPost_attributes"
+      name:
+        type: "string"
+        description: "Display name of a User Group."
+    title: "UserGroupPost"
+    example:
+      name: "name"
+      attributes:
+        sambaEnabled: true
+        posixGroups:
+        - name: "name"
+          id: 0
+        - name: "name"
+          id: 0
+    x-stoplight:
+      id: "UserGroupPost"
+      name: "UserGroupPost"
       public: true
   Policy:
     type: "object"
@@ -10430,34 +10477,6 @@ definitions:
     x-stoplight:
       id: "Policy"
       name: "Policy"
-      public: true
-  GraphManagementReq:
-    type: "object"
-    required:
-    - "id"
-    - "op"
-    - "type"
-    properties:
-      op:
-        type: "string"
-        description: "How to modify the graph connection."
-        enum:
-        - "add"
-        - "remove"
-        - "update"
-      type:
-        $ref: "#/definitions/GraphType"
-      id:
-        type: "string"
-        description: "The ObjectID of graph object being added or removed as an association."
-    title: "GraphManagementReq"
-    example:
-      op: "add"
-      id: "id"
-      type: {}
-    x-stoplight:
-      id: "GraphManagementReq"
-      name: "GraphManagementReq"
       public: true
   samba-domain-input:
     type: "object"
@@ -11450,6 +11469,33 @@ definitions:
       id: "bulk-user-update"
       name: "Bulk User Update"
       public: true
+  Administrator:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      email:
+        type: "string"
+      firstname:
+        type: "string"
+      lastname:
+        type: "string"
+      enableMultiFactor:
+        type: "boolean"
+      registered:
+        type: "boolean"
+    title: "Administrator"
+    example:
+      id: "0123456789abcdef01234567"
+      email: "joe@example.com"
+      firstname: "Joe"
+      lastname: "Blough"
+      enableMultiFactor: true
+      registered: false
+    x-stoplight:
+      id: "Administrator"
+      name: "Administrator"
+      public: true
   systemuserputpost_addresses:
     properties:
       type:
@@ -11578,14 +11624,6 @@ definitions:
     example:
       sambaEnabled: true
 parameters:
-  trait:limit:limit:
-    name: "limit"
-    in: "query"
-    description: "The number of records to return at once. Limited to 100."
-    required: false
-    type: "integer"
-    default: 10
-    x-exportParamName: "Limit"
   trait:skip:skip:
     name: "skip"
     in: "query"
@@ -11626,6 +11664,14 @@ parameters:
     items:
       type: "string"
     x-exportParamName: "Filter"
+  trait:limit:limit:
+    name: "limit"
+    in: "query"
+    description: "The number of records to return at once. Limited to 100."
+    required: false
+    type: "integer"
+    default: 10
+    x-exportParamName: "Limit"
   trait:sort:sort:
     name: "sort"
     in: "query"
@@ -12348,6 +12394,8 @@ x-stoplight:
         description: "Models make up the core input and output structures in this\
           \ API. They are used in endpoint request and response bodies."
         items:
+        - _id: "Administrator"
+          type: "schemas"
         - _id: "auth-info"
           type: "schemas"
         - _id: "auth-input"

@@ -38,6 +38,7 @@ Name | Type | Description | Notes
 **EmployeeType** | **string** |  | [optional] [default to null]
 **Company** | **string** |  | [optional] [default to null]
 **EmployeeIdentifier** | **string** | Must be unique per user.  | [optional] [default to null]
+**Mfa** | [***Mfa**](mfa.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

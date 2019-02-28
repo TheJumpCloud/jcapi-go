@@ -138,6 +138,7 @@ func (a *SystemsApiService) SystemsDelete(ctx context.Context, id string, conten
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "fields" (string) Use a space seperated string of field parameters to include the data in the response. If omitted the default list of fields will be returned. 
+     @param "filter" (string) A filter to apply to the query.
      @param "date" (string) Current date header for the System Context API
      @param "authorization" (string) Authorization header for the System Context API
      @param "xOrgId" (string) 
@@ -162,6 +163,9 @@ func (a *SystemsApiService) SystemsGet(ctx context.Context, id string, contentTy
 	if err := typeCheckParameter(localVarOptionals["fields"], "string", "fields"); err != nil {
 		return successPayload, nil, err
 	}
+	if err := typeCheckParameter(localVarOptionals["filter"], "string", "filter"); err != nil {
+		return successPayload, nil, err
+	}
 	if err := typeCheckParameter(localVarOptionals["date"], "string", "date"); err != nil {
 		return successPayload, nil, err
 	}
@@ -174,6 +178,9 @@ func (a *SystemsApiService) SystemsGet(ctx context.Context, id string, contentTy
 
 	if localVarTempParam, localVarOk := localVarOptionals["fields"].(string); localVarOk {
 		localVarQueryParams.Add("fields", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].(string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -248,9 +255,11 @@ func (a *SystemsApiService) SystemsGet(ctx context.Context, id string, contentTy
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "fields" (string) Use a space seperated string of field parameters to include the data in the response. If omitted the default list of fields will be returned. 
      @param "limit" (int32) The number of records to return at once. Limited to 100.
+     @param "xOrgId" (string) 
+     @param "search" (string) A nested object containing a string &#x60;searchTerm&#x60; and a list of &#x60;fields&#x60; to search on.
      @param "skip" (int32) The offset into the records to return.
      @param "sort" (string) Use space separated sort parameters to sort the collection. Default sort is ascending. Prefix with &#x60;-&#x60; to sort descending. 
-     @param "xOrgId" (string) 
+     @param "filter" (string) A filter to apply to the query.
  @return Systemslist*/
 func (a *SystemsApiService) SystemsList(ctx context.Context, contentType string, accept string, localVarOptionals map[string]interface{}) (Systemslist,  *http.Response, error) {
 	var (
@@ -274,13 +283,19 @@ func (a *SystemsApiService) SystemsList(ctx context.Context, contentType string,
 	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
 		return successPayload, nil, err
 	}
+	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["search"], "string", "search"); err != nil {
+		return successPayload, nil, err
+	}
 	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
 		return successPayload, nil, err
 	}
 	if err := typeCheckParameter(localVarOptionals["sort"], "string", "sort"); err != nil {
 		return successPayload, nil, err
 	}
-	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
+	if err := typeCheckParameter(localVarOptionals["filter"], "string", "filter"); err != nil {
 		return successPayload, nil, err
 	}
 
@@ -290,11 +305,17 @@ func (a *SystemsApiService) SystemsList(ctx context.Context, contentType string,
 	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
 		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
 	}
+	if localVarTempParam, localVarOk := localVarOptionals["search"].(string); localVarOk {
+		localVarQueryParams.Add("search", parameterToString(localVarTempParam, ""))
+	}
 	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
 		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["sort"].(string); localVarOk {
 		localVarQueryParams.Add("sort", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].(string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -315,11 +336,11 @@ func (a *SystemsApiService) SystemsList(ctx context.Context, contentType string,
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
-	localVarHeaderParams["Accept"] = parameterToString(accept, "")
 	if localVarTempParam, localVarOk := localVarOptionals["xOrgId"].(string); localVarOk {
 		localVarHeaderParams["x-org-id"] = parameterToString(localVarTempParam, "")
 	}
+	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
+	localVarHeaderParams["Accept"] = parameterToString(accept, "")
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
@@ -468,6 +489,7 @@ func (a *SystemsApiService) SystemsPut(ctx context.Context, id string, contentTy
      @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
      @param "sort" (string) Use space separated sort parameters to sort the collection. Default sort is ascending. Prefix with &#x60;-&#x60; to sort descending. 
+     @param "filter" (string) A filter to apply to the query.
      @param "xOrgId" (string) 
  @return Systemuserbinding*/
 func (a *SystemsApiService) SystemsSystemusersBindingList(ctx context.Context, id string, contentType string, accept string, localVarOptionals map[string]interface{}) (Systemuserbinding,  *http.Response, error) {
@@ -499,6 +521,9 @@ func (a *SystemsApiService) SystemsSystemusersBindingList(ctx context.Context, i
 	if err := typeCheckParameter(localVarOptionals["sort"], "string", "sort"); err != nil {
 		return successPayload, nil, err
 	}
+	if err := typeCheckParameter(localVarOptionals["filter"], "string", "filter"); err != nil {
+		return successPayload, nil, err
+	}
 	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
 		return successPayload, nil, err
 	}
@@ -514,6 +539,9 @@ func (a *SystemsApiService) SystemsSystemusersBindingList(ctx context.Context, i
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["sort"].(string); localVarOk {
 		localVarQueryParams.Add("sort", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].(string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

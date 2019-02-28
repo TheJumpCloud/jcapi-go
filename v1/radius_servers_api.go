@@ -33,6 +33,7 @@ type RadiusServersApiService service
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "fields" (string) Use a space seperated string of field parameters to include the data in the response. If omitted the default list of fields will be returned. 
+     @param "filter" (string) A filter to apply to the query.
      @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
      @param "sort" (string) Use space separated sort parameters to sort the collection. Default sort is ascending. Prefix with &#x60;-&#x60; to sort descending. 
@@ -57,6 +58,9 @@ func (a *RadiusServersApiService) RadiusServersList(ctx context.Context, content
 	if err := typeCheckParameter(localVarOptionals["fields"], "string", "fields"); err != nil {
 		return successPayload, nil, err
 	}
+	if err := typeCheckParameter(localVarOptionals["filter"], "string", "filter"); err != nil {
+		return successPayload, nil, err
+	}
 	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
 		return successPayload, nil, err
 	}
@@ -72,6 +76,9 @@ func (a *RadiusServersApiService) RadiusServersList(ctx context.Context, content
 
 	if localVarTempParam, localVarOk := localVarOptionals["fields"].(string); localVarOk {
 		localVarQueryParams.Add("fields", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].(string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, ""))
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
 		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
