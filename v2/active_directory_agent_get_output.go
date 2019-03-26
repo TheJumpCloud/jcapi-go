@@ -8,11 +8,12 @@
  */
 
 package v2
-// GroupType : The group type.
-type GroupType string
 
-// List of GroupType
-const (
-	SYSTEM_GROUP GroupType = "system_group"
-	USER_GROUP GroupType = "user_group"
-)
+type ActiveDirectoryAgentGetOutput struct {
+
+	// ObjectID of this Active Directory Agent.
+	Id string `json:"id"`
+
+	// The connect key to use when installing the Agent on a Domain Controller.
+	ConnectKey string `json:"connectKey,omitempty"`
+}

@@ -8,11 +8,6 @@
  */
 
 package v2
-// GroupType : The group type.
-type GroupType string
 
-// List of GroupType
-const (
-	SYSTEM_GROUP GroupType = "system_group"
-	USER_GROUP GroupType = "user_group"
-)
+type ActiveDirectoryAgentInput struct {
+}

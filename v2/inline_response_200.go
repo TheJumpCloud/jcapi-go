@@ -8,11 +8,10 @@
  */
 
 package v2
-// GroupType : The group type.
-type GroupType string
 
-// List of GroupType
-const (
-	SYSTEM_GROUP GroupType = "system_group"
-	USER_GROUP GroupType = "user_group"
-)
+type InlineResponse200 struct {
+
+	TotalCount int32 `json:"totalCount,omitempty"`
+
+	Results []Administrator `json:"results,omitempty"`
+}

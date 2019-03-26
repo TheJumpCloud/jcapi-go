@@ -8,11 +8,10 @@
  */
 
 package v2
-// GroupType : The group type.
-type GroupType string
 
-// List of GroupType
-const (
-	SYSTEM_GROUP GroupType = "system_group"
-	USER_GROUP GroupType = "user_group"
-)
+type Provider struct {
+
+	Name string `json:"name,omitempty"`
+
+	Contact *ProviderContact `json:"contact,omitempty"`
+}
