@@ -618,8 +618,9 @@ paths:
       - x-api-key: []
       x-stoplight:
         id: "graph_applicationAssociationsPost"
-        beforeScript: null
-        afterScript: null
+        beforeScript: "function (ctx, request) {\n  // Your javascript code here.\n\
+          }"
+        afterScript: "null"
         public: true
         mock:
           enabled: false
@@ -3561,6 +3562,99 @@ paths:
           enabled: false
           dynamic: false
           statusCode: 200
+  /policies/{policy_id}/policystatuses:
+    get:
+      tags:
+      - "Policies"
+      summary: "Lists the latest policy results of a policy."
+      description: "This endpoint returns the latest policies results for a specific\
+        \ policy.\n\n##### Sample Request\n\n```\n curl -X GET https://console.jumpcloud.com/api/v2/policies/{Policy_ID}/policystatuses\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
+      operationId: "policystatuses_list"
+      parameters:
+      - name: "policy_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "PolicyId"
+      - name: "fields"
+        in: "query"
+        description: "The comma separated fields included in the returned records.\n\
+          If omitted the default list of fields will be returned.\n"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Fields"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
+          \ in"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      - name: "limit"
+        in: "query"
+        description: "The number of records to return at once. Limited to 100."
+        required: false
+        type: "integer"
+        default: 10
+        x-exportParamName: "Limit"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        x-exportParamName: "Skip"
+      - name: "sort"
+        in: "query"
+        description: "The comma separated fields used to sort the collection.\nDefault\
+          \ sort is ascending, prefix with `-` to sort descending.\n"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Sort"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/PolicyResult"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        id: "policystatuses_list"
+        beforeScript: null
+        afterScript: null
+        public: true
+        mock:
+          enabled: false
+          dynamic: false
+          statusCode: 200
   /systems/{system_id}/policystatuses:
     get:
       tags:
@@ -3641,99 +3735,6 @@ paths:
       responses:
         200:
           description: "OK"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/PolicyResult"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        id: "policystatuses_list"
-        beforeScript: null
-        afterScript: null
-        public: true
-        mock:
-          enabled: false
-          dynamic: false
-          statusCode: 200
-  /policies/{policy_id}/policystatuses:
-    get:
-      tags:
-      - "Policies"
-      summary: "Lists the latest policy results of a policy."
-      description: "This endpoint returns the latest policies results for a specific\
-        \ policy.\n\n##### Sample Request\n\n```\n curl -X GET https://console.jumpcloud.com/api/v2/policies/{Policy_ID}/policystatuses\
-        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
-      operationId: "policystatuses_list"
-      parameters:
-      - name: "policy_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "PolicyId"
-      - name: "fields"
-        in: "query"
-        description: "The comma separated fields included in the returned records.\n\
-          If omitted the default list of fields will be returned.\n"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Fields"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
-          \ in"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "limit"
-        in: "query"
-        description: "The number of records to return at once. Limited to 100."
-        required: false
-        type: "integer"
-        default: 10
-        x-exportParamName: "Limit"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        x-exportParamName: "Skip"
-      - name: "sort"
-        in: "query"
-        description: "The comma separated fields used to sort the collection.\nDefault\
-          \ sort is ascending, prefix with `-` to sort descending.\n"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Sort"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      responses:
-        200:
-          description: ""
           schema:
             type: "array"
             items:
@@ -4246,6 +4247,176 @@ paths:
           enabled: false
           dynamic: false
           statusCode: 200
+  /providers/{provider_id}/administrators:
+    get:
+      tags:
+      - "Providers"
+      summary: "List Provider Administrators"
+      description: "This endpoint returns a list of the Administrators associated\
+        \ with the Provider.\n\n#### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/providers/{ProviderID}/administrators\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
+      operationId: "providers_listAdministrators"
+      parameters:
+      - name: "provider_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "ProviderId"
+      - name: "fields"
+        in: "query"
+        description: "The comma separated fields included in the returned records.\n\
+          If omitted the default list of fields will be returned.\n"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Fields"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
+          \ in"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      - name: "limit"
+        in: "query"
+        description: "The number of records to return at once. Limited to 100."
+        required: false
+        type: "integer"
+        default: 10
+        x-exportParamName: "Limit"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        x-exportParamName: "Skip"
+      - name: "sort"
+        in: "query"
+        description: "The comma separated fields used to sort the collection.\nDefault\
+          \ sort is ascending, prefix with `-` to sort descending.\n"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Sort"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/inline_response_200"
+          examples:
+            application/json:
+              totalCount: 2
+              results:
+              - registered: true
+                enableMultiFactor: false
+                _id: "5c3536e9e0a6840001872782"
+                email: "joe@example.com"
+                firstname: ""
+                lastname: ""
+              - registered: true
+                enableMultiFactor: false
+                _id: "5c35370ae0a6840001872784"
+                email: "mildred@example.com"
+                firstname: ""
+                lastname: ""
+        401:
+          description: ""
+          schema:
+            $ref: "#/definitions/inline_response_401"
+          examples:
+            application/json:
+              message: "Unauthorized"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        id: "providers_listAdministrators"
+        beforeScript: null
+        afterScript: null
+        public: true
+        mock:
+          enabled: false
+          dynamic: false
+          statusCode: 200
+    post:
+      tags:
+      - "Providers"
+      summary: "Create a new Provider Administrator"
+      description: "This endpoint allows you to create a provider administrator. You\
+        \ must be associated to given provider to use this route.\n\n**Sample Request**\n\
+        \n```\ncurl -X POST https://console.jumpcloud.com/api/v2/providers/{ProviderID}/administrators\
+        \ \\\n    -H 'Accept: application/json' \\\n    -H 'Context-Type: application/json'\
+        \ \\\n    -H 'x-api-key: {API_KEY}' \\\n    -d '{\n      \"email\":\"{ADMIN_EMAIL}\"\
+        \n    }'\n```"
+      operationId: "providers_postAdmins"
+      parameters:
+      - name: "provider_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "ProviderId"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/ProviderAdminReq"
+        x-exportParamName: "Body"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/Administrator"
+        401:
+          description: ""
+          schema:
+            $ref: "#/definitions/inline_response_401"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        id: "providers_postAdmins"
+        beforeScript: null
+        afterScript: null
+        public: true
+        mock:
+          enabled: false
+          dynamic: false
+          statusCode: 200
+    x-swagger-authorization:
+    - "user"
+    - "providerTenancy"
+    - "noOrgHeaderSelection"
+    x-swagger-grouping-strategies: []
+    x-swagger-user-roles:
+    - "administrator"
   /radiusservers/{radiusserver_id}/associations:
     get:
       tags:
@@ -10038,86 +10209,6 @@ definitions:
       id: "systemuserputpost"
       name: "SystemUserPost"
       public: true
-  Group:
-    type: "object"
-    properties:
-      id:
-        type: "string"
-        description: "ObjectId uniquely identifying a Group."
-      type:
-        $ref: "#/definitions/GroupType"
-      name:
-        type: "string"
-        description: "Display name of a Group."
-    title: "Group"
-    example:
-      name: "name"
-      id: "id"
-      type: {}
-    x-stoplight:
-      id: "Group"
-      name: "Group"
-      public: true
-  UserGroupMembersReq:
-    type: "object"
-    required:
-    - "id"
-    - "op"
-    - "type"
-    properties:
-      op:
-        type: "string"
-        description: "How to modify the membership connection."
-        enum:
-        - "add"
-        - "remove"
-      type:
-        type: "string"
-        description: "The member type."
-        enum:
-        - "user"
-      id:
-        type: "string"
-        description: "The ObjectID of member being added or removed."
-    title: "UserGroupMembersReq"
-    example:
-      op: "add"
-      id: "id"
-      type: "user"
-    x-stoplight:
-      id: "UserGroupMembersReq"
-      name: "UserGroupMembersReq"
-      public: true
-  Directory:
-    type: "object"
-    required:
-    - "id"
-    - "name"
-    - "type"
-    properties:
-      type:
-        type: "string"
-        description: "The type of directory."
-        enum:
-        - "g_suite"
-        - "ldap_server"
-        - "office_365"
-        - "workday"
-      id:
-        type: "string"
-        description: "The ObjectID of the directory."
-      name:
-        type: "string"
-        description: "The name of the directory."
-    title: "Directory"
-    example:
-      name: "name"
-      id: "id"
-      type: "g_suite"
-    x-stoplight:
-      id: "Directory"
-      name: "Directory"
-      public: true
   GraphConnection:
     type: "object"
     required:
@@ -10171,6 +10262,71 @@ definitions:
       id: "SystemGroupMembersReq"
       name: "SystemGroupMembersReq"
       public: true
+  Group:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        description: "ObjectId uniquely identifying a Group."
+      type:
+        $ref: "#/definitions/GroupType"
+      name:
+        type: "string"
+        description: "Display name of a Group."
+    title: "Group"
+    example:
+      name: "name"
+      id: "id"
+      type: {}
+    x-stoplight:
+      id: "Group"
+      name: "Group"
+      public: true
+  SystemGroupData:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      name:
+        type: "string"
+        description: "Display name of a System Group."
+    title: "SystemGroupData"
+    example:
+      name: "name"
+    x-stoplight:
+      id: "SystemGroupData"
+      name: "SystemGroupData"
+      public: true
+  UserGroupMembersReq:
+    type: "object"
+    required:
+    - "id"
+    - "op"
+    - "type"
+    properties:
+      op:
+        type: "string"
+        description: "How to modify the membership connection."
+        enum:
+        - "add"
+        - "remove"
+      type:
+        type: "string"
+        description: "The member type."
+        enum:
+        - "user"
+      id:
+        type: "string"
+        description: "The ObjectID of member being added or removed."
+    title: "UserGroupMembersReq"
+    example:
+      op: "add"
+      id: "id"
+      type: "user"
+    x-stoplight:
+      id: "UserGroupMembersReq"
+      name: "UserGroupMembersReq"
+      public: true
   UserGroup:
     type: "object"
     properties:
@@ -10194,20 +10350,50 @@ definitions:
       id: "UserGroup"
       name: "UserGroup"
       public: true
-  SystemGroupData:
+  Directory:
     type: "object"
     required:
+    - "id"
     - "name"
+    - "type"
     properties:
+      type:
+        type: "string"
+        description: "The type of directory."
+        enum:
+        - "g_suite"
+        - "ldap_server"
+        - "office_365"
+        - "workday"
+      id:
+        type: "string"
+        description: "The ObjectID of the directory."
       name:
         type: "string"
-        description: "Display name of a System Group."
-    title: "SystemGroupData"
+        description: "The name of the directory."
+    title: "Directory"
     example:
       name: "name"
+      id: "id"
+      type: "g_suite"
     x-stoplight:
-      id: "SystemGroupData"
-      name: "SystemGroupData"
+      id: "Directory"
+      name: "Directory"
+      public: true
+  Error:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      message:
+        type: "string"
+      fields:
+        type: "string"
+    title: "Error"
+    x-stoplight:
+      id: "Error"
+      name: "Error"
       public: true
   SystemGroup:
     type: "object"
@@ -10232,17 +10418,6 @@ definitions:
       id: "SystemGroup"
       name: "SystemGroup"
       public: true
-  GroupType:
-    type: "string"
-    title: "GroupType"
-    description: "The group type."
-    enum:
-    - "system_group"
-    - "user_group"
-    x-stoplight:
-      id: "GroupType"
-      name: "GroupType"
-      public: true
   GraphObject:
     type: "object"
     required:
@@ -10263,51 +10438,29 @@ definitions:
       id: "GraphObject"
       name: "GraphObject"
       public: true
-  PolicyTemplate:
+  UserGroupPost:
     type: "object"
+    required:
+    - "name"
     properties:
-      id:
-        type: "string"
-        description: "ObjectId uniquely identifying a Policy Template."
+      attributes:
+        $ref: "#/definitions/UserGroupPost_attributes"
       name:
         type: "string"
-        description: "The unique name for the Policy Template."
-      description:
-        type: "string"
-        description: "The default description for the Policy."
-      displayName:
-        type: "string"
-        description: "The default display name for the Policy."
-      osMetaFamily:
-        type: "string"
-        enum:
-        - "linux"
-        - "darwin"
-        - "windows"
-      activation:
-        type: "string"
-        description: "Requirements before the policy can be activated."
-      behavior:
-        type: "string"
-        description: "Specifics about the behavior of the policy."
-      state:
-        type: "string"
-        description: "String describing the release status of the policy template."
-        default: ""
-    title: "PolicyTemplate"
-    description: "The shallow information about a Policy Template."
+        description: "Display name of a User Group."
+    title: "UserGroupPost"
     example:
-      displayName: "displayName"
-      osMetaFamily: "linux"
       name: "name"
-      description: "description"
-      id: "id"
-      state: "state"
-      activation: "activation"
-      behavior: "behavior"
+      attributes:
+        sambaEnabled: true
+        posixGroups:
+        - name: "name"
+          id: 0
+        - name: "name"
+          id: 0
     x-stoplight:
-      id: "PolicyTemplate"
-      name: "PolicyTemplate"
+      id: "UserGroupPost"
+      name: "UserGroupPost"
       public: true
   GraphObjectWithPaths:
     type: "object"
@@ -10361,20 +10514,16 @@ definitions:
       id: "GraphObjectWithPaths"
       name: "GraphObjectWithPaths"
       public: true
-  Error:
-    type: "object"
-    properties:
-      code:
-        type: "integer"
-        format: "int32"
-      message:
-        type: "string"
-      fields:
-        type: "string"
-    title: "Error"
+  GroupType:
+    type: "string"
+    title: "GroupType"
+    description: "The group type."
+    enum:
+    - "system_group"
+    - "user_group"
     x-stoplight:
-      id: "Error"
-      name: "Error"
+      id: "GroupType"
+      name: "GroupType"
       public: true
   GraphManagementReq:
     type: "object"
@@ -10425,29 +10574,51 @@ definitions:
       id: "GraphType"
       name: "GraphType"
       public: true
-  UserGroupPost:
+  PolicyTemplate:
     type: "object"
-    required:
-    - "name"
     properties:
-      attributes:
-        $ref: "#/definitions/UserGroupPost_attributes"
+      id:
+        type: "string"
+        description: "ObjectId uniquely identifying a Policy Template."
       name:
         type: "string"
-        description: "Display name of a User Group."
-    title: "UserGroupPost"
+        description: "The unique name for the Policy Template."
+      description:
+        type: "string"
+        description: "The default description for the Policy."
+      displayName:
+        type: "string"
+        description: "The default display name for the Policy."
+      osMetaFamily:
+        type: "string"
+        enum:
+        - "linux"
+        - "darwin"
+        - "windows"
+      activation:
+        type: "string"
+        description: "Requirements before the policy can be activated."
+      behavior:
+        type: "string"
+        description: "Specifics about the behavior of the policy."
+      state:
+        type: "string"
+        description: "String describing the release status of the policy template."
+        default: ""
+    title: "PolicyTemplate"
+    description: "The shallow information about a Policy Template."
     example:
+      displayName: "displayName"
+      osMetaFamily: "linux"
       name: "name"
-      attributes:
-        sambaEnabled: true
-        posixGroups:
-        - name: "name"
-          id: 0
-        - name: "name"
-          id: 0
+      description: "description"
+      id: "id"
+      state: "state"
+      activation: "activation"
+      behavior: "behavior"
     x-stoplight:
-      id: "UserGroupPost"
-      name: "UserGroupPost"
+      id: "PolicyTemplate"
+      name: "PolicyTemplate"
       public: true
   Policy:
     type: "object"
@@ -11359,18 +11530,19 @@ definitions:
       \ - Translate `locality` field of JumpCloud user address of type `work` to `city`\
       \ field of Microsoft Graph user\n* `user_state` - Translate `region` field of\
       \ JumpCloud user address of type `work` to `state` field of Microsoft Graph\
-      \ `user`\n* `user_country` - Translate `country` field of JumpCloud user address\
-      \ of type `work` to `country` field of Microsoft Graph `user`\n* `user_postal_code`\
+      \ `user` \n* `user_country` - Translate `country` field of JumpCloud user address\
+      \ of type `work` to `country` field of Microsoft Graph `user` \n* `user_postal_code`\
       \ - Translate `postalCode` field of JumpCloud user address of type `work` to\
-      \ `postalCode` field of Microsoft Graph `user`\n* `user_business_phones` - Translate\
-      \ `number` field of first JumpCloud user `phoneNumber` of type `work` to `businessPhones`\
-      \ field of Microsoft Graph `user`\n* `user_mobile_phone` - Translate `number`\
-      \ field of first JumpCloud user `phoneNumber` of type `mobile` to `mobilePhone`\
-      \ field of Microsoft Graph `user`\n* `user_department` - Translate `department`\
-      \ field of JumpCloud user to `department` field of Microsoft Graph `user`\n\
-      * `user_job_title` - Translate `jobTitle` field of JumpCloud user to `jobTitle`\
-      \ field of Microsoft Graph `user`\n* `user_office_location` - Translate `location`\
-      \ field of JumpCloud user to `officeLocation` field of Microsoft Graph `user`"
+      \ `postalCode` field of Microsoft Graph `user` \n* `user_business_phones` -\
+      \ Translate `number` field of first JumpCloud user `phoneNumber` of type `work`\
+      \ to `businessPhones` field of Microsoft Graph `user` \n* `user_mobile_phone`\
+      \ - Translate `number` field of first JumpCloud user `phoneNumber` of type `mobile`\
+      \ to `mobilePhone` field of Microsoft Graph `user` \n* `user_department` - Translate\
+      \ `department` field of JumpCloud user to `department` field of Microsoft Graph\
+      \ `user` \n* `user_job_title` - Translate `jobTitle` field of JumpCloud user\
+      \ to `jobTitle` field of Microsoft Graph `user` \n* `user_office_location` -\
+      \ Translate `location` field of JumpCloud user to `officeLocation` field of\
+      \ Microsoft Graph `user` "
     enum:
     - "user_street_address"
     - "user_city"
@@ -11496,6 +11668,58 @@ definitions:
       id: "Administrator"
       name: "Administrator"
       public: true
+  Provider:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      contact:
+        $ref: "#/definitions/Provider_contact"
+    title: "Provider"
+    example:
+      name: "Joe Bloughs MSP"
+      contact:
+        name: "Joe Blough"
+        email: "joe.blough@example.com"
+    x-stoplight:
+      id: "Provider"
+      name: "Provider"
+      public: true
+  ProviderAdminReq:
+    type: "object"
+    required:
+    - "email"
+    properties:
+      email:
+        type: "string"
+      enableMultiFactor:
+        type: "boolean"
+      firstname:
+        type: "string"
+      lastname:
+        type: "string"
+    title: "ProviderAdminReq"
+    example:
+      firstname: "firstname"
+      enableMultiFactor: true
+      email: "email"
+      lastname: "lastname"
+    x-stoplight:
+      id: "ProviderAdminReq"
+      name: "ProviderAdminReq"
+      public: true
+  inline_response_200:
+    properties:
+      totalCount:
+        type: "integer"
+      results:
+        type: "array"
+        items:
+          $ref: "#/definitions/Administrator"
+  inline_response_401:
+    properties:
+      message:
+        type: "string"
   systemuserputpost_addresses:
     properties:
       type:
@@ -11623,7 +11847,21 @@ definitions:
     description: "The group object's attributes."
     example:
       sambaEnabled: true
+  Provider_contact:
+    properties:
+      name:
+        type: "string"
+      email:
+        type: "string"
 parameters:
+  trait:limit:limit:
+    name: "limit"
+    in: "query"
+    description: "The number of records to return at once. Limited to 100."
+    required: false
+    type: "integer"
+    default: 10
+    x-exportParamName: "Limit"
   trait:skip:skip:
     name: "skip"
     in: "query"
@@ -11664,14 +11902,6 @@ parameters:
     items:
       type: "string"
     x-exportParamName: "Filter"
-  trait:limit:limit:
-    name: "limit"
-    in: "query"
-    description: "The number of records to return at once. Limited to 100."
-    required: false
-    type: "integer"
-    default: 10
-    x-exportParamName: "Limit"
   trait:sort:sort:
     name: "sort"
     in: "query"
@@ -12120,6 +12350,14 @@ x-stoplight:
         - _id: "policyresults_get"
           type: "endpoints"
       - divider: false
+        items:
+        - _id: "providers_listAdministrators"
+          type: "endpoints"
+        - _id: "providers_postAdmins"
+          type: "endpoints"
+        name: "Providers"
+        description: "Please contact support to get your ProviderID."
+      - divider: false
         description: "You can associate your groups of users to Radius Servers.  \
           \ Please see [this page](https://support.jumpcloud.com/customer/en/portal/topics/926833-radius-as-a-service)\
           \ for more information on Radius."
@@ -12218,8 +12456,8 @@ x-stoplight:
           \ to allow management of the group members. This includes listing, adding\
           \ and removing Directory Objects and Groups of Directory Objects to and\
           \ from the Group. These endpoints allow you to control the members and membership\
-          \ of System Objects.\n\nMembers are the direct objects of an object group.\n\
-          \nMembership is defined as the direct and indirect members of an object\
+          \ of System Objects.\n\nMembers are the direct objects of an object group.\
+          \ \n\nMembership is defined as the direct and indirect members of an object\
           \ group."
       - divider: false
         items:
@@ -12331,8 +12569,8 @@ x-stoplight:
           \ to allow management of the group members. This includes listing, adding\
           \ and removing Directory Objects and Groups of Directory Objects to and\
           \ from the Group. These endpoints allow you to control the members and membership\
-          \ of User Objects.\n\nMembers are the direct objects of an object group.\n\
-          \nMembership is defined as the direct and indirect members of an object\
+          \ of User Objects.\n\nMembers are the direct objects of an object group.\
+          \ \n\nMembership is defined as the direct and indirect members of an object\
           \ group."
       - divider: false
         items:
@@ -12455,6 +12693,10 @@ x-stoplight:
         - _id: "PolicyValue"
           type: "schemas"
         - _id: "PolicyWithDetails"
+          type: "schemas"
+        - _id: "Provider"
+          type: "schemas"
+        - _id: "ProviderAdminReq"
           type: "schemas"
         - _id: "samba-domain-input"
           type: "schemas"
