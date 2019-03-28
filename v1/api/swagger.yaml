@@ -168,8 +168,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -302,8 +302,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -476,8 +476,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -548,8 +548,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -635,8 +635,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -747,8 +747,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -828,8 +828,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -1024,8 +1024,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -1126,8 +1126,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -1235,8 +1235,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -1310,8 +1310,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -1402,8 +1402,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -1614,8 +1614,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -1908,8 +1908,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -2088,8 +2088,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -2521,8 +2521,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -2651,8 +2651,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -5342,7 +5342,7 @@ parameters:
     name: "fields"
     in: "query"
     description: "Use a space seperated string of field parameters to include the\
-      \ data in the response. If omitted the default list of fields will be returned.\n"
+      \ data in the response. If omitted, the default list of fields will be returned.\n"
     required: false
     type: "string"
     x-exportParamName: "Fields"

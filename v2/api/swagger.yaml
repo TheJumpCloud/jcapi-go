@@ -175,7 +175,7 @@ paths:
       - name: "fields"
         in: "query"
         description: "The comma separated fields included in the returned records.\n\
-          If omitted the default list of fields will be returned.\n"
+          If omitted, the default list of fields will be returned.\n"
         required: false
         type: "array"
         items:
@@ -1392,7 +1392,7 @@ paths:
       - name: "fields"
         in: "query"
         description: "The comma separated fields included in the returned records.\n\
-          If omitted the default list of fields will be returned.\n"
+          If omitted, the default list of fields will be returned.\n"
         required: false
         type: "array"
         items:
@@ -1476,7 +1476,7 @@ paths:
       - name: "fields"
         in: "query"
         description: "The comma separated fields included in the returned records.\n\
-          If omitted the default list of fields will be returned.\n"
+          If omitted, the default list of fields will be returned.\n"
         required: false
         type: "array"
         items:
@@ -1865,7 +1865,7 @@ paths:
       - name: "fields"
         in: "query"
         description: "The comma separated fields included in the returned records.\n\
-          If omitted the default list of fields will be returned.\n"
+          If omitted, the default list of fields will be returned.\n"
         required: false
         type: "array"
         items:
@@ -2405,7 +2405,7 @@ paths:
       - name: "fields"
         in: "query"
         description: "The comma separated fields included in the returned records.\n\
-          If omitted the default list of fields will be returned.\n"
+          If omitted, the default list of fields will be returned.\n"
         required: false
         type: "array"
         items:
@@ -2853,7 +2853,7 @@ paths:
       - name: "fields"
         in: "query"
         description: "The comma separated fields included in the returned records.\n\
-          If omitted the default list of fields will be returned.\n"
+          If omitted, the default list of fields will be returned.\n"
         required: false
         type: "array"
         items:
@@ -3091,7 +3091,7 @@ paths:
       - name: "fields"
         in: "query"
         description: "The comma separated fields included in the returned records.\n\
-          If omitted the default list of fields will be returned.\n"
+          If omitted, the default list of fields will be returned.\n"
         required: false
         type: "array"
         items:
@@ -3386,7 +3386,7 @@ paths:
       - name: "fields"
         in: "query"
         description: "The comma separated fields included in the returned records.\n\
-          If omitted the default list of fields will be returned.\n"
+          If omitted, the default list of fields will be returned.\n"
         required: false
         type: "array"
         items:
@@ -3488,7 +3488,7 @@ paths:
       - name: "fields"
         in: "query"
         description: "The comma separated fields included in the returned records.\n\
-          If omitted the default list of fields will be returned.\n"
+          If omitted, the default list of fields will be returned.\n"
         required: false
         type: "array"
         items:
@@ -3581,7 +3581,7 @@ paths:
       - name: "fields"
         in: "query"
         description: "The comma separated fields included in the returned records.\n\
-          If omitted the default list of fields will be returned.\n"
+          If omitted, the default list of fields will be returned.\n"
         required: false
         type: "array"
         items:
@@ -3676,7 +3676,7 @@ paths:
       - name: "fields"
         in: "query"
         description: "The comma separated fields included in the returned records.\n\
-          If omitted the default list of fields will be returned.\n"
+          If omitted, the default list of fields will be returned.\n"
         required: false
         type: "array"
         items:
@@ -4065,7 +4065,7 @@ paths:
       - name: "fields"
         in: "query"
         description: "The comma separated fields included in the returned records.\n\
-          If omitted the default list of fields will be returned.\n"
+          If omitted, the default list of fields will be returned.\n"
         required: false
         type: "array"
         items:
@@ -4266,7 +4266,7 @@ paths:
       - name: "fields"
         in: "query"
         description: "The comma separated fields included in the returned records.\n\
-          If omitted the default list of fields will be returned.\n"
+          If omitted, the default list of fields will be returned.\n"
         required: false
         type: "array"
         items:
@@ -4360,7 +4360,7 @@ paths:
       - "Providers"
       summary: "Create a new Provider Administrator"
       description: "This endpoint allows you to create a provider administrator. You\
-        \ must be associated to given provider to use this route.\n\n**Sample Request**\n\
+        \ must be associated to the provider to use this route.\n\n**Sample Request**\n\
         \n```\ncurl -X POST https://console.jumpcloud.com/api/v2/providers/{ProviderID}/administrators\
         \ \\\n    -H 'Accept: application/json' \\\n    -H 'Context-Type: application/json'\
         \ \\\n    -H 'x-api-key: {API_KEY}' \\\n    -d '{\n      \"email\":\"{ADMIN_EMAIL}\"\
@@ -4751,7 +4751,7 @@ paths:
       - name: "fields"
         in: "query"
         description: "The comma separated fields included in the returned records.\n\
-          If omitted the default list of fields will be returned.\n"
+          If omitted, the default list of fields will be returned.\n"
         required: false
         type: "array"
         items:
@@ -5733,7 +5733,7 @@ paths:
       - name: "fields"
         in: "query"
         description: "The comma separated fields included in the returned records.\n\
-          If omitted the default list of fields will be returned.\n"
+          If omitted, the default list of fields will be returned.\n"
         required: false
         type: "array"
         items:
@@ -7780,7 +7780,7 @@ paths:
       - name: "fields"
         in: "query"
         description: "The comma separated fields included in the returned records.\n\
-          If omitted the default list of fields will be returned.\n"
+          If omitted, the default list of fields will be returned.\n"
         required: false
         type: "array"
         items:
@@ -9433,7 +9433,7 @@ paths:
       - name: "fields"
         in: "query"
         description: "The comma separated fields included in the returned records.\n\
-          If omitted the default list of fields will be returned.\n"
+          If omitted, the default list of fields will be returned.\n"
         required: false
         type: "array"
         items:
@@ -11916,7 +11916,7 @@ parameters:
     name: "fields"
     in: "query"
     description: "The comma separated fields included in the returned records.\nIf\
-      \ omitted the default list of fields will be returned.\n"
+      \ omitted, the default list of fields will be returned.\n"
     required: false
     type: "array"
     items:

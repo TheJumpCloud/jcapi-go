@@ -32,7 +32,7 @@ type RadiusServersApiService service
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "fields" (string) Use a space seperated string of field parameters to include the data in the response. If omitted the default list of fields will be returned. 
+     @param "fields" (string) Use a space seperated string of field parameters to include the data in the response. If omitted, the default list of fields will be returned. 
      @param "filter" (string) A filter to apply to the query.
      @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.

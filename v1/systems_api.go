@@ -137,7 +137,7 @@ func (a *SystemsApiService) SystemsDelete(ctx context.Context, id string, conten
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "fields" (string) Use a space seperated string of field parameters to include the data in the response. If omitted the default list of fields will be returned. 
+     @param "fields" (string) Use a space seperated string of field parameters to include the data in the response. If omitted, the default list of fields will be returned. 
      @param "filter" (string) A filter to apply to the query.
      @param "date" (string) Current date header for the System Context API
      @param "authorization" (string) Authorization header for the System Context API
@@ -253,7 +253,7 @@ func (a *SystemsApiService) SystemsGet(ctx context.Context, id string, contentTy
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "fields" (string) Use a space seperated string of field parameters to include the data in the response. If omitted the default list of fields will be returned. 
+     @param "fields" (string) Use a space seperated string of field parameters to include the data in the response. If omitted, the default list of fields will be returned. 
      @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "xOrgId" (string) 
      @param "search" (string) A nested object containing a string &#x60;searchTerm&#x60; and a list of &#x60;fields&#x60; to search on.
@@ -485,7 +485,7 @@ func (a *SystemsApiService) SystemsPut(ctx context.Context, id string, contentTy
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "fields" (string) Use a space seperated string of field parameters to include the data in the response. If omitted the default list of fields will be returned. 
+     @param "fields" (string) Use a space seperated string of field parameters to include the data in the response. If omitted, the default list of fields will be returned. 
      @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
      @param "sort" (string) Use space separated sort parameters to sort the collection. Default sort is ascending. Prefix with &#x60;-&#x60; to sort descending. 

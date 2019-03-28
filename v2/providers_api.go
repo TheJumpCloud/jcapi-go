@@ -34,7 +34,7 @@ type ProvidersApiService service
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "fields" ([]string) The comma separated fields included in the returned records. If omitted the default list of fields will be returned. 
+     @param "fields" ([]string) The comma separated fields included in the returned records. If omitted, the default list of fields will be returned. 
      @param "filter" ([]string) Supported operators are: eq, ne, gt, ge, lt, le, between, search, in
      @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
@@ -136,7 +136,7 @@ func (a *ProvidersApiService) ProvidersListAdministrators(ctx context.Context, p
 }
 
 /* ProvidersApiService Create a new Provider Administrator
- This endpoint allows you to create a provider administrator. You must be associated to given provider to use this route.  **Sample Request**  &#x60;&#x60;&#x60; curl -X POST https://console.jumpcloud.com/api/v2/providers/{ProviderID}/administrators \\     -H &#39;Accept: application/json&#39; \\     -H &#39;Context-Type: application/json&#39; \\     -H &#39;x-api-key: {API_KEY}&#39; \\     -d &#39;{       \&quot;email\&quot;:\&quot;{ADMIN_EMAIL}\&quot;     }&#39; &#x60;&#x60;&#x60;
+ This endpoint allows you to create a provider administrator. You must be associated to the provider to use this route.  **Sample Request**  &#x60;&#x60;&#x60; curl -X POST https://console.jumpcloud.com/api/v2/providers/{ProviderID}/administrators \\     -H &#39;Accept: application/json&#39; \\     -H &#39;Context-Type: application/json&#39; \\     -H &#39;x-api-key: {API_KEY}&#39; \\     -d &#39;{       \&quot;email\&quot;:\&quot;{ADMIN_EMAIL}\&quot;     }&#39; &#x60;&#x60;&#x60;
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param providerId 
  @param contentType 

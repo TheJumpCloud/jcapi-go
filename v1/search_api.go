@@ -33,7 +33,7 @@ type SearchApiService service
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "body" (Search) 
-     @param "fields" (string) Use a space seperated string of field parameters to include the data in the response. If omitted the default list of fields will be returned. 
+     @param "fields" (string) Use a space seperated string of field parameters to include the data in the response. If omitted, the default list of fields will be returned. 
      @param "filter" (string) A filter to apply to the query.
      @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
@@ -146,7 +146,7 @@ func (a *SearchApiService) SearchOrganizationsPost(ctx context.Context, contentT
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "body" (Search) 
-     @param "fields" (string) Use a space seperated string of field parameters to include the data in the response. If omitted the default list of fields will be returned. 
+     @param "fields" (string) Use a space seperated string of field parameters to include the data in the response. If omitted, the default list of fields will be returned. 
      @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "xOrgId" (string) 
      @param "skip" (int32) The offset into the records to return.
@@ -266,7 +266,7 @@ func (a *SearchApiService) SearchSystemsPost(ctx context.Context, contentType st
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "body" (Search) 
-     @param "fields" (string) Use a space seperated string of field parameters to include the data in the response. If omitted the default list of fields will be returned. 
+     @param "fields" (string) Use a space seperated string of field parameters to include the data in the response. If omitted, the default list of fields will be returned. 
      @param "filter" (string) A filter to apply to the query.
      @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
