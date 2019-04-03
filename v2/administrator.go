@@ -11,7 +11,7 @@ package v2
 
 type Administrator struct {
 
-	Id string `json:"id,omitempty"`
+	Id string `json:"_id,omitempty"`
 
 	Email string `json:"email,omitempty"`
 
