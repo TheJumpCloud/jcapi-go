@@ -11644,7 +11644,7 @@ definitions:
   Administrator:
     type: "object"
     properties:
-      _id:
+      id:
         type: "string"
       email:
         type: "string"
