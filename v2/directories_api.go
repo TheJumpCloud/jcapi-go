@@ -32,7 +32,7 @@ type DirectoriesApiService service
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "fields" ([]string) The comma separated fields included in the returned records. If omitted the default list of fields will be returned. 
+     @param "fields" ([]string) The comma separated fields included in the returned records. If omitted, the default list of fields will be returned. 
      @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "sort" ([]string) The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending. 
      @param "skip" (int32) The offset into the records to return.

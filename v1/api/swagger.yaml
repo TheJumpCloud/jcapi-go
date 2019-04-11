@@ -22,7 +22,7 @@ paths:
       description: "The endpoint returns all your SSO / SAML Applications.\n\n####\
         \ Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/applications\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n\n```"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \n\n```"
       operationId: "applications_list"
       parameters:
       - name: "fields"
@@ -168,8 +168,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -291,7 +291,7 @@ paths:
       description: "This endpoint returns a specific command based on the command\
         \ ID.\n\n#### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/commands/{CommandID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \n```"
       operationId: "commands_get"
       parameters:
       - name: "id"
@@ -302,8 +302,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -465,7 +465,7 @@ paths:
       description: "This endpoint returns the uploaded file(s) associated with a specific\
         \ command.\n\n#### Sample Request\n\n```\ncurl -X GET https://console.jumpcloud.com/api/files/command/{commandID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \n  ```"
       operationId: "command_file_get"
       parameters:
       - name: "id"
@@ -476,8 +476,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -548,8 +548,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -624,7 +624,7 @@ paths:
       description: "This endpoint returns a specific command result.\n\n#### Sample\
         \ Request\n```\ncurl -X GET https://console.jumpcloud.com/api/commandresults/{CommandResultID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \n  ```"
       operationId: "command_results_get"
       parameters:
       - name: "id"
@@ -635,8 +635,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -689,7 +689,7 @@ paths:
       description: "This endpoint deletes a specific command result.\n\n#### Sample\
         \ Request\n```\ncurl -X GET https://console.jumpcloud.com/api/commandresults/{CommandID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ````"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \n  ````"
       operationId: "command_results_delete"
       parameters:
       - name: "id"
@@ -738,17 +738,17 @@ paths:
       tags:
       - "Organizations"
       summary: "Get Organization Details"
-      description: "This endpoint returns Organization Details.\n\n#### Sample Request\n\
-        \n```\ncurl -X GET \\\n  https://console.jumpcloud.com/api/organizations \\\
-        \n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+      description: "This endpoint returns Organization Details.\n\n#### Sample Request\
+        \ \n\n```\ncurl -X GET \\\n  https://console.jumpcloud.com/api/organizations\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
       operationId: "organization_list"
       parameters:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -828,8 +828,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -952,7 +952,7 @@ paths:
       - "Radius Servers"
       summary: "Update Radius Servers"
       description: "This endpoint allows you to update RADIUS servers in your organization.\n\
-        \n####\n```\ncurl -X PUT https://console.jumpcloud.com/api/radiusservers/{ServerID}\
+        \n#### \n```\ncurl -X PUT https://console.jumpcloud.com/api/radiusservers/{ServerID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n    \"name\": \"{name_update}\"\
         ,\n    \"networkSourceIp\": \"{0.0.0.0}\"\n}'\n```"
@@ -1005,9 +1005,9 @@ paths:
       summary: "Search Organizations"
       description: "This endpoint will return Organization data based on your search\
         \ parameters. This endpoint WILL NOT allow you to add a new Organization.\n\
-        \nYou can use the supported parameters and pass those in the body of request.\n\
-        \nThe parameters must be passed as Content-Type application/json.\n\n\n####\
-        \ Sample Request\n```\ncurl -X POST https://console.jumpcloud.com/api/search/organizations\
+        \nYou can use the supported parameters and pass those in the body of request.\
+        \ \n\nThe parameters must be passed as Content-Type application/json.\n\n\n\
+        #### Sample Request\n```\ncurl -X POST https://console.jumpcloud.com/api/search/organizations\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n  \"search\":{\n    \"fields\"\
         \ : [\"settings.name\"],\n    \"searchTerm\": \"Second\"\n    },\n  \"fields\"\
@@ -1024,8 +1024,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -1091,7 +1091,7 @@ paths:
         \ /api/search/* routes. The `filter` and `searchFilter` parameters must be\
         \ passed as Content-Type application/json.\n\nThe `filter` parameter is an\
         \ object with a single property, either `and` or `or` with the value of the\
-        \ property being an array of query expressions.\n\nThis allows you to filter\
+        \ property being an array of query expressions. \n\nThis allows you to filter\
         \ records using the logic of matching ALL or ANY records in the array of query\
         \ expressions. If the `and` or `or` are not included the default behavior\
         \ is to match ALL query expressions.\n\nThe `searchFilter` parameter allows\
@@ -1126,8 +1126,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -1199,7 +1199,7 @@ paths:
         \ of POST /api/search/* routes. The `filter` and `searchFilter` parameters\
         \ must be passed as Content-Type application/json.\n\nThe `filter` parameter\
         \ is an object with a single property, either `and` or `or` with the value\
-        \ of the property being an array of query expressions.\n\nThis allows you\
+        \ of the property being an array of query expressions. \n\nThis allows you\
         \ to filter records using the logic of matching ALL or ANY records in the\
         \ array of query expressions. If the `and` or `or` are not included the default\
         \ behavior is to match ALL query expressions.\n\nThe `searchFilter` parameter\
@@ -1235,8 +1235,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -1303,15 +1303,15 @@ paths:
       summary: "List All Systems"
       description: "This endpoint returns all Systems.\n\n#### Sample Requests\n```\n\
         curl -X GET https://console.jumpcloud.com/api/systems \\\n  -H 'Accept: application/json'\
-        \ \\\n  -H 'Content-Type: application/json' \\\n  -H 'x-api-key: {API_KEY}'\n\
-        \n```"
+        \ \\\n  -H 'Content-Type: application/json' \\\n  -H 'x-api-key: {API_KEY}'\
+        \ \n\n```"
       operationId: "systems_list"
       parameters:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -1391,7 +1391,7 @@ paths:
       description: "This endpoint returns an individual system.\n\n#### Sample Request\n\
         ```\ncurl -X GET https://console.jumpcloud.com/api/systems/{SystemID} \\\n\
         \  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \n  ```"
       operationId: "systems_get"
       parameters:
       - name: "id"
@@ -1402,8 +1402,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -1614,8 +1614,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -1753,7 +1753,7 @@ paths:
       description: "This endpoint returns all systemusers.\n\n#### Sample Request\n\
         \n```\ncurl -X GET https://console.jumpcloud.com/api/systemusers \\\n  -H\
         \ 'Accept: application/json' \\\n  -H 'Content-Type: application/json' \\\n\
-        \  -H 'x-api-key: {API_KEY}'\n```"
+        \  -H 'x-api-key: {API_KEY}' \n```"
       operationId: "systemusers_list"
       parameters:
       - name: "limit"
@@ -1908,8 +1908,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -2020,7 +2020,7 @@ paths:
       description: "This endpoint allows you to delete a particular system user.\n\
         \n#### Sample Request\n```\ncurl -X DELETE https://console.jumpcloud.com/api/systemusers/{UserID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \n```"
       operationId: "systemusers_delete"
       parameters:
       - name: "id"
@@ -2070,7 +2070,7 @@ paths:
       - "Systemusers"
       summary: "List system user binding"
       description: "Hidden as Tags is deprecated\n\nAdds or removes a system binding\
-        \ for a user.\n\nThis endpoint is only used for users still using JumpCloud\
+        \ for a user. \n\nThis endpoint is only used for users still using JumpCloud\
         \ Tags. If you are using JumpCloud Groups please refer to the documentation\
         \ found [here](https://docs.jumpcloud.com/2.0/systems/manage-associations-of-a-system).\n\
         \n\nList system bindings for a specific system user in a system and user binding\
@@ -2088,8 +2088,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -2162,7 +2162,7 @@ paths:
       - "Systemusers"
       summary: "Update a system user binding"
       description: "Hidden as Tags is deprecated\n\nAdds or removes a system binding\
-        \ for a user.\n\nThis endpoint is only used for users still using JumpCloud\
+        \ for a user. \n\nThis endpoint is only used for users still using JumpCloud\
         \ Tags. If you are using JumpCloud Groups please refer to the documentation\
         \ found [here](https://docs.jumpcloud.com/2.0/systems/manage-associations-of-a-system).\n\
         \n### Example\n\n#### Add (or remove) system to system user\n\n```\ncurl \\\
@@ -2230,11 +2230,11 @@ paths:
         \ be aware that if the user does not complete MFA setup before the `exclusionUntil`\
         \ date, they will be locked out of any resources that require MFA.\n\nPlease\
         \ refer to our [Knowledge Base Article](https://support.jumpcloud.com/customer/en/portal/articles/2959138-using-multifactor-authentication-with-jumpcloud)\
-        \ on setting up MFA for more information.\n\n#### Sample Request\n```\ncurl\
-        \ -X POST \\\n  https://console.jumpcloud.com/api/systemusers/{UserID}/resetmfa\
+        \ on setting up MFA for more information. \n\n#### Sample Request \n```\n\
+        curl -X POST \\\n  https://console.jumpcloud.com/api/systemusers/{UserID}/resetmfa\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -d '{\"exclusion\": true, \"exclusionUntil\": \"{date-time}\"}'\n\n\
-        \n```"
+        \ \\\n  -d '{\"exclusion\": true, \"exclusionUntil\": \"{date-time}\"}'\n\
+        \  \n\n```"
       operationId: "systemusers_resetmfa"
       parameters:
       - name: "id"
@@ -2262,9 +2262,6 @@ paths:
       responses:
         200:
           description: ""
-          schema:
-            type: "string"
-            description: "OK"
         400:
           description: ""
           schema:
@@ -2524,8 +2521,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -2654,8 +2651,8 @@ paths:
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted the default list of fields will be\
-          \ returned.\n"
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
         required: false
         type: "string"
         x-exportParamName: "Fields"
@@ -3261,6 +3258,9 @@ definitions:
         properties: {}
       fields:
         type: "string"
+      searchFilter:
+        type: "object"
+        properties: {}
     title: "Search"
     x-stoplight:
       id: "search"
@@ -5342,17 +5342,10 @@ parameters:
     name: "fields"
     in: "query"
     description: "Use a space seperated string of field parameters to include the\
-      \ data in the response. If omitted the default list of fields will be returned.\n"
+      \ data in the response. If omitted, the default list of fields will be returned.\n"
     required: false
     type: "string"
     x-exportParamName: "Fields"
-  trait:filter:filter:
-    name: "filter"
-    in: "query"
-    description: "A filter to apply to the query."
-    required: false
-    type: "string"
-    x-exportParamName: "Filter"
   trait:skip:skip:
     name: "skip"
     in: "query"
@@ -5369,6 +5362,13 @@ parameters:
     type: "integer"
     default: 10
     x-exportParamName: "Limit"
+  trait:filter:filter:
+    name: "filter"
+    in: "query"
+    description: "A filter to apply to the query."
+    required: false
+    type: "string"
+    x-exportParamName: "Filter"
   trait:requestHeaders:Content-Type:
     name: "Content-Type"
     in: "header"

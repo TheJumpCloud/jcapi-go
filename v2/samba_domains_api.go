@@ -236,7 +236,7 @@ func (a *SambaDomainsApiService) LdapserversSambaDomainsGet(ctx context.Context,
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "contentType" (string) 
      @param "accept" (string) 
-     @param "fields" ([]string) The comma separated fields included in the returned records. If omitted the default list of fields will be returned. 
+     @param "fields" ([]string) The comma separated fields included in the returned records. If omitted, the default list of fields will be returned. 
      @param "filter" ([]string) Supported operators are: eq, ne, gt, ge, lt, le, between, search, in
      @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.

@@ -14,4 +14,6 @@ type Search struct {
 	Filter *interface{} `json:"filter,omitempty"`
 
 	Fields string `json:"fields,omitempty"`
+
+	SearchFilter *interface{} `json:"searchFilter,omitempty"`
 }
