@@ -1,0 +1,11 @@
+# ActiveDirectoryAgentGetOutput
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Id** | **string** | ObjectID of this Active Directory Agent. | [default to null]
+**ConnectKey** | **string** | The connect key to use when installing the Agent on a Domain Controller. | [optional] [default to null]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
