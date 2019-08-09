@@ -24,6 +24,4 @@ type SystemInsightsGroups struct {
 	JcCollectionTime string `json:"jc_collection_time,omitempty"`
 
 	JcSystemId string `json:"jc_system_id,omitempty"`
-
-	JcOrganizationId string `json:"jc_organization_id,omitempty"`
 }

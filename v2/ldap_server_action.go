@@ -9,9 +9,9 @@
 
 package v2
 
-type ldap-server-action string
+type LdapServerAction string
 
-// List of ldap-server-action
+// List of LdapServerAction
 const (
 	DISABLE LdapServerAction = "disable"
 	REMOVE LdapServerAction = "remove"

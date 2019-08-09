@@ -13758,19 +13758,18 @@ definitions:
       \ - Translate `locality` field of JumpCloud user address of type `work` to `city`\
       \ field of Microsoft Graph user\n* `user_state` - Translate `region` field of\
       \ JumpCloud user address of type `work` to `state` field of Microsoft Graph\
-      \ `user` \n* `user_country` - Translate `country` field of JumpCloud user address\
-      \ of type `work` to `country` field of Microsoft Graph `user` \n* `user_postal_code`\
+      \ `user`\n* `user_country` - Translate `country` field of JumpCloud user address\
+      \ of type `work` to `country` field of Microsoft Graph `user`\n* `user_postal_code`\
       \ - Translate `postalCode` field of JumpCloud user address of type `work` to\
-      \ `postalCode` field of Microsoft Graph `user` \n* `user_business_phones` -\
-      \ Translate `number` field of first JumpCloud user `phoneNumber` of type `work`\
-      \ to `businessPhones` field of Microsoft Graph `user` \n* `user_mobile_phone`\
-      \ - Translate `number` field of first JumpCloud user `phoneNumber` of type `mobile`\
-      \ to `mobilePhone` field of Microsoft Graph `user` \n* `user_department` - Translate\
-      \ `department` field of JumpCloud user to `department` field of Microsoft Graph\
-      \ `user` \n* `user_job_title` - Translate `jobTitle` field of JumpCloud user\
-      \ to `jobTitle` field of Microsoft Graph `user` \n* `user_office_location` -\
-      \ Translate `location` field of JumpCloud user to `officeLocation` field of\
-      \ Microsoft Graph `user` "
+      \ `postalCode` field of Microsoft Graph `user`\n* `user_business_phones` - Translate\
+      \ `number` field of first JumpCloud user `phoneNumber` of type `work` to `businessPhones`\
+      \ field of Microsoft Graph `user`\n* `user_mobile_phone` - Translate `number`\
+      \ field of first JumpCloud user `phoneNumber` of type `mobile` to `mobilePhone`\
+      \ field of Microsoft Graph `user`\n* `user_department` - Translate `department`\
+      \ field of JumpCloud user to `department` field of Microsoft Graph `user`\n\
+      * `user_job_title` - Translate `jobTitle` field of JumpCloud user to `jobTitle`\
+      \ field of Microsoft Graph `user`\n* `user_office_location` - Translate `location`\
+      \ field of JumpCloud user to `officeLocation` field of Microsoft Graph `user`"
     enum:
     - "user_street_address"
     - "user_city"
@@ -14025,8 +14024,6 @@ definitions:
         type: "string"
       jc_system_id:
         type: "string"
-      jc_organization_id:
-        type: "string"
     title: "System Insights Safari Extensions"
     example:
       uid: "501"
@@ -14073,8 +14070,6 @@ definitions:
       jc_collection_time:
         type: "string"
       jc_system_id:
-        type: "string"
-      jc_organization_id:
         type: "string"
     title: "System Insights Users"
     example:
@@ -14132,8 +14127,6 @@ definitions:
         type: "string"
       jc_system_id:
         type: "string"
-      jc_organization_id:
-        type: "string"
     title: "System Insights System Info"
     example:
       hostname: "johnnys-macbook-pro-2.local"
@@ -14178,8 +14171,6 @@ definitions:
       jc_collection_time:
         type: "string"
       jc_system_id:
-        type: "string"
-      jc_organization_id:
         type: "string"
     title: "System Insights Disk Encryption"
     example:
@@ -14242,8 +14233,6 @@ definitions:
         type: "string"
       jc_system_id:
         type: "string"
-      jc_organization_id:
-        type: "string"
     title: "System Insights Apps"
     example:
       name: "App Store.app"
@@ -14299,8 +14288,6 @@ definitions:
         type: "string"
       jc_system_id:
         type: "string"
-      jc_organization_id:
-        type: "string"
     title: "System Insights Browser Plugins"
     example:
       uid: "0"
@@ -14347,8 +14334,6 @@ definitions:
         type: "string"
       jc_system_id:
         type: "string"
-      jc_organization_id:
-        type: "string"
     title: "System Insights OS Version"
     example:
       name: "Mac OS X"
@@ -14388,8 +14373,6 @@ definitions:
       jc_collection_time:
         type: "string"
       jc_system_id:
-        type: "string"
-      jc_organization_id:
         type: "string"
     title: "System Insights Interface Addresses"
     example:
@@ -14441,8 +14424,6 @@ definitions:
       jc_collection_time:
         type: "string"
       jc_system_id:
-        type: "string"
-      jc_organization_id:
         type: "string"
     title: "System Insights Firefox Addons"
     example:
@@ -14496,8 +14477,6 @@ definitions:
         type: "string"
       jc_system_id:
         type: "string"
-      jc_organization_id:
-        type: "string"
     title: "System Insights Chrome Extensions"
     example:
       uid: "501"
@@ -14538,8 +14517,6 @@ definitions:
       jc_collection_time:
         type: "string"
       jc_system_id:
-        type: "string"
-      jc_organization_id:
         type: "string"
     title: "System Insights Groups"
     example:
@@ -14583,8 +14560,6 @@ definitions:
       jc_collection_time:
         type: "string"
       jc_system_id:
-        type: "string"
-      jc_organization_id:
         type: "string"
     title: "System Insights Mounts"
     example:
@@ -14644,14 +14619,14 @@ definitions:
       id: "gsuite-output"
       name: "GSuite Output"
       public: true
-  ldap-server-action:
+  LdapServerAction:
     type: "string"
     title: "LDAP Server Action"
     enum:
     - "disable"
     - "remove"
     x-stoplight:
-      id: "ldap-server-action"
+      id: "LdapServerAction"
       name: "LDAP Server Action"
       public: true
   body:
@@ -14660,9 +14635,9 @@ definitions:
       id:
         type: "string"
       userLockoutAction:
-        $ref: "#/definitions/ldap-server-action"
+        $ref: "#/definitions/LdapServerAction"
       userPasswordExpirationAction:
-        $ref: "#/definitions/ldap-server-action"
+        $ref: "#/definitions/LdapServerAction"
   inline_response_200:
     properties:
       id:
@@ -14670,9 +14645,9 @@ definitions:
       name:
         type: "string"
       userLockoutAction:
-        $ref: "#/definitions/ldap-server-action"
+        $ref: "#/definitions/LdapServerAction"
       userPasswordExpirationAction:
-        $ref: "#/definitions/ldap-server-action"
+        $ref: "#/definitions/LdapServerAction"
     example:
       userLockoutAction: {}
       name: "name"
@@ -15482,8 +15457,8 @@ x-stoplight:
           \ to allow management of the group members. This includes listing, adding\
           \ and removing Directory Objects and Groups of Directory Objects to and\
           \ from the Group. These endpoints allow you to control the members and membership\
-          \ of System Objects.\n\nMembers are the direct objects of an object group.\
-          \ \n\nMembership is defined as the direct and indirect members of an object\
+          \ of System Objects.\n\nMembers are the direct objects of an object group.\n\
+          \nMembership is defined as the direct and indirect members of an object\
           \ group."
       - divider: false
         items:
@@ -15672,8 +15647,8 @@ x-stoplight:
           \ to allow management of the group members. This includes listing, adding\
           \ and removing Directory Objects and Groups of Directory Objects to and\
           \ from the Group. These endpoints allow you to control the members and membership\
-          \ of User Objects.\n\nMembers are the direct objects of an object group.\
-          \ \n\nMembership is defined as the direct and indirect members of an object\
+          \ of User Objects.\n\nMembers are the direct objects of an object group.\n\
+          \nMembership is defined as the direct and indirect members of an object\
           \ group."
       - divider: false
         items:
@@ -15781,7 +15756,7 @@ x-stoplight:
           type: "schemas"
         - _id: "job-workresult"
           type: "schemas"
-        - _id: "ldap-server-action"
+        - _id: "LdapServerAction"
           type: "schemas"
         - _id: "ldap-server-input"
           type: "schemas"

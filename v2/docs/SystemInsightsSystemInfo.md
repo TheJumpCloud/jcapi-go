@@ -20,7 +20,6 @@ Name | Type | Description | Notes
 **LocalHostname** | **string** |  | [optional] [default to null]
 **JcCollectionTime** | **string** |  | [optional] [default to null]
 **JcSystemId** | **string** |  | [optional] [default to null]
-**JcOrganizationId** | **string** |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
