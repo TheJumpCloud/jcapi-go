@@ -28,7 +28,7 @@ type CommandsApiService service
 
 
 /* CommandsApiService Get a Command File
- This endpoint returns the uploaded file(s) associated with a specific command.  #### Sample Request  &#x60;&#x60;&#x60; curl -X GET https://console.jumpcloud.com/api/files/command/{commandID} \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;    &#x60;&#x60;&#x60;
+ This endpoint returns the uploaded file(s) associated with a specific command.  #### Sample Request  &#x60;&#x60;&#x60; curl -X GET https://console.jumpcloud.com/api/files/command/{commandID} \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;   &#x60;&#x60;&#x60;
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param id 
  @param contentType 
@@ -89,7 +89,7 @@ func (a *CommandsApiService) CommandFileGet(ctx context.Context, id string, cont
 
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json; charset=utf-8",
+		"application/json",
 		}
 
 	// set Accept header
@@ -177,7 +177,7 @@ func (a *CommandsApiService) CommandsDelete(ctx context.Context, id string, cont
 
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json; charset=utf-8",
+		"application/json",
 		}
 
 	// set Accept header
@@ -221,7 +221,7 @@ func (a *CommandsApiService) CommandsDelete(ctx context.Context, id string, cont
 }
 
 /* CommandsApiService List an individual Command
- This endpoint returns a specific command based on the command ID.  #### Sample Request &#x60;&#x60;&#x60; curl -X GET https://console.jumpcloud.com/api/commands/{CommandID} \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;  &#x60;&#x60;&#x60;
+ This endpoint returns a specific command based on the command ID.  #### Sample Request &#x60;&#x60;&#x60; curl -X GET https://console.jumpcloud.com/api/commands/{CommandID} \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39; &#x60;&#x60;&#x60;
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param id 
  @param contentType 
@@ -275,7 +275,7 @@ func (a *CommandsApiService) CommandsGet(ctx context.Context, id string, content
 
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json; charset=utf-8",
+		"application/json",
 		}
 
 	// set Accept header
@@ -397,7 +397,7 @@ func (a *CommandsApiService) CommandsList(ctx context.Context, contentType strin
 
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json; charset=utf-8",
+		"application/json",
 		}
 
 	// set Accept header
@@ -485,7 +485,7 @@ func (a *CommandsApiService) CommandsPost(ctx context.Context, contentType strin
 
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json; charset=utf-8",
+		"application/json",
 		}
 
 	// set Accept header
@@ -579,7 +579,7 @@ func (a *CommandsApiService) CommandsPut(ctx context.Context, id string, content
 
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json; charset=utf-8",
+		"application/json",
 		}
 
 	// set Accept header

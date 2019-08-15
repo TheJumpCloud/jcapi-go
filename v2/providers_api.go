@@ -39,14 +39,14 @@ type ProvidersApiService service
      @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "skip" (int32) The offset into the records to return.
      @param "sort" ([]string) The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending. 
- @return InlineResponse200*/
-func (a *ProvidersApiService) ProvidersListAdministrators(ctx context.Context, providerId string, contentType string, accept string, localVarOptionals map[string]interface{}) (InlineResponse200,  *http.Response, error) {
+ @return InlineResponse2001*/
+func (a *ProvidersApiService) ProvidersListAdministrators(ctx context.Context, providerId string, contentType string, accept string, localVarOptionals map[string]interface{}) (InlineResponse2001,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localVarFileName string
 		localVarFileBytes []byte
-	 	successPayload  InlineResponse200
+	 	successPayload  InlineResponse2001
 	)
 
 	// create path and map variables

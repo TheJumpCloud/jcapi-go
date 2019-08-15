@@ -54,6 +54,7 @@ type APIClient struct {
 	GroupsApi	*GroupsApiService
 	LDAPServersApi	*LDAPServersApiService
 	Office365Api	*Office365ApiService
+	OrganizationsApi	*OrganizationsApiService
 	PoliciesApi	*PoliciesApiService
 	PolicytemplatesApi	*PolicytemplatesApiService
 	ProvidersApi	*ProvidersApiService
@@ -62,6 +63,7 @@ type APIClient struct {
 	SystemGroupAssociationsApi	*SystemGroupAssociationsApiService
 	SystemGroupMembersMembershipApi	*SystemGroupMembersMembershipApiService
 	SystemGroupsApi	*SystemGroupsApiService
+	SystemInsightsApi	*SystemInsightsApiService
 	SystemsApi	*SystemsApiService
 	UserGroupAssociationsApi	*UserGroupAssociationsApiService
 	UserGroupMembersMembershipApi	*UserGroupMembersMembershipApiService
@@ -97,6 +99,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.GroupsApi = (*GroupsApiService)(&c.common)
 	c.LDAPServersApi = (*LDAPServersApiService)(&c.common)
 	c.Office365Api = (*Office365ApiService)(&c.common)
+	c.OrganizationsApi = (*OrganizationsApiService)(&c.common)
 	c.PoliciesApi = (*PoliciesApiService)(&c.common)
 	c.PolicytemplatesApi = (*PolicytemplatesApiService)(&c.common)
 	c.ProvidersApi = (*ProvidersApiService)(&c.common)
@@ -105,6 +108,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.SystemGroupAssociationsApi = (*SystemGroupAssociationsApiService)(&c.common)
 	c.SystemGroupMembersMembershipApi = (*SystemGroupMembersMembershipApiService)(&c.common)
 	c.SystemGroupsApi = (*SystemGroupsApiService)(&c.common)
+	c.SystemInsightsApi = (*SystemInsightsApiService)(&c.common)
 	c.SystemsApi = (*SystemsApiService)(&c.common)
 	c.UserGroupAssociationsApi = (*UserGroupAssociationsApiService)(&c.common)
 	c.UserGroupMembersMembershipApi = (*UserGroupMembersMembershipApiService)(&c.common)

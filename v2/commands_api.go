@@ -228,8 +228,9 @@ func (a *CommandsApiService) GraphCommandAssociationsPost(ctx context.Context, c
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) The number of records to return at once. Limited to 100.
-     @param "skip" (int32) The offset into the records to return.
      @param "xOrgId" (string) 
+     @param "skip" (int32) The offset into the records to return.
+     @param "filter" ([]string) Supported operators are: eq, ne, gt, ge, lt, le, between, search, in
  @return []GraphObjectWithPaths*/
 func (a *CommandsApiService) GraphCommandTraverseSystem(ctx context.Context, commandId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphObjectWithPaths,  *http.Response, error) {
 	var (
@@ -251,10 +252,10 @@ func (a *CommandsApiService) GraphCommandTraverseSystem(ctx context.Context, com
 	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
 		return successPayload, nil, err
 	}
-	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
 		return successPayload, nil, err
 	}
-	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
 		return successPayload, nil, err
 	}
 
@@ -263,6 +264,9 @@ func (a *CommandsApiService) GraphCommandTraverseSystem(ctx context.Context, com
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
 		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -283,11 +287,11 @@ func (a *CommandsApiService) GraphCommandTraverseSystem(ctx context.Context, com
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
-	localVarHeaderParams["Accept"] = parameterToString(accept, "")
 	if localVarTempParam, localVarOk := localVarOptionals["xOrgId"].(string); localVarOk {
 		localVarHeaderParams["x-org-id"] = parameterToString(localVarTempParam, "")
 	}
+	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
+	localVarHeaderParams["Accept"] = parameterToString(accept, "")
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
@@ -331,8 +335,9 @@ func (a *CommandsApiService) GraphCommandTraverseSystem(ctx context.Context, com
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) The number of records to return at once. Limited to 100.
-     @param "skip" (int32) The offset into the records to return.
      @param "xOrgId" (string) 
+     @param "skip" (int32) The offset into the records to return.
+     @param "filter" ([]string) Supported operators are: eq, ne, gt, ge, lt, le, between, search, in
  @return []GraphObjectWithPaths*/
 func (a *CommandsApiService) GraphCommandTraverseSystemGroup(ctx context.Context, commandId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphObjectWithPaths,  *http.Response, error) {
 	var (
@@ -354,10 +359,10 @@ func (a *CommandsApiService) GraphCommandTraverseSystemGroup(ctx context.Context
 	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
 		return successPayload, nil, err
 	}
-	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
 		return successPayload, nil, err
 	}
-	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
 		return successPayload, nil, err
 	}
 
@@ -366,6 +371,9 @@ func (a *CommandsApiService) GraphCommandTraverseSystemGroup(ctx context.Context
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
 		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -386,11 +394,11 @@ func (a *CommandsApiService) GraphCommandTraverseSystemGroup(ctx context.Context
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
-	localVarHeaderParams["Accept"] = parameterToString(accept, "")
 	if localVarTempParam, localVarOk := localVarOptionals["xOrgId"].(string); localVarOk {
 		localVarHeaderParams["x-org-id"] = parameterToString(localVarTempParam, "")
 	}
+	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
+	localVarHeaderParams["Accept"] = parameterToString(accept, "")
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {

@@ -19,4 +19,10 @@ type Radiusserverpost struct {
 
 	// RADIUS shared secret between the server and client.
 	SharedSecret string `json:"sharedSecret"`
+
+	UserLockoutAction string `json:"userLockoutAction,omitempty"`
+
+	UserPasswordExpirationAction string `json:"userPasswordExpirationAction,omitempty"`
+
+	Mfa string `json:"mfa,omitempty"`
 }

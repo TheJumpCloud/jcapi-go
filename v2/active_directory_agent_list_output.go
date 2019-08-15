@@ -9,7 +9,10 @@
 
 package v2
 
-type InlineResponse401 struct {
+type ActiveDirectoryAgentListOutput struct {
 
-	Message string `json:"message,omitempty"`
+	// ObjectID of this Active Directory Agent.
+	Id string `json:"id,omitempty"`
+
+	State string `json:"state,omitempty"`
 }

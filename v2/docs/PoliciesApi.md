@@ -134,8 +134,9 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
- **skip** | **int32**| The offset into the records to return. | [default to 0]
  **xOrgId** | **string**|  | [default to ]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
 
 ### Return type
 
@@ -177,8 +178,9 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
- **skip** | **int32**| The offset into the records to return. | [default to 0]
  **xOrgId** | **string**|  | [default to ]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
 
 ### Return type
 
@@ -491,7 +493,7 @@ Name | Type | Description  | Notes
 > []PolicyResult PolicyresultsList_0(ctx, contentType, accept, optional)
 Lists all the policy results for an organization.
 
-This endpoint returns all policies results for an Organization.  ##### Sample Request  ```  curl -X GET https://console.jumpcloud.com/api/v2/policyresults \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'   ```
+This endpoint returns all policies results for an organization.  ##### Sample Request  ```  curl -X GET https://console.jumpcloud.com/api/v2/policyresults \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'   ```
 
 ### Required Parameters
 

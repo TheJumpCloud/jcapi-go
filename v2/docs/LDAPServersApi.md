@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**GraphLdapServerTraverseUserGroup**](LDAPServersApi.md#GraphLdapServerTraverseUserGroup) | **Get** /ldapservers/{ldapserver_id}/usergroups | List the User Groups bound to a LDAP Server
 [**LdapserversGet**](LDAPServersApi.md#LdapserversGet) | **Get** /ldapservers/{id} | Get LDAP Server
 [**LdapserversList**](LDAPServersApi.md#LdapserversList) | **Get** /ldapservers | List LDAP Servers
+[**LdapserversPatch**](LDAPServersApi.md#LdapserversPatch) | **Patch** /ldapservers/{id} | Update existing LDAP server
 
 
 # **GraphLdapServerAssociationsList**
@@ -124,8 +125,9 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
- **skip** | **int32**| The offset into the records to return. | [default to 0]
  **xOrgId** | **string**|  | [default to ]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
 
 ### Return type
 
@@ -167,8 +169,9 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
- **skip** | **int32**| The offset into the records to return. | [default to 0]
  **xOrgId** | **string**|  | [default to ]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
 
 ### Return type
 
@@ -258,6 +261,49 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]LdapServerOutput**](ldap-server-output.md)
+
+### Authorization
+
+[x-api-key](../README.md#x-api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **LdapserversPatch**
+> InlineResponse200 LdapserversPatch(ctx, id, contentType, accept, optional)
+Update existing LDAP server
+
+This endpoint allows updating some attributes of an LDAP server.  Sample Request  ``` curl -X PATCH https://console.jumpcloud.com/api/v2/ldapservers/{LDAP_ID} \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}' \\   -d '{     \"userLockoutAction\": \"remove\",     \"userPasswordExpirationAction\": \"disable\"   }' ```
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **id** | **string**| Unique identifier of the LDAP server. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| Unique identifier of the LDAP server. | 
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
+ **body** | [**Body**](Body.md)|  | 
+ **xApiKey** | **string**|  | 
+ **xOrgId** | **string**|  | 
+
+### Return type
+
+[**InlineResponse200**](inline_response_200.md)
 
 ### Authorization
 

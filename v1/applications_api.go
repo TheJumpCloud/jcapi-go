@@ -27,7 +27,7 @@ type ApplicationsApiService service
 
 
 /* ApplicationsApiService Applications
- The endpoint returns all your SSO / SAML Applications.  #### Sample Request &#x60;&#x60;&#x60; curl -X GET https://console.jumpcloud.com/api/applications \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;   &#x60;&#x60;&#x60;
+ The endpoint returns all your SSO / SAML Applications.  #### Sample Request &#x60;&#x60;&#x60; curl -X GET https://console.jumpcloud.com/api/applications \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;  &#x60;&#x60;&#x60;
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param contentType 
  @param accept 
@@ -100,7 +100,7 @@ func (a *ApplicationsApiService) ApplicationsList(ctx context.Context, contentTy
 
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json; charset=utf-8",
+		"application/json",
 		}
 
 	// set Accept header

@@ -8,8 +8,10 @@ Method | HTTP request | Description
 [**GraphGSuiteAssociationsPost**](GSuiteApi.md#GraphGSuiteAssociationsPost) | **Post** /gsuites/{gsuite_id}/associations | Manage the associations of a G Suite instance
 [**GraphGSuiteTraverseUser**](GSuiteApi.md#GraphGSuiteTraverseUser) | **Get** /gsuites/{gsuite_id}/users | List the Users bound to a G Suite instance
 [**GraphGSuiteTraverseUserGroup**](GSuiteApi.md#GraphGSuiteTraverseUserGroup) | **Get** /gsuites/{gsuite_id}/usergroups | List the User Groups bound to a G Suite instance
+[**GsuitesGet**](GSuiteApi.md#GsuitesGet) | **Get** /gsuites/{id} | Get G Suite
+[**GsuitesPatch**](GSuiteApi.md#GsuitesPatch) | **Patch** /gsuites/{id} | Update existing G Suite
 [**TranslationRulesGSuiteDelete**](GSuiteApi.md#TranslationRulesGSuiteDelete) | **Delete** /gsuites/{gsuite_id}/translationrules/{id} | Deletes a G Suite translation rule
-[**TranslationRulesGSuiteGet**](GSuiteApi.md#TranslationRulesGSuiteGet) | **Get** /gsuites/{gsuite_id}/translationrules/{id} | Gets a specific g suite translation rule
+[**TranslationRulesGSuiteGet**](GSuiteApi.md#TranslationRulesGSuiteGet) | **Get** /gsuites/{gsuite_id}/translationrules/{id} | Gets a specific G Suite translation rule
 [**TranslationRulesGSuiteList**](GSuiteApi.md#TranslationRulesGSuiteList) | **Get** /gsuites/{gsuite_id}/translationrules | List all the G Suite Translation Rules
 [**TranslationRulesGSuitePost**](GSuiteApi.md#TranslationRulesGSuitePost) | **Post** /gsuites/{gsuite_id}/translationrules | Create a new G Suite Translation Rule
 
@@ -122,8 +124,9 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
- **skip** | **int32**| The offset into the records to return. | [default to 0]
  **xOrgId** | **string**|  | [default to ]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
 
 ### Return type
 
@@ -165,8 +168,9 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
- **skip** | **int32**| The offset into the records to return. | [default to 0]
  **xOrgId** | **string**|  | [default to ]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
 
 ### Return type
 
@@ -175,6 +179,89 @@ Name | Type | Description  | Notes
 ### Authorization
 
 [x-api-key](../README.md#x-api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GsuitesGet**
+> GsuiteOutput GsuitesGet(ctx, id, contentType, accept, optional)
+Get G Suite
+
+This endpoint returns a specific G Suite.  ##### Sample Request  ```  curl -X GET https://console.jumpcloud.com/api/v2/gsuites/{GSUITE_ID} \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}' ```
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **id** | **string**| Unique identifier of the GSuite. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| Unique identifier of the GSuite. | 
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
+ **xOrgId** | **string**|  | [default to ]
+
+### Return type
+
+[**GsuiteOutput**](gsuite-output.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GsuitesPatch**
+> GsuiteOutput GsuitesPatch(ctx, id, contentType, accept, optional)
+Update existing G Suite
+
+This endpoint allows updating some attributes of a G Suite.  ##### Sample Request  ``` curl -X PATCH https://console.jumpcloud.com/api/v2/gsuites/{GSUITE_ID} \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}' \\   -d '{     \"userLockoutAction\": \"remove\",     \"userPasswordExpirationAction\": \"disable\"   }' ```
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **id** | **string**| Unique identifier of the GSuite. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| Unique identifier of the GSuite. | 
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
+ **body** | [**GsuitePatchInput**](GsuitePatchInput.md)|  | 
+ **xOrgId** | **string**|  | [default to ]
+
+### Return type
+
+[**GsuiteOutput**](gsuite-output.md)
+
+### Authorization
+
+No authorization required
 
 ### HTTP request headers
 
@@ -216,7 +303,7 @@ Name | Type | Description  | Notes
 
 # **TranslationRulesGSuiteGet**
 > GSuiteTranslationRule TranslationRulesGSuiteGet(ctx, gsuiteId, id, contentType, accept)
-Gets a specific g suite translation rule
+Gets a specific G Suite translation rule
 
 This endpoint returns a specific translation rule for a specific G Suite instance. These rules specify how JumpCloud attributes translate to [G Suite Admin SDK](https://developers.google.com/admin-sdk/directory/) attributes.  ###### Sample Request  ```   curl -X GET https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/translationrules/{id} \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'   ```
 

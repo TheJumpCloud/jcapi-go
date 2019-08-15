@@ -11,7 +11,11 @@ package v2
 
 type InlineResponse200 struct {
 
-	TotalCount int32 `json:"totalCount,omitempty"`
+	Id string `json:"id,omitempty"`
 
-	Results []Administrator `json:"results,omitempty"`
+	Name string `json:"name,omitempty"`
+
+	UserLockoutAction *LdapServerAction `json:"userLockoutAction,omitempty"`
+
+	UserPasswordExpirationAction *LdapServerAction `json:"userPasswordExpirationAction,omitempty"`
 }

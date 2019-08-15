@@ -100,7 +100,7 @@ func (a *RadiusServersApiService) RadiusServersList(ctx context.Context, content
 
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json; charset=utf-8",
+		"application/json",
 		}
 
 	// set Accept header
@@ -149,7 +149,7 @@ func (a *RadiusServersApiService) RadiusServersList(ctx context.Context, content
 }
 
 /* RadiusServersApiService Create a Radius Server
- This endpoint allows you to create RADIUS servers in your organization.  #### Sample Request &#x60;&#x60;&#x60; curl -X POST https://console.jumpcloud.com/api/radiusservers/ \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39; \\   -d &#39;{     \&quot;name\&quot;: \&quot;{test_radius}\&quot;,     \&quot;networkSourceIp\&quot;: \&quot;{0.0.0.0}\&quot;,     \&quot;sharedSecret\&quot;:\&quot;{secretpassword}\&quot; }&#39; &#x60;&#x60;&#x60;
+ This endpoint allows you to create RADIUS servers in your organization.  #### Sample Request &#x60;&#x60;&#x60; curl -X POST https://console.jumpcloud.com/api/radiusservers/ \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39; \\   -d &#39;{     \&quot;name\&quot;: \&quot;{test_radius}\&quot;,     \&quot;networkSourceIp\&quot;: \&quot;{0.0.0.0}\&quot;,     \&quot;sharedSecret\&quot;:\&quot;{secretpassword}\&quot;,     \&quot;userLockoutAction\&quot;: \&quot;REMOVE\&quot;,     \&quot;userPasswordExpirationAction\&quot;: \&quot;MAINTAIN\&quot; }&#39; &#x60;&#x60;&#x60;
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param contentType 
  @param accept 
@@ -188,7 +188,7 @@ func (a *RadiusServersApiService) RadiusServersPost(ctx context.Context, content
 
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json; charset=utf-8",
+		"application/json",
 		}
 
 	// set Accept header
@@ -241,7 +241,7 @@ func (a *RadiusServersApiService) RadiusServersPost(ctx context.Context, content
 }
 
 /* RadiusServersApiService Update Radius Servers
- This endpoint allows you to update RADIUS servers in your organization.  ####  &#x60;&#x60;&#x60; curl -X PUT https://console.jumpcloud.com/api/radiusservers/{ServerID} \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39; \\   -d &#39;{     \&quot;name\&quot;: \&quot;{name_update}\&quot;,     \&quot;networkSourceIp\&quot;: \&quot;{0.0.0.0}\&quot; }&#39; &#x60;&#x60;&#x60;
+ This endpoint allows you to update RADIUS servers in your organization.  #### &#x60;&#x60;&#x60; curl -X PUT https://console.jumpcloud.com/api/radiusservers/{ServerID} \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39; \\   -d &#39;{     \&quot;name\&quot;: \&quot;{name_update}\&quot;,     \&quot;networkSourceIp\&quot;: \&quot;{0.0.0.0}\&quot;,     \&quot;userLockoutAction\&quot;: \&quot;REMOVE\&quot;,     \&quot;userPasswordExpirationAction\&quot;: \&quot;MAINTAIN\&quot; }&#39; &#x60;&#x60;&#x60;
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param contentType 
  @param accept 
@@ -280,7 +280,7 @@ func (a *RadiusServersApiService) RadiusServersPut(ctx context.Context, contentT
 
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json; charset=utf-8",
+		"application/json",
 		}
 
 	// set Accept header

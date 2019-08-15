@@ -122,8 +122,9 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
- **skip** | **int32**| The offset into the records to return. | [default to 0]
  **xOrgId** | **string**|  | [default to ]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
 
 ### Return type
 
@@ -165,8 +166,9 @@ Name | Type | Description  | Notes
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
- **skip** | **int32**| The offset into the records to return. | [default to 0]
  **xOrgId** | **string**|  | [default to ]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
 
 ### Return type
 

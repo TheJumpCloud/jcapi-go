@@ -28,7 +28,7 @@ type CommandResultsApiService service
 
 
 /* CommandResultsApiService Delete a Command result
- This endpoint deletes a specific command result.  #### Sample Request &#x60;&#x60;&#x60; curl -X GET https://console.jumpcloud.com/api/commandresults/{CommandID} \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;    &#x60;&#x60;&#x60;&#x60;
+ This endpoint deletes a specific command result.  #### Sample Request &#x60;&#x60;&#x60; curl -X GET https://console.jumpcloud.com/api/commandresults/{CommandID} \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;   &#x60;&#x60;&#x60;&#x60;
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param id 
  @param contentType 
@@ -68,7 +68,7 @@ func (a *CommandResultsApiService) CommandResultsDelete(ctx context.Context, id 
 
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json; charset=utf-8",
+		"application/json",
 		}
 
 	// set Accept header
@@ -117,7 +117,7 @@ func (a *CommandResultsApiService) CommandResultsDelete(ctx context.Context, id 
 }
 
 /* CommandResultsApiService List an individual Command result
- This endpoint returns a specific command result.  #### Sample Request &#x60;&#x60;&#x60; curl -X GET https://console.jumpcloud.com/api/commandresults/{CommandResultID} \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;    &#x60;&#x60;&#x60;
+ This endpoint returns a specific command result.  #### Sample Request &#x60;&#x60;&#x60; curl -X GET https://console.jumpcloud.com/api/commandresults/{CommandResultID} \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;   &#x60;&#x60;&#x60;
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param id 
  @param contentType 
@@ -171,7 +171,7 @@ func (a *CommandResultsApiService) CommandResultsGet(ctx context.Context, id str
 
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json; charset=utf-8",
+		"application/json",
 		}
 
 	// set Accept header
@@ -293,7 +293,7 @@ func (a *CommandResultsApiService) CommandResultsList(ctx context.Context, conte
 
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json; charset=utf-8",
+		"application/json",
 		}
 
 	// set Accept header

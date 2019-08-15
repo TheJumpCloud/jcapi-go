@@ -381,8 +381,9 @@ func (a *SystemsApiService) GraphSystemMemberOf(ctx context.Context, systemId st
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) The number of records to return at once. Limited to 100.
-     @param "skip" (int32) The offset into the records to return.
      @param "xOrgId" (string) 
+     @param "skip" (int32) The offset into the records to return.
+     @param "filter" ([]string) Supported operators are: eq, ne, gt, ge, lt, le, between, search, in
  @return []GraphObjectWithPaths*/
 func (a *SystemsApiService) GraphSystemTraverseCommand(ctx context.Context, systemId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphObjectWithPaths,  *http.Response, error) {
 	var (
@@ -404,10 +405,10 @@ func (a *SystemsApiService) GraphSystemTraverseCommand(ctx context.Context, syst
 	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
 		return successPayload, nil, err
 	}
-	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
 		return successPayload, nil, err
 	}
-	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
 		return successPayload, nil, err
 	}
 
@@ -416,6 +417,9 @@ func (a *SystemsApiService) GraphSystemTraverseCommand(ctx context.Context, syst
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
 		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -436,11 +440,11 @@ func (a *SystemsApiService) GraphSystemTraverseCommand(ctx context.Context, syst
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
-	localVarHeaderParams["Accept"] = parameterToString(accept, "")
 	if localVarTempParam, localVarOk := localVarOptionals["xOrgId"].(string); localVarOk {
 		localVarHeaderParams["x-org-id"] = parameterToString(localVarTempParam, "")
 	}
+	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
+	localVarHeaderParams["Accept"] = parameterToString(accept, "")
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
@@ -484,8 +488,9 @@ func (a *SystemsApiService) GraphSystemTraverseCommand(ctx context.Context, syst
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) The number of records to return at once. Limited to 100.
-     @param "skip" (int32) The offset into the records to return.
      @param "xOrgId" (string) 
+     @param "skip" (int32) The offset into the records to return.
+     @param "filter" ([]string) Supported operators are: eq, ne, gt, ge, lt, le, between, search, in
  @return []GraphObjectWithPaths*/
 func (a *SystemsApiService) GraphSystemTraversePolicy(ctx context.Context, systemId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphObjectWithPaths,  *http.Response, error) {
 	var (
@@ -507,10 +512,10 @@ func (a *SystemsApiService) GraphSystemTraversePolicy(ctx context.Context, syste
 	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
 		return successPayload, nil, err
 	}
-	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
 		return successPayload, nil, err
 	}
-	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
 		return successPayload, nil, err
 	}
 
@@ -519,6 +524,9 @@ func (a *SystemsApiService) GraphSystemTraversePolicy(ctx context.Context, syste
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
 		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -539,11 +547,11 @@ func (a *SystemsApiService) GraphSystemTraversePolicy(ctx context.Context, syste
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
-	localVarHeaderParams["Accept"] = parameterToString(accept, "")
 	if localVarTempParam, localVarOk := localVarOptionals["xOrgId"].(string); localVarOk {
 		localVarHeaderParams["x-org-id"] = parameterToString(localVarTempParam, "")
 	}
+	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
+	localVarHeaderParams["Accept"] = parameterToString(accept, "")
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
@@ -708,10 +716,11 @@ func (a *SystemsApiService) GraphSystemTraverseUser(ctx context.Context, systemI
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) The number of records to return at once. Limited to 100.
+     @param "xOrgId" (string) 
      @param "skip" (int32) The offset into the records to return.
      @param "date" (string) Current date header for the System Context API
      @param "authorization" (string) Authorization header for the System Context API
-     @param "xOrgId" (string) 
+     @param "filter" ([]string) Supported operators are: eq, ne, gt, ge, lt, le, between, search, in
  @return []GraphObjectWithPaths*/
 func (a *SystemsApiService) GraphSystemTraverseUserGroup(ctx context.Context, systemId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]GraphObjectWithPaths,  *http.Response, error) {
 	var (
@@ -733,6 +742,9 @@ func (a *SystemsApiService) GraphSystemTraverseUserGroup(ctx context.Context, sy
 	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
 		return successPayload, nil, err
 	}
+	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
+		return successPayload, nil, err
+	}
 	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
 		return successPayload, nil, err
 	}
@@ -742,15 +754,15 @@ func (a *SystemsApiService) GraphSystemTraverseUserGroup(ctx context.Context, sy
 	if err := typeCheckParameter(localVarOptionals["authorization"], "string", "authorization"); err != nil {
 		return successPayload, nil, err
 	}
-	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
-		return successPayload, nil, err
-	}
 
 	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
 		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
 		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -771,6 +783,9 @@ func (a *SystemsApiService) GraphSystemTraverseUserGroup(ctx context.Context, sy
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
+	if localVarTempParam, localVarOk := localVarOptionals["xOrgId"].(string); localVarOk {
+		localVarHeaderParams["x-org-id"] = parameterToString(localVarTempParam, "")
+	}
 	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
 	localVarHeaderParams["Accept"] = parameterToString(accept, "")
 	if localVarTempParam, localVarOk := localVarOptionals["date"].(string); localVarOk {
@@ -778,9 +793,6 @@ func (a *SystemsApiService) GraphSystemTraverseUserGroup(ctx context.Context, sy
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["authorization"].(string); localVarOk {
 		localVarHeaderParams["Authorization"] = parameterToString(localVarTempParam, "")
-	}
-	if localVarTempParam, localVarOk := localVarOptionals["xOrgId"].(string); localVarOk {
-		localVarHeaderParams["x-org-id"] = parameterToString(localVarTempParam, "")
 	}
 	if ctx != nil {
 		// API Key Authentication

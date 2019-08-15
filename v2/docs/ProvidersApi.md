@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **ProvidersListAdministrators**
-> InlineResponse200 ProvidersListAdministrators(ctx, providerId, contentType, accept, optional)
+> InlineResponse2001 ProvidersListAdministrators(ctx, providerId, contentType, accept, optional)
 List Provider Administrators
 
 This endpoint returns a list of the Administrators associated with the Provider.  #### Sample Request ``` curl -X GET https://console.jumpcloud.com/api/v2/providers/{ProviderID}/administrators \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}' ```
@@ -40,7 +40,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200**](inline_response_200.md)
+[**InlineResponse2001**](inline_response_200_1.md)
 
 ### Authorization
 

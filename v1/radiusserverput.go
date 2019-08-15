@@ -18,4 +18,10 @@ type Radiusserverput struct {
 	Name string `json:"name,omitempty"`
 
 	TagNames []string `json:"tagNames,omitempty"`
+
+	UserLockoutAction string `json:"userLockoutAction,omitempty"`
+
+	UserPasswordExpirationAction string `json:"userPasswordExpirationAction,omitempty"`
+
+	Mfa string `json:"mfa,omitempty"`
 }

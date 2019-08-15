@@ -66,7 +66,7 @@ func (a *CommandTriggersApiService) CommandTriggerWebhookPost(ctx context.Contex
 
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json; charset=utf-8",
+		"application/json",
 		}
 
 	// set Accept header

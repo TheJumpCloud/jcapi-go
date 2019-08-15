@@ -63,7 +63,7 @@ func (a *TagsApiService) TagsDelete(ctx context.Context, name string, contentTyp
 
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json; charset=utf-8",
+		"application/json",
 		}
 
 	// set Accept header
@@ -180,7 +180,7 @@ func (a *TagsApiService) TagsGet(ctx context.Context, name string, contentType s
 
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json; charset=utf-8",
+		"application/json",
 		}
 
 	// set Accept header
@@ -295,7 +295,7 @@ func (a *TagsApiService) TagsList(ctx context.Context, contentType string, accep
 
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json; charset=utf-8",
+		"application/json",
 		}
 
 	// set Accept header
@@ -376,7 +376,7 @@ func (a *TagsApiService) TagsPost(ctx context.Context, contentType string, accep
 
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json; charset=utf-8",
+		"application/json",
 		}
 
 	// set Accept header
@@ -463,7 +463,7 @@ func (a *TagsApiService) TagsPut(ctx context.Context, name string, contentType s
 
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json; charset=utf-8",
+		"application/json",
 		}
 
 	// set Accept header

@@ -14,6 +14,12 @@ type LdapServerOutput struct {
 	// The name of this LDAP server
 	Name string `json:"name,omitempty"`
 
+	// action to take; one of 'remove' or 'disable'
+	UserLockoutAction string `json:"userLockoutAction,omitempty"`
+
+	// action to take; one of 'remove' or 'disable'
+	UserPasswordExpirationAction string `json:"userPasswordExpirationAction,omitempty"`
+
 	// Unique identifier of this LDAP server
 	Id string `json:"id"`
 }

@@ -16,4 +16,10 @@ type Body struct {
 	NetworkSourceIp string `json:"networkSourceIp"`
 
 	Tags []string `json:"tags,omitempty"`
+
+	UserLockoutAction string `json:"userLockoutAction,omitempty"`
+
+	UserPasswordExpirationAction string `json:"userPasswordExpirationAction,omitempty"`
+
+	Mfa string `json:"mfa,omitempty"`
 }
