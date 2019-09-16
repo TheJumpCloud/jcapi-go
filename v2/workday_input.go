@@ -11,9 +11,9 @@ package v2
 
 type WorkdayInput struct {
 
-	ReportUrl string `json:"reportUrl,omitempty"`
+	Auth *AuthInput `json:"auth,omitempty"`
 
 	Name string `json:"name,omitempty"`
 
-	Auth *AuthInput `json:"auth,omitempty"`
+	ReportUrl string `json:"reportUrl,omitempty"`
 }

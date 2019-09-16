@@ -11,13 +11,13 @@ package v2
 
 type WorkdayWorker struct {
 
-	Username string `json:"username,omitempty"`
+	Attributes *interface{} `json:"attributes,omitempty"`
+
+	Email string `json:"email,omitempty"`
 
 	FirstName string `json:"firstName,omitempty"`
 
 	LastName string `json:"lastName,omitempty"`
 
-	Email string `json:"email,omitempty"`
-
-	Attributes *interface{} `json:"attributes,omitempty"`
+	Username string `json:"username,omitempty"`
 }

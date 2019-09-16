@@ -11,84 +11,84 @@ package v2
 
 type Systemuser struct {
 
-	Email string `json:"email,omitempty"`
-
-	Username string `json:"username,omitempty"`
-
-	AllowPublicKey bool `json:"allow_public_key,omitempty"`
-
-	PublicKey string `json:"public_key,omitempty"`
-
-	SshKeys []Sshkeylist `json:"ssh_keys,omitempty"`
-
-	Sudo bool `json:"sudo,omitempty"`
-
-	EnableManagedUid bool `json:"enable_managed_uid,omitempty"`
-
-	UnixUid int32 `json:"unix_uid,omitempty"`
-
-	UnixGuid int32 `json:"unix_guid,omitempty"`
-
-	Activated bool `json:"activated,omitempty"`
-
-	Tags []string `json:"tags,omitempty"`
-
-	PasswordExpired bool `json:"password_expired,omitempty"`
+	Id string `json:"_id,omitempty"`
 
 	AccountLocked bool `json:"account_locked,omitempty"`
 
-	PasswordlessSudo bool `json:"passwordless_sudo,omitempty"`
+	Activated bool `json:"activated,omitempty"`
 
-	ExternallyManaged bool `json:"externally_managed,omitempty"`
+	AllowPublicKey bool `json:"allow_public_key,omitempty"`
+
+	AssociatedTagCount int32 `json:"associatedTagCount,omitempty"`
+
+	Attributes []interface{} `json:"attributes,omitempty"`
+
+	Company string `json:"company,omitempty"`
+
+	CostCenter string `json:"costCenter,omitempty"`
+
+	Created string `json:"created,omitempty"`
+
+	Department string `json:"department,omitempty"`
+
+	Description string `json:"description,omitempty"`
+
+	Displayname string `json:"displayname,omitempty"`
+
+	Email string `json:"email,omitempty"`
+
+	// Must be unique per user. 
+	EmployeeIdentifier string `json:"employeeIdentifier,omitempty"`
+
+	EmployeeType string `json:"employeeType,omitempty"`
+
+	EnableManagedUid bool `json:"enable_managed_uid,omitempty"`
+
+	EnableUserPortalMultifactor bool `json:"enable_user_portal_multifactor,omitempty"`
 
 	ExternalDn string `json:"external_dn,omitempty"`
 
 	ExternalSourceType string `json:"external_source_type,omitempty"`
 
+	ExternallyManaged bool `json:"externally_managed,omitempty"`
+
 	Firstname string `json:"firstname,omitempty"`
+
+	JobTitle string `json:"jobTitle,omitempty"`
 
 	Lastname string `json:"lastname,omitempty"`
 
 	LdapBindingUser bool `json:"ldap_binding_user,omitempty"`
 
-	EnableUserPortalMultifactor bool `json:"enable_user_portal_multifactor,omitempty"`
+	Location string `json:"location,omitempty"`
 
-	AssociatedTagCount int32 `json:"associatedTagCount,omitempty"`
-
-	TotpEnabled bool `json:"totp_enabled,omitempty"`
-
-	PasswordExpirationDate string `json:"password_expiration_date,omitempty"`
-
-	Attributes []interface{} `json:"attributes,omitempty"`
-
-	Created string `json:"created,omitempty"`
-
-	SambaServiceUser bool `json:"samba_service_user,omitempty"`
-
-	PasswordNeverExpires bool `json:"password_never_expires,omitempty"`
-
-	Id string `json:"_id,omitempty"`
+	Mfa *Mfa `json:"mfa,omitempty"`
 
 	Middlename string `json:"middlename,omitempty"`
 
-	Displayname string `json:"displayname,omitempty"`
+	PasswordExpirationDate string `json:"password_expiration_date,omitempty"`
 
-	Description string `json:"description,omitempty"`
+	PasswordExpired bool `json:"password_expired,omitempty"`
 
-	Location string `json:"location,omitempty"`
+	PasswordNeverExpires bool `json:"password_never_expires,omitempty"`
 
-	CostCenter string `json:"costCenter,omitempty"`
+	PasswordlessSudo bool `json:"passwordless_sudo,omitempty"`
 
-	EmployeeType string `json:"employeeType,omitempty"`
+	PublicKey string `json:"public_key,omitempty"`
 
-	Company string `json:"company,omitempty"`
+	SambaServiceUser bool `json:"samba_service_user,omitempty"`
 
-	// Must be unique per user. 
-	EmployeeIdentifier string `json:"employeeIdentifier,omitempty"`
+	SshKeys []Sshkeylist `json:"ssh_keys,omitempty"`
 
-	JobTitle string `json:"jobTitle,omitempty"`
+	Sudo bool `json:"sudo,omitempty"`
 
-	Department string `json:"department,omitempty"`
+	Tags []string `json:"tags,omitempty"`
 
-	Mfa *Mfa `json:"mfa,omitempty"`
+	TotpEnabled bool `json:"totp_enabled,omitempty"`
+
+	UnixGuid int32 `json:"unix_guid,omitempty"`
+
+	UnixUid int32 `json:"unix_uid,omitempty"`
+
+	Username string `json:"username,omitempty"`
 }

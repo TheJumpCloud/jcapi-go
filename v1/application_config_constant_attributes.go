@@ -13,19 +13,19 @@ type ApplicationConfigConstantAttributes struct {
 
 	Label string `json:"label,omitempty"`
 
+	Mutable bool `json:"mutable,omitempty"`
+
+	Position int32 `json:"position,omitempty"`
+
 	ReadOnly bool `json:"readOnly,omitempty"`
 
-	Tooltip *ApplicationConfigIdpEntityIdTooltip `json:"tooltip,omitempty"`
+	Required bool `json:"required,omitempty"`
+
+	Tooltip *ApplicationConfigAcsUrlTooltip `json:"tooltip,omitempty"`
 
 	Type_ string `json:"type,omitempty"`
 
 	Value []ApplicationConfigConstantAttributesValue `json:"value,omitempty"`
 
 	Visible bool `json:"visible,omitempty"`
-
-	Mutable bool `json:"mutable,omitempty"`
-
-	Required bool `json:"required,omitempty"`
-
-	Position int32 `json:"position,omitempty"`
 }

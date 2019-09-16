@@ -11,11 +11,11 @@ package v2
 
 type GraphManagementReq struct {
 
+	// The ObjectID of graph object being added or removed as an association.
+	Id string `json:"id"`
+
 	// How to modify the graph connection.
 	Op string `json:"op"`
 
 	Type_ *GraphType `json:"type"`
-
-	// The ObjectID of graph object being added or removed as an association.
-	Id string `json:"id"`
 }

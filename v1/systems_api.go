@@ -131,7 +131,7 @@ func (a *SystemsApiService) SystemsDelete(ctx context.Context, id string, conten
 }
 
 /* SystemsApiService List an individual system
- This endpoint returns an individual system.  #### Sample Request &#x60;&#x60;&#x60; curl -X GET https://console.jumpcloud.com/api/systems/{SystemID} \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;   &#x60;&#x60;&#x60;
+ This endpoint returns an individual system.  #### Sample Request &#x60;&#x60;&#x60; curl -X GET https://console.jumpcloud.com/api/systems/{SystemID} \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;    &#x60;&#x60;&#x60;
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param id 
  @param contentType 
@@ -248,7 +248,7 @@ func (a *SystemsApiService) SystemsGet(ctx context.Context, id string, contentTy
 }
 
 /* SystemsApiService List All Systems
- This endpoint returns all Systems.  #### Sample Requests &#x60;&#x60;&#x60; curl -X GET https://console.jumpcloud.com/api/systems \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;  &#x60;&#x60;&#x60;
+ This endpoint returns all Systems.  #### Sample Requests &#x60;&#x60;&#x60; curl -X GET https://console.jumpcloud.com/api/systems \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39;   &#x60;&#x60;&#x60;
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param contentType 
  @param accept 
@@ -387,13 +387,14 @@ func (a *SystemsApiService) SystemsList(ctx context.Context, contentType string,
      @param "date" (string) Current date header for the System Context API
      @param "authorization" (string) Authorization header for the System Context API
      @param "xOrgId" (string) 
- @return */
-func (a *SystemsApiService) SystemsPut(ctx context.Context, id string, contentType string, accept string, localVarOptionals map[string]interface{}) ( *http.Response, error) {
+ @return System*/
+func (a *SystemsApiService) SystemsPut(ctx context.Context, id string, contentType string, accept string, localVarOptionals map[string]interface{}) (System,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localVarFileName string
 		localVarFileBytes []byte
+	 	successPayload  System
 	)
 
 	// create path and map variables
@@ -405,13 +406,13 @@ func (a *SystemsApiService) SystemsPut(ctx context.Context, id string, contentTy
 	localVarFormParams := url.Values{}
 
 	if err := typeCheckParameter(localVarOptionals["date"], "string", "date"); err != nil {
-		return nil, err
+		return successPayload, nil, err
 	}
 	if err := typeCheckParameter(localVarOptionals["authorization"], "string", "authorization"); err != nil {
-		return nil, err
+		return successPayload, nil, err
 	}
 	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
-		return nil, err
+		return successPayload, nil, err
 	}
 
 	// to determine the Content-Type header
@@ -462,20 +463,25 @@ func (a *SystemsApiService) SystemsPut(ctx context.Context, id string, contentTy
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return successPayload, nil, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return localVarHttpResponse, err
+		return successPayload, localVarHttpResponse, err
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
-	return localVarHttpResponse, err
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
 }
 
 /* SystemsApiService List system user bindings

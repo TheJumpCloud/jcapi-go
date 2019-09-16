@@ -15,26 +15,26 @@ import (
 
 type PolicyResult struct {
 
-	// ObjectId uniquely identifying the parent Policy.
-	PolicyID string `json:"policyID,omitempty"`
-
-	// ObjectId uniquely identifying the parent System.
-	SystemID string `json:"systemID,omitempty"`
-
-	// ObjectId uniquely identifying a Policy Result.
-	Id string `json:"id,omitempty"`
-
-	// The start of the policy application.
-	StartedAt time.Time `json:"startedAt,omitempty"`
+	// Details pertaining to the policy result.
+	Detail string `json:"detail,omitempty"`
 
 	// The end of the policy application.
 	EndedAt time.Time `json:"endedAt,omitempty"`
 
-	// True if the policy was successfully applied; false otherwise.
-	Success bool `json:"success,omitempty"`
-
 	// The 32-bit unsigned exit status from the applying the policy.
 	ExitStatus int32 `json:"exitStatus,omitempty"`
+
+	// ObjectId uniquely identifying a Policy Result.
+	Id string `json:"id,omitempty"`
+
+	// ObjectId uniquely identifying the parent Policy.
+	PolicyID string `json:"policyID,omitempty"`
+
+	// The start of the policy application.
+	StartedAt time.Time `json:"startedAt,omitempty"`
+
+	// Enumeration describing the state of the policy. Success, failed, or pending.
+	State string `json:"state,omitempty"`
 
 	// The STDERR output from applying the policy.
 	StdErr string `json:"stdErr,omitempty"`
@@ -42,9 +42,9 @@ type PolicyResult struct {
 	// The STDOUT output from applying the policy.
 	StdOut string `json:"stdOut,omitempty"`
 
-	// Enumeration describing the state of the policy. Success, failed, or pending.
-	State string `json:"state,omitempty"`
+	// True if the policy was successfully applied; false otherwise.
+	Success bool `json:"success,omitempty"`
 
-	// Details pertaining to the policy result.
-	Detail string `json:"detail,omitempty"`
+	// ObjectId uniquely identifying the parent System.
+	SystemID string `json:"systemID,omitempty"`
 }

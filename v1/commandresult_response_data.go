@@ -11,9 +11,9 @@ package v1
 
 type CommandresultResponseData struct {
 
-	// The output of the command that was executed.
-	Output string `json:"output,omitempty"`
-
 	// The stderr output from the command that ran.
 	ExitCode int32 `json:"exitCode,omitempty"`
+
+	// The output of the command that was executed.
+	Output string `json:"output,omitempty"`
 }

@@ -11,21 +11,21 @@ package v1
 
 type SystemuserreturnAddresses struct {
 
-	Id string `json:"id,omitempty"`
-
-	Type_ string `json:"type,omitempty"`
-
-	PoBox string `json:"poBox,omitempty"`
+	Country string `json:"country,omitempty"`
 
 	ExtendedAddress string `json:"extendedAddress,omitempty"`
 
-	StreetAddress string `json:"streetAddress,omitempty"`
+	Id string `json:"id,omitempty"`
 
 	Locality string `json:"locality,omitempty"`
 
-	Region string `json:"region,omitempty"`
+	PoBox string `json:"poBox,omitempty"`
 
 	PostalCode string `json:"postalCode,omitempty"`
 
-	Country string `json:"country,omitempty"`
+	Region string `json:"region,omitempty"`
+
+	StreetAddress string `json:"streetAddress,omitempty"`
+
+	Type_ string `json:"type,omitempty"`
 }

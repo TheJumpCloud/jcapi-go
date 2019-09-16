@@ -48,6 +48,7 @@ type APIClient struct {
 	BulkJobRequestsApi	*BulkJobRequestsApiService
 	CommandsApi	*CommandsApiService
 	DirectoriesApi	*DirectoriesApiService
+	DuoApi	*DuoApiService
 	FdeApi	*FdeApiService
 	GSuiteApi	*GSuiteApiService
 	GraphApi	*GraphApiService
@@ -93,6 +94,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.BulkJobRequestsApi = (*BulkJobRequestsApiService)(&c.common)
 	c.CommandsApi = (*CommandsApiService)(&c.common)
 	c.DirectoriesApi = (*DirectoriesApiService)(&c.common)
+	c.DuoApi = (*DuoApiService)(&c.common)
 	c.FdeApi = (*FdeApiService)(&c.common)
 	c.GSuiteApi = (*GSuiteApiService)(&c.common)
 	c.GraphApi = (*GraphApiService)(&c.common)
