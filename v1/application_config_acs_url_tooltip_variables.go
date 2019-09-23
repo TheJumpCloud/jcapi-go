@@ -9,9 +9,9 @@
 
 package v1
 
-type ApplicationConfigIdpEntityIdTooltip struct {
+type ApplicationConfigAcsUrlTooltipVariables struct {
 
-	Template string `json:"template,omitempty"`
+	Icon string `json:"icon,omitempty"`
 
-	Variables *ApplicationConfigIdpEntityIdTooltipVariables `json:"variables,omitempty"`
+	Message string `json:"message,omitempty"`
 }

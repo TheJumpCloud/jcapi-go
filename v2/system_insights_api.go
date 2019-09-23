@@ -28,7 +28,7 @@ type SystemInsightsApiService service
 
 
 /* SystemInsightsApiService List System Insights Apps
- Valid filter fields are &#x60;jc_system_id&#x60; and &#x60;bundle_name&#x60;.
+ Valid filter fields are &#x60;system_id&#x60; and &#x60;bundle_name&#x60;.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) 
@@ -112,13 +112,13 @@ func (a *SystemInsightsApiService) SysteminsightsListApps(ctx context.Context, l
 /* SystemInsightsApiService List System Insights System Apps
  Valid filter fields are &#x60;bundle_name&#x60;.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param jcSystemId 
+ @param systemId 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) 
      @param "skip" (int32) The offset into the records to return.
      @param "filter" ([]string) Supported operators are: eq
  @return []SystemInsightsApps*/
-func (a *SystemInsightsApiService) SysteminsightsListApps_1(ctx context.Context, jcSystemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsApps,  *http.Response, error) {
+func (a *SystemInsightsApiService) SysteminsightsListApps_1(ctx context.Context, systemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsApps,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
@@ -128,8 +128,8 @@ func (a *SystemInsightsApiService) SysteminsightsListApps_1(ctx context.Context,
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/systeminsights/{jc_system_id}/apps"
-	localVarPath = strings.Replace(localVarPath, "{"+"jc_system_id"+"}", fmt.Sprintf("%v", jcSystemId), -1)
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/{system_id}/apps"
+	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -193,27 +193,109 @@ func (a *SystemInsightsApiService) SysteminsightsListApps_1(ctx context.Context,
 	return successPayload, localVarHttpResponse, err
 }
 
-/* SystemInsightsApiService List System Insights System Browser Plugins
- Valid filter fields are &#x60;name&#x60;.
+/* SystemInsightsApiService List System Insights Bitlocker Info
+ Valid filter fields are &#x60;system_id&#x60; and &#x60;protection_status&#x60;.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param jcSystemId 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) 
      @param "skip" (int32) The offset into the records to return.
      @param "filter" ([]string) Supported operators are: eq
- @return []SystemInsightsBrowserPlugins*/
-func (a *SystemInsightsApiService) SysteminsightsListBrowserPlugins(ctx context.Context, jcSystemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsBrowserPlugins,  *http.Response, error) {
+ @return []SystemInsightsBitlockerInfo*/
+func (a *SystemInsightsApiService) SysteminsightsListBitlockerInfo(ctx context.Context, localVarOptionals map[string]interface{}) ([]SystemInsightsBitlockerInfo,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localVarFileName string
 		localVarFileBytes []byte
-	 	successPayload  []SystemInsightsBrowserPlugins
+	 	successPayload  []SystemInsightsBitlockerInfo
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/systeminsights/{jc_system_id}/browser_plugins"
-	localVarPath = strings.Replace(localVarPath, "{"+"jc_system_id"+"}", fmt.Sprintf("%v", jcSystemId), -1)
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/bitlocker_info"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
+		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
+		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* SystemInsightsApiService List System Insights System Bitlocker Info
+ Valid filter fields are &#x60;protection_status&#x60;.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param systemId 
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "limit" (int32) 
+     @param "skip" (int32) The offset into the records to return.
+     @param "filter" ([]string) Supported operators are: eq
+ @return []SystemInsightsBitlockerInfo*/
+func (a *SystemInsightsApiService) SysteminsightsListBitlockerInfo_2(ctx context.Context, systemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsBitlockerInfo,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localVarFileName string
+		localVarFileBytes []byte
+	 	successPayload  []SystemInsightsBitlockerInfo
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/{system_id}/bitlocker_info"
+	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -278,14 +360,14 @@ func (a *SystemInsightsApiService) SysteminsightsListBrowserPlugins(ctx context.
 }
 
 /* SystemInsightsApiService List System Insights Browser Plugins
- Valid filter fields are &#x60;jc_system_id&#x60; and &#x60;name&#x60;.
+ Valid filter fields are &#x60;system_id&#x60; and &#x60;name&#x60;.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) 
      @param "skip" (int32) The offset into the records to return.
      @param "filter" ([]string) Supported operators are: eq
  @return []SystemInsightsBrowserPlugins*/
-func (a *SystemInsightsApiService) SysteminsightsListBrowserPlugins_2(ctx context.Context, localVarOptionals map[string]interface{}) ([]SystemInsightsBrowserPlugins,  *http.Response, error) {
+func (a *SystemInsightsApiService) SysteminsightsListBrowserPlugins(ctx context.Context, localVarOptionals map[string]interface{}) ([]SystemInsightsBrowserPlugins,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
@@ -359,27 +441,27 @@ func (a *SystemInsightsApiService) SysteminsightsListBrowserPlugins_2(ctx contex
 	return successPayload, localVarHttpResponse, err
 }
 
-/* SystemInsightsApiService List System Insights System Chrome Extensions
+/* SystemInsightsApiService List System Insights System Browser Plugins
  Valid filter fields are &#x60;name&#x60;.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param jcSystemId 
+ @param systemId 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) 
      @param "skip" (int32) The offset into the records to return.
      @param "filter" ([]string) Supported operators are: eq
- @return []SystemInsightsChromeExtensions*/
-func (a *SystemInsightsApiService) SysteminsightsListChromeExtensions(ctx context.Context, jcSystemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsChromeExtensions,  *http.Response, error) {
+ @return []SystemInsightsBrowserPlugins*/
+func (a *SystemInsightsApiService) SysteminsightsListBrowserPlugins_3(ctx context.Context, systemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsBrowserPlugins,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localVarFileName string
 		localVarFileBytes []byte
-	 	successPayload  []SystemInsightsChromeExtensions
+	 	successPayload  []SystemInsightsBrowserPlugins
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/systeminsights/{jc_system_id}/chrome_extensions"
-	localVarPath = strings.Replace(localVarPath, "{"+"jc_system_id"+"}", fmt.Sprintf("%v", jcSystemId), -1)
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/{system_id}/browser_plugins"
+	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -444,14 +526,14 @@ func (a *SystemInsightsApiService) SysteminsightsListChromeExtensions(ctx contex
 }
 
 /* SystemInsightsApiService List System Insights Chrome Extensions
- Valid filter fields are &#x60;jc_system_id&#x60; and &#x60;name&#x60;.
+ Valid filter fields are &#x60;system_id&#x60; and &#x60;name&#x60;.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) 
      @param "skip" (int32) The offset into the records to return.
      @param "filter" ([]string) Supported operators are: eq
  @return []SystemInsightsChromeExtensions*/
-func (a *SystemInsightsApiService) SysteminsightsListChromeExtensions_3(ctx context.Context, localVarOptionals map[string]interface{}) ([]SystemInsightsChromeExtensions,  *http.Response, error) {
+func (a *SystemInsightsApiService) SysteminsightsListChromeExtensions(ctx context.Context, localVarOptionals map[string]interface{}) ([]SystemInsightsChromeExtensions,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
@@ -525,8 +607,92 @@ func (a *SystemInsightsApiService) SysteminsightsListChromeExtensions_3(ctx cont
 	return successPayload, localVarHttpResponse, err
 }
 
+/* SystemInsightsApiService List System Insights System Chrome Extensions
+ Valid filter fields are &#x60;name&#x60;.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param systemId 
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "limit" (int32) 
+     @param "skip" (int32) The offset into the records to return.
+     @param "filter" ([]string) Supported operators are: eq
+ @return []SystemInsightsChromeExtensions*/
+func (a *SystemInsightsApiService) SysteminsightsListChromeExtensions_4(ctx context.Context, systemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsChromeExtensions,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localVarFileName string
+		localVarFileBytes []byte
+	 	successPayload  []SystemInsightsChromeExtensions
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/{system_id}/chrome_extensions"
+	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
+		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
+		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
+}
+
 /* SystemInsightsApiService List System Insights Disk Encryption
- Valid filter fields are &#x60;jc_system_id&#x60; and &#x60;encryption_status&#x60;.
+ Valid filter fields are &#x60;system_id&#x60; and &#x60;encryption_status&#x60;.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) 
@@ -610,13 +776,13 @@ func (a *SystemInsightsApiService) SysteminsightsListDiskEncryption(ctx context.
 /* SystemInsightsApiService List System Insights System Disk Encryption
  Valid filter fields are &#x60;encryption_status&#x60;.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param jcSystemId 
+ @param systemId 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) 
      @param "skip" (int32) The offset into the records to return.
      @param "filter" ([]string) Supported operators are: eq
  @return []SystemInsightsDiskEncryption*/
-func (a *SystemInsightsApiService) SysteminsightsListDiskEncryption_4(ctx context.Context, jcSystemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsDiskEncryption,  *http.Response, error) {
+func (a *SystemInsightsApiService) SysteminsightsListDiskEncryption_5(ctx context.Context, systemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsDiskEncryption,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
@@ -626,8 +792,340 @@ func (a *SystemInsightsApiService) SysteminsightsListDiskEncryption_4(ctx contex
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/systeminsights/{jc_system_id}/disk_encryption"
-	localVarPath = strings.Replace(localVarPath, "{"+"jc_system_id"+"}", fmt.Sprintf("%v", jcSystemId), -1)
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/{system_id}/disk_encryption"
+	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
+		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
+		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* SystemInsightsApiService List System Insights Disk Info
+ Valid filter fields are &#x60;system_id&#x60; and &#x60;disk_index&#x60;.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "limit" (int32) 
+     @param "skip" (int32) The offset into the records to return.
+     @param "filter" ([]string) Supported operators are: eq
+ @return []SystemInsightsDiskInfo*/
+func (a *SystemInsightsApiService) SysteminsightsListDiskInfo(ctx context.Context, localVarOptionals map[string]interface{}) ([]SystemInsightsDiskInfo,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localVarFileName string
+		localVarFileBytes []byte
+	 	successPayload  []SystemInsightsDiskInfo
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/disk_info"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
+		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
+		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* SystemInsightsApiService List System Insights System Disk Info
+ Valid filter fields are &#x60;disk_index&#x60;.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param systemId 
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "limit" (int32) 
+     @param "skip" (int32) The offset into the records to return.
+     @param "filter" ([]string) Supported operators are: eq
+ @return []SystemInsightsBitlockerInfo*/
+func (a *SystemInsightsApiService) SysteminsightsListDiskInfo_6(ctx context.Context, systemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsBitlockerInfo,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localVarFileName string
+		localVarFileBytes []byte
+	 	successPayload  []SystemInsightsBitlockerInfo
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/{system_id}/disk_info"
+	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
+		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
+		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* SystemInsightsApiService List System Insights Etc Hosts
+ Valid filter fields are &#x60;system_id&#x60; and &#x60;address&#x60;.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "limit" (int32) 
+     @param "skip" (int32) The offset into the records to return.
+     @param "filter" ([]string) Supported operators are: eq
+ @return []SystemInsightsEtcHosts*/
+func (a *SystemInsightsApiService) SysteminsightsListEtcHosts(ctx context.Context, localVarOptionals map[string]interface{}) ([]SystemInsightsEtcHosts,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localVarFileName string
+		localVarFileBytes []byte
+	 	successPayload  []SystemInsightsEtcHosts
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/etc_hosts"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
+		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
+		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* SystemInsightsApiService List System Insights System Etc Hosts
+ Valid filter fields are &#x60;address&#x60;.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param systemId 
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "limit" (int32) 
+     @param "skip" (int32) The offset into the records to return.
+     @param "filter" ([]string) Supported operators are: eq
+ @return []SystemInsightsBitlockerInfo*/
+func (a *SystemInsightsApiService) SysteminsightsListEtcHosts_7(ctx context.Context, systemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsBitlockerInfo,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localVarFileName string
+		localVarFileBytes []byte
+	 	successPayload  []SystemInsightsBitlockerInfo
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/{system_id}/etc_hosts"
+	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -692,7 +1190,7 @@ func (a *SystemInsightsApiService) SysteminsightsListDiskEncryption_4(ctx contex
 }
 
 /* SystemInsightsApiService List System Insights Firefox Addons
- Valid filter fields are &#x60;jc_system_id&#x60; and &#x60;name&#x60;.
+ Valid filter fields are &#x60;system_id&#x60; and &#x60;name&#x60;.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) 
@@ -776,13 +1274,13 @@ func (a *SystemInsightsApiService) SysteminsightsListFirefoxAddons(ctx context.C
 /* SystemInsightsApiService List System Insights System Firefox Addons
  Valid filter fields are &#x60;name&#x60;.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param jcSystemId 
+ @param systemId 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) 
      @param "skip" (int32) The offset into the records to return.
      @param "filter" ([]string) Supported operators are: eq
  @return []SystemInsightsFirefoxAddons*/
-func (a *SystemInsightsApiService) SysteminsightsListFirefoxAddons_5(ctx context.Context, jcSystemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsFirefoxAddons,  *http.Response, error) {
+func (a *SystemInsightsApiService) SysteminsightsListFirefoxAddons_8(ctx context.Context, systemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsFirefoxAddons,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
@@ -792,8 +1290,8 @@ func (a *SystemInsightsApiService) SysteminsightsListFirefoxAddons_5(ctx context
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/systeminsights/{jc_system_id}/firefox_addons"
-	localVarPath = strings.Replace(localVarPath, "{"+"jc_system_id"+"}", fmt.Sprintf("%v", jcSystemId), -1)
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/{system_id}/firefox_addons"
+	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -858,7 +1356,7 @@ func (a *SystemInsightsApiService) SysteminsightsListFirefoxAddons_5(ctx context
 }
 
 /* SystemInsightsApiService List System Insights Groups
- Valid filter fields are &#x60;jc_system_id&#x60; and &#x60;groupname&#x60;.
+ Valid filter fields are &#x60;system_id&#x60; and &#x60;groupname&#x60;.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) 
@@ -942,13 +1440,13 @@ func (a *SystemInsightsApiService) SysteminsightsListGroups(ctx context.Context,
 /* SystemInsightsApiService List System Insights System Groups
  Valid filter fields are &#x60;groupname&#x60;.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param jcSystemId 
+ @param systemId 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) 
      @param "skip" (int32) The offset into the records to return.
      @param "filter" ([]string) Supported operators are: eq
  @return []SystemInsightsGroups*/
-func (a *SystemInsightsApiService) SysteminsightsListGroups_6(ctx context.Context, jcSystemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsGroups,  *http.Response, error) {
+func (a *SystemInsightsApiService) SysteminsightsListGroups_9(ctx context.Context, systemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsGroups,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
@@ -958,8 +1456,8 @@ func (a *SystemInsightsApiService) SysteminsightsListGroups_6(ctx context.Contex
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/systeminsights/{jc_system_id}/groups"
-	localVarPath = strings.Replace(localVarPath, "{"+"jc_system_id"+"}", fmt.Sprintf("%v", jcSystemId), -1)
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/{system_id}/groups"
+	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1024,7 +1522,7 @@ func (a *SystemInsightsApiService) SysteminsightsListGroups_6(ctx context.Contex
 }
 
 /* SystemInsightsApiService List System Insights Interface Addresses
- Valid filter fields are &#x60;jc_system_id&#x60; and &#x60;address&#x60;.
+ Valid filter fields are &#x60;system_id&#x60; and &#x60;address&#x60;.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) 
@@ -1108,13 +1606,13 @@ func (a *SystemInsightsApiService) SysteminsightsListInterfaceAddresses(ctx cont
 /* SystemInsightsApiService List System Insights System Interface Addresses
  Valid filter fields are &#x60;address&#x60;.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param jcSystemId 
+ @param systemId 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) 
      @param "skip" (int32) The offset into the records to return.
      @param "filter" ([]string) Supported operators are: eq
  @return []SystemInsightsInterfaceAddresses*/
-func (a *SystemInsightsApiService) SysteminsightsListInterfaceAddresses_7(ctx context.Context, jcSystemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsInterfaceAddresses,  *http.Response, error) {
+func (a *SystemInsightsApiService) SysteminsightsListInterfaceAddresses_10(ctx context.Context, systemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsInterfaceAddresses,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
@@ -1124,8 +1622,340 @@ func (a *SystemInsightsApiService) SysteminsightsListInterfaceAddresses_7(ctx co
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/systeminsights/{jc_system_id}/interface_addresses"
-	localVarPath = strings.Replace(localVarPath, "{"+"jc_system_id"+"}", fmt.Sprintf("%v", jcSystemId), -1)
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/{system_id}/interface_addresses"
+	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
+		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
+		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* SystemInsightsApiService List System Insights Kernel Info
+ Valid filter fields are &#x60;system_id&#x60; and &#x60;version&#x60;.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "limit" (int32) 
+     @param "skip" (int32) The offset into the records to return.
+     @param "filter" ([]string) Supported operators are: eq
+ @return []SystemInsightsKernelInfo*/
+func (a *SystemInsightsApiService) SysteminsightsListKernelInfo(ctx context.Context, localVarOptionals map[string]interface{}) ([]SystemInsightsKernelInfo,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localVarFileName string
+		localVarFileBytes []byte
+	 	successPayload  []SystemInsightsKernelInfo
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/kernel_info"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
+		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
+		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* SystemInsightsApiService List System Insights System Kernel Info
+ Valid filter fields are &#x60;version&#x60;.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param systemId 
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "limit" (int32) 
+     @param "skip" (int32) The offset into the records to return.
+     @param "filter" ([]string) Supported operators are: eq
+ @return []SystemInsightsKernelInfo*/
+func (a *SystemInsightsApiService) SysteminsightsListKernelInfo_11(ctx context.Context, systemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsKernelInfo,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localVarFileName string
+		localVarFileBytes []byte
+	 	successPayload  []SystemInsightsKernelInfo
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/{system_id}/kernel_info"
+	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
+		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
+		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* SystemInsightsApiService List System Insights Logical Drives
+ Valid filter fields are &#x60;system_id&#x60; and &#x60;device_id&#x60;.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "limit" (int32) 
+     @param "skip" (int32) The offset into the records to return.
+     @param "filter" ([]string) Supported operators are: eq
+ @return []SystemInsightsLogicalDrvies*/
+func (a *SystemInsightsApiService) SysteminsightsListLogicalDrives(ctx context.Context, localVarOptionals map[string]interface{}) ([]SystemInsightsLogicalDrvies,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localVarFileName string
+		localVarFileBytes []byte
+	 	successPayload  []SystemInsightsLogicalDrvies
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/logical_drives"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
+		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
+		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* SystemInsightsApiService List System Insights System Logical Drives
+ Valid filter fields are &#x60;device_id&#x60;.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param systemId 
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "limit" (int32) 
+     @param "skip" (int32) The offset into the records to return.
+     @param "filter" ([]string) Supported operators are: eq
+ @return []SystemInsightsLogicalDrvies*/
+func (a *SystemInsightsApiService) SysteminsightsListLogicalDrives_12(ctx context.Context, systemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsLogicalDrvies,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localVarFileName string
+		localVarFileBytes []byte
+	 	successPayload  []SystemInsightsLogicalDrvies
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/{system_id}/logical_drives"
+	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1190,7 +2020,7 @@ func (a *SystemInsightsApiService) SysteminsightsListInterfaceAddresses_7(ctx co
 }
 
 /* SystemInsightsApiService List System Insights Mounts
- Valid filter fields are &#x60;jc_system_id&#x60; and &#x60;path&#x60;.
+ Valid filter fields are &#x60;system_id&#x60; and &#x60;path&#x60;.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) 
@@ -1274,13 +2104,13 @@ func (a *SystemInsightsApiService) SysteminsightsListMounts(ctx context.Context,
 /* SystemInsightsApiService List System Insights System Mounts
  Valid filter fields are &#x60;path&#x60;.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param jcSystemId 
+ @param systemId 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) 
      @param "skip" (int32) The offset into the records to return.
      @param "filter" ([]string) Supported operators are: eq
  @return []SystemInsightsMounts*/
-func (a *SystemInsightsApiService) SysteminsightsListMounts_8(ctx context.Context, jcSystemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsMounts,  *http.Response, error) {
+func (a *SystemInsightsApiService) SysteminsightsListMounts_13(ctx context.Context, systemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsMounts,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
@@ -1290,92 +2120,8 @@ func (a *SystemInsightsApiService) SysteminsightsListMounts_8(ctx context.Contex
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/systeminsights/{jc_system_id}/mounts"
-	localVarPath = strings.Replace(localVarPath, "{"+"jc_system_id"+"}", fmt.Sprintf("%v", jcSystemId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
-		return successPayload, nil, err
-	}
-	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
-		return successPayload, nil, err
-	}
-
-	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
-		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
-	}
-	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
-		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
-	}
-	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
-		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
-	}
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHttpContentType
-	}
-
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-		}
-
-	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
-	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return successPayload, nil, err
-	}
-
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
-	}
-	defer localVarHttpResponse.Body.Close()
-	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
-	}
-
-	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
-	}
-
-
-	return successPayload, localVarHttpResponse, err
-}
-
-/* SystemInsightsApiService List System Insights System OS Version
- Valid filter fields are &#x60;version&#x60;.
- * @param ctx context.Context for authentication, logging, tracing, etc.
- @param jcSystemId 
- @param optional (nil or map[string]interface{}) with one or more of:
-     @param "limit" (int32) 
-     @param "skip" (int32) The offset into the records to return.
-     @param "filter" ([]string) Supported operators are: eq
- @return []SystemInsightsOsVersion*/
-func (a *SystemInsightsApiService) SysteminsightsListOsVersion(ctx context.Context, jcSystemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsOsVersion,  *http.Response, error) {
-	var (
-		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  []SystemInsightsOsVersion
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/systeminsights/{jc_system_id}/os_version"
-	localVarPath = strings.Replace(localVarPath, "{"+"jc_system_id"+"}", fmt.Sprintf("%v", jcSystemId), -1)
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/{system_id}/mounts"
+	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1440,14 +2186,14 @@ func (a *SystemInsightsApiService) SysteminsightsListOsVersion(ctx context.Conte
 }
 
 /* SystemInsightsApiService List System Insights OS Version
- Valid filter fields are &#x60;jc_system_id&#x60; and &#x60;version&#x60;.
+ Valid filter fields are &#x60;system_id&#x60; and &#x60;version&#x60;.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) 
      @param "skip" (int32) The offset into the records to return.
      @param "filter" ([]string) Supported operators are: eq
  @return []SystemInsightsOsVersion*/
-func (a *SystemInsightsApiService) SysteminsightsListOsVersion_9(ctx context.Context, localVarOptionals map[string]interface{}) ([]SystemInsightsOsVersion,  *http.Response, error) {
+func (a *SystemInsightsApiService) SysteminsightsListOsVersion(ctx context.Context, localVarOptionals map[string]interface{}) ([]SystemInsightsOsVersion,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
@@ -1521,27 +2267,359 @@ func (a *SystemInsightsApiService) SysteminsightsListOsVersion_9(ctx context.Con
 	return successPayload, localVarHttpResponse, err
 }
 
-/* SystemInsightsApiService List System Insights System Safari Extensions
- Valid filter fields are &#x60;name&#x60;.
+/* SystemInsightsApiService List System Insights System OS Version
+ Valid filter fields are &#x60;version&#x60;.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param jcSystemId 
+ @param systemId 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) 
      @param "skip" (int32) The offset into the records to return.
      @param "filter" ([]string) Supported operators are: eq
- @return []SystemInsightsSafariExtensions*/
-func (a *SystemInsightsApiService) SysteminsightsListSafariExtensions(ctx context.Context, jcSystemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsSafariExtensions,  *http.Response, error) {
+ @return []SystemInsightsOsVersion*/
+func (a *SystemInsightsApiService) SysteminsightsListOsVersion_14(ctx context.Context, systemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsOsVersion,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localVarFileName string
 		localVarFileBytes []byte
-	 	successPayload  []SystemInsightsSafariExtensions
+	 	successPayload  []SystemInsightsOsVersion
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/systeminsights/{jc_system_id}/safari_extensions"
-	localVarPath = strings.Replace(localVarPath, "{"+"jc_system_id"+"}", fmt.Sprintf("%v", jcSystemId), -1)
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/{system_id}/os_version"
+	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
+		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
+		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* SystemInsightsApiService List System Insights Patches
+ Valid filter fields are &#x60;system_id&#x60; and &#x60;hotfix_id&#x60;.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "limit" (int32) 
+     @param "skip" (int32) The offset into the records to return.
+     @param "filter" ([]string) Supported operators are: eq
+ @return []SystemInsightsPatches*/
+func (a *SystemInsightsApiService) SysteminsightsListPatches(ctx context.Context, localVarOptionals map[string]interface{}) ([]SystemInsightsPatches,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localVarFileName string
+		localVarFileBytes []byte
+	 	successPayload  []SystemInsightsPatches
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/patches"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
+		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
+		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* SystemInsightsApiService List System Insights System Patches
+ Valid filter fields are &#x60;hotfix_id  &#x60;.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param systemId 
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "limit" (int32) 
+     @param "skip" (int32) The offset into the records to return.
+     @param "filter" ([]string) Supported operators are: eq
+ @return []SystemInsightsPatches*/
+func (a *SystemInsightsApiService) SysteminsightsListPatches_15(ctx context.Context, systemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsPatches,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localVarFileName string
+		localVarFileBytes []byte
+	 	successPayload  []SystemInsightsPatches
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/{system_id}/patches"
+	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
+		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
+		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* SystemInsightsApiService List System Insights Programs
+ Valid filter fields are &#x60;system_id&#x60; and &#x60;name&#x60;.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "limit" (int32) 
+     @param "skip" (int32) The offset into the records to return.
+     @param "filter" ([]string) Supported operators are: eq
+ @return []SystemInsightsPrograms*/
+func (a *SystemInsightsApiService) SysteminsightsListPrograms(ctx context.Context, localVarOptionals map[string]interface{}) ([]SystemInsightsPrograms,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localVarFileName string
+		localVarFileBytes []byte
+	 	successPayload  []SystemInsightsPrograms
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/programs"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
+		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
+		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* SystemInsightsApiService List System Insights System Programs
+ Valid filter fields are &#x60;name&#x60;.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param systemId 
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "limit" (int32) 
+     @param "skip" (int32) The offset into the records to return.
+     @param "filter" ([]string) Supported operators are: eq
+ @return []SystemInsightsPrograms*/
+func (a *SystemInsightsApiService) SysteminsightsListPrograms_16(ctx context.Context, systemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsPrograms,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localVarFileName string
+		localVarFileBytes []byte
+	 	successPayload  []SystemInsightsPrograms
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/{system_id}/programs"
+	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1606,14 +2684,14 @@ func (a *SystemInsightsApiService) SysteminsightsListSafariExtensions(ctx contex
 }
 
 /* SystemInsightsApiService List System Insights Safari Extensions
- Valid filter fields are &#x60;jc_system_id&#x60; and &#x60;name&#x60;.
+ Valid filter fields are &#x60;system_id&#x60; and &#x60;name&#x60;.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) 
      @param "skip" (int32) The offset into the records to return.
      @param "filter" ([]string) Supported operators are: eq
  @return []SystemInsightsSafariExtensions*/
-func (a *SystemInsightsApiService) SysteminsightsListSafariExtensions_10(ctx context.Context, localVarOptionals map[string]interface{}) ([]SystemInsightsSafariExtensions,  *http.Response, error) {
+func (a *SystemInsightsApiService) SysteminsightsListSafariExtensions(ctx context.Context, localVarOptionals map[string]interface{}) ([]SystemInsightsSafariExtensions,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
@@ -1687,8 +2765,258 @@ func (a *SystemInsightsApiService) SysteminsightsListSafariExtensions_10(ctx con
 	return successPayload, localVarHttpResponse, err
 }
 
+/* SystemInsightsApiService List System Insights System Safari Extensions
+ Valid filter fields are &#x60;name&#x60;.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param systemId 
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "limit" (int32) 
+     @param "skip" (int32) The offset into the records to return.
+     @param "filter" ([]string) Supported operators are: eq
+ @return []SystemInsightsSafariExtensions*/
+func (a *SystemInsightsApiService) SysteminsightsListSafariExtensions_17(ctx context.Context, systemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsSafariExtensions,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localVarFileName string
+		localVarFileBytes []byte
+	 	successPayload  []SystemInsightsSafariExtensions
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/{system_id}/safari_extensions"
+	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
+		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
+		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* SystemInsightsApiService List System Insights System Control
+ Valid filter fields are &#x60;system_id&#x60; and &#x60;name&#x60;.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "limit" (int32) 
+     @param "skip" (int32) The offset into the records to return.
+     @param "filter" ([]string) Supported operators are: eq
+ @return []SystemInsightsSystemControls*/
+func (a *SystemInsightsApiService) SysteminsightsListSystemControls(ctx context.Context, localVarOptionals map[string]interface{}) ([]SystemInsightsSystemControls,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localVarFileName string
+		localVarFileBytes []byte
+	 	successPayload  []SystemInsightsSystemControls
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/system_controls"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
+		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
+		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* SystemInsightsApiService List System Insights System System Controls
+ Valid filter fields are &#x60;name&#x60;.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param systemId 
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "limit" (int32) 
+     @param "skip" (int32) The offset into the records to return.
+     @param "filter" ([]string) Supported operators are: eq
+ @return []SystemInsightsSystemControls*/
+func (a *SystemInsightsApiService) SysteminsightsListSystemControls_18(ctx context.Context, systemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsSystemControls,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localVarFileName string
+		localVarFileBytes []byte
+	 	successPayload  []SystemInsightsSystemControls
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/{system_id}/system_controls"
+	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
+		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
+		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
+}
+
 /* SystemInsightsApiService List System Insights System Info
- Valid filter fields are &#x60;jc_system_id&#x60; and &#x60;cpu_subtype&#x60;.
+ Valid filter fields are &#x60;system_id&#x60; and &#x60;cpu_subtype&#x60;.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) 
@@ -1772,13 +3100,13 @@ func (a *SystemInsightsApiService) SysteminsightsListSystemInfo(ctx context.Cont
 /* SystemInsightsApiService List System Insights System System Info
  Valid filter fields are &#x60;cpu_subtype&#x60;.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param jcSystemId 
+ @param systemId 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) 
      @param "skip" (int32) The offset into the records to return.
      @param "filter" ([]string) Supported operators are: eq
  @return []SystemInsightsSystemInfo*/
-func (a *SystemInsightsApiService) SysteminsightsListSystemInfo_11(ctx context.Context, jcSystemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsSystemInfo,  *http.Response, error) {
+func (a *SystemInsightsApiService) SysteminsightsListSystemInfo_19(ctx context.Context, systemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsSystemInfo,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
@@ -1788,8 +3116,174 @@ func (a *SystemInsightsApiService) SysteminsightsListSystemInfo_11(ctx context.C
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/systeminsights/{jc_system_id}/system_info"
-	localVarPath = strings.Replace(localVarPath, "{"+"jc_system_id"+"}", fmt.Sprintf("%v", jcSystemId), -1)
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/{system_id}/system_info"
+	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
+		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
+		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* SystemInsightsApiService List System Insights Uptime
+ Valid filter fields are &#x60;system_id&#x60; and &#x60;days&#x60;.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "limit" (int32) 
+     @param "skip" (int32) The offset into the records to return.
+     @param "filter" ([]string) Supported operators are: eq
+ @return []SystemInsightsUptime*/
+func (a *SystemInsightsApiService) SysteminsightsListUptime(ctx context.Context, localVarOptionals map[string]interface{}) ([]SystemInsightsUptime,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localVarFileName string
+		localVarFileBytes []byte
+	 	successPayload  []SystemInsightsUptime
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/uptime"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
+		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
+		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].([]string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, "csv"))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* SystemInsightsApiService List System Insights System Uptime
+ Valid filter fields are &#x60;days&#x60;.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param systemId 
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "limit" (int32) 
+     @param "skip" (int32) The offset into the records to return.
+     @param "filter" ([]string) Supported operators are: eq
+ @return []SystemInsightsUptime*/
+func (a *SystemInsightsApiService) SysteminsightsListUptime_20(ctx context.Context, systemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsUptime,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localVarFileName string
+		localVarFileBytes []byte
+	 	successPayload  []SystemInsightsUptime
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/{system_id}/uptime"
+	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1854,7 +3348,7 @@ func (a *SystemInsightsApiService) SysteminsightsListSystemInfo_11(ctx context.C
 }
 
 /* SystemInsightsApiService List System Insights Users
- Valid filter fields are &#x60;jc_system_id&#x60; and &#x60;username&#x60;.
+ Valid filter fields are &#x60;system_id&#x60; and &#x60;username&#x60;.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) 
@@ -1938,13 +3432,13 @@ func (a *SystemInsightsApiService) SysteminsightsListUsers(ctx context.Context, 
 /* SystemInsightsApiService List System Insights System Users
  Valid filter fields are &#x60;username&#x60;.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param jcSystemId 
+ @param systemId 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "limit" (int32) 
      @param "skip" (int32) The offset into the records to return.
      @param "filter" ([]string) Supported operators are: eq
  @return []SystemInsightsUsers*/
-func (a *SystemInsightsApiService) SysteminsightsListUsers_12(ctx context.Context, jcSystemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsUsers,  *http.Response, error) {
+func (a *SystemInsightsApiService) SysteminsightsListUsers_21(ctx context.Context, systemId string, localVarOptionals map[string]interface{}) ([]SystemInsightsUsers,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
@@ -1954,8 +3448,8 @@ func (a *SystemInsightsApiService) SysteminsightsListUsers_12(ctx context.Contex
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/systeminsights/{jc_system_id}/users"
-	localVarPath = strings.Replace(localVarPath, "{"+"jc_system_id"+"}", fmt.Sprintf("%v", jcSystemId), -1)
+	localVarPath := a.client.cfg.BasePath + "/systeminsights/{system_id}/users"
+	localVarPath = strings.Replace(localVarPath, "{"+"system_id"+"}", fmt.Sprintf("%v", systemId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -11,15 +11,15 @@ package v2
 
 type Administrator struct {
 
-	Id string `json:"id,omitempty"`
-
 	Email string `json:"email,omitempty"`
+
+	EnableMultiFactor bool `json:"enableMultiFactor,omitempty"`
 
 	Firstname string `json:"firstname,omitempty"`
 
-	Lastname string `json:"lastname,omitempty"`
+	Id string `json:"id,omitempty"`
 
-	EnableMultiFactor bool `json:"enableMultiFactor,omitempty"`
+	Lastname string `json:"lastname,omitempty"`
 
 	Registered bool `json:"registered,omitempty"`
 }

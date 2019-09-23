@@ -11,12 +11,12 @@ package v2
 
 type UserGroupMembersReq struct {
 
+	// The ObjectID of member being added or removed.
+	Id string `json:"id"`
+
 	// How to modify the membership connection.
 	Op string `json:"op"`
 
 	// The member type.
 	Type_ string `json:"type"`
-
-	// The ObjectID of member being added or removed.
-	Id string `json:"id"`
 }

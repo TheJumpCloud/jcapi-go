@@ -11,13 +11,13 @@ package v2
 
 type WorkdayOutput struct {
 
+	Auth *WorkdayoutputAuth `json:"auth,omitempty"`
+
 	Id string `json:"id,omitempty"`
+
+	LastImport string `json:"lastImport,omitempty"`
 
 	Name string `json:"name,omitempty"`
 
 	ReportUrl string `json:"reportUrl,omitempty"`
-
-	LastImport string `json:"lastImport,omitempty"`
-
-	Auth *WorkdayoutputAuth `json:"auth,omitempty"`
 }

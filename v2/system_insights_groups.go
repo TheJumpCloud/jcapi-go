@@ -11,17 +11,17 @@ package v2
 
 type SystemInsightsGroups struct {
 
+	CollectionTime string `json:"collection_time,omitempty"`
+
+	Comment string `json:"comment,omitempty"`
+
 	Gid string `json:"gid,omitempty"`
 
 	GidSigned string `json:"gid_signed,omitempty"`
 
-	Groupname string `json:"groupname,omitempty"`
-
 	GroupSid string `json:"group_sid,omitempty"`
 
-	Comment string `json:"comment,omitempty"`
+	Groupname string `json:"groupname,omitempty"`
 
-	JcCollectionTime string `json:"jc_collection_time,omitempty"`
-
-	JcSystemId string `json:"jc_system_id,omitempty"`
+	SystemId string `json:"system_id,omitempty"`
 }
