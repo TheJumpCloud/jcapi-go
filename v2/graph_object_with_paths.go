@@ -11,11 +11,11 @@ package v2
 
 type GraphObjectWithPaths struct {
 
-	Type_ *GraphType `json:"type"`
-
 	// Object ID of this graph object.
 	Id string `json:"id"`
 
 	// A path through the graph between two graph objects.
 	Paths [][]GraphConnection `json:"paths"`
+
+	Type_ *GraphType `json:"type"`
 }

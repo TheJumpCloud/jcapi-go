@@ -469,10 +469,9 @@ Name | Type | Description  | Notes
  **fields** | [**[]string**](string.md)| The comma separated fields included in the returned records. If omitted, the default list of fields will be returned.  | 
  **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
+ **xOrgId** | **string**|  | [default to ]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
- **aggregate** | [**[]string**](string.md)|  | 
- **xOrgId** | **string**|  | [default to ]
 
 ### Return type
 
@@ -511,13 +510,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **aggregate** | [**[]string**](string.md)|  | 
  **fields** | [**[]string**](string.md)| The comma separated fields included in the returned records. If omitted, the default list of fields will be returned.  | 
  **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
  **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
+ **xOrgId** | **string**|  | [default to ]
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
- **xOrgId** | **string**|  | [default to ]
 
 ### Return type
 

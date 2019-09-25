@@ -11,6 +11,8 @@ package v1
 
 type Body struct {
 
+	Mfa string `json:"mfa,omitempty"`
+
 	Name string `json:"name"`
 
 	NetworkSourceIp string `json:"networkSourceIp"`
@@ -20,6 +22,4 @@ type Body struct {
 	UserLockoutAction string `json:"userLockoutAction,omitempty"`
 
 	UserPasswordExpirationAction string `json:"userPasswordExpirationAction,omitempty"`
-
-	Mfa string `json:"mfa,omitempty"`
 }

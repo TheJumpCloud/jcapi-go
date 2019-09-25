@@ -15,7 +15,7 @@ type PolicyRequest struct {
 	// The description for this specific Policy.
 	Name string `json:"name"`
 
-	Values []PolicyValue `json:"values,omitempty"`
-
 	Template *PolicyRequestTemplate `json:"template,omitempty"`
+
+	Values []PolicyValue `json:"values,omitempty"`
 }

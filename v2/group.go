@@ -14,8 +14,8 @@ type Group struct {
 	// ObjectId uniquely identifying a Group.
 	Id string `json:"id,omitempty"`
 
-	Type_ *GroupType `json:"type,omitempty"`
-
 	// Display name of a Group.
 	Name string `json:"name,omitempty"`
+
+	Type_ *GroupType `json:"type,omitempty"`
 }

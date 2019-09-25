@@ -11,77 +11,77 @@ package v1
 
 type Systemuserput struct {
 
-	Email string `json:"email"`
+	AccountLocked bool `json:"account_locked,omitempty"`
 
-	Username string `json:"username"`
+	// type, poBox, extendedAddress, streetAddress, locality, region, postalCode, country
+	Addresses []SystemuserputAddresses `json:"addresses,omitempty"`
 
 	AllowPublicKey bool `json:"allow_public_key,omitempty"`
 
-	PublicKey string `json:"public_key,omitempty"`
+	Attributes []interface{} `json:"attributes,omitempty"`
 
-	SshKeys []Sshkeypost `json:"ssh_keys,omitempty"`
+	Company string `json:"company,omitempty"`
 
-	Sudo bool `json:"sudo,omitempty"`
+	CostCenter string `json:"costCenter,omitempty"`
+
+	Department string `json:"department,omitempty"`
+
+	Description string `json:"description,omitempty"`
+
+	Displayname string `json:"displayname,omitempty"`
+
+	Email string `json:"email,omitempty"`
+
+	// Must be unique per user. 
+	EmployeeIdentifier string `json:"employeeIdentifier,omitempty"`
+
+	EmployeeType string `json:"employeeType,omitempty"`
 
 	EnableManagedUid bool `json:"enable_managed_uid,omitempty"`
 
-	UnixUid int32 `json:"unix_uid,omitempty"`
-
-	UnixGuid int32 `json:"unix_guid,omitempty"`
-
-	Tags []string `json:"tags,omitempty"`
-
-	AccountLocked bool `json:"account_locked,omitempty"`
-
-	ExternallyManaged bool `json:"externally_managed,omitempty"`
+	EnableUserPortalMultifactor bool `json:"enable_user_portal_multifactor,omitempty"`
 
 	ExternalDn string `json:"external_dn,omitempty"`
 
 	ExternalSourceType string `json:"external_source_type,omitempty"`
 
+	ExternallyManaged bool `json:"externally_managed,omitempty"`
+
 	Firstname string `json:"firstname,omitempty"`
+
+	JobTitle string `json:"jobTitle,omitempty"`
 
 	Lastname string `json:"lastname,omitempty"`
 
 	LdapBindingUser bool `json:"ldap_binding_user,omitempty"`
 
-	EnableUserPortalMultifactor bool `json:"enable_user_portal_multifactor,omitempty"`
+	Location string `json:"location,omitempty"`
 
-	Attributes []interface{} `json:"attributes,omitempty"`
+	Mfa *Mfa `json:"mfa,omitempty"`
 
-	SambaServiceUser bool `json:"samba_service_user,omitempty"`
-
-	// type, poBox, extendedAddress, streetAddress, locality, region, postalCode, country
-	Addresses []SystemuserputAddresses `json:"addresses,omitempty"`
-
-	JobTitle string `json:"jobTitle,omitempty"`
-
-	Department string `json:"department,omitempty"`
-
-	PhoneNumbers []SystemuserputPhoneNumbers `json:"phoneNumbers,omitempty"`
-
-	Relationships []interface{} `json:"relationships,omitempty"`
+	Middlename string `json:"middlename,omitempty"`
 
 	Password string `json:"password,omitempty"`
 
 	PasswordNeverExpires bool `json:"password_never_expires,omitempty"`
 
-	Middlename string `json:"middlename,omitempty"`
+	PhoneNumbers []SystemuserputPhoneNumbers `json:"phoneNumbers,omitempty"`
 
-	Displayname string `json:"displayname,omitempty"`
+	PublicKey string `json:"public_key,omitempty"`
 
-	Description string `json:"description,omitempty"`
+	Relationships []interface{} `json:"relationships,omitempty"`
 
-	Location string `json:"location,omitempty"`
+	SambaServiceUser bool `json:"samba_service_user,omitempty"`
 
-	CostCenter string `json:"costCenter,omitempty"`
+	SshKeys []Sshkeypost `json:"ssh_keys,omitempty"`
 
-	EmployeeType string `json:"employeeType,omitempty"`
+	Sudo bool `json:"sudo,omitempty"`
 
-	Company string `json:"company,omitempty"`
+	Tags []string `json:"tags,omitempty"`
 
-	// Must be unique per user. 
-	EmployeeIdentifier string `json:"employeeIdentifier,omitempty"`
+	UnixGuid int32 `json:"unix_guid,omitempty"`
 
-	Mfa *Mfa `json:"mfa,omitempty"`
+	UnixUid int32 `json:"unix_uid,omitempty"`
+
+	Username string `json:"username,omitempty"`
 }
