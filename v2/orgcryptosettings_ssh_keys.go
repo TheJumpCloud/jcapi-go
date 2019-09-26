@@ -11,9 +11,9 @@ package v2
 
 type OrgcryptosettingsSshKeys struct {
 
+	KeySize int32 `json:"keySize,omitempty"`
+
 	Validate bool `json:"validate,omitempty"`
 
 	ValidateKeySize bool `json:"validateKeySize,omitempty"`
-
-	KeySize int32 `json:"keySize,omitempty"`
 }

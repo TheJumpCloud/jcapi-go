@@ -1000,10 +1000,9 @@ func (a *PoliciesApiService) PolicyresultsGet(ctx context.Context, id string, co
      @param "fields" ([]string) The comma separated fields included in the returned records. If omitted, the default list of fields will be returned. 
      @param "filter" ([]string) Supported operators are: eq, ne, gt, ge, lt, le, between, search, in
      @param "limit" (int32) The number of records to return at once. Limited to 100.
+     @param "xOrgId" (string) 
      @param "skip" (int32) The offset into the records to return.
      @param "sort" ([]string) The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending. 
-     @param "aggregate" ([]string) 
-     @param "xOrgId" (string) 
  @return []PolicyResult*/
 func (a *PoliciesApiService) PolicyresultsList(ctx context.Context, policyId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]PolicyResult,  *http.Response, error) {
 	var (
@@ -1025,10 +1024,10 @@ func (a *PoliciesApiService) PolicyresultsList(ctx context.Context, policyId str
 	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
 		return successPayload, nil, err
 	}
-	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
 		return successPayload, nil, err
 	}
-	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
 		return successPayload, nil, err
 	}
 
@@ -1046,9 +1045,6 @@ func (a *PoliciesApiService) PolicyresultsList(ctx context.Context, policyId str
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["sort"].([]string); localVarOk {
 		localVarQueryParams.Add("sort", parameterToString(localVarTempParam, "csv"))
-	}
-	if localVarTempParam, localVarOk := localVarOptionals["aggregate"].([]string); localVarOk {
-		localVarQueryParams.Add("aggregate", parameterToString(localVarTempParam, "csv"))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1069,11 +1065,11 @@ func (a *PoliciesApiService) PolicyresultsList(ctx context.Context, policyId str
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
-	localVarHeaderParams["Accept"] = parameterToString(accept, "")
 	if localVarTempParam, localVarOk := localVarOptionals["xOrgId"].(string); localVarOk {
 		localVarHeaderParams["x-org-id"] = parameterToString(localVarTempParam, "")
 	}
+	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
+	localVarHeaderParams["Accept"] = parameterToString(accept, "")
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
@@ -1115,13 +1111,12 @@ func (a *PoliciesApiService) PolicyresultsList(ctx context.Context, policyId str
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "aggregate" ([]string) 
      @param "fields" ([]string) The comma separated fields included in the returned records. If omitted, the default list of fields will be returned. 
      @param "filter" ([]string) Supported operators are: eq, ne, gt, ge, lt, le, between, search, in
      @param "limit" (int32) The number of records to return at once. Limited to 100.
+     @param "xOrgId" (string) 
      @param "skip" (int32) The offset into the records to return.
      @param "sort" ([]string) The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending. 
-     @param "xOrgId" (string) 
  @return []PolicyResult*/
 func (a *PoliciesApiService) PolicyresultsList_1(ctx context.Context, contentType string, accept string, localVarOptionals map[string]interface{}) ([]PolicyResult,  *http.Response, error) {
 	var (
@@ -1142,16 +1137,13 @@ func (a *PoliciesApiService) PolicyresultsList_1(ctx context.Context, contentTyp
 	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
 		return successPayload, nil, err
 	}
-	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
-		return successPayload, nil, err
-	}
 	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
 		return successPayload, nil, err
 	}
-
-	if localVarTempParam, localVarOk := localVarOptionals["aggregate"].([]string); localVarOk {
-		localVarQueryParams.Add("aggregate", parameterToString(localVarTempParam, "csv"))
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+		return successPayload, nil, err
 	}
+
 	if localVarTempParam, localVarOk := localVarOptionals["fields"].([]string); localVarOk {
 		localVarQueryParams.Add("fields", parameterToString(localVarTempParam, "csv"))
 	}
@@ -1186,11 +1178,11 @@ func (a *PoliciesApiService) PolicyresultsList_1(ctx context.Context, contentTyp
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
-	localVarHeaderParams["Accept"] = parameterToString(accept, "")
 	if localVarTempParam, localVarOk := localVarOptionals["xOrgId"].(string); localVarOk {
 		localVarHeaderParams["x-org-id"] = parameterToString(localVarTempParam, "")
 	}
+	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
+	localVarHeaderParams["Accept"] = parameterToString(accept, "")
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {

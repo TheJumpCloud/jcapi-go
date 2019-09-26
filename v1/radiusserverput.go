@@ -13,15 +13,15 @@ type Radiusserverput struct {
 
 	Id string `json:"_id,omitempty"`
 
-	NetworkSourceIp string `json:"networkSourceIp,omitempty"`
+	Mfa string `json:"mfa,omitempty"`
 
 	Name string `json:"name,omitempty"`
+
+	NetworkSourceIp string `json:"networkSourceIp,omitempty"`
 
 	TagNames []string `json:"tagNames,omitempty"`
 
 	UserLockoutAction string `json:"userLockoutAction,omitempty"`
 
 	UserPasswordExpirationAction string `json:"userPasswordExpirationAction,omitempty"`
-
-	Mfa string `json:"mfa,omitempty"`
 }

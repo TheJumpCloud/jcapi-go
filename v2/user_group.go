@@ -14,9 +14,9 @@ type UserGroup struct {
 	// ObjectId uniquely identifying a User Group.
 	Id string `json:"id,omitempty"`
 
-	// The type of the group.
-	Type_ string `json:"type,omitempty"`
-
 	// Display name of a User Group.
 	Name string `json:"name,omitempty"`
+
+	// The type of the group.
+	Type_ string `json:"type,omitempty"`
 }

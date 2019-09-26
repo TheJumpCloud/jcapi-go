@@ -13,11 +13,11 @@ type ApplicationConfigConstantAttributesValue struct {
 
 	Name string `json:"name,omitempty"`
 
-	Value string `json:"value,omitempty"`
+	ReadOnly bool `json:"readOnly,omitempty"`
 
 	Required bool `json:"required,omitempty"`
 
-	Visible bool `json:"visible,omitempty"`
+	Value string `json:"value,omitempty"`
 
-	ReadOnly bool `json:"readOnly,omitempty"`
+	Visible bool `json:"visible,omitempty"`
 }
