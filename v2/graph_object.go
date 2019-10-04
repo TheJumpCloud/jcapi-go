@@ -11,9 +11,9 @@ package v2
 
 type GraphObject struct {
 
-	// The type of graph object.
-	Type_ string `json:"type"`
-
 	// The ObjectID of the graph object.
 	Id string `json:"id"`
+
+	// The type of graph object.
+	Type_ string `json:"type"`
 }

@@ -11,8 +11,8 @@ package v1
 
 type CommandslistResults struct {
 
-	// The name of the Command.
-	Name string `json:"name,omitempty"`
+	// The ID of the command.
+	Id string `json:"_id,omitempty"`
 
 	// The Command to execute.
 	Command string `json:"command,omitempty"`
@@ -26,18 +26,18 @@ type CommandslistResults struct {
 	// 
 	ListensTo string `json:"listensTo,omitempty"`
 
-	// A crontab that consists of: [ (seconds) (minutes) (hours) (days of month) (months) (weekdays) ] or [ immediate ]. If you send this as an empty string, it will run immediately. 
-	Schedule string `json:"schedule,omitempty"`
-
-	// Trigger to execute command.
-	Trigger string `json:"trigger,omitempty"`
-
-	// When the command will repeat.
-	ScheduleRepeatType string `json:"scheduleRepeatType,omitempty"`
+	// The name of the Command.
+	Name string `json:"name,omitempty"`
 
 	// The ID of the Organization.
 	Organization string `json:"organization,omitempty"`
 
-	// The ID of the command.
-	Id string `json:"_id,omitempty"`
+	// A crontab that consists of: [ (seconds) (minutes) (hours) (days of month) (months) (weekdays) ] or [ immediate ]. If you send this as an empty string, it will run immediately. 
+	Schedule string `json:"schedule,omitempty"`
+
+	// When the command will repeat.
+	ScheduleRepeatType string `json:"scheduleRepeatType,omitempty"`
+
+	// Trigger to execute command.
+	Trigger string `json:"trigger,omitempty"`
 }

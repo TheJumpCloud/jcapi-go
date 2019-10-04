@@ -11,7 +11,7 @@ package v2
 
 type WorkdayRequest struct {
 
-	ObjectId string `json:"objectId,omitempty"`
-
 	Name string `json:"name,omitempty"`
+
+	ObjectId string `json:"objectId,omitempty"`
 }

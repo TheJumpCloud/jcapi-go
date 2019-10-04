@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | ObjectId uniquely identifying a Policy Template Configuration Field | [default to null]
 **DisplayType** | **string** | The default rendering for this field. | [optional] [default to null]
+**Id** | **string** | ObjectId uniquely identifying a Policy Template Configuration Field | [default to null]
 **Label** | **string** | The default label for this field. | [optional] [default to null]
 **Name** | **string** | A unique name identifying this config field. | [default to null]
 **Position** | **float32** | The default position to render this field. | [optional] [default to null]

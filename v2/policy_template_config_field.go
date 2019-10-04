@@ -11,11 +11,11 @@ package v2
 
 type PolicyTemplateConfigField struct {
 
-	// ObjectId uniquely identifying a Policy Template Configuration Field
-	Id string `json:"id"`
-
 	// The default rendering for this field.
 	DisplayType string `json:"displayType,omitempty"`
+
+	// ObjectId uniquely identifying a Policy Template Configuration Field
+	Id string `json:"id"`
 
 	// The default label for this field.
 	Label string `json:"label,omitempty"`

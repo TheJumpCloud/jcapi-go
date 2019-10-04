@@ -11,9 +11,9 @@ package v1
 
 type Sshkeypost struct {
 
-	// The Public SSH key.
-	PublicKey string `json:"public_key"`
-
 	// The name of the SSH key.
 	Name string `json:"name"`
+
+	// The Public SSH key.
+	PublicKey string `json:"public_key"`
 }

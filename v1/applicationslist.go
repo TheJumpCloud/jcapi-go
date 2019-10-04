@@ -11,9 +11,9 @@ package v1
 
 type Applicationslist struct {
 
-	// The total number of applications.
-	TotalCount int32 `json:"totalCount,omitempty"`
-
 	// The list of applications.
 	Results []Application `json:"results,omitempty"`
+
+	// The total number of applications.
+	TotalCount int32 `json:"totalCount,omitempty"`
 }
