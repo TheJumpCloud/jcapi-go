@@ -11,17 +11,17 @@ package v1
 
 type Systemput struct {
 
-	AgentBoundMessages []SystemputAgentBoundMessages `json:"agentBoundMessages,omitempty"`
-
-	AllowMultiFactorAuthentication bool `json:"allowMultiFactorAuthentication,omitempty"`
-
-	AllowPublicKeyAuthentication bool `json:"allowPublicKeyAuthentication,omitempty"`
+	DisplayName string `json:"displayName,omitempty"`
 
 	AllowSshPasswordAuthentication bool `json:"allowSshPasswordAuthentication,omitempty"`
 
 	AllowSshRootLogin bool `json:"allowSshRootLogin,omitempty"`
 
-	DisplayName string `json:"displayName,omitempty"`
+	AllowMultiFactorAuthentication bool `json:"allowMultiFactorAuthentication,omitempty"`
+
+	AllowPublicKeyAuthentication bool `json:"allowPublicKeyAuthentication,omitempty"`
+
+	AgentBoundMessages []SystemputAgentBoundMessages `json:"agentBoundMessages,omitempty"`
 
 	Tags []string `json:"tags,omitempty"`
 }

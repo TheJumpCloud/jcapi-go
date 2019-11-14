@@ -11,27 +11,27 @@ package v2
 
 type SystemInsightsSafariExtensions struct {
 
-	Author string `json:"author,omitempty"`
-
-	CollectionTime string `json:"collection_time,omitempty"`
-
-	Description string `json:"description,omitempty"`
-
-	DeveloperId string `json:"developer_id,omitempty"`
-
-	Identifier string `json:"identifier,omitempty"`
+	Uid string `json:"uid,omitempty"`
 
 	Name string `json:"name,omitempty"`
 
-	Path string `json:"path,omitempty"`
+	Identifier string `json:"identifier,omitempty"`
+
+	Version string `json:"version,omitempty"`
 
 	Sdk string `json:"sdk,omitempty"`
 
-	SystemId string `json:"system_id,omitempty"`
-
-	Uid string `json:"uid,omitempty"`
-
 	UpdateUrl string `json:"update_url,omitempty"`
 
-	Version string `json:"version,omitempty"`
+	Author string `json:"author,omitempty"`
+
+	DeveloperId string `json:"developer_id,omitempty"`
+
+	Description string `json:"description,omitempty"`
+
+	Path string `json:"path,omitempty"`
+
+	CollectionTime string `json:"collection_time,omitempty"`
+
+	SystemId string `json:"system_id,omitempty"`
 }

@@ -11,19 +11,19 @@ package v2
 
 type JobDetails struct {
 
-	AdminId string `json:"adminId,omitempty"`
-
 	Id string `json:"id,omitempty"`
 
-	Meta *interface{} `json:"meta,omitempty"`
+	AdminId string `json:"adminId,omitempty"`
+
+	WorkUnitsCount int32 `json:"workUnitsCount,omitempty"`
 
 	Name string `json:"name,omitempty"`
 
-	PersistedFields []string `json:"persistedFields,omitempty"`
-
 	Status string `json:"status,omitempty"`
+
+	Meta *interface{} `json:"meta,omitempty"`
 
 	UpdatedAt string `json:"updatedAt,omitempty"`
 
-	WorkUnitsCount int32 `json:"workUnitsCount,omitempty"`
+	PersistedFields []string `json:"persistedFields,omitempty"`
 }

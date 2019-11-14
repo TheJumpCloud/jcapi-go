@@ -11,15 +11,15 @@ package v2
 
 type Sshkeylist struct {
 
-	// The ID of the SSH key.
-	Id string `json:"_id,omitempty"`
-
 	// The date the SSH key was created.
 	CreateDate string `json:"create_date,omitempty"`
 
-	// The name of the SSH key.
-	Name string `json:"name,omitempty"`
+	// The ID of the SSH key.
+	Id string `json:"_id,omitempty"`
 
 	// The Public SSH key.
 	PublicKey string `json:"public_key,omitempty"`
+
+	// The name of the SSH key.
+	Name string `json:"name,omitempty"`
 }

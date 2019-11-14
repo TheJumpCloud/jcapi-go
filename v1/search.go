@@ -11,9 +11,9 @@ package v1
 
 type Search struct {
 
-	Fields string `json:"fields,omitempty"`
-
 	Filter *interface{} `json:"filter,omitempty"`
+
+	Fields string `json:"fields,omitempty"`
 
 	SearchFilter *interface{} `json:"searchFilter,omitempty"`
 }

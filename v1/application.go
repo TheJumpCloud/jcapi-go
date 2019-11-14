@@ -13,19 +13,19 @@ type Application struct {
 
 	Id string `json:"_id,omitempty"`
 
-	Active bool `json:"active,omitempty"`
+	Beta bool `json:"beta,omitempty"`
 
-	Config *ApplicationConfig `json:"config,omitempty"`
-
-	DisplayLabel string `json:"displayLabel,omitempty"`
+	Name string `json:"name,omitempty"`
 
 	DisplayName string `json:"displayName,omitempty"`
 
-	LearnMore string `json:"learnMore,omitempty"`
-
-	Name string `json:"name,omitempty"`
+	DisplayLabel string `json:"displayLabel,omitempty"`
 
 	Organization string `json:"organization,omitempty"`
 
 	SsoUrl string `json:"ssoUrl,omitempty"`
+
+	LearnMore string `json:"learnMore,omitempty"`
+
+	Config *ApplicationConfig `json:"config,omitempty"`
 }

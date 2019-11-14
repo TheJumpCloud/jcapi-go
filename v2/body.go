@@ -11,9 +11,9 @@ package v2
 
 type Body struct {
 
-	Id string `json:"id,omitempty"`
+	Name string `json:"name,omitempty"`
 
-	UserLockoutAction *LdapServerAction `json:"userLockoutAction,omitempty"`
+	Groups []string `json:"groups,omitempty"`
 
-	UserPasswordExpirationAction *LdapServerAction `json:"userPasswordExpirationAction,omitempty"`
+	Users []string `json:"users,omitempty"`
 }

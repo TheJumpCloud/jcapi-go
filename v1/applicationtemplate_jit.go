@@ -9,9 +9,9 @@
 
 package v1
 
-type ApplicationConfigAcsUrlTooltip struct {
+type ApplicationtemplateJit struct {
 
-	Template string `json:"template,omitempty"`
+	CreateOnly bool `json:"createOnly,omitempty"`
 
-	Variables *ApplicationConfigAcsUrlTooltipVariables `json:"variables,omitempty"`
+	Attributes *interface{} `json:"attributes,omitempty"`
 }

@@ -11,21 +11,21 @@ package v2
 
 type SystemInsightsInterfaceAddresses struct {
 
-	Address string `json:"address,omitempty"`
-
-	Broadcast string `json:"broadcast,omitempty"`
-
-	CollectionTime string `json:"collection_time,omitempty"`
-
-	FriendlyName string `json:"friendly_name,omitempty"`
-
 	Interface_ string `json:"interface,omitempty"`
+
+	Address string `json:"address,omitempty"`
 
 	Mask string `json:"mask,omitempty"`
 
+	Broadcast string `json:"broadcast,omitempty"`
+
 	PointToPoint string `json:"point_to_point,omitempty"`
 
-	SystemId string `json:"system_id,omitempty"`
-
 	Type_ string `json:"type,omitempty"`
+
+	FriendlyName string `json:"friendly_name,omitempty"`
+
+	CollectionTime string `json:"collection_time,omitempty"`
+
+	SystemId string `json:"system_id,omitempty"`
 }

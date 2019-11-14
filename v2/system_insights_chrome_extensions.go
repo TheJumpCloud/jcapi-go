@@ -11,29 +11,29 @@ package v2
 
 type SystemInsightsChromeExtensions struct {
 
-	Author string `json:"author,omitempty"`
+	Uid string `json:"uid,omitempty"`
 
-	CollectionTime string `json:"collection_time,omitempty"`
-
-	Description string `json:"description,omitempty"`
+	Name string `json:"name,omitempty"`
 
 	Identifier string `json:"identifier,omitempty"`
 
+	Version string `json:"version,omitempty"`
+
+	Description string `json:"description,omitempty"`
+
 	Locale string `json:"locale,omitempty"`
 
-	Name string `json:"name,omitempty"`
+	UpdateUrl string `json:"update_url,omitempty"`
+
+	Author string `json:"author,omitempty"`
+
+	Persistent int32 `json:"persistent,omitempty"`
 
 	Path string `json:"path,omitempty"`
 
 	Permissions string `json:"permissions,omitempty"`
 
-	Persistent int32 `json:"persistent,omitempty"`
+	CollectionTime string `json:"collection_time,omitempty"`
 
 	SystemId string `json:"system_id,omitempty"`
-
-	Uid string `json:"uid,omitempty"`
-
-	UpdateUrl string `json:"update_url,omitempty"`
-
-	Version string `json:"version,omitempty"`
 }

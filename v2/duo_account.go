@@ -16,6 +16,4 @@ type DuoAccount struct {
 
 	// Duo application name.
 	Name string `json:"name,omitempty"`
-
-	RegistrationApplication *DuoRegistrationApplication `json:"registrationApplication"`
 }

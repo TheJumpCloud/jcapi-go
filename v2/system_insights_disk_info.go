@@ -11,29 +11,29 @@ package v2
 
 type SystemInsightsDiskInfo struct {
 
-	CollectionTime string `json:"collection_time,omitempty"`
-
-	Description string `json:"description,omitempty"`
+	Partitions int32 `json:"partitions,omitempty"`
 
 	DiskIndex int32 `json:"disk_index,omitempty"`
 
-	DiskSize string `json:"disk_size,omitempty"`
-
-	HardwareModel string `json:"hardware_model,omitempty"`
+	Type_ string `json:"type,omitempty"`
 
 	Id string `json:"id,omitempty"`
 
+	PnpDeviceId string `json:"pnp_device_id,omitempty"`
+
+	DiskSize string `json:"disk_size,omitempty"`
+
 	Manufacturer string `json:"manufacturer,omitempty"`
+
+	HardwareModel string `json:"hardware_model,omitempty"`
 
 	Name string `json:"name,omitempty"`
 
-	Partitions int32 `json:"partitions,omitempty"`
-
-	PnpDeviceId string `json:"pnp_device_id,omitempty"`
-
 	Serial string `json:"serial,omitempty"`
 
-	SystemId string `json:"system_id,omitempty"`
+	Description string `json:"description,omitempty"`
 
-	Type_ string `json:"type,omitempty"`
+	CollectionTime string `json:"collection_time,omitempty"`
+
+	SystemId string `json:"system_id,omitempty"`
 }

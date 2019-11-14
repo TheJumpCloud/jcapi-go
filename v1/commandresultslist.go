@@ -11,9 +11,9 @@ package v1
 
 type Commandresultslist struct {
 
-	// The list of command results
-	Results []Commandresult `json:"results,omitempty"`
-
 	// The total number of command results
 	TotalCount int32 `json:"totalCount,omitempty"`
+
+	// The list of command results
+	Results []Commandresult `json:"results,omitempty"`
 }

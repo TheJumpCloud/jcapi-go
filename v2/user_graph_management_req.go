@@ -13,11 +13,11 @@ type UserGraphManagementReq struct {
 
 	Attributes *SystemGraphManagementReqAttributes `json:"attributes,omitempty"`
 
-	// The ObjectID of graph object being added or removed as an association.
-	Id string `json:"id"`
-
 	// How to modify the graph connection.
 	Op string `json:"op"`
 
 	Type_ string `json:"type"`
+
+	// The ObjectID of graph object being added or removed as an association.
+	Id string `json:"id"`
 }

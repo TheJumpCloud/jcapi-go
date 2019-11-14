@@ -11,9 +11,9 @@ package v1
 
 type Systemslist struct {
 
-	// The list of systems.
-	Results []System `json:"results,omitempty"`
-
 	// The total number of systems.
 	TotalCount int32 `json:"totalCount,omitempty"`
+
+	// The list of systems.
+	Results []System `json:"results,omitempty"`
 }

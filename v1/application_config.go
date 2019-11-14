@@ -11,15 +11,17 @@ package v1
 
 type ApplicationConfig struct {
 
-	AcsUrl *ApplicationConfigAcsUrl `json:"acsUrl,omitempty"`
+	IdpEntityId *ApplicationConfigIdpEntityId `json:"idpEntityId,omitempty"`
+
+	IdpCertificate *ApplicationConfigIdpEntityId `json:"idpCertificate,omitempty"`
+
+	SpEntityId *ApplicationConfigIdpEntityId `json:"spEntityId,omitempty"`
+
+	AcsUrl *ApplicationConfigIdpEntityId `json:"acsUrl,omitempty"`
 
 	ConstantAttributes *ApplicationConfigConstantAttributes `json:"constantAttributes,omitempty"`
 
 	DatabaseAttributes *ApplicationConfigDatabaseAttributes `json:"databaseAttributes,omitempty"`
 
-	IdpCertificate *ApplicationConfigAcsUrl `json:"idpCertificate,omitempty"`
-
-	IdpEntityId *ApplicationConfigAcsUrl `json:"idpEntityId,omitempty"`
-
-	SpEntityId *ApplicationConfigAcsUrl `json:"spEntityId,omitempty"`
+	IdpPrivateKey *ApplicationConfigIdpEntityId `json:"idpPrivateKey,omitempty"`
 }

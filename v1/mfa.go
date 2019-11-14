@@ -15,9 +15,9 @@ import (
 
 type Mfa struct {
 
-	Configured bool `json:"configured,omitempty"`
-
 	Exclusion bool `json:"exclusion,omitempty"`
 
 	ExclusionUntil time.Time `json:"exclusionUntil,omitempty"`
+
+	Configured bool `json:"configured,omitempty"`
 }

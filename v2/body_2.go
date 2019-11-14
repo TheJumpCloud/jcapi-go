@@ -9,9 +9,8 @@
 
 package v2
 
-type UserGroupPostAttributesPosixGroups struct {
+type Body2 struct {
 
-	Id int32 `json:"id,omitempty"`
-
+	// The name used to identify this AppleMDM.
 	Name string `json:"name,omitempty"`
 }

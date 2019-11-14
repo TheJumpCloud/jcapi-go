@@ -7,8 +7,8 @@ Method | HTTP request | Description
 [**CommandFileGet**](CommandsApi.md#CommandFileGet) | **Get** /files/command/{id} | Get a Command File
 [**CommandsDelete**](CommandsApi.md#CommandsDelete) | **Delete** /commands/{id} | Delete a Command
 [**CommandsGet**](CommandsApi.md#CommandsGet) | **Get** /commands/{id} | List an individual Command
-[**CommandsList**](CommandsApi.md#CommandsList) | **Get** /commands/ | List All Commands
-[**CommandsPost**](CommandsApi.md#CommandsPost) | **Post** /commands/ | Create A Command
+[**CommandsList**](CommandsApi.md#CommandsList) | **Get** /commands | List All Commands
+[**CommandsPost**](CommandsApi.md#CommandsPost) | **Post** /commands | Create A Command
 [**CommandsPut**](CommandsApi.md#CommandsPut) | **Put** /commands/{id} | Update a Command
 
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 > Commandfilereturn CommandFileGet(ctx, id, contentType, accept, optional)
 Get a Command File
 
-This endpoint returns the uploaded file(s) associated with a specific command.  #### Sample Request  ``` curl -X GET https://console.jumpcloud.com/api/files/command/{commandID} \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'    ```
+This endpoint returns the uploaded file(s) associated with a specific command.  #### Sample Request  ``` curl -X GET https://console.jumpcloud.com/api/files/command/{commandID} \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'   ```
 
 ### Required Parameters
 
@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
 > Command CommandsGet(ctx, id, contentType, accept, optional)
 List an individual Command
 
-This endpoint returns a specific command based on the command ID.  #### Sample Request ``` curl -X GET https://console.jumpcloud.com/api/commands/{CommandID} \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'  ```
+This endpoint returns a specific command based on the command ID.  #### Sample Request ``` curl -X GET https://console.jumpcloud.com/api/commands/{CommandID} \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}' ```
 
 ### Required Parameters
 

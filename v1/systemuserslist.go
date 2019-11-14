@@ -11,9 +11,9 @@ package v1
 
 type Systemuserslist struct {
 
-	// The list of system users.
-	Results []Systemuserreturn `json:"results,omitempty"`
-
 	// The total number of system users.
 	TotalCount int32 `json:"totalCount,omitempty"`
+
+	// The list of system users.
+	Results []Systemuserreturn `json:"results,omitempty"`
 }

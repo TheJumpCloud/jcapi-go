@@ -11,11 +11,11 @@ package v1
 
 type CommandresultResponse struct {
 
-	Data *CommandresultResponseData `json:"data,omitempty"`
+	// ID of the response.
+	Id string `json:"id,omitempty"`
 
 	// The stderr output from the command that ran.
 	Error_ string `json:"error,omitempty"`
 
-	// ID of the response.
-	Id string `json:"id,omitempty"`
+	Data *CommandresultResponseData `json:"data,omitempty"`
 }

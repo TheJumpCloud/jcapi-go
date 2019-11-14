@@ -12,17 +12,17 @@ package v2
 // See [V1 system user update](https://docs.jumpcloud.com/1.0/systemusers/update-a-system-user) for full list of attributes.
 type BulkUserUpdate struct {
 
-	// Map of additional attributes.
-	Attributes []interface{} `json:"attributes,omitempty"`
-
-	Email string `json:"email,omitempty"`
-
-	Firstname string `json:"firstname,omitempty"`
-
 	// Object ID of the systemuser being updated
 	Id string `json:"id,omitempty"`
 
+	Username string `json:"username,omitempty"`
+
+	Firstname string `json:"firstname,omitempty"`
+
 	Lastname string `json:"lastname,omitempty"`
 
-	Username string `json:"username,omitempty"`
+	Email string `json:"email,omitempty"`
+
+	// Map of additional attributes.
+	Attributes []interface{} `json:"attributes,omitempty"`
 }

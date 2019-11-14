@@ -11,9 +11,9 @@ package v2
 
 type ActiveDirectoryAgentGetOutput struct {
 
-	// The connect key to use when installing the Agent on a Domain Controller.
-	ConnectKey string `json:"connectKey,omitempty"`
-
 	// ObjectID of this Active Directory Agent.
 	Id string `json:"id"`
+
+	// The connect key to use when installing the Agent on a Domain Controller.
+	ConnectKey string `json:"connectKey,omitempty"`
 }

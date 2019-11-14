@@ -11,37 +11,37 @@ package v2
 
 type SystemInsightsSystemInfo struct {
 
-	CollectionTime string `json:"collection_time,omitempty"`
+	Hostname string `json:"hostname,omitempty"`
 
-	ComputerName string `json:"computer_name,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
+
+	CpuType string `json:"cpu_type,omitempty"`
+
+	CpuSubtype string `json:"cpu_subtype,omitempty"`
 
 	CpuBrand string `json:"cpu_brand,omitempty"`
+
+	CpuPhysicalCores int32 `json:"cpu_physical_cores,omitempty"`
 
 	CpuLogicalCores int32 `json:"cpu_logical_cores,omitempty"`
 
 	CpuMicrocode string `json:"cpu_microcode,omitempty"`
 
-	CpuPhysicalCores int32 `json:"cpu_physical_cores,omitempty"`
-
-	CpuSubtype string `json:"cpu_subtype,omitempty"`
-
-	CpuType string `json:"cpu_type,omitempty"`
-
-	HardwareModel string `json:"hardware_model,omitempty"`
-
-	HardwareSerial string `json:"hardware_serial,omitempty"`
+	PhysicalMemory string `json:"physical_memory,omitempty"`
 
 	HardwareVendor string `json:"hardware_vendor,omitempty"`
 
+	HardwareModel string `json:"hardware_model,omitempty"`
+
 	HardwareVersion string `json:"hardware_version,omitempty"`
 
-	Hostname string `json:"hostname,omitempty"`
+	HardwareSerial string `json:"hardware_serial,omitempty"`
+
+	ComputerName string `json:"computer_name,omitempty"`
 
 	LocalHostname string `json:"local_hostname,omitempty"`
 
-	PhysicalMemory string `json:"physical_memory,omitempty"`
+	CollectionTime string `json:"collection_time,omitempty"`
 
 	SystemId string `json:"system_id,omitempty"`
-
-	Uuid string `json:"uuid,omitempty"`
 }

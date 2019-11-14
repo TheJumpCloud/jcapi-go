@@ -44,15 +44,18 @@ type APIClient struct {
 
 	 // API Services
 	ActiveDirectoryApi	*ActiveDirectoryApiService
+	AppleMDMApi	*AppleMDMApiService
 	ApplicationsApi	*ApplicationsApiService
 	BulkJobRequestsApi	*BulkJobRequestsApiService
 	CommandsApi	*CommandsApiService
+	DefaultApi	*DefaultApiService
 	DirectoriesApi	*DirectoriesApiService
 	DuoApi	*DuoApiService
 	FdeApi	*FdeApiService
 	GSuiteApi	*GSuiteApiService
 	GraphApi	*GraphApiService
 	GroupsApi	*GroupsApiService
+	KnowledgeApi	*KnowledgeApiService
 	LDAPServersApi	*LDAPServersApiService
 	Office365Api	*Office365ApiService
 	OrganizationsApi	*OrganizationsApiService
@@ -90,15 +93,18 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	// API Services
 	c.ActiveDirectoryApi = (*ActiveDirectoryApiService)(&c.common)
+	c.AppleMDMApi = (*AppleMDMApiService)(&c.common)
 	c.ApplicationsApi = (*ApplicationsApiService)(&c.common)
 	c.BulkJobRequestsApi = (*BulkJobRequestsApiService)(&c.common)
 	c.CommandsApi = (*CommandsApiService)(&c.common)
+	c.DefaultApi = (*DefaultApiService)(&c.common)
 	c.DirectoriesApi = (*DirectoriesApiService)(&c.common)
 	c.DuoApi = (*DuoApiService)(&c.common)
 	c.FdeApi = (*FdeApiService)(&c.common)
 	c.GSuiteApi = (*GSuiteApiService)(&c.common)
 	c.GraphApi = (*GraphApiService)(&c.common)
 	c.GroupsApi = (*GroupsApiService)(&c.common)
+	c.KnowledgeApi = (*KnowledgeApiService)(&c.common)
 	c.LDAPServersApi = (*LDAPServersApiService)(&c.common)
 	c.Office365Api = (*Office365ApiService)(&c.common)
 	c.OrganizationsApi = (*OrganizationsApiService)(&c.common)

@@ -9,7 +9,7 @@
 
 package v1
 
-type ApplicationConfigAcsUrlTooltipVariables struct {
+type ApplicationConfigIdpEntityIdTooltipVariables struct {
 
 	Icon string `json:"icon,omitempty"`
 

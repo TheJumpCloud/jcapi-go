@@ -14,9 +14,9 @@ type SystemGroup struct {
 	// ObjectId uniquely identifying a System Group.
 	Id string `json:"id,omitempty"`
 
-	// Display name of a System Group.
-	Name string `json:"name,omitempty"`
-
 	// The type of the group; always 'system' for a System Group.
 	Type_ string `json:"type,omitempty"`
+
+	// Display name of a System Group.
+	Name string `json:"name,omitempty"`
 }

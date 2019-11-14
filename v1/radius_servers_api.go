@@ -16,6 +16,7 @@ import (
 	"strings"
 	"golang.org/x/net/context"
 	"encoding/json"
+	"fmt"
 )
 
 // Linger please
@@ -156,14 +157,14 @@ func (a *RadiusServersApiService) RadiusServersList(ctx context.Context, content
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "body" (Radiusserverpost) 
      @param "xOrgId" (string) 
- @return Radiusserverslist*/
-func (a *RadiusServersApiService) RadiusServersPost(ctx context.Context, contentType string, accept string, localVarOptionals map[string]interface{}) (Radiusserverslist,  *http.Response, error) {
+ @return Radiusserver*/
+func (a *RadiusServersApiService) RadiusServersPost(ctx context.Context, contentType string, accept string, localVarOptionals map[string]interface{}) (Radiusserver,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localVarFileName string
 		localVarFileBytes []byte
-	 	successPayload  Radiusserverslist
+	 	successPayload  Radiusserver
 	)
 
 	// create path and map variables
@@ -241,15 +242,16 @@ func (a *RadiusServersApiService) RadiusServersPost(ctx context.Context, content
 }
 
 /* RadiusServersApiService Update Radius Servers
- This endpoint allows you to update RADIUS servers in your organization.  ####  &#x60;&#x60;&#x60; curl -X PUT https://console.jumpcloud.com/api/radiusservers/{ServerID} \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39; \\   -d &#39;{     \&quot;name\&quot;: \&quot;{name_update}\&quot;,     \&quot;networkSourceIp\&quot;: \&quot;{0.0.0.0}\&quot;,     \&quot;userLockoutAction\&quot;: \&quot;REMOVE\&quot;,     \&quot;userPasswordExpirationAction\&quot;: \&quot;MAINTAIN\&quot; }&#39; &#x60;&#x60;&#x60;
+ This endpoint allows you to update RADIUS servers in your organization.  #### &#x60;&#x60;&#x60; curl -X PUT https://console.jumpcloud.com/api/radiusservers/{ServerID} \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39; \\   -d &#39;{     \&quot;name\&quot;: \&quot;{name_update}\&quot;,     \&quot;networkSourceIp\&quot;: \&quot;{0.0.0.0}\&quot;,     \&quot;userLockoutAction\&quot;: \&quot;REMOVE\&quot;,     \&quot;userPasswordExpirationAction\&quot;: \&quot;MAINTAIN\&quot; }&#39; &#x60;&#x60;&#x60;
  * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param id 
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "body" (Body) 
      @param "xOrgId" (string) 
  @return Radiusserverput*/
-func (a *RadiusServersApiService) RadiusServersPut(ctx context.Context, contentType string, accept string, localVarOptionals map[string]interface{}) (Radiusserverput,  *http.Response, error) {
+func (a *RadiusServersApiService) RadiusServersPut(ctx context.Context, id string, contentType string, accept string, localVarOptionals map[string]interface{}) (Radiusserverput,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
@@ -259,7 +261,8 @@ func (a *RadiusServersApiService) RadiusServersPut(ctx context.Context, contentT
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/radiusservers:id"
+	localVarPath := a.client.cfg.BasePath + "/radiusservers/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

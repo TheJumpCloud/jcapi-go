@@ -11,57 +11,57 @@ package v1
 
 type System struct {
 
-	Id string `json:"_id,omitempty"`
+	Organization string `json:"organization,omitempty"`
+
+	Created string `json:"created,omitempty"`
+
+	LastContact string `json:"lastContact,omitempty"`
+
+	Os string `json:"os,omitempty"`
+
+	Version string `json:"version,omitempty"`
+
+	Arch string `json:"arch,omitempty"`
+
+	NetworkInterfaces []SystemNetworkInterfaces `json:"networkInterfaces,omitempty"`
+
+	Hostname string `json:"hostname,omitempty"`
+
+	DisplayName string `json:"displayName,omitempty"`
+
+	SystemTimezone int32 `json:"systemTimezone,omitempty"`
+
+	TemplateName string `json:"templateName,omitempty"`
+
+	RemoteIP string `json:"remoteIP,omitempty"`
 
 	Active bool `json:"active,omitempty"`
 
-	AgentVersion string `json:"agentVersion,omitempty"`
-
-	AllowMultiFactorAuthentication bool `json:"allowMultiFactorAuthentication,omitempty"`
-
-	AllowPublicKeyAuthentication bool `json:"allowPublicKeyAuthentication,omitempty"`
+	SshdParams []SystemSshdParams `json:"sshdParams,omitempty"`
 
 	AllowSshPasswordAuthentication bool `json:"allowSshPasswordAuthentication,omitempty"`
 
 	AllowSshRootLogin bool `json:"allowSshRootLogin,omitempty"`
 
-	AmazonInstanceID string `json:"amazonInstanceID,omitempty"`
+	AllowMultiFactorAuthentication bool `json:"allowMultiFactorAuthentication,omitempty"`
 
-	Arch string `json:"arch,omitempty"`
-
-	ConnectionHistory []interface{} `json:"connectionHistory,omitempty"`
-
-	Created string `json:"created,omitempty"`
-
-	DisplayName string `json:"displayName,omitempty"`
-
-	Fde *Fde `json:"fde,omitempty"`
-
-	Hostname string `json:"hostname,omitempty"`
-
-	LastContact string `json:"lastContact,omitempty"`
+	AllowPublicKeyAuthentication bool `json:"allowPublicKeyAuthentication,omitempty"`
 
 	ModifySSHDConfig bool `json:"modifySSHDConfig,omitempty"`
 
-	NetworkInterfaces []SystemNetworkInterfaces `json:"networkInterfaces,omitempty"`
+	AgentVersion string `json:"agentVersion,omitempty"`
 
-	Organization string `json:"organization,omitempty"`
-
-	Os string `json:"os,omitempty"`
-
-	RemoteIP string `json:"remoteIP,omitempty"`
+	ConnectionHistory []interface{} `json:"connectionHistory,omitempty"`
 
 	SshRootEnabled bool `json:"sshRootEnabled,omitempty"`
 
-	SshdParams []SystemSshdParams `json:"sshdParams,omitempty"`
-
-	SystemInsights *SystemSystemInsights `json:"systemInsights,omitempty"`
-
-	SystemTimezone int32 `json:"systemTimezone,omitempty"`
-
 	Tags []string `json:"tags,omitempty"`
 
-	TemplateName string `json:"templateName,omitempty"`
+	Id string `json:"_id,omitempty"`
 
-	Version string `json:"version,omitempty"`
+	Fde *Fde `json:"fde,omitempty"`
+
+	AmazonInstanceID string `json:"amazonInstanceID,omitempty"`
+
+	SystemInsights *SystemSystemInsights `json:"systemInsights,omitempty"`
 }

@@ -9,10 +9,9 @@
 
 package v2
 
-// The group object's attributes.
-type UserGroupPostAttributes struct {
+type UserGroupAttributes struct {
 
-	PosixGroups []UserGroupPostAttributesPosixGroups `json:"posixGroups,omitempty"`
+	PosixGroups []UserGroupAttributesPosixGroups `json:"posixGroups,omitempty"`
 
 	SambaEnabled bool `json:"sambaEnabled,omitempty"`
 }

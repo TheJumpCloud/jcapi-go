@@ -11,7 +11,7 @@ package v1
 
 type SystemuserputPhoneNumbers struct {
 
-	Number string `json:"number,omitempty"`
-
 	Type_ string `json:"type,omitempty"`
+
+	Number string `json:"number,omitempty"`
 }

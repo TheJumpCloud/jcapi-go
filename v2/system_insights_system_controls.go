@@ -11,21 +11,21 @@ package v2
 
 type SystemInsightsSystemControls struct {
 
-	CollectionTime string `json:"collection_time,omitempty"`
-
-	ConfigValue string `json:"config_value,omitempty"`
-
-	CurrentValue string `json:"current_value,omitempty"`
-
-	FieldName string `json:"field_name,omitempty"`
-
 	Name string `json:"name,omitempty"`
 
 	Oid string `json:"oid,omitempty"`
 
 	Subsystem string `json:"subsystem,omitempty"`
 
-	SystemId string `json:"system_id,omitempty"`
+	CurrentValue string `json:"current_value,omitempty"`
+
+	ConfigValue string `json:"config_value,omitempty"`
 
 	Type_ string `json:"type,omitempty"`
+
+	FieldName string `json:"field_name,omitempty"`
+
+	SystemId string `json:"system_id,omitempty"`
+
+	CollectionTime string `json:"collection_time,omitempty"`
 }

@@ -11,7 +11,7 @@ package v2
 
 type AuthInput struct {
 
-	Basic *AuthinputBasic `json:"basic,omitempty"`
-
 	Oauth *AuthinputOauth `json:"oauth,omitempty"`
+
+	Basic *AuthinputBasic `json:"basic,omitempty"`
 }

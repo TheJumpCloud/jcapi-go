@@ -21,6 +21,8 @@ All URIs are relative to *https://console.jumpcloud.com/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*ApplicationTemplatesApi* | [**ApplicationTemplatesGet**](docs/ApplicationTemplatesApi.md#applicationtemplatesget) | **Get** /application-templates/{id} | Get an Application Template
+*ApplicationTemplatesApi* | [**ApplicationTemplatesList**](docs/ApplicationTemplatesApi.md#applicationtemplateslist) | **Get** /application-templates | List Application Templates
 *ApplicationsApi* | [**ApplicationsDelete**](docs/ApplicationsApi.md#applicationsdelete) | **Delete** /applications/{id} | Delete an Application
 *ApplicationsApi* | [**ApplicationsGet**](docs/ApplicationsApi.md#applicationsget) | **Get** /applications/{id} | Get an Application
 *ApplicationsApi* | [**ApplicationsList**](docs/ApplicationsApi.md#applicationslist) | **Get** /applications | Applications
@@ -33,13 +35,13 @@ Class | Method | HTTP request | Description
 *CommandsApi* | [**CommandFileGet**](docs/CommandsApi.md#commandfileget) | **Get** /files/command/{id} | Get a Command File
 *CommandsApi* | [**CommandsDelete**](docs/CommandsApi.md#commandsdelete) | **Delete** /commands/{id} | Delete a Command
 *CommandsApi* | [**CommandsGet**](docs/CommandsApi.md#commandsget) | **Get** /commands/{id} | List an individual Command
-*CommandsApi* | [**CommandsList**](docs/CommandsApi.md#commandslist) | **Get** /commands/ | List All Commands
-*CommandsApi* | [**CommandsPost**](docs/CommandsApi.md#commandspost) | **Post** /commands/ | Create A Command
+*CommandsApi* | [**CommandsList**](docs/CommandsApi.md#commandslist) | **Get** /commands | List All Commands
+*CommandsApi* | [**CommandsPost**](docs/CommandsApi.md#commandspost) | **Post** /commands | Create A Command
 *CommandsApi* | [**CommandsPut**](docs/CommandsApi.md#commandsput) | **Put** /commands/{id} | Update a Command
 *OrganizationsApi* | [**OrganizationList**](docs/OrganizationsApi.md#organizationlist) | **Get** /organizations | Get Organization Details
 *RadiusServersApi* | [**RadiusServersList**](docs/RadiusServersApi.md#radiusserverslist) | **Get** /radiusservers | List Radius Servers
 *RadiusServersApi* | [**RadiusServersPost**](docs/RadiusServersApi.md#radiusserverspost) | **Post** /radiusservers | Create a Radius Server
-*RadiusServersApi* | [**RadiusServersPut**](docs/RadiusServersApi.md#radiusserversput) | **Put** /radiusservers:id | Update Radius Servers
+*RadiusServersApi* | [**RadiusServersPut**](docs/RadiusServersApi.md#radiusserversput) | **Put** /radiusservers/{id} | Update Radius Servers
 *SearchApi* | [**SearchOrganizationsPost**](docs/SearchApi.md#searchorganizationspost) | **Post** /search/organizations | Search Organizations
 *SearchApi* | [**SearchSystemsPost**](docs/SearchApi.md#searchsystemspost) | **Post** /search/systems | Search Systems
 *SearchApi* | [**SearchSystemusersPost**](docs/SearchApi.md#searchsystemuserspost) | **Post** /search/systemusers | Search System Users
@@ -72,13 +74,18 @@ Class | Method | HTTP request | Description
 
  - [Application](docs/Application.md)
  - [ApplicationConfig](docs/ApplicationConfig.md)
- - [ApplicationConfigAcsUrl](docs/ApplicationConfigAcsUrl.md)
- - [ApplicationConfigAcsUrlTooltip](docs/ApplicationConfigAcsUrlTooltip.md)
- - [ApplicationConfigAcsUrlTooltipVariables](docs/ApplicationConfigAcsUrlTooltipVariables.md)
  - [ApplicationConfigConstantAttributes](docs/ApplicationConfigConstantAttributes.md)
  - [ApplicationConfigConstantAttributesValue](docs/ApplicationConfigConstantAttributesValue.md)
  - [ApplicationConfigDatabaseAttributes](docs/ApplicationConfigDatabaseAttributes.md)
+ - [ApplicationConfigIdpEntityId](docs/ApplicationConfigIdpEntityId.md)
+ - [ApplicationConfigIdpEntityIdTooltip](docs/ApplicationConfigIdpEntityIdTooltip.md)
+ - [ApplicationConfigIdpEntityIdTooltipVariables](docs/ApplicationConfigIdpEntityIdTooltipVariables.md)
  - [Applicationslist](docs/Applicationslist.md)
+ - [Applicationtemplate](docs/Applicationtemplate.md)
+ - [ApplicationtemplateConfig](docs/ApplicationtemplateConfig.md)
+ - [ApplicationtemplateConfigIdpEntityId](docs/ApplicationtemplateConfigIdpEntityId.md)
+ - [ApplicationtemplateJit](docs/ApplicationtemplateJit.md)
+ - [Applicationtemplateslist](docs/Applicationtemplateslist.md)
  - [Body](docs/Body.md)
  - [Body1](docs/Body1.md)
  - [Command](docs/Command.md)

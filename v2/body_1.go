@@ -9,8 +9,11 @@
 
 package v2
 
-// The group object's attributes.
-type UserGroupPutAttributes struct {
+type Body1 struct {
 
-	SambaEnabled bool `json:"sambaEnabled,omitempty"`
+	Name string `json:"name,omitempty"`
+
+	Groups []string `json:"groups,omitempty"`
+
+	Users []string `json:"users,omitempty"`
 }

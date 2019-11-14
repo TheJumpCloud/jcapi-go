@@ -9,21 +9,23 @@
 
 package v1
 
-type ApplicationConfigAcsUrl struct {
+type ApplicationtemplateConfigIdpEntityId struct {
 
 	Label string `json:"label,omitempty"`
 
-	Position int32 `json:"position,omitempty"`
-
 	ReadOnly bool `json:"readOnly,omitempty"`
 
-	Required bool `json:"required,omitempty"`
-
-	Tooltip *ApplicationConfigAcsUrlTooltip `json:"tooltip,omitempty"`
+	Tooltip *ApplicationConfigIdpEntityIdTooltip `json:"tooltip,omitempty"`
 
 	Type_ string `json:"type,omitempty"`
 
 	Value string `json:"value,omitempty"`
 
 	Visible bool `json:"visible,omitempty"`
+
+	Required bool `json:"required,omitempty"`
+
+	Position int32 `json:"position,omitempty"`
+
+	Cls string `json:"_cls,omitempty"`
 }

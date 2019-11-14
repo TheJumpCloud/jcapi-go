@@ -12,11 +12,11 @@ package v2
 // The shallow information about a Policy Template.
 type PolicyTemplate struct {
 
-	// Requirements before the policy can be activated.
-	Activation string `json:"activation,omitempty"`
+	// ObjectId uniquely identifying a Policy Template.
+	Id string `json:"id,omitempty"`
 
-	// Specifics about the behavior of the policy.
-	Behavior string `json:"behavior,omitempty"`
+	// The unique name for the Policy Template.
+	Name string `json:"name,omitempty"`
 
 	// The default description for the Policy.
 	Description string `json:"description,omitempty"`
@@ -24,13 +24,13 @@ type PolicyTemplate struct {
 	// The default display name for the Policy.
 	DisplayName string `json:"displayName,omitempty"`
 
-	// ObjectId uniquely identifying a Policy Template.
-	Id string `json:"id,omitempty"`
-
-	// The unique name for the Policy Template.
-	Name string `json:"name,omitempty"`
-
 	OsMetaFamily string `json:"osMetaFamily,omitempty"`
+
+	// Requirements before the policy can be activated.
+	Activation string `json:"activation,omitempty"`
+
+	// Specifics about the behavior of the policy.
+	Behavior string `json:"behavior,omitempty"`
 
 	// String describing the release status of the policy template.
 	State string `json:"state,omitempty"`

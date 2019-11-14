@@ -11,27 +11,27 @@ package v2
 
 type SystemInsightsUsers struct {
 
-	CollectionTime string `json:"collection_time,omitempty"`
+	Uid string `json:"uid,omitempty"`
+
+	Gid string `json:"gid,omitempty"`
+
+	UidSigned string `json:"uid_signed,omitempty"`
+
+	GidSigned string `json:"gid_signed,omitempty"`
+
+	Username string `json:"username,omitempty"`
 
 	Description string `json:"description,omitempty"`
 
 	Directory string `json:"directory,omitempty"`
 
-	Gid string `json:"gid,omitempty"`
-
-	GidSigned string `json:"gid_signed,omitempty"`
-
 	Shell string `json:"shell,omitempty"`
 
-	SystemId string `json:"system_id,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
 
 	Type_ string `json:"type,omitempty"`
 
-	Uid string `json:"uid,omitempty"`
+	CollectionTime string `json:"collection_time,omitempty"`
 
-	UidSigned string `json:"uid_signed,omitempty"`
-
-	Username string `json:"username,omitempty"`
-
-	Uuid string `json:"uuid,omitempty"`
+	SystemId string `json:"system_id,omitempty"`
 }

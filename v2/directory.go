@@ -11,12 +11,12 @@ package v2
 
 type Directory struct {
 
+	// The type of directory.
+	Type_ string `json:"type"`
+
 	// The ObjectID of the directory.
 	Id string `json:"id"`
 
 	// The name of the directory.
 	Name string `json:"name"`
-
-	// The type of directory.
-	Type_ string `json:"type"`
 }

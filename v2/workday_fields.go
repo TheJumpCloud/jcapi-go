@@ -11,7 +11,7 @@ package v2
 
 type WorkdayFields struct {
 
-	Name string `json:"name,omitempty"`
-
 	ReportUrl string `json:"reportUrl,omitempty"`
+
+	Name string `json:"name,omitempty"`
 }

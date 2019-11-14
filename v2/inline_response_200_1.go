@@ -11,7 +11,7 @@ package v2
 
 type InlineResponse2001 struct {
 
-	Results []Administrator `json:"results,omitempty"`
-
 	TotalCount int32 `json:"totalCount,omitempty"`
+
+	Results []Administrator `json:"results,omitempty"`
 }

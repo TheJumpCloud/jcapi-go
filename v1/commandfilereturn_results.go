@@ -11,12 +11,12 @@ package v1
 
 type CommandfilereturnResults struct {
 
-	// The ID of the file.
-	Id string `json:"_id,omitempty"`
+	// The file name.
+	Name string `json:"name,omitempty"`
 
 	// The location where the file will be stored.
 	Destination string `json:"destination,omitempty"`
 
-	// The file name.
-	Name string `json:"name,omitempty"`
+	// The ID of the file.
+	Id string `json:"_id,omitempty"`
 }

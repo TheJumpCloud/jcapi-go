@@ -13,21 +13,21 @@ type Radiusserver struct {
 
 	Id string `json:"_id,omitempty"`
 
-	Mfa string `json:"mfa,omitempty"`
-
-	Name string `json:"name,omitempty"`
+	Organization string `json:"organization,omitempty"`
 
 	NetworkSourceIp string `json:"networkSourceIp,omitempty"`
 
-	Organization string `json:"organization,omitempty"`
-
 	SharedSecret string `json:"sharedSecret,omitempty"`
 
-	TagNames []string `json:"tagNames,omitempty"`
+	Name string `json:"name,omitempty"`
 
 	Tags []string `json:"tags,omitempty"`
+
+	TagNames []string `json:"tagNames,omitempty"`
 
 	UserLockoutAction string `json:"userLockoutAction,omitempty"`
 
 	UserPasswordExpirationAction string `json:"userPasswordExpirationAction,omitempty"`
+
+	Mfa string `json:"mfa,omitempty"`
 }

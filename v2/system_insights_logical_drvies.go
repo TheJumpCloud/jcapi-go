@@ -11,19 +11,19 @@ package v2
 
 type SystemInsightsLogicalDrvies struct {
 
-	BootPartition int32 `json:"boot_partition,omitempty"`
-
-	CollectionTime string `json:"collection_time,omitempty"`
-
 	DeviceId string `json:"device_id,omitempty"`
 
-	FileSystem string `json:"file_system,omitempty"`
+	Type_ string `json:"type,omitempty"`
 
 	FreeSpace string `json:"free_space,omitempty"`
 
 	Size string `json:"size,omitempty"`
 
-	SystemId string `json:"system_id,omitempty"`
+	FileSystem string `json:"file_system,omitempty"`
 
-	Type_ string `json:"type,omitempty"`
+	BootPartition int32 `json:"boot_partition,omitempty"`
+
+	CollectionTime string `json:"collection_time,omitempty"`
+
+	SystemId string `json:"system_id,omitempty"`
 }

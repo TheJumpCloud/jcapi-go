@@ -11,7 +11,7 @@ package v1
 
 type Radiusserverslist struct {
 
-	Results []Radiusserver `json:"results,omitempty"`
-
 	TotalCount int32 `json:"totalCount,omitempty"`
+
+	Results []Radiusserver `json:"results,omitempty"`
 }

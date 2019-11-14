@@ -11,13 +11,11 @@ package v2
 
 type DuoApplication struct {
 
-	ApiHost string `json:"apiHost"`
-
 	Id string `json:"id"`
-
-	IntegrationKey string `json:"integrationKey"`
 
 	Name string `json:"name"`
 
-	SecretKey string `json:"secretKey"`
+	ApiHost string `json:"apiHost"`
+
+	IntegrationKey string `json:"integrationKey"`
 }

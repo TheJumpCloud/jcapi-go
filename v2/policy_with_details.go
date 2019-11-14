@@ -12,15 +12,15 @@ package v2
 // An instance of a policy template.
 type PolicyWithDetails struct {
 
-	ConfigFields []PolicyTemplateConfigField `json:"configFields,omitempty"`
-
 	// ObjectId uniquely identifying a Policy.
 	Id string `json:"id,omitempty"`
 
+	Template *PolicyTemplate `json:"template,omitempty"`
+
+	ConfigFields []PolicyTemplateConfigField `json:"configFields,omitempty"`
+
 	// The description for this specific Policy.
 	Name string `json:"name,omitempty"`
-
-	Template *PolicyTemplate `json:"template,omitempty"`
 
 	Values []PolicyValue `json:"values,omitempty"`
 }

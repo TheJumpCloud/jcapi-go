@@ -11,8 +11,8 @@ package v1
 
 type Commandfilereturn struct {
 
-	Results *CommandfilereturnResults `json:"results,omitempty"`
-
 	// The total number of commands files
 	TotalCount int32 `json:"totalCount,omitempty"`
+
+	Results *CommandfilereturnResults `json:"results,omitempty"`
 }

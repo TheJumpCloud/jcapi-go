@@ -11,7 +11,7 @@ package v2
 
 type UserGroupPost struct {
 
-	Attributes *UserGroupPostAttributes `json:"attributes,omitempty"`
+	Attributes *UserGroupAttributes `json:"attributes,omitempty"`
 
 	// Display name of a User Group.
 	Name string `json:"name"`

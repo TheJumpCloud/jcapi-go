@@ -23,7 +23,6 @@ type CommandslistResults struct {
 	// How the Command is executed.
 	LaunchType string `json:"launchType,omitempty"`
 
-	// 
 	ListensTo string `json:"listensTo,omitempty"`
 
 	// The name of the Command.
@@ -32,7 +31,7 @@ type CommandslistResults struct {
 	// The ID of the Organization.
 	Organization string `json:"organization,omitempty"`
 
-	// A crontab that consists of: [ (seconds) (minutes) (hours) (days of month) (months) (weekdays) ] or [ immediate ]. If you send this as an empty string, it will run immediately. 
+	// A crontab that consists of: [ (seconds) (minutes) (hours) (days of month) (months) (weekdays) ] or [ immediate ]. If you send this as an empty string, it will run immediately.
 	Schedule string `json:"schedule,omitempty"`
 
 	// When the command will repeat.

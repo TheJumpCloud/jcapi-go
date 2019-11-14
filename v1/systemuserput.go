@@ -11,77 +11,79 @@ package v1
 
 type Systemuserput struct {
 
-	AccountLocked bool `json:"account_locked,omitempty"`
+	Email string `json:"email,omitempty"`
 
-	// type, poBox, extendedAddress, streetAddress, locality, region, postalCode, country
-	Addresses []SystemuserputAddresses `json:"addresses,omitempty"`
+	Username string `json:"username,omitempty"`
 
 	AllowPublicKey bool `json:"allow_public_key,omitempty"`
 
-	Attributes []interface{} `json:"attributes,omitempty"`
-
-	Company string `json:"company,omitempty"`
-
-	CostCenter string `json:"costCenter,omitempty"`
-
-	Department string `json:"department,omitempty"`
-
-	Description string `json:"description,omitempty"`
-
-	Displayname string `json:"displayname,omitempty"`
-
-	Email string `json:"email,omitempty"`
-
-	// Must be unique per user. 
-	EmployeeIdentifier string `json:"employeeIdentifier,omitempty"`
-
-	EmployeeType string `json:"employeeType,omitempty"`
-
-	EnableManagedUid bool `json:"enable_managed_uid,omitempty"`
-
-	EnableUserPortalMultifactor bool `json:"enable_user_portal_multifactor,omitempty"`
-
-	ExternalDn string `json:"external_dn,omitempty"`
-
-	ExternalSourceType string `json:"external_source_type,omitempty"`
-
-	ExternallyManaged bool `json:"externally_managed,omitempty"`
-
-	Firstname string `json:"firstname,omitempty"`
-
-	JobTitle string `json:"jobTitle,omitempty"`
-
-	Lastname string `json:"lastname,omitempty"`
-
-	LdapBindingUser bool `json:"ldap_binding_user,omitempty"`
-
-	Location string `json:"location,omitempty"`
-
-	Mfa *Mfa `json:"mfa,omitempty"`
-
-	Middlename string `json:"middlename,omitempty"`
-
-	Password string `json:"password,omitempty"`
-
-	PasswordNeverExpires bool `json:"password_never_expires,omitempty"`
-
-	PhoneNumbers []SystemuserputPhoneNumbers `json:"phoneNumbers,omitempty"`
-
 	PublicKey string `json:"public_key,omitempty"`
-
-	Relationships []interface{} `json:"relationships,omitempty"`
-
-	SambaServiceUser bool `json:"samba_service_user,omitempty"`
 
 	SshKeys []Sshkeypost `json:"ssh_keys,omitempty"`
 
 	Sudo bool `json:"sudo,omitempty"`
 
-	Tags []string `json:"tags,omitempty"`
-
-	UnixGuid int32 `json:"unix_guid,omitempty"`
+	EnableManagedUid bool `json:"enable_managed_uid,omitempty"`
 
 	UnixUid int32 `json:"unix_uid,omitempty"`
 
-	Username string `json:"username,omitempty"`
+	UnixGuid int32 `json:"unix_guid,omitempty"`
+
+	Tags []string `json:"tags,omitempty"`
+
+	AccountLocked bool `json:"account_locked,omitempty"`
+
+	ExternallyManaged bool `json:"externally_managed,omitempty"`
+
+	ExternalDn string `json:"external_dn,omitempty"`
+
+	ExternalSourceType string `json:"external_source_type,omitempty"`
+
+	Firstname string `json:"firstname,omitempty"`
+
+	Lastname string `json:"lastname,omitempty"`
+
+	LdapBindingUser bool `json:"ldap_binding_user,omitempty"`
+
+	EnableUserPortalMultifactor bool `json:"enable_user_portal_multifactor,omitempty"`
+
+	Attributes []interface{} `json:"attributes,omitempty"`
+
+	SambaServiceUser bool `json:"samba_service_user,omitempty"`
+
+	// type, poBox, extendedAddress, streetAddress, locality, region, postalCode, country
+	Addresses []SystemuserputAddresses `json:"addresses,omitempty"`
+
+	JobTitle string `json:"jobTitle,omitempty"`
+
+	Department string `json:"department,omitempty"`
+
+	PhoneNumbers []SystemuserputPhoneNumbers `json:"phoneNumbers,omitempty"`
+
+	Relationships []interface{} `json:"relationships,omitempty"`
+
+	Password string `json:"password,omitempty"`
+
+	PasswordNeverExpires bool `json:"password_never_expires,omitempty"`
+
+	Middlename string `json:"middlename,omitempty"`
+
+	Displayname string `json:"displayname,omitempty"`
+
+	Description string `json:"description,omitempty"`
+
+	Location string `json:"location,omitempty"`
+
+	CostCenter string `json:"costCenter,omitempty"`
+
+	EmployeeType string `json:"employeeType,omitempty"`
+
+	Company string `json:"company,omitempty"`
+
+	// Must be unique per user. 
+	EmployeeIdentifier string `json:"employeeIdentifier,omitempty"`
+
+	Mfa *Mfa `json:"mfa,omitempty"`
+
+	Suspended bool `json:"suspended,omitempty"`
 }

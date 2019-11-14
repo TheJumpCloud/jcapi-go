@@ -11,12 +11,12 @@ package v2
 
 type UserGroupGraphManagementReq struct {
 
-	// The ObjectID of graph object being added or removed as an association.
-	Id string `json:"id"`
-
 	// How to modify the graph connection.
 	Op string `json:"op"`
 
 	// The graph type
 	Type_ string `json:"type"`
+
+	// The ObjectID of graph object being added or removed as an association.
+	Id string `json:"id"`
 }
