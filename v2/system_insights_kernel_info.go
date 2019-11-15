@@ -11,15 +11,15 @@ package v2
 
 type SystemInsightsKernelInfo struct {
 
-	Version string `json:"version,omitempty"`
-
 	Arguments string `json:"arguments,omitempty"`
 
-	Path string `json:"path,omitempty"`
+	CollectionTime string `json:"collection_time,omitempty"`
 
 	Device string `json:"device,omitempty"`
 
+	Path string `json:"path,omitempty"`
+
 	SystemId string `json:"system_id,omitempty"`
 
-	CollectionTime string `json:"collection_time,omitempty"`
+	Version string `json:"version,omitempty"`
 }

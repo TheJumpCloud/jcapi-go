@@ -11,19 +11,19 @@ package v2
 
 type SystemInsightsLoggedInUsers struct {
 
-	Type_ string `json:"type,omitempty"`
-
-	User string `json:"user,omitempty"`
-
-	Tty string `json:"tty,omitempty"`
+	CollectionTime string `json:"collection_time,omitempty"`
 
 	Host string `json:"host,omitempty"`
-
-	Time int32 `json:"time,omitempty"`
 
 	Pid int32 `json:"pid,omitempty"`
 
 	SystemId string `json:"system_id,omitempty"`
 
-	CollectionTime string `json:"collection_time,omitempty"`
+	Time int32 `json:"time,omitempty"`
+
+	Tty string `json:"tty,omitempty"`
+
+	Type_ string `json:"type,omitempty"`
+
+	User string `json:"user,omitempty"`
 }

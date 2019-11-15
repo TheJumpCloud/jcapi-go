@@ -11,7 +11,7 @@ package v2
 
 type Provider struct {
 
-	Name string `json:"name,omitempty"`
-
 	Contact *ProviderContact `json:"contact,omitempty"`
+
+	Name string `json:"name,omitempty"`
 }

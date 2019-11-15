@@ -11,35 +11,35 @@ package v2
 
 type SystemInsightsFirefoxAddons struct {
 
-	Uid string `json:"uid,omitempty"`
-
-	Name string `json:"name,omitempty"`
-
-	Identifier string `json:"identifier,omitempty"`
-
-	Creator string `json:"creator,omitempty"`
-
-	Type_ string `json:"type,omitempty"`
-
-	Version string `json:"version,omitempty"`
-
-	Description string `json:"description,omitempty"`
-
-	SourceUrl string `json:"source_url,omitempty"`
-
-	Visible int32 `json:"visible,omitempty"`
-
 	Active int32 `json:"active,omitempty"`
-
-	Disabled int32 `json:"disabled,omitempty"`
 
 	Autoupdate int32 `json:"autoupdate,omitempty"`
 
+	CollectionTime string `json:"collection_time,omitempty"`
+
+	Creator string `json:"creator,omitempty"`
+
+	Description string `json:"description,omitempty"`
+
+	Disabled int32 `json:"disabled,omitempty"`
+
+	Identifier string `json:"identifier,omitempty"`
+
 	Location string `json:"location,omitempty"`
+
+	Name string `json:"name,omitempty"`
 
 	Path string `json:"path,omitempty"`
 
-	CollectionTime string `json:"collection_time,omitempty"`
+	SourceUrl string `json:"source_url,omitempty"`
 
 	SystemId string `json:"system_id,omitempty"`
+
+	Type_ string `json:"type,omitempty"`
+
+	Uid string `json:"uid,omitempty"`
+
+	Version string `json:"version,omitempty"`
+
+	Visible int32 `json:"visible,omitempty"`
 }

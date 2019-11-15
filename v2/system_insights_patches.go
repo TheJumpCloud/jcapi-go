@@ -11,23 +11,23 @@ package v2
 
 type SystemInsightsPatches struct {
 
-	Csname string `json:"csname,omitempty"`
-
-	HotfixId string `json:"hotfix_id,omitempty"`
-
 	Caption string `json:"caption,omitempty"`
+
+	CollectionTime string `json:"collection_time,omitempty"`
+
+	Csname string `json:"csname,omitempty"`
 
 	Description string `json:"description,omitempty"`
 
 	FixComments string `json:"fix_comments,omitempty"`
 
-	InstalledBy string `json:"installed_by,omitempty"`
+	HotfixId string `json:"hotfix_id,omitempty"`
 
 	InstallDate string `json:"install_date,omitempty"`
 
-	InstalledOn string `json:"installed_on,omitempty"`
+	InstalledBy string `json:"installed_by,omitempty"`
 
-	CollectionTime string `json:"collection_time,omitempty"`
+	InstalledOn string `json:"installed_on,omitempty"`
 
 	SystemId string `json:"system_id,omitempty"`
 }

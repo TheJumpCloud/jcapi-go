@@ -11,18 +11,18 @@ package v1
 
 type Radiusserverpost struct {
 
-	NetworkSourceIp string `json:"networkSourceIp"`
+	Mfa string `json:"mfa,omitempty"`
 
 	Name string `json:"name"`
 
-	TagNames []string `json:"tagNames,omitempty"`
+	NetworkSourceIp string `json:"networkSourceIp"`
 
 	// RADIUS shared secret between the server and client.
 	SharedSecret string `json:"sharedSecret"`
 
+	TagNames []string `json:"tagNames,omitempty"`
+
 	UserLockoutAction string `json:"userLockoutAction,omitempty"`
 
 	UserPasswordExpirationAction string `json:"userPasswordExpirationAction,omitempty"`
-
-	Mfa string `json:"mfa,omitempty"`
 }

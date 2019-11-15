@@ -11,7 +11,7 @@ package v1
 
 type ApplicationtemplateJit struct {
 
-	CreateOnly bool `json:"createOnly,omitempty"`
-
 	Attributes *interface{} `json:"attributes,omitempty"`
+
+	CreateOnly bool `json:"createOnly,omitempty"`
 }

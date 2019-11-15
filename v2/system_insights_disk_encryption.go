@@ -11,11 +11,15 @@ package v2
 
 type SystemInsightsDiskEncryption struct {
 
-	Name string `json:"name,omitempty"`
-
-	Uuid string `json:"uuid,omitempty"`
+	CollectionTime string `json:"collection_time,omitempty"`
 
 	Encrypted int32 `json:"encrypted,omitempty"`
+
+	EncryptionStatus string `json:"encryption_status,omitempty"`
+
+	Name string `json:"name,omitempty"`
+
+	SystemId string `json:"system_id,omitempty"`
 
 	Type_ string `json:"type,omitempty"`
 
@@ -23,9 +27,5 @@ type SystemInsightsDiskEncryption struct {
 
 	UserUuid string `json:"user_uuid,omitempty"`
 
-	EncryptionStatus string `json:"encryption_status,omitempty"`
-
-	CollectionTime string `json:"collection_time,omitempty"`
-
-	SystemId string `json:"system_id,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
 }

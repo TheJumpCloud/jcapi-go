@@ -209,7 +209,7 @@ func (a *AppleMDMApiService) ApplemdmsList(ctx context.Context, contentType stri
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "body" (Body2) 
+     @param "body" (Body) 
      @param "xOrgId" (string) 
  @return InlineResponse201*/
 func (a *AppleMDMApiService) ApplemdmsPost(ctx context.Context, contentType string, accept string, localVarOptionals map[string]interface{}) (InlineResponse201,  *http.Response, error) {
@@ -257,7 +257,7 @@ func (a *AppleMDMApiService) ApplemdmsPost(ctx context.Context, contentType stri
 		localVarHeaderParams["x-org-id"] = parameterToString(localVarTempParam, "")
 	}
 	// body params
-	if localVarTempParam, localVarOk := localVarOptionals["body"].(Body2); localVarOk {
+	if localVarTempParam, localVarOk := localVarOptionals["body"].(Body); localVarOk {
 		localVarPostBody = &localVarTempParam
 	}
 	if ctx != nil {

@@ -11,9 +11,7 @@ package v2
 
 type SystemInsightsApps struct {
 
-	Name string `json:"name,omitempty"`
-
-	Path string `json:"path,omitempty"`
+	ApplescriptEnabled string `json:"applescript_enabled,omitempty"`
 
 	BundleExecutable string `json:"bundle_executable,omitempty"`
 
@@ -21,35 +19,37 @@ type SystemInsightsApps struct {
 
 	BundleName string `json:"bundle_name,omitempty"`
 
+	BundlePackageType string `json:"bundle_package_type,omitempty"`
+
 	BundleShortVersion string `json:"bundle_short_version,omitempty"`
 
 	BundleVersion string `json:"bundle_version,omitempty"`
 
-	BundlePackageType string `json:"bundle_package_type,omitempty"`
+	Category string `json:"category,omitempty"`
 
-	Environment string `json:"environment,omitempty"`
-
-	Element string `json:"element,omitempty"`
+	CollectionTime string `json:"collection_time,omitempty"`
 
 	Compiler string `json:"compiler,omitempty"`
+
+	Copyright string `json:"copyright,omitempty"`
 
 	DevelopmentRegion string `json:"development_region,omitempty"`
 
 	DisplayName string `json:"display_name,omitempty"`
 
+	Element string `json:"element,omitempty"`
+
+	Environment string `json:"environment,omitempty"`
+
 	InfoString string `json:"info_string,omitempty"`
-
-	MinimumSystemVersion string `json:"minimum_system_version,omitempty"`
-
-	Category string `json:"category,omitempty"`
-
-	ApplescriptEnabled string `json:"applescript_enabled,omitempty"`
-
-	Copyright string `json:"copyright,omitempty"`
 
 	LastOpenedTime float32 `json:"last_opened_time,omitempty"`
 
-	CollectionTime string `json:"collection_time,omitempty"`
+	MinimumSystemVersion string `json:"minimum_system_version,omitempty"`
+
+	Name string `json:"name,omitempty"`
+
+	Path string `json:"path,omitempty"`
 
 	SystemId string `json:"system_id,omitempty"`
 }

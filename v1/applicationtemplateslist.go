@@ -11,9 +11,9 @@ package v1
 
 type Applicationtemplateslist struct {
 
-	// The total number of applications.
-	TotalCount int32 `json:"totalCount,omitempty"`
-
 	// The list of applications.
 	Results []Applicationtemplate `json:"results,omitempty"`
+
+	// The total number of applications.
+	TotalCount int32 `json:"totalCount,omitempty"`
 }

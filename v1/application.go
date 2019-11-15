@@ -15,17 +15,17 @@ type Application struct {
 
 	Beta bool `json:"beta,omitempty"`
 
-	Name string `json:"name,omitempty"`
+	Config *ApplicationConfig `json:"config,omitempty"`
+
+	DisplayLabel string `json:"displayLabel,omitempty"`
 
 	DisplayName string `json:"displayName,omitempty"`
 
-	DisplayLabel string `json:"displayLabel,omitempty"`
+	LearnMore string `json:"learnMore,omitempty"`
+
+	Name string `json:"name,omitempty"`
 
 	Organization string `json:"organization,omitempty"`
 
 	SsoUrl string `json:"ssoUrl,omitempty"`
-
-	LearnMore string `json:"learnMore,omitempty"`
-
-	Config *ApplicationConfig `json:"config,omitempty"`
 }

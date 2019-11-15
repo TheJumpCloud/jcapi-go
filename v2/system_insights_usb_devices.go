@@ -11,6 +11,24 @@ package v2
 
 type SystemInsightsUsbDevices struct {
 
+	Class string `json:"class,omitempty"`
+
+	CollectionTime string `json:"collection_time,omitempty"`
+
+	Model string `json:"model,omitempty"`
+
+	ModelId string `json:"model_id,omitempty"`
+
+	Protocol string `json:"protocol,omitempty"`
+
+	Removable int32 `json:"removable,omitempty"`
+
+	Serial string `json:"serial,omitempty"`
+
+	Subclass string `json:"subclass,omitempty"`
+
+	SystemId string `json:"system_id,omitempty"`
+
 	UsbAddress int32 `json:"usb_address,omitempty"`
 
 	UsbPort int32 `json:"usb_port,omitempty"`
@@ -20,22 +38,4 @@ type SystemInsightsUsbDevices struct {
 	VendorId string `json:"vendor_id,omitempty"`
 
 	Version string `json:"version,omitempty"`
-
-	Model string `json:"model,omitempty"`
-
-	ModelId string `json:"model_id,omitempty"`
-
-	Serial string `json:"serial,omitempty"`
-
-	Class string `json:"class,omitempty"`
-
-	Subclass string `json:"subclass,omitempty"`
-
-	Protocol string `json:"protocol,omitempty"`
-
-	Removable int32 `json:"removable,omitempty"`
-
-	SystemId string `json:"system_id,omitempty"`
-
-	CollectionTime string `json:"collection_time,omitempty"`
 }

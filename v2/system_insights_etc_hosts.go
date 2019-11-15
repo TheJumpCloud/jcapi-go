@@ -13,9 +13,9 @@ type SystemInsightsEtcHosts struct {
 
 	Address string `json:"address,omitempty"`
 
-	Hostnames string `json:"hostnames,omitempty"`
-
 	CollectionTime string `json:"collection_time,omitempty"`
+
+	Hostnames string `json:"hostnames,omitempty"`
 
 	SystemId string `json:"system_id,omitempty"`
 }

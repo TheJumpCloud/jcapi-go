@@ -11,27 +11,27 @@ package v2
 
 type SystemInsightsBrowserPlugins struct {
 
-	Uid string `json:"uid,omitempty"`
-
-	Name string `json:"name,omitempty"`
-
-	Identifier string `json:"identifier,omitempty"`
-
-	Version string `json:"version,omitempty"`
-
-	Sdk string `json:"sdk,omitempty"`
+	CollectionTime string `json:"collection_time,omitempty"`
 
 	Description string `json:"description,omitempty"`
 
 	DevelopmentRegion string `json:"development_region,omitempty"`
 
+	Disabled int32 `json:"disabled,omitempty"`
+
+	Identifier string `json:"identifier,omitempty"`
+
+	Name string `json:"name,omitempty"`
+
 	Native int32 `json:"native,omitempty"`
 
 	Path string `json:"path,omitempty"`
 
-	Disabled int32 `json:"disabled,omitempty"`
-
-	CollectionTime string `json:"collection_time,omitempty"`
+	Sdk string `json:"sdk,omitempty"`
 
 	SystemId string `json:"system_id,omitempty"`
+
+	Uid string `json:"uid,omitempty"`
+
+	Version string `json:"version,omitempty"`
 }

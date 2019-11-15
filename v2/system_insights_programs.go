@@ -11,9 +11,11 @@ package v2
 
 type SystemInsightsPrograms struct {
 
-	Name string `json:"name,omitempty"`
+	CollectionTime string `json:"collection_time,omitempty"`
 
-	Version string `json:"version,omitempty"`
+	IdentifyingNumber string `json:"identifying_number,omitempty"`
+
+	InstallDate string `json:"install_date,omitempty"`
 
 	InstallLocation string `json:"install_location,omitempty"`
 
@@ -21,15 +23,13 @@ type SystemInsightsPrograms struct {
 
 	Language string `json:"language,omitempty"`
 
+	Name string `json:"name,omitempty"`
+
 	Publisher string `json:"publisher,omitempty"`
+
+	SystemId string `json:"system_id,omitempty"`
 
 	UninstallString string `json:"uninstall_string,omitempty"`
 
-	InstallDate string `json:"install_date,omitempty"`
-
-	IdentifyingNumber string `json:"identifying_number,omitempty"`
-
-	CollectionTime string `json:"collection_time,omitempty"`
-
-	SystemId string `json:"system_id,omitempty"`
+	Version string `json:"version,omitempty"`
 }

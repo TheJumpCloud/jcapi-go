@@ -11,11 +11,11 @@ package v2
 
 type SystemInsightsUserGroups struct {
 
-	Uid string `json:"uid,omitempty"`
+	CollectionTime string `json:"collection_time,omitempty"`
 
 	Gid string `json:"gid,omitempty"`
 
 	SystemId string `json:"system_id,omitempty"`
 
-	CollectionTime string `json:"collection_time,omitempty"`
+	Uid string `json:"uid,omitempty"`
 }

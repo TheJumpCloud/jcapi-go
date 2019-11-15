@@ -11,6 +11,9 @@ package v2
 
 type Body2 struct {
 
-	// The name used to identify this AppleMDM.
+	Groups []string `json:"groups,omitempty"`
+
 	Name string `json:"name,omitempty"`
+
+	Users []string `json:"users,omitempty"`
 }

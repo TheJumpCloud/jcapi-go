@@ -11,43 +11,43 @@ package v2
 
 type SystemInsightsBattery struct {
 
-	Manufacturer string `json:"manufacturer,omitempty"`
-
-	ManufactureDate int32 `json:"manufacture_date,omitempty"`
-
-	Model string `json:"model,omitempty"`
-
-	SerialNumber string `json:"serial_number,omitempty"`
-
-	CycleCount int32 `json:"cycle_count,omitempty"`
-
-	Health string `json:"health,omitempty"`
-
-	Condition string `json:"condition,omitempty"`
-
-	State string `json:"state,omitempty"`
-
-	Charging int32 `json:"charging,omitempty"`
+	Amgerage int32 `json:"amgerage,omitempty"`
 
 	Charged int32 `json:"charged,omitempty"`
 
-	DesignedCapacity int32 `json:"designed_capacity,omitempty"`
+	Charging int32 `json:"charging,omitempty"`
 
-	MaxCapacity int32 `json:"max_capacity,omitempty"`
+	CollectionTime string `json:"collection_time,omitempty"`
+
+	Condition string `json:"condition,omitempty"`
 
 	CurrentCapacity int32 `json:"current_capacity,omitempty"`
 
-	PercentRemaining int32 `json:"percent_remaining,omitempty"`
+	CycleCount int32 `json:"cycle_count,omitempty"`
 
-	Amgerage int32 `json:"amgerage,omitempty"`
+	DesignedCapacity int32 `json:"designed_capacity,omitempty"`
 
-	Voltage int32 `json:"voltage,omitempty"`
+	Health string `json:"health,omitempty"`
 
-	MinutesUntilEmpty int32 `json:"minutes_until_empty,omitempty"`
+	ManufactureDate int32 `json:"manufacture_date,omitempty"`
+
+	Manufacturer string `json:"manufacturer,omitempty"`
+
+	MaxCapacity int32 `json:"max_capacity,omitempty"`
 
 	MinutesToFullCharge int32 `json:"minutes_to_full_charge,omitempty"`
 
+	MinutesUntilEmpty int32 `json:"minutes_until_empty,omitempty"`
+
+	Model string `json:"model,omitempty"`
+
+	PercentRemaining int32 `json:"percent_remaining,omitempty"`
+
+	SerialNumber string `json:"serial_number,omitempty"`
+
+	State string `json:"state,omitempty"`
+
 	SystemId string `json:"system_id,omitempty"`
 
-	CollectionTime string `json:"collection_time,omitempty"`
+	Voltage int32 `json:"voltage,omitempty"`
 }

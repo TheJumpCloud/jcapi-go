@@ -11,29 +11,29 @@ package v2
 
 type SystemInsightsMounts struct {
 
+	Blocks string `json:"blocks,omitempty"`
+
+	BlocksAvailable string `json:"blocks_available,omitempty"`
+
+	BlocksFree string `json:"blocks_free,omitempty"`
+
+	BlocksSize string `json:"blocks_size,omitempty"`
+
+	CollectionTime string `json:"collection_time,omitempty"`
+
 	Device string `json:"device,omitempty"`
 
 	DeviceAlias string `json:"device_alias,omitempty"`
 
-	Path string `json:"path,omitempty"`
-
-	Type_ string `json:"type,omitempty"`
-
-	BlocksSize string `json:"blocks_size,omitempty"`
-
-	Blocks string `json:"blocks,omitempty"`
-
-	BlocksFree string `json:"blocks_free,omitempty"`
-
-	BlocksAvailable string `json:"blocks_available,omitempty"`
+	Flags string `json:"flags,omitempty"`
 
 	Inodes string `json:"inodes,omitempty"`
 
 	InodesFree string `json:"inodes_free,omitempty"`
 
-	Flags string `json:"flags,omitempty"`
-
-	CollectionTime string `json:"collection_time,omitempty"`
+	Path string `json:"path,omitempty"`
 
 	SystemId string `json:"system_id,omitempty"`
+
+	Type_ string `json:"type,omitempty"`
 }

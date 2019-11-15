@@ -11,7 +11,7 @@ package v2
 
 type EnrollmentProfile struct {
 
-	Id string `json:"id,omitempty"`
-
 	AppleMdmId string `json:"appleMdmId,omitempty"`
+
+	Id string `json:"id,omitempty"`
 }

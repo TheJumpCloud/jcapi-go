@@ -11,6 +11,8 @@ package v2
 
 type SystemInsightsUptime struct {
 
+	CollectionTime string `json:"collection_time,omitempty"`
+
 	Days int32 `json:"days,omitempty"`
 
 	Hours int32 `json:"hours,omitempty"`
@@ -19,9 +21,7 @@ type SystemInsightsUptime struct {
 
 	Seconds int32 `json:"seconds,omitempty"`
 
-	TotalSeconds string `json:"total_seconds,omitempty"`
-
 	SystemId string `json:"system_id,omitempty"`
 
-	CollectionTime string `json:"collection_time,omitempty"`
+	TotalSeconds string `json:"total_seconds,omitempty"`
 }

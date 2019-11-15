@@ -11,9 +11,9 @@ package v1
 
 type Tagslist struct {
 
-	// The total number of tags.
-	TotalCount int32 `json:"totalCount,omitempty"`
-
 	// The list of tags.
 	Results []Tag `json:"results,omitempty"`
+
+	// The total number of tags.
+	TotalCount int32 `json:"totalCount,omitempty"`
 }

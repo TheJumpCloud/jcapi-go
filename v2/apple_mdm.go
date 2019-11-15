@@ -11,12 +11,12 @@ package v2
 
 type AppleMdm struct {
 
+	// The push topic assigned to this enrollment by Apple after uploading the Signed CSR plist.
+	ApnsPushTopic string `json:"apnsPushTopic,omitempty"`
+
 	// ObjectId uniquely identifying an MDM Enrollment,
 	Id string `json:"id"`
 
 	// A friendly name to identify this enrollment.  Not required to be unique.
 	Name string `json:"name,omitempty"`
-
-	// The push topic assigned to this enrollment by Apple after uploading the Signed CSR plist.
-	ApnsPushTopic string `json:"apnsPushTopic,omitempty"`
 }

@@ -11,19 +11,19 @@ package v2
 
 type SystemInsightsBitlockerInfo struct {
 
+	CollectionTime string `json:"collection_time,omitempty"`
+
+	ConversionStatus int32 `json:"conversion_status,omitempty"`
+
 	DeviceId string `json:"device_id,omitempty"`
 
 	DriveLetter string `json:"drive_letter,omitempty"`
 
-	PersistentVolumeId string `json:"persistent_volume_id,omitempty"`
-
-	ConversionStatus int32 `json:"conversion_status,omitempty"`
-
-	ProtectionStatus int32 `json:"protection_status,omitempty"`
-
 	EncryptionMethod string `json:"encryption_method,omitempty"`
 
-	CollectionTime string `json:"collection_time,omitempty"`
+	PersistentVolumeId string `json:"persistent_volume_id,omitempty"`
+
+	ProtectionStatus int32 `json:"protection_status,omitempty"`
 
 	SystemId string `json:"system_id,omitempty"`
 }

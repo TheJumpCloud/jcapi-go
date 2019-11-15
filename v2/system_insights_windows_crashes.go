@@ -11,35 +11,21 @@ package v2
 
 type SystemInsightsWindowsCrashes struct {
 
+	BuildNumber int32 `json:"build_number,omitempty"`
+
+	CommandLine string `json:"command_line,omitempty"`
+
+	CrashPath string `json:"crash_path,omitempty"`
+
+	CurrentDirectory string `json:"current_directory,omitempty"`
+
 	Datetime string `json:"datetime,omitempty"`
 
-	Module string `json:"module,omitempty"`
-
-	Path string `json:"path,omitempty"`
-
-	Pid string `json:"pid,omitempty"`
-
-	Tid string `json:"tid,omitempty"`
-
-	Version string `json:"version,omitempty"`
-
-	ProcessUptime string `json:"process_uptime,omitempty"`
-
-	StackTrace string `json:"stack_trace,omitempty"`
+	ExceptionAddress string `json:"exception_address,omitempty"`
 
 	ExceptionCode string `json:"exception_code,omitempty"`
 
 	ExceptionMessage string `json:"exception_message,omitempty"`
-
-	ExceptionAddress string `json:"exception_address,omitempty"`
-
-	Registers string `json:"registers,omitempty"`
-
-	CommandLine string `json:"command_line,omitempty"`
-
-	CurrentDirectory string `json:"current_directory,omitempty"`
-
-	Username string `json:"username,omitempty"`
 
 	MachineName string `json:"machine_name,omitempty"`
 
@@ -47,9 +33,23 @@ type SystemInsightsWindowsCrashes struct {
 
 	MinorVersion int32 `json:"minor_version,omitempty"`
 
-	BuildNumber int32 `json:"build_number,omitempty"`
+	Module string `json:"module,omitempty"`
+
+	Path string `json:"path,omitempty"`
+
+	Pid string `json:"pid,omitempty"`
+
+	ProcessUptime string `json:"process_uptime,omitempty"`
+
+	Registers string `json:"registers,omitempty"`
+
+	StackTrace string `json:"stack_trace,omitempty"`
+
+	Tid string `json:"tid,omitempty"`
 
 	Type_ string `json:"type,omitempty"`
 
-	CrashPath string `json:"crash_path,omitempty"`
+	Username string `json:"username,omitempty"`
+
+	Version string `json:"version,omitempty"`
 }

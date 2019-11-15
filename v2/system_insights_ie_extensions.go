@@ -11,15 +11,15 @@ package v2
 
 type SystemInsightsIeExtensions struct {
 
+	CollectionTime string `json:"collection_time,omitempty"`
+
 	Name string `json:"name,omitempty"`
-
-	RegistryPath string `json:"registry_path,omitempty"`
-
-	Version string `json:"version,omitempty"`
 
 	Path string `json:"path,omitempty"`
 
+	RegistryPath string `json:"registry_path,omitempty"`
+
 	SystemId string `json:"system_id,omitempty"`
 
-	CollectionTime string `json:"collection_time,omitempty"`
+	Version string `json:"version,omitempty"`
 }

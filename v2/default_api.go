@@ -352,7 +352,7 @@ func (a *DefaultApiService) JcEnrollmentProfilesPost(ctx context.Context, localV
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param enrollmentProfileId 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "body" (Body) 
+     @param "body" (Body2) 
  @return JcEnrollmentProfile*/
 func (a *DefaultApiService) JcEnrollmentProfilesPut(ctx context.Context, enrollmentProfileId string, localVarOptionals map[string]interface{}) (JcEnrollmentProfile,  *http.Response, error) {
 	var (
@@ -392,7 +392,7 @@ func (a *DefaultApiService) JcEnrollmentProfilesPut(ctx context.Context, enrollm
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarTempParam, localVarOk := localVarOptionals["body"].(Body); localVarOk {
+	if localVarTempParam, localVarOk := localVarOptionals["body"].(Body2); localVarOk {
 		localVarPostBody = &localVarTempParam
 	}
 	if ctx != nil {

@@ -157,7 +157,7 @@ Optional parameters are passed through a map[string]interface{}.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **enrollmentProfileId** | **string**|  | 
- **body** | [**Body**](Body.md)|  | 
+ **body** | [**Body2**](Body2.md)|  | 
 
 ### Return type
 

@@ -185,8 +185,8 @@ Class | Method | HTTP request | Description
 *PoliciesApi* | [**PolicyresultsGet**](docs/PoliciesApi.md#policyresultsget) | **Get** /policyresults/{id} | Get a specific Policy Result.
 *PoliciesApi* | [**PolicyresultsList**](docs/PoliciesApi.md#policyresultslist) | **Get** /policies/{policy_id}/policyresults | Lists all the policy results of a policy.
 *PoliciesApi* | [**PolicyresultsOrgList**](docs/PoliciesApi.md#policyresultsorglist) | **Get** /policyresults | Lists all the policy results for an organization.
-*PoliciesApi* | [**PolicystatusesList**](docs/PoliciesApi.md#policystatuseslist) | **Get** /systems/{system_id}/policystatuses | List the policy statuses for a system
-*PoliciesApi* | [**PolicystatusesList_0**](docs/PoliciesApi.md#policystatuseslist_0) | **Get** /policies/{policy_id}/policystatuses | Lists the latest policy results of a policy.
+*PoliciesApi* | [**PolicystatusesList**](docs/PoliciesApi.md#policystatuseslist) | **Get** /policies/{policy_id}/policystatuses | Lists the latest policy results of a policy.
+*PoliciesApi* | [**PolicystatusesList_0**](docs/PoliciesApi.md#policystatuseslist_0) | **Get** /systems/{system_id}/policystatuses | List the policy statuses for a system
 *PoliciesApi* | [**PolicytemplatesGet**](docs/PoliciesApi.md#policytemplatesget) | **Get** /policytemplates/{id} | Get a specific Policy Template
 *PoliciesApi* | [**PolicytemplatesList**](docs/PoliciesApi.md#policytemplateslist) | **Get** /policytemplates | Lists all of the Policy Templates
 *PolicytemplatesApi* | [**PolicytemplatesGet**](docs/PolicytemplatesApi.md#policytemplatesget) | **Get** /policytemplates/{id} | Get a specific Policy Template

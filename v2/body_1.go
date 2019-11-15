@@ -11,9 +11,9 @@ package v2
 
 type Body1 struct {
 
-	Name string `json:"name,omitempty"`
-
 	Groups []string `json:"groups,omitempty"`
+
+	Name string `json:"name,omitempty"`
 
 	Users []string `json:"users,omitempty"`
 }

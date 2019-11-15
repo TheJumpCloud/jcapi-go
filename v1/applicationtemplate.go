@@ -13,23 +13,23 @@ type Applicationtemplate struct {
 
 	Id string `json:"_id,omitempty"`
 
-	Name string `json:"name,omitempty"`
-
-	DisplayName string `json:"displayName,omitempty"`
-
-	DisplayLabel string `json:"displayLabel,omitempty"`
-
-	SsoUrl string `json:"ssoUrl,omitempty"`
-
-	LearnMore string `json:"learnMore,omitempty"`
-
-	Config *ApplicationtemplateConfig `json:"config,omitempty"`
-
 	Beta bool `json:"beta,omitempty"`
 
 	Color string `json:"color,omitempty"`
 
-	Jit *ApplicationtemplateJit `json:"jit,omitempty"`
+	Config *ApplicationConfig `json:"config,omitempty"`
+
+	DisplayLabel string `json:"displayLabel,omitempty"`
+
+	DisplayName string `json:"displayName,omitempty"`
 
 	IsConfigured bool `json:"isConfigured,omitempty"`
+
+	Jit *ApplicationtemplateJit `json:"jit,omitempty"`
+
+	LearnMore string `json:"learnMore,omitempty"`
+
+	Name string `json:"name,omitempty"`
+
+	SsoUrl string `json:"ssoUrl,omitempty"`
 }

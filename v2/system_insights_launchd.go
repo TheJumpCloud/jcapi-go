@@ -11,49 +11,49 @@ package v2
 
 type SystemInsightsLaunchd struct {
 
-	Path string `json:"path,omitempty"`
-
-	Name string `json:"name,omitempty"`
-
-	Label string `json:"label,omitempty"`
-
-	Program string `json:"program,omitempty"`
-
-	RunAtLoad string `json:"run_at_load,omitempty"`
-
-	KeepAlive string `json:"keep_alive,omitempty"`
-
-	OnDemand string `json:"on_demand,omitempty"`
+	CollectionTime string `json:"collection_time,omitempty"`
 
 	Disabled string `json:"disabled,omitempty"`
 
-	Username string `json:"username,omitempty"`
-
 	Groupname string `json:"groupname,omitempty"`
-
-	StdoutPath string `json:"stdout_path,omitempty"`
-
-	StderrPath string `json:"stderr_path,omitempty"`
-
-	StartInterval string `json:"start_interval,omitempty"`
-
-	ProgramArguments string `json:"program_arguments,omitempty"`
-
-	WatchPaths string `json:"watch_paths,omitempty"`
-
-	QueueDirectories string `json:"queue_directories,omitempty"`
 
 	InetdCompatibility string `json:"inetd_compatibility,omitempty"`
 
-	StartOnMount string `json:"start_on_mount,omitempty"`
+	KeepAlive string `json:"keep_alive,omitempty"`
 
-	RootDirectory string `json:"root_directory,omitempty"`
+	Label string `json:"label,omitempty"`
 
-	WorkingDirectory string `json:"working_directory,omitempty"`
+	Name string `json:"name,omitempty"`
+
+	OnDemand string `json:"on_demand,omitempty"`
+
+	Path string `json:"path,omitempty"`
 
 	ProcessType string `json:"process_type,omitempty"`
 
+	Program string `json:"program,omitempty"`
+
+	ProgramArguments string `json:"program_arguments,omitempty"`
+
+	QueueDirectories string `json:"queue_directories,omitempty"`
+
+	RootDirectory string `json:"root_directory,omitempty"`
+
+	RunAtLoad string `json:"run_at_load,omitempty"`
+
+	StartInterval string `json:"start_interval,omitempty"`
+
+	StartOnMount string `json:"start_on_mount,omitempty"`
+
+	StderrPath string `json:"stderr_path,omitempty"`
+
+	StdoutPath string `json:"stdout_path,omitempty"`
+
 	SystemId string `json:"system_id,omitempty"`
 
-	CollectionTime string `json:"collection_time,omitempty"`
+	Username string `json:"username,omitempty"`
+
+	WatchPaths string `json:"watch_paths,omitempty"`
+
+	WorkingDirectory string `json:"working_directory,omitempty"`
 }

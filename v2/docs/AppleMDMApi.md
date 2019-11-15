@@ -114,7 +114,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**Body2**](Body2.md)|  | 
+ **body** | [**Body**](Body.md)|  | 
  **xOrgId** | **string**|  | [default to ]
 
 ### Return type

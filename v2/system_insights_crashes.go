@@ -11,35 +11,35 @@ package v2
 
 type SystemInsightsCrashes struct {
 
-	Type_ string `json:"type,omitempty"`
-
-	Pid string `json:"pid,omitempty"`
-
-	Path string `json:"path,omitempty"`
-
 	CrashPath string `json:"crash_path,omitempty"`
-
-	Identifier string `json:"identifier,omitempty"`
-
-	Version string `json:"version,omitempty"`
-
-	Parent string `json:"parent,omitempty"`
-
-	Responsible string `json:"responsible,omitempty"`
-
-	Uid int32 `json:"uid,omitempty"`
-
-	Datetime string `json:"datetime,omitempty"`
 
 	CrashedThread string `json:"crashed_thread,omitempty"`
 
-	StackTrace string `json:"stack_trace,omitempty"`
-
-	ExceptionType string `json:"exception_type,omitempty"`
+	Datetime string `json:"datetime,omitempty"`
 
 	ExceptionCodes string `json:"exception_codes,omitempty"`
 
 	ExceptionNotes string `json:"exception_notes,omitempty"`
 
+	ExceptionType string `json:"exception_type,omitempty"`
+
+	Identifier string `json:"identifier,omitempty"`
+
+	Parent string `json:"parent,omitempty"`
+
+	Path string `json:"path,omitempty"`
+
+	Pid string `json:"pid,omitempty"`
+
 	Registers string `json:"registers,omitempty"`
+
+	Responsible string `json:"responsible,omitempty"`
+
+	StackTrace string `json:"stack_trace,omitempty"`
+
+	Type_ string `json:"type,omitempty"`
+
+	Uid int32 `json:"uid,omitempty"`
+
+	Version string `json:"version,omitempty"`
 }

@@ -11,27 +11,27 @@ package v2
 
 type SystemInsightsOsVersion struct {
 
-	Name string `json:"name,omitempty"`
+	Build string `json:"build,omitempty"`
 
-	Version string `json:"version,omitempty"`
+	Codename string `json:"codename,omitempty"`
+
+	CollectionTime string `json:"collection_time,omitempty"`
+
+	InstallDate string `json:"install_date,omitempty"`
 
 	Major int32 `json:"major,omitempty"`
 
 	Minor int32 `json:"minor,omitempty"`
 
-	Patch int32 `json:"patch,omitempty"`
+	Name string `json:"name,omitempty"`
 
-	Build string `json:"build,omitempty"`
+	Patch int32 `json:"patch,omitempty"`
 
 	Platform string `json:"platform,omitempty"`
 
 	PlatformLike string `json:"platform_like,omitempty"`
 
-	Codename string `json:"codename,omitempty"`
-
-	InstallDate string `json:"install_date,omitempty"`
-
-	CollectionTime string `json:"collection_time,omitempty"`
-
 	SystemId string `json:"system_id,omitempty"`
+
+	Version string `json:"version,omitempty"`
 }
