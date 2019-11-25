@@ -619,6 +619,91 @@ paths:
           enabled: false
           statusCode: 200
         public: true
+  /activedirectories/{activedirectory_id}/users:
+    get:
+      tags:
+      - "Graph"
+      summary: "List the Users bound to an Active Directory instance"
+      description: "This endpoint will return all Users bound to an Active Directory\
+        \ instance, either directly or indirectly, essentially traversing the JumpCloud\
+        \ Graph for your Organization.\n\nEach element will contain the type, id,\
+        \ attributes and paths.\n\nThe `attributes` object is a key/value hash of\
+        \ compiled graph attributes for all paths followed.\n\nThe `paths` array enumerates\
+        \ each path from this Active Directory instance to the corresponding User;\
+        \ this array represents all grouping and/or associations that would have to\
+        \ be removed to deprovision the User from this Active Directory instance.\n\
+        \nSee `/members` and `/associations` endpoints to manage those collections.\n\
+        \n#### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/activedirectories/{ActiveDirectory_ID}/users\
+        \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
+      operationId: "graph_activeDirectoryTraverseUser"
+      parameters:
+      - name: "activedirectory_id"
+        in: "path"
+        description: "ObjectID of the Active Directory instance."
+        required: true
+        type: "string"
+        x-exportParamName: "ActivedirectoryId"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
+          \ in"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      - name: "limit"
+        in: "query"
+        description: "The number of records to return at once. Limited to 100."
+        required: false
+        type: "integer"
+        default: 10
+        x-exportParamName: "Limit"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        minimum: 0
+        x-exportParamName: "Skip"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/GraphObjectWithPaths"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "graph_activeDirectoryTraverseUser"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
   /activedirectories/{id}:
     get:
       tags:
@@ -713,6 +798,401 @@ paths:
         afterScript: null
         beforeScript: null
         id: "activedirectories_delete"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
+  /applemdms:
+    get:
+      tags:
+      - "Apple MDM"
+      summary: "List Apple MDMs"
+      description: "Get a list of all Apple MDM configurations.  An empty topic indicates\
+        \ that a signed certificate from Apple has not been provided to the PUT endpoint\
+        \ yet.\n\nNote: currently only one MDM configuration per organization is supported.\n\
+        \n#### Sample Request\n```\ncurl https://console.jumpcloud.com/api/v2/applemdms\
+        \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
+      operationId: "applemdms_list"
+      parameters:
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/AppleMDM"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "applemdms_list"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
+    post:
+      tags:
+      - "Apple MDM"
+      summary: "Create Apple MDM"
+      description: "Creates an Apple MDM Enrollment for an organization. Only one\
+        \ enrollment per organization will be allowed.  Note that this is the first\
+        \ step in completly setting up an MDM Enrollment.  The user must supply the\
+        \ returned plist to Apple for signing, and then provide the certificate provided\
+        \ by Apple back into the PUT API.\n\n#### Sample Request\n```\n  curl -X POST\
+        \ https://console.jumpcloud.com/api/v2/organizations/{Organization_ID}/mdm\
+        \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{}'\n```"
+      operationId: "applemdms_post"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/body"
+        x-exportParamName: "Body"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      responses:
+        201:
+          description: ""
+          schema:
+            $ref: "#/definitions/inline_response_201"
+        400:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        401:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        403:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        404:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        409:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        500:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "applemdms_post"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
+  /applemdms/{apple_mdm_id}:
+    put:
+      tags:
+      - "Apple MDM"
+      summary: "Update an Apple MDM"
+      description: "Updates an Apple MDM configuration.  This endpoint is used to\
+        \ supply JumpCloud with a signed certificate from Apple in order to finalize\
+        \ the setup and allow JumpCloud to manage your devices.\n\n#### Sample Request\n\
+        ```\n  curl -X PUT https://console.jumpcloud.com/api/v2/applemdms/{ID} \\\n\
+        \  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n    \"name\": \"MDM name\"\
+        ,\n    \"appleSignedCert\": \"{CERTIFICATE}\"\n  }'\n```"
+      operationId: "applemdms_put"
+      parameters:
+      - name: "apple_mdm_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "AppleMdmId"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/apple-mdm-patch-input"
+        x-exportParamName: "Body"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/AppleMDM"
+        400:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        401:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        403:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        404:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        409:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        500:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "applemdms_put"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
+    delete:
+      tags:
+      - "Apple MDM"
+      summary: "Delete an Apple MDM"
+      description: "Removes an Apple MDM configuration.\n\nWarning: This is a destructive\
+        \ operation and will remove your Apple Push Certificates.  We will no longer\
+        \ be able to manage your devices and the only recovery option is to re-register\
+        \ all devices into MDM.\n\n#### Sample Request\n```\ncurl -X DELETE https://console.jumpcloud.com/api/v2/applemdms/{id}\
+        \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
+      operationId: "applemdms_delete"
+      parameters:
+      - name: "apple_mdm_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "AppleMdmId"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/AppleMDM"
+        400:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        401:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        403:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        404:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        409:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        500:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "applemdms_delete"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
+  /applemdms/{apple_mdm_id}/enrollmentprofiles:
+    get:
+      tags:
+      - "Apple MDM"
+      summary: "List Apple MDM Enrollment Profiles"
+      description: "Get a list of enrollment profiles for an apple mdm.\n\nNote: currently\
+        \ only one enrollment profile is supported.\n\n#### Sample Request\n```\n\
+        curl https://console.jumpcloud.com/api/v2/applemdms/{APPLE_MDM_ID}/enrollmentprofiles\
+        \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
+      operationId: "enrollmentprofiles_list"
+      parameters:
+      - name: "apple_mdm_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "AppleMdmId"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/AppleMDM"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "enrollmentprofiles_list"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
+  /applemdms/{apple_mdm_id}/enrollmentprofiles/{enrollment_profile_id}:
+    get:
+      tags:
+      - "Apple MDM"
+      summary: "Get an Apple MDM Enrollment Profile"
+      description: "Get an enrollment profile\n\nCurrently only requesting the mobileconfig\
+        \ is supported.\n\n#### Sample Request\n\n```\ncurl https://console.jumpcloud.com/api/v2/applemdms/{APPLE_MDM_ID}/enrollmentprofiles/{ENROLLMENT_PROFILE_ID}\
+        \ \\\n  -H 'accept: application/x-apple-aspen-config' \\\n  -H 'content-type:\
+        \ application/json' \\\n  -H 'x-api-key: {API_KEY}'\n```"
+      operationId: "enrollmentprofiles_get"
+      produces:
+      - "application/x-apple-aspen-config"
+      parameters:
+      - name: "apple_mdm_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "AppleMdmId"
+      - name: "enrollment_profile_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "EnrollmentProfileId"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/mobileconfig"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "enrollmentprofiles_get"
         mock:
           dynamic: false
           enabled: false
@@ -1638,23 +2118,16 @@ paths:
       tags:
       - "Duo"
       summary: "List Duo Acounts"
-      description: "#### Sample Request\n```\ncurl https://console.jumpcloud.com/api/v2/duo/accounts\
+      description: "This endpoint returns all the Duo accounts for your organization.\
+        \ Note: There can currently only be one Duo account for your organization.\n\
+        \n#### Sample Request\n```\ncurl https://console.jumpcloud.com/api/v2/duo/accounts\
         \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n```"
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
       operationId: "duo_accountList"
       parameters:
-      - name: "x-api-key"
-        in: "header"
-        required: true
-        type: "string"
-        x-exportParamName: "XApiKey"
-      - name: "Accept"
-        in: "header"
-        required: false
-        type: "string"
-        x-exportParamName: "Accept"
       - name: "x-org-id"
         in: "header"
+        description: ""
         required: false
         type: "string"
         x-exportParamName: "XOrgId"
@@ -1664,6 +2137,12 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
       responses:
         200:
           description: ""
@@ -1691,17 +2170,9 @@ paths:
         \ (Conflict) code will be returned.\n\n#### Sample Request\n```\n  curl -X\
         \ POST https://console.jumpcloud.com/api/v2/duo/accounts \\\n  -H 'accept:\
         \ application/json' \\\n  -H 'content-type: application/json' \\\n  -H 'x-api-key:\
-        \ {API_KEY}' \\\n  -d '{\n    \"registrationApplication\": {\n      \"apiHost\"\
-        : \"api-1234.duosecurity.com\",\n      \"integrationKey\": \"1234\",\n   \
-        \   \"secretKey\": \"5678\"\n    }\n  }'\n```"
+        \ {API_KEY}' \\\n  -d '{}'\n```"
       operationId: "duo_accountPost"
       parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/DuoRegistrationApplicationReq"
-        x-exportParamName: "Body"
       - name: "Content-Type"
         in: "header"
         required: true
@@ -1765,6 +2236,11 @@ paths:
       tags:
       - "Duo"
       summary: "List Duo Applications"
+      description: "This endpoint returns all the Duo applications for the specified\
+        \ Duo account. Note: There can currently only be one Duo application for your\
+        \ organization.\n\n#### Sample Request\n```\n  curl https://console.jumpcloud.com/api/v2/duo/accounts/{ACCOUNT_ID}/applications\
+        \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
       operationId: "duo_applicationList"
       parameters:
       - name: "account_id"
@@ -1821,6 +2297,8 @@ paths:
           description: ""
           schema:
             $ref: "#/definitions/errorresponse"
+      security:
+      - x-api-key: []
       x-stoplight:
         afterScript: null
         beforeScript: null
@@ -1834,8 +2312,8 @@ paths:
       tags:
       - "Duo"
       summary: "Create Duo Application"
-      description: "Creates a Duo application for an organization and its account.\n\
-        \n#### Sample Request\n```\n  curl -X POST https://console.jumpcloud.com/api/v2/duo/accounts/obj-id-123/applications\
+      description: "Creates a Duo application for your organization and the specified\
+        \ account.\n\n#### Sample Request\n```\n  curl -X POST https://console.jumpcloud.com/api/v2/duo/accounts/{ACCOUNT_ID}/applications\
         \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n    \"name\": \"Application\
         \ Name\",\n    \"apiHost\": \"api-1234.duosecurity.com\",\n    \"integrationKey\"\
@@ -1900,6 +2378,8 @@ paths:
           description: ""
           schema:
             $ref: "#/definitions/errorresponse"
+      security:
+      - x-api-key: []
       x-stoplight:
         afterScript: null
         beforeScript: null
@@ -1914,6 +2394,10 @@ paths:
       tags:
       - "Duo"
       summary: "Get a Duo application"
+      description: "This endpoint returns a specific Duo application that is associated\
+        \ with the specified Duo account.\n\n#### Sample Request\n```\n  curl https://console.jumpcloud.com/api/v2/duo/accounts/{ACCOUNT_ID}/applications/{APPLICATION_ID}\
+        \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
       operationId: "duo_applicationGet"
       parameters:
       - name: "account_id"
@@ -1973,6 +2457,8 @@ paths:
           description: ""
           schema:
             $ref: "#/definitions/errorresponse"
+      security:
+      - x-api-key: []
       x-stoplight:
         afterScript: null
         beforeScript: null
@@ -1982,10 +2468,101 @@ paths:
           enabled: false
           statusCode: 200
         public: false
+    put:
+      tags:
+      - "Duo"
+      summary: "Update Duo Application"
+      description: "Updates the specified Duo application.\n\n#### Sample Request\n\
+        ```\n  curl -X PUT https://console.jumpcloud.com/api/v2/duo/accounts/{ACCOUNT_ID}/applications/{APPLICATION_ID}\
+        \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n    \"name\": \"Application\
+        \ Name\",\n    \"apiHost\": \"api-1234.duosecurity.com\",\n    \"integrationKey\"\
+        : \"1234\",\n    \"secretKey\": \"5678\"\n  }'\n```"
+      operationId: "duo_applicationUpdate"
+      parameters:
+      - name: "account_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "AccountId"
+      - name: "application_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "ApplicationId"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/DuoApplicationUpdateReq"
+        x-exportParamName: "Body"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/DuoApplication"
+        400:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        401:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        403:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        404:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        409:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        500:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "duo_applicationUpdate"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
     delete:
       tags:
       - "Duo"
       summary: "Delete a Duo Application"
+      description: "Deletes the specified Duo application, an error will be returned\
+        \ if the application is used in a protected resource.\n\n#### Sample Request\n\
+        ```\n  curl -X DELETE https://console.jumpcloud.com/api/v2/duo/accounts/{ACCOUNT_ID}/applications/{APPLICATION_ID}\
+        \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}''\n```"
       operationId: "duo_applicationDelete"
       parameters:
       - name: "account_id"
@@ -2045,6 +2622,8 @@ paths:
           description: ""
           schema:
             $ref: "#/definitions/errorresponse"
+      security:
+      - x-api-key: []
       x-stoplight:
         afterScript: null
         beforeScript: null
@@ -2059,9 +2638,10 @@ paths:
       tags:
       - "Duo"
       summary: "Get a Duo Acount"
-      description: "#### Sample Request\n```\ncurl https://console.jumpcloud.com/api/v2/duo/accounts/{id}\
-        \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n```"
+      description: "This endpoint returns a specific Duo account.\n\n#### Sample Request\n\
+        ```\ncurl https://console.jumpcloud.com/api/v2/duo/accounts/{id} \\\n  -H\
+        \ 'accept: application/json' \\\n  -H 'content-type: application/json' \\\n\
+        \  -H 'x-api-key: {API_KEY}'\n```"
       operationId: "duo_accountGet"
       parameters:
       - name: "id"
@@ -2099,6 +2679,232 @@ paths:
         afterScript: null
         beforeScript: null
         id: "duo_accountGet"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
+    delete:
+      tags:
+      - "Duo"
+      summary: "Delete a Duo Account"
+      description: "Removes the specified Duo account, an error will be returned if\
+        \ the account has some Duo application used in a protected resource.\n\n####\
+        \ Sample Request\n```\ncurl -X DELETE https://console.jumpcloud.com/api/v2/duo/accounts/{id}\
+        \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
+      operationId: "duo_accountDelete"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ObjectID of the Duo Account"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/DuoAccount"
+        400:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        401:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        403:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        404:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        409:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        500:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "duo_accountDelete"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
+  /enrollmentprofiles:
+    get:
+      summary: "List Enrollment Profiles"
+      operationId: "jcEnrollmentProfiles_list"
+      parameters:
+      - name: "limit"
+        in: "query"
+        required: false
+        type: "integer"
+        default: 10
+        maximum: 100
+        minimum: 0
+        x-exportParamName: "Limit"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        minimum: 0
+        x-exportParamName: "Skip"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/jc-enrollment-profile"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "jcEnrollmentProfiles_list"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
+    post:
+      summary: "Create new Enrollment Profile"
+      operationId: "jcEnrollmentProfiles_post"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/body_1"
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/jc-enrollment-profile"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "jcEnrollmentProfiles_post"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
+  /enrollmentprofiles/{enrollment_profile_id}:
+    get:
+      summary: "Get Enrollment Profile"
+      operationId: "jcEnrollmentProfiles_get"
+      parameters:
+      - name: "enrollment_profile_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "EnrollmentProfileId"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/jc-enrollment-profile"
+        x-exportParamName: "Body"
+      responses:
+        default:
+          description: ""
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "jcEnrollmentProfiles_get"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
+    put:
+      summary: "Update Enrollment Profile"
+      operationId: "jcEnrollmentProfiles_put"
+      parameters:
+      - name: "enrollment_profile_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "EnrollmentProfileId"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/body_2"
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/jc-enrollment-profile"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "jcEnrollmentProfiles_put"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
+    delete:
+      summary: "Delete Enrollment Profile"
+      operationId: "jcEnrollmentProfiles_delete"
+      parameters:
+      - name: "enrollment_profile_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "EnrollmentProfileId"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/jc-enrollment-profile"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "jcEnrollmentProfiles_delete"
         mock:
           dynamic: false
           enabled: false
@@ -2974,6 +3780,79 @@ paths:
           enabled: false
           statusCode: 200
         public: false
+  /knowledge/salesforce:
+    get:
+      tags:
+      - "Knowledge"
+      summary: "List Knowledge Articles"
+      description: "This endpoint returns a list of knowledge articles hosted in salesforce.\n\
+        \n```\nSample Request\ncurl -X GET https://console.jumpcloud.com/api/v2/knowledge/salesforce\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
+      operationId: "knowledge_salesforceList"
+      parameters:
+      - name: "fields"
+        in: "query"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Fields"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
+          \ in"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      - name: "limit"
+        in: "query"
+        description: "The number of records to return at once. Limited to 100."
+        required: false
+        type: "integer"
+        default: 10
+        x-exportParamName: "Limit"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        minimum: 0
+        x-exportParamName: "Skip"
+      - name: "sort"
+        in: "query"
+        description: "The comma separated fields used to sort the collection.\nDefault\
+          \ sort is ascending, prefix with `-` to sort descending.\n"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Sort"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/salesforce-knowledge-list-output"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: "function (ctx, request) {\n  // Your javascript code here.\n\
+          }"
+        id: "knowledge_salesforceList"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
+    x-swagger-authorization:
+    - "user"
+    - "noOrgHeaderSelection"
+    x-swagger-grouping-strategies: []
+    x-swagger-user-roles: []
   /ldapservers:
     get:
       tags:
@@ -3135,7 +4014,7 @@ paths:
         name: "body"
         required: false
         schema:
-          $ref: "#/definitions/body"
+          $ref: "#/definitions/body_3"
         x-exportParamName: "Body"
       - name: "x-api-key"
         in: "header"
@@ -5396,7 +6275,7 @@ paths:
         \n##### Sample Request\n\n```\n curl -X GET https://console.jumpcloud.com/api/v2/policyresults\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
-      operationId: "policyresults_list"
+      operationId: "policyresults_org_list"
       parameters:
       - name: "fields"
         in: "query"
@@ -5470,7 +6349,7 @@ paths:
       x-stoplight:
         afterScript: null
         beforeScript: null
-        id: "policyresults_list"
+        id: "policyresults_org_list"
         mock:
           dynamic: false
           enabled: false
@@ -7427,6 +8306,74 @@ paths:
           enabled: false
           statusCode: 200
         public: true
+  /systeminsights/battery:
+    get:
+      tags:
+      - "System Insights"
+      summary: "List System Insights Battery"
+      description: "Valid filter fields are `system_id` and `health`."
+      operationId: "systeminsights_list_battery"
+      parameters:
+      - name: "limit"
+        in: "query"
+        required: false
+        type: "integer"
+        default: 10
+        maximum: 100
+        minimum: 0
+        x-exportParamName: "Limit"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        minimum: 0
+        x-exportParamName: "Skip"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/system-insights-battery"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "systeminsights_list_battery"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
   /systeminsights/bitlocker_info:
     get:
       tags:
@@ -7631,6 +8578,74 @@ paths:
           enabled: false
           statusCode: 200
         public: true
+  /systeminsights/crashes:
+    get:
+      tags:
+      - "System Insights"
+      summary: "List System Insights Crashes"
+      description: "Valid filter fields are `system_id` and `identifier`."
+      operationId: "systeminsights_list_crashes"
+      parameters:
+      - name: "limit"
+        in: "query"
+        required: false
+        type: "integer"
+        default: 10
+        maximum: 100
+        minimum: 0
+        x-exportParamName: "Limit"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        minimum: 0
+        x-exportParamName: "Skip"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/system-insights-crashes"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "systeminsights_list_crashes"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
   /systeminsights/disk_encryption:
     get:
       tags:
@@ -7971,6 +8986,74 @@ paths:
           enabled: false
           statusCode: 200
         public: true
+  /systeminsights/ie_extensions:
+    get:
+      tags:
+      - "System Insights"
+      summary: "List System Insights IE Extensions"
+      description: "Valid filter fields are `system_id` and `name`."
+      operationId: "systeminsights_list_ie_extensions"
+      parameters:
+      - name: "limit"
+        in: "query"
+        required: false
+        type: "integer"
+        default: 10
+        maximum: 100
+        minimum: 0
+        x-exportParamName: "Limit"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        minimum: 0
+        x-exportParamName: "Skip"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/system-insights-ie-extensions"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "systeminsights_list_ie_extensions"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
   /systeminsights/interface_addresses:
     get:
       tags:
@@ -8107,6 +9190,142 @@ paths:
           enabled: false
           statusCode: 200
         public: true
+  /systeminsights/launchd:
+    get:
+      tags:
+      - "System Insights"
+      summary: "List System Insights Launchd"
+      description: "Valid filter fields are `system_id` and `name`."
+      operationId: "systeminsights_list_launchd"
+      parameters:
+      - name: "limit"
+        in: "query"
+        required: false
+        type: "integer"
+        default: 10
+        maximum: 100
+        minimum: 0
+        x-exportParamName: "Limit"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        minimum: 0
+        x-exportParamName: "Skip"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/system-insights-launchd"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "systeminsights_list_launchd"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
+  /systeminsights/logged_in_users:
+    get:
+      tags:
+      - "System Insights"
+      summary: "List System Insights Logged-In Users"
+      description: "Valid filter fields are `system_id` and `user`."
+      operationId: "systeminsights_list_logged_in_users"
+      parameters:
+      - name: "limit"
+        in: "query"
+        required: false
+        type: "integer"
+        default: 10
+        maximum: 100
+        minimum: 0
+        x-exportParamName: "Limit"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        minimum: 0
+        x-exportParamName: "Skip"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/system-insights-logged-in-users"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "systeminsights_list_logged_in_users"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
   /systeminsights/logical_drives:
     get:
       tags:
@@ -8719,6 +9938,142 @@ paths:
           enabled: false
           statusCode: 200
         public: true
+  /systeminsights/usb_devices:
+    get:
+      tags:
+      - "System Insights"
+      summary: "List System Insights USB Devices"
+      description: "Valid filter fields are `system_id` and `model`."
+      operationId: "systeminsights_list_usb_devices"
+      parameters:
+      - name: "limit"
+        in: "query"
+        required: false
+        type: "integer"
+        default: 10
+        maximum: 100
+        minimum: 0
+        x-exportParamName: "Limit"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        minimum: 0
+        x-exportParamName: "Skip"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/system-insights-usb-devices"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "systeminsights_list_usb_devices"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
+  /systeminsights/user_groups:
+    get:
+      tags:
+      - "System Insights"
+      summary: "List System Insights User Groups"
+      description: "Only valid filter field is `system_id`."
+      operationId: "systeminsights_list_user_groups"
+      parameters:
+      - name: "limit"
+        in: "query"
+        required: false
+        type: "integer"
+        default: 10
+        maximum: 100
+        minimum: 0
+        x-exportParamName: "Limit"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        minimum: 0
+        x-exportParamName: "Skip"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/system-insights-user-groups"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "systeminsights_list_user_groups"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
   /systeminsights/users:
     get:
       tags:
@@ -8787,13 +10142,81 @@ paths:
           enabled: false
           statusCode: 200
         public: true
+  /systeminsights/windows_crashes:
+    get:
+      tags:
+      - "System Insights"
+      summary: "List System Insights Windows Crashes"
+      description: "Valid filter fields are `system_id` and `type`."
+      operationId: "systeminsights_list_windows_crashes"
+      parameters:
+      - name: "limit"
+        in: "query"
+        required: false
+        type: "integer"
+        default: 10
+        maximum: 100
+        minimum: 0
+        x-exportParamName: "Limit"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        minimum: 0
+        x-exportParamName: "Skip"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/system-insights-windows-crashes"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "systeminsights_list_windows_crashes"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
   /systeminsights/{system_id}/apps:
     get:
       tags:
       - "System Insights"
       summary: "List System Insights System Apps"
       description: "Valid filter fields are `bundle_name`."
-      operationId: "systeminsights_list_apps"
+      operationId: "systeminsights_list_system_apps"
       parameters:
       - name: "system_id"
         in: "path"
@@ -8854,7 +10277,7 @@ paths:
       x-stoplight:
         afterScript: null
         beforeScript: null
-        id: "systeminsights_list_apps"
+        id: "systeminsights_list_system_apps"
         mock:
           dynamic: false
           enabled: false
@@ -8866,7 +10289,7 @@ paths:
       - "System Insights"
       summary: "List System Insights System Bitlocker Info"
       description: "Valid filter fields are `protection_status`."
-      operationId: "systeminsights_list_bitlocker_info"
+      operationId: "systeminsights_list_system_bitlocker_info"
       parameters:
       - name: "system_id"
         in: "path"
@@ -8927,7 +10350,7 @@ paths:
       x-stoplight:
         afterScript: null
         beforeScript: null
-        id: "systeminsights_list_bitlocker_info"
+        id: "systeminsights_list_system_bitlocker_info"
         mock:
           dynamic: false
           enabled: false
@@ -8939,7 +10362,7 @@ paths:
       - "System Insights"
       summary: "List System Insights System Browser Plugins"
       description: "Valid filter fields are `name`."
-      operationId: "systeminsights_list_browser_plugins"
+      operationId: "systeminsights_list_system_browser_plugins"
       parameters:
       - name: "system_id"
         in: "path"
@@ -9000,7 +10423,7 @@ paths:
       x-stoplight:
         afterScript: null
         beforeScript: null
-        id: "systeminsights_list_browser_plugins"
+        id: "systeminsights_list_system_browser_plugins"
         mock:
           dynamic: false
           enabled: false
@@ -9012,7 +10435,7 @@ paths:
       - "System Insights"
       summary: "List System Insights System Chrome Extensions"
       description: "Valid filter fields are `name`."
-      operationId: "systeminsights_list_chrome_extensions"
+      operationId: "systeminsights_list_system_chrome_extensions"
       parameters:
       - name: "system_id"
         in: "path"
@@ -9073,7 +10496,7 @@ paths:
       x-stoplight:
         afterScript: null
         beforeScript: null
-        id: "systeminsights_list_chrome_extensions"
+        id: "systeminsights_list_system_chrome_extensions"
         mock:
           dynamic: false
           enabled: false
@@ -9085,7 +10508,7 @@ paths:
       - "System Insights"
       summary: "List System Insights System Disk Encryption"
       description: "Valid filter fields are `encryption_status`."
-      operationId: "systeminsights_list_disk_encryption"
+      operationId: "systeminsights_list_system_disk_encryption"
       parameters:
       - name: "system_id"
         in: "path"
@@ -9146,7 +10569,7 @@ paths:
       x-stoplight:
         afterScript: null
         beforeScript: null
-        id: "systeminsights_list_disk_encryption"
+        id: "systeminsights_list_system_disk_encryption"
         mock:
           dynamic: false
           enabled: false
@@ -9158,7 +10581,7 @@ paths:
       - "System Insights"
       summary: "List System Insights System Disk Info"
       description: "Valid filter fields are `disk_index`."
-      operationId: "systeminsights_list_disk_info"
+      operationId: "systeminsights_list_system_disk_info"
       parameters:
       - name: "system_id"
         in: "path"
@@ -9219,7 +10642,7 @@ paths:
       x-stoplight:
         afterScript: null
         beforeScript: null
-        id: "systeminsights_list_disk_info"
+        id: "systeminsights_list_system_disk_info"
         mock:
           dynamic: false
           enabled: false
@@ -9231,7 +10654,7 @@ paths:
       - "System Insights"
       summary: "List System Insights System Etc Hosts"
       description: "Valid filter fields are `address`."
-      operationId: "systeminsights_list_etc_hosts"
+      operationId: "systeminsights_list_system_etc_hosts"
       parameters:
       - name: "system_id"
         in: "path"
@@ -9292,7 +10715,7 @@ paths:
       x-stoplight:
         afterScript: null
         beforeScript: null
-        id: "systeminsights_list_etc_hosts"
+        id: "systeminsights_list_system_etc_hosts"
         mock:
           dynamic: false
           enabled: false
@@ -9304,7 +10727,7 @@ paths:
       - "System Insights"
       summary: "List System Insights System Firefox Addons"
       description: "Valid filter fields are `name`."
-      operationId: "systeminsights_list_firefox_addons"
+      operationId: "systeminsights_list_system_firefox_addons"
       parameters:
       - name: "system_id"
         in: "path"
@@ -9365,7 +10788,7 @@ paths:
       x-stoplight:
         afterScript: null
         beforeScript: null
-        id: "systeminsights_list_firefox_addons"
+        id: "systeminsights_list_system_firefox_addons"
         mock:
           dynamic: false
           enabled: false
@@ -9377,7 +10800,7 @@ paths:
       - "System Insights"
       summary: "List System Insights System Groups"
       description: "Valid filter fields are `groupname`."
-      operationId: "systeminsights_list_groups"
+      operationId: "systeminsights_list_system_groups"
       parameters:
       - name: "system_id"
         in: "path"
@@ -9438,7 +10861,7 @@ paths:
       x-stoplight:
         afterScript: null
         beforeScript: null
-        id: "systeminsights_list_groups"
+        id: "systeminsights_list_system_groups"
         mock:
           dynamic: false
           enabled: false
@@ -9450,7 +10873,7 @@ paths:
       - "System Insights"
       summary: "List System Insights System Interface Addresses"
       description: "Valid filter fields are `address`."
-      operationId: "systeminsights_list_interface_addresses"
+      operationId: "systeminsights_list_system_interface_addresses"
       parameters:
       - name: "system_id"
         in: "path"
@@ -9511,7 +10934,7 @@ paths:
       x-stoplight:
         afterScript: null
         beforeScript: null
-        id: "systeminsights_list_interface_addresses"
+        id: "systeminsights_list_system_interface_addresses"
         mock:
           dynamic: false
           enabled: false
@@ -9523,7 +10946,7 @@ paths:
       - "System Insights"
       summary: "List System Insights System Kernel Info"
       description: "Valid filter fields are `version`."
-      operationId: "systeminsights_list_kernel_info"
+      operationId: "systeminsights_list_system_kernel_info"
       parameters:
       - name: "system_id"
         in: "path"
@@ -9584,7 +11007,7 @@ paths:
       x-stoplight:
         afterScript: null
         beforeScript: null
-        id: "systeminsights_list_kernel_info"
+        id: "systeminsights_list_system_kernel_info"
         mock:
           dynamic: false
           enabled: false
@@ -9596,7 +11019,7 @@ paths:
       - "System Insights"
       summary: "List System Insights System Logical Drives"
       description: "Valid filter fields are `device_id`."
-      operationId: "systeminsights_list_logical_drives"
+      operationId: "systeminsights_list_system_logical_drives"
       parameters:
       - name: "system_id"
         in: "path"
@@ -9657,7 +11080,7 @@ paths:
       x-stoplight:
         afterScript: null
         beforeScript: null
-        id: "systeminsights_list_logical_drives"
+        id: "systeminsights_list_system_logical_drives"
         mock:
           dynamic: false
           enabled: false
@@ -9669,7 +11092,7 @@ paths:
       - "System Insights"
       summary: "List System Insights System Mounts"
       description: "Valid filter fields are `path`."
-      operationId: "systeminsights_list_mounts"
+      operationId: "systeminsights_list_system_mounts"
       parameters:
       - name: "system_id"
         in: "path"
@@ -9730,7 +11153,7 @@ paths:
       x-stoplight:
         afterScript: null
         beforeScript: null
-        id: "systeminsights_list_mounts"
+        id: "systeminsights_list_system_mounts"
         mock:
           dynamic: false
           enabled: false
@@ -9742,7 +11165,7 @@ paths:
       - "System Insights"
       summary: "List System Insights System OS Version"
       description: "Valid filter fields are `version`."
-      operationId: "systeminsights_list_os_version"
+      operationId: "systeminsights_list_system_os_version"
       parameters:
       - name: "system_id"
         in: "path"
@@ -9803,7 +11226,7 @@ paths:
       x-stoplight:
         afterScript: null
         beforeScript: null
-        id: "systeminsights_list_os_version"
+        id: "systeminsights_list_system_os_version"
         mock:
           dynamic: false
           enabled: false
@@ -9815,7 +11238,7 @@ paths:
       - "System Insights"
       summary: "List System Insights System Patches"
       description: "Valid filter fields are `hotfix_id  `."
-      operationId: "systeminsights_list_patches"
+      operationId: "systeminsights_list_system_patches"
       parameters:
       - name: "system_id"
         in: "path"
@@ -9876,7 +11299,7 @@ paths:
       x-stoplight:
         afterScript: null
         beforeScript: null
-        id: "systeminsights_list_patches"
+        id: "systeminsights_list_system_patches"
         mock:
           dynamic: false
           enabled: false
@@ -9888,7 +11311,7 @@ paths:
       - "System Insights"
       summary: "List System Insights System Programs"
       description: "Valid filter fields are `name`."
-      operationId: "systeminsights_list_programs"
+      operationId: "systeminsights_list_system_programs"
       parameters:
       - name: "system_id"
         in: "path"
@@ -9949,7 +11372,7 @@ paths:
       x-stoplight:
         afterScript: null
         beforeScript: null
-        id: "systeminsights_list_programs"
+        id: "systeminsights_list_system_programs"
         mock:
           dynamic: false
           enabled: false
@@ -9961,7 +11384,7 @@ paths:
       - "System Insights"
       summary: "List System Insights System Safari Extensions"
       description: "Valid filter fields are `name`."
-      operationId: "systeminsights_list_safari_extensions"
+      operationId: "systeminsights_list_system_safari_extensions"
       parameters:
       - name: "system_id"
         in: "path"
@@ -10022,7 +11445,7 @@ paths:
       x-stoplight:
         afterScript: null
         beforeScript: null
-        id: "systeminsights_list_safari_extensions"
+        id: "systeminsights_list_system_safari_extensions"
         mock:
           dynamic: false
           enabled: false
@@ -10034,7 +11457,7 @@ paths:
       - "System Insights"
       summary: "List System Insights System System Controls"
       description: "Valid filter fields are `name`."
-      operationId: "systeminsights_list_system_controls"
+      operationId: "systeminsights_list_system_system_controls"
       parameters:
       - name: "system_id"
         in: "path"
@@ -10095,7 +11518,7 @@ paths:
       x-stoplight:
         afterScript: null
         beforeScript: null
-        id: "systeminsights_list_system_controls"
+        id: "systeminsights_list_system_system_controls"
         mock:
           dynamic: false
           enabled: false
@@ -10107,7 +11530,7 @@ paths:
       - "System Insights"
       summary: "List System Insights System System Info"
       description: "Valid filter fields are `cpu_subtype`."
-      operationId: "systeminsights_list_system_info"
+      operationId: "systeminsights_list_system_system_info"
       parameters:
       - name: "system_id"
         in: "path"
@@ -10168,7 +11591,7 @@ paths:
       x-stoplight:
         afterScript: null
         beforeScript: null
-        id: "systeminsights_list_system_info"
+        id: "systeminsights_list_system_system_info"
         mock:
           dynamic: false
           enabled: false
@@ -10180,7 +11603,7 @@ paths:
       - "System Insights"
       summary: "List System Insights System Uptime"
       description: "Valid filter fields are `days`."
-      operationId: "systeminsights_list_uptime"
+      operationId: "systeminsights_list_system_uptime"
       parameters:
       - name: "system_id"
         in: "path"
@@ -10241,7 +11664,7 @@ paths:
       x-stoplight:
         afterScript: null
         beforeScript: null
-        id: "systeminsights_list_uptime"
+        id: "systeminsights_list_system_uptime"
         mock:
           dynamic: false
           enabled: false
@@ -10253,7 +11676,7 @@ paths:
       - "System Insights"
       summary: "List System Insights System Users"
       description: "Valid filter fields are `username`."
-      operationId: "systeminsights_list_users"
+      operationId: "systeminsights_list_system_users"
       parameters:
       - name: "system_id"
         in: "path"
@@ -10314,7 +11737,7 @@ paths:
       x-stoplight:
         afterScript: null
         beforeScript: null
-        id: "systeminsights_list_users"
+        id: "systeminsights_list_system_users"
         mock:
           dynamic: false
           enabled: false
@@ -12711,6 +14134,91 @@ paths:
           enabled: false
           statusCode: 200
         public: false
+  /users/{user_id}/activedirectories:
+    get:
+      tags:
+      - "Graph"
+      summary: "List the Active Directory instances bound to a User"
+      description: "This endpoint will return all Active Directory Instances bound\
+        \ to a User, either directly or indirectly, essentially traversing the JumpCloud\
+        \ Graph for your Organization.\n\nEach element will contain the type, id,\
+        \ attributes and paths.\n\nThe `attributes` object is a key/value hash of\
+        \ compiled graph attributes for all paths followed.\n\nThe `paths` array enumerates\
+        \ each path from this User to the corresponding Active Directory instance;\
+        \ this array represents all grouping and/or associations that would have to\
+        \ be removed to deprovision the Active Directory instance from this User.\n\
+        \nSee `/members` and `/associations` endpoints to manage those collections.\n\
+        \n#### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/users/{UserID}/activedirectories\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
+      operationId: "graph_userTraverseActiveDirectory"
+      parameters:
+      - name: "user_id"
+        in: "path"
+        description: "ObjectID of the User."
+        required: true
+        type: "string"
+        x-exportParamName: "UserId"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
+          \ in"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      - name: "limit"
+        in: "query"
+        description: "The number of records to return at once. Limited to 100."
+        required: false
+        type: "integer"
+        default: 10
+        x-exportParamName: "Limit"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        minimum: 0
+        x-exportParamName: "Skip"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/GraphObjectWithPaths"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "graph_userTraverseActiveDirectory"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
   /users/{user_id}/applications:
     get:
       tags:
@@ -14401,6 +15909,32 @@ definitions:
       id: "Administrator"
       name: "Administrator"
       public: true
+  AppleMDM:
+    type: "object"
+    required:
+    - "id"
+    properties:
+      apnsPushTopic:
+        type: "string"
+        description: "The push topic assigned to this enrollment by Apple after uploading\
+          \ the Signed CSR plist."
+      id:
+        type: "string"
+        description: "ObjectId uniquely identifying an MDM Enrollment,"
+      name:
+        type: "string"
+        description: "A friendly name to identify this enrollment.  Not required to\
+          \ be unique."
+        maxLength: 255
+    title: "AppleMDM"
+    example:
+      apnsPushTopic: "apnsPushTopic"
+      name: "name"
+      id: "id"
+    x-stoplight:
+      id: "AppleMDM"
+      name: "AppleMDM"
+      public: true
   Directory:
     type: "object"
     required:
@@ -14418,6 +15952,7 @@ definitions:
         type: "string"
         description: "The type of directory."
         enum:
+        - "active_directory"
         - "g_suite"
         - "ldap_server"
         - "office_365"
@@ -14426,7 +15961,7 @@ definitions:
     example:
       name: "name"
       id: "id"
-      type: "g_suite"
+      type: "active_directory"
     x-stoplight:
       id: "Directory"
       name: "Directory"
@@ -14435,7 +15970,6 @@ definitions:
     type: "object"
     required:
     - "id"
-    - "registrationApplication"
     properties:
       id:
         type: "string"
@@ -14443,16 +15977,10 @@ definitions:
       name:
         type: "string"
         description: "Duo application name."
-      registrationApplication:
-        $ref: "#/definitions/DuoRegistrationApplication"
     title: "DuoAccount"
     example:
       name: "name"
       id: "id"
-      registrationApplication:
-        secretKey: "secretKey"
-        apiHost: "apiHost"
-        integrationKey: "integrationKey"
     x-stoplight:
       id: "DuoAccount"
       name: "DuoAccount"
@@ -14464,7 +15992,6 @@ definitions:
     - "id"
     - "integrationKey"
     - "name"
-    - "secretKey"
     properties:
       apiHost:
         type: "string"
@@ -14474,11 +16001,8 @@ definitions:
         type: "string"
       name:
         type: "string"
-      secretKey:
-        type: "string"
     title: "DuoApplication"
     example:
-      secretKey: "secretKey"
       apiHost: "apiHost"
       name: "name"
       id: "id"
@@ -14513,6 +16037,27 @@ definitions:
       id: "DuoApplicationReq"
       name: "DuoApplicationReq"
       public: true
+  DuoApplicationUpdateReq:
+    type: "object"
+    properties:
+      apiHost:
+        type: "string"
+      integrationKey:
+        type: "string"
+      name:
+        type: "string"
+      secretKey:
+        type: "string"
+    title: "DuoApplicationUpdateReq"
+    example:
+      secretKey: "secretKey"
+      apiHost: "apiHost"
+      name: "name"
+      integrationKey: "integrationKey"
+    x-stoplight:
+      id: "DuoApplicationUpdateReq"
+      name: "DuoApplicationUpdateReq"
+      public: true
   DuoRegistrationApplication:
     type: "object"
     required:
@@ -14530,10 +16075,6 @@ definitions:
         type: "string"
         description: "Duo Application secret key."
     title: "DuoRegistrationApplication"
-    example:
-      secretKey: "secretKey"
-      apiHost: "apiHost"
-      integrationKey: "integrationKey"
     x-stoplight:
       id: "DuoRegistrationApplication"
       name: "DuoRegistrationApplication"
@@ -14546,11 +16087,6 @@ definitions:
       registrationApplication:
         $ref: "#/definitions/DuoRegistrationApplication"
     title: "DuoRegistrationApplicationReq"
-    example:
-      registrationApplication:
-        secretKey: "secretKey"
-        apiHost: "apiHost"
-        integrationKey: "integrationKey"
     x-stoplight:
       id: "DuoRegistrationApplicationReq"
       name: "DuoRegistrationApplicationReq"
@@ -14840,19 +16376,18 @@ definitions:
       \ - Translate `locality` field of JumpCloud user address of type `work` to `city`\
       \ field of Microsoft Graph user\n* `user_state` - Translate `region` field of\
       \ JumpCloud user address of type `work` to `state` field of Microsoft Graph\
-      \ `user` \n* `user_country` - Translate `country` field of JumpCloud user address\
-      \ of type `work` to `country` field of Microsoft Graph `user` \n* `user_postal_code`\
+      \ `user`\n* `user_country` - Translate `country` field of JumpCloud user address\
+      \ of type `work` to `country` field of Microsoft Graph `user`\n* `user_postal_code`\
       \ - Translate `postalCode` field of JumpCloud user address of type `work` to\
-      \ `postalCode` field of Microsoft Graph `user` \n* `user_business_phones` -\
-      \ Translate `number` field of first JumpCloud user `phoneNumber` of type `work`\
-      \ to `businessPhones` field of Microsoft Graph `user` \n* `user_mobile_phone`\
-      \ - Translate `number` field of first JumpCloud user `phoneNumber` of type `mobile`\
-      \ to `mobilePhone` field of Microsoft Graph `user` \n* `user_department` - Translate\
-      \ `department` field of JumpCloud user to `department` field of Microsoft Graph\
-      \ `user` \n* `user_job_title` - Translate `jobTitle` field of JumpCloud user\
-      \ to `jobTitle` field of Microsoft Graph `user` \n* `user_office_location` -\
-      \ Translate `location` field of JumpCloud user to `officeLocation` field of\
-      \ Microsoft Graph `user` "
+      \ `postalCode` field of Microsoft Graph `user`\n* `user_business_phones` - Translate\
+      \ `number` field of first JumpCloud user `phoneNumber` of type `work` to `businessPhones`\
+      \ field of Microsoft Graph `user`\n* `user_mobile_phone` - Translate `number`\
+      \ field of first JumpCloud user `phoneNumber` of type `mobile` to `mobilePhone`\
+      \ field of Microsoft Graph `user`\n* `user_department` - Translate `department`\
+      \ field of JumpCloud user to `department` field of Microsoft Graph `user`\n\
+      * `user_job_title` - Translate `jobTitle` field of JumpCloud user to `jobTitle`\
+      \ field of Microsoft Graph `user`\n* `user_office_location` - Translate `location`\
+      \ field of JumpCloud user to `officeLocation` field of Microsoft Graph `user`"
     enum:
     - "user_street_address"
     - "user_city"
@@ -15501,6 +17036,8 @@ definitions:
   UserGroup:
     type: "object"
     properties:
+      attributes:
+        $ref: "#/definitions/UserGroupAttributes"
       id:
         type: "string"
         description: "ObjectId uniquely identifying a User Group."
@@ -15515,11 +17052,38 @@ definitions:
     title: "UserGroup"
     example:
       name: "name"
+      attributes:
+        sambaEnabled: true
+        posixGroups:
+        - name: "name"
+          id: 0
+        - name: "name"
+          id: 0
       id: "id"
       type: "user_group"
     x-stoplight:
       id: "UserGroup"
       name: "UserGroup"
+      public: true
+  UserGroupAttributes:
+    properties:
+      posixGroups:
+        type: "array"
+        items:
+          $ref: "#/definitions/UserGroupAttributes_posixGroups"
+      sambaEnabled:
+        type: "boolean"
+    title: "UserGroupAttributes"
+    example:
+      sambaEnabled: true
+      posixGroups:
+      - name: "name"
+        id: 0
+      - name: "name"
+        id: 0
+    x-stoplight:
+      id: "UserGroupAttributes"
+      name: "UserGroupAttributes"
       public: true
   UserGroupGraphManagementReq:
     type: "object"
@@ -15597,7 +17161,7 @@ definitions:
     - "name"
     properties:
       attributes:
-        $ref: "#/definitions/UserGroupPost_attributes"
+        $ref: "#/definitions/UserGroupAttributes"
       name:
         type: "string"
         description: "Display name of a User Group."
@@ -15621,7 +17185,7 @@ definitions:
     - "name"
     properties:
       attributes:
-        $ref: "#/definitions/UserGroupPut_attributes"
+        $ref: "#/definitions/UserGroupAttributes"
       name:
         type: "string"
         description: "Display name of a User Group."
@@ -15630,6 +17194,11 @@ definitions:
       name: "name"
       attributes:
         sambaEnabled: true
+        posixGroups:
+        - name: "name"
+          id: 0
+        - name: "name"
+          id: 0
     x-stoplight:
       id: "UserGroupPut"
       name: "UserGroupPut"
@@ -15706,6 +17275,22 @@ definitions:
     x-stoplight:
       id: "active-directory-output"
       name: "Active Directory Output"
+      public: true
+  apple-mdm-patch-input:
+    type: "object"
+    properties:
+      appleSignedCert:
+        type: "string"
+        description: "A signed certificate obtained from Apple after providing Apple\
+          \ with the plist file provided on POST."
+      name:
+        type: "string"
+        description: "A new name for the Apple MDM configuration."
+        maxLength: 255
+    title: "Apple MDM Patch Input"
+    x-stoplight:
+      id: "apple-mdm-patch-input"
+      name: "Apple MDM Patch Input"
       public: true
   auth-info:
     type: "object"
@@ -15812,6 +17397,18 @@ definitions:
       id: "emailrequest"
       name: "EmailRequest"
       public: true
+  enrollment-profile:
+    type: "object"
+    properties:
+      appleMdmId:
+        type: "string"
+      id:
+        type: "string"
+    title: "Enrollment Profile"
+    x-stoplight:
+      id: "enrollment-profile"
+      name: "Enrollment Profile"
+      public: true
   errorresponse:
     type: "object"
     properties:
@@ -15859,6 +17456,38 @@ definitions:
     x-stoplight:
       id: "gsuite-patch-input"
       name: "GSuite Patch Input"
+      public: true
+  jc-enrollment-profile:
+    type: "object"
+    properties:
+      groups:
+        type: "array"
+        items:
+          type: "string"
+      id:
+        type: "string"
+      name:
+        type: "string"
+      organization:
+        type: "string"
+      users:
+        type: "array"
+        items:
+          type: "string"
+    title: "Enrollment Profile"
+    example:
+      organization: "organization"
+      name: "name"
+      groups:
+      - "groups"
+      - "groups"
+      id: "id"
+      users:
+      - "users"
+      - "users"
+    x-stoplight:
+      id: "jc-enrollment-profile"
+      name: "Enrollment Profile"
       public: true
   job-details:
     type: "object"
@@ -15976,6 +17605,13 @@ definitions:
       id: "mfa"
       name: "mfa"
       public: true
+  mobileconfig:
+    type: "string"
+    title: "mobileconfig"
+    x-stoplight:
+      id: "mobileconfig"
+      name: "mobileconfig"
+      public: true
   oauth-code-input:
     type: "object"
     properties:
@@ -16000,6 +17636,15 @@ definitions:
     x-stoplight:
       id: "org-crypto-settings"
       name: "Org Crypto Settings"
+      public: true
+  salesforce-knowledge-list-output:
+    title: "Salesforce Knowledge List Output"
+    type: "array"
+    items:
+      $ref: "#/definitions/salesforceknowledgelistoutput_inner"
+    x-stoplight:
+      id: "salesforce-knowledge-list-output"
+      name: "Salesforce Knowledge List Output"
       public: true
   samba-domain-input:
     type: "object"
@@ -16124,6 +17769,75 @@ definitions:
     x-stoplight:
       id: "system-insights-apps"
       name: "System Insights Apps"
+      public: true
+  system-insights-battery:
+    type: "object"
+    properties:
+      amgerage:
+        type: "integer"
+      charged:
+        type: "integer"
+      charging:
+        type: "integer"
+      collection_time:
+        type: "string"
+      condition:
+        type: "string"
+      current_capacity:
+        type: "integer"
+      cycle_count:
+        type: "integer"
+      designed_capacity:
+        type: "integer"
+      health:
+        type: "string"
+      manufacture_date:
+        type: "integer"
+      manufacturer:
+        type: "string"
+      max_capacity:
+        type: "integer"
+      minutes_to_full_charge:
+        type: "integer"
+      minutes_until_empty:
+        type: "integer"
+      model:
+        type: "string"
+      percent_remaining:
+        type: "integer"
+      serial_number:
+        type: "string"
+      state:
+        type: "string"
+      system_id:
+        type: "string"
+      voltage:
+        type: "integer"
+    title: "System Insights Battery"
+    example:
+      amgerage: 93836453
+      charged: 63086136
+      charging: 6577424
+      collection_time: "anim in dolor"
+      condition: "magna Ut dolor laborum"
+      current_capacity: 95829126
+      cycle_count: -58203101
+      designed_capacity: 51607498
+      health: "ipsum Duis amet magna sint"
+      manufacture_date: 66625366
+      manufacturer: "laboris"
+      max_capacity: 407375
+      minutes_to_full_charge: -43087634
+      minutes_until_empty: 56660087
+      model: "cupidatat quis esse tempor nostr"
+      percent_remaining: -77798506
+      serial_number: "est do nisi anim eu"
+      state: "Duis qui eu labore"
+      system_id: "elit nulla cillum et"
+      voltage: -79728034
+    x-stoplight:
+      id: "system-insights-battery"
+      name: "System Insights Battery"
       public: true
   system-insights-bitlocker-info:
     type: "object"
@@ -16254,6 +17968,63 @@ definitions:
     x-stoplight:
       id: "system-insights-chrome-extensions"
       name: "System Insights Chrome Extensions"
+      public: true
+  system-insights-crashes:
+    type: "object"
+    properties:
+      crash_path:
+        type: "string"
+      crashed_thread:
+        type: "string"
+      datetime:
+        type: "string"
+      exception_codes:
+        type: "string"
+      exception_notes:
+        type: "string"
+      exception_type:
+        type: "string"
+      identifier:
+        type: "string"
+      parent:
+        type: "string"
+      path:
+        type: "string"
+      pid:
+        type: "string"
+      registers:
+        type: "string"
+      responsible:
+        type: "string"
+      stack_trace:
+        type: "string"
+      type:
+        type: "string"
+      uid:
+        type: "integer"
+      version:
+        type: "string"
+    title: "System Insights Crashes"
+    example:
+      identifier: "identifier"
+      parent: "parent"
+      crashed_thread: "crashed_thread"
+      pid: "pid"
+      type: "type"
+      version: "version"
+      exception_notes: "exception_notes"
+      path: "path"
+      uid: 0
+      datetime: "datetime"
+      exception_codes: "exception_codes"
+      responsible: "responsible"
+      crash_path: "crash_path"
+      exception_type: "exception_type"
+      registers: "registers"
+      stack_trace: "stack_trace"
+    x-stoplight:
+      id: "system-insights-crashes"
+      name: "System Insights Crashes"
       public: true
   system-insights-disk-encryption:
     type: "object"
@@ -16447,6 +18218,33 @@ definitions:
       id: "system-insights-groups"
       name: "System Insights Groups"
       public: true
+  system-insights-ie-extensions:
+    type: "object"
+    properties:
+      collection_time:
+        type: "string"
+      name:
+        type: "string"
+      path:
+        type: "string"
+      registry_path:
+        type: "string"
+      system_id:
+        type: "string"
+      version:
+        type: "string"
+    title: "System Insights IE Extensions"
+    example:
+      path: "path"
+      system_id: "system_id"
+      name: "name"
+      collection_time: "collection_time"
+      version: "version"
+      registry_path: "registry_path"
+    x-stoplight:
+      id: "system-insights-ie-extensions"
+      name: "System Insights IE Extensions"
+      public: true
   system-insights-interface-addresses:
     type: "object"
     properties:
@@ -16509,6 +18307,117 @@ definitions:
     x-stoplight:
       id: "system-insights-kernel-info"
       name: "System Insights Kernel Info"
+      public: true
+  system-insights-launchd:
+    type: "object"
+    properties:
+      collection_time:
+        type: "string"
+      disabled:
+        type: "string"
+      groupname:
+        type: "string"
+      inetd_compatibility:
+        type: "string"
+      keep_alive:
+        type: "string"
+      label:
+        type: "string"
+      name:
+        type: "string"
+      on_demand:
+        type: "string"
+      path:
+        type: "string"
+      process_type:
+        type: "string"
+      program:
+        type: "string"
+      program_arguments:
+        type: "string"
+      queue_directories:
+        type: "string"
+      root_directory:
+        type: "string"
+      run_at_load:
+        type: "string"
+      start_interval:
+        type: "string"
+      start_on_mount:
+        type: "string"
+      stderr_path:
+        type: "string"
+      stdout_path:
+        type: "string"
+      system_id:
+        type: "string"
+      username:
+        type: "string"
+      watch_paths:
+        type: "string"
+      working_directory:
+        type: "string"
+    title: "System Insights LaunchD"
+    example:
+      program_arguments: "program_arguments"
+      start_on_mount: "start_on_mount"
+      stdout_path: "stdout_path"
+      run_at_load: "run_at_load"
+      system_id: "system_id"
+      watch_paths: "watch_paths"
+      working_directory: "working_directory"
+      label: "label"
+      program: "program"
+      root_directory: "root_directory"
+      groupname: "groupname"
+      on_demand: "on_demand"
+      path: "path"
+      stderr_path: "stderr_path"
+      start_interval: "start_interval"
+      name: "name"
+      disabled: "disabled"
+      process_type: "process_type"
+      collection_time: "collection_time"
+      keep_alive: "keep_alive"
+      inetd_compatibility: "inetd_compatibility"
+      queue_directories: "queue_directories"
+      username: "username"
+    x-stoplight:
+      id: "system-insights-launchd"
+      name: "System Insights LaunchD"
+      public: true
+  system-insights-logged-in-users:
+    type: "object"
+    properties:
+      collection_time:
+        type: "string"
+      host:
+        type: "string"
+      pid:
+        type: "integer"
+      system_id:
+        type: "string"
+      time:
+        type: "integer"
+      tty:
+        type: "string"
+      type:
+        type: "string"
+      user:
+        type: "string"
+    title: "System Insights Logged-In Users"
+    example:
+      system_id: "system_id"
+      host: "host"
+      tty: "tty"
+      pid: 0
+      collection_time: "collection_time"
+      time: 6
+      type: "type"
+      user: "user"
+    x-stoplight:
+      id: "system-insights-logged-in-users"
+      name: "System Insights Logged-In Users"
       public: true
   system-insights-logical-drvies:
     type: "object"
@@ -16890,6 +18799,78 @@ definitions:
       id: "system-insights-uptime"
       name: "System Insights Uptime"
       public: true
+  system-insights-usb-devices:
+    type: "object"
+    properties:
+      class:
+        type: "string"
+      collection_time:
+        type: "string"
+      model:
+        type: "string"
+      model_id:
+        type: "string"
+      protocol:
+        type: "string"
+      removable:
+        type: "integer"
+      serial:
+        type: "string"
+      subclass:
+        type: "string"
+      system_id:
+        type: "string"
+      usb_address:
+        type: "integer"
+      usb_port:
+        type: "integer"
+      vendor:
+        type: "string"
+      vendor_id:
+        type: "string"
+      version:
+        type: "string"
+    title: "System Insights USB Devices"
+    example:
+      usb_address: 6
+      system_id: "system_id"
+      model_id: "model_id"
+      version: "version"
+      protocol: "protocol"
+      serial: "serial"
+      removable: 0
+      vendor: "vendor"
+      vendor_id: "vendor_id"
+      subclass: "subclass"
+      model: "model"
+      collection_time: "collection_time"
+      usb_port: 1
+      class: "class"
+    x-stoplight:
+      id: "system-insights-usb-devices"
+      name: "System Insights USB Devices"
+      public: true
+  system-insights-user-groups:
+    type: "object"
+    properties:
+      collection_time:
+        type: "string"
+      gid:
+        type: "string"
+      system_id:
+        type: "string"
+      uid:
+        type: "string"
+    title: "System Insights User Groups"
+    example:
+      uid: "uid"
+      gid: "gid"
+      system_id: "system_id"
+      collection_time: "collection_time"
+    x-stoplight:
+      id: "system-insights-user-groups"
+      name: "System Insights User Groups"
+      public: true
   system-insights-users:
     type: "object"
     properties:
@@ -16934,6 +18915,78 @@ definitions:
     x-stoplight:
       id: "system-insights-users"
       name: "System Insights Users"
+      public: true
+  system-insights-windows-crashes:
+    type: "object"
+    properties:
+      build_number:
+        type: "integer"
+      command_line:
+        type: "string"
+      crash_path:
+        type: "string"
+      current_directory:
+        type: "string"
+      datetime:
+        type: "string"
+      exception_address:
+        type: "string"
+      exception_code:
+        type: "string"
+      exception_message:
+        type: "string"
+      machine_name:
+        type: "string"
+      major_version:
+        type: "integer"
+      minor_version:
+        type: "integer"
+      module:
+        type: "string"
+      path:
+        type: "string"
+      pid:
+        type: "string"
+      process_uptime:
+        type: "string"
+      registers:
+        type: "string"
+      stack_trace:
+        type: "string"
+      tid:
+        type: "string"
+      type:
+        type: "string"
+      username:
+        type: "string"
+      version:
+        type: "string"
+    title: "System Insights Windows Crashes"
+    example:
+      exception_address: "exception_address"
+      module: "module"
+      pid: "pid"
+      machine_name: "machine_name"
+      type: "type"
+      version: "version"
+      tid: "tid"
+      exception_message: "exception_message"
+      minor_version: 1
+      path: "path"
+      datetime: "datetime"
+      major_version: 6
+      exception_code: "exception_code"
+      process_uptime: "process_uptime"
+      crash_path: "crash_path"
+      build_number: 0
+      registers: "registers"
+      current_directory: "current_directory"
+      stack_trace: "stack_trace"
+      command_line: "command_line"
+      username: "username"
+    x-stoplight:
+      id: "system-insights-windows-crashes"
+      name: "System Insights Windows Crashes"
       public: true
   systemfdekey:
     type: "object"
@@ -17040,6 +19093,8 @@ definitions:
           $ref: "#/definitions/sshkeylist"
       sudo:
         type: "boolean"
+      suspended:
+        type: "boolean"
       tags:
         type: "array"
         items:
@@ -17145,6 +19200,8 @@ definitions:
       samba_service_user:
         type: "boolean"
       sudo:
+        type: "boolean"
+      suspended:
         type: "boolean"
       tags:
         type: "array"
@@ -17265,6 +19322,51 @@ definitions:
   body:
     type: "object"
     properties:
+      name:
+        type: "string"
+        description: "The name used to identify this AppleMDM."
+        maxLength: 255
+  inline_response_201:
+    properties:
+      appleMdm:
+        $ref: "#/definitions/AppleMDM"
+      signedCsrPlist:
+        type: "string"
+    example:
+      appleMdm:
+        apnsPushTopic: "apnsPushTopic"
+        name: "name"
+        id: "id"
+      signedCsrPlist: "signedCsrPlist"
+  body_1:
+    type: "object"
+    properties:
+      groups:
+        type: "array"
+        items:
+          type: "string"
+      name:
+        type: "string"
+      users:
+        type: "array"
+        items:
+          type: "string"
+  body_2:
+    type: "object"
+    properties:
+      groups:
+        type: "array"
+        items:
+          type: "string"
+      name:
+        type: "string"
+      users:
+        type: "array"
+        items:
+          type: "string"
+  body_3:
+    type: "object"
+    properties:
       id:
         type: "string"
       userLockoutAction:
@@ -17350,7 +19452,7 @@ definitions:
       sudo:
         withoutPassword: true
         enabled: true
-  UserGroupPost_attributes_posixGroups:
+  UserGroupAttributes_posixGroups:
     properties:
       id:
         type: "integer"
@@ -17359,29 +19461,6 @@ definitions:
     example:
       name: "name"
       id: 0
-  UserGroupPost_attributes:
-    properties:
-      posixGroups:
-        type: "array"
-        items:
-          $ref: "#/definitions/UserGroupPost_attributes_posixGroups"
-      sambaEnabled:
-        type: "boolean"
-    description: "The group object's attributes."
-    example:
-      sambaEnabled: true
-      posixGroups:
-      - name: "name"
-        id: 0
-      - name: "name"
-        id: 0
-  UserGroupPut_attributes:
-    properties:
-      sambaEnabled:
-        type: "boolean"
-    description: "The group object's attributes."
-    example:
-      sambaEnabled: true
   authinput_basic:
     properties:
       password:
@@ -17404,6 +19483,10 @@ definitions:
       keySize: 0
       validateKeySize: true
       validate: true
+  salesforceknowledgelistoutput_inner:
+    properties:
+      id:
+        type: "string"
   systemuserputpost_addresses:
     properties:
       country:
@@ -17884,6 +19967,32 @@ x-stoplight:
       docs:
       - divider: false
         items:
+        - _id: "applemdms_post"
+          type: "endpoints"
+        - _id: "applemdms_list"
+          type: "endpoints"
+        - _id: "applemdms_delete"
+          type: "endpoints"
+        - _id: "applemdms_put"
+          type: "endpoints"
+        - _id: "AppleMDM"
+          type: "schemas"
+        - _id: "apple-mdm-patch-input"
+          type: "schemas"
+        - _id: "enrollmentprofiles_list"
+          type: "endpoints"
+        - _id: "enrollmentprofiles_get"
+          type: "endpoints"
+        - _id: "enrollment-profile"
+          type: "schemas"
+        - _id: "mobileconfig"
+          type: "schemas"
+        name: "Apple MDM"
+      - divider: false
+        items: []
+        name: "Application Templates"
+      - divider: false
+        items:
         - _id: "org_crypto_put"
           type: "endpoints"
         - _id: "org_crypto_get"
@@ -18058,6 +20167,10 @@ x-stoplight:
           type: "endpoints"
         - _id: "duo_applicationDelete"
           type: "endpoints"
+        - _id: "duo_applicationUpdate"
+          type: "endpoints"
+        - _id: "duo_accountDelete"
+          type: "endpoints"
         name: "Duo"
       - description: "Groups are designed to enhance JumpCloud's existing grouping\
           \ functionality which relied heavily on flexible “tags” to allow you to\
@@ -18104,6 +20217,11 @@ x-stoplight:
         - _id: "translationRules_gSuiteDelete"
           type: "endpoints"
         name: "G Suite"
+      - divider: false
+        items:
+        - _id: "knowledge_salesforceList"
+          type: "endpoints"
+        name: "Knowledge"
       - description: "You can associate your groups of users to LDAP.   Please see\
           \ [this page](https://support.jumpcloud.com/customer/en/portal/topics/926832-ldap-as-a-service)\
           \ for more information on LDAP."
@@ -18187,7 +20305,7 @@ x-stoplight:
           type: "endpoints"
         - _id: "policytemplates_get"
           type: "endpoints"
-        - _id: "policyresults_list"
+        - _id: "policyresults_org_list"
           type: "endpoints"
         - _id: "policyresults_get"
           type: "endpoints"
@@ -18292,8 +20410,8 @@ x-stoplight:
           \ to allow management of the group members. This includes listing, adding\
           \ and removing Directory Objects and Groups of Directory Objects to and\
           \ from the Group. These endpoints allow you to control the members and membership\
-          \ of System Objects.\n\nMembers are the direct objects of an object group.\
-          \ \n\nMembership is defined as the direct and indirect members of an object\
+          \ of System Objects.\n\nMembers are the direct objects of an object group.\n\
+          \nMembership is defined as the direct and indirect members of an object\
           \ group."
         divider: false
         items:
@@ -18333,129 +20451,163 @@ x-stoplight:
           type: "endpoints"
         - _id: "systeminsights_list_chrome_extensions"
           type: "endpoints"
-        - _id: "systeminsights_list_chrome_extensions"
+        - _id: "systeminsights_list_system_chrome_extensions"
           type: "endpoints"
         - _id: "system-insights-chrome-extensions"
           type: "schemas"
         - _id: "systeminsights_list_safari_extensions"
           type: "endpoints"
-        - _id: "systeminsights_list_safari_extensions"
+        - _id: "systeminsights_list_system_safari_extensions"
           type: "endpoints"
         - _id: "system-insights-safari-extensions"
           type: "schemas"
         - _id: "systeminsights_list_mounts"
           type: "endpoints"
-        - _id: "systeminsights_list_mounts"
+        - _id: "systeminsights_list_system_mounts"
           type: "endpoints"
         - _id: "system-insights-mounts"
           type: "schemas"
         - _id: "systeminsights_list_browser_plugins"
           type: "endpoints"
-        - _id: "systeminsights_list_browser_plugins"
+        - _id: "systeminsights_list_system_browser_plugins"
           type: "endpoints"
         - _id: "system-insights-browser-plugins"
           type: "schemas"
         - _id: "systeminsights_list_firefox_addons"
           type: "endpoints"
-        - _id: "systeminsights_list_firefox_addons"
+        - _id: "systeminsights_list_system_firefox_addons"
           type: "endpoints"
         - _id: "system-insights-firefox-addons"
           type: "schemas"
         - _id: "systeminsights_list_apps"
           type: "endpoints"
-        - _id: "systeminsights_list_apps"
+        - _id: "systeminsights_list_system_apps"
           type: "endpoints"
         - _id: "system-insights-apps"
           type: "schemas"
         - _id: "systeminsights_list_disk_encryption"
           type: "endpoints"
-        - _id: "systeminsights_list_disk_encryption"
+        - _id: "systeminsights_list_system_disk_encryption"
           type: "endpoints"
         - _id: "system-insights-disk-encryption"
           type: "schemas"
         - _id: "systeminsights_list_os_version"
           type: "endpoints"
-        - _id: "systeminsights_list_os_version"
+        - _id: "systeminsights_list_system_os_version"
           type: "endpoints"
         - _id: "system-insights-os-version"
           type: "schemas"
         - _id: "systeminsights_list_interface_addresses"
           type: "endpoints"
-        - _id: "systeminsights_list_interface_addresses"
+        - _id: "systeminsights_list_system_interface_addresses"
           type: "endpoints"
         - _id: "system-insights-interface-addresses"
           type: "schemas"
         - _id: "systeminsights_list_groups"
           type: "endpoints"
-        - _id: "systeminsights_list_groups"
+        - _id: "systeminsights_list_system_groups"
           type: "endpoints"
         - _id: "system-insights-groups"
           type: "schemas"
         - _id: "systeminsights_list_users"
           type: "endpoints"
-        - _id: "systeminsights_list_users"
+        - _id: "systeminsights_list_system_users"
           type: "endpoints"
         - _id: "system-insights-users"
           type: "schemas"
         - _id: "systeminsights_list_system_info"
           type: "endpoints"
-        - _id: "systeminsights_list_system_info"
+        - _id: "systeminsights_list_system_system_info"
           type: "endpoints"
         - _id: "system-insights-system-info"
           type: "schemas"
         - _id: "systeminsights_list_bitlocker_info"
           type: "endpoints"
-        - _id: "systeminsights_list_bitlocker_info"
+        - _id: "systeminsights_list_system_bitlocker_info"
           type: "endpoints"
         - _id: "system-insights-bitlocker-info"
           type: "schemas"
         - _id: "systeminsights_list_disk_info"
           type: "endpoints"
-        - _id: "systeminsights_list_disk_info"
+        - _id: "systeminsights_list_system_disk_info"
           type: "endpoints"
         - _id: "system-insights-disk-info"
           type: "schemas"
         - _id: "systeminsights_list_etc_hosts"
           type: "endpoints"
-        - _id: "systeminsights_list_etc_hosts"
+        - _id: "systeminsights_list_system_etc_hosts"
           type: "endpoints"
         - _id: "system-insights-etc-hosts"
           type: "schemas"
         - _id: "systeminsights_list_logical_drives"
           type: "endpoints"
-        - _id: "systeminsights_list_logical_drives"
+        - _id: "systeminsights_list_system_logical_drives"
           type: "endpoints"
         - _id: "system-insights-logical-drvies"
           type: "schemas"
         - _id: "systeminsights_list_patches"
           type: "endpoints"
-        - _id: "systeminsights_list_patches"
+        - _id: "systeminsights_list_system_patches"
           type: "endpoints"
         - _id: "system-insights-patches"
           type: "schemas"
         - _id: "systeminsights_list_programs"
           type: "endpoints"
-        - _id: "systeminsights_list_programs"
+        - _id: "systeminsights_list_system_programs"
           type: "endpoints"
         - _id: "system-insights-programs"
           type: "schemas"
         - _id: "systeminsights_list_kernel_info"
           type: "endpoints"
-        - _id: "systeminsights_list_kernel_info"
+        - _id: "systeminsights_list_system_kernel_info"
           type: "endpoints"
         - _id: "system-insights-kernel-info"
           type: "schemas"
         - _id: "systeminsights_list_system_controls"
           type: "endpoints"
-        - _id: "systeminsights_list_system_controls"
+        - _id: "systeminsights_list_system_system_controls"
           type: "endpoints"
         - _id: "system-insights-system-controls"
           type: "schemas"
         - _id: "systeminsights_list_uptime"
           type: "endpoints"
-        - _id: "systeminsights_list_uptime"
+        - _id: "systeminsights_list_system_uptime"
           type: "endpoints"
         - _id: "system-insights-uptime"
+          type: "schemas"
+        - _id: "systeminsights_list_battery"
+          type: "endpoints"
+        - _id: "system-insights-battery"
+          type: "schemas"
+        - _id: "xTwHys9wz3xkkAKnT"
+          type: "schemas"
+        - _id: "systeminsights_list_ie_extensions"
+          type: "endpoints"
+        - _id: "system-insights-ie-extensions"
+          type: "schemas"
+        - _id: "systeminsights_list_launchd"
+          type: "endpoints"
+        - _id: "system-insights-launchd"
+          type: "schemas"
+        - _id: "systeminsights_list_logged_in_users"
+          type: "endpoints"
+        - _id: "system-insights-logged-in-users"
+          type: "schemas"
+        - _id: "systeminsights_list_usb_devices"
+          type: "endpoints"
+        - _id: "system-insights-usb-devices"
+          type: "schemas"
+        - _id: "systeminsights_list_user_groups"
+          type: "endpoints"
+        - _id: "system-insights-user-groups"
+          type: "schemas"
+        - _id: "systeminsights_list_crashes"
+          type: "endpoints"
+        - _id: "system-insights-crashes"
+          type: "schemas"
+        - _id: "systeminsights_list_windows_crashes"
+          type: "endpoints"
+        - _id: "system-insights-windows-crashes"
           type: "schemas"
         name: "System Insights"
       - description: "You can associate your Users with groups of Users, Systems,\
@@ -18536,8 +20688,8 @@ x-stoplight:
           \ to allow management of the group members. This includes listing, adding\
           \ and removing Directory Objects and Groups of Directory Objects to and\
           \ from the Group. These endpoints allow you to control the members and membership\
-          \ of User Objects.\n\nMembers are the direct objects of an object group.\
-          \ \n\nMembership is defined as the direct and indirect members of an object\
+          \ of User Objects.\n\nMembers are the direct objects of an object group.\n\
+          \nMembership is defined as the direct and indirect members of an object\
           \ group."
         divider: false
         items:
@@ -18684,6 +20836,8 @@ x-stoplight:
           type: "schemas"
         - _id: "ProviderAdminReq"
           type: "schemas"
+        - _id: "salesforce-knowledge-list-output"
+          type: "schemas"
         - _id: "samba-domain-input"
           type: "schemas"
         - _id: "samba-domain-output"
@@ -18701,6 +20855,8 @@ x-stoplight:
         - _id: "SystemGroupGraphManagementReq"
           type: "schemas"
         - _id: "UserGroup"
+          type: "schemas"
+        - _id: "UserGroupAttributes"
           type: "schemas"
         - _id: "UserGraphManagementReq"
           type: "schemas"
@@ -18759,6 +20915,8 @@ x-stoplight:
         - _id: "DuoApplication"
           type: "schemas"
         - _id: "DuoApplicationReq"
+          type: "schemas"
+        - _id: "DuoApplicationUpdateReq"
           type: "schemas"
         name: "Models"
       - description: "These Traits describe  the common behaviors or structures in\

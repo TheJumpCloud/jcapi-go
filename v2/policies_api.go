@@ -1118,7 +1118,7 @@ func (a *PoliciesApiService) PolicyresultsList(ctx context.Context, policyId str
      @param "skip" (int32) The offset into the records to return.
      @param "sort" ([]string) The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending. 
  @return []PolicyResult*/
-func (a *PoliciesApiService) PolicyresultsList_1(ctx context.Context, contentType string, accept string, localVarOptionals map[string]interface{}) ([]PolicyResult,  *http.Response, error) {
+func (a *PoliciesApiService) PolicyresultsOrgList(ctx context.Context, contentType string, accept string, localVarOptionals map[string]interface{}) ([]PolicyResult,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
@@ -1347,7 +1347,7 @@ func (a *PoliciesApiService) PolicystatusesList(ctx context.Context, policyId st
      @param "sort" ([]string) The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending. 
      @param "xOrgId" (string) 
  @return []PolicyResult*/
-func (a *PoliciesApiService) PolicystatusesList_2(ctx context.Context, systemId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]PolicyResult,  *http.Response, error) {
+func (a *PoliciesApiService) PolicystatusesList_1(ctx context.Context, systemId string, contentType string, accept string, localVarOptionals map[string]interface{}) ([]PolicyResult,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}

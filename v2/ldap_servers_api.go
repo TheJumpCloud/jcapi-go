@@ -643,7 +643,7 @@ func (a *LDAPServersApiService) LdapserversList(ctx context.Context, contentType
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "body" (Body) 
+     @param "body" (Body3) 
      @param "xApiKey" (string) 
      @param "xOrgId" (string) 
  @return InlineResponse200*/
@@ -699,7 +699,7 @@ func (a *LDAPServersApiService) LdapserversPatch(ctx context.Context, id string,
 	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
 	localVarHeaderParams["Accept"] = parameterToString(accept, "")
 	// body params
-	if localVarTempParam, localVarOk := localVarOptionals["body"].(Body); localVarOk {
+	if localVarTempParam, localVarOk := localVarOptionals["body"].(Body3); localVarOk {
 		localVarPostBody = &localVarTempParam
 	}
 	if ctx != nil {

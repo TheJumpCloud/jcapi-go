@@ -77,6 +77,8 @@ type Systemuserput struct {
 
 	Sudo bool `json:"sudo,omitempty"`
 
+	Suspended bool `json:"suspended,omitempty"`
+
 	Tags []string `json:"tags,omitempty"`
 
 	UnixGuid int32 `json:"unix_guid,omitempty"`

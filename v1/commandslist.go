@@ -11,7 +11,7 @@ package v1
 
 type Commandslist struct {
 
-	Results *CommandslistResults `json:"results,omitempty"`
+	Results []CommandslistResults `json:"results,omitempty"`
 
 	// The total number of commands
 	TotalCount int32 `json:"totalCount,omitempty"`

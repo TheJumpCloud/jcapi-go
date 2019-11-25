@@ -82,6 +82,8 @@ type Systemuser struct {
 
 	Sudo bool `json:"sudo,omitempty"`
 
+	Suspended bool `json:"suspended,omitempty"`
+
 	Tags []string `json:"tags,omitempty"`
 
 	TotpEnabled bool `json:"totp_enabled,omitempty"`

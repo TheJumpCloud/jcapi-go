@@ -18,6 +18,4 @@ type DuoApplication struct {
 	IntegrationKey string `json:"integrationKey"`
 
 	Name string `json:"name"`
-
-	SecretKey string `json:"secretKey"`
 }

@@ -15,7 +15,7 @@ Method | HTTP request | Description
 [**PoliciesPut**](PoliciesApi.md#PoliciesPut) | **Put** /policies/{id} | Update an existing Policy
 [**PolicyresultsGet**](PoliciesApi.md#PolicyresultsGet) | **Get** /policyresults/{id} | Get a specific Policy Result.
 [**PolicyresultsList**](PoliciesApi.md#PolicyresultsList) | **Get** /policies/{policy_id}/policyresults | Lists all the policy results of a policy.
-[**PolicyresultsList_0**](PoliciesApi.md#PolicyresultsList_0) | **Get** /policyresults | Lists all the policy results for an organization.
+[**PolicyresultsOrgList**](PoliciesApi.md#PolicyresultsOrgList) | **Get** /policyresults | Lists all the policy results for an organization.
 [**PolicystatusesList**](PoliciesApi.md#PolicystatusesList) | **Get** /policies/{policy_id}/policystatuses | Lists the latest policy results of a policy.
 [**PolicystatusesList_0**](PoliciesApi.md#PolicystatusesList_0) | **Get** /systems/{system_id}/policystatuses | List the policy statuses for a system
 [**PolicytemplatesGet**](PoliciesApi.md#PolicytemplatesGet) | **Get** /policytemplates/{id} | Get a specific Policy Template
@@ -488,8 +488,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **PolicyresultsList_0**
-> []PolicyResult PolicyresultsList_0(ctx, contentType, accept, optional)
+# **PolicyresultsOrgList**
+> []PolicyResult PolicyresultsOrgList(ctx, contentType, accept, optional)
 Lists all the policy results for an organization.
 
 This endpoint returns all policies results for an organization.  ##### Sample Request  ```  curl -X GET https://console.jumpcloud.com/api/v2/policyresults \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'   ```

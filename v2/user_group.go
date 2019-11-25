@@ -11,6 +11,8 @@ package v2
 
 type UserGroup struct {
 
+	Attributes *UserGroupAttributes `json:"attributes,omitempty"`
+
 	// ObjectId uniquely identifying a User Group.
 	Id string `json:"id,omitempty"`
 

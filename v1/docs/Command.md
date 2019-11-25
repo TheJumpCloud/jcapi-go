@@ -16,7 +16,8 @@ Name | Type | Description | Notes
 **Sudo** | **bool** |  | [optional] [default to null]
 **Systems** | **[]string** | An array of system IDs to run the command on. Not available if you are using Groups. | [optional] [default to null]
 **Timeout** | **string** | The time in seconds to allow the command to run for. | [optional] [default to null]
-**User** | **string** | The ID of the system user to run the command as. | [default to null]
+**Trigger** | **string** | The name of the command trigger. | [optional] [default to null]
+**User** | **string** | The ID of the system user to run the command as. This field is required when creating a command with a commandType of \&quot;mac\&quot; or \&quot;linux\&quot;. | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

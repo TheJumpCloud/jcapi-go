@@ -42,6 +42,7 @@ Name | Type | Description | Notes
 **SambaServiceUser** | **bool** |  | [optional] [default to null]
 **SshKeys** | [**[]Sshkeylist**](sshkeylist.md) |  | [optional] [default to null]
 **Sudo** | **bool** |  | [optional] [default to null]
+**Suspended** | **bool** |  | [optional] [default to null]
 **Tags** | **[]string** |  | [optional] [default to null]
 **TotpEnabled** | **bool** |  | [optional] [default to null]
 **UnixGuid** | **int32** |  | [optional] [default to null]

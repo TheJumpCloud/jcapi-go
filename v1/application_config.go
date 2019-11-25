@@ -21,5 +21,7 @@ type ApplicationConfig struct {
 
 	IdpEntityId *ApplicationConfigAcsUrl `json:"idpEntityId,omitempty"`
 
+	IdpPrivateKey *ApplicationConfigAcsUrl `json:"idpPrivateKey,omitempty"`
+
 	SpEntityId *ApplicationConfigAcsUrl `json:"spEntityId,omitempty"`
 }

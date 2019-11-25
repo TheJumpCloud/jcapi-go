@@ -95,6 +95,7 @@ paths:
         required: false
         type: "integer"
         default: 0
+        minimum: 0
         x-exportParamName: "Skip"
       - name: "sort"
         in: "query"
@@ -137,6 +138,165 @@ paths:
           enabled: false
           statusCode: 200
         public: false
+  /application-templates:
+    get:
+      tags:
+      - "Application Templates"
+      summary: "List Application Templates"
+      description: "The endpoint returns all the SSO / SAML Application Templates.\n\
+        \n#### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/application-templates\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n\n```"
+      operationId: "application_templates_list"
+      parameters:
+      - name: "fields"
+        in: "query"
+        description: "The comma separated fields included in the returned records.\
+          \ If omitted the default list of fields will be returned."
+        required: false
+        type: "string"
+        x-exportParamName: "Fields"
+      - name: "limit"
+        in: "query"
+        description: "The number of records to return at once."
+        required: false
+        type: "integer"
+        x-exportParamName: "Limit"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        x-exportParamName: "Skip"
+      - name: "sort"
+        in: "query"
+        required: false
+        type: "string"
+        default: "The comma separated fields used to sort the collection. Default\
+          \ sort is ascending, prefix with - to sort descending."
+        x-exportParamName: "Sort"
+      - name: "filter"
+        in: "query"
+        description: "A filter to apply to the query."
+        required: false
+        type: "string"
+        x-exportParamName: "Filter"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/applicationtemplateslist"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "application_templates_list"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: true
+  /application-templates/{id}:
+    get:
+      tags:
+      - "Application Templates"
+      summary: "Get an Application Template"
+      description: "The endpoint returns a specific SSO / SAML Application Template.\n\
+        \n#### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/application-templates/{id}\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n\n```"
+      operationId: "application_templates_get"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      - name: "fields"
+        in: "query"
+        description: "The comma separated fields included in the returned records.\
+          \ If omitted the default list of fields will be returned."
+        required: false
+        type: "string"
+        x-exportParamName: "Fields"
+      - name: "limit"
+        in: "query"
+        description: "The number of records to return at once."
+        required: false
+        type: "integer"
+        x-exportParamName: "Limit"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        x-exportParamName: "Skip"
+      - name: "sort"
+        in: "query"
+        required: false
+        type: "string"
+        default: "The comma separated fields used to sort the collection. Default\
+          \ sort is ascending, prefix with - to sort descending."
+        x-exportParamName: "Sort"
+      - name: "filter"
+        in: "query"
+        description: "A filter to apply to the query."
+        required: false
+        type: "string"
+        x-exportParamName: "Filter"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/applicationtemplate"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "application_templates_get"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: true
   /applications:
     get:
       tags:
@@ -145,7 +305,7 @@ paths:
       description: "The endpoint returns all your SSO / SAML Applications.\n\n####\
         \ Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/applications\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \n\n```"
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n\n```"
       operationId: "applications_list"
       parameters:
       - name: "fields"
@@ -482,6 +642,7 @@ paths:
         required: false
         type: "integer"
         default: 0
+        minimum: 0
         x-exportParamName: "Skip"
       - name: "sort"
         in: "query"
@@ -540,7 +701,7 @@ paths:
       description: "This endpoint returns a specific command result.\n\n#### Sample\
         \ Request\n```\ncurl -X GET https://console.jumpcloud.com/api/commandresults/{CommandResultID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \n  ```"
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
       operationId: "command_results_get"
       parameters:
       - name: "id"
@@ -605,7 +766,7 @@ paths:
       description: "This endpoint deletes a specific command result.\n\n#### Sample\
         \ Request\n```\ncurl -X GET https://console.jumpcloud.com/api/commandresults/{CommandID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \n  ````"
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ````"
       operationId: "command_results_delete"
       parameters:
       - name: "id"
@@ -649,7 +810,7 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-  /commands/:
+  /commands:
     get:
       tags:
       - "Commands"
@@ -666,6 +827,7 @@ paths:
         required: false
         type: "integer"
         default: 0
+        minimum: 0
         x-exportParamName: "Skip"
       - name: "fields"
         in: "query"
@@ -793,7 +955,7 @@ paths:
       description: "This endpoint returns a specific command based on the command\
         \ ID.\n\n#### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/commands/{CommandID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \n```"
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
       operationId: "commands_get"
       parameters:
       - name: "id"
@@ -967,7 +1129,7 @@ paths:
       description: "This endpoint returns the uploaded file(s) associated with a specific\
         \ command.\n\n#### Sample Request\n\n```\ncurl -X GET https://console.jumpcloud.com/api/files/command/{commandID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \n  ```"
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
       operationId: "command_file_get"
       parameters:
       - name: "id"
@@ -996,6 +1158,7 @@ paths:
         required: false
         type: "integer"
         default: 0
+        minimum: 0
         x-exportParamName: "Skip"
       - name: "Content-Type"
         in: "header"
@@ -1041,9 +1204,9 @@ paths:
       tags:
       - "Organizations"
       summary: "Get Organization Details"
-      description: "This endpoint returns Organization Details.\n\n#### Sample Request\
-        \ \n\n```\ncurl -X GET \\\n  https://console.jumpcloud.com/api/organizations\
-        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+      description: "This endpoint returns Organization Details.\n\n#### Sample Request\n\
+        \n```\ncurl -X GET \\\n  https://console.jumpcloud.com/api/organizations \\\
+        \n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
       operationId: "organization_list"
       parameters:
@@ -1086,6 +1249,7 @@ paths:
         required: false
         type: "integer"
         default: 0
+        minimum: 0
         x-exportParamName: "Skip"
       - name: "sort"
         in: "query"
@@ -1167,6 +1331,7 @@ paths:
         required: false
         type: "integer"
         default: 0
+        minimum: 0
         x-exportParamName: "Skip"
       - name: "sort"
         in: "query"
@@ -1238,7 +1403,7 @@ paths:
         200:
           description: ""
           schema:
-            $ref: "#/definitions/radiusserverslist"
+            $ref: "#/definitions/radiusserver"
       security:
       - x-api-key: []
       x-stoplight:
@@ -1250,19 +1415,24 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-  /radiusservers:id:
+  /radiusservers/{id}:
     put:
       tags:
       - "Radius Servers"
       summary: "Update Radius Servers"
       description: "This endpoint allows you to update RADIUS servers in your organization.\n\
-        \n#### \n```\ncurl -X PUT https://console.jumpcloud.com/api/radiusservers/{ServerID}\
+        \n####\n```\ncurl -X PUT https://console.jumpcloud.com/api/radiusservers/{ServerID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n    \"name\": \"{name_update}\"\
         ,\n    \"networkSourceIp\": \"{0.0.0.0}\",\n    \"userLockoutAction\": \"\
         REMOVE\",\n    \"userPasswordExpirationAction\": \"MAINTAIN\"\n}'\n```"
       operationId: "radius_servers_put"
       parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
       - in: "body"
         name: "body"
         required: false
@@ -1310,9 +1480,9 @@ paths:
       summary: "Search Organizations"
       description: "This endpoint will return Organization data based on your search\
         \ parameters. This endpoint WILL NOT allow you to add a new Organization.\n\
-        \nYou can use the supported parameters and pass those in the body of request.\
-        \ \n\nThe parameters must be passed as Content-Type application/json.\n\n\n\
-        #### Sample Request\n```\ncurl -X POST https://console.jumpcloud.com/api/search/organizations\
+        \nYou can use the supported parameters and pass those in the body of request.\n\
+        \nThe parameters must be passed as Content-Type application/json.\n\n\n####\
+        \ Sample Request\n```\ncurl -X POST https://console.jumpcloud.com/api/search/organizations\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n  \"search\":{\n    \"fields\"\
         \ : [\"settings.name\"],\n    \"searchTerm\": \"Second\"\n    },\n  \"fields\"\
@@ -1365,6 +1535,7 @@ paths:
         required: false
         type: "integer"
         default: 0
+        minimum: 0
         x-exportParamName: "Skip"
       responses:
         200:
@@ -1396,7 +1567,7 @@ paths:
         \ /api/search/* routes. The `filter` and `searchFilter` parameters must be\
         \ passed as Content-Type application/json.\n\nThe `filter` parameter is an\
         \ object with a single property, either `and` or `or` with the value of the\
-        \ property being an array of query expressions. \n\nThis allows you to filter\
+        \ property being an array of query expressions.\n\nThis allows you to filter\
         \ records using the logic of matching ALL or ANY records in the array of query\
         \ expressions. If the `and` or `or` are not included the default behavior\
         \ is to match ALL query expressions.\n\nThe `searchFilter` parameter allows\
@@ -1467,6 +1638,7 @@ paths:
         required: false
         type: "integer"
         default: 0
+        minimum: 0
         x-exportParamName: "Skip"
       - name: "filter"
         in: "query"
@@ -1504,7 +1676,7 @@ paths:
         \ of POST /api/search/* routes. The `filter` and `searchFilter` parameters\
         \ must be passed as Content-Type application/json.\n\nThe `filter` parameter\
         \ is an object with a single property, either `and` or `or` with the value\
-        \ of the property being an array of query expressions. \n\nThis allows you\
+        \ of the property being an array of query expressions.\n\nThis allows you\
         \ to filter records using the logic of matching ALL or ANY records in the\
         \ array of query expressions. If the `and` or `or` are not included the default\
         \ behavior is to match ALL query expressions.\n\nThe `searchFilter` parameter\
@@ -1576,6 +1748,7 @@ paths:
         required: false
         type: "integer"
         default: 0
+        minimum: 0
         x-exportParamName: "Skip"
       - name: "x-org-id"
         in: "header"
@@ -1608,8 +1781,8 @@ paths:
       summary: "List All Systems"
       description: "This endpoint returns all Systems.\n\n#### Sample Requests\n```\n\
         curl -X GET https://console.jumpcloud.com/api/systems \\\n  -H 'Accept: application/json'\
-        \ \\\n  -H 'Content-Type: application/json' \\\n  -H 'x-api-key: {API_KEY}'\
-        \ \n\n```"
+        \ \\\n  -H 'Content-Type: application/json' \\\n  -H 'x-api-key: {API_KEY}'\n\
+        \n```"
       operationId: "systems_list"
       parameters:
       - name: "fields"
@@ -1658,6 +1831,7 @@ paths:
         required: false
         type: "integer"
         default: 0
+        minimum: 0
         x-exportParamName: "Skip"
       - name: "sort"
         in: "query"
@@ -1696,7 +1870,7 @@ paths:
       description: "This endpoint returns an individual system.\n\n#### Sample Request\n\
         ```\ncurl -X GET https://console.jumpcloud.com/api/systems/{SystemID} \\\n\
         \  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \n  ```"
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
       operationId: "systems_get"
       parameters:
       - name: "id"
@@ -1939,6 +2113,7 @@ paths:
         required: false
         type: "integer"
         default: 0
+        minimum: 0
         x-exportParamName: "Skip"
       - name: "sort"
         in: "query"
@@ -2060,7 +2235,7 @@ paths:
       description: "This endpoint returns all systemusers.\n\n#### Sample Request\n\
         \n```\ncurl -X GET https://console.jumpcloud.com/api/systemusers \\\n  -H\
         \ 'Accept: application/json' \\\n  -H 'Content-Type: application/json' \\\n\
-        \  -H 'x-api-key: {API_KEY}' \n```"
+        \  -H 'x-api-key: {API_KEY}'\n```"
       operationId: "systemusers_list"
       parameters:
       - name: "limit"
@@ -2327,7 +2502,7 @@ paths:
       description: "This endpoint allows you to delete a particular system user.\n\
         \n#### Sample Request\n```\ncurl -X DELETE https://console.jumpcloud.com/api/systemusers/{UserID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \n```"
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
       operationId: "systemusers_delete"
       parameters:
       - name: "id"
@@ -2376,17 +2551,17 @@ paths:
       tags:
       - "Systemusers"
       summary: "Reset a system user's MFA token"
-      description: "This endpoint allows you to reset the MFA TOTP token for a specified\
-        \ system user and put them in an MFA enrollment period. This will result in\
-        \ the user being prompted to setup MFA when logging into userportal. Please\
-        \ be aware that if the user does not complete MFA setup before the `exclusionUntil`\
-        \ date, they will be locked out of any resources that require MFA.\n\nPlease\
-        \ refer to our [Knowledge Base Article](https://support.jumpcloud.com/customer/en/portal/articles/2959138-using-multifactor-authentication-with-jumpcloud)\
-        \ on setting up MFA for more information. \n\n#### Sample Request \n```\n\
-        curl -X POST \\\n  https://console.jumpcloud.com/api/systemusers/{UserID}/resetmfa\
+      description: "This endpoint allows you to reset the TOTP key for a specified\
+        \ system user and put them in an TOTP MFA enrollment period. This will result\
+        \ in the user being prompted to setup TOTP MFA when logging into userportal.\
+        \ Please be aware that if the user does not complete TOTP MFA setup before\
+        \ the `exclusionUntil` date, they will be locked out of any resources that\
+        \ require TOTP MFA.\n\nPlease refer to our [Knowledge Base Article](https://support.jumpcloud.com/customer/en/portal/articles/2959138-using-multifactor-authentication-with-jumpcloud)\
+        \ on setting up MFA for more information.\n\n#### Sample Request\n```\ncurl\
+        \ -X POST \\\n  https://console.jumpcloud.com/api/systemusers/{UserID}/resetmfa\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\"exclusion\": true, \"exclusionUntil\"\
-        : \"{date-time}\"}'\n  \n\n```"
+        : \"{date-time}\"}'\n\n\n```"
       operationId: "systemusers_resetmfa"
       parameters:
       - name: "id"
@@ -2400,11 +2575,6 @@ paths:
         schema:
           $ref: "#/definitions/body_1"
         x-exportParamName: "Body"
-      - name: "x-api-key"
-        in: "header"
-        required: true
-        type: "string"
-        x-exportParamName: "XApiKey"
       - name: "Content-Type"
         in: "header"
         required: true
@@ -2582,7 +2752,7 @@ paths:
       - "Systemusers"
       summary: "List system user binding"
       description: "Hidden as Tags is deprecated\n\nAdds or removes a system binding\
-        \ for a user. \n\nThis endpoint is only used for users still using JumpCloud\
+        \ for a user.\n\nThis endpoint is only used for users still using JumpCloud\
         \ Tags. If you are using JumpCloud Groups please refer to the documentation\
         \ found [here](https://docs.jumpcloud.com/2.0/systems/manage-associations-of-a-system).\n\
         \n\nList system bindings for a specific system user in a system and user binding\
@@ -2618,6 +2788,7 @@ paths:
         required: false
         type: "integer"
         default: 0
+        minimum: 0
         x-exportParamName: "Skip"
       - name: "sort"
         in: "query"
@@ -2674,7 +2845,7 @@ paths:
       - "Systemusers"
       summary: "Update a system user binding"
       description: "Hidden as Tags is deprecated\n\nAdds or removes a system binding\
-        \ for a user. \n\nThis endpoint is only used for users still using JumpCloud\
+        \ for a user.\n\nThis endpoint is only used for users still using JumpCloud\
         \ Tags. If you are using JumpCloud Groups please refer to the documentation\
         \ found [here](https://docs.jumpcloud.com/2.0/systems/manage-associations-of-a-system).\n\
         \n### Example\n\n#### Add (or remove) system to system user\n\n```\ncurl \\\
@@ -2885,6 +3056,7 @@ paths:
         required: false
         type: "integer"
         default: 0
+        minimum: 0
         x-exportParamName: "Skip"
       - name: "sort"
         in: "query"
@@ -3033,7 +3205,7 @@ definitions:
     properties:
       _id:
         type: "string"
-      active:
+      beta:
         type: "boolean"
       config:
         $ref: "#/definitions/application_config"
@@ -3057,7 +3229,6 @@ definitions:
       displayName: "displayName"
       organization: "organization"
       name: "name"
-      active: true
       _id: "_id"
       config:
         acsUrl:
@@ -3125,6 +3296,19 @@ definitions:
           required: true
         databaseAttributes:
           position: 1
+        idpPrivateKey:
+          visible: true
+          tooltip:
+            template: "template"
+            variables:
+              icon: "icon"
+              message: "message"
+          readOnly: true
+          label: "label"
+          position: 0
+          type: "type"
+          value: "value"
+          required: true
         idpEntityId:
           visible: true
           tooltip:
@@ -3138,6 +3322,7 @@ definitions:
           type: "type"
           value: "value"
           required: true
+      beta: true
     x-stoplight:
       id: "application"
       name: "Application"
@@ -3155,7 +3340,7 @@ definitions:
         description: "The total number of applications."
     title: "ApplicationsList"
     example:
-      totalCount: 5
+      totalCount: 0
       results:
       - displayLabel: "displayLabel"
         learnMore: "learnMore"
@@ -3163,7 +3348,6 @@ definitions:
         displayName: "displayName"
         organization: "organization"
         name: "name"
-        active: true
         _id: "_id"
         config:
           acsUrl:
@@ -3231,6 +3415,19 @@ definitions:
             required: true
           databaseAttributes:
             position: 1
+          idpPrivateKey:
+            visible: true
+            tooltip:
+              template: "template"
+              variables:
+                icon: "icon"
+                message: "message"
+            readOnly: true
+            label: "label"
+            position: 0
+            type: "type"
+            value: "value"
+            required: true
           idpEntityId:
             visible: true
             tooltip:
@@ -3244,13 +3441,13 @@ definitions:
             type: "type"
             value: "value"
             required: true
+        beta: true
       - displayLabel: "displayLabel"
         learnMore: "learnMore"
         ssoUrl: "ssoUrl"
         displayName: "displayName"
         organization: "organization"
         name: "name"
-        active: true
         _id: "_id"
         config:
           acsUrl:
@@ -3318,6 +3515,19 @@ definitions:
             required: true
           databaseAttributes:
             position: 1
+          idpPrivateKey:
+            visible: true
+            tooltip:
+              template: "template"
+              variables:
+                icon: "icon"
+                message: "message"
+            readOnly: true
+            label: "label"
+            position: 0
+            type: "type"
+            value: "value"
+            required: true
           idpEntityId:
             visible: true
             tooltip:
@@ -3331,15 +3541,377 @@ definitions:
             type: "type"
             value: "value"
             required: true
+        beta: true
     x-stoplight:
       id: "applicationslist"
       name: "ApplicationsList"
+      public: true
+  applicationtemplate:
+    type: "object"
+    properties:
+      _id:
+        type: "string"
+      beta:
+        type: "boolean"
+      color:
+        type: "string"
+      config:
+        $ref: "#/definitions/application_config"
+      displayLabel:
+        type: "string"
+      displayName:
+        type: "string"
+      isConfigured:
+        type: "boolean"
+      jit:
+        $ref: "#/definitions/applicationtemplate_jit"
+      learnMore:
+        type: "string"
+      name:
+        type: "string"
+      ssoUrl:
+        type: "string"
+    title: "ApplicationTemplate"
+    example:
+      displayLabel: "displayLabel"
+      isConfigured: true
+      color: "color"
+      jit:
+        createOnly: true
+        attributes: "{}"
+      learnMore: "learnMore"
+      ssoUrl: "ssoUrl"
+      displayName: "displayName"
+      name: "name"
+      _id: "_id"
+      config:
+        acsUrl:
+          visible: true
+          tooltip:
+            template: "template"
+            variables:
+              icon: "icon"
+              message: "message"
+          readOnly: true
+          label: "label"
+          position: 0
+          type: "type"
+          value: "value"
+          required: true
+        constantAttributes:
+          visible: true
+          mutable: true
+          tooltip:
+            template: "template"
+            variables:
+              icon: "icon"
+              message: "message"
+          readOnly: true
+          label: "label"
+          position: 6
+          type: "type"
+          value:
+          - visible: true
+            name: "name"
+            readOnly: true
+            value: "value"
+            required: true
+          - visible: true
+            name: "name"
+            readOnly: true
+            value: "value"
+            required: true
+          required: true
+        idpCertificate:
+          visible: true
+          tooltip:
+            template: "template"
+            variables:
+              icon: "icon"
+              message: "message"
+          readOnly: true
+          label: "label"
+          position: 0
+          type: "type"
+          value: "value"
+          required: true
+        spEntityId:
+          visible: true
+          tooltip:
+            template: "template"
+            variables:
+              icon: "icon"
+              message: "message"
+          readOnly: true
+          label: "label"
+          position: 0
+          type: "type"
+          value: "value"
+          required: true
+        databaseAttributes:
+          position: 1
+        idpPrivateKey:
+          visible: true
+          tooltip:
+            template: "template"
+            variables:
+              icon: "icon"
+              message: "message"
+          readOnly: true
+          label: "label"
+          position: 0
+          type: "type"
+          value: "value"
+          required: true
+        idpEntityId:
+          visible: true
+          tooltip:
+            template: "template"
+            variables:
+              icon: "icon"
+              message: "message"
+          readOnly: true
+          label: "label"
+          position: 0
+          type: "type"
+          value: "value"
+          required: true
+      beta: true
+    x-stoplight:
+      id: "applicationtemplate"
+      name: "ApplicationTemplate"
+      public: true
+  applicationtemplateslist:
+    type: "object"
+    properties:
+      results:
+        type: "array"
+        description: "The list of applications."
+        items:
+          $ref: "#/definitions/applicationtemplate"
+      totalCount:
+        type: "integer"
+        description: "The total number of applications."
+    title: "ApplicationTemplatesList"
+    example:
+      totalCount: 5
+      results:
+      - displayLabel: "displayLabel"
+        isConfigured: true
+        color: "color"
+        jit:
+          createOnly: true
+          attributes: "{}"
+        learnMore: "learnMore"
+        ssoUrl: "ssoUrl"
+        displayName: "displayName"
+        name: "name"
+        _id: "_id"
+        config:
+          acsUrl:
+            visible: true
+            tooltip:
+              template: "template"
+              variables:
+                icon: "icon"
+                message: "message"
+            readOnly: true
+            label: "label"
+            position: 0
+            type: "type"
+            value: "value"
+            required: true
+          constantAttributes:
+            visible: true
+            mutable: true
+            tooltip:
+              template: "template"
+              variables:
+                icon: "icon"
+                message: "message"
+            readOnly: true
+            label: "label"
+            position: 6
+            type: "type"
+            value:
+            - visible: true
+              name: "name"
+              readOnly: true
+              value: "value"
+              required: true
+            - visible: true
+              name: "name"
+              readOnly: true
+              value: "value"
+              required: true
+            required: true
+          idpCertificate:
+            visible: true
+            tooltip:
+              template: "template"
+              variables:
+                icon: "icon"
+                message: "message"
+            readOnly: true
+            label: "label"
+            position: 0
+            type: "type"
+            value: "value"
+            required: true
+          spEntityId:
+            visible: true
+            tooltip:
+              template: "template"
+              variables:
+                icon: "icon"
+                message: "message"
+            readOnly: true
+            label: "label"
+            position: 0
+            type: "type"
+            value: "value"
+            required: true
+          databaseAttributes:
+            position: 1
+          idpPrivateKey:
+            visible: true
+            tooltip:
+              template: "template"
+              variables:
+                icon: "icon"
+                message: "message"
+            readOnly: true
+            label: "label"
+            position: 0
+            type: "type"
+            value: "value"
+            required: true
+          idpEntityId:
+            visible: true
+            tooltip:
+              template: "template"
+              variables:
+                icon: "icon"
+                message: "message"
+            readOnly: true
+            label: "label"
+            position: 0
+            type: "type"
+            value: "value"
+            required: true
+        beta: true
+      - displayLabel: "displayLabel"
+        isConfigured: true
+        color: "color"
+        jit:
+          createOnly: true
+          attributes: "{}"
+        learnMore: "learnMore"
+        ssoUrl: "ssoUrl"
+        displayName: "displayName"
+        name: "name"
+        _id: "_id"
+        config:
+          acsUrl:
+            visible: true
+            tooltip:
+              template: "template"
+              variables:
+                icon: "icon"
+                message: "message"
+            readOnly: true
+            label: "label"
+            position: 0
+            type: "type"
+            value: "value"
+            required: true
+          constantAttributes:
+            visible: true
+            mutable: true
+            tooltip:
+              template: "template"
+              variables:
+                icon: "icon"
+                message: "message"
+            readOnly: true
+            label: "label"
+            position: 6
+            type: "type"
+            value:
+            - visible: true
+              name: "name"
+              readOnly: true
+              value: "value"
+              required: true
+            - visible: true
+              name: "name"
+              readOnly: true
+              value: "value"
+              required: true
+            required: true
+          idpCertificate:
+            visible: true
+            tooltip:
+              template: "template"
+              variables:
+                icon: "icon"
+                message: "message"
+            readOnly: true
+            label: "label"
+            position: 0
+            type: "type"
+            value: "value"
+            required: true
+          spEntityId:
+            visible: true
+            tooltip:
+              template: "template"
+              variables:
+                icon: "icon"
+                message: "message"
+            readOnly: true
+            label: "label"
+            position: 0
+            type: "type"
+            value: "value"
+            required: true
+          databaseAttributes:
+            position: 1
+          idpPrivateKey:
+            visible: true
+            tooltip:
+              template: "template"
+              variables:
+                icon: "icon"
+                message: "message"
+            readOnly: true
+            label: "label"
+            position: 0
+            type: "type"
+            value: "value"
+            required: true
+          idpEntityId:
+            visible: true
+            tooltip:
+              template: "template"
+              variables:
+                icon: "icon"
+                message: "message"
+            readOnly: true
+            label: "label"
+            position: 0
+            type: "type"
+            value: "value"
+            required: true
+        beta: true
+    x-stoplight:
+      id: "applicationtemplateslist"
+      name: "ApplicationTemplatesList"
       public: true
   command:
     type: "object"
     required:
     - "command"
-    - "user"
     properties:
       command:
         type: "string"
@@ -3389,9 +3961,14 @@ definitions:
       timeout:
         type: "string"
         description: "The time in seconds to allow the command to run for."
+      trigger:
+        type: "string"
+        description: "The name of the command trigger."
       user:
         type: "string"
-        description: "The ID of the system user to run the command as."
+        description: "The ID of the system user to run the command as. This field\
+          \ is required when creating a command with a commandType of \"mac\" or \"\
+          linux\"."
     title: "Command"
     example:
       scheduleRepeatType: "scheduleRepeatType"
@@ -3399,6 +3976,7 @@ definitions:
       commandRunners:
       - "commandRunners"
       - "commandRunners"
+      trigger: "trigger"
       command: "command"
       timeout: "timeout"
       schedule: "schedule"
@@ -3573,7 +4151,9 @@ definitions:
     type: "object"
     properties:
       results:
-        $ref: "#/definitions/commandslist_results"
+        type: "array"
+        items:
+          $ref: "#/definitions/commandslist_results"
       totalCount:
         type: "integer"
         description: "The total number of commands"
@@ -3581,7 +4161,17 @@ definitions:
     example:
       totalCount: 0
       results:
-        schedule: "schedule"
+      - schedule: "schedule"
+        scheduleRepeatType: "scheduleRepeatType"
+        commandType: "commandType"
+        organization: "organization"
+        name: "name"
+        _id: "_id"
+        listensTo: "listensTo"
+        trigger: "trigger"
+        command: "command"
+        launchType: "launchType"
+      - schedule: "schedule"
         scheduleRepeatType: "scheduleRepeatType"
         commandType: "commandType"
         organization: "organization"
@@ -4240,6 +4830,8 @@ definitions:
           $ref: "#/definitions/sshkeylist"
       sudo:
         type: "boolean"
+      suspended:
+        type: "boolean"
       tags:
         type: "array"
         items:
@@ -4383,6 +4975,8 @@ definitions:
           $ref: "#/definitions/sshkeypost"
       sudo:
         type: "boolean"
+      suspended:
+        type: "boolean"
       tags:
         type: "array"
         items:
@@ -4486,6 +5080,8 @@ definitions:
       samba_service_user:
         type: "boolean"
       sudo:
+        type: "boolean"
+      suspended:
         type: "boolean"
       tags:
         type: "array"
@@ -4612,6 +5208,8 @@ definitions:
           $ref: "#/definitions/sshkeylist"
       sudo:
         type: "boolean"
+      suspended:
+        type: "boolean"
       tags:
         type: "array"
         items:
@@ -4687,6 +5285,7 @@ definitions:
         exclusionUntil: "2000-01-23T04:56:07.000+00:00"
       middlename: "middlename"
       external_source_type: "external_source_type"
+      suspended: true
       lastname: "lastname"
       tags:
       - "tags"
@@ -4791,6 +5390,7 @@ definitions:
           exclusionUntil: "2000-01-23T04:56:07.000+00:00"
         middlename: "middlename"
         external_source_type: "external_source_type"
+        suspended: true
         lastname: "lastname"
         tags:
         - "tags"
@@ -4876,6 +5476,7 @@ definitions:
           exclusionUntil: "2000-01-23T04:56:07.000+00:00"
         middlename: "middlename"
         external_source_type: "external_source_type"
+        suspended: true
         lastname: "lastname"
         tags:
         - "tags"
@@ -5297,6 +5898,8 @@ definitions:
         $ref: "#/definitions/application_config_acsUrl"
       idpEntityId:
         $ref: "#/definitions/application_config_acsUrl"
+      idpPrivateKey:
+        $ref: "#/definitions/application_config_acsUrl"
       spEntityId:
         $ref: "#/definitions/application_config_acsUrl"
     example:
@@ -5365,6 +5968,19 @@ definitions:
         required: true
       databaseAttributes:
         position: 1
+      idpPrivateKey:
+        visible: true
+        tooltip:
+          template: "template"
+          variables:
+            icon: "icon"
+            message: "message"
+        readOnly: true
+        label: "label"
+        position: 0
+        type: "type"
+        value: "value"
+        required: true
       idpEntityId:
         visible: true
         tooltip:
@@ -5378,6 +5994,16 @@ definitions:
         type: "type"
         value: "value"
         required: true
+  applicationtemplate_jit:
+    properties:
+      attributes:
+        type: "object"
+        properties: {}
+      createOnly:
+        type: "boolean"
+    example:
+      createOnly: true
+      attributes: "{}"
   commandfilereturn_results:
     properties:
       _id:
@@ -5436,7 +6062,6 @@ definitions:
         description: "How the Command is executed."
       listensTo:
         type: "string"
-        description: ""
       name:
         type: "string"
         description: "The name of the Command."
@@ -5447,7 +6072,7 @@ definitions:
         type: "string"
         description: "A crontab that consists of: [ (seconds) (minutes) (hours) (days\
           \ of month) (months) (weekdays) ] or [ immediate ]. If you send this as\
-          \ an empty string, it will run immediately.\n"
+          \ an empty string, it will run immediately."
       scheduleRepeatType:
         type: "string"
         description: "When the command will repeat."
@@ -5688,6 +6313,7 @@ parameters:
     required: false
     type: "integer"
     default: 0
+    minimum: 0
     x-exportParamName: "Skip"
   trait:sort:sort:
     name: "sort"
@@ -5942,6 +6568,13 @@ x-stoplight:
         - _id: "multi-tenant-organization-api-headers"
           type: "docTextSections"
         name: "Authentication & Authorization"
+      - divider: false
+        items:
+        - _id: "application_templates_list"
+          type: "endpoints"
+        - _id: "application_templates_get"
+          type: "endpoints"
+        name: "Application Templates"
       - description: "The Applications endpoint is use to create and modify your SSO\
           \ Applications in JumpCloud. It's recommended to use the Console UI to setup\
           \ your SSO Applications."
@@ -5949,11 +6582,11 @@ x-stoplight:
         items:
         - _id: "applications_list"
           type: "endpoints"
+        - _id: "applications_get"
+          type: "endpoints"
         - _id: "applications_post"
           type: "endpoints"
         - _id: "applications_put"
-          type: "endpoints"
-        - _id: "applications_get"
           type: "endpoints"
         - _id: "applications_delete"
           type: "endpoints"
@@ -6020,9 +6653,9 @@ x-stoplight:
         name: "Organizations"
       - divider: false
         items:
-        - _id: "radius_servers_post"
-          type: "endpoints"
         - _id: "radius_servers_list"
+          type: "endpoints"
+        - _id: "radius_servers_post"
           type: "endpoints"
         - _id: "radius_servers_put"
           type: "endpoints"
@@ -6125,6 +6758,10 @@ x-stoplight:
         - _id: "application"
           type: "schemas"
         - _id: "applicationslist"
+          type: "schemas"
+        - _id: "applicationtemplate"
+          type: "schemas"
+        - _id: "applicationtemplateslist"
           type: "schemas"
         - _id: "command"
           type: "schemas"

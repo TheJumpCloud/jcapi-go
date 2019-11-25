@@ -13,7 +13,7 @@ type Application struct {
 
 	Id string `json:"_id,omitempty"`
 
-	Active bool `json:"active,omitempty"`
+	Beta bool `json:"beta,omitempty"`
 
 	Config *ApplicationConfig `json:"config,omitempty"`
 

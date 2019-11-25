@@ -9,9 +9,15 @@
 
 package v2
 
-type UserGroupPostAttributesPosixGroups struct {
+type JcEnrollmentProfile struct {
 
-	Id int32 `json:"id,omitempty"`
+	Groups []string `json:"groups,omitempty"`
+
+	Id string `json:"id,omitempty"`
 
 	Name string `json:"name,omitempty"`
+
+	Organization string `json:"organization,omitempty"`
+
+	Users []string `json:"users,omitempty"`
 }

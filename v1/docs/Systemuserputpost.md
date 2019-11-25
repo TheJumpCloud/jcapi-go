@@ -36,6 +36,7 @@ Name | Type | Description | Notes
 **Relationships** | [**[]interface{}**](interface{}.md) |  | [optional] [default to null]
 **SambaServiceUser** | **bool** |  | [optional] [default to null]
 **Sudo** | **bool** |  | [optional] [default to null]
+**Suspended** | **bool** |  | [optional] [default to null]
 **Tags** | **[]string** |  | [optional] [default to null]
 **UnixGuid** | **int32** |  | [optional] [default to null]
 **UnixUid** | **int32** |  | [optional] [default to null]

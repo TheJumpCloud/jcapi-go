@@ -9,8 +9,11 @@
 
 package v2
 
-// The group object's attributes.
-type UserGroupPutAttributes struct {
+type AppleMdmPatchInput struct {
 
-	SambaEnabled bool `json:"sambaEnabled,omitempty"`
+	// A signed certificate obtained from Apple after providing Apple with the plist file provided on POST.
+	AppleSignedCert string `json:"appleSignedCert,omitempty"`
+
+	// A new name for the Apple MDM configuration.
+	Name string `json:"name,omitempty"`
 }

@@ -49,6 +49,9 @@ type Command struct {
 	// The time in seconds to allow the command to run for.
 	Timeout string `json:"timeout,omitempty"`
 
-	// The ID of the system user to run the command as.
-	User string `json:"user"`
+	// The name of the command trigger.
+	Trigger string `json:"trigger,omitempty"`
+
+	// The ID of the system user to run the command as. This field is required when creating a command with a commandType of \"mac\" or \"linux\".
+	User string `json:"user,omitempty"`
 }

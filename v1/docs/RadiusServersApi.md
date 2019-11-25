@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**RadiusServersList**](RadiusServersApi.md#RadiusServersList) | **Get** /radiusservers | List Radius Servers
 [**RadiusServersPost**](RadiusServersApi.md#RadiusServersPost) | **Post** /radiusservers | Create a Radius Server
-[**RadiusServersPut**](RadiusServersApi.md#RadiusServersPut) | **Put** /radiusservers:id | Update Radius Servers
+[**RadiusServersPut**](RadiusServersApi.md#RadiusServersPut) | **Put** /radiusservers/{id} | Update Radius Servers
 
 
 # **RadiusServersList**
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **RadiusServersPost**
-> Radiusserverslist RadiusServersPost(ctx, contentType, accept, optional)
+> Radiusserver RadiusServersPost(ctx, contentType, accept, optional)
 Create a Radius Server
 
 This endpoint allows you to create RADIUS servers in your organization.  #### Sample Request ``` curl -X POST https://console.jumpcloud.com/api/radiusservers/ \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}' \\   -d '{     \"name\": \"{test_radius}\",     \"networkSourceIp\": \"{0.0.0.0}\",     \"sharedSecret\":\"{secretpassword}\",     \"userLockoutAction\": \"REMOVE\",     \"userPasswordExpirationAction\": \"MAINTAIN\" }' ```
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Radiusserverslist**](radiusserverslist.md)
+[**Radiusserver**](radiusserver.md)
 
 ### Authorization
 
@@ -94,16 +94,17 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **RadiusServersPut**
-> Radiusserverput RadiusServersPut(ctx, contentType, accept, optional)
+> Radiusserverput RadiusServersPut(ctx, id, contentType, accept, optional)
 Update Radius Servers
 
-This endpoint allows you to update RADIUS servers in your organization.  ####  ``` curl -X PUT https://console.jumpcloud.com/api/radiusservers/{ServerID} \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}' \\   -d '{     \"name\": \"{name_update}\",     \"networkSourceIp\": \"{0.0.0.0}\",     \"userLockoutAction\": \"REMOVE\",     \"userPasswordExpirationAction\": \"MAINTAIN\" }' ```
+This endpoint allows you to update RADIUS servers in your organization.  #### ``` curl -X PUT https://console.jumpcloud.com/api/radiusservers/{ServerID} \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}' \\   -d '{     \"name\": \"{name_update}\",     \"networkSourceIp\": \"{0.0.0.0}\",     \"userLockoutAction\": \"REMOVE\",     \"userPasswordExpirationAction\": \"MAINTAIN\" }' ```
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **id** | **string**|  | 
   **contentType** | **string**|  | [default to application/json]
   **accept** | **string**|  | [default to application/json]
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
@@ -113,6 +114,7 @@ Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
  **body** | [**Body**](Body.md)|  | 
