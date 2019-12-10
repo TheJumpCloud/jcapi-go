@@ -242,13 +242,13 @@ func (a *RadiusServersApiService) RadiusServersPost(ctx context.Context, content
 }
 
 /* RadiusServersApiService Update Radius Servers
- This endpoint allows you to update RADIUS servers in your organization.  #### &#x60;&#x60;&#x60; curl -X PUT https://console.jumpcloud.com/api/radiusservers/{ServerID} \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39; \\   -d &#39;{     \&quot;name\&quot;: \&quot;{name_update}\&quot;,     \&quot;networkSourceIp\&quot;: \&quot;{0.0.0.0}\&quot;,     \&quot;userLockoutAction\&quot;: \&quot;REMOVE\&quot;,     \&quot;userPasswordExpirationAction\&quot;: \&quot;MAINTAIN\&quot; }&#39; &#x60;&#x60;&#x60;
+ This endpoint allows you to update RADIUS servers in your organization.  ####  &#x60;&#x60;&#x60; curl -X PUT https://console.jumpcloud.com/api/radiusservers/{ServerID} \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39; \\   -d &#39;{     \&quot;name\&quot;: \&quot;{name_update}\&quot;,     \&quot;networkSourceIp\&quot;: \&quot;{0.0.0.0}\&quot;,     \&quot;userLockoutAction\&quot;: \&quot;REMOVE\&quot;,     \&quot;userPasswordExpirationAction\&quot;: \&quot;MAINTAIN\&quot; }&#39; &#x60;&#x60;&#x60;
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param id 
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "body" (Body) 
+     @param "body" (Body1) 
      @param "xOrgId" (string) 
  @return Radiusserverput*/
 func (a *RadiusServersApiService) RadiusServersPut(ctx context.Context, id string, contentType string, accept string, localVarOptionals map[string]interface{}) (Radiusserverput,  *http.Response, error) {
@@ -297,7 +297,7 @@ func (a *RadiusServersApiService) RadiusServersPut(ctx context.Context, id strin
 		localVarHeaderParams["x-org-id"] = parameterToString(localVarTempParam, "")
 	}
 	// body params
-	if localVarTempParam, localVarOk := localVarOptionals["body"].(Body); localVarOk {
+	if localVarTempParam, localVarOk := localVarOptionals["body"].(Body1); localVarOk {
 		localVarPostBody = &localVarTempParam
 	}
 	if ctx != nil {

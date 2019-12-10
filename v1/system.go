@@ -37,6 +37,10 @@ type System struct {
 
 	Fde *Fde `json:"fde,omitempty"`
 
+	FileSystem string `json:"fileSystem,omitempty"`
+
+	HasServiceAccount bool `json:"hasServiceAccount,omitempty"`
+
 	Hostname string `json:"hostname,omitempty"`
 
 	LastContact string `json:"lastContact,omitempty"`

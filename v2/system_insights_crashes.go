@@ -11,6 +11,8 @@ package v2
 
 type SystemInsightsCrashes struct {
 
+	CollectionTime string `json:"collection_time,omitempty"`
+
 	CrashPath string `json:"crash_path,omitempty"`
 
 	CrashedThread string `json:"crashed_thread,omitempty"`
@@ -36,6 +38,8 @@ type SystemInsightsCrashes struct {
 	Responsible string `json:"responsible,omitempty"`
 
 	StackTrace string `json:"stack_trace,omitempty"`
+
+	SystemId string `json:"system_id,omitempty"`
 
 	Type_ string `json:"type,omitempty"`
 

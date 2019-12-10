@@ -138,6 +138,55 @@ paths:
           enabled: false
           statusCode: 200
         public: false
+  /api/cases:
+    post:
+      tags:
+      - "Support"
+      summary: "Create a Case"
+      description: "This endpoint allows you to open a support case.\n\n#### Sample\
+        \ Request\n\n```\ncurl -X POST https://console.jumpcloud.com/api/cases \\\n\
+        \  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n\t\"subject\":\"{subject}\"\
+        ,\n\t\"description\":\"{description}\",\n\t\"firstname\":\"{firstname}\",\n\
+        \t\"lastname\":\"{lastname}\"\n}'\n```"
+      operationId: "case_post"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/case"
+        x-exportParamName: "Body"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        400:
+          description: ""
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "case_post"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
   /application-templates:
     get:
       tags:
@@ -146,7 +195,7 @@ paths:
       description: "The endpoint returns all the SSO / SAML Application Templates.\n\
         \n#### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/application-templates\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n\n```"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \n\n```"
       operationId: "application_templates_list"
       parameters:
       - name: "fields"
@@ -223,7 +272,7 @@ paths:
       description: "The endpoint returns a specific SSO / SAML Application Template.\n\
         \n#### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/application-templates/{id}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n\n```"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \n\n```"
       operationId: "application_templates_get"
       parameters:
       - name: "id"
@@ -305,7 +354,7 @@ paths:
       description: "The endpoint returns all your SSO / SAML Applications.\n\n####\
         \ Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/applications\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n\n```"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \n\n```"
       operationId: "applications_list"
       parameters:
       - name: "fields"
@@ -701,7 +750,7 @@ paths:
       description: "This endpoint returns a specific command result.\n\n#### Sample\
         \ Request\n```\ncurl -X GET https://console.jumpcloud.com/api/commandresults/{CommandResultID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \n  ```"
       operationId: "command_results_get"
       parameters:
       - name: "id"
@@ -766,7 +815,7 @@ paths:
       description: "This endpoint deletes a specific command result.\n\n#### Sample\
         \ Request\n```\ncurl -X GET https://console.jumpcloud.com/api/commandresults/{CommandID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ````"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \n  ````"
       operationId: "command_results_delete"
       parameters:
       - name: "id"
@@ -955,7 +1004,7 @@ paths:
       description: "This endpoint returns a specific command based on the command\
         \ ID.\n\n#### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/commands/{CommandID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \n```"
       operationId: "commands_get"
       parameters:
       - name: "id"
@@ -1129,7 +1178,7 @@ paths:
       description: "This endpoint returns the uploaded file(s) associated with a specific\
         \ command.\n\n#### Sample Request\n\n```\ncurl -X GET https://console.jumpcloud.com/api/files/command/{commandID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \n  ```"
       operationId: "command_file_get"
       parameters:
       - name: "id"
@@ -1204,9 +1253,9 @@ paths:
       tags:
       - "Organizations"
       summary: "Get Organization Details"
-      description: "This endpoint returns Organization Details.\n\n#### Sample Request\n\
-        \n```\ncurl -X GET \\\n  https://console.jumpcloud.com/api/organizations \\\
-        \n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+      description: "This endpoint returns Organization Details.\n\n#### Sample Request\
+        \ \n\n```\ncurl -X GET \\\n  https://console.jumpcloud.com/api/organizations\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
       operationId: "organization_list"
       parameters:
@@ -1276,6 +1325,125 @@ paths:
         afterScript: null
         beforeScript: null
         id: "organization_list"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: true
+  /organizations/{id}:
+    get:
+      tags:
+      - "Organizations"
+      summary: "Get an Organization"
+      description: "This endpoint returns a particular Organization.\n\n#### Sample\
+        \ Request\n\n```\ncurl -X GET https://console.jumpcloud.com/api/organizations/{OrganizationID}\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
+      operationId: "organizations_get"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      - name: "fields"
+        in: "query"
+        description: "Use a space seperated string of field parameters to include\
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
+        required: false
+        type: "string"
+        x-exportParamName: "Fields"
+      - name: "filter"
+        in: "query"
+        description: "A filter to apply to the query."
+        required: false
+        type: "string"
+        x-exportParamName: "Filter"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        200:
+          description: "OK"
+        401:
+          description: "Unauthorized"
+        403:
+          description: ""
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "organizations_get"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: true
+    put:
+      tags:
+      - "Organizations"
+      summary: "Update an Organization"
+      description: "This endpoint allows you to update an Organization.\n\nNote: `passwordPolicy`\
+        \ settings are only used when `passwordCompliance` is set to \"custom\". We\
+        \ discourage the use of non-custom passwordCompliance values.\n\n`hasStripeCustomerId`\
+        \ is deprecated and will be removed.\n\n#### Sample Request\n\n```\ncurl -X\
+        \ PUT https://console.jumpcloud.com/api/organizations/{OrganizationID} \\\n\
+        \  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n  \"settings\": {\n    \"contactName\"\
+        : \"Admin Name\",\n    \"contactEmail\": \"admin@company.com\",\n    \"systemUsersCanEdit\"\
+        :true,\n    \"passwordPolicy\": {\n      \"enableMaxHistory\": true,\n   \
+        \   \"maxHistory\": 3\n    }\n  }\n}'\n```"
+      operationId: "organization_put"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/body"
+        x-exportParamName: "Body"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/organization"
+        400:
+          description: ""
+        401:
+          description: "Unauthorized"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "organization_put"
         mock:
           dynamic: false
           enabled: false
@@ -1421,7 +1589,7 @@ paths:
       - "Radius Servers"
       summary: "Update Radius Servers"
       description: "This endpoint allows you to update RADIUS servers in your organization.\n\
-        \n####\n```\ncurl -X PUT https://console.jumpcloud.com/api/radiusservers/{ServerID}\
+        \n#### \n```\ncurl -X PUT https://console.jumpcloud.com/api/radiusservers/{ServerID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n    \"name\": \"{name_update}\"\
         ,\n    \"networkSourceIp\": \"{0.0.0.0}\",\n    \"userLockoutAction\": \"\
@@ -1437,7 +1605,7 @@ paths:
         name: "body"
         required: false
         schema:
-          $ref: "#/definitions/body"
+          $ref: "#/definitions/body_1"
         x-exportParamName: "Body"
       - name: "Content-Type"
         in: "header"
@@ -1480,9 +1648,9 @@ paths:
       summary: "Search Organizations"
       description: "This endpoint will return Organization data based on your search\
         \ parameters. This endpoint WILL NOT allow you to add a new Organization.\n\
-        \nYou can use the supported parameters and pass those in the body of request.\n\
-        \nThe parameters must be passed as Content-Type application/json.\n\n\n####\
-        \ Sample Request\n```\ncurl -X POST https://console.jumpcloud.com/api/search/organizations\
+        \nYou can use the supported parameters and pass those in the body of request.\
+        \ \n\nThe parameters must be passed as Content-Type application/json.\n\n\n\
+        #### Sample Request\n```\ncurl -X POST https://console.jumpcloud.com/api/search/organizations\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n  \"search\":{\n    \"fields\"\
         \ : [\"settings.name\"],\n    \"searchTerm\": \"Second\"\n    },\n  \"fields\"\
@@ -1567,7 +1735,7 @@ paths:
         \ /api/search/* routes. The `filter` and `searchFilter` parameters must be\
         \ passed as Content-Type application/json.\n\nThe `filter` parameter is an\
         \ object with a single property, either `and` or `or` with the value of the\
-        \ property being an array of query expressions.\n\nThis allows you to filter\
+        \ property being an array of query expressions. \n\nThis allows you to filter\
         \ records using the logic of matching ALL or ANY records in the array of query\
         \ expressions. If the `and` or `or` are not included the default behavior\
         \ is to match ALL query expressions.\n\nThe `searchFilter` parameter allows\
@@ -1676,7 +1844,7 @@ paths:
         \ of POST /api/search/* routes. The `filter` and `searchFilter` parameters\
         \ must be passed as Content-Type application/json.\n\nThe `filter` parameter\
         \ is an object with a single property, either `and` or `or` with the value\
-        \ of the property being an array of query expressions.\n\nThis allows you\
+        \ of the property being an array of query expressions. \n\nThis allows you\
         \ to filter records using the logic of matching ALL or ANY records in the\
         \ array of query expressions. If the `and` or `or` are not included the default\
         \ behavior is to match ALL query expressions.\n\nThe `searchFilter` parameter\
@@ -1781,8 +1949,8 @@ paths:
       summary: "List All Systems"
       description: "This endpoint returns all Systems.\n\n#### Sample Requests\n```\n\
         curl -X GET https://console.jumpcloud.com/api/systems \\\n  -H 'Accept: application/json'\
-        \ \\\n  -H 'Content-Type: application/json' \\\n  -H 'x-api-key: {API_KEY}'\n\
-        \n```"
+        \ \\\n  -H 'Content-Type: application/json' \\\n  -H 'x-api-key: {API_KEY}'\
+        \ \n\n```"
       operationId: "systems_list"
       parameters:
       - name: "fields"
@@ -1870,7 +2038,7 @@ paths:
       description: "This endpoint returns an individual system.\n\n#### Sample Request\n\
         ```\ncurl -X GET https://console.jumpcloud.com/api/systems/{SystemID} \\\n\
         \  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \n  ```"
       operationId: "systems_get"
       parameters:
       - name: "id"
@@ -2502,7 +2670,7 @@ paths:
       description: "This endpoint allows you to delete a particular system user.\n\
         \n#### Sample Request\n```\ncurl -X DELETE https://console.jumpcloud.com/api/systemusers/{UserID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
+        \ \\\n  -H 'x-api-key: {API_KEY}' \n```"
       operationId: "systemusers_delete"
       parameters:
       - name: "id"
@@ -2557,11 +2725,11 @@ paths:
         \ Please be aware that if the user does not complete TOTP MFA setup before\
         \ the `exclusionUntil` date, they will be locked out of any resources that\
         \ require TOTP MFA.\n\nPlease refer to our [Knowledge Base Article](https://support.jumpcloud.com/customer/en/portal/articles/2959138-using-multifactor-authentication-with-jumpcloud)\
-        \ on setting up MFA for more information.\n\n#### Sample Request\n```\ncurl\
-        \ -X POST \\\n  https://console.jumpcloud.com/api/systemusers/{UserID}/resetmfa\
+        \ on setting up MFA for more information. \n\n#### Sample Request \n```\n\
+        curl -X POST \\\n  https://console.jumpcloud.com/api/systemusers/{UserID}/resetmfa\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\"exclusion\": true, \"exclusionUntil\"\
-        : \"{date-time}\"}'\n\n\n```"
+        : \"{date-time}\"}'\n  \n\n```"
       operationId: "systemusers_resetmfa"
       parameters:
       - name: "id"
@@ -2573,7 +2741,7 @@ paths:
         name: "body"
         required: false
         schema:
-          $ref: "#/definitions/body_1"
+          $ref: "#/definitions/body_2"
         x-exportParamName: "Body"
       - name: "Content-Type"
         in: "header"
@@ -2752,7 +2920,7 @@ paths:
       - "Systemusers"
       summary: "List system user binding"
       description: "Hidden as Tags is deprecated\n\nAdds or removes a system binding\
-        \ for a user.\n\nThis endpoint is only used for users still using JumpCloud\
+        \ for a user. \n\nThis endpoint is only used for users still using JumpCloud\
         \ Tags. If you are using JumpCloud Groups please refer to the documentation\
         \ found [here](https://docs.jumpcloud.com/2.0/systems/manage-associations-of-a-system).\n\
         \n\nList system bindings for a specific system user in a system and user binding\
@@ -2845,7 +3013,7 @@ paths:
       - "Systemusers"
       summary: "Update a system user binding"
       description: "Hidden as Tags is deprecated\n\nAdds or removes a system binding\
-        \ for a user.\n\nThis endpoint is only used for users still using JumpCloud\
+        \ for a user. \n\nThis endpoint is only used for users still using JumpCloud\
         \ Tags. If you are using JumpCloud Groups please refer to the documentation\
         \ found [here](https://docs.jumpcloud.com/2.0/systems/manage-associations-of-a-system).\n\
         \n### Example\n\n#### Add (or remove) system to system user\n\n```\ncurl \\\
@@ -3908,6 +4076,30 @@ definitions:
       id: "applicationtemplateslist"
       name: "ApplicationTemplatesList"
       public: true
+  case:
+    type: "object"
+    required:
+    - "description"
+    - "firstname"
+    - "lastname"
+    - "subject"
+    properties:
+      description:
+        type: "string"
+      firstname:
+        type: "string"
+        maxLength: 40
+      lastname:
+        type: "string"
+        maxLength: 80
+      subject:
+        type: "string"
+        maxLength: 255
+    title: "Case"
+    x-stoplight:
+      id: "case"
+      name: "Case"
+      public: true
   command:
     type: "object"
     required:
@@ -4229,6 +4421,74 @@ definitions:
       id: "mfa"
       name: "mfa"
       public: true
+  organization:
+    type: "object"
+    properties:
+      _id:
+        type: "string"
+      created:
+        type: "string"
+      displayName:
+        type: "string"
+      hasStripeCustomerId:
+        type: "boolean"
+      logoUrl:
+        type: "string"
+    title: "Organization"
+    example:
+      created: "created"
+      displayName: "displayName"
+      _id: "_id"
+      hasStripeCustomerId: true
+      logoUrl: "logoUrl"
+    x-stoplight:
+      id: "organization"
+      name: "Organization"
+      public: true
+  organizationsettings:
+    type: "object"
+    properties:
+      contactEmail:
+        type: "string"
+      contactName:
+        type: "string"
+      disableLdap:
+        type: "boolean"
+      disableUM:
+        type: "boolean"
+      duplicateLDAPGroups:
+        type: "boolean"
+      emailDisclaimer:
+        type: "string"
+      enableManagedUID:
+        type: "boolean"
+      features:
+        $ref: "#/definitions/organizationsettings_features"
+      logo:
+        type: "string"
+      name:
+        type: "string"
+      passwordCompliance:
+        type: "string"
+        enum:
+        - "custom"
+        - "pci3"
+        - "windows"
+      passwordPolicy:
+        $ref: "#/definitions/organizationsettings_passwordPolicy"
+      showIntro:
+        type: "boolean"
+      systemUserPasswordExpirationInDays:
+        type: "integer"
+      systemUsersCanEdit:
+        type: "boolean"
+      userPortal:
+        $ref: "#/definitions/organizationsettings_userPortal"
+    title: "OrganizationSettings"
+    x-stoplight:
+      id: "organizationsettings"
+      name: "OrganizationSettings"
+      public: true
   organizationslist:
     type: "object"
     properties:
@@ -4514,6 +4774,10 @@ definitions:
         type: "string"
       fde:
         $ref: "#/definitions/fde"
+      fileSystem:
+        type: "string"
+      hasServiceAccount:
+        type: "boolean"
       hostname:
         type: "string"
       lastContact:
@@ -4551,6 +4815,7 @@ definitions:
     title: "System"
     example:
       allowSshRootLogin: true
+      hasServiceAccount: true
       remoteIP: "remoteIP"
       displayName: "displayName"
       hostname: "hostname"
@@ -4561,6 +4826,7 @@ definitions:
       - "{}"
       systemInsights:
         state: "enabled"
+      fileSystem: "fileSystem"
       os: "os"
       allowMultiFactorAuthentication: true
       created: "created"
@@ -4642,6 +4908,7 @@ definitions:
       totalCount: 6
       results:
       - allowSshRootLogin: true
+        hasServiceAccount: true
         remoteIP: "remoteIP"
         displayName: "displayName"
         hostname: "hostname"
@@ -4652,6 +4919,7 @@ definitions:
         - "{}"
         systemInsights:
           state: "enabled"
+        fileSystem: "fileSystem"
         os: "os"
         allowMultiFactorAuthentication: true
         created: "created"
@@ -4688,6 +4956,7 @@ definitions:
         arch: "arch"
         systemTimezone: 0
       - allowSshRootLogin: true
+        hasServiceAccount: true
         remoteIP: "remoteIP"
         displayName: "displayName"
         hostname: "hostname"
@@ -4698,6 +4967,7 @@ definitions:
         - "{}"
         systemInsights:
           state: "enabled"
+        fileSystem: "fileSystem"
         os: "os"
         allowMultiFactorAuthentication: true
         created: "created"
@@ -5727,7 +5997,18 @@ definitions:
       id: "usersystembindingsput"
       name: "UserSystemBindingsPut"
       public: true
+  inline_response_200:
+    properties:
+      caseNumber:
+        type: "string"
+    example:
+      caseNumber: "caseNumber"
   body:
+    type: "object"
+    properties:
+      settings:
+        $ref: "#/definitions/organizationsettings"
+  body_1:
     type: "object"
     required:
     - "name"
@@ -5757,7 +6038,7 @@ definitions:
       networkSourceIp: "0.0.0.0"
       tagsNames:
       - "tag1"
-  body_1:
+  body_2:
     type: "object"
     properties:
       exclusion:
@@ -6090,6 +6371,70 @@ definitions:
       trigger: "trigger"
       command: "command"
       launchType: "launchType"
+  organizationsettings_features_systemInsights:
+    properties:
+      enabled:
+        type: "boolean"
+  organizationsettings_features:
+    properties:
+      systemInsights:
+        $ref: "#/definitions/organizationsettings_features_systemInsights"
+  organizationsettings_passwordPolicy:
+    properties:
+      allowUsernameSubstring:
+        type: "boolean"
+      daysAfterExpirationToSelfRecover:
+        type: "integer"
+        minimum: 1
+      daysBeforeExpirationToForceReset:
+        type: "integer"
+        minimum: 1
+      enableDaysAfterExpirationToSelfRecover:
+        type: "boolean"
+      enableDaysBeforeExpirationToForceReset:
+        type: "boolean"
+      enableLockoutTimeInSeconds:
+        type: "boolean"
+      enableMaxHistory:
+        type: "boolean"
+      enableMaxLoginAttempts:
+        type: "boolean"
+      enableMinChangePeriodInDays:
+        type: "boolean"
+      enableMinLength:
+        type: "boolean"
+      enablePasswordExpirationInDays:
+        type: "boolean"
+      lockoutTimeInSeconds:
+        type: "integer"
+      maxHistory:
+        type: "integer"
+        minimum: 1
+        maximum: 10
+      maxLoginAttempts:
+        type: "integer"
+        minimum: 0
+      minChangePeriodInDays:
+        type: "integer"
+      minLength:
+        type: "integer"
+      needsLowercase:
+        type: "boolean"
+      needsNumeric:
+        type: "boolean"
+      needsSymbolic:
+        type: "boolean"
+      needsUppercase:
+        type: "boolean"
+      passwordExpirationInDays:
+        type: "integer"
+        minimum: 1
+  organizationsettings_userPortal:
+    properties:
+      idleSessionDurationMinutes:
+        type: "integer"
+        minimum: 1
+        maximum: 129600
   organizationslist_results:
     properties:
       _id:
@@ -6380,7 +6725,9 @@ x-stoplight:
         \ ID field on Systems\n- New System User Attribute Fields and Model Updates\
         \ for System User PUT / POST / GET\n- Addition of SSH Key endpoints GET, DEL,\
         \ POST\n- New Search Organizations POST endpoint\n- Misc Text Section updates\n\
-        - V1 YAML phone + address object updates"
+        - V1 YAML phone + address object updates\n\n### 12-4-2019\n\n`minor release`\n\
+        - [New Get Organization By Id endpoint](https://docs.jumpcloud.com/1.0/organizations/list-an-organization)\n\
+        - [New Put Organization By Id endpoint](https://docs.jumpcloud.com/1.0/organizations/update-an-organization)"
       id: "api-change-log"
       name: "API Changelog"
       public: true
@@ -6650,6 +6997,10 @@ x-stoplight:
         items:
         - _id: "organization_list"
           type: "endpoints"
+        - _id: "organizations_get"
+          type: "endpoints"
+        - _id: "organization_put"
+          type: "endpoints"
         name: "Organizations"
       - divider: false
         items:
@@ -6668,6 +7019,11 @@ x-stoplight:
         - _id: "search_systemusers_post"
           type: "endpoints"
         name: "Search"
+      - divider: false
+        items:
+        - _id: "case_post"
+          type: "endpoints"
+        name: "Support"
       - description: "The System Users section of the JumpCloud API allows you to\
           \ add, retrieve, delete, and modify System Users. To add a System User to\
           \ JumpCloud, you must provide an email address and username. The System\
@@ -6763,6 +7119,8 @@ x-stoplight:
           type: "schemas"
         - _id: "applicationtemplateslist"
           type: "schemas"
+        - _id: "case"
+          type: "schemas"
         - _id: "command"
           type: "schemas"
         - _id: "commandfilereturn"
@@ -6776,6 +7134,10 @@ x-stoplight:
         - _id: "fde"
           type: "schemas"
         - _id: "organizationslist"
+          type: "schemas"
+        - _id: "organizationsettings"
+          type: "schemas"
+        - _id: "organization"
           type: "schemas"
         - _id: "radiusserver"
           type: "schemas"

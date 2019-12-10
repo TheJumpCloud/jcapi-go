@@ -3780,13 +3780,80 @@ paths:
           enabled: false
           statusCode: 200
         public: false
+  /knowledge/articles:
+    get:
+      tags:
+      - "Knowledge"
+      summary: "List Knowledge Articles"
+      description: "This endpoint returns a list of knowledge articles hosted in salesforce.\n\
+        \n```\nSample Request\ncurl -X GET https://console.jumpcloud.com/api/v2/knowledge/articles\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
+      operationId: "knowledge_articlesList"
+      parameters:
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
+          \ in"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        minimum: 0
+        x-exportParamName: "Skip"
+      - name: "sort"
+        in: "query"
+        description: "The comma separated fields used to sort the collection.\nDefault\
+          \ sort is ascending, prefix with `-` to sort descending.\n"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Sort"
+      - name: "limit"
+        in: "query"
+        required: false
+        type: "integer"
+        default: 10
+        maximum: 100
+        minimum: 0
+        x-exportParamName: "Limit"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/salesforce-knowledge-list-output"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: "function (ctx, request) {\n  // Your javascript code here.\n\
+          }"
+        id: "knowledge_articlesList"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
+    x-swagger-authorization:
+    - "user"
+    - "noOrgHeaderSelection"
+    x-swagger-grouping-strategies: []
+    x-swagger-user-roles: []
   /knowledge/salesforce:
     get:
       tags:
       - "Knowledge"
       summary: "List Knowledge Articles"
       description: "This endpoint returns a list of knowledge articles hosted in salesforce.\n\
-        \n```\nSample Request\ncurl -X GET https://console.jumpcloud.com/api/v2/knowledge/salesforce\
+        \n```\nSample Request\ncurl -X GET https://console.jumpcloud.com/api/v2/knowledge/articles\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
       operationId: "knowledge_salesforceList"
@@ -8238,6 +8305,74 @@ paths:
           enabled: false
           statusCode: 200
         public: false
+  /systeminsights/alf:
+    get:
+      tags:
+      - "System Insights"
+      summary: "List System Insights ALF"
+      description: "Valid filter fields are `system_id` and `global_state`."
+      operationId: "systeminsights_list_alf"
+      parameters:
+      - name: "limit"
+        in: "query"
+        required: false
+        type: "integer"
+        default: 10
+        maximum: 100
+        minimum: 0
+        x-exportParamName: "Limit"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        minimum: 0
+        x-exportParamName: "Skip"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/system-insights-alf"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "systeminsights_list_alf"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
   /systeminsights/apps:
     get:
       tags:
@@ -9394,6 +9529,74 @@ paths:
           enabled: false
           statusCode: 200
         public: true
+  /systeminsights/managed_policies:
+    get:
+      tags:
+      - "System Insights"
+      summary: "List System Insights Managed Policies"
+      description: "Valid filter fields are `system_id` and `domain`."
+      operationId: "systeminsights_list_managed_policies"
+      parameters:
+      - name: "limit"
+        in: "query"
+        required: false
+        type: "integer"
+        default: 10
+        maximum: 100
+        minimum: 0
+        x-exportParamName: "Limit"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        minimum: 0
+        x-exportParamName: "Skip"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/system-insights-managed-policies"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "systeminsights_list_managed_policies"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
   /systeminsights/mounts:
     get:
       tags:
@@ -9734,6 +9937,344 @@ paths:
           enabled: false
           statusCode: 200
         public: true
+  /systeminsights/shadow:
+    get:
+      tags:
+      - "System Insights"
+      summary: "LIst System Insights Shadow"
+      description: "Valid filter fields are `system_id` and `username`."
+      operationId: "systeminsights_list_shadow"
+      parameters:
+      - name: "limit"
+        in: "query"
+        required: false
+        type: "integer"
+        default: 10
+        maximum: 100
+        minimum: 0
+        x-exportParamName: "Limit"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        minimum: 0
+        x-exportParamName: "Skip"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/system-insights-shadow"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "systeminsights_list_shadow"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
+  /systeminsights/shared_folders:
+    get:
+      tags:
+      - "System Insights"
+      summary: "List System Insights Shared Folders"
+      description: "Valid filter fields are `system_id` and `name`."
+      operationId: "systeminsights_list_shared_folders"
+      parameters:
+      - name: "limit"
+        in: "query"
+        required: false
+        type: "integer"
+        default: 10
+        maximum: 100
+        minimum: 0
+        x-exportParamName: "Limit"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        minimum: 0
+        x-exportParamName: "Skip"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/system-insights-shared-folders"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "systeminsights_list_shared_folders"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
+  /systeminsights/shared_resources:
+    get:
+      tags:
+      - "System Insights"
+      summary: "List System Insights Shared Resources"
+      description: "Valid filter fields are `system_id` and `type`."
+      operationId: "systeminsights_list_shared_resources"
+      parameters:
+      - name: "limit"
+        in: "query"
+        required: false
+        type: "integer"
+        default: 10
+        maximum: 100
+        minimum: 0
+        x-exportParamName: "Limit"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        minimum: 0
+        x-exportParamName: "Skip"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/system-insights-shared-resources"
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "systeminsights_list_shared_resources"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
+  /systeminsights/sharing_preferences:
+    get:
+      tags:
+      - "System Insights"
+      summary: "List System Insights Sharing Preferences"
+      description: "Only valid filed field is `system_id`."
+      operationId: "systeminsights_list_sharing_preferences"
+      parameters:
+      - name: "limit"
+        in: "query"
+        required: false
+        type: "integer"
+        default: 10
+        maximum: 100
+        minimum: 0
+        x-exportParamName: "Limit"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        minimum: 0
+        x-exportParamName: "Skip"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/system-insights-sharing-preferences"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "systeminsights_list_sharing_preferences"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
+  /systeminsights/sip_config:
+    get:
+      tags:
+      - "System Insights"
+      summary: "List System Insights SIP Config"
+      description: "Valid filter fields are `system_id` and `enabled`."
+      operationId: "systeminsights_list_sip_config"
+      parameters:
+      - name: "limit"
+        in: "query"
+        required: false
+        type: "integer"
+        default: 10
+        maximum: 100
+        minimum: 0
+        x-exportParamName: "Limit"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        minimum: 0
+        x-exportParamName: "Skip"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/system-insights-sip-config"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "systeminsights_list_sip_config"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
   /systeminsights/system_controls:
     get:
       tags:
@@ -10069,6 +10610,74 @@ paths:
         afterScript: null
         beforeScript: null
         id: "systeminsights_list_user_groups"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: false
+  /systeminsights/user_ssh_keys:
+    get:
+      tags:
+      - "System Insights"
+      summary: "List System Insights User SSH Keys"
+      description: "Valid filter fields are `system_id` and `uid`."
+      operationId: "systeminsights_list_user_ssh_keys"
+      parameters:
+      - name: "limit"
+        in: "query"
+        required: false
+        type: "integer"
+        default: 10
+        maximum: 100
+        minimum: 0
+        x-exportParamName: "Limit"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        minimum: 0
+        x-exportParamName: "Skip"
+      - name: "filter"
+        in: "query"
+        description: "Supported operators are: eq"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Filter"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/system-insights-user-ssh-keys"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "systeminsights_list_user_ssh_keys"
         mock:
           dynamic: false
           enabled: false
@@ -16376,18 +16985,19 @@ definitions:
       \ - Translate `locality` field of JumpCloud user address of type `work` to `city`\
       \ field of Microsoft Graph user\n* `user_state` - Translate `region` field of\
       \ JumpCloud user address of type `work` to `state` field of Microsoft Graph\
-      \ `user`\n* `user_country` - Translate `country` field of JumpCloud user address\
-      \ of type `work` to `country` field of Microsoft Graph `user`\n* `user_postal_code`\
+      \ `user` \n* `user_country` - Translate `country` field of JumpCloud user address\
+      \ of type `work` to `country` field of Microsoft Graph `user` \n* `user_postal_code`\
       \ - Translate `postalCode` field of JumpCloud user address of type `work` to\
-      \ `postalCode` field of Microsoft Graph `user`\n* `user_business_phones` - Translate\
-      \ `number` field of first JumpCloud user `phoneNumber` of type `work` to `businessPhones`\
-      \ field of Microsoft Graph `user`\n* `user_mobile_phone` - Translate `number`\
-      \ field of first JumpCloud user `phoneNumber` of type `mobile` to `mobilePhone`\
-      \ field of Microsoft Graph `user`\n* `user_department` - Translate `department`\
-      \ field of JumpCloud user to `department` field of Microsoft Graph `user`\n\
-      * `user_job_title` - Translate `jobTitle` field of JumpCloud user to `jobTitle`\
-      \ field of Microsoft Graph `user`\n* `user_office_location` - Translate `location`\
-      \ field of JumpCloud user to `officeLocation` field of Microsoft Graph `user`"
+      \ `postalCode` field of Microsoft Graph `user` \n* `user_business_phones` -\
+      \ Translate `number` field of first JumpCloud user `phoneNumber` of type `work`\
+      \ to `businessPhones` field of Microsoft Graph `user` \n* `user_mobile_phone`\
+      \ - Translate `number` field of first JumpCloud user `phoneNumber` of type `mobile`\
+      \ to `mobilePhone` field of Microsoft Graph `user` \n* `user_department` - Translate\
+      \ `department` field of JumpCloud user to `department` field of Microsoft Graph\
+      \ `user` \n* `user_job_title` - Translate `jobTitle` field of JumpCloud user\
+      \ to `jobTitle` field of Microsoft Graph `user` \n* `user_office_location` -\
+      \ Translate `location` field of JumpCloud user to `officeLocation` field of\
+      \ Microsoft Graph `user` "
     enum:
     - "user_street_address"
     - "user_city"
@@ -17698,6 +18308,42 @@ definitions:
       id: "sshkeylist"
       name: "SSHKeyList"
       public: true
+  system-insights-alf:
+    type: "object"
+    properties:
+      "allow_signed_enabled\t":
+        type: "integer"
+      collection_time:
+        type: "string"
+      firewall_unload:
+        type: "integer"
+      global_state:
+        type: "integer"
+      logging_enabled:
+        type: "integer"
+      logging_option:
+        type: "integer"
+      stealth_enabled:
+        type: "integer"
+      system_id:
+        type: "string"
+      version:
+        type: "string"
+    title: "System Insights ALF"
+    example:
+      logging_enabled: 5
+      firewall_unload: 6
+      stealth_enabled: 2
+      system_id: "system_id"
+      "allow_signed_enabled\t": 0
+      collection_time: "collection_time"
+      global_state: 1
+      logging_option: 5
+      version: "version"
+    x-stoplight:
+      id: "system-insights-alf"
+      name: "System Insights ALF"
+      public: true
   system-insights-apps:
     type: "object"
     properties:
@@ -17972,6 +18618,8 @@ definitions:
   system-insights-crashes:
     type: "object"
     properties:
+      collection_time:
+        type: "string"
       crash_path:
         type: "string"
       crashed_thread:
@@ -17998,6 +18646,8 @@ definitions:
         type: "string"
       stack_trace:
         type: "string"
+      system_id:
+        type: "string"
       type:
         type: "string"
       uid:
@@ -18009,6 +18659,7 @@ definitions:
       identifier: "identifier"
       parent: "parent"
       crashed_thread: "crashed_thread"
+      system_id: "system_id"
       pid: "pid"
       type: "type"
       version: "version"
@@ -18021,6 +18672,7 @@ definitions:
       crash_path: "crash_path"
       exception_type: "exception_type"
       registers: "registers"
+      collection_time: "collection_time"
       stack_trace: "stack_trace"
     x-stoplight:
       id: "system-insights-crashes"
@@ -18452,6 +19104,39 @@ definitions:
       id: "system-insights-logical-drvies"
       name: "System Insights Logical Drvies"
       public: true
+  system-insights-managed-policies:
+    type: "object"
+    properties:
+      collection_time:
+        type: "string"
+      domain:
+        type: "string"
+      manual:
+        type: "integer"
+      name:
+        type: "string"
+      system_id:
+        type: "string"
+      username:
+        type: "string"
+      uuid:
+        type: "string"
+      value:
+        type: "string"
+    title: "System Insights Managed Policies"
+    example:
+      system_id: "system_id"
+      domain: "domain"
+      name: "name"
+      collection_time: "collection_time"
+      manual: 0
+      uuid: "uuid"
+      value: "value"
+      username: "username"
+    x-stoplight:
+      id: "system-insights-managed-policies"
+      name: "System Insights Managed Policies"
+      public: true
   system-insights-mounts:
     type: "object"
     properties:
@@ -18673,6 +19358,180 @@ definitions:
       id: "system-insights-safari-extensions"
       name: "System Insights Safari Extensions"
       public: true
+  system-insights-shadow:
+    type: "object"
+    properties:
+      collection_time:
+        type: "string"
+      expire:
+        type: "string"
+      flag:
+        type: "string"
+      hash_alg:
+        type: "string"
+      inactive:
+        type: "string"
+      last_change:
+        type: "string"
+      max:
+        type: "string"
+      "min\t":
+        type: "string"
+      password_status:
+        type: "string"
+      system_id:
+        type: "string"
+      username:
+        type: "string"
+      warning:
+        type: "string"
+    title: "System Insights Shadow"
+    example:
+      hash_alg: "hash_alg"
+      password_status: "password_status"
+      flag: "flag"
+      inactive: "inactive"
+      "min\t": "min\t"
+      last_change: "last_change"
+      max: "max"
+      system_id: "system_id"
+      expire: "expire"
+      warning: "warning"
+      collection_time: "collection_time"
+      username: "username"
+    x-stoplight:
+      id: "system-insights-shadow"
+      name: "System Insights Shadow"
+      public: true
+  system-insights-shared-folders:
+    type: "object"
+    properties:
+      collection_time:
+        type: "string"
+      name:
+        type: "string"
+      path:
+        type: "string"
+      system_id:
+        type: "string"
+    title: "System Insights Shared Folders"
+    example:
+      path: "path"
+      system_id: "system_id"
+      name: "name"
+      collection_time: "collection_time"
+    x-stoplight:
+      id: "system-insights-shared-folders"
+      name: "System Insights Shared Folders"
+      public: true
+  system-insights-shared-resources:
+    type: "object"
+    properties:
+      allow_maximum:
+        type: "integer"
+      collection_time:
+        type: "string"
+      description:
+        type: "string"
+      install_date:
+        type: "string"
+      maximum_allowed:
+        type: "integer"
+      name:
+        type: "string"
+      path:
+        type: "string"
+      status:
+        type: "string"
+      system_id:
+        type: "string"
+      type:
+        type: "integer"
+    title: "System Insights Shared Resources"
+    example:
+      path: "path"
+      maximum_allowed: 6
+      system_id: "system_id"
+      name: "name"
+      allow_maximum: 0
+      description: "description"
+      collection_time: "collection_time"
+      install_date: "install_date"
+      type: 1
+      status: "status"
+    x-stoplight:
+      id: "system-insights-shared-resources"
+      name: "System Insights Shared Resources"
+      public: true
+  system-insights-sharing-preferences:
+    type: "object"
+    properties:
+      bluetooth_sharing:
+        type: "integer"
+      collection_time:
+        type: "string"
+      content_caching:
+        type: "integer"
+      disc_sharing:
+        type: "integer"
+      file_sharing:
+        type: "integer"
+      internet_sharing:
+        type: "integer"
+      printer_sharing:
+        type: "integer"
+      remote_apple_events:
+        type: "integer"
+      remote_login:
+        type: "integer"
+      remote_management:
+        type: "integer"
+      screen_sharing:
+        type: "integer"
+      system_id:
+        type: "string"
+    title: "System Insights Sharing Preferences"
+    example:
+      disc_sharing: 1
+      system_id: "system_id"
+      bluetooth_sharing: 0
+      content_caching: 6
+      internet_sharing: 5
+      remote_login: 9
+      file_sharing: 5
+      collection_time: "collection_time"
+      screen_sharing: 2
+      printer_sharing: 2
+      remote_apple_events: 7
+      remote_management: 3
+    x-stoplight:
+      id: "system-insights-sharing-preferences"
+      name: "System Insights Sharing Preferences"
+      public: true
+  system-insights-sip-config:
+    type: "object"
+    properties:
+      collection_time:
+        type: "string"
+      config_flag:
+        type: "string"
+      enabled:
+        type: "integer"
+      enabled_nvram:
+        type: "integer"
+      system_id:
+        type: "string"
+    title: "System Insights SIP Config"
+    example:
+      system_id: "system_id"
+      enabled_nvram: 6
+      collection_time: "collection_time"
+      config_flag: "config_flag"
+      enabled: 0
+    x-stoplight:
+      id: "system-insights-sip-config"
+      name: "System Insights SIP Config"
+      public: true
   system-insights-system-controls:
     type: "object"
     properties:
@@ -18871,6 +19730,30 @@ definitions:
       id: "system-insights-user-groups"
       name: "System Insights User Groups"
       public: true
+  system-insights-user-ssh-keys:
+    type: "object"
+    properties:
+      collection_time:
+        type: "string"
+      encrypted:
+        type: "integer"
+      path:
+        type: "string"
+      system_id:
+        type: "string"
+      uid:
+        type: "string"
+    title: "System Insights User SSH Keys"
+    example:
+      path: "path"
+      uid: "uid"
+      encrypted: 0
+      system_id: "system_id"
+      collection_time: "collection_time"
+    x-stoplight:
+      id: "system-insights-user-ssh-keys"
+      name: "System Insights User SSH Keys"
+      public: true
   system-insights-users:
     type: "object"
     properties:
@@ -18921,6 +19804,8 @@ definitions:
     properties:
       build_number:
         type: "integer"
+      collection_time:
+        type: "string"
       command_line:
         type: "string"
       crash_path:
@@ -18953,6 +19838,8 @@ definitions:
         type: "string"
       stack_trace:
         type: "string"
+      system_id:
+        type: "string"
       tid:
         type: "string"
       type:
@@ -18964,6 +19851,7 @@ definitions:
     title: "System Insights Windows Crashes"
     example:
       exception_address: "exception_address"
+      system_id: "system_id"
       module: "module"
       pid: "pid"
       machine_name: "machine_name"
@@ -18981,6 +19869,7 @@ definitions:
       build_number: 0
       registers: "registers"
       current_directory: "current_directory"
+      collection_time: "collection_time"
       stack_trace: "stack_trace"
       command_line: "command_line"
       username: "username"
@@ -20410,8 +21299,8 @@ x-stoplight:
           \ to allow management of the group members. This includes listing, adding\
           \ and removing Directory Objects and Groups of Directory Objects to and\
           \ from the Group. These endpoints allow you to control the members and membership\
-          \ of System Objects.\n\nMembers are the direct objects of an object group.\n\
-          \nMembership is defined as the direct and indirect members of an object\
+          \ of System Objects.\n\nMembers are the direct objects of an object group.\
+          \ \n\nMembership is defined as the direct and indirect members of an object\
           \ group."
         divider: false
         items:
@@ -20609,6 +21498,38 @@ x-stoplight:
           type: "endpoints"
         - _id: "system-insights-windows-crashes"
           type: "schemas"
+        - _id: "systeminsights_list_alf"
+          type: "endpoints"
+        - _id: "system-insights-alf"
+          type: "schemas"
+        - _id: "systeminsights_list_managed_policies"
+          type: "endpoints"
+        - _id: "system-insights-managed-policies"
+          type: "schemas"
+        - _id: "systeminsights_list_shadow"
+          type: "endpoints"
+        - _id: "system-insights-shadow"
+          type: "schemas"
+        - _id: "systeminsights_list_shared_folders"
+          type: "endpoints"
+        - _id: "system-insights-shared-folders"
+          type: "schemas"
+        - _id: "systeminsights_list_shared_resources"
+          type: "endpoints"
+        - _id: "system-insights-shared-resources"
+          type: "schemas"
+        - _id: "systeminsights_list_sharing_preferences"
+          type: "endpoints"
+        - _id: "system-insights-sharing-preferences"
+          type: "schemas"
+        - _id: "systeminsights_list_sip_config"
+          type: "endpoints"
+        - _id: "system-insights-sip-config"
+          type: "schemas"
+        - _id: "systeminsights_list_user_ssh_keys"
+          type: "endpoints"
+        - _id: "system-insights-user-ssh-keys"
+          type: "schemas"
         name: "System Insights"
       - description: "You can associate your Users with groups of Users, Systems,\
           \ Applications, Radius Servers, Commands and Directories.\n\nTo obtain you\
@@ -20688,8 +21609,8 @@ x-stoplight:
           \ to allow management of the group members. This includes listing, adding\
           \ and removing Directory Objects and Groups of Directory Objects to and\
           \ from the Group. These endpoints allow you to control the members and membership\
-          \ of User Objects.\n\nMembers are the direct objects of an object group.\n\
-          \nMembership is defined as the direct and indirect members of an object\
+          \ of User Objects.\n\nMembers are the direct objects of an object group.\
+          \ \n\nMembership is defined as the direct and indirect members of an object\
           \ group."
         divider: false
         items:

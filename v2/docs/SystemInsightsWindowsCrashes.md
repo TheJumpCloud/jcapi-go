@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BuildNumber** | **int32** |  | [optional] [default to null]
+**CollectionTime** | **string** |  | [optional] [default to null]
 **CommandLine** | **string** |  | [optional] [default to null]
 **CrashPath** | **string** |  | [optional] [default to null]
 **CurrentDirectory** | **string** |  | [optional] [default to null]
@@ -20,6 +21,7 @@ Name | Type | Description | Notes
 **ProcessUptime** | **string** |  | [optional] [default to null]
 **Registers** | **string** |  | [optional] [default to null]
 **StackTrace** | **string** |  | [optional] [default to null]
+**SystemId** | **string** |  | [optional] [default to null]
 **Tid** | **string** |  | [optional] [default to null]
 **Type_** | **string** |  | [optional] [default to null]
 **Username** | **string** |  | [optional] [default to null]

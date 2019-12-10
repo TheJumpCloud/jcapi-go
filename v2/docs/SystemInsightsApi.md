@@ -4,6 +4,7 @@ All URIs are relative to *https://console.jumpcloud.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**SysteminsightsListAlf**](SystemInsightsApi.md#SysteminsightsListAlf) | **Get** /systeminsights/alf | List System Insights ALF
 [**SysteminsightsListApps**](SystemInsightsApi.md#SysteminsightsListApps) | **Get** /systeminsights/apps | List System Insights Apps
 [**SysteminsightsListBattery**](SystemInsightsApi.md#SysteminsightsListBattery) | **Get** /systeminsights/battery | List System Insights Battery
 [**SysteminsightsListBitlockerInfo**](SystemInsightsApi.md#SysteminsightsListBitlockerInfo) | **Get** /systeminsights/bitlocker_info | List System Insights Bitlocker Info
@@ -21,11 +22,17 @@ Method | HTTP request | Description
 [**SysteminsightsListLaunchd**](SystemInsightsApi.md#SysteminsightsListLaunchd) | **Get** /systeminsights/launchd | List System Insights Launchd
 [**SysteminsightsListLoggedInUsers**](SystemInsightsApi.md#SysteminsightsListLoggedInUsers) | **Get** /systeminsights/logged_in_users | List System Insights Logged-In Users
 [**SysteminsightsListLogicalDrives**](SystemInsightsApi.md#SysteminsightsListLogicalDrives) | **Get** /systeminsights/logical_drives | List System Insights Logical Drives
+[**SysteminsightsListManagedPolicies**](SystemInsightsApi.md#SysteminsightsListManagedPolicies) | **Get** /systeminsights/managed_policies | List System Insights Managed Policies
 [**SysteminsightsListMounts**](SystemInsightsApi.md#SysteminsightsListMounts) | **Get** /systeminsights/mounts | List System Insights Mounts
 [**SysteminsightsListOsVersion**](SystemInsightsApi.md#SysteminsightsListOsVersion) | **Get** /systeminsights/os_version | List System Insights OS Version
 [**SysteminsightsListPatches**](SystemInsightsApi.md#SysteminsightsListPatches) | **Get** /systeminsights/patches | List System Insights Patches
 [**SysteminsightsListPrograms**](SystemInsightsApi.md#SysteminsightsListPrograms) | **Get** /systeminsights/programs | List System Insights Programs
 [**SysteminsightsListSafariExtensions**](SystemInsightsApi.md#SysteminsightsListSafariExtensions) | **Get** /systeminsights/safari_extensions | List System Insights Safari Extensions
+[**SysteminsightsListShadow**](SystemInsightsApi.md#SysteminsightsListShadow) | **Get** /systeminsights/shadow | LIst System Insights Shadow
+[**SysteminsightsListSharedFolders**](SystemInsightsApi.md#SysteminsightsListSharedFolders) | **Get** /systeminsights/shared_folders | List System Insights Shared Folders
+[**SysteminsightsListSharedResources**](SystemInsightsApi.md#SysteminsightsListSharedResources) | **Get** /systeminsights/shared_resources | List System Insights Shared Resources
+[**SysteminsightsListSharingPreferences**](SystemInsightsApi.md#SysteminsightsListSharingPreferences) | **Get** /systeminsights/sharing_preferences | List System Insights Sharing Preferences
+[**SysteminsightsListSipConfig**](SystemInsightsApi.md#SysteminsightsListSipConfig) | **Get** /systeminsights/sip_config | List System Insights SIP Config
 [**SysteminsightsListSystemApps**](SystemInsightsApi.md#SysteminsightsListSystemApps) | **Get** /systeminsights/{system_id}/apps | List System Insights System Apps
 [**SysteminsightsListSystemBitlockerInfo**](SystemInsightsApi.md#SysteminsightsListSystemBitlockerInfo) | **Get** /systeminsights/{system_id}/bitlocker_info | List System Insights System Bitlocker Info
 [**SysteminsightsListSystemBrowserPlugins**](SystemInsightsApi.md#SysteminsightsListSystemBrowserPlugins) | **Get** /systeminsights/{system_id}/browser_plugins | List System Insights System Browser Plugins
@@ -52,9 +59,52 @@ Method | HTTP request | Description
 [**SysteminsightsListUptime**](SystemInsightsApi.md#SysteminsightsListUptime) | **Get** /systeminsights/uptime | List System Insights Uptime
 [**SysteminsightsListUsbDevices**](SystemInsightsApi.md#SysteminsightsListUsbDevices) | **Get** /systeminsights/usb_devices | List System Insights USB Devices
 [**SysteminsightsListUserGroups**](SystemInsightsApi.md#SysteminsightsListUserGroups) | **Get** /systeminsights/user_groups | List System Insights User Groups
+[**SysteminsightsListUserSshKeys**](SystemInsightsApi.md#SysteminsightsListUserSshKeys) | **Get** /systeminsights/user_ssh_keys | List System Insights User SSH Keys
 [**SysteminsightsListUsers**](SystemInsightsApi.md#SysteminsightsListUsers) | **Get** /systeminsights/users | List System Insights Users
 [**SysteminsightsListWindowsCrashes**](SystemInsightsApi.md#SysteminsightsListWindowsCrashes) | **Get** /systeminsights/windows_crashes | List System Insights Windows Crashes
 
+
+# **SysteminsightsListAlf**
+> []SystemInsightsAlf SysteminsightsListAlf(ctx, contentType, accept, optional)
+List System Insights ALF
+
+Valid filter fields are `system_id` and `global_state`.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
+ **limit** | **int32**|  | [default to 10]
+ **xOrgId** | **string**|  | [default to ]
+ **filter** | [**[]string**](string.md)| Supported operators are: eq | 
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
+
+### Return type
+
+[**[]SystemInsightsAlf**](system-insights-alf.md)
+
+### Authorization
+
+[x-api-key](../README.md#x-api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SysteminsightsListApps**
 > []SystemInsightsApps SysteminsightsListApps(ctx, contentType, accept, optional)
@@ -770,6 +820,48 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **SysteminsightsListManagedPolicies**
+> []SystemInsightsManagedPolicies SysteminsightsListManagedPolicies(ctx, contentType, accept, optional)
+List System Insights Managed Policies
+
+Valid filter fields are `system_id` and `domain`.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
+ **limit** | **int32**|  | [default to 10]
+ **xOrgId** | **string**|  | [default to ]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **filter** | [**[]string**](string.md)| Supported operators are: eq | 
+
+### Return type
+
+[**[]SystemInsightsManagedPolicies**](system-insights-managed-policies.md)
+
+### Authorization
+
+[x-api-key](../README.md#x-api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **SysteminsightsListMounts**
 > []SystemInsightsMounts SysteminsightsListMounts(ctx, contentType, accept, optional)
 List System Insights Mounts
@@ -968,6 +1060,216 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]SystemInsightsSafariExtensions**](system-insights-safari-extensions.md)
+
+### Authorization
+
+[x-api-key](../README.md#x-api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SysteminsightsListShadow**
+> []SystemInsightsShadow SysteminsightsListShadow(ctx, contentType, accept, optional)
+LIst System Insights Shadow
+
+Valid filter fields are `system_id` and `username`.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
+ **limit** | **int32**|  | [default to 10]
+ **xOrgId** | **string**|  | [default to ]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **filter** | [**[]string**](string.md)| Supported operators are: eq | 
+
+### Return type
+
+[**[]SystemInsightsShadow**](system-insights-shadow.md)
+
+### Authorization
+
+[x-api-key](../README.md#x-api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SysteminsightsListSharedFolders**
+> []SystemInsightsSharedFolders SysteminsightsListSharedFolders(ctx, contentType, accept, optional)
+List System Insights Shared Folders
+
+Valid filter fields are `system_id` and `name`.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
+ **limit** | **int32**|  | [default to 10]
+ **xOrgId** | **string**|  | [default to ]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **filter** | [**[]string**](string.md)| Supported operators are: eq | 
+
+### Return type
+
+[**[]SystemInsightsSharedFolders**](system-insights-shared-folders.md)
+
+### Authorization
+
+[x-api-key](../README.md#x-api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SysteminsightsListSharedResources**
+> []SystemInsightsSharedResources SysteminsightsListSharedResources(ctx, contentType, accept, optional)
+List System Insights Shared Resources
+
+Valid filter fields are `system_id` and `type`.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
+ **limit** | **int32**|  | [default to 10]
+ **xOrgId** | **string**|  | [default to ]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **filter** | [**[]string**](string.md)| Supported operators are: eq | 
+
+### Return type
+
+[**[]SystemInsightsSharedResources**](system-insights-shared-resources.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SysteminsightsListSharingPreferences**
+> []SystemInsightsSharingPreferences SysteminsightsListSharingPreferences(ctx, contentType, accept, optional)
+List System Insights Sharing Preferences
+
+Only valid filed field is `system_id`.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
+ **limit** | **int32**|  | [default to 10]
+ **xOrgId** | **string**|  | [default to ]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **filter** | [**[]string**](string.md)| Supported operators are: eq | 
+
+### Return type
+
+[**[]SystemInsightsSharingPreferences**](system-insights-sharing-preferences.md)
+
+### Authorization
+
+[x-api-key](../README.md#x-api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SysteminsightsListSipConfig**
+> []SystemInsightsSipConfig SysteminsightsListSipConfig(ctx, contentType, accept, optional)
+List System Insights SIP Config
+
+Valid filter fields are `system_id` and `enabled`.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
+ **limit** | **int32**|  | [default to 10]
+ **xOrgId** | **string**|  | [default to ]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **filter** | [**[]string**](string.md)| Supported operators are: eq | 
+
+### Return type
+
+[**[]SystemInsightsSipConfig**](system-insights-sip-config.md)
 
 ### Authorization
 
@@ -2102,6 +2404,48 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]SystemInsightsUserGroups**](system-insights-user-groups.md)
+
+### Authorization
+
+[x-api-key](../README.md#x-api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SysteminsightsListUserSshKeys**
+> []SystemInsightsUserSshKeys SysteminsightsListUserSshKeys(ctx, contentType, accept, optional)
+List System Insights User SSH Keys
+
+Valid filter fields are `system_id` and `uid`.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
+ **limit** | **int32**|  | [default to 10]
+ **xOrgId** | **string**|  | [default to ]
+ **skip** | **int32**| The offset into the records to return. | [default to 0]
+ **filter** | [**[]string**](string.md)| Supported operators are: eq | 
+
+### Return type
+
+[**[]SystemInsightsUserSshKeys**](system-insights-user-ssh-keys.md)
 
 ### Authorization
 
