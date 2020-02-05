@@ -11,15 +11,5 @@ package v1
 
 type Body struct {
 
-	Mfa string `json:"mfa,omitempty"`
-
-	Name string `json:"name"`
-
-	NetworkSourceIp string `json:"networkSourceIp"`
-
-	Tags []string `json:"tags,omitempty"`
-
-	UserLockoutAction string `json:"userLockoutAction,omitempty"`
-
-	UserPasswordExpirationAction string `json:"userPasswordExpirationAction,omitempty"`
+	Settings *Organizationsettingsput `json:"settings,omitempty"`
 }

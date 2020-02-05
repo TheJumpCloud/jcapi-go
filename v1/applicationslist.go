@@ -11,6 +11,8 @@ package v1
 
 type Applicationslist struct {
 
+	Name string `json:"name,omitempty"`
+
 	// The list of applications.
 	Results []Application `json:"results,omitempty"`
 

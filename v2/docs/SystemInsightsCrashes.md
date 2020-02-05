@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CollectionTime** | **string** |  | [optional] [default to null]
 **CrashPath** | **string** |  | [optional] [default to null]
 **CrashedThread** | **string** |  | [optional] [default to null]
 **Datetime** | **string** |  | [optional] [default to null]
@@ -16,6 +17,7 @@ Name | Type | Description | Notes
 **Registers** | **string** |  | [optional] [default to null]
 **Responsible** | **string** |  | [optional] [default to null]
 **StackTrace** | **string** |  | [optional] [default to null]
+**SystemId** | **string** |  | [optional] [default to null]
 **Type_** | **string** |  | [optional] [default to null]
 **Uid** | **int32** |  | [optional] [default to null]
 **Version** | **string** |  | [optional] [default to null]

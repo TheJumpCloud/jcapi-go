@@ -8,6 +8,8 @@ Method | HTTP request | Description
 [**GraphOffice365AssociationsPost**](Office365Api.md#GraphOffice365AssociationsPost) | **Post** /office365s/{office365_id}/associations | Manage the associations of an Office 365 instance
 [**GraphOffice365TraverseUser**](Office365Api.md#GraphOffice365TraverseUser) | **Get** /office365s/{office365_id}/users | List the Users bound to an Office 365 instance
 [**GraphOffice365TraverseUserGroup**](Office365Api.md#GraphOffice365TraverseUserGroup) | **Get** /office365s/{office365_id}/usergroups | List the User Groups bound to an Office 365 instance
+[**Office365sGet**](Office365Api.md#Office365sGet) | **Get** /office365s/{office365_id} | Get Office 365 instance
+[**Office365sPatch**](Office365Api.md#Office365sPatch) | **Patch** /office365s/{office365_id} | Update existing Office 365 instance.
 [**TranslationRulesOffice365Delete**](Office365Api.md#TranslationRulesOffice365Delete) | **Delete** /office365s/{office365_id}/translationrules/{id} | Deletes a Office 365 translation rule
 [**TranslationRulesOffice365Get**](Office365Api.md#TranslationRulesOffice365Get) | **Get** /office365s/{office365_id}/translationrules/{id} | Gets a specific Office 365 translation rule
 [**TranslationRulesOffice365List**](Office365Api.md#TranslationRulesOffice365List) | **Get** /office365s/{office365_id}/translationrules | List all the Office 365 Translation Rules
@@ -18,7 +20,7 @@ Method | HTTP request | Description
 > []GraphConnection GraphOffice365AssociationsList(ctx, office365Id, targets, contentType, accept, optional)
 List the associations of an Office 365 instance
 
-This endpoint returns _direct_ associations of an Office 365 instance.   A direct association can be a non-homogeneous relationship between 2 different objects, for example Office 365 and Users.  #### Sample Request ``` curl -X GET 'https://console.jumpcloud.com/api/v2/office365s/{O365_ID}/associations?targets=user_group \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'  ```
+This endpoint returns _direct_ associations of an Office 365 instance.   A direct association can be a non-homogeneous relationship between 2 different objects, for example Office 365 and Users.  #### Sample Request ``` curl -X GET 'https://console.jumpcloud.com/api/v2/office365s/{O365_ID}/associations?targets=user_group' \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'  ```
 
 ### Required Parameters
 
@@ -177,6 +179,89 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]GraphObjectWithPaths**](GraphObjectWithPaths.md)
+
+### Authorization
+
+[x-api-key](../README.md#x-api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **Office365sGet**
+> Office365Output Office365sGet(ctx, office365Id, contentType, accept, optional)
+Get Office 365 instance
+
+This endpoint returns a specific Office 365 instance.  #####  Sample Request  ``` curl -X GET https://console.jumpcloud.com/api/v2/office365s/{O365_ID} \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'  ```
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **office365Id** | **string**| ObjectID of the Office 365 instance. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **office365Id** | **string**| ObjectID of the Office 365 instance. | 
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
+ **xOrgId** | **string**|  | [default to ]
+
+### Return type
+
+[**Office365Output**](office365-output.md)
+
+### Authorization
+
+[x-api-key](../README.md#x-api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **Office365sPatch**
+> Office365Output Office365sPatch(ctx, office365Id, contentType, accept, optional)
+Update existing Office 365 instance.
+
+This endpoint allows updating some attributes of an Office 365 instance.  #####  Sample Request  ``` curl -X PATCH https://console.jumpcloud.com/api/v2/office365s/{O365_ID} \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}' \\   -d '{     \"userLockoutAction\": \"maintain\",     \"userPasswordExpirationAction\": \"suspend\"   }'  ```
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **office365Id** | **string**| ObjectID of the Office 365 instance. | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **office365Id** | **string**| ObjectID of the Office 365 instance. | 
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
+ **body** | [**Office365PatchInput**](Office365PatchInput.md)|  | 
+ **xOrgId** | **string**|  | [default to ]
+
+### Return type
+
+[**Office365Output**](office365-output.md)
 
 ### Authorization
 

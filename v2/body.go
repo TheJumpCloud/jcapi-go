@@ -11,6 +11,9 @@ package v2
 
 type Body struct {
 
-	// The name used to identify this AppleMDM.
-	Name string `json:"name,omitempty"`
+	Id string `json:"id,omitempty"`
+
+	UserLockoutAction *LdapServerAction `json:"userLockoutAction,omitempty"`
+
+	UserPasswordExpirationAction *LdapServerAction `json:"userPasswordExpirationAction,omitempty"`
 }

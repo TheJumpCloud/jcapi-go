@@ -297,7 +297,7 @@ Name | Type | Description  | Notes
  **id** | **string**| Unique identifier of the LDAP server. | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**Body3**](Body3.md)|  | 
+ **body** | [**Body**](Body.md)|  | 
  **xApiKey** | **string**|  | 
  **xOrgId** | **string**|  | 
 

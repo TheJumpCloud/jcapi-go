@@ -14,130 +14,6 @@ consumes:
 produces:
 - "application/json"
 paths:
-  /Tag/{name}:
-    put:
-      tags:
-      - "Tags"
-      summary: "Update a Tag"
-      description: "Hidden as Tags is deprecated\n\nUpdate a specific tag."
-      operationId: "tags_put"
-      parameters:
-      - name: "name"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "Name"
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/tagput"
-        x-exportParamName: "Body"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            $ref: "#/definitions/tag"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "tags_put"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-  /Tags/{name}:
-    get:
-      tags:
-      - "Tags"
-      summary: "List a Tag"
-      description: "Hidden as Tags is deprecated\n\nReturns a specific tag."
-      operationId: "tags_get"
-      parameters:
-      - name: "name"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "Name"
-      - name: "fields"
-        in: "query"
-        description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted, the default list of fields will\
-          \ be returned.\n"
-        required: false
-        type: "string"
-        x-exportParamName: "Fields"
-      - name: "limit"
-        in: "query"
-        description: "The number of records to return at once. Limited to 100."
-        required: false
-        type: "integer"
-        default: 10
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "sort"
-        in: "query"
-        description: "Use space separated sort parameters to sort the collection.\n\
-          Default sort is ascending. Prefix with `-` to sort descending.\n"
-        required: false
-        type: "string"
-        x-exportParamName: "Sort"
-      - name: "filter"
-        in: "query"
-        description: "A filter to apply to the query."
-        required: false
-        type: "string"
-        x-exportParamName: "Filter"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            $ref: "#/definitions/tag"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "tags_get"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
   /application-templates:
     get:
       tags:
@@ -554,6 +430,7 @@ paths:
           enabled: false
           statusCode: 200
         public: true
+  /cases: {}
   /command/trigger/{triggername}:
     post:
       tags:
@@ -629,6 +506,12 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Fields"
+      - name: "filter"
+        in: "query"
+        description: "A filter to apply to the query."
+        required: false
+        type: "string"
+        x-exportParamName: "Filter"
       - name: "limit"
         in: "query"
         description: "The number of records to return at once. Limited to 100."
@@ -636,6 +519,24 @@ paths:
         type: "integer"
         default: 10
         x-exportParamName: "Limit"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
       - name: "skip"
         in: "query"
         description: "The offset into the records to return."
@@ -651,30 +552,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Sort"
-      - name: "filter"
-        in: "query"
-        description: "A filter to apply to the query."
-        required: false
-        type: "string"
-        x-exportParamName: "Filter"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -723,6 +600,12 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Filter"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
       - name: "Content-Type"
         in: "header"
         required: true
@@ -735,12 +618,6 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -821,14 +698,6 @@ paths:
         \ {API_KEY}'\n\n```"
       operationId: "commands_list"
       parameters:
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
       - name: "fields"
         in: "query"
         description: "Use a space seperated string of field parameters to include\
@@ -837,6 +706,12 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Fields"
+      - name: "filter"
+        in: "query"
+        description: "A filter to apply to the query."
+        required: false
+        type: "string"
+        x-exportParamName: "Filter"
       - name: "limit"
         in: "query"
         description: "The number of records to return at once. Limited to 100."
@@ -844,19 +719,12 @@ paths:
         type: "integer"
         default: 10
         x-exportParamName: "Limit"
-      - name: "sort"
-        in: "query"
-        description: "Use space separated sort parameters to sort the collection.\n\
-          Default sort is ascending. Prefix with `-` to sort descending.\n"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
         required: false
         type: "string"
-        x-exportParamName: "Sort"
-      - name: "filter"
-        in: "query"
-        description: "A filter to apply to the query."
-        required: false
-        type: "string"
-        x-exportParamName: "Filter"
+        x-exportParamName: "XOrgId"
       - name: "Content-Type"
         in: "header"
         required: true
@@ -869,12 +737,21 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
+        required: false
+        type: "integer"
+        default: 0
+        minimum: 0
+        x-exportParamName: "Skip"
+      - name: "sort"
+        in: "query"
+        description: "Use space separated sort parameters to sort the collection.\n\
+          Default sort is ascending. Prefix with `-` to sort descending.\n"
         required: false
         type: "string"
-        x-exportParamName: "XOrgId"
+        x-exportParamName: "Sort"
       responses:
         200:
           description: "OK"
@@ -977,6 +854,12 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Filter"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
       - name: "Content-Type"
         in: "header"
         required: true
@@ -989,12 +872,6 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
       responses:
         200:
           description: "OK"
@@ -1152,14 +1029,12 @@ paths:
         type: "integer"
         default: 10
         x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
+      - name: "x-org-id"
+        in: "header"
+        description: ""
         required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
+        type: "string"
+        x-exportParamName: "XOrgId"
       - name: "Content-Type"
         in: "header"
         required: true
@@ -1172,12 +1047,14 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
+      - name: "skip"
+        in: "query"
+        description: "The offset into the records to return."
         required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
+        type: "integer"
+        default: 0
+        minimum: 0
+        x-exportParamName: "Skip"
       responses:
         200:
           description: ""
@@ -1243,6 +1120,13 @@ paths:
         type: "string"
         default: "application/json"
         x-exportParamName: "Accept"
+      - name: "search"
+        in: "query"
+        description: "A nested object containing a string `searchTerm` and a list\
+          \ of `fields` to search on."
+        required: false
+        type: "string"
+        x-exportParamName: "Search"
       - name: "skip"
         in: "query"
         description: "The offset into the records to return."
@@ -1258,13 +1142,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Sort"
-      - name: "search"
-        in: "query"
-        description: "A nested object containing a string `searchTerm` and a list\
-          \ of `fields` to search on."
-        required: false
-        type: "string"
-        x-exportParamName: "Search"
       responses:
         200:
           description: ""
@@ -1276,6 +1153,127 @@ paths:
         afterScript: null
         beforeScript: null
         id: "organization_list"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: true
+  /organizations/{id}:
+    get:
+      tags:
+      - "Organizations"
+      summary: "Get an Organization"
+      description: "This endpoint returns a particular Organization.\n\n#### Sample\
+        \ Request\n\n```\ncurl -X GET https://console.jumpcloud.com/api/organizations/{OrganizationID}\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
+      operationId: "organizations_get"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      - name: "fields"
+        in: "query"
+        description: "Use a space seperated string of field parameters to include\
+          \ the data in the response. If omitted, the default list of fields will\
+          \ be returned.\n"
+        required: false
+        type: "string"
+        x-exportParamName: "Fields"
+      - name: "filter"
+        in: "query"
+        description: "A filter to apply to the query."
+        required: false
+        type: "string"
+        x-exportParamName: "Filter"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/organization"
+        401:
+          description: "Unauthorized"
+        403:
+          description: ""
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "organizations_get"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: true
+    put:
+      tags:
+      - "Organizations"
+      summary: "Update an Organization"
+      description: "This endpoint allows you to update an Organization.\n\nNote: `passwordPolicy`\
+        \ settings are only used when `passwordCompliance` is set to \"custom\". We\
+        \ discourage the use of non-custom passwordCompliance values.\n\n`hasStripeCustomerId`\
+        \ is deprecated and will be removed.\n\n#### Sample Request\n\n```\ncurl -X\
+        \ PUT https://console.jumpcloud.com/api/organizations/{OrganizationID} \\\n\
+        \  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n  \"settings\": {\n    \"contactName\"\
+        : \"Admin Name\",\n    \"contactEmail\": \"admin@company.com\",\n    \"systemUsersCanEdit\"\
+        :true,\n    \"passwordPolicy\": {\n      \"enableMaxHistory\": true,\n   \
+        \   \"maxHistory\": 3\n    }\n  }\n}'\n```"
+      operationId: "organization_put"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/body"
+        x-exportParamName: "Body"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/organization"
+        400:
+          description: ""
+        401:
+          description: "Unauthorized"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "organization_put"
         mock:
           dynamic: false
           enabled: false
@@ -1416,6 +1414,55 @@ paths:
           statusCode: 200
         public: true
   /radiusservers/{id}:
+    get:
+      tags:
+      - "Radius Servers"
+      summary: "Get Radius Server"
+      description: "This endpoint allows you to get a RADIUS server in your organization.\n\
+        \n####\n```\ncurl -X PUT https://console.jumpcloud.com/api/radiusservers/{ServerID}\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n```"
+      operationId: "radius_servers_get"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/radiusserver"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "radius_servers_get"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: true
     put:
       tags:
       - "Radius Servers"
@@ -1437,7 +1484,7 @@ paths:
         name: "body"
         required: false
         schema:
-          $ref: "#/definitions/body"
+          $ref: "#/definitions/body_1"
         x-exportParamName: "Body"
       - name: "Content-Type"
         in: "header"
@@ -2072,161 +2119,6 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-  /systems/{id}/systemusers:
-    get:
-      tags:
-      - "Systems"
-      summary: "List system user bindings"
-      description: "Hidden as Tags is deprecated\n\nList system user bindings for\
-        \ a specific system in a system and user binding format.\n\nThis endpoint\
-        \ is only used for users still using JumpCloud Tags. If you are using JumpCloud\
-        \ Groups please refer to the documentation found [here](https://docs.jumpcloud.com/2.0/systems/manage-associations-of-a-system).\n\
-        \n#### Sample Request\n\n*List system user bindings for specific system*\n\
-        \n```\ncurl -X https://console.jumpcloud.com/api/systems/{SystemID}/systemusers\\\
-        \n  -H 'Content-Type: application/json' \\\n  -H 'x-api-key: {API_KEY}' \\\
-        \n  \"\n```"
-      operationId: "systems_systemusers_binding_list"
-      parameters:
-      - name: "id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "Id"
-      - name: "fields"
-        in: "query"
-        description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted, the default list of fields will\
-          \ be returned.\n"
-        required: false
-        type: "string"
-        x-exportParamName: "Fields"
-      - name: "limit"
-        in: "query"
-        description: "The number of records to return at once. Limited to 100."
-        required: false
-        type: "integer"
-        default: 10
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "sort"
-        in: "query"
-        description: "Use space separated sort parameters to sort the collection.\n\
-          Default sort is ascending. Prefix with `-` to sort descending.\n"
-        required: false
-        type: "string"
-        x-exportParamName: "Sort"
-      - name: "filter"
-        in: "query"
-        description: "A filter to apply to the query."
-        required: false
-        type: "string"
-        x-exportParamName: "Filter"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      responses:
-        200:
-          description: "OK"
-          schema:
-            $ref: "#/definitions/systemuserbinding"
-        401:
-          description: "Unauthorized"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systems_systemusers_binding_list"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-    put:
-      tags:
-      - "Systems"
-      summary: "Update a system's or user's binding"
-      description: "Hidden as Tags is deprecated\n\nAdds or removes a user binding\
-        \ for a system.\n\nThis endpoint is only used for users still using JumpCloud\
-        \ Tags. If you are using JumpCloud Groups please refer to the documentation\
-        \ found [here](https://docs.jumpcloud.com/2.0/systems/manage-associations-of-a-system).\n\
-        \n#### Sample Request\n\n*Add (or remove) a system user to (from) a system*\n\
-        \n```\ncurl \\\n  -d '{ \"add\": [\"[SYSTEM_USER_ID_TO_ADD_HERE]\"], \"remove\"\
-        : [\"[SYSTEM_USER_ID_TO_REMOVE_HERE]\"] }' \\\n  -X PUT \\\n  -H 'Content-Type:\
-        \ application/json' \\\n  -H 'Accept: application/json' \\\n  -H \"x-api-key:\
-        \ [YOUR_API_KEY_HERE]\" \\\n  \"https://console.jumpcloud.com/api/systems/[SYSTEM_ID_HERE]/systemusers"
-      operationId: "systems_systemusers_binding_put"
-      parameters:
-      - name: "id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "Id"
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/systemuserbindingsput"
-        x-exportParamName: "Body"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      responses:
-        200:
-          description: "OK"
-        400:
-          description: ""
-          schema:
-            type: "object"
-            properties: {}
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systems_systemusers_binding_put"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
   /systemusers:
     get:
       tags:
@@ -2266,6 +2158,12 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Fields"
+      - name: "filter"
+        in: "query"
+        description: "A filter to apply to the query."
+        required: false
+        type: "string"
+        x-exportParamName: "Filter"
       - name: "x-org-id"
         in: "header"
         description: ""
@@ -2291,12 +2189,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Search"
-      - name: "filter"
-        in: "query"
-        description: "A filter to apply to the query."
-        required: false
-        type: "string"
-        x-exportParamName: "Filter"
       responses:
         200:
           description: "OK"
@@ -2546,6 +2438,75 @@ paths:
           enabled: false
           statusCode: 200
         public: true
+  /systemusers/{id}/expire:
+    post:
+      tags:
+      - "Systemusers"
+      summary: "Expire a system user's password"
+      description: "This endpoint allows you to expire a user's password."
+      operationId: "systemusers_expire"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        200:
+          description: ""
+        400:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        401:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        403:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        404:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        409:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+        500:
+          description: ""
+          schema:
+            $ref: "#/definitions/errorresponse"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "systemusers_expire"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: true
   /systemusers/{id}/resetmfa:
     post:
       tags:
@@ -2573,7 +2534,7 @@ paths:
         name: "body"
         required: false
         schema:
-          $ref: "#/definitions/body_1"
+          $ref: "#/definitions/body_2"
         x-exportParamName: "Body"
       - name: "Content-Type"
         in: "header"
@@ -2746,162 +2707,6 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-  /systemusers/{id}/systems:
-    get:
-      tags:
-      - "Systemusers"
-      summary: "List system user binding"
-      description: "Hidden as Tags is deprecated\n\nAdds or removes a system binding\
-        \ for a user.\n\nThis endpoint is only used for users still using JumpCloud\
-        \ Tags. If you are using JumpCloud Groups please refer to the documentation\
-        \ found [here](https://docs.jumpcloud.com/2.0/systems/manage-associations-of-a-system).\n\
-        \n\nList system bindings for a specific system user in a system and user binding\
-        \ format.\n\n### Examples\n\n#### List system bindings for specific system\
-        \ user\n\n```\ncurl \\\n  -H 'Content-Type: application/json' \\\n  -H \"\
-        x-api-key: [YOUR_API_KEY_HERE]\" \\\n  \"https://console.jumpcloud.com/api/systemusers/[SYSTEM_USER_ID_HERE]/systems\"\
-        \n```"
-      operationId: "systemusers_systems_binding_list"
-      parameters:
-      - name: "id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "Id"
-      - name: "fields"
-        in: "query"
-        description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted, the default list of fields will\
-          \ be returned.\n"
-        required: false
-        type: "string"
-        x-exportParamName: "Fields"
-      - name: "limit"
-        in: "query"
-        description: "The number of records to return at once. Limited to 100."
-        required: false
-        type: "integer"
-        default: 10
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "sort"
-        in: "query"
-        description: "Use space separated sort parameters to sort the collection.\n\
-          Default sort is ascending. Prefix with `-` to sort descending.\n"
-        required: false
-        type: "string"
-        x-exportParamName: "Sort"
-      - name: "filter"
-        in: "query"
-        description: "A filter to apply to the query."
-        required: false
-        type: "string"
-        x-exportParamName: "Filter"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      responses:
-        200:
-          description: "OK"
-          schema:
-            type: "object"
-            properties: {}
-        401:
-          description: "Unauthorized"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systemusers_systems_binding_list"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-    put:
-      tags:
-      - "Systemusers"
-      summary: "Update a system user binding"
-      description: "Hidden as Tags is deprecated\n\nAdds or removes a system binding\
-        \ for a user.\n\nThis endpoint is only used for users still using JumpCloud\
-        \ Tags. If you are using JumpCloud Groups please refer to the documentation\
-        \ found [here](https://docs.jumpcloud.com/2.0/systems/manage-associations-of-a-system).\n\
-        \n### Example\n\n#### Add (or remove) system to system user\n\n```\ncurl \\\
-        \n  -d '{ \"add\": [\"[SYSTEM_ID_TO_ADD_HERE]\"], \"remove\": [\"[SYSTEM_ID_TO_REMOVE_HERE]\"\
-        ] }' \\\n  -X PUT \\\n  -H 'Content-Type: application/json' \\\n  -H 'Accept:\
-        \ application/json' \\\n  -H \"x-api-key: [YOUR_API_KEY_HERE]\" \\\n  \"https://console.jumpcloud.com/api/systemusers/[SYSTEM_USER_ID_HERE]/systems\"\
-        \n```"
-      operationId: "systemusers_systems_binding_put"
-      parameters:
-      - name: "id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "Id"
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/usersystembindingsput"
-        x-exportParamName: "Body"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      responses:
-        200:
-          description: "OK"
-          schema:
-            $ref: "#/definitions/usersystembinding"
-        401:
-          description: "Unauthorized"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systemusers_systems_binding_put"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
   /systemusers/{id}/unlock:
     post:
       tags:
@@ -3027,173 +2832,6 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-  /tags:
-    get:
-      tags:
-      - "Tags"
-      summary: "List All Tags"
-      description: "Hidden as Tags is deprecated\n\nReturns all Tags."
-      operationId: "tags_list"
-      parameters:
-      - name: "fields"
-        in: "query"
-        description: "Use a space seperated string of field parameters to include\
-          \ the data in the response. If omitted, the default list of fields will\
-          \ be returned.\n"
-        required: false
-        type: "string"
-        x-exportParamName: "Fields"
-      - name: "limit"
-        in: "query"
-        description: "The number of records to return at once. Limited to 100."
-        required: false
-        type: "integer"
-        default: 10
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "sort"
-        in: "query"
-        description: "Use space separated sort parameters to sort the collection.\n\
-          Default sort is ascending. Prefix with `-` to sort descending.\n"
-        required: false
-        type: "string"
-        x-exportParamName: "Sort"
-      - name: "filter"
-        in: "query"
-        description: "A filter to apply to the query."
-        required: false
-        type: "string"
-        x-exportParamName: "Filter"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            $ref: "#/definitions/tagslist"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "tags_list"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-    post:
-      tags:
-      - "Tags"
-      summary: "Create a Tag"
-      description: "Hidden as Tags is deprecated\n\nCreate a tag.\n\n### Examples\n\
-        #### Create a new Tag\n\n```\ncurl \\\n  -d '{\"name\" : \"Developers\"}'\
-        \ \\\n  -X 'POST' \\\n  -H 'Content-Type: application/json' \\\n  -H 'Accept:\
-        \ application/json' \\\n  -H \"x-api-key: [YOUR_API_KEY_HERE]\" \\\n  \"https://console.jumpcloud.com/api/tags\"\
-        \n```"
-      operationId: "tags_post"
-      parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/tagpost"
-        x-exportParamName: "Body"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            $ref: "#/definitions/tag"
-          examples:
-            application/json:
-              _id: "58ea6b6610caf935133a3822"
-              externallyManaged: false
-              name: "test123"
-              regularExpressions: []
-              sendToLDAP: false
-              systems: []
-              systemusers: []
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "tags_post"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-  /tags/{name}:
-    delete:
-      tags:
-      - "Tags"
-      summary: "Delete a Tag"
-      description: "Hidden as Tags is deprecated\n\nDelete a Tag."
-      operationId: "tags_delete"
-      parameters:
-      - name: "name"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "Name"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            $ref: "#/definitions/tag"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "tags_delete"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
 securityDefinitions:
   x-api-key:
     type: "apiKey"
@@ -3209,6 +2847,8 @@ definitions:
         type: "boolean"
       config:
         $ref: "#/definitions/application_config"
+      created:
+        type: "string"
       displayLabel:
         type: "string"
       displayName:
@@ -3226,6 +2866,7 @@ definitions:
       displayLabel: "displayLabel"
       learnMore: "learnMore"
       ssoUrl: "ssoUrl"
+      created: "created"
       displayName: "displayName"
       organization: "organization"
       name: "name"
@@ -3330,6 +2971,8 @@ definitions:
   applicationslist:
     type: "object"
     properties:
+      name:
+        type: "string"
       results:
         type: "array"
         description: "The list of applications."
@@ -3340,11 +2983,13 @@ definitions:
         description: "The total number of applications."
     title: "ApplicationsList"
     example:
+      name: "name"
       totalCount: 0
       results:
       - displayLabel: "displayLabel"
         learnMore: "learnMore"
         ssoUrl: "ssoUrl"
+        created: "created"
         displayName: "displayName"
         organization: "organization"
         name: "name"
@@ -3445,6 +3090,7 @@ definitions:
       - displayLabel: "displayLabel"
         learnMore: "learnMore"
         ssoUrl: "ssoUrl"
+        created: "created"
         displayName: "displayName"
         organization: "organization"
         name: "name"
@@ -3908,6 +3554,30 @@ definitions:
       id: "applicationtemplateslist"
       name: "ApplicationTemplatesList"
       public: true
+  case:
+    type: "object"
+    required:
+    - "description"
+    - "firstname"
+    - "lastname"
+    - "subject"
+    properties:
+      description:
+        type: "string"
+      firstname:
+        type: "string"
+        maxLength: 40
+      lastname:
+        type: "string"
+        maxLength: 80
+      subject:
+        type: "string"
+        maxLength: 255
+    title: "Case"
+    x-stoplight:
+      id: "case"
+      name: "Case"
+      public: true
   command:
     type: "object"
     required:
@@ -4229,6 +3899,224 @@ definitions:
       id: "mfa"
       name: "mfa"
       public: true
+  organization:
+    type: "object"
+    properties:
+      _id:
+        type: "string"
+      created:
+        type: "string"
+      displayName:
+        type: "string"
+      hasStripeCustomerId:
+        type: "boolean"
+      logoUrl:
+        type: "string"
+      provider:
+        type: "string"
+      settings:
+        $ref: "#/definitions/organizationsettings"
+    title: "Organization"
+    example:
+      settings:
+        disableUM: true
+        enableManagedUID: true
+        emailDisclaimer: "emailDisclaimer"
+        passwordPolicy:
+          allowUsernameSubstring: true
+          minChangePeriodInDays: 2
+          minLength: 7
+          maxHistory: 6
+          maxLoginAttempts: 0
+          passwordExpirationInDays: 1
+          enablePasswordExpirationInDays: true
+          enableMaxHistory: true
+          enableDaysAfterExpirationToSelfRecover: true
+          enableDaysBeforeExpirationToForceReset: true
+          enableMinChangePeriodInDays: true
+          enableMaxLoginAttempts: true
+          daysAfterExpirationToSelfRecover: 1
+          needsSymbolic: true
+          needsNumeric: true
+          needsUppercase: true
+          needsLowercase: true
+          lockoutTimeInSeconds: 1
+          daysBeforeExpirationToForceReset: 1
+          effectiveDate: "effectiveDate"
+          enableLockoutTimeInSeconds: true
+          enableMinLength: true
+        contactEmail: "contactEmail"
+        contactName: "contactName"
+        disableLdap: true
+        features:
+          systemInsights:
+            enabled: true
+        duplicateLDAPGroups: true
+        enableO365: true
+        systemUserPasswordExpirationInDays: 3
+        betaFeatures: "{}"
+        enableGoogleApps: true
+        userPortal:
+          idleSessionDurationMinutes: 26272
+        passwordCompliance: "custom"
+        name: "name"
+        logo: "logo"
+        systemUsersCanEdit: true
+        showIntro: true
+        disableCommandRunner: true
+      provider: "provider"
+      created: "created"
+      displayName: "displayName"
+      _id: "_id"
+      hasStripeCustomerId: true
+      logoUrl: "logoUrl"
+    x-stoplight:
+      id: "organization"
+      name: "Organization"
+      public: true
+  organizationsettings:
+    type: "object"
+    properties:
+      betaFeatures:
+        type: "object"
+        properties: {}
+      contactEmail:
+        type: "string"
+      contactName:
+        type: "string"
+      disableCommandRunner:
+        type: "boolean"
+      disableLdap:
+        type: "boolean"
+      disableUM:
+        type: "boolean"
+      duplicateLDAPGroups:
+        type: "boolean"
+      emailDisclaimer:
+        type: "string"
+      enableGoogleApps:
+        type: "boolean"
+      enableManagedUID:
+        type: "boolean"
+      enableO365:
+        type: "boolean"
+      features:
+        $ref: "#/definitions/organizationsettings_features"
+      logo:
+        type: "string"
+      name:
+        type: "string"
+      passwordCompliance:
+        type: "string"
+        enum:
+        - "custom"
+        - "pci3"
+        - "windows"
+      passwordPolicy:
+        $ref: "#/definitions/organizationsettings_passwordPolicy"
+      showIntro:
+        type: "boolean"
+      systemUserPasswordExpirationInDays:
+        type: "integer"
+      systemUsersCanEdit:
+        type: "boolean"
+      userPortal:
+        $ref: "#/definitions/organizationsettings_userPortal"
+    title: "OrganizationSettings"
+    example:
+      disableUM: true
+      enableManagedUID: true
+      emailDisclaimer: "emailDisclaimer"
+      passwordPolicy:
+        allowUsernameSubstring: true
+        minChangePeriodInDays: 2
+        minLength: 7
+        maxHistory: 6
+        maxLoginAttempts: 0
+        passwordExpirationInDays: 1
+        enablePasswordExpirationInDays: true
+        enableMaxHistory: true
+        enableDaysAfterExpirationToSelfRecover: true
+        enableDaysBeforeExpirationToForceReset: true
+        enableMinChangePeriodInDays: true
+        enableMaxLoginAttempts: true
+        daysAfterExpirationToSelfRecover: 1
+        needsSymbolic: true
+        needsNumeric: true
+        needsUppercase: true
+        needsLowercase: true
+        lockoutTimeInSeconds: 1
+        daysBeforeExpirationToForceReset: 1
+        effectiveDate: "effectiveDate"
+        enableLockoutTimeInSeconds: true
+        enableMinLength: true
+      contactEmail: "contactEmail"
+      contactName: "contactName"
+      disableLdap: true
+      features:
+        systemInsights:
+          enabled: true
+      duplicateLDAPGroups: true
+      enableO365: true
+      systemUserPasswordExpirationInDays: 3
+      betaFeatures: "{}"
+      enableGoogleApps: true
+      userPortal:
+        idleSessionDurationMinutes: 26272
+      passwordCompliance: "custom"
+      name: "name"
+      logo: "logo"
+      systemUsersCanEdit: true
+      showIntro: true
+      disableCommandRunner: true
+    x-stoplight:
+      id: "organizationsettings"
+      name: "OrganizationSettings"
+      public: true
+  organizationsettingsput:
+    type: "object"
+    properties:
+      contactEmail:
+        type: "string"
+      contactName:
+        type: "string"
+      disableLdap:
+        type: "boolean"
+      disableUM:
+        type: "boolean"
+      duplicateLDAPGroups:
+        type: "boolean"
+      emailDisclaimer:
+        type: "string"
+      enableManagedUID:
+        type: "boolean"
+      features:
+        $ref: "#/definitions/organizationsettings_features"
+      logo:
+        type: "string"
+      name:
+        type: "string"
+      passwordCompliance:
+        type: "string"
+        enum:
+        - "custom"
+        - "pci3"
+        - "windows"
+      passwordPolicy:
+        $ref: "#/definitions/organizationsettingsput_passwordPolicy"
+      showIntro:
+        type: "boolean"
+      systemUserPasswordExpirationInDays:
+        type: "integer"
+      systemUsersCanEdit:
+        type: "boolean"
+      userPortal:
+        $ref: "#/definitions/organizationsettings_userPortal"
+    title: "OrganizationSettingsPut"
+    x-stoplight:
+      id: "organizationsettingsput"
+      name: "OrganizationSettingsPut"
+      public: true
   organizationslist:
     type: "object"
     properties:
@@ -4514,6 +4402,10 @@ definitions:
         type: "string"
       fde:
         $ref: "#/definitions/fde"
+      fileSystem:
+        type: "string"
+      hasServiceAccount:
+        type: "boolean"
       hostname:
         type: "string"
       lastContact:
@@ -4551,6 +4443,7 @@ definitions:
     title: "System"
     example:
       allowSshRootLogin: true
+      hasServiceAccount: true
       remoteIP: "remoteIP"
       displayName: "displayName"
       hostname: "hostname"
@@ -4561,6 +4454,7 @@ definitions:
       - "{}"
       systemInsights:
         state: "enabled"
+      fileSystem: "fileSystem"
       os: "os"
       allowMultiFactorAuthentication: true
       created: "created"
@@ -4642,6 +4536,7 @@ definitions:
       totalCount: 6
       results:
       - allowSshRootLogin: true
+        hasServiceAccount: true
         remoteIP: "remoteIP"
         displayName: "displayName"
         hostname: "hostname"
@@ -4652,6 +4547,7 @@ definitions:
         - "{}"
         systemInsights:
           state: "enabled"
+        fileSystem: "fileSystem"
         os: "os"
         allowMultiFactorAuthentication: true
         created: "created"
@@ -4688,6 +4584,7 @@ definitions:
         arch: "arch"
         systemTimezone: 0
       - allowSshRootLogin: true
+        hasServiceAccount: true
         remoteIP: "remoteIP"
         displayName: "displayName"
         hostname: "hostname"
@@ -4698,6 +4595,7 @@ definitions:
         - "{}"
         systemInsights:
           state: "enabled"
+        fileSystem: "fileSystem"
         os: "os"
         allowMultiFactorAuthentication: true
         created: "created"
@@ -4789,6 +4687,8 @@ definitions:
         type: "boolean"
       external_dn:
         type: "string"
+      external_password_expiration_date:
+        type: "string"
       external_source_type:
         type: "string"
       externally_managed:
@@ -4852,34 +4752,6 @@ definitions:
       id: "systemuser"
       name: "SystemUser"
       public: true
-  systemuserbinding:
-    type: "object"
-    title: "SystemUserBinding"
-    x-stoplight:
-      id: "systemuserbinding"
-      name: "SystemUserBinding"
-      public: true
-  systemuserbindingsput:
-    type: "object"
-    required:
-    - "add"
-    - "remove"
-    properties:
-      add:
-        type: "array"
-        description: "The list of systemuser ids to be added to this system."
-        items:
-          type: "string"
-      remove:
-        type: "array"
-        description: "The list of systemuser ids to be removed from this system."
-        items:
-          type: "string"
-    title: "SystemUserBindingsPut"
-    x-stoplight:
-      id: "systemuserbindingsput"
-      name: "SystemUserBindingsPut"
-      public: true
   systemuserput:
     type: "object"
     properties:
@@ -4928,6 +4800,8 @@ definitions:
       enable_user_portal_multifactor:
         type: "boolean"
       external_dn:
+        type: "string"
+      external_password_expiration_date:
         type: "string"
       external_source_type:
         type: "string"
@@ -5042,6 +4916,9 @@ definitions:
         type: "boolean"
       external_dn:
         type: "string"
+      external_password_expiration_date:
+        type: "string"
+        format: "date-time"
       external_source_type:
         type: "string"
       externally_managed:
@@ -5155,6 +5032,8 @@ definitions:
       enable_user_portal_multifactor:
         type: "boolean"
       external_dn:
+        type: "string"
+      external_password_expiration_date:
         type: "string"
       external_source_type:
         type: "string"
@@ -5275,6 +5154,7 @@ definitions:
       sudo: true
       department: "department"
       email: "email"
+      external_password_expiration_date: "external_password_expiration_date"
       enable_managed_uid: true
       password_expired: true
       costCenter: "costCenter"
@@ -5380,6 +5260,7 @@ definitions:
         sudo: true
         department: "department"
         email: "email"
+        external_password_expiration_date: "external_password_expiration_date"
         enable_managed_uid: true
         password_expired: true
         costCenter: "costCenter"
@@ -5466,6 +5347,7 @@ definitions:
         sudo: true
         department: "department"
         email: "email"
+        external_password_expiration_date: "external_password_expiration_date"
         enable_managed_uid: true
         password_expired: true
         costCenter: "costCenter"
@@ -5508,226 +5390,12 @@ definitions:
       id: "systemuserslist"
       name: "SystemUsersList"
       public: true
-  tag:
-    type: "object"
-    properties:
-      _id:
-        type: "string"
-      expired:
-        type: "boolean"
-      externalDN:
-        type: "string"
-      externalSourceType:
-        type: "string"
-      externallyManaged:
-        type: "boolean"
-      groupGid:
-        type: "string"
-      groupName:
-        type: "string"
-      name:
-        type: "string"
-        description: "A unique name for the Tag."
-      regularExpressions:
-        type: "array"
-        items:
-          type: "string"
-      sendToLDAP:
-        type: "boolean"
-      systems:
-        type: "array"
-        description: "An array of system ids that are associated to the Tag."
-        items:
-          type: "string"
-      systemusers:
-        type: "array"
-        description: "An array of system user ids that are associated to the Tag."
-        items:
-          type: "string"
-    title: "Tag"
-    example:
-      groupName: "groupName"
-      expired: true
-      systems:
-      - "systems"
-      - "systems"
-      externalSourceType: "externalSourceType"
-      externallyManaged: true
-      name: "name"
-      externalDN: "externalDN"
-      regularExpressions:
-      - "regularExpressions"
-      - "regularExpressions"
-      _id: "_id"
-      systemusers:
-      - "systemusers"
-      - "systemusers"
-      groupGid: "groupGid"
-      sendToLDAP: true
-    x-stoplight:
-      id: "tag"
-      name: "Tag"
-      public: true
-  tagpost:
-    type: "object"
-    required:
-    - "name"
-    properties:
-      externalDN:
-        type: "string"
-      externalSourceType:
-        type: "string"
-      externallyManaged:
-        type: "boolean"
-      groupGid:
-        type: "string"
-      groupName:
-        type: "string"
-      name:
-        type: "string"
-        description: "A unique name for the Tag."
-      regularExpressions:
-        type: "array"
-        items:
-          type: "string"
-      sendToLDAP:
-        type: "boolean"
-      systems:
-        type: "array"
-        description: "An array of system ids that are associated to the Tag."
-        items:
-          type: "string"
-      systemusers:
-        type: "array"
-        description: "An array of system user ids that are associated to the Tag."
-        items:
-          type: "string"
-    title: "TagPost"
-    x-stoplight:
-      id: "tagpost"
-      name: "TagPost"
-      public: true
-  tagput:
-    type: "object"
-    properties:
-      externalDN:
-        type: "string"
-      externalSourceType:
-        type: "string"
-      externallyManaged:
-        type: "boolean"
-      groupGid:
-        type: "string"
-      groupName:
-        type: "string"
-      name:
-        type: "string"
-        description: "A unique name for the Tag."
-      regularExpressions:
-        type: "array"
-        items:
-          type: "string"
-      sendToLDAP:
-        type: "boolean"
-      systems:
-        type: "array"
-        description: "An array of system ids that are associated to the Tag."
-        items:
-          type: "string"
-      systemusers:
-        type: "array"
-        description: "An array of system user ids that are associated to the Tag."
-        items:
-          type: "string"
-    title: "TagPut"
-    x-stoplight:
-      id: "tagput"
-      name: "TagPut"
-      public: true
-  tagslist:
-    type: "object"
-    properties:
-      results:
-        type: "array"
-        description: "The list of tags."
-        items:
-          $ref: "#/definitions/tag"
-      totalCount:
-        type: "integer"
-        description: "The total number of tags."
-    title: "TagsList"
-    example:
-      totalCount: 0
-      results:
-      - groupName: "groupName"
-        expired: true
-        systems:
-        - "systems"
-        - "systems"
-        externalSourceType: "externalSourceType"
-        externallyManaged: true
-        name: "name"
-        externalDN: "externalDN"
-        regularExpressions:
-        - "regularExpressions"
-        - "regularExpressions"
-        _id: "_id"
-        systemusers:
-        - "systemusers"
-        - "systemusers"
-        groupGid: "groupGid"
-        sendToLDAP: true
-      - groupName: "groupName"
-        expired: true
-        systems:
-        - "systems"
-        - "systems"
-        externalSourceType: "externalSourceType"
-        externallyManaged: true
-        name: "name"
-        externalDN: "externalDN"
-        regularExpressions:
-        - "regularExpressions"
-        - "regularExpressions"
-        _id: "_id"
-        systemusers:
-        - "systemusers"
-        - "systemusers"
-        groupGid: "groupGid"
-        sendToLDAP: true
-    x-stoplight:
-      id: "tagslist"
-      name: "TagsList"
-      public: true
-  usersystembinding:
-    type: "object"
-    title: "UserSystemBinding"
-    x-stoplight:
-      id: "usersystembinding"
-      name: "UserSystemBinding"
-      public: true
-  usersystembindingsput:
-    type: "object"
-    required:
-    - "add"
-    - "remove"
-    properties:
-      add:
-        type: "array"
-        description: "The list of system ids to be added to this user."
-        items:
-          type: "string"
-      remove:
-        type: "array"
-        description: "The list of system ids to be removed from this user."
-        items:
-          type: "string"
-    title: "UserSystemBindingsPut"
-    x-stoplight:
-      id: "usersystembindingsput"
-      name: "UserSystemBindingsPut"
-      public: true
   body:
+    type: "object"
+    properties:
+      settings:
+        $ref: "#/definitions/organizationsettingsput"
+  body_1:
     type: "object"
     required:
     - "name"
@@ -5757,7 +5425,7 @@ definitions:
       networkSourceIp: "0.0.0.0"
       tagsNames:
       - "tag1"
-  body_1:
+  body_2:
     type: "object"
     properties:
       exclusion:
@@ -6090,6 +5758,152 @@ definitions:
       trigger: "trigger"
       command: "command"
       launchType: "launchType"
+  organizationsettings_features_systemInsights:
+    properties:
+      enabled:
+        type: "boolean"
+    example:
+      enabled: true
+  organizationsettings_features:
+    properties:
+      systemInsights:
+        $ref: "#/definitions/organizationsettings_features_systemInsights"
+    example:
+      systemInsights:
+        enabled: true
+  organizationsettings_passwordPolicy:
+    properties:
+      allowUsernameSubstring:
+        type: "boolean"
+      daysAfterExpirationToSelfRecover:
+        type: "integer"
+        minimum: 1
+      daysBeforeExpirationToForceReset:
+        type: "integer"
+        minimum: 1
+      effectiveDate:
+        type: "string"
+      enableDaysAfterExpirationToSelfRecover:
+        type: "boolean"
+      enableDaysBeforeExpirationToForceReset:
+        type: "boolean"
+      enableLockoutTimeInSeconds:
+        type: "boolean"
+      enableMaxHistory:
+        type: "boolean"
+      enableMaxLoginAttempts:
+        type: "boolean"
+      enableMinChangePeriodInDays:
+        type: "boolean"
+      enableMinLength:
+        type: "boolean"
+      enablePasswordExpirationInDays:
+        type: "boolean"
+      lockoutTimeInSeconds:
+        type: "integer"
+      maxHistory:
+        type: "integer"
+        minimum: 1
+        maximum: 10
+      maxLoginAttempts:
+        type: "integer"
+        minimum: 0
+      minChangePeriodInDays:
+        type: "integer"
+      minLength:
+        type: "integer"
+      needsLowercase:
+        type: "boolean"
+      needsNumeric:
+        type: "boolean"
+      needsSymbolic:
+        type: "boolean"
+      needsUppercase:
+        type: "boolean"
+      passwordExpirationInDays:
+        type: "integer"
+        minimum: 1
+    example:
+      allowUsernameSubstring: true
+      minChangePeriodInDays: 2
+      minLength: 7
+      maxHistory: 6
+      maxLoginAttempts: 0
+      passwordExpirationInDays: 1
+      enablePasswordExpirationInDays: true
+      enableMaxHistory: true
+      enableDaysAfterExpirationToSelfRecover: true
+      enableDaysBeforeExpirationToForceReset: true
+      enableMinChangePeriodInDays: true
+      enableMaxLoginAttempts: true
+      daysAfterExpirationToSelfRecover: 1
+      needsSymbolic: true
+      needsNumeric: true
+      needsUppercase: true
+      needsLowercase: true
+      lockoutTimeInSeconds: 1
+      daysBeforeExpirationToForceReset: 1
+      effectiveDate: "effectiveDate"
+      enableLockoutTimeInSeconds: true
+      enableMinLength: true
+  organizationsettings_userPortal:
+    properties:
+      idleSessionDurationMinutes:
+        type: "integer"
+        minimum: 1
+        maximum: 129600
+    example:
+      idleSessionDurationMinutes: 26272
+  organizationsettingsput_passwordPolicy:
+    properties:
+      allowUsernameSubstring:
+        type: "boolean"
+      daysAfterExpirationToSelfRecover:
+        type: "integer"
+        minimum: 1
+      daysBeforeExpirationToForceReset:
+        type: "integer"
+        minimum: 1
+      enableDaysAfterExpirationToSelfRecover:
+        type: "boolean"
+      enableDaysBeforeExpirationToForceReset:
+        type: "boolean"
+      enableLockoutTimeInSeconds:
+        type: "boolean"
+      enableMaxHistory:
+        type: "boolean"
+      enableMaxLoginAttempts:
+        type: "boolean"
+      enableMinChangePeriodInDays:
+        type: "boolean"
+      enableMinLength:
+        type: "boolean"
+      enablePasswordExpirationInDays:
+        type: "boolean"
+      lockoutTimeInSeconds:
+        type: "integer"
+      maxHistory:
+        type: "integer"
+        minimum: 1
+        maximum: 10
+      maxLoginAttempts:
+        type: "integer"
+        minimum: 0
+      minChangePeriodInDays:
+        type: "integer"
+      minLength:
+        type: "integer"
+      needsLowercase:
+        type: "boolean"
+      needsNumeric:
+        type: "boolean"
+      needsSymbolic:
+        type: "boolean"
+      needsUppercase:
+        type: "boolean"
+      passwordExpirationInDays:
+        type: "integer"
+        minimum: 1
   organizationslist_results:
     properties:
       _id:
@@ -6380,7 +6194,9 @@ x-stoplight:
         \ ID field on Systems\n- New System User Attribute Fields and Model Updates\
         \ for System User PUT / POST / GET\n- Addition of SSH Key endpoints GET, DEL,\
         \ POST\n- New Search Organizations POST endpoint\n- Misc Text Section updates\n\
-        - V1 YAML phone + address object updates"
+        - V1 YAML phone + address object updates\n\n### 12-4-2019\n\n`minor release`\n\
+        - [New Get Organization By Id endpoint](https://docs.jumpcloud.com/1.0/organizations/list-an-organization)\n\
+        - [New Put Organization By Id endpoint](https://docs.jumpcloud.com/1.0/organizations/update-an-organization)"
       id: "api-change-log"
       name: "API Changelog"
       public: true
@@ -6650,6 +6466,10 @@ x-stoplight:
         items:
         - _id: "organization_list"
           type: "endpoints"
+        - _id: "organizations_get"
+          type: "endpoints"
+        - _id: "organization_put"
+          type: "endpoints"
         name: "Organizations"
       - divider: false
         items:
@@ -6658,6 +6478,8 @@ x-stoplight:
         - _id: "radius_servers_post"
           type: "endpoints"
         - _id: "radius_servers_put"
+          type: "endpoints"
+        - _id: "radius_servers_get"
           type: "endpoints"
         name: "Radius Servers"
       - items:
@@ -6668,6 +6490,11 @@ x-stoplight:
         - _id: "search_systemusers_post"
           type: "endpoints"
         name: "Search"
+      - divider: false
+        items:
+        - _id: "case_post"
+          type: "endpoints"
+        name: "Support"
       - description: "The System Users section of the JumpCloud API allows you to\
           \ add, retrieve, delete, and modify System Users. To add a System User to\
           \ JumpCloud, you must provide an email address and username. The System\
@@ -6688,9 +6515,7 @@ x-stoplight:
           type: "endpoints"
         - _id: "systems_delete"
           type: "endpoints"
-        - _id: "systems_systemusers_binding_list"
-          type: "endpoints"
-        - _id: "systems_systemusers_binding_put"
+        - _id: "6XQwso8z68NpyZBa9"
           type: "endpoints"
         name: "Systems"
       - description: "The System Users section of the JumpCloud API allows you to\
@@ -6709,9 +6534,7 @@ x-stoplight:
           type: "endpoints"
         - _id: "systemusers_get"
           type: "endpoints"
-        - _id: "systemusers_systems_binding_list"
-          type: "endpoints"
-        - _id: "systemusers_systems_binding_put"
+        - _id: "SydbuMKu2TB4vNWmL"
           type: "endpoints"
         - _id: "systemusers_post"
           type: "endpoints"
@@ -6729,6 +6552,8 @@ x-stoplight:
           type: "endpoints"
         - _id: "systemusers_unlock"
           type: "endpoints"
+        - _id: "systemusers_expire"
+          type: "endpoints"
         name: "Systemusers"
       - description: "The Tags section of the JumpCloud API allows you to add, retrieve,\
           \ delete, and modify Tags. Tags are used to associate system users to systems,\
@@ -6740,15 +6565,9 @@ x-stoplight:
           \ information about tags see: [How to Use Tags](https://support.jumpcloud.com/customer/portal/articles/2449137-getting-started-tags)"
         divider: false
         items:
-        - _id: "tags_list"
+        - _id: "PrDpLLjXNAspHjjqE"
           type: "endpoints"
-        - _id: "tags_get"
-          type: "endpoints"
-        - _id: "tags_post"
-          type: "endpoints"
-        - _id: "tags_put"
-          type: "endpoints"
-        - _id: "tags_delete"
+        - _id: "qyGjnL8CvPdCNNuch"
           type: "endpoints"
         name: "Tags"
       - description: "Models make up the core input and output structures in this\
@@ -6763,6 +6582,8 @@ x-stoplight:
           type: "schemas"
         - _id: "applicationtemplateslist"
           type: "schemas"
+        - _id: "case"
+          type: "schemas"
         - _id: "command"
           type: "schemas"
         - _id: "commandfilereturn"
@@ -6775,7 +6596,13 @@ x-stoplight:
           type: "schemas"
         - _id: "fde"
           type: "schemas"
+        - _id: "organization"
+          type: "schemas"
         - _id: "organizationslist"
+          type: "schemas"
+        - _id: "organizationsettings"
+          type: "schemas"
+        - _id: "organizationsettingsput"
           type: "schemas"
         - _id: "radiusserver"
           type: "schemas"
@@ -6795,9 +6622,7 @@ x-stoplight:
           type: "schemas"
         - _id: "systemslist"
           type: "schemas"
-        - _id: "systemuserbinding"
-          type: "schemas"
-        - _id: "systemuserbindingsput"
+        - _id: "EXsHJnG2cdm9PMkT5"
           type: "schemas"
         - _id: "systemuserput"
           type: "schemas"
@@ -6807,17 +6632,11 @@ x-stoplight:
           type: "schemas"
         - _id: "ddrZmggZ983Ray45n"
           type: "schemas"
-        - _id: "tag"
+        - _id: "vMWvqTaQEETMQ7L7G"
           type: "schemas"
-        - _id: "tagpost"
+        - _id: "bYmW9gYSv7bMSYB6e"
           type: "schemas"
-        - _id: "tagput"
-          type: "schemas"
-        - _id: "tagslist"
-          type: "schemas"
-        - _id: "usersystembinding"
-          type: "schemas"
-        - _id: "usersystembindingsput"
+        - _id: "pMM9sDiWCXvgpjHJX"
           type: "schemas"
         name: "Models"
       - description: "Traits describe common behaviors or structures in this API."

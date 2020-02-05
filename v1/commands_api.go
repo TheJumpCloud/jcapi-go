@@ -36,8 +36,8 @@ type CommandsApiService service
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "fields" (string) Use a space seperated string of field parameters to include the data in the response. If omitted, the default list of fields will be returned. 
      @param "limit" (int32) The number of records to return at once. Limited to 100.
-     @param "skip" (int32) The offset into the records to return.
      @param "xOrgId" (string) 
+     @param "skip" (int32) The offset into the records to return.
  @return Commandfilereturn*/
 func (a *CommandsApiService) CommandFileGet(ctx context.Context, id string, contentType string, accept string, localVarOptionals map[string]interface{}) (Commandfilereturn,  *http.Response, error) {
 	var (
@@ -62,10 +62,10 @@ func (a *CommandsApiService) CommandFileGet(ctx context.Context, id string, cont
 	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
 		return successPayload, nil, err
 	}
-	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
 		return successPayload, nil, err
 	}
-	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
 		return successPayload, nil, err
 	}
 
@@ -97,11 +97,11 @@ func (a *CommandsApiService) CommandFileGet(ctx context.Context, id string, cont
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
-	localVarHeaderParams["Accept"] = parameterToString(accept, "")
 	if localVarTempParam, localVarOk := localVarOptionals["xOrgId"].(string); localVarOk {
 		localVarHeaderParams["x-org-id"] = parameterToString(localVarTempParam, "")
 	}
+	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
+	localVarHeaderParams["Accept"] = parameterToString(accept, "")
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
@@ -283,11 +283,11 @@ func (a *CommandsApiService) CommandsGet(ctx context.Context, id string, content
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
-	localVarHeaderParams["Accept"] = parameterToString(accept, "")
 	if localVarTempParam, localVarOk := localVarOptionals["xOrgId"].(string); localVarOk {
 		localVarHeaderParams["x-org-id"] = parameterToString(localVarTempParam, "")
 	}
+	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
+	localVarHeaderParams["Accept"] = parameterToString(accept, "")
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
@@ -329,12 +329,12 @@ func (a *CommandsApiService) CommandsGet(ctx context.Context, id string, content
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "skip" (int32) The offset into the records to return.
      @param "fields" (string) Use a space seperated string of field parameters to include the data in the response. If omitted, the default list of fields will be returned. 
-     @param "limit" (int32) The number of records to return at once. Limited to 100.
-     @param "sort" (string) Use space separated sort parameters to sort the collection. Default sort is ascending. Prefix with &#x60;-&#x60; to sort descending. 
      @param "filter" (string) A filter to apply to the query.
+     @param "limit" (int32) The number of records to return at once. Limited to 100.
      @param "xOrgId" (string) 
+     @param "skip" (int32) The offset into the records to return.
+     @param "sort" (string) Use space separated sort parameters to sort the collection. Default sort is ascending. Prefix with &#x60;-&#x60; to sort descending. 
  @return Commandslist*/
 func (a *CommandsApiService) CommandsList(ctx context.Context, contentType string, accept string, localVarOptionals map[string]interface{}) (Commandslist,  *http.Response, error) {
 	var (
@@ -352,39 +352,39 @@ func (a *CommandsApiService) CommandsList(ctx context.Context, contentType strin
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
-		return successPayload, nil, err
-	}
 	if err := typeCheckParameter(localVarOptionals["fields"], "string", "fields"); err != nil {
-		return successPayload, nil, err
-	}
-	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
-		return successPayload, nil, err
-	}
-	if err := typeCheckParameter(localVarOptionals["sort"], "string", "sort"); err != nil {
 		return successPayload, nil, err
 	}
 	if err := typeCheckParameter(localVarOptionals["filter"], "string", "filter"); err != nil {
 		return successPayload, nil, err
 	}
+	if err := typeCheckParameter(localVarOptionals["limit"], "int32", "limit"); err != nil {
+		return successPayload, nil, err
+	}
 	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
 		return successPayload, nil, err
 	}
-
-	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
-		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	if err := typeCheckParameter(localVarOptionals["skip"], "int32", "skip"); err != nil {
+		return successPayload, nil, err
 	}
+	if err := typeCheckParameter(localVarOptionals["sort"], "string", "sort"); err != nil {
+		return successPayload, nil, err
+	}
+
 	if localVarTempParam, localVarOk := localVarOptionals["fields"].(string); localVarOk {
 		localVarQueryParams.Add("fields", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["filter"].(string); localVarOk {
+		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, ""))
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["limit"].(int32); localVarOk {
 		localVarQueryParams.Add("limit", parameterToString(localVarTempParam, ""))
 	}
+	if localVarTempParam, localVarOk := localVarOptionals["skip"].(int32); localVarOk {
+		localVarQueryParams.Add("skip", parameterToString(localVarTempParam, ""))
+	}
 	if localVarTempParam, localVarOk := localVarOptionals["sort"].(string); localVarOk {
 		localVarQueryParams.Add("sort", parameterToString(localVarTempParam, ""))
-	}
-	if localVarTempParam, localVarOk := localVarOptionals["filter"].(string); localVarOk {
-		localVarQueryParams.Add("filter", parameterToString(localVarTempParam, ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -405,11 +405,11 @@ func (a *CommandsApiService) CommandsList(ctx context.Context, contentType strin
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
-	localVarHeaderParams["Accept"] = parameterToString(accept, "")
 	if localVarTempParam, localVarOk := localVarOptionals["xOrgId"].(string); localVarOk {
 		localVarHeaderParams["x-org-id"] = parameterToString(localVarTempParam, "")
 	}
+	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
+	localVarHeaderParams["Accept"] = parameterToString(accept, "")
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {

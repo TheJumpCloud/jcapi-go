@@ -9,13 +9,17 @@
 
 package v1
 
-import (
-	"time"
-)
-
 type Body1 struct {
 
-	Exclusion bool `json:"exclusion,omitempty"`
+	Mfa string `json:"mfa,omitempty"`
 
-	ExclusionUntil time.Time `json:"exclusionUntil,omitempty"`
+	Name string `json:"name"`
+
+	NetworkSourceIp string `json:"networkSourceIp"`
+
+	Tags []string `json:"tags,omitempty"`
+
+	UserLockoutAction string `json:"userLockoutAction,omitempty"`
+
+	UserPasswordExpirationAction string `json:"userPasswordExpirationAction,omitempty"`
 }

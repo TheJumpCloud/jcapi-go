@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GraphSystemGroupAssociationsList**](SystemGroupsApi.md#GraphSystemGroupAssociationsList) | **Get** /systemgroups/{group_id}/associations | List the associations of a System Group
 [**GraphSystemGroupAssociationsPost**](SystemGroupsApi.md#GraphSystemGroupAssociationsPost) | **Post** /systemgroups/{group_id}/associations | Manage the associations of a System Group
-[**GraphSystemGroupMemberOf**](SystemGroupsApi.md#GraphSystemGroupMemberOf) | **Get** /systemgroups/{group_id}/memberof | List the System Group&#39;s parents
 [**GraphSystemGroupMembersList**](SystemGroupsApi.md#GraphSystemGroupMembersList) | **Get** /systemgroups/{group_id}/members | List the members of a System Group
 [**GraphSystemGroupMembersPost**](SystemGroupsApi.md#GraphSystemGroupMembersPost) | **Post** /systemgroups/{group_id}/members | Manage the members of a System Group
 [**GraphSystemGroupMembership**](SystemGroupsApi.md#GraphSystemGroupMembership) | **Get** /systemgroups/{group_id}/membership | List the System Group&#39;s membership
@@ -16,7 +15,6 @@ Method | HTTP request | Description
 [**GroupsSystemDelete**](SystemGroupsApi.md#GroupsSystemDelete) | **Delete** /systemgroups/{id} | Delete a System Group
 [**GroupsSystemGet**](SystemGroupsApi.md#GroupsSystemGet) | **Get** /systemgroups/{id} | View an individual System Group details
 [**GroupsSystemList**](SystemGroupsApi.md#GroupsSystemList) | **Get** /systemgroups | List all System Groups
-[**GroupsSystemPatch**](SystemGroupsApi.md#GroupsSystemPatch) | **Patch** /systemgroups/{id} | Partial update a System Group
 [**GroupsSystemPost**](SystemGroupsApi.md#GroupsSystemPost) | **Post** /systemgroups | Create a new System Group
 [**GroupsSystemPut**](SystemGroupsApi.md#GroupsSystemPut) | **Put** /systemgroups/{id} | Update a System Group
 
@@ -96,51 +94,6 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
-
-### Authorization
-
-[x-api-key](../README.md#x-api-key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **GraphSystemGroupMemberOf**
-> []GraphObjectWithPaths GraphSystemGroupMemberOf(ctx, groupId, contentType, accept, optional)
-List the System Group's parents
-
-This endpoint returns all System Groups a System Group is a member of.  This endpoint is not yet public as we haven't completed the code yet.
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **groupId** | **string**| ObjectID of the System Group. | 
-  **contentType** | **string**|  | [default to application/json]
-  **accept** | **string**|  | [default to application/json]
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **groupId** | **string**| ObjectID of the System Group. | 
- **contentType** | **string**|  | [default to application/json]
- **accept** | **string**|  | [default to application/json]
- **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
- **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
- **skip** | **int32**| The offset into the records to return. | [default to 0]
- **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
- **xOrgId** | **string**|  | [default to ]
-
-### Return type
-
-[**[]GraphObjectWithPaths**](GraphObjectWithPaths.md)
 
 ### Authorization
 
@@ -531,48 +484,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]SystemGroup**](SystemGroup.md)
-
-### Authorization
-
-[x-api-key](../README.md#x-api-key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **GroupsSystemPatch**
-> SystemGroup GroupsSystemPatch(ctx, id, contentType, accept, optional)
-Partial update a System Group
-
-We have hidden PATCH on the systemgroups and usergroups for now; we don't have that implemented correctly yet, people should use PUT until we do a true PATCH operation.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/systemgroups/{id} ```
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **id** | **string**| ObjectID of the System Group. | 
-  **contentType** | **string**|  | [default to application/json]
-  **accept** | **string**|  | [default to application/json]
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| ObjectID of the System Group. | 
- **contentType** | **string**|  | [default to application/json]
- **accept** | **string**|  | [default to application/json]
- **body** | [**SystemGroupData**](SystemGroupData.md)|  | 
- **xOrgId** | **string**|  | [default to ]
-
-### Return type
-
-[**SystemGroup**](SystemGroup.md)
 
 ### Authorization
 

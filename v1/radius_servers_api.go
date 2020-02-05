@@ -27,6 +27,95 @@ var (
 type RadiusServersApiService service
 
 
+/* RadiusServersApiService Get Radius Server
+ This endpoint allows you to get a RADIUS server in your organization.  #### &#x60;&#x60;&#x60; curl -X PUT https://console.jumpcloud.com/api/radiusservers/{ServerID} \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39; \\ &#x60;&#x60;&#x60;
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param id 
+ @param contentType 
+ @param accept 
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "xOrgId" (string) 
+ @return Radiusserver*/
+func (a *RadiusServersApiService) RadiusServersGet(ctx context.Context, id string, contentType string, accept string, localVarOptionals map[string]interface{}) (Radiusserver,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localVarFileName string
+		localVarFileBytes []byte
+	 	successPayload  Radiusserver
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/radiusservers/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["xOrgId"], "string", "xOrgId"); err != nil {
+		return successPayload, nil, err
+	}
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
+	localVarHeaderParams["Accept"] = parameterToString(accept, "")
+	if localVarTempParam, localVarOk := localVarOptionals["xOrgId"].(string); localVarOk {
+		localVarHeaderParams["x-org-id"] = parameterToString(localVarTempParam, "")
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+			localVarHeaderParams["x-api-key"] = key
+		}
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
+}
+
 /* RadiusServersApiService List Radius Servers
  This endpoint allows you to get a list of all RADIUS servers in your organization.  #### Sample Request &#x60;&#x60;&#x60; curl -X GET https://console.jumpcloud.com/api/radiusservers/ \\   -H &#39;Accept: application/json&#39; \\   -H &#39;Content-Type: application/json&#39; \\   -H &#39;x-api-key: {API_KEY}&#39; \\ &#x60;&#x60;&#x60;
  * @param ctx context.Context for authentication, logging, tracing, etc.
@@ -248,7 +337,7 @@ func (a *RadiusServersApiService) RadiusServersPost(ctx context.Context, content
  @param contentType 
  @param accept 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "body" (Body) 
+     @param "body" (Body1) 
      @param "xOrgId" (string) 
  @return Radiusserverput*/
 func (a *RadiusServersApiService) RadiusServersPut(ctx context.Context, id string, contentType string, accept string, localVarOptionals map[string]interface{}) (Radiusserverput,  *http.Response, error) {
@@ -297,7 +386,7 @@ func (a *RadiusServersApiService) RadiusServersPut(ctx context.Context, id strin
 		localVarHeaderParams["x-org-id"] = parameterToString(localVarTempParam, "")
 	}
 	// body params
-	if localVarTempParam, localVarOk := localVarOptionals["body"].(Body); localVarOk {
+	if localVarTempParam, localVarOk := localVarOptionals["body"].(Body1); localVarOk {
 		localVarPostBody = &localVarTempParam
 	}
 	if ctx != nil {

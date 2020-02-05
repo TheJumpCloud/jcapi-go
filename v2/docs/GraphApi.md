@@ -5,8 +5,6 @@ All URIs are relative to *https://console.jumpcloud.com/api/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GraphActiveDirectoryAssociationsList**](GraphApi.md#GraphActiveDirectoryAssociationsList) | **Get** /activedirectories/{activedirectory_id}/associations | List the associations of an Active Directory instance
-[**GraphActiveDirectoryAssociationsPost**](GraphApi.md#GraphActiveDirectoryAssociationsPost) | **Post** /activedirectories/{activedirectory_id}/associations | Manage the associations of an Active Directory instance
-[**GraphActiveDirectoryTraverseUser**](GraphApi.md#GraphActiveDirectoryTraverseUser) | **Get** /activedirectories/{activedirectory_id}/users | List the Users bound to an Active Directory instance
 [**GraphActiveDirectoryTraverseUserGroup**](GraphApi.md#GraphActiveDirectoryTraverseUserGroup) | **Get** /activedirectories/{activedirectory_id}/usergroups | List the User Groups bound to an Active Directory instance
 [**GraphApplicationAssociationsList**](GraphApi.md#GraphApplicationAssociationsList) | **Get** /applications/{application_id}/associations | List the associations of an Application
 [**GraphApplicationAssociationsPost**](GraphApi.md#GraphApplicationAssociationsPost) | **Post** /applications/{application_id}/associations | Manage the associations of an Application
@@ -40,7 +38,6 @@ Method | HTTP request | Description
 [**GraphSystemAssociationsPost**](GraphApi.md#GraphSystemAssociationsPost) | **Post** /systems/{system_id}/associations | Manage associations of a System
 [**GraphSystemGroupAssociationsList**](GraphApi.md#GraphSystemGroupAssociationsList) | **Get** /systemgroups/{group_id}/associations | List the associations of a System Group
 [**GraphSystemGroupAssociationsPost**](GraphApi.md#GraphSystemGroupAssociationsPost) | **Post** /systemgroups/{group_id}/associations | Manage the associations of a System Group
-[**GraphSystemGroupMemberOf**](GraphApi.md#GraphSystemGroupMemberOf) | **Get** /systemgroups/{group_id}/memberof | List the System Group&#39;s parents
 [**GraphSystemGroupMembersList**](GraphApi.md#GraphSystemGroupMembersList) | **Get** /systemgroups/{group_id}/members | List the members of a System Group
 [**GraphSystemGroupMembersPost**](GraphApi.md#GraphSystemGroupMembersPost) | **Post** /systemgroups/{group_id}/members | Manage the members of a System Group
 [**GraphSystemGroupMembership**](GraphApi.md#GraphSystemGroupMembership) | **Get** /systemgroups/{group_id}/membership | List the System Group&#39;s membership
@@ -57,11 +54,9 @@ Method | HTTP request | Description
 [**GraphUserAssociationsPost**](GraphApi.md#GraphUserAssociationsPost) | **Post** /users/{user_id}/associations | Manage the associations of a User
 [**GraphUserGroupAssociationsList**](GraphApi.md#GraphUserGroupAssociationsList) | **Get** /usergroups/{group_id}/associations | List the associations of a User Group.
 [**GraphUserGroupAssociationsPost**](GraphApi.md#GraphUserGroupAssociationsPost) | **Post** /usergroups/{group_id}/associations | Manage the associations of a User Group
-[**GraphUserGroupMemberOf**](GraphApi.md#GraphUserGroupMemberOf) | **Get** /usergroups/{group_id}/memberof | List the User Group&#39;s parents
 [**GraphUserGroupMembersList**](GraphApi.md#GraphUserGroupMembersList) | **Get** /usergroups/{group_id}/members | List the members of a User Group
 [**GraphUserGroupMembersPost**](GraphApi.md#GraphUserGroupMembersPost) | **Post** /usergroups/{group_id}/members | Manage the members of a User Group
 [**GraphUserGroupMembership**](GraphApi.md#GraphUserGroupMembership) | **Get** /usergroups/{group_id}/membership | List the User Group&#39;s membership
-[**GraphUserGroupTraverseActiveDirectory**](GraphApi.md#GraphUserGroupTraverseActiveDirectory) | **Get** /usergroups/{group_id}/activedirectories | List the Active Directories bound to a User Group
 [**GraphUserGroupTraverseApplication**](GraphApi.md#GraphUserGroupTraverseApplication) | **Get** /usergroups/{group_id}/applications | List the Applications bound to a User Group
 [**GraphUserGroupTraverseDirectory**](GraphApi.md#GraphUserGroupTraverseDirectory) | **Get** /usergroups/{group_id}/directories | List the Directories bound to a User Group
 [**GraphUserGroupTraverseGSuite**](GraphApi.md#GraphUserGroupTraverseGSuite) | **Get** /usergroups/{group_id}/gsuites | List the G Suite instances bound to a User Group
@@ -71,7 +66,6 @@ Method | HTTP request | Description
 [**GraphUserGroupTraverseSystem**](GraphApi.md#GraphUserGroupTraverseSystem) | **Get** /usergroups/{group_id}/systems | List the Systems bound to a User Group
 [**GraphUserGroupTraverseSystemGroup**](GraphApi.md#GraphUserGroupTraverseSystemGroup) | **Get** /usergroups/{group_id}/systemgroups | List the System Groups bound to User Groups
 [**GraphUserMemberOf**](GraphApi.md#GraphUserMemberOf) | **Get** /users/{user_id}/memberof | List the parent Groups of a User
-[**GraphUserTraverseActiveDirectory**](GraphApi.md#GraphUserTraverseActiveDirectory) | **Get** /users/{user_id}/activedirectories | List the Active Directory instances bound to a User
 [**GraphUserTraverseApplication**](GraphApi.md#GraphUserTraverseApplication) | **Get** /users/{user_id}/applications | List the Applications bound to a User
 [**GraphUserTraverseDirectory**](GraphApi.md#GraphUserTraverseDirectory) | **Get** /users/{user_id}/directories | List the Directories bound to a User
 [**GraphUserTraverseGSuite**](GraphApi.md#GraphUserTraverseGSuite) | **Get** /users/{user_id}/gsuites | List the G Suite instances bound to a User
@@ -116,92 +110,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]GraphConnection**](GraphConnection.md)
-
-### Authorization
-
-[x-api-key](../README.md#x-api-key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **GraphActiveDirectoryAssociationsPost**
-> GraphActiveDirectoryAssociationsPost(ctx, activedirectoryId, contentType, accept, optional)
-Manage the associations of an Active Directory instance
-
-This endpoint allows you to manage the _direct_ associations of an Active Directory instance.  A direct association can be a non-homogeneous relationship between 2 different objects, for example Active Directory and Users.  #### Sample Request ``` curl -X POST https://console.jumpcloud.com/api/v2/activedirectories/{AD_Instance_ID}/associations \\   -H 'accept: application/json' \\   -H 'content-type: application/json' \\   -H 'x-api-key: {API_KEY}' \\   -d '{         \"op\": \"add\",         \"type\": \"user\",         \"id\": \"{User_ID}\" } ' ```
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **activedirectoryId** | **string**|  | 
-  **contentType** | **string**|  | [default to application/json]
-  **accept** | **string**|  | [default to application/json]
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **activedirectoryId** | **string**|  | 
- **contentType** | **string**|  | [default to application/json]
- **accept** | **string**|  | [default to application/json]
- **body** | [**GraphManagementReq**](GraphManagementReq.md)|  | 
- **xOrgId** | **string**|  | [default to ]
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[x-api-key](../README.md#x-api-key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **GraphActiveDirectoryTraverseUser**
-> []GraphObjectWithPaths GraphActiveDirectoryTraverseUser(ctx, activedirectoryId, contentType, accept, optional)
-List the Users bound to an Active Directory instance
-
-This endpoint will return all Users bound to an Active Directory instance, either directly or indirectly, essentially traversing the JumpCloud Graph for your Organization.  Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of compiled graph attributes for all paths followed.  The `paths` array enumerates each path from this Active Directory instance to the corresponding User; this array represents all grouping and/or associations that would have to be removed to deprovision the User from this Active Directory instance.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` curl -X GET https://console.jumpcloud.com/api/v2/activedirectories/{ActiveDirectory_ID}/users \\   -H 'accept: application/json' \\   -H 'content-type: application/json' \\   -H 'x-api-key: {API_KEY}' ```
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **activedirectoryId** | **string**| ObjectID of the Active Directory instance. | 
-  **contentType** | **string**|  | [default to application/json]
-  **accept** | **string**|  | [default to application/json]
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **activedirectoryId** | **string**| ObjectID of the Active Directory instance. | 
- **contentType** | **string**|  | [default to application/json]
- **accept** | **string**|  | [default to application/json]
- **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
- **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
- **xOrgId** | **string**|  | [default to ]
- **skip** | **int32**| The offset into the records to return. | [default to 0]
-
-### Return type
-
-[**[]GraphObjectWithPaths**](GraphObjectWithPaths.md)
 
 ### Authorization
 
@@ -958,7 +866,7 @@ Name | Type | Description  | Notes
 > []GraphConnection GraphOffice365AssociationsList(ctx, office365Id, targets, contentType, accept, optional)
 List the associations of an Office 365 instance
 
-This endpoint returns _direct_ associations of an Office 365 instance.   A direct association can be a non-homogeneous relationship between 2 different objects, for example Office 365 and Users.  #### Sample Request ``` curl -X GET 'https://console.jumpcloud.com/api/v2/office365s/{O365_ID}/associations?targets=user_group \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'  ```
+This endpoint returns _direct_ associations of an Office 365 instance.   A direct association can be a non-homogeneous relationship between 2 different objects, for example Office 365 and Users.  #### Sample Request ``` curl -X GET 'https://console.jumpcloud.com/api/v2/office365s/{O365_ID}/associations?targets=user_group' \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}'  ```
 
 ### Required Parameters
 
@@ -1645,51 +1553,6 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
-
-### Authorization
-
-[x-api-key](../README.md#x-api-key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **GraphSystemGroupMemberOf**
-> []GraphObjectWithPaths GraphSystemGroupMemberOf(ctx, groupId, contentType, accept, optional)
-List the System Group's parents
-
-This endpoint returns all System Groups a System Group is a member of.  This endpoint is not yet public as we haven't completed the code yet.
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **groupId** | **string**| ObjectID of the System Group. | 
-  **contentType** | **string**|  | [default to application/json]
-  **accept** | **string**|  | [default to application/json]
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **groupId** | **string**| ObjectID of the System Group. | 
- **contentType** | **string**|  | [default to application/json]
- **accept** | **string**|  | [default to application/json]
- **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
- **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
- **skip** | **int32**| The offset into the records to return. | [default to 0]
- **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
- **xOrgId** | **string**|  | [default to ]
-
-### Return type
-
-[**[]GraphObjectWithPaths**](GraphObjectWithPaths.md)
 
 ### Authorization
 
@@ -2411,51 +2274,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **GraphUserGroupMemberOf**
-> []GraphObjectWithPaths GraphUserGroupMemberOf(ctx, groupId, contentType, accept, optional)
-List the User Group's parents
-
-This endpoint returns all User Groups a User Group is a member of.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/{group_id}/memberof ```  Not public yet, as the code is not finished,
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **groupId** | **string**| ObjectID of the User Group. | 
-  **contentType** | **string**|  | [default to application/json]
-  **accept** | **string**|  | [default to application/json]
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **groupId** | **string**| ObjectID of the User Group. | 
- **contentType** | **string**|  | [default to application/json]
- **accept** | **string**|  | [default to application/json]
- **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
- **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
- **skip** | **int32**| The offset into the records to return. | [default to 0]
- **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
- **xOrgId** | **string**|  | [default to ]
-
-### Return type
-
-[**[]GraphObjectWithPaths**](GraphObjectWithPaths.md)
-
-### Authorization
-
-[x-api-key](../README.md#x-api-key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **GraphUserGroupMembersList**
 > []GraphConnection GraphUserGroupMembersList(ctx, groupId, contentType, accept, optional)
 List the members of a User Group
@@ -2570,50 +2388,6 @@ Name | Type | Description  | Notes
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
  **xOrgId** | **string**|  | [default to ]
-
-### Return type
-
-[**[]GraphObjectWithPaths**](GraphObjectWithPaths.md)
-
-### Authorization
-
-[x-api-key](../README.md#x-api-key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **GraphUserGroupTraverseActiveDirectory**
-> []GraphObjectWithPaths GraphUserGroupTraverseActiveDirectory(ctx, groupId, contentType, accept, optional)
-List the Active Directories bound to a User Group
-
-This endpoint will return all Active Directory Instances bound to a User Group, either directly or indirectly, essentially traversing the JumpCloud Graph for your Organization.  The `attributes` object is a key/value hash of compiled graph attributes for all paths followed.  The `paths` array enumerates each path from this User Group to the corresponding Active Directory; this array represents all grouping and/or associations that would have to be removed to deprovision the Active Directory from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` curl -X GET https://console.jumpcloud.com/api/v2/usergroups/{GroupID}/activedirectories \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}' ```
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **groupId** | **string**| ObjectID of the User Group. | 
-  **contentType** | **string**|  | [default to application/json]
-  **accept** | **string**|  | [default to application/json]
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **groupId** | **string**| ObjectID of the User Group. | 
- **contentType** | **string**|  | [default to application/json]
- **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
- **xOrgId** | **string**|  | [default to ]
- **skip** | **int32**| The offset into the records to return. | [default to 0]
- **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
 
 ### Return type
 
@@ -3011,50 +2785,6 @@ Name | Type | Description  | Notes
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
  **xOrgId** | **string**|  | [default to ]
-
-### Return type
-
-[**[]GraphObjectWithPaths**](GraphObjectWithPaths.md)
-
-### Authorization
-
-[x-api-key](../README.md#x-api-key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **GraphUserTraverseActiveDirectory**
-> []GraphObjectWithPaths GraphUserTraverseActiveDirectory(ctx, userId, contentType, accept, optional)
-List the Active Directory instances bound to a User
-
-This endpoint will return all Active Directory Instances bound to a User, either directly or indirectly, essentially traversing the JumpCloud Graph for your Organization.  Each element will contain the type, id, attributes and paths.  The `attributes` object is a key/value hash of compiled graph attributes for all paths followed.  The `paths` array enumerates each path from this User to the corresponding Active Directory instance; this array represents all grouping and/or associations that would have to be removed to deprovision the Active Directory instance from this User.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` curl -X GET https://console.jumpcloud.com/api/v2/users/{UserID}/activedirectories \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}' ```
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **userId** | **string**| ObjectID of the User. | 
-  **contentType** | **string**|  | [default to application/json]
-  **accept** | **string**|  | [default to application/json]
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userId** | **string**| ObjectID of the User. | 
- **contentType** | **string**|  | [default to application/json]
- **accept** | **string**|  | [default to application/json]
- **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
- **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
- **xOrgId** | **string**|  | [default to ]
- **skip** | **int32**| The offset into the records to return. | [default to 0]
 
 ### Return type
 

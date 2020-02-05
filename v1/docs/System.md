@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **Created** | **string** |  | [optional] [default to null]
 **DisplayName** | **string** |  | [optional] [default to null]
 **Fde** | [***Fde**](fde.md) |  | [optional] [default to null]
+**FileSystem** | **string** |  | [optional] [default to null]
+**HasServiceAccount** | **bool** |  | [optional] [default to null]
 **Hostname** | **string** |  | [optional] [default to null]
 **LastContact** | **string** |  | [optional] [default to null]
 **ModifySSHDConfig** | **bool** |  | [optional] [default to null]

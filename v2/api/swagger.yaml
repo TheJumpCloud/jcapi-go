@@ -103,287 +103,8 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-    post:
-      tags:
-      - "Active Directory"
-      summary: "Create a new Active Directory"
-      description: "This endpoint allows you to create a new Active Directory.\n\n\
-        \n#### Sample Request\n```\ncurl -X POST https://console.jumpcloud.com/api/v2/activedirectories/\
-        \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n        \"domain\": \"{DC=AD_domain_name;DC=com}\"\
-        \n}\n'\n```"
-      operationId: "activedirectories_post"
-      parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/active-directory-input"
-        x-exportParamName: "Body"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      responses:
-        201:
-          description: ""
-          schema:
-            $ref: "#/definitions/active-directory-output"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "activedirectories_post"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-  /activedirectories/{activedirectory_id}/agents:
-    get:
-      tags:
-      - "Active Directory"
-      summary: "List Active Directory Agents"
-      description: "This endpoint allows you to list all your Active Directory Agents\
-        \ for a given Instance.\n\n#### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/activedirectories/{activedirectory_id}/agents\
-        \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
-      operationId: "activedirectories_agentsList"
-      parameters:
-      - name: "activedirectory_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "ActivedirectoryId"
-      - name: "limit"
-        in: "query"
-        description: "The number of records to return at once. Limited to 100."
-        required: false
-        type: "integer"
-        default: 10
-        x-exportParamName: "Limit"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "sort"
-        in: "query"
-        description: "The comma separated fields used to sort the collection.\nDefault\
-          \ sort is ascending, prefix with `-` to sort descending.\n"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Sort"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/active-directory-agent-list-output"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "activedirectories_agentsList"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-    post:
-      tags:
-      - "Active Directory"
-      summary: "Create a new Active Directory Agent"
-      description: "This endpoint allows you to create a new Active Directory Agent.\n\
-        \n\n#### Sample Request\n```\ncurl -X POST https://console.jumpcloud.com/api/v2/activedirectories/{activedirectory_id}/agents\
-        \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{}'\n```"
-      operationId: "activedirectories_agentsPost"
-      parameters:
-      - name: "activedirectory_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "ActivedirectoryId"
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/active-directory-agent-input"
-        x-exportParamName: "Body"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        201:
-          description: ""
-          schema:
-            $ref: "#/definitions/active-directory-agent-get-output"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "activedirectories_agentsPost"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-  /activedirectories/{activedirectory_id}/agents/{agent_id}:
-    get:
-      tags:
-      - "Active Directory"
-      summary: "Get Active Directory Agent"
-      description: "This endpoint returns a specific active directory agent.\n\n####\
-        \ Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/activedirectories/{activedirectory_id}/agents/{agent_id}\
-        \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
-      operationId: "activedirectories_agentsGet"
-      parameters:
-      - name: "activedirectory_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "ActivedirectoryId"
-      - name: "agent_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "AgentId"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            $ref: "#/definitions/active-directory-agent-list-output"
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "activedirectories_agentsGet"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-    delete:
-      tags:
-      - "Active Directory"
-      summary: "Delete Active Directory Agent"
-      operationId: "activedirectories_agentsDelete"
-      parameters:
-      - name: "activedirectory_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "ActivedirectoryId"
-      - name: "agent_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "AgentId"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        204:
-          description: ""
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "activedirectories_agentsDelete"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
+  /activedirectories/{activedirectory_id}/agents: {}
+  /activedirectories/{activedirectory_id}/agents/{agent_id}: {}
   /activedirectories/{activedirectory_id}/associations:
     get:
       tags:
@@ -475,63 +196,6 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-    post:
-      tags:
-      - "Graph"
-      - "Active Directory"
-      summary: "Manage the associations of an Active Directory instance"
-      description: "This endpoint allows you to manage the _direct_ associations of\
-        \ an Active Directory instance.\n\nA direct association can be a non-homogeneous\
-        \ relationship between 2 different objects, for example Active Directory and\
-        \ Users.\n\n#### Sample Request\n```\ncurl -X POST https://console.jumpcloud.com/api/v2/activedirectories/{AD_Instance_ID}/associations\
-        \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n        \"op\": \"add\",\n\
-        \        \"type\": \"user\",\n        \"id\": \"{User_ID}\"\n}\n'\n```"
-      operationId: "graph_activeDirectoryAssociationsPost"
-      parameters:
-      - name: "activedirectory_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "ActivedirectoryId"
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/GraphManagementReq"
-        x-exportParamName: "Body"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      responses:
-        204:
-          description: ""
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "graph_activeDirectoryAssociationsPost"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
   /activedirectories/{activedirectory_id}/usergroups:
     get:
       tags:
@@ -619,91 +283,7 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-  /activedirectories/{activedirectory_id}/users:
-    get:
-      tags:
-      - "Graph"
-      summary: "List the Users bound to an Active Directory instance"
-      description: "This endpoint will return all Users bound to an Active Directory\
-        \ instance, either directly or indirectly, essentially traversing the JumpCloud\
-        \ Graph for your Organization.\n\nEach element will contain the type, id,\
-        \ attributes and paths.\n\nThe `attributes` object is a key/value hash of\
-        \ compiled graph attributes for all paths followed.\n\nThe `paths` array enumerates\
-        \ each path from this Active Directory instance to the corresponding User;\
-        \ this array represents all grouping and/or associations that would have to\
-        \ be removed to deprovision the User from this Active Directory instance.\n\
-        \nSee `/members` and `/associations` endpoints to manage those collections.\n\
-        \n#### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/activedirectories/{ActiveDirectory_ID}/users\
-        \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
-      operationId: "graph_activeDirectoryTraverseUser"
-      parameters:
-      - name: "activedirectory_id"
-        in: "path"
-        description: "ObjectID of the Active Directory instance."
-        required: true
-        type: "string"
-        x-exportParamName: "ActivedirectoryId"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
-          \ in"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "limit"
-        in: "query"
-        description: "The number of records to return at once. Limited to 100."
-        required: false
-        type: "integer"
-        default: 10
-        x-exportParamName: "Limit"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/GraphObjectWithPaths"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "graph_activeDirectoryTraverseUser"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
+  /activedirectories/{activedirectory_id}/users: {}
   /activedirectories/{id}:
     get:
       tags:
@@ -755,449 +335,10 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-    delete:
-      tags:
-      - "Active Directory"
-      summary: "Delete an Active Directory"
-      description: "This endpoint allows you to delete an Active Directory Instance.\n\
-        \n#### Sample Request\n```\ncurl -X DELETE https://console.jumpcloud.com/api/v2/activedirectories/{ActiveDirectory_ID}\
-        \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY'\n  ```"
-      operationId: "activedirectories_delete"
-      parameters:
-      - name: "id"
-        in: "path"
-        description: "ObjectID of this Active Directory instance."
-        required: true
-        type: "string"
-        x-exportParamName: "Id"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      responses:
-        204:
-          description: ""
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "activedirectories_delete"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-  /applemdms:
-    get:
-      tags:
-      - "Apple MDM"
-      summary: "List Apple MDMs"
-      description: "Get a list of all Apple MDM configurations.  An empty topic indicates\
-        \ that a signed certificate from Apple has not been provided to the PUT endpoint\
-        \ yet.\n\nNote: currently only one MDM configuration per organization is supported.\n\
-        \n#### Sample Request\n```\ncurl https://console.jumpcloud.com/api/v2/applemdms\
-        \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
-      operationId: "applemdms_list"
-      parameters:
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/AppleMDM"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "applemdms_list"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-    post:
-      tags:
-      - "Apple MDM"
-      summary: "Create Apple MDM"
-      description: "Creates an Apple MDM Enrollment for an organization. Only one\
-        \ enrollment per organization will be allowed.  Note that this is the first\
-        \ step in completly setting up an MDM Enrollment.  The user must supply the\
-        \ returned plist to Apple for signing, and then provide the certificate provided\
-        \ by Apple back into the PUT API.\n\n#### Sample Request\n```\n  curl -X POST\
-        \ https://console.jumpcloud.com/api/v2/organizations/{Organization_ID}/mdm\
-        \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{}'\n```"
-      operationId: "applemdms_post"
-      parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/body"
-        x-exportParamName: "Body"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      responses:
-        201:
-          description: ""
-          schema:
-            $ref: "#/definitions/inline_response_201"
-        400:
-          description: ""
-          schema:
-            $ref: "#/definitions/errorresponse"
-        401:
-          description: ""
-          schema:
-            $ref: "#/definitions/errorresponse"
-        403:
-          description: ""
-          schema:
-            $ref: "#/definitions/errorresponse"
-        404:
-          description: ""
-          schema:
-            $ref: "#/definitions/errorresponse"
-        409:
-          description: ""
-          schema:
-            $ref: "#/definitions/errorresponse"
-        500:
-          description: ""
-          schema:
-            $ref: "#/definitions/errorresponse"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "applemdms_post"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-  /applemdms/{apple_mdm_id}:
-    put:
-      tags:
-      - "Apple MDM"
-      summary: "Update an Apple MDM"
-      description: "Updates an Apple MDM configuration.  This endpoint is used to\
-        \ supply JumpCloud with a signed certificate from Apple in order to finalize\
-        \ the setup and allow JumpCloud to manage your devices.\n\n#### Sample Request\n\
-        ```\n  curl -X PUT https://console.jumpcloud.com/api/v2/applemdms/{ID} \\\n\
-        \  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n    \"name\": \"MDM name\"\
-        ,\n    \"appleSignedCert\": \"{CERTIFICATE}\"\n  }'\n```"
-      operationId: "applemdms_put"
-      parameters:
-      - name: "apple_mdm_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "AppleMdmId"
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/apple-mdm-patch-input"
-        x-exportParamName: "Body"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            $ref: "#/definitions/AppleMDM"
-        400:
-          description: ""
-          schema:
-            $ref: "#/definitions/errorresponse"
-        401:
-          description: ""
-          schema:
-            $ref: "#/definitions/errorresponse"
-        403:
-          description: ""
-          schema:
-            $ref: "#/definitions/errorresponse"
-        404:
-          description: ""
-          schema:
-            $ref: "#/definitions/errorresponse"
-        409:
-          description: ""
-          schema:
-            $ref: "#/definitions/errorresponse"
-        500:
-          description: ""
-          schema:
-            $ref: "#/definitions/errorresponse"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "applemdms_put"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-    delete:
-      tags:
-      - "Apple MDM"
-      summary: "Delete an Apple MDM"
-      description: "Removes an Apple MDM configuration.\n\nWarning: This is a destructive\
-        \ operation and will remove your Apple Push Certificates.  We will no longer\
-        \ be able to manage your devices and the only recovery option is to re-register\
-        \ all devices into MDM.\n\n#### Sample Request\n```\ncurl -X DELETE https://console.jumpcloud.com/api/v2/applemdms/{id}\
-        \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
-      operationId: "applemdms_delete"
-      parameters:
-      - name: "apple_mdm_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "AppleMdmId"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            $ref: "#/definitions/AppleMDM"
-        400:
-          description: ""
-          schema:
-            $ref: "#/definitions/errorresponse"
-        401:
-          description: ""
-          schema:
-            $ref: "#/definitions/errorresponse"
-        403:
-          description: ""
-          schema:
-            $ref: "#/definitions/errorresponse"
-        404:
-          description: ""
-          schema:
-            $ref: "#/definitions/errorresponse"
-        409:
-          description: ""
-          schema:
-            $ref: "#/definitions/errorresponse"
-        500:
-          description: ""
-          schema:
-            $ref: "#/definitions/errorresponse"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "applemdms_delete"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-  /applemdms/{apple_mdm_id}/enrollmentprofiles:
-    get:
-      tags:
-      - "Apple MDM"
-      summary: "List Apple MDM Enrollment Profiles"
-      description: "Get a list of enrollment profiles for an apple mdm.\n\nNote: currently\
-        \ only one enrollment profile is supported.\n\n#### Sample Request\n```\n\
-        curl https://console.jumpcloud.com/api/v2/applemdms/{APPLE_MDM_ID}/enrollmentprofiles\
-        \ \\\n  -H 'accept: application/json' \\\n  -H 'content-type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
-      operationId: "enrollmentprofiles_list"
-      parameters:
-      - name: "apple_mdm_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "AppleMdmId"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/AppleMDM"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "enrollmentprofiles_list"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-  /applemdms/{apple_mdm_id}/enrollmentprofiles/{enrollment_profile_id}:
-    get:
-      tags:
-      - "Apple MDM"
-      summary: "Get an Apple MDM Enrollment Profile"
-      description: "Get an enrollment profile\n\nCurrently only requesting the mobileconfig\
-        \ is supported.\n\n#### Sample Request\n\n```\ncurl https://console.jumpcloud.com/api/v2/applemdms/{APPLE_MDM_ID}/enrollmentprofiles/{ENROLLMENT_PROFILE_ID}\
-        \ \\\n  -H 'accept: application/x-apple-aspen-config' \\\n  -H 'content-type:\
-        \ application/json' \\\n  -H 'x-api-key: {API_KEY}'\n```"
-      operationId: "enrollmentprofiles_get"
-      produces:
-      - "application/x-apple-aspen-config"
-      parameters:
-      - name: "apple_mdm_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "AppleMdmId"
-      - name: "enrollment_profile_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "EnrollmentProfileId"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            $ref: "#/definitions/mobileconfig"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "enrollmentprofiles_get"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
+  /applemdms: {}
+  /applemdms/{apple_mdm_id}: {}
+  /applemdms/{apple_mdm_id}/enrollmentprofiles: {}
+  /applemdms/{apple_mdm_id}/enrollmentprofiles/{enrollment_profile_id}: {}
   /applications/{application_id}/associations:
     get:
       tags:
@@ -1349,7 +490,7 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-    x-swagger-jumpcloud-auto-insert: true
+  /applications/{application_id}/provision: {}
   /applications/{application_id}/usergroups:
     get:
       tags:
@@ -1857,7 +998,6 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-    x-swagger-jumpcloud-auto-insert: true
   /commands/{command_id}/systemgroups:
     get:
       tags:
@@ -2160,7 +1300,7 @@ paths:
           dynamic: false
           enabled: false
           statusCode: 200
-        public: false
+        public: true
     post:
       tags:
       - "Duo"
@@ -2230,7 +1370,7 @@ paths:
           dynamic: false
           enabled: false
           statusCode: 200
-        public: false
+        public: true
   /duo/accounts/{account_id}/applications:
     get:
       tags:
@@ -2307,7 +1447,7 @@ paths:
           dynamic: false
           enabled: false
           statusCode: 200
-        public: false
+        public: true
     post:
       tags:
       - "Duo"
@@ -2388,7 +1528,7 @@ paths:
           dynamic: false
           enabled: false
           statusCode: 200
-        public: false
+        public: true
   /duo/accounts/{account_id}/applications/{application_id}:
     get:
       tags:
@@ -2467,7 +1607,7 @@ paths:
           dynamic: false
           enabled: false
           statusCode: 200
-        public: false
+        public: true
     put:
       tags:
       - "Duo"
@@ -2553,7 +1693,7 @@ paths:
           dynamic: false
           enabled: false
           statusCode: 200
-        public: false
+        public: true
     delete:
       tags:
       - "Duo"
@@ -2632,7 +1772,7 @@ paths:
           dynamic: false
           enabled: false
           statusCode: 200
-        public: false
+        public: true
   /duo/accounts/{id}:
     get:
       tags:
@@ -2683,7 +1823,7 @@ paths:
           dynamic: false
           enabled: false
           statusCode: 200
-        public: false
+        public: true
     delete:
       tags:
       - "Duo"
@@ -2758,158 +1898,7 @@ paths:
           dynamic: false
           enabled: false
           statusCode: 200
-        public: false
-  /enrollmentprofiles:
-    get:
-      summary: "List Enrollment Profiles"
-      operationId: "jcEnrollmentProfiles_list"
-      parameters:
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/jc-enrollment-profile"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "jcEnrollmentProfiles_list"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-    post:
-      summary: "Create new Enrollment Profile"
-      operationId: "jcEnrollmentProfiles_post"
-      parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/body_1"
-        x-exportParamName: "Body"
-      responses:
-        200:
-          description: ""
-          schema:
-            $ref: "#/definitions/jc-enrollment-profile"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "jcEnrollmentProfiles_post"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-  /enrollmentprofiles/{enrollment_profile_id}:
-    get:
-      summary: "Get Enrollment Profile"
-      operationId: "jcEnrollmentProfiles_get"
-      parameters:
-      - name: "enrollment_profile_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "EnrollmentProfileId"
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/jc-enrollment-profile"
-        x-exportParamName: "Body"
-      responses:
-        default:
-          description: ""
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "jcEnrollmentProfiles_get"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-    put:
-      summary: "Update Enrollment Profile"
-      operationId: "jcEnrollmentProfiles_put"
-      parameters:
-      - name: "enrollment_profile_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "EnrollmentProfileId"
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/body_2"
-        x-exportParamName: "Body"
-      responses:
-        200:
-          description: ""
-          schema:
-            $ref: "#/definitions/jc-enrollment-profile"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "jcEnrollmentProfiles_put"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-    delete:
-      summary: "Delete Enrollment Profile"
-      operationId: "jcEnrollmentProfiles_delete"
-      parameters:
-      - name: "enrollment_profile_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "EnrollmentProfileId"
-      responses:
-        200:
-          description: ""
-          schema:
-            $ref: "#/definitions/jc-enrollment-profile"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "jcEnrollmentProfiles_delete"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
+        public: true
   /groups:
     get:
       tags:
@@ -3142,7 +2131,6 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-    x-swagger-jumpcloud-auto-insert: true
   /gsuites/{gsuite_id}/translationrules:
     get:
       tags:
@@ -3618,7 +2606,8 @@ paths:
         ##### Sample Request\n\n```\ncurl -X PATCH https://console.jumpcloud.com/api/v2/gsuites/{GSUITE_ID}\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n    \"userLockoutAction\":\
-        \ \"remove\",\n    \"userPasswordExpirationAction\": \"disable\"\n  }'\n```"
+        \ \"suspend\",\n    \"userPasswordExpirationAction\": \"maintain\"\n  }'\n\
+        ```"
       operationId: "gsuites_patch"
       parameters:
       - name: "id"
@@ -3665,194 +2654,9 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-  /jobs/{id}:
-    get:
-      tags:
-      - "Bulk Job Requests"
-      summary: "Get Job (incomplete)"
-      description: "**This endpoint is not complete and should remain hidden as it's\
-        \ not functional yet.**"
-      operationId: "jobs_get"
-      parameters:
-      - name: "id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "Id"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      responses:
-        200:
-          description: ""
-          schema:
-            $ref: "#/definitions/job-details"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "jobs_get"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-  /jobs/{id}/results:
-    get:
-      tags:
-      - "Bulk Job Requests"
-      summary: "List Job Results"
-      description: "This endpoint will return the results of particular import job\
-        \ request.\n\n#### Sample Request\n```\ncurl -X GET \\\n  https://console.jumpcloud.com/api/v2/jobs/{ImportJobID}/results\
-        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n  ```"
-      operationId: "jobs_results"
-      parameters:
-      - name: "id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "Id"
-      - name: "limit"
-        in: "query"
-        description: "The number of records to return at once. Limited to 100."
-        required: false
-        type: "integer"
-        default: 10
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/job-workresult"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "jobs_results"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-  /knowledge/salesforce:
-    get:
-      tags:
-      - "Knowledge"
-      summary: "List Knowledge Articles"
-      description: "This endpoint returns a list of knowledge articles hosted in salesforce.\n\
-        \n```\nSample Request\ncurl -X GET https://console.jumpcloud.com/api/v2/knowledge/salesforce\
-        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
-      operationId: "knowledge_salesforceList"
-      parameters:
-      - name: "fields"
-        in: "query"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Fields"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
-          \ in"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "limit"
-        in: "query"
-        description: "The number of records to return at once. Limited to 100."
-        required: false
-        type: "integer"
-        default: 10
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "sort"
-        in: "query"
-        description: "The comma separated fields used to sort the collection.\nDefault\
-          \ sort is ascending, prefix with `-` to sort descending.\n"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Sort"
-      responses:
-        200:
-          description: ""
-          schema:
-            $ref: "#/definitions/salesforce-knowledge-list-output"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: "function (ctx, request) {\n  // Your javascript code here.\n\
-          }"
-        id: "knowledge_salesforceList"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-    x-swagger-authorization:
-    - "user"
-    - "noOrgHeaderSelection"
-    x-swagger-grouping-strategies: []
-    x-swagger-user-roles: []
+  /jobs/{id}: {}
+  /jobs/{id}/results: {}
+  /knowledge/articles: {}
   /ldapservers:
     get:
       tags:
@@ -4014,7 +2818,7 @@ paths:
         name: "body"
         required: false
         schema:
-          $ref: "#/definitions/body_3"
+          $ref: "#/definitions/body"
         x-exportParamName: "Body"
       - name: "x-api-key"
         in: "header"
@@ -4208,7 +3012,6 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-    x-swagger-jumpcloud-auto-insert: true
   /ldapservers/{ldapserver_id}/sambadomains:
     get:
       tags:
@@ -4715,6 +3518,115 @@ paths:
           enabled: false
           statusCode: 200
         public: true
+  /office365s/{office365_id}:
+    get:
+      tags:
+      - "Office 365"
+      summary: "Get Office 365 instance"
+      description: "This endpoint returns a specific Office 365 instance.\n\n#####\n\
+        \nSample Request\n\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/office365s/{O365_ID}\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}'\n\n```"
+      operationId: "office365s_get"
+      parameters:
+      - name: "office365_id"
+        in: "path"
+        description: "ObjectID of the Office 365 instance."
+        required: true
+        type: "string"
+        x-exportParamName: "Office365Id"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/office365-output"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "office365s_get"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: true
+    patch:
+      tags:
+      - "Office 365"
+      summary: "Update existing Office 365 instance."
+      description: "This endpoint allows updating some attributes of an Office 365\
+        \ instance.\n\n#####\n\nSample Request\n\n```\ncurl -X PATCH https://console.jumpcloud.com/api/v2/office365s/{O365_ID}\
+        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
+        \ \\\n  -H 'x-api-key: {API_KEY}' \\\n  -d '{\n    \"userLockoutAction\":\
+        \ \"maintain\",\n    \"userPasswordExpirationAction\": \"suspend\"\n  }'\n\
+        \n```"
+      operationId: "office365s_patch"
+      parameters:
+      - name: "office365_id"
+        in: "path"
+        description: "ObjectID of the Office 365 instance."
+        required: true
+        type: "string"
+        x-exportParamName: "Office365Id"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/office365-patch-input"
+        x-exportParamName: "Body"
+      - name: "x-org-id"
+        in: "header"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "XOrgId"
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "ContentType"
+      - name: "Accept"
+        in: "header"
+        required: true
+        type: "string"
+        default: "application/json"
+        x-exportParamName: "Accept"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/office365-output"
+      security:
+      - x-api-key: []
+      x-stoplight:
+        afterScript: null
+        beforeScript: null
+        id: "office365s_patch"
+        mock:
+          dynamic: false
+          enabled: false
+          statusCode: 200
+        public: true
   /office365s/{office365_id}/associations:
     get:
       tags:
@@ -4724,7 +3636,7 @@ paths:
       description: "This endpoint returns _direct_ associations of an Office 365 instance.\n\
         \n\nA direct association can be a non-homogeneous relationship between 2 different\
         \ objects, for example Office 365 and Users.\n\n#### Sample Request\n```\n\
-        curl -X GET 'https://console.jumpcloud.com/api/v2/office365s/{O365_ID}/associations?targets=user_group\
+        curl -X GET 'https://console.jumpcloud.com/api/v2/office365s/{O365_ID}/associations?targets=user_group'\
         \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
         \ \\\n  -H 'x-api-key: {API_KEY}'\n\n```"
       operationId: "graph_office365AssociationsList"
@@ -4865,7 +3777,6 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-    x-swagger-jumpcloud-auto-insert: true
   /office365s/{office365_id}/translationrules:
     get:
       tags:
@@ -5284,188 +4195,7 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-  /organizations/{id}/crypto:
-    get:
-      tags:
-      - "Organizations"
-      summary: "Get Crypto Settings"
-      operationId: "org_crypto_get"
-      parameters:
-      - name: "id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "Id"
-      - name: "fields"
-        in: "query"
-        description: "The comma separated fields included in the returned records.\n\
-          If omitted, the default list of fields will be returned.\n"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Fields"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
-          \ in"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "sort"
-        in: "query"
-        description: "The comma separated fields used to sort the collection.\nDefault\
-          \ sort is ascending, prefix with `-` to sort descending.\n"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Sort"
-      - name: "limit"
-        in: "query"
-        description: "The number of records to return at once. Limited to 100."
-        required: false
-        type: "integer"
-        default: 10
-        x-exportParamName: "Limit"
-      responses:
-        200:
-          description: ""
-          schema:
-            $ref: "#/definitions/org-crypto-settings"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "org_crypto_get"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-    put:
-      tags:
-      - "Organizations"
-      summary: "Edit Crypto Settings"
-      operationId: "org_crypto_put"
-      parameters:
-      - name: "id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "Id"
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/org-crypto-settings"
-        x-exportParamName: "Body"
-      - name: "fields"
-        in: "query"
-        description: "The comma separated fields included in the returned records.\n\
-          If omitted, the default list of fields will be returned.\n"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Fields"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
-          \ in"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "sort"
-        in: "query"
-        description: "The comma separated fields used to sort the collection.\nDefault\
-          \ sort is ascending, prefix with `-` to sort descending.\n"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Sort"
-      - name: "limit"
-        in: "query"
-        description: "The number of records to return at once. Limited to 100."
-        required: false
-        type: "integer"
-        default: 10
-        x-exportParamName: "Limit"
-      responses:
-        204:
-          description: ""
-          schema:
-            type: "object"
-            properties: {}
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "org_crypto_put"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
+  /organizations/{id}/crypto: {}
   /policies:
     get:
       tags:
@@ -6717,13 +5447,6 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-    x-swagger-authorization:
-    - "user"
-    - "providerTenancy"
-    - "noOrgHeaderSelection"
-    x-swagger-grouping-strategies: []
-    x-swagger-user-roles:
-    - "administrator"
   /radiusservers/{radiusserver_id}/associations:
     get:
       tags:
@@ -6874,7 +5597,6 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-    x-swagger-jumpcloud-auto-insert: true
   /radiusservers/{radiusserver_id}/usergroups:
     get:
       tags:
@@ -7348,7 +6070,6 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-    x-swagger-jumpcloud-auto-insert: true
   /systemgroups/{group_id}/commands:
     get:
       tags:
@@ -7435,93 +6156,7 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-  /systemgroups/{group_id}/memberof:
-    get:
-      tags:
-      - "Graph"
-      - "System Groups"
-      - "System Group Members & Membership"
-      summary: "List the System Group's parents"
-      description: "This endpoint returns all System Groups a System Group is a member\
-        \ of.\n\nThis endpoint is not yet public as we haven't completed the code\
-        \ yet."
-      operationId: "graph_systemGroupMemberOf"
-      parameters:
-      - name: "group_id"
-        in: "path"
-        description: "ObjectID of the System Group."
-        required: true
-        type: "string"
-        x-exportParamName: "GroupId"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
-          \ in"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "limit"
-        in: "query"
-        description: "The number of records to return at once. Limited to 100."
-        required: false
-        type: "integer"
-        default: 10
-        x-exportParamName: "Limit"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "sort"
-        in: "query"
-        description: "The comma separated fields used to sort the collection.\nDefault\
-          \ sort is ascending, prefix with `-` to sort descending.\n"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Sort"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      responses:
-        200:
-          description: "OK"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/GraphObjectWithPaths"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "graph_systemGroupMemberOf"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
+  /systemgroups/{group_id}/memberof: {}
   /systemgroups/{group_id}/members:
     get:
       tags:
@@ -7661,7 +6296,6 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-    x-swagger-jumpcloud-auto-insert: true
   /systemgroups/{group_id}/membership:
     get:
       tags:
@@ -8177,67 +6811,7 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-    patch:
-      tags:
-      - "System Groups"
-      summary: "Partial update a System Group"
-      description: "We have hidden PATCH on the systemgroups and usergroups for now;\
-        \ we don't have that implemented correctly yet, people should use PUT until\
-        \ we do a true PATCH operation.\n\n#### Sample Request\n```\nhttps://console.jumpcloud.com/api/v2/systemgroups/{id}\n\
-        ```"
-      operationId: "groups_system_patch"
-      parameters:
-      - name: "id"
-        in: "path"
-        description: "ObjectID of the System Group."
-        required: true
-        type: "string"
-        x-exportParamName: "Id"
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/SystemGroupData"
-        x-exportParamName: "Body"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      responses:
-        200:
-          description: "OK"
-          schema:
-            $ref: "#/definitions/SystemGroup"
-          examples:
-            application/json:
-              id: "00000"
-              name: "group1"
-              type: "system_group"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "groups_system_patch"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
+  /systeminsights/alf: {}
   /systeminsights/apps:
     get:
       tags:
@@ -8306,74 +6880,7 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-  /systeminsights/battery:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights Battery"
-      description: "Valid filter fields are `system_id` and `health`."
-      operationId: "systeminsights_list_battery"
-      parameters:
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-battery"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_battery"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
+  /systeminsights/battery: {}
   /systeminsights/bitlocker_info:
     get:
       tags:
@@ -8578,74 +7085,7 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-  /systeminsights/crashes:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights Crashes"
-      description: "Valid filter fields are `system_id` and `identifier`."
-      operationId: "systeminsights_list_crashes"
-      parameters:
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-crashes"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_crashes"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
+  /systeminsights/crashes: {}
   /systeminsights/disk_encryption:
     get:
       tags:
@@ -8986,74 +7426,7 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-  /systeminsights/ie_extensions:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights IE Extensions"
-      description: "Valid filter fields are `system_id` and `name`."
-      operationId: "systeminsights_list_ie_extensions"
-      parameters:
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-ie-extensions"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_ie_extensions"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
+  /systeminsights/ie_extensions: {}
   /systeminsights/interface_addresses:
     get:
       tags:
@@ -9190,142 +7563,8 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-  /systeminsights/launchd:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights Launchd"
-      description: "Valid filter fields are `system_id` and `name`."
-      operationId: "systeminsights_list_launchd"
-      parameters:
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-launchd"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_launchd"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-  /systeminsights/logged_in_users:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights Logged-In Users"
-      description: "Valid filter fields are `system_id` and `user`."
-      operationId: "systeminsights_list_logged_in_users"
-      parameters:
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-logged-in-users"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_logged_in_users"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
+  /systeminsights/launchd: {}
+  /systeminsights/logged_in_users: {}
   /systeminsights/logical_drives:
     get:
       tags:
@@ -9394,6 +7633,7 @@ paths:
           enabled: false
           statusCode: 200
         public: true
+  /systeminsights/managed_policies: {}
   /systeminsights/mounts:
     get:
       tags:
@@ -9734,6 +7974,11 @@ paths:
           enabled: false
           statusCode: 200
         public: true
+  /systeminsights/shadow: {}
+  /systeminsights/shared_folders: {}
+  /systeminsights/shared_resources: {}
+  /systeminsights/sharing_preferences: {}
+  /systeminsights/sip_config: {}
   /systeminsights/system_controls:
     get:
       tags:
@@ -9938,142 +8183,9 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-  /systeminsights/usb_devices:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights USB Devices"
-      description: "Valid filter fields are `system_id` and `model`."
-      operationId: "systeminsights_list_usb_devices"
-      parameters:
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-usb-devices"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_usb_devices"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-  /systeminsights/user_groups:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights User Groups"
-      description: "Only valid filter field is `system_id`."
-      operationId: "systeminsights_list_user_groups"
-      parameters:
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-user-groups"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_user_groups"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
+  /systeminsights/usb_devices: {}
+  /systeminsights/user_groups: {}
+  /systeminsights/user_ssh_keys: {}
   /systeminsights/users:
     get:
       tags:
@@ -10142,1607 +8254,28 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-  /systeminsights/windows_crashes:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights Windows Crashes"
-      description: "Valid filter fields are `system_id` and `type`."
-      operationId: "systeminsights_list_windows_crashes"
-      parameters:
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-windows-crashes"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_windows_crashes"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-  /systeminsights/{system_id}/apps:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights System Apps"
-      description: "Valid filter fields are `bundle_name`."
-      operationId: "systeminsights_list_system_apps"
-      parameters:
-      - name: "system_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "SystemId"
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-apps"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_system_apps"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: true
-  /systeminsights/{system_id}/bitlocker_info:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights System Bitlocker Info"
-      description: "Valid filter fields are `protection_status`."
-      operationId: "systeminsights_list_system_bitlocker_info"
-      parameters:
-      - name: "system_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "SystemId"
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-bitlocker-info"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_system_bitlocker_info"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: true
-  /systeminsights/{system_id}/browser_plugins:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights System Browser Plugins"
-      description: "Valid filter fields are `name`."
-      operationId: "systeminsights_list_system_browser_plugins"
-      parameters:
-      - name: "system_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "SystemId"
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-browser-plugins"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_system_browser_plugins"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: true
-  /systeminsights/{system_id}/chrome_extensions:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights System Chrome Extensions"
-      description: "Valid filter fields are `name`."
-      operationId: "systeminsights_list_system_chrome_extensions"
-      parameters:
-      - name: "system_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "SystemId"
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-chrome-extensions"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_system_chrome_extensions"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: true
-  /systeminsights/{system_id}/disk_encryption:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights System Disk Encryption"
-      description: "Valid filter fields are `encryption_status`."
-      operationId: "systeminsights_list_system_disk_encryption"
-      parameters:
-      - name: "system_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "SystemId"
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-disk-encryption"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_system_disk_encryption"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: true
-  /systeminsights/{system_id}/disk_info:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights System Disk Info"
-      description: "Valid filter fields are `disk_index`."
-      operationId: "systeminsights_list_system_disk_info"
-      parameters:
-      - name: "system_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "SystemId"
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-bitlocker-info"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_system_disk_info"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: true
-  /systeminsights/{system_id}/etc_hosts:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights System Etc Hosts"
-      description: "Valid filter fields are `address`."
-      operationId: "systeminsights_list_system_etc_hosts"
-      parameters:
-      - name: "system_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "SystemId"
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-bitlocker-info"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_system_etc_hosts"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: true
-  /systeminsights/{system_id}/firefox_addons:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights System Firefox Addons"
-      description: "Valid filter fields are `name`."
-      operationId: "systeminsights_list_system_firefox_addons"
-      parameters:
-      - name: "system_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "SystemId"
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-firefox-addons"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_system_firefox_addons"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: true
-  /systeminsights/{system_id}/groups:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights System Groups"
-      description: "Valid filter fields are `groupname`."
-      operationId: "systeminsights_list_system_groups"
-      parameters:
-      - name: "system_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "SystemId"
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-groups"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_system_groups"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: true
-  /systeminsights/{system_id}/interface_addresses:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights System Interface Addresses"
-      description: "Valid filter fields are `address`."
-      operationId: "systeminsights_list_system_interface_addresses"
-      parameters:
-      - name: "system_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "SystemId"
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-interface-addresses"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_system_interface_addresses"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: true
-  /systeminsights/{system_id}/kernel_info:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights System Kernel Info"
-      description: "Valid filter fields are `version`."
-      operationId: "systeminsights_list_system_kernel_info"
-      parameters:
-      - name: "system_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "SystemId"
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-kernel-info"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_system_kernel_info"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: true
-  /systeminsights/{system_id}/logical_drives:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights System Logical Drives"
-      description: "Valid filter fields are `device_id`."
-      operationId: "systeminsights_list_system_logical_drives"
-      parameters:
-      - name: "system_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "SystemId"
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-logical-drvies"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_system_logical_drives"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: true
-  /systeminsights/{system_id}/mounts:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights System Mounts"
-      description: "Valid filter fields are `path`."
-      operationId: "systeminsights_list_system_mounts"
-      parameters:
-      - name: "system_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "SystemId"
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-mounts"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_system_mounts"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: true
-  /systeminsights/{system_id}/os_version:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights System OS Version"
-      description: "Valid filter fields are `version`."
-      operationId: "systeminsights_list_system_os_version"
-      parameters:
-      - name: "system_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "SystemId"
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-os-version"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_system_os_version"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: true
-  /systeminsights/{system_id}/patches:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights System Patches"
-      description: "Valid filter fields are `hotfix_id  `."
-      operationId: "systeminsights_list_system_patches"
-      parameters:
-      - name: "system_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "SystemId"
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-patches"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_system_patches"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: true
-  /systeminsights/{system_id}/programs:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights System Programs"
-      description: "Valid filter fields are `name`."
-      operationId: "systeminsights_list_system_programs"
-      parameters:
-      - name: "system_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "SystemId"
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-programs"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_system_programs"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: true
-  /systeminsights/{system_id}/safari_extensions:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights System Safari Extensions"
-      description: "Valid filter fields are `name`."
-      operationId: "systeminsights_list_system_safari_extensions"
-      parameters:
-      - name: "system_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "SystemId"
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-safari-extensions"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_system_safari_extensions"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: true
-  /systeminsights/{system_id}/system_controls:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights System System Controls"
-      description: "Valid filter fields are `name`."
-      operationId: "systeminsights_list_system_system_controls"
-      parameters:
-      - name: "system_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "SystemId"
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-system-controls"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_system_system_controls"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: true
-  /systeminsights/{system_id}/system_info:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights System System Info"
-      description: "Valid filter fields are `cpu_subtype`."
-      operationId: "systeminsights_list_system_system_info"
-      parameters:
-      - name: "system_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "SystemId"
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-system-info"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_system_system_info"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: true
-  /systeminsights/{system_id}/uptime:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights System Uptime"
-      description: "Valid filter fields are `days`."
-      operationId: "systeminsights_list_system_uptime"
-      parameters:
-      - name: "system_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "SystemId"
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-uptime"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_system_uptime"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: true
-  /systeminsights/{system_id}/users:
-    get:
-      tags:
-      - "System Insights"
-      summary: "List System Insights System Users"
-      description: "Valid filter fields are `username`."
-      operationId: "systeminsights_list_system_users"
-      parameters:
-      - name: "system_id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "SystemId"
-      - name: "limit"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 10
-        maximum: 100
-        minimum: 0
-        x-exportParamName: "Limit"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/system-insights-users"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "systeminsights_list_system_users"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: true
+  /systeminsights/windows_crashes: {}
+  /systeminsights/{system_id}/apps: {}
+  /systeminsights/{system_id}/bitlocker_info: {}
+  /systeminsights/{system_id}/browser_plugins: {}
+  /systeminsights/{system_id}/chrome_extensions: {}
+  /systeminsights/{system_id}/disk_encryption: {}
+  /systeminsights/{system_id}/disk_info: {}
+  /systeminsights/{system_id}/etc_hosts: {}
+  /systeminsights/{system_id}/firefox_addons: {}
+  /systeminsights/{system_id}/groups: {}
+  /systeminsights/{system_id}/interface_addresses: {}
+  /systeminsights/{system_id}/kernel_info: {}
+  /systeminsights/{system_id}/logical_drives: {}
+  /systeminsights/{system_id}/mounts: {}
+  /systeminsights/{system_id}/os_version: {}
+  /systeminsights/{system_id}/patches: {}
+  /systeminsights/{system_id}/programs: {}
+  /systeminsights/{system_id}/safari_extensions: {}
+  /systeminsights/{system_id}/system_controls: {}
+  /systeminsights/{system_id}/system_info: {}
+  /systeminsights/{system_id}/uptime: {}
+  /systeminsights/{system_id}/users: {}
   /systems/{system_id}/associations:
     get:
       tags:
@@ -11917,7 +8450,6 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-    x-swagger-jumpcloud-auto-insert: true
   /systems/{system_id}/commands:
     get:
       tags:
@@ -12687,92 +9219,7 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-  /usergroups/{group_id}/activedirectories:
-    get:
-      tags:
-      - "Graph"
-      - "User Groups"
-      - "User Group Associations"
-      summary: "List the Active Directories bound to a User Group"
-      description: "This endpoint will return all Active Directory Instances bound\
-        \ to a User Group, either directly or indirectly, essentially traversing the\
-        \ JumpCloud Graph for your Organization.\n\nThe `attributes` object is a key/value\
-        \ hash of compiled graph attributes for all paths followed.\n\nThe `paths`\
-        \ array enumerates each path from this User Group to the corresponding Active\
-        \ Directory; this array represents all grouping and/or associations that would\
-        \ have to be removed to deprovision the Active Directory from this User Group.\n\
-        \nSee `/members` and `/associations` endpoints to manage those collections.\n\
-        \n#### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/usergroups/{GroupID}/activedirectories\
-        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
-      operationId: "graph_userGroupTraverseActiveDirectory"
-      parameters:
-      - name: "group_id"
-        in: "path"
-        description: "ObjectID of the User Group."
-        required: true
-        type: "string"
-        x-exportParamName: "GroupId"
-      - name: "limit"
-        in: "query"
-        description: "The number of records to return at once. Limited to 100."
-        required: false
-        type: "integer"
-        default: 10
-        x-exportParamName: "Limit"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
-          \ in"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/GraphObjectWithPaths"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "graph_userGroupTraverseActiveDirectory"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
+  /usergroups/{group_id}/activedirectories: {}
   /usergroups/{group_id}/applications:
     get:
       tags:
@@ -13010,7 +9457,6 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-    x-swagger-jumpcloud-auto-insert: true
   /usergroups/{group_id}/directories:
     get:
       tags:
@@ -13272,93 +9718,7 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-  /usergroups/{group_id}/memberof:
-    get:
-      tags:
-      - "Graph"
-      - "User Groups"
-      - "User Group Members & Membership"
-      summary: "List the User Group's parents"
-      description: "This endpoint returns all User Groups a User Group is a member\
-        \ of.\n\n#### Sample Request\n```\nhttps://console.jumpcloud.com/api/v2/usergroups/{group_id}/memberof\n\
-        ```\n\nNot public yet, as the code is not finished,"
-      operationId: "graph_userGroupMemberOf"
-      parameters:
-      - name: "group_id"
-        in: "path"
-        description: "ObjectID of the User Group."
-        required: true
-        type: "string"
-        x-exportParamName: "GroupId"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
-          \ in"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "limit"
-        in: "query"
-        description: "The number of records to return at once. Limited to 100."
-        required: false
-        type: "integer"
-        default: 10
-        x-exportParamName: "Limit"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      - name: "sort"
-        in: "query"
-        description: "The comma separated fields used to sort the collection.\nDefault\
-          \ sort is ascending, prefix with `-` to sort descending.\n"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Sort"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      responses:
-        200:
-          description: "OK"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/GraphObjectWithPaths"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "graph_userGroupMemberOf"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
+  /usergroups/{group_id}/memberof: {}
   /usergroups/{group_id}/members:
     get:
       tags:
@@ -13486,7 +9846,6 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-    x-swagger-jumpcloud-auto-insert: true
   /usergroups/{group_id}/membership:
     get:
       tags:
@@ -14078,147 +10437,7 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-    patch:
-      tags:
-      - "User Groups"
-      summary: "Partial update a User Group"
-      description: "We have hidden PATCH on the systemgroups and usergroups for now;\
-        \ we don't have that implemented correctly yet, people should use PUT until\
-        \ we do a true PATCH operation.\n\n#### Sample Request\n```\nhttps://console.jumpcloud.com/api/v2/usergroups/{id}\n\
-        ```"
-      operationId: "groups_user_patch"
-      parameters:
-      - name: "id"
-        in: "path"
-        description: "ObjectID of the User Group."
-        required: true
-        type: "string"
-        x-exportParamName: "Id"
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/UserGroupPost"
-        x-exportParamName: "Body"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      responses:
-        200:
-          description: "OK"
-          schema:
-            $ref: "#/definitions/UserGroup"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "groups_user_patch"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
-  /users/{user_id}/activedirectories:
-    get:
-      tags:
-      - "Graph"
-      summary: "List the Active Directory instances bound to a User"
-      description: "This endpoint will return all Active Directory Instances bound\
-        \ to a User, either directly or indirectly, essentially traversing the JumpCloud\
-        \ Graph for your Organization.\n\nEach element will contain the type, id,\
-        \ attributes and paths.\n\nThe `attributes` object is a key/value hash of\
-        \ compiled graph attributes for all paths followed.\n\nThe `paths` array enumerates\
-        \ each path from this User to the corresponding Active Directory instance;\
-        \ this array represents all grouping and/or associations that would have to\
-        \ be removed to deprovision the Active Directory instance from this User.\n\
-        \nSee `/members` and `/associations` endpoints to manage those collections.\n\
-        \n#### Sample Request\n```\ncurl -X GET https://console.jumpcloud.com/api/v2/users/{UserID}/activedirectories\
-        \ \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'\
-        \ \\\n  -H 'x-api-key: {API_KEY}'\n```"
-      operationId: "graph_userTraverseActiveDirectory"
-      parameters:
-      - name: "user_id"
-        in: "path"
-        description: "ObjectID of the User."
-        required: true
-        type: "string"
-        x-exportParamName: "UserId"
-      - name: "filter"
-        in: "query"
-        description: "Supported operators are: eq, ne, gt, ge, lt, le, between, search,\
-          \ in"
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        x-exportParamName: "Filter"
-      - name: "limit"
-        in: "query"
-        description: "The number of records to return at once. Limited to 100."
-        required: false
-        type: "integer"
-        default: 10
-        x-exportParamName: "Limit"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "skip"
-        in: "query"
-        description: "The offset into the records to return."
-        required: false
-        type: "integer"
-        default: 0
-        minimum: 0
-        x-exportParamName: "Skip"
-      responses:
-        200:
-          description: ""
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/GraphObjectWithPaths"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "graph_userTraverseActiveDirectory"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
+  /users/{user_id}/activedirectories: {}
   /users/{user_id}/applications:
     get:
       tags:
@@ -14454,7 +10673,6 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-    x-swagger-jumpcloud-auto-insert: true
   /users/{user_id}/directories:
     get:
       tags:
@@ -14540,59 +10758,7 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-  /users/{user_id}/emails:
-    post:
-      tags:
-      - "Users"
-      summary: "Send User Emails"
-      description: "This endpoint allows you to send a specific email to a user without\
-        \ waiting for or triggering a workflow."
-      operationId: "users_sendEmails"
-      parameters:
-      - name: "user_id"
-        in: "path"
-        description: "ObjectID of the User."
-        required: true
-        type: "string"
-        x-exportParamName: "UserId"
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/emailrequest"
-        x-exportParamName: "Body"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      responses:
-        204:
-          description: "OK"
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "users_sendEmails"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
+  /users/{user_id}/emails: {}
   /users/{user_id}/gsuites:
     get:
       tags:
@@ -15343,53 +11509,7 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-  /workdays/settings:
-    get:
-      tags:
-      - "Workday Import"
-      summary: "Get Workday Settings (incomplete)"
-      description: "This endpoint allows you to obtain all settings needed for creating\
-        \ a workday instance, specifically the URL to initiate Basic Authentication\
-        \ with WorkDay.\n\n**This functionality is currently not enable for users.**"
-      operationId: "workdays_settings"
-      parameters:
-      - name: "state"
-        in: "query"
-        required: false
-        type: "string"
-        x-exportParamName: "State"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      responses:
-        200:
-          description: ""
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "workdays_settings"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
+  /workdays/settings: {}
   /workdays/{id}:
     get:
       tags:
@@ -15498,54 +11618,6 @@ paths:
           enabled: false
           statusCode: 200
         public: true
-    delete:
-      tags:
-      - "Workday Import"
-      summary: "Delete Workday"
-      description: "This endpoint allows you to delete an instance of Workday.\n\n\
-        **This functionality is currently not enable for users.**"
-      operationId: "workdays_delete"
-      parameters:
-      - name: "id"
-        in: "path"
-        required: true
-        type: "string"
-        x-exportParamName: "Id"
-      - name: "Content-Type"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "ContentType"
-      - name: "Accept"
-        in: "header"
-        required: true
-        type: "string"
-        default: "application/json"
-        x-exportParamName: "Accept"
-      - name: "x-org-id"
-        in: "header"
-        description: ""
-        required: false
-        type: "string"
-        x-exportParamName: "XOrgId"
-      responses:
-        204:
-          description: ""
-          schema:
-            type: "object"
-            properties: {}
-      security:
-      - x-api-key: []
-      x-stoplight:
-        afterScript: null
-        beforeScript: null
-        id: "workdays_delete"
-        mock:
-          dynamic: false
-          enabled: false
-          statusCode: 200
-        public: false
   /workdays/{id}/import/{job_id}/results:
     get:
       tags:
@@ -15927,10 +11999,6 @@ definitions:
           \ be unique."
         maxLength: 255
     title: "AppleMDM"
-    example:
-      apnsPushTopic: "apnsPushTopic"
-      name: "name"
-      id: "id"
     x-stoplight:
       id: "AppleMDM"
       name: "AppleMDM"
@@ -16039,6 +12107,10 @@ definitions:
       public: true
   DuoApplicationUpdateReq:
     type: "object"
+    required:
+    - "apiHost"
+    - "integrationKey"
+    - "name"
     properties:
       apiHost:
         type: "string"
@@ -16376,18 +12448,19 @@ definitions:
       \ - Translate `locality` field of JumpCloud user address of type `work` to `city`\
       \ field of Microsoft Graph user\n* `user_state` - Translate `region` field of\
       \ JumpCloud user address of type `work` to `state` field of Microsoft Graph\
-      \ `user`\n* `user_country` - Translate `country` field of JumpCloud user address\
-      \ of type `work` to `country` field of Microsoft Graph `user`\n* `user_postal_code`\
+      \ `user` \n* `user_country` - Translate `country` field of JumpCloud user address\
+      \ of type `work` to `country` field of Microsoft Graph `user` \n* `user_postal_code`\
       \ - Translate `postalCode` field of JumpCloud user address of type `work` to\
-      \ `postalCode` field of Microsoft Graph `user`\n* `user_business_phones` - Translate\
-      \ `number` field of first JumpCloud user `phoneNumber` of type `work` to `businessPhones`\
-      \ field of Microsoft Graph `user`\n* `user_mobile_phone` - Translate `number`\
-      \ field of first JumpCloud user `phoneNumber` of type `mobile` to `mobilePhone`\
-      \ field of Microsoft Graph `user`\n* `user_department` - Translate `department`\
-      \ field of JumpCloud user to `department` field of Microsoft Graph `user`\n\
-      * `user_job_title` - Translate `jobTitle` field of JumpCloud user to `jobTitle`\
-      \ field of Microsoft Graph `user`\n* `user_office_location` - Translate `location`\
-      \ field of JumpCloud user to `officeLocation` field of Microsoft Graph `user`"
+      \ `postalCode` field of Microsoft Graph `user` \n* `user_business_phones` -\
+      \ Translate `number` field of first JumpCloud user `phoneNumber` of type `work`\
+      \ to `businessPhones` field of Microsoft Graph `user` \n* `user_mobile_phone`\
+      \ - Translate `number` field of first JumpCloud user `phoneNumber` of type `mobile`\
+      \ to `mobilePhone` field of Microsoft Graph `user` \n* `user_department` - Translate\
+      \ `department` field of JumpCloud user to `department` field of Microsoft Graph\
+      \ `user` \n* `user_job_title` - Translate `jobTitle` field of JumpCloud user\
+      \ to `jobTitle` field of Microsoft Graph `user` \n* `user_office_location` -\
+      \ Translate `location` field of JumpCloud user to `officeLocation` field of\
+      \ Microsoft Graph `user` "
     enum:
     - "user_street_address"
     - "user_city"
@@ -17216,9 +13289,6 @@ definitions:
         type: "string"
         description: "ObjectID of this Active Directory Agent."
     title: "Active Directory Agent Get Output"
-    example:
-      connectKey: "connectKey"
-      id: "id"
     x-stoplight:
       id: "active-directory-agent-get-output"
       name: "Active Directory Agent Get Output"
@@ -17243,9 +13313,6 @@ definitions:
         - "active"
         - "inactive"
     title: "Active Directory Agent List Output"
-    example:
-      id: "id"
-      state: "unsealed"
     x-stoplight:
       id: "active-directory-agent-list-output"
       name: "Active Directory Agent List Output"
@@ -17435,6 +13502,7 @@ definitions:
           enum:
           - "suspend"
           - "maintain"
+          - "remove_access"
     x-stoplight:
       id: "gsuite-output"
       name: "GSuite Output"
@@ -17452,42 +13520,11 @@ definitions:
         enum:
         - "suspend"
         - "maintain"
+        - "remove_access"
     title: "GSuite Patch Input"
     x-stoplight:
       id: "gsuite-patch-input"
       name: "GSuite Patch Input"
-      public: true
-  jc-enrollment-profile:
-    type: "object"
-    properties:
-      groups:
-        type: "array"
-        items:
-          type: "string"
-      id:
-        type: "string"
-      name:
-        type: "string"
-      organization:
-        type: "string"
-      users:
-        type: "array"
-        items:
-          type: "string"
-    title: "Enrollment Profile"
-    example:
-      organization: "organization"
-      name: "name"
-      groups:
-      - "groups"
-      - "groups"
-      id: "id"
-      users:
-      - "users"
-      - "users"
-    x-stoplight:
-      id: "jc-enrollment-profile"
-      name: "Enrollment Profile"
       public: true
   job-details:
     type: "object"
@@ -17512,17 +13549,6 @@ definitions:
       workUnitsCount:
         type: "integer"
     title: "Job Details"
-    example:
-      workUnitsCount: 0
-      meta: "{}"
-      adminId: "adminId"
-      name: "name"
-      id: "id"
-      persistedFields:
-      - "persistedFields"
-      - "persistedFields"
-      status: "status"
-      updatedAt: "updatedAt"
     x-stoplight:
       id: "job-details"
       name: "Job Details"
@@ -17622,17 +13648,58 @@ definitions:
       id: "oauth-code-input"
       name: "OAuth Code Input"
       public: true
+  office365-output:
+    type: "object"
+    required:
+    - "id"
+    - "userLockoutAction"
+    - "userPasswordExpirationAction"
+    properties:
+      id:
+        type: "string"
+      userLockoutAction:
+        type: "string"
+        enum:
+        - "suspend"
+        - "maintain"
+      userPasswordExpirationAction:
+        type: "string"
+        enum:
+        - "suspend"
+        - "maintain"
+    title: "Office 365 Output"
+    example:
+      userLockoutAction: "suspend"
+      userPasswordExpirationAction: "suspend"
+      id: "id"
+    x-stoplight:
+      id: "office365-output"
+      name: "Office 365 Output"
+      public: true
+  office365-patch-input:
+    type: "object"
+    properties:
+      userLockoutAction:
+        type: "string"
+        enum:
+        - "suspend"
+        - "maintain"
+      userPasswordExpirationAction:
+        type: "string"
+        enum:
+        - "suspend"
+        - "maintain"
+    title: "Office 365 Patch Input"
+    x-stoplight:
+      id: "office365-patch-input"
+      name: "Office 365 Patch Input"
+      public: true
   org-crypto-settings:
     type: "object"
     properties:
       sshKeys:
         $ref: "#/definitions/orgcryptosettings_sshKeys"
     title: "Org Crypto Settings"
-    example:
-      sshKeys:
-        keySize: 0
-        validateKeySize: true
-        validate: true
     x-stoplight:
       id: "org-crypto-settings"
       name: "Org Crypto Settings"
@@ -17697,6 +13764,32 @@ definitions:
     x-stoplight:
       id: "sshkeylist"
       name: "SSHKeyList"
+      public: true
+  system-insights-alf:
+    type: "object"
+    properties:
+      "allow_signed_enabled\t":
+        type: "integer"
+      collection_time:
+        type: "string"
+      firewall_unload:
+        type: "integer"
+      global_state:
+        type: "integer"
+      logging_enabled:
+        type: "integer"
+      logging_option:
+        type: "integer"
+      stealth_enabled:
+        type: "integer"
+      system_id:
+        type: "string"
+      version:
+        type: "string"
+    title: "System Insights ALF"
+    x-stoplight:
+      id: "system-insights-alf"
+      name: "System Insights ALF"
       public: true
   system-insights-apps:
     type: "object"
@@ -17972,6 +14065,8 @@ definitions:
   system-insights-crashes:
     type: "object"
     properties:
+      collection_time:
+        type: "string"
       crash_path:
         type: "string"
       crashed_thread:
@@ -17998,6 +14093,8 @@ definitions:
         type: "string"
       stack_trace:
         type: "string"
+      system_id:
+        type: "string"
       type:
         type: "string"
       uid:
@@ -18005,23 +14102,6 @@ definitions:
       version:
         type: "string"
     title: "System Insights Crashes"
-    example:
-      identifier: "identifier"
-      parent: "parent"
-      crashed_thread: "crashed_thread"
-      pid: "pid"
-      type: "type"
-      version: "version"
-      exception_notes: "exception_notes"
-      path: "path"
-      uid: 0
-      datetime: "datetime"
-      exception_codes: "exception_codes"
-      responsible: "responsible"
-      crash_path: "crash_path"
-      exception_type: "exception_type"
-      registers: "registers"
-      stack_trace: "stack_trace"
     x-stoplight:
       id: "system-insights-crashes"
       name: "System Insights Crashes"
@@ -18234,13 +14314,6 @@ definitions:
       version:
         type: "string"
     title: "System Insights IE Extensions"
-    example:
-      path: "path"
-      system_id: "system_id"
-      name: "name"
-      collection_time: "collection_time"
-      version: "version"
-      registry_path: "registry_path"
     x-stoplight:
       id: "system-insights-ie-extensions"
       name: "System Insights IE Extensions"
@@ -18358,30 +14431,6 @@ definitions:
       working_directory:
         type: "string"
     title: "System Insights LaunchD"
-    example:
-      program_arguments: "program_arguments"
-      start_on_mount: "start_on_mount"
-      stdout_path: "stdout_path"
-      run_at_load: "run_at_load"
-      system_id: "system_id"
-      watch_paths: "watch_paths"
-      working_directory: "working_directory"
-      label: "label"
-      program: "program"
-      root_directory: "root_directory"
-      groupname: "groupname"
-      on_demand: "on_demand"
-      path: "path"
-      stderr_path: "stderr_path"
-      start_interval: "start_interval"
-      name: "name"
-      disabled: "disabled"
-      process_type: "process_type"
-      collection_time: "collection_time"
-      keep_alive: "keep_alive"
-      inetd_compatibility: "inetd_compatibility"
-      queue_directories: "queue_directories"
-      username: "username"
     x-stoplight:
       id: "system-insights-launchd"
       name: "System Insights LaunchD"
@@ -18406,15 +14455,6 @@ definitions:
       user:
         type: "string"
     title: "System Insights Logged-In Users"
-    example:
-      system_id: "system_id"
-      host: "host"
-      tty: "tty"
-      pid: 0
-      collection_time: "collection_time"
-      time: 6
-      type: "type"
-      user: "user"
     x-stoplight:
       id: "system-insights-logged-in-users"
       name: "System Insights Logged-In Users"
@@ -18451,6 +14491,30 @@ definitions:
     x-stoplight:
       id: "system-insights-logical-drvies"
       name: "System Insights Logical Drvies"
+      public: true
+  system-insights-managed-policies:
+    type: "object"
+    properties:
+      collection_time:
+        type: "string"
+      domain:
+        type: "string"
+      manual:
+        type: "integer"
+      name:
+        type: "string"
+      system_id:
+        type: "string"
+      username:
+        type: "string"
+      uuid:
+        type: "string"
+      value:
+        type: "string"
+    title: "System Insights Managed Policies"
+    x-stoplight:
+      id: "system-insights-managed-policies"
+      name: "System Insights Managed Policies"
       public: true
   system-insights-mounts:
     type: "object"
@@ -18673,6 +14737,132 @@ definitions:
       id: "system-insights-safari-extensions"
       name: "System Insights Safari Extensions"
       public: true
+  system-insights-shadow:
+    type: "object"
+    properties:
+      collection_time:
+        type: "string"
+      expire:
+        type: "string"
+      flag:
+        type: "string"
+      hash_alg:
+        type: "string"
+      inactive:
+        type: "string"
+      last_change:
+        type: "string"
+      max:
+        type: "string"
+      "min\t":
+        type: "string"
+      password_status:
+        type: "string"
+      system_id:
+        type: "string"
+      username:
+        type: "string"
+      warning:
+        type: "string"
+    title: "System Insights Shadow"
+    x-stoplight:
+      id: "system-insights-shadow"
+      name: "System Insights Shadow"
+      public: true
+  system-insights-shared-folders:
+    type: "object"
+    properties:
+      collection_time:
+        type: "string"
+      name:
+        type: "string"
+      path:
+        type: "string"
+      system_id:
+        type: "string"
+    title: "System Insights Shared Folders"
+    x-stoplight:
+      id: "system-insights-shared-folders"
+      name: "System Insights Shared Folders"
+      public: true
+  system-insights-shared-resources:
+    type: "object"
+    properties:
+      allow_maximum:
+        type: "integer"
+      collection_time:
+        type: "string"
+      description:
+        type: "string"
+      install_date:
+        type: "string"
+      maximum_allowed:
+        type: "integer"
+      name:
+        type: "string"
+      path:
+        type: "string"
+      status:
+        type: "string"
+      system_id:
+        type: "string"
+      type:
+        type: "integer"
+    title: "System Insights Shared Resources"
+    x-stoplight:
+      id: "system-insights-shared-resources"
+      name: "System Insights Shared Resources"
+      public: true
+  system-insights-sharing-preferences:
+    type: "object"
+    properties:
+      bluetooth_sharing:
+        type: "integer"
+      collection_time:
+        type: "string"
+      content_caching:
+        type: "integer"
+      disc_sharing:
+        type: "integer"
+      file_sharing:
+        type: "integer"
+      internet_sharing:
+        type: "integer"
+      printer_sharing:
+        type: "integer"
+      remote_apple_events:
+        type: "integer"
+      remote_login:
+        type: "integer"
+      remote_management:
+        type: "integer"
+      screen_sharing:
+        type: "integer"
+      system_id:
+        type: "string"
+    title: "System Insights Sharing Preferences"
+    x-stoplight:
+      id: "system-insights-sharing-preferences"
+      name: "System Insights Sharing Preferences"
+      public: true
+  system-insights-sip-config:
+    type: "object"
+    properties:
+      collection_time:
+        type: "string"
+      config_flag:
+        type: "string"
+      enabled:
+        type: "integer"
+      enabled_nvram:
+        type: "integer"
+      system_id:
+        type: "string"
+    title: "System Insights SIP Config"
+    x-stoplight:
+      id: "system-insights-sip-config"
+      name: "System Insights SIP Config"
+      public: true
   system-insights-system-controls:
     type: "object"
     properties:
@@ -18831,21 +15021,6 @@ definitions:
       version:
         type: "string"
     title: "System Insights USB Devices"
-    example:
-      usb_address: 6
-      system_id: "system_id"
-      model_id: "model_id"
-      version: "version"
-      protocol: "protocol"
-      serial: "serial"
-      removable: 0
-      vendor: "vendor"
-      vendor_id: "vendor_id"
-      subclass: "subclass"
-      model: "model"
-      collection_time: "collection_time"
-      usb_port: 1
-      class: "class"
     x-stoplight:
       id: "system-insights-usb-devices"
       name: "System Insights USB Devices"
@@ -18862,14 +15037,27 @@ definitions:
       uid:
         type: "string"
     title: "System Insights User Groups"
-    example:
-      uid: "uid"
-      gid: "gid"
-      system_id: "system_id"
-      collection_time: "collection_time"
     x-stoplight:
       id: "system-insights-user-groups"
       name: "System Insights User Groups"
+      public: true
+  system-insights-user-ssh-keys:
+    type: "object"
+    properties:
+      collection_time:
+        type: "string"
+      encrypted:
+        type: "integer"
+      path:
+        type: "string"
+      system_id:
+        type: "string"
+      uid:
+        type: "string"
+    title: "System Insights User SSH Keys"
+    x-stoplight:
+      id: "system-insights-user-ssh-keys"
+      name: "System Insights User SSH Keys"
       public: true
   system-insights-users:
     type: "object"
@@ -18921,6 +15109,8 @@ definitions:
     properties:
       build_number:
         type: "integer"
+      collection_time:
+        type: "string"
       command_line:
         type: "string"
       crash_path:
@@ -18953,6 +15143,8 @@ definitions:
         type: "string"
       stack_trace:
         type: "string"
+      system_id:
+        type: "string"
       tid:
         type: "string"
       type:
@@ -18962,28 +15154,6 @@ definitions:
       version:
         type: "string"
     title: "System Insights Windows Crashes"
-    example:
-      exception_address: "exception_address"
-      module: "module"
-      pid: "pid"
-      machine_name: "machine_name"
-      type: "type"
-      version: "version"
-      tid: "tid"
-      exception_message: "exception_message"
-      minor_version: 1
-      path: "path"
-      datetime: "datetime"
-      major_version: 6
-      exception_code: "exception_code"
-      process_uptime: "process_uptime"
-      crash_path: "crash_path"
-      build_number: 0
-      registers: "registers"
-      current_directory: "current_directory"
-      stack_trace: "stack_trace"
-      command_line: "command_line"
-      username: "username"
     x-stoplight:
       id: "system-insights-windows-crashes"
       name: "System Insights Windows Crashes"
@@ -19051,6 +15221,8 @@ definitions:
       enable_user_portal_multifactor:
         type: "boolean"
       external_dn:
+        type: "string"
+      external_password_expiration_date:
         type: "string"
       external_source_type:
         type: "string"
@@ -19162,6 +15334,8 @@ definitions:
         type: "boolean"
       external_dn:
         type: "string"
+      external_password_expiration_date:
+        type: "string"
       external_source_type:
         type: "string"
       externally_managed:
@@ -19220,6 +15394,17 @@ definitions:
       id: "systemuserputpost"
       name: "SystemUserPost"
       public: true
+  webauthnconfig:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        description: ""
+    title: "WebAuthnConfiguration"
+    x-stoplight:
+      id: "webauthnconfig"
+      name: "WebAuthnConfiguration"
+      public: true
   workday-fields:
     type: "object"
     properties:
@@ -19244,14 +15429,13 @@ definitions:
     title: "Workday Input"
     example:
       auth:
-        auth:
-          ?
-          : domain: "veniam"
-          credentials:
-            password: "cillum occaecat id eiusmod ullamco"
-            username: "mollit ex"
-      name: "in voluptate ullamco"
-      reportUrl: "eu est sint Lorem"
+        basic:
+          password: "in tempor ipsum quis"
+          username: "mollit ex"
+        oauth:
+          code: "non laborum dolore"
+      name: "dolore tempor"
+      reportUrl: "est sit laboris"
     x-stoplight:
       id: "workday-input"
       name: "Workday Input"
@@ -19320,51 +15504,6 @@ definitions:
       name: "Workday Worker"
       public: true
   body:
-    type: "object"
-    properties:
-      name:
-        type: "string"
-        description: "The name used to identify this AppleMDM."
-        maxLength: 255
-  inline_response_201:
-    properties:
-      appleMdm:
-        $ref: "#/definitions/AppleMDM"
-      signedCsrPlist:
-        type: "string"
-    example:
-      appleMdm:
-        apnsPushTopic: "apnsPushTopic"
-        name: "name"
-        id: "id"
-      signedCsrPlist: "signedCsrPlist"
-  body_1:
-    type: "object"
-    properties:
-      groups:
-        type: "array"
-        items:
-          type: "string"
-      name:
-        type: "string"
-      users:
-        type: "array"
-        items:
-          type: "string"
-  body_2:
-    type: "object"
-    properties:
-      groups:
-        type: "array"
-        items:
-          type: "string"
-      name:
-        type: "string"
-      users:
-        type: "array"
-        items:
-          type: "string"
-  body_3:
     type: "object"
     properties:
       id:
@@ -19479,10 +15618,6 @@ definitions:
         type: "boolean"
       validateKeySize:
         type: "boolean"
-    example:
-      keySize: 0
-      validateKeySize: true
-      validate: true
   salesforceknowledgelistoutput_inner:
     properties:
       id:
@@ -20018,6 +16153,8 @@ x-stoplight:
       - description: "You can associate your groups of users to Active Directory."
         divider: false
         items:
+        - _id: "graph_activeDirectoryTraverseUser"
+          type: "endpoints"
         - _id: "graph_activeDirectoryAssociationsPost"
           type: "endpoints"
         - _id: "activedirectories_post"
@@ -20047,6 +16184,8 @@ x-stoplight:
           \ for a full list of supported SSO apps."
         divider: false
         items:
+        - _id: "provision_post"
+          type: "endpoints"
         - _id: "oSvkKjXMXDRCDigPW"
           type: "endpoints"
         - _id: "graph_applicationAssociationsPost"
@@ -20219,7 +16358,7 @@ x-stoplight:
         name: "G Suite"
       - divider: false
         items:
-        - _id: "knowledge_salesforceList"
+        - _id: "knowledge_articlesList"
           type: "endpoints"
         name: "Knowledge"
       - description: "You can associate your groups of users to LDAP.   Please see\
@@ -20268,6 +16407,14 @@ x-stoplight:
         - _id: "translationRules_office365Get"
           type: "endpoints"
         - _id: "translationRules_office365Delete"
+          type: "endpoints"
+        - _id: "office365-output"
+          type: "schemas"
+        - _id: "office365-patch-input"
+          type: "schemas"
+        - _id: "office365s_get"
+          type: "endpoints"
+        - _id: "office365s_patch"
           type: "endpoints"
         name: "Office 365"
       - description: "Jumpcloud provides a library of policy templates for Windows,\
@@ -20410,8 +16557,8 @@ x-stoplight:
           \ to allow management of the group members. This includes listing, adding\
           \ and removing Directory Objects and Groups of Directory Objects to and\
           \ from the Group. These endpoints allow you to control the members and membership\
-          \ of System Objects.\n\nMembers are the direct objects of an object group.\n\
-          \nMembership is defined as the direct and indirect members of an object\
+          \ of System Objects.\n\nMembers are the direct objects of an object group.\
+          \ \n\nMembership is defined as the direct and indirect members of an object\
           \ group."
         divider: false
         items:
@@ -20609,6 +16756,38 @@ x-stoplight:
           type: "endpoints"
         - _id: "system-insights-windows-crashes"
           type: "schemas"
+        - _id: "systeminsights_list_alf"
+          type: "endpoints"
+        - _id: "system-insights-alf"
+          type: "schemas"
+        - _id: "systeminsights_list_managed_policies"
+          type: "endpoints"
+        - _id: "system-insights-managed-policies"
+          type: "schemas"
+        - _id: "systeminsights_list_shadow"
+          type: "endpoints"
+        - _id: "system-insights-shadow"
+          type: "schemas"
+        - _id: "systeminsights_list_shared_folders"
+          type: "endpoints"
+        - _id: "system-insights-shared-folders"
+          type: "schemas"
+        - _id: "systeminsights_list_shared_resources"
+          type: "endpoints"
+        - _id: "system-insights-shared-resources"
+          type: "schemas"
+        - _id: "systeminsights_list_sharing_preferences"
+          type: "endpoints"
+        - _id: "system-insights-sharing-preferences"
+          type: "schemas"
+        - _id: "systeminsights_list_sip_config"
+          type: "endpoints"
+        - _id: "system-insights-sip-config"
+          type: "schemas"
+        - _id: "systeminsights_list_user_ssh_keys"
+          type: "endpoints"
+        - _id: "system-insights-user-ssh-keys"
+          type: "schemas"
         name: "System Insights"
       - description: "You can associate your Users with groups of Users, Systems,\
           \ Applications, Radius Servers, Commands and Directories.\n\nTo obtain you\
@@ -20617,6 +16796,8 @@ x-stoplight:
           \ for more information on Groups and Systems."
         divider: false
         items:
+        - _id: "graph_userTraverseActiveDirectory"
+          type: "endpoints"
         - _id: "5aNya5RzjgJed6BmL"
           type: "endpoints"
         - _id: "XpjQonbguJ55dy4TQ"
@@ -20688,8 +16869,8 @@ x-stoplight:
           \ to allow management of the group members. This includes listing, adding\
           \ and removing Directory Objects and Groups of Directory Objects to and\
           \ from the Group. These endpoints allow you to control the members and membership\
-          \ of User Objects.\n\nMembers are the direct objects of an object group.\n\
-          \nMembership is defined as the direct and indirect members of an object\
+          \ of User Objects.\n\nMembers are the direct objects of an object group.\
+          \ \n\nMembership is defined as the direct and indirect members of an object\
           \ group."
         divider: false
         items:

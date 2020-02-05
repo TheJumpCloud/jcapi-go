@@ -17,6 +17,8 @@ type Application struct {
 
 	Config *ApplicationConfig `json:"config,omitempty"`
 
+	Created string `json:"created,omitempty"`
+
 	DisplayLabel string `json:"displayLabel,omitempty"`
 
 	DisplayName string `json:"displayName,omitempty"`

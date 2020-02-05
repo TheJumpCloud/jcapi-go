@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GraphUserGroupAssociationsList**](UserGroupAssociationsApi.md#GraphUserGroupAssociationsList) | **Get** /usergroups/{group_id}/associations | List the associations of a User Group.
 [**GraphUserGroupAssociationsPost**](UserGroupAssociationsApi.md#GraphUserGroupAssociationsPost) | **Post** /usergroups/{group_id}/associations | Manage the associations of a User Group
-[**GraphUserGroupTraverseActiveDirectory**](UserGroupAssociationsApi.md#GraphUserGroupTraverseActiveDirectory) | **Get** /usergroups/{group_id}/activedirectories | List the Active Directories bound to a User Group
 [**GraphUserGroupTraverseApplication**](UserGroupAssociationsApi.md#GraphUserGroupTraverseApplication) | **Get** /usergroups/{group_id}/applications | List the Applications bound to a User Group
 [**GraphUserGroupTraverseDirectory**](UserGroupAssociationsApi.md#GraphUserGroupTraverseDirectory) | **Get** /usergroups/{group_id}/directories | List the Directories bound to a User Group
 [**GraphUserGroupTraverseGSuite**](UserGroupAssociationsApi.md#GraphUserGroupTraverseGSuite) | **Get** /usergroups/{group_id}/gsuites | List the G Suite instances bound to a User Group
@@ -92,50 +91,6 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
-
-### Authorization
-
-[x-api-key](../README.md#x-api-key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **GraphUserGroupTraverseActiveDirectory**
-> []GraphObjectWithPaths GraphUserGroupTraverseActiveDirectory(ctx, groupId, contentType, accept, optional)
-List the Active Directories bound to a User Group
-
-This endpoint will return all Active Directory Instances bound to a User Group, either directly or indirectly, essentially traversing the JumpCloud Graph for your Organization.  The `attributes` object is a key/value hash of compiled graph attributes for all paths followed.  The `paths` array enumerates each path from this User Group to the corresponding Active Directory; this array represents all grouping and/or associations that would have to be removed to deprovision the Active Directory from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` curl -X GET https://console.jumpcloud.com/api/v2/usergroups/{GroupID}/activedirectories \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}' ```
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **groupId** | **string**| ObjectID of the User Group. | 
-  **contentType** | **string**|  | [default to application/json]
-  **accept** | **string**|  | [default to application/json]
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **groupId** | **string**| ObjectID of the User Group. | 
- **contentType** | **string**|  | [default to application/json]
- **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
- **xOrgId** | **string**|  | [default to ]
- **skip** | **int32**| The offset into the records to return. | [default to 0]
- **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
-
-### Return type
-
-[**[]GraphObjectWithPaths**](GraphObjectWithPaths.md)
 
 ### Authorization
 

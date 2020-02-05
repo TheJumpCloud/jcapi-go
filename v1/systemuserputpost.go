@@ -9,6 +9,10 @@
 
 package v1
 
+import (
+	"time"
+)
+
 type Systemuserputpost struct {
 
 	AccountLocked bool `json:"account_locked,omitempty"`
@@ -43,6 +47,8 @@ type Systemuserputpost struct {
 	EnableUserPortalMultifactor bool `json:"enable_user_portal_multifactor,omitempty"`
 
 	ExternalDn string `json:"external_dn,omitempty"`
+
+	ExternalPasswordExpirationDate time.Time `json:"external_password_expiration_date,omitempty"`
 
 	ExternalSourceType string `json:"external_source_type,omitempty"`
 

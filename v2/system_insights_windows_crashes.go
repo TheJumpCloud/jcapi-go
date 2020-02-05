@@ -13,6 +13,8 @@ type SystemInsightsWindowsCrashes struct {
 
 	BuildNumber int32 `json:"build_number,omitempty"`
 
+	CollectionTime string `json:"collection_time,omitempty"`
+
 	CommandLine string `json:"command_line,omitempty"`
 
 	CrashPath string `json:"crash_path,omitempty"`
@@ -44,6 +46,8 @@ type SystemInsightsWindowsCrashes struct {
 	Registers string `json:"registers,omitempty"`
 
 	StackTrace string `json:"stack_trace,omitempty"`
+
+	SystemId string `json:"system_id,omitempty"`
 
 	Tid string `json:"tid,omitempty"`
 

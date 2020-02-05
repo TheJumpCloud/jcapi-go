@@ -6,11 +6,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GraphUserGroupAssociationsList**](UserGroupsApi.md#GraphUserGroupAssociationsList) | **Get** /usergroups/{group_id}/associations | List the associations of a User Group.
 [**GraphUserGroupAssociationsPost**](UserGroupsApi.md#GraphUserGroupAssociationsPost) | **Post** /usergroups/{group_id}/associations | Manage the associations of a User Group
-[**GraphUserGroupMemberOf**](UserGroupsApi.md#GraphUserGroupMemberOf) | **Get** /usergroups/{group_id}/memberof | List the User Group&#39;s parents
 [**GraphUserGroupMembersList**](UserGroupsApi.md#GraphUserGroupMembersList) | **Get** /usergroups/{group_id}/members | List the members of a User Group
 [**GraphUserGroupMembersPost**](UserGroupsApi.md#GraphUserGroupMembersPost) | **Post** /usergroups/{group_id}/members | Manage the members of a User Group
 [**GraphUserGroupMembership**](UserGroupsApi.md#GraphUserGroupMembership) | **Get** /usergroups/{group_id}/membership | List the User Group&#39;s membership
-[**GraphUserGroupTraverseActiveDirectory**](UserGroupsApi.md#GraphUserGroupTraverseActiveDirectory) | **Get** /usergroups/{group_id}/activedirectories | List the Active Directories bound to a User Group
 [**GraphUserGroupTraverseApplication**](UserGroupsApi.md#GraphUserGroupTraverseApplication) | **Get** /usergroups/{group_id}/applications | List the Applications bound to a User Group
 [**GraphUserGroupTraverseDirectory**](UserGroupsApi.md#GraphUserGroupTraverseDirectory) | **Get** /usergroups/{group_id}/directories | List the Directories bound to a User Group
 [**GraphUserGroupTraverseGSuite**](UserGroupsApi.md#GraphUserGroupTraverseGSuite) | **Get** /usergroups/{group_id}/gsuites | List the G Suite instances bound to a User Group
@@ -22,7 +20,6 @@ Method | HTTP request | Description
 [**GroupsUserDelete**](UserGroupsApi.md#GroupsUserDelete) | **Delete** /usergroups/{id} | Delete a User Group
 [**GroupsUserGet**](UserGroupsApi.md#GroupsUserGet) | **Get** /usergroups/{id} | View an individual User Group details
 [**GroupsUserList**](UserGroupsApi.md#GroupsUserList) | **Get** /usergroups | List all User Groups
-[**GroupsUserPatch**](UserGroupsApi.md#GroupsUserPatch) | **Patch** /usergroups/{id} | Partial update a User Group
 [**GroupsUserPost**](UserGroupsApi.md#GroupsUserPost) | **Post** /usergroups | Create a new User Group
 [**GroupsUserPut**](UserGroupsApi.md#GroupsUserPut) | **Put** /usergroups/{id} | Update a User Group
 
@@ -102,51 +99,6 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
-
-### Authorization
-
-[x-api-key](../README.md#x-api-key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **GraphUserGroupMemberOf**
-> []GraphObjectWithPaths GraphUserGroupMemberOf(ctx, groupId, contentType, accept, optional)
-List the User Group's parents
-
-This endpoint returns all User Groups a User Group is a member of.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/{group_id}/memberof ```  Not public yet, as the code is not finished,
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **groupId** | **string**| ObjectID of the User Group. | 
-  **contentType** | **string**|  | [default to application/json]
-  **accept** | **string**|  | [default to application/json]
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **groupId** | **string**| ObjectID of the User Group. | 
- **contentType** | **string**|  | [default to application/json]
- **accept** | **string**|  | [default to application/json]
- **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
- **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
- **skip** | **int32**| The offset into the records to return. | [default to 0]
- **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
- **xOrgId** | **string**|  | [default to ]
-
-### Return type
-
-[**[]GraphObjectWithPaths**](GraphObjectWithPaths.md)
 
 ### Authorization
 
@@ -273,50 +225,6 @@ Name | Type | Description  | Notes
  **skip** | **int32**| The offset into the records to return. | [default to 0]
  **sort** | [**[]string**](string.md)| The comma separated fields used to sort the collection. Default sort is ascending, prefix with &#x60;-&#x60; to sort descending.  | 
  **xOrgId** | **string**|  | [default to ]
-
-### Return type
-
-[**[]GraphObjectWithPaths**](GraphObjectWithPaths.md)
-
-### Authorization
-
-[x-api-key](../README.md#x-api-key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **GraphUserGroupTraverseActiveDirectory**
-> []GraphObjectWithPaths GraphUserGroupTraverseActiveDirectory(ctx, groupId, contentType, accept, optional)
-List the Active Directories bound to a User Group
-
-This endpoint will return all Active Directory Instances bound to a User Group, either directly or indirectly, essentially traversing the JumpCloud Graph for your Organization.  The `attributes` object is a key/value hash of compiled graph attributes for all paths followed.  The `paths` array enumerates each path from this User Group to the corresponding Active Directory; this array represents all grouping and/or associations that would have to be removed to deprovision the Active Directory from this User Group.  See `/members` and `/associations` endpoints to manage those collections.  #### Sample Request ``` curl -X GET https://console.jumpcloud.com/api/v2/usergroups/{GroupID}/activedirectories \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}' ```
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **groupId** | **string**| ObjectID of the User Group. | 
-  **contentType** | **string**|  | [default to application/json]
-  **accept** | **string**|  | [default to application/json]
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **groupId** | **string**| ObjectID of the User Group. | 
- **contentType** | **string**|  | [default to application/json]
- **accept** | **string**|  | [default to application/json]
- **limit** | **int32**| The number of records to return at once. Limited to 100. | [default to 10]
- **xOrgId** | **string**|  | [default to ]
- **skip** | **int32**| The offset into the records to return. | [default to 0]
- **filter** | [**[]string**](string.md)| Supported operators are: eq, ne, gt, ge, lt, le, between, search, in | 
 
 ### Return type
 
@@ -799,48 +707,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]UserGroup**](UserGroup.md)
-
-### Authorization
-
-[x-api-key](../README.md#x-api-key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **GroupsUserPatch**
-> UserGroup GroupsUserPatch(ctx, id, contentType, accept, optional)
-Partial update a User Group
-
-We have hidden PATCH on the systemgroups and usergroups for now; we don't have that implemented correctly yet, people should use PUT until we do a true PATCH operation.  #### Sample Request ``` https://console.jumpcloud.com/api/v2/usergroups/{id} ```
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **id** | **string**| ObjectID of the User Group. | 
-  **contentType** | **string**|  | [default to application/json]
-  **accept** | **string**|  | [default to application/json]
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| ObjectID of the User Group. | 
- **contentType** | **string**|  | [default to application/json]
- **accept** | **string**|  | [default to application/json]
- **body** | [**UserGroupPost**](UserGroupPost.md)|  | 
- **xOrgId** | **string**|  | [default to ]
-
-### Return type
-
-[**UserGroup**](UserGroup.md)
 
 ### Authorization
 

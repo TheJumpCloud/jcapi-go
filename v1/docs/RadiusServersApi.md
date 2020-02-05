@@ -4,10 +4,52 @@ All URIs are relative to *https://console.jumpcloud.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**RadiusServersGet**](RadiusServersApi.md#RadiusServersGet) | **Get** /radiusservers/{id} | Get Radius Server
 [**RadiusServersList**](RadiusServersApi.md#RadiusServersList) | **Get** /radiusservers | List Radius Servers
 [**RadiusServersPost**](RadiusServersApi.md#RadiusServersPost) | **Post** /radiusservers | Create a Radius Server
 [**RadiusServersPut**](RadiusServersApi.md#RadiusServersPut) | **Put** /radiusservers/{id} | Update Radius Servers
 
+
+# **RadiusServersGet**
+> Radiusserver RadiusServersGet(ctx, id, contentType, accept, optional)
+Get Radius Server
+
+This endpoint allows you to get a RADIUS server in your organization.  #### ``` curl -X PUT https://console.jumpcloud.com/api/radiusservers/{ServerID} \\   -H 'Accept: application/json' \\   -H 'Content-Type: application/json' \\   -H 'x-api-key: {API_KEY}' \\ ```
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **id** | **string**|  | 
+  **contentType** | **string**|  | [default to application/json]
+  **accept** | **string**|  | [default to application/json]
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+ **contentType** | **string**|  | [default to application/json]
+ **accept** | **string**|  | [default to application/json]
+ **xOrgId** | **string**|  | [default to ]
+
+### Return type
+
+[**Radiusserver**](radiusserver.md)
+
+### Authorization
+
+[x-api-key](../README.md#x-api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **RadiusServersList**
 > Radiusserverslist RadiusServersList(ctx, contentType, accept, optional)
@@ -117,7 +159,7 @@ Name | Type | Description  | Notes
  **id** | **string**|  | 
  **contentType** | **string**|  | [default to application/json]
  **accept** | **string**|  | [default to application/json]
- **body** | [**Body**](Body.md)|  | 
+ **body** | [**Body1**](Body1.md)|  | 
  **xOrgId** | **string**|  | [default to ]
 
 ### Return type

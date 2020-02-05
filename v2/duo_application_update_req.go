@@ -11,11 +11,11 @@ package v2
 
 type DuoApplicationUpdateReq struct {
 
-	ApiHost string `json:"apiHost,omitempty"`
+	ApiHost string `json:"apiHost"`
 
-	IntegrationKey string `json:"integrationKey,omitempty"`
+	IntegrationKey string `json:"integrationKey"`
 
-	Name string `json:"name,omitempty"`
+	Name string `json:"name"`
 
 	SecretKey string `json:"secretKey,omitempty"`
 }

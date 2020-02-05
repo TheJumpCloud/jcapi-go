@@ -6,14 +6,12 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**WorkdaysAuthorize**](WorkdayImportApi.md#WorkdaysAuthorize) | **Post** /workdays/{workday_id}/auth | Authorize Workday
 [**WorkdaysDeauthorize**](WorkdayImportApi.md#WorkdaysDeauthorize) | **Delete** /workdays/{workday_id}/auth | Deauthorize Workday
-[**WorkdaysDelete**](WorkdayImportApi.md#WorkdaysDelete) | **Delete** /workdays/{id} | Delete Workday
 [**WorkdaysGet**](WorkdayImportApi.md#WorkdaysGet) | **Get** /workdays/{id} | Get Workday
 [**WorkdaysImport**](WorkdayImportApi.md#WorkdaysImport) | **Post** /workdays/{workday_id}/import | Workday Import
 [**WorkdaysImportresults**](WorkdayImportApi.md#WorkdaysImportresults) | **Get** /workdays/{id}/import/{job_id}/results | List Import Results
 [**WorkdaysList**](WorkdayImportApi.md#WorkdaysList) | **Get** /workdays | List Workdays
 [**WorkdaysPost**](WorkdayImportApi.md#WorkdaysPost) | **Post** /workdays | Create new Workday
 [**WorkdaysPut**](WorkdayImportApi.md#WorkdaysPut) | **Put** /workdays/{id} | Update Workday
-[**WorkdaysSettings**](WorkdayImportApi.md#WorkdaysSettings) | **Get** /workdays/settings | Get Workday Settings (incomplete)
 [**WorkdaysWorkers**](WorkdayImportApi.md#WorkdaysWorkers) | **Get** /workdays/{workday_id}/workers | List Workday Workers
 
 
@@ -88,47 +86,6 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
-
-### Authorization
-
-[x-api-key](../README.md#x-api-key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **WorkdaysDelete**
-> interface{} WorkdaysDelete(ctx, id, contentType, accept, optional)
-Delete Workday
-
-This endpoint allows you to delete an instance of Workday.  **This functionality is currently not enable for users.**
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **id** | **string**|  | 
-  **contentType** | **string**|  | [default to application/json]
-  **accept** | **string**|  | [default to application/json]
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**|  | 
- **contentType** | **string**|  | [default to application/json]
- **accept** | **string**|  | [default to application/json]
- **xOrgId** | **string**|  | [default to ]
-
-### Return type
-
-[**interface{}**](interface{}.md)
 
 ### Authorization
 
@@ -383,46 +340,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**WorkdayOutput**](workday-output.md)
-
-### Authorization
-
-[x-api-key](../README.md#x-api-key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **WorkdaysSettings**
-> WorkdaysSettings(ctx, contentType, accept, optional)
-Get Workday Settings (incomplete)
-
-This endpoint allows you to obtain all settings needed for creating a workday instance, specifically the URL to initiate Basic Authentication with WorkDay.  **This functionality is currently not enable for users.**
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **contentType** | **string**|  | [default to application/json]
-  **accept** | **string**|  | [default to application/json]
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contentType** | **string**|  | [default to application/json]
- **accept** | **string**|  | [default to application/json]
- **state** | **string**|  | 
- **xOrgId** | **string**|  | [default to ]
-
-### Return type
-
- (empty response body)
 
 ### Authorization
 

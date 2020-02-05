@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **EnableManagedUid** | **bool** |  | [optional] [default to null]
 **EnableUserPortalMultifactor** | **bool** |  | [optional] [default to null]
 **ExternalDn** | **string** |  | [optional] [default to null]
+**ExternalPasswordExpirationDate** | [**time.Time**](time.Time.md) |  | [optional] [default to null]
 **ExternalSourceType** | **string** |  | [optional] [default to null]
 **ExternallyManaged** | **bool** |  | [optional] [default to null]
 **Firstname** | **string** |  | [optional] [default to null]

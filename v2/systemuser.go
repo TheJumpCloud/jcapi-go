@@ -48,6 +48,8 @@ type Systemuser struct {
 
 	ExternalDn string `json:"external_dn,omitempty"`
 
+	ExternalPasswordExpirationDate string `json:"external_password_expiration_date,omitempty"`
+
 	ExternalSourceType string `json:"external_source_type,omitempty"`
 
 	ExternallyManaged bool `json:"externally_managed,omitempty"`
