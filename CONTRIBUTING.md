@@ -1,12 +1,12 @@
-### Swagger Code Generation
+# Swagger Code Generation
 
 This repository relies on the following Dockerfile in order to run
 Swagger Codegen inside a Docker container:
-https://hub.docker.com/r/jimschubert/swagger-codegen-cli/.
+https://hub.docker.com/r/parsertongue/swagger-codegen-cli.
 
-We're currently using version 2.3.1 of Swagger Codegen.
+We're currently using version 3.0.32 of Swagger Codegen.
 
-### Generating the API Client
+## Generating the API Client
 
 Copy the Swagger specification YAML files to the local `./input` directory.
 
@@ -17,27 +17,29 @@ https://docs.jumpcloud.com/2.0.
 Update the version number for each package in `config_v1.json` or
 `config_v2.json`.
 
-To generate the API v1 or v2 client, run the commands below (assuming your
-API v1 and v2 specification files are `./input/index1.yaml` and
-`./input/index2.yaml`):
+To generate the API v1 or v2 client, run the commands below:
 
-```
-docker-compose run --rm swagger-codegen generate -i /swagger-api/yaml/index1.yaml -l go -c /config/config_v1.json -o /swagger-api/out/v1
-docker-compose run --rm swagger-codegen generate -i /swagger-api/yaml/index2.yaml -l go -c /config/config_v2.json -o /swagger-api/out/v2
-```
+```bash
+# Update API v1 and v2 specification files in `./input/index1.yaml` and `./input/index2.yaml`):
+mkdir input
+curl https://docs.jumpcloud.com/api/1.0/index.yaml --output input/index1.yaml
+curl https://docs.jumpcloud.com/api/2.0/index.yaml --output input/index2.yaml
 
-This will generate the API v1 and v2 client files under the local
-`./output/v1` and `./output/v2` directories.
+# Generate SDKs
+mkdir output
+LANG="go"
+docker-compose run --rm swagger-codegen generate -i /swagger-api/yaml/index1.yaml -l ${LANG} -c /config/config_v1.json -o /swagger-api/out/jcapiv1
+docker-compose run --rm swagger-codegen generate -i /swagger-api/yaml/index2.yaml -l ${LANG} -c /config/config_v2.json -o /swagger-api/out/jcapiv2
 
-Once you are satisfied with the generated API client, you can replace the
-existing files under the `v1` or `v2` directory with your generated files:
+# This will generate the API v1 and v2 client files under the local `./output/jcapiv1` and `./output/jcapiv2` directories.
 
-```
-rm -rf v1
-mv output/v1 .
+# Once you are satisfied with the generated API client, you can replace the existing files under the `jcapiv1` or `jcapiv2` directory with your generated files:
 
-rm -rf v2
-mv output/v2 .
+rm -rf jcapiv1
+mv output/jcapiv1 .
+
+rm -rf jcapiv2
+mv output/jcapiv2 .
 ```
 
 There currently is a bug with Swagger Codegen where it generates redundant
@@ -45,29 +47,30 @@ enums for certain structures (namely `GraphType` and `GroupType`).
 Make sure to run the following commands in order to remove the enums
 declarations:
 
-```
+```bash
 sed '/type GraphType string/q' v2/graph_type.go > tmp && mv tmp v2/graph_type.go
 sed '/type GroupType string/q' v2/group_type.go > tmp && mv tmp v2/group_type.go
 ```
-### Versioning
+
+## Versioning
 
 [Semantic Versioning](https://semver.org) is used for the generated client packages.
 
-#### Go Export Parser
+### Go Export Parser
 
 `tools/go-export-parser` can be used to validate a new version and determine the semantic version
 component to increment for a new release. The tool generates a go source file that references all
 exported elements of the API. This source file can be compared to the one for the previous version
 to determine which semantic versioning component (major, minor, or patch) to increment.
 
-In addition, the generated go file can be compiled to validate the correctness of the generated SDK to 
+In addition, the generated go file can be compiled to validate the correctness of the generated SDK to
 some extent.
 
 The tool is a linux executable. (It runs in docker on other OSs).
 
 Here is an example session:
 
-```
+```bash
 $ git checkout -q 1.6.1
 $ ./tools/go-export-parser github.com/TheJumpCloud/jcapi-go/v1 > ref_v1-1_6_1.go
 $ go run ref_v1-1_6_1.go
@@ -111,20 +114,20 @@ $ diff <(sort ref_v1-1_6_1.go) <(sort ref_v1-2_0_0.go)
 >     var _ string = new(v1.SystemSshdParams).Value
 657a670
 >     var _ time.Time = new(v1.Body1).ExclusionUntil
-$ 
+$
 ```
 
 In general, changed or deleted lines imply a MAJOR component increment, added lines imply a MINOR component
 increment, no change implies a PATCH component increment. The above example indicates a new MAJOR version
 because the type of `SshdParams`, `RequestTime`, and `ResponseTime` changed.
 
-##### Notes
+#### Notes
 
 The go-export-parser tool requires all of jcapi-go's dependent packages to be installed.
 
 If you get failures like:
 
-```
+```bash
 $ tools/go-export-parser github.com/TheJumpCloud/jcapi-go/v1 > ref_v1_2_0_1.go
 /go/src/github.com/TheJumpCloud/jcapi-go/v1/api_client.go:20:5: could not import golang.org/x/oauth2 (cannot find package "golang.org/x/oauth2" in any of:
         /usr/local/go/src/golang.org/x/oauth2 (from $GOROOT)
@@ -136,7 +139,8 @@ $ tools/go-export-parser github.com/TheJumpCloud/jcapi-go/v1 > ref_v1_2_0_1.go
 ```
 
 Install the dependencies with `go get`:
-```
+
+```bash
 $ go get golang.org/x/oauth2
 $ tools/go-export-parser github.com/TheJumpCloud/jcapi-go/v1 > ref_v1_2_0_1.go
 $

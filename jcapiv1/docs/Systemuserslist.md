@@ -1,0 +1,10 @@
+# Systemuserslist
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Results** | [**[]Systemuserreturn**](systemuserreturn.md) | The list of system users. | [optional] [default to null]
+**TotalCount** | **int32** | The total number of system users. | [optional] [default to null]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
