@@ -21,3 +21,7 @@
       3. `../jcapi-go/jcapiv2/api_providers.go`
 5. Made some fixes in the example `../hello-world/main.go`
 6. It worked! `Details for User group 635ac16209b40b00016188f1: {Attributes:0xc000189ef0 Description: Email: Id:635ac16209b40b00016188f1 MemberQuery:<nil> MemberQueryExemptions:[] MemberSuggestionsNotify:false MembershipAutomated:false Name:PesterTest_UserGroup SuggestionCounts:<nil> Type_:user_group}`
+
+# Misc.
+
+The VSCode linter still is reporting a lot of errors that probably need to be fixed.
