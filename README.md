@@ -38,15 +38,14 @@ import (
 	"context"
 	"fmt"
 
-	jcapiv2 "github.com/TheJumpCloud/jcapi-go/v2"
+	jcapiv2 "github.com/TheJumpCloud/jcapi-go/jcapiv2"
+	"github.com/antihax/optional"
 )
 
 func main() {
 	apiKey := "YOUR_API_KEY"
+	XOrgId := "YOUR_ORG_ID"
 	userGroupID := "YOUR_GROUP_ID"
-
-	contentType := "application/json"
-	accept := "application/json"
 
 	// Instantiate the API client
 	client := jcapiv2.NewAPIClient(jcapiv2.NewConfiguration())
@@ -57,7 +56,7 @@ func main() {
 	})
 
 	// Make an API call to retrieve a specific user group by ID
-	userGroup, res, err := client.UserGroupsApi.GroupsUserGet(auth, userGroupID, contentType, accept, nil)
+	userGroup, res, err := client.UserGroupsApi.GroupsUserGet(auth, userGroupID, &jcapiv2.UserGroupsApiGroupsUserGetOpts{XOrgId: optional.NewString(XOrgId)})
 	if err != nil {
 		fmt.Printf("Error retrieving user group %s: %s - response = %+v\n", userGroupID, err, res)
 	} else {
